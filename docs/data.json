@@ -4,7 +4,7 @@
         "description": "HTML5 game engine",
         "version": "1.0.0",
         "url": "https://github.com/ekelokorpi/panda.js",
-        "logo": "../logo.png"
+        "logo": "../logo_small2.png"
     },
     "files": {
         "../panda.js/src/engine/core.js": {
