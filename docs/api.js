@@ -2,7 +2,11 @@ YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
     "classes": [
         "Core",
-        "System"
+        "Scene",
+        "Storage",
+        "System",
+        "Timer",
+        "Tween"
     ],
     "modules": [
         "game"

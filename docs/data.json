@@ -18,11 +18,47 @@
             "fors": {},
             "namespaces": {}
         },
+        "../panda.js/src/engine/scene.js": {
+            "name": "../panda.js/src/engine/scene.js",
+            "modules": {},
+            "classes": {
+                "Scene": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "../panda.js/src/engine/storage.js": {
+            "name": "../panda.js/src/engine/storage.js",
+            "modules": {},
+            "classes": {
+                "Storage": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "../panda.js/src/engine/system.js": {
             "name": "../panda.js/src/engine/system.js",
             "modules": {},
             "classes": {
                 "System": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "../panda.js/src/engine/timer.js": {
+            "name": "../panda.js/src/engine/timer.js",
+            "modules": {},
+            "classes": {
+                "Timer": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "../panda.js/src/engine/tween.js": {
+            "name": "../panda.js/src/engine/tween.js",
+            "modules": {},
+            "classes": {
+                "Tween": 1
             },
             "fors": {},
             "namespaces": {}
@@ -34,13 +70,17 @@
             "submodules": {},
             "classes": {
                 "Core": 1,
-                "System": 1
+                "Scene": 1,
+                "Storage": 1,
+                "System": 1,
+                "Timer": 1,
+                "Tween": 1
             },
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "../panda.js/src/engine/system.js",
-            "line": 10
+            "file": "../panda.js/src/engine/tween.js",
+            "line": 57
         }
     },
     "classes": {
@@ -55,8 +95,35 @@
             "module": "game",
             "namespace": "",
             "file": "../panda.js/src/engine/core.js",
-            "line": 12,
+            "line": 30,
             "description": "Automatically created at `game` and `game.core`"
+        },
+        "Scene": {
+            "name": "Scene",
+            "shortname": "Scene",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "game",
+            "namespace": "",
+            "file": "../panda.js/src/engine/scene.js",
+            "line": 7
+        },
+        "Storage": {
+            "name": "Storage",
+            "shortname": "Storage",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "game",
+            "namespace": "",
+            "file": "../panda.js/src/engine/storage.js",
+            "line": 7,
+            "description": "Automatically created at `game.storage` if `game.Storage.id` is set.\n\n    game.Storage.id = 'com.company.mygame';\n\n    game.storage.set('highScore', 1000);\n    var highScore = game.storage.get('highscore');"
         },
         "System": {
             "name": "System",
@@ -71,12 +138,89 @@
             "file": "../panda.js/src/engine/system.js",
             "line": 10,
             "description": "Automatically created at `game.system`"
+        },
+        "Timer": {
+            "name": "Timer",
+            "shortname": "Timer",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "game",
+            "namespace": "",
+            "file": "../panda.js/src/engine/timer.js",
+            "line": 7,
+            "description": "Example:\n\n    var timer = new game.Timer(2);\n    if(timer.delta() >= 0) {\n        timer.set(2);\n    }",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "seconds",
+                    "description": "",
+                    "type": "Number"
+                }
+            ]
+        },
+        "Tween": {
+            "name": "Tween",
+            "shortname": "Tween",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "game",
+            "namespace": "",
+            "file": "../panda.js/src/engine/tween.js",
+            "line": 57,
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "properties",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "duration",
+                    "description": "Duration in seconds.",
+                    "type": "Number"
+                },
+                {
+                    "name": "settings",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "loop",
+                            "description": "",
+                            "type": "game.Tween.Loop.Reverse|game.Tween.Loop.Revert",
+                            "optional": true
+                        }
+                    ]
+                }
+            ]
         }
     },
     "classitems": [
         {
             "file": "../panda.js/src/engine/core.js",
-            "line": 36,
+            "line": 39,
+            "description": "Current scene.",
+            "itemtype": "property",
+            "name": "scene",
+            "type": "Scene",
+            "class": "Core",
+            "module": "game"
+        },
+        {
+            "file": "../panda.js/src/engine/core.js",
+            "line": 58,
             "description": "Scale factor for game engine. (Used in Retina and HiRes mode.)",
             "itemtype": "property",
             "name": "scale",
@@ -86,7 +230,7 @@
         },
         {
             "file": "../panda.js/src/engine/core.js",
-            "line": 117,
+            "line": 139,
             "description": "Add asset to preloader.",
             "itemtype": "method",
             "name": "addAsset",
@@ -102,7 +246,7 @@
         },
         {
             "file": "../panda.js/src/engine/core.js",
-            "line": 126,
+            "line": 148,
             "description": "Add sound to preloader.",
             "itemtype": "method",
             "name": "addSound",
@@ -124,7 +268,7 @@
         },
         {
             "file": "../panda.js/src/engine/core.js",
-            "line": 137,
+            "line": 159,
             "description": "Add music to preloader.",
             "itemtype": "method",
             "name": "addMusic",
@@ -146,7 +290,7 @@
         },
         {
             "file": "../panda.js/src/engine/core.js",
-            "line": 152,
+            "line": 174,
             "description": "Define new module.",
             "itemtype": "method",
             "name": "module",
@@ -168,7 +312,7 @@
         },
         {
             "file": "../panda.js/src/engine/core.js",
-            "line": 168,
+            "line": 190,
             "description": "Require modules for module.",
             "itemtype": "method",
             "name": "require",
@@ -184,11 +328,204 @@
         },
         {
             "file": "../panda.js/src/engine/core.js",
-            "line": 181,
+            "line": 203,
             "description": "Define body for module.",
             "itemtype": "method",
             "name": "body",
             "class": "Core",
+            "module": "game"
+        },
+        {
+            "file": "../panda.js/src/engine/scene.js",
+            "line": 11,
+            "description": "Background color of scene.",
+            "itemtype": "property",
+            "name": "clearColor",
+            "type": "Number",
+            "class": "Scene",
+            "module": "game"
+        },
+        {
+            "file": "../panda.js/src/engine/scene.js",
+            "line": 56,
+            "description": "Add timer to game scene.",
+            "itemtype": "method",
+            "name": "addTimer",
+            "params": [
+                {
+                    "name": "time",
+                    "description": "Time in seconds",
+                    "type": "Number"
+                },
+                {
+                    "name": "callback",
+                    "description": "Callback function to run, when timer ends.",
+                    "type": "Function"
+                }
+            ],
+            "class": "Scene",
+            "module": "game"
+        },
+        {
+            "file": "../panda.js/src/engine/scene.js",
+            "line": 80,
+            "description": "Callback for mouse click and touch tap on the scene stage.",
+            "itemtype": "method",
+            "name": "click",
+            "params": [
+                {
+                    "name": "InteractionData",
+                    "description": "",
+                    "type": "InteractionData"
+                }
+            ],
+            "class": "Scene",
+            "module": "game"
+        },
+        {
+            "file": "../panda.js/src/engine/scene.js",
+            "line": 86,
+            "description": "Callback for mousedown and touchstart on the scene stage.",
+            "itemtype": "method",
+            "name": "mousedown",
+            "params": [
+                {
+                    "name": "InteractionData",
+                    "description": "",
+                    "type": "InteractionData"
+                }
+            ],
+            "class": "Scene",
+            "module": "game"
+        },
+        {
+            "file": "../panda.js/src/engine/scene.js",
+            "line": 92,
+            "description": "Callback for mouseup and touchend on the scene stage.",
+            "itemtype": "method",
+            "name": "mouseup",
+            "params": [
+                {
+                    "name": "InteractionData",
+                    "description": "",
+                    "type": "InteractionData"
+                }
+            ],
+            "class": "Scene",
+            "module": "game"
+        },
+        {
+            "file": "../panda.js/src/engine/scene.js",
+            "line": 98,
+            "description": "Callback for mousemove and touchmove on the scene stage.",
+            "itemtype": "method",
+            "name": "mousemove",
+            "params": [
+                {
+                    "name": "InteractionData",
+                    "description": "",
+                    "type": "InteractionData"
+                }
+            ],
+            "class": "Scene",
+            "module": "game"
+        },
+        {
+            "file": "../panda.js/src/engine/scene.js",
+            "line": 104,
+            "description": "Callback for mouseout on the scene stage.",
+            "itemtype": "method",
+            "name": "mouseout",
+            "params": [
+                {
+                    "name": "InteractionData",
+                    "description": "",
+                    "type": "InteractionData"
+                }
+            ],
+            "class": "Scene",
+            "module": "game"
+        },
+        {
+            "file": "../panda.js/src/engine/scene.js",
+            "line": 112,
+            "description": "Main stage for scene.",
+            "itemtype": "property",
+            "name": "stage",
+            "type": "Class",
+            "class": "Scene",
+            "module": "game"
+        },
+        {
+            "file": "../panda.js/src/engine/storage.js",
+            "line": 23,
+            "description": "Set value to local storage.",
+            "itemtype": "method",
+            "name": "set",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "Storage",
+            "module": "game"
+        },
+        {
+            "file": "../panda.js/src/engine/storage.js",
+            "line": 33,
+            "description": "Get key from local storage.",
+            "itemtype": "method",
+            "name": "get",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "Storage",
+            "module": "game"
+        },
+        {
+            "file": "../panda.js/src/engine/storage.js",
+            "line": 42,
+            "description": "Remove key from local storage.",
+            "itemtype": "method",
+            "name": "remove",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "Storage",
+            "module": "game"
+        },
+        {
+            "file": "../panda.js/src/engine/storage.js",
+            "line": 51,
+            "description": "Reset local storage. This removes ALL keys.",
+            "itemtype": "method",
+            "name": "reset",
+            "class": "Storage",
+            "module": "game"
+        },
+        {
+            "file": "../panda.js/src/engine/storage.js",
+            "line": 62,
+            "description": "Id for local storage.",
+            "itemtype": "attribute",
+            "name": "id",
+            "type": "String",
+            "class": "Storage",
             "module": "game"
         },
         {
@@ -224,16 +561,16 @@
         {
             "file": "../panda.js/src/engine/system.js",
             "line": 34,
-            "description": "Current game scene class.",
+            "description": "Main game timer.",
             "itemtype": "property",
-            "name": "scene",
-            "type": "Class",
+            "name": "timer",
+            "type": "Timer",
             "class": "System",
             "module": "game"
         },
         {
             "file": "../panda.js/src/engine/system.js",
-            "line": 40,
+            "line": 39,
             "description": "Canvas element.",
             "itemtype": "property",
             "name": "canvas",
@@ -243,7 +580,7 @@
         },
         {
             "file": "../panda.js/src/engine/system.js",
-            "line": 45,
+            "line": 44,
             "description": "Id of canvas element.",
             "itemtype": "property",
             "name": "canvasId",
@@ -254,7 +591,7 @@
         },
         {
             "file": "../panda.js/src/engine/system.js",
-            "line": 51,
+            "line": 50,
             "description": "Is engine paused.",
             "itemtype": "property",
             "name": "paused",
@@ -264,7 +601,7 @@
         },
         {
             "file": "../panda.js/src/engine/system.js",
-            "line": 56,
+            "line": 55,
             "description": "Is engine in HiRes mode.",
             "itemtype": "property",
             "name": "hires",
@@ -274,7 +611,7 @@
         },
         {
             "file": "../panda.js/src/engine/system.js",
-            "line": 61,
+            "line": 60,
             "description": "Is engine in Retina mode.",
             "itemtype": "property",
             "name": "retina",
@@ -284,7 +621,7 @@
         },
         {
             "file": "../panda.js/src/engine/system.js",
-            "line": 134,
+            "line": 133,
             "description": "Pause game engine.",
             "itemtype": "method",
             "name": "pause",
@@ -293,7 +630,7 @@
         },
         {
             "file": "../panda.js/src/engine/system.js",
-            "line": 144,
+            "line": 143,
             "description": "Resume paused game engine.",
             "itemtype": "method",
             "name": "unpause",
@@ -302,7 +639,7 @@
         },
         {
             "file": "../panda.js/src/engine/system.js",
-            "line": 154,
+            "line": 153,
             "description": "Change current scene.",
             "itemtype": "method",
             "name": "setScene",
@@ -318,7 +655,7 @@
         },
         {
             "file": "../panda.js/src/engine/system.js",
-            "line": 319,
+            "line": 318,
             "description": "Minimum width for canvas.",
             "itemtype": "attribute",
             "name": "minWidth",
@@ -329,7 +666,7 @@
         },
         {
             "file": "../panda.js/src/engine/system.js",
-            "line": 325,
+            "line": 324,
             "description": "Minimum height for canvas.",
             "itemtype": "attribute",
             "name": "minHeight",
@@ -340,7 +677,7 @@
         },
         {
             "file": "../panda.js/src/engine/system.js",
-            "line": 331,
+            "line": 330,
             "description": "Maximum width for canvas.",
             "itemtype": "attribute",
             "name": "maxWidth",
@@ -351,7 +688,7 @@
         },
         {
             "file": "../panda.js/src/engine/system.js",
-            "line": 337,
+            "line": 336,
             "description": "Maximum height for canvas.",
             "itemtype": "attribute",
             "name": "maxHeight",
@@ -362,7 +699,7 @@
         },
         {
             "file": "../panda.js/src/engine/system.js",
-            "line": 343,
+            "line": 342,
             "description": "Scaling method for CocoonJS.",
             "itemtype": "attribute",
             "name": "idtkScale",
@@ -373,7 +710,7 @@
         },
         {
             "file": "../panda.js/src/engine/system.js",
-            "line": 349,
+            "line": 348,
             "description": "Use ScreenCanvas on CocoonJS.\nhttp://support.ludei.com/hc/en-us/articles/201810268-ScreenCanvas",
             "itemtype": "attribute",
             "name": "screenCanvas",
@@ -384,7 +721,7 @@
         },
         {
             "file": "../panda.js/src/engine/system.js",
-            "line": 356,
+            "line": 355,
             "description": "Use HiRes mode.",
             "itemtype": "attribute",
             "name": "hires",
@@ -395,7 +732,7 @@
         },
         {
             "file": "../panda.js/src/engine/system.js",
-            "line": 362,
+            "line": 361,
             "description": "System width/height factor, when to use HiRes mode.",
             "itemtype": "attribute",
             "name": "hiresFactor",
@@ -406,7 +743,7 @@
         },
         {
             "file": "../panda.js/src/engine/system.js",
-            "line": 368,
+            "line": 367,
             "description": "Use Retina mode.",
             "itemtype": "attribute",
             "name": "retina",
@@ -417,7 +754,7 @@
         },
         {
             "file": "../panda.js/src/engine/system.js",
-            "line": 374,
+            "line": 373,
             "description": "Pause game engine, when page is hidden.",
             "itemtype": "attribute",
             "name": "pauseOnHide",
@@ -428,7 +765,7 @@
         },
         {
             "file": "../panda.js/src/engine/system.js",
-            "line": 380,
+            "line": 379,
             "description": "Mobile orientation for the game.",
             "itemtype": "attribute",
             "name": "orientation",
@@ -439,7 +776,7 @@
         },
         {
             "file": "../panda.js/src/engine/system.js",
-            "line": 387,
+            "line": 386,
             "description": "Background color for game screen.",
             "itemtype": "attribute",
             "name": "backgroundColor.game",
@@ -449,7 +786,7 @@
         },
         {
             "file": "../panda.js/src/engine/system.js",
-            "line": 393,
+            "line": 392,
             "description": "Background color for rotate screen.",
             "itemtype": "attribute",
             "name": "backgroundColor.rotate",
@@ -459,7 +796,7 @@
         },
         {
             "file": "../panda.js/src/engine/system.js",
-            "line": 401,
+            "line": 400,
             "description": "Background image for game screen.",
             "itemtype": "attribute",
             "name": "backgroundImage.game",
@@ -469,7 +806,7 @@
         },
         {
             "file": "../panda.js/src/engine/system.js",
-            "line": 407,
+            "line": 406,
             "description": "Background image for rotate screen.",
             "itemtype": "attribute",
             "name": "backgroundImage.rotate",
@@ -479,7 +816,7 @@
         },
         {
             "file": "../panda.js/src/engine/system.js",
-            "line": 414,
+            "line": 413,
             "description": "Rotate message for mobile.",
             "itemtype": "attribute",
             "name": "rotateMsg",
@@ -490,13 +827,54 @@
         },
         {
             "file": "../panda.js/src/engine/system.js",
-            "line": 421,
+            "line": 419,
             "description": "Rotate image for mobile.",
             "itemtype": "attribute",
             "name": "rotateImg",
             "type": "URL",
             "default": "null",
             "class": "System",
+            "module": "game"
+        },
+        {
+            "file": "../panda.js/src/engine/timer.js",
+            "line": 29,
+            "itemtype": "method",
+            "name": "set",
+            "params": [
+                {
+                    "name": "seconds",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "Timer",
+            "module": "game"
+        },
+        {
+            "file": "../panda.js/src/engine/timer.js",
+            "line": 39,
+            "itemtype": "method",
+            "name": "reset",
+            "class": "Timer",
+            "module": "game"
+        },
+        {
+            "file": "../panda.js/src/engine/timer.js",
+            "line": 57,
+            "description": "Pause timer.",
+            "itemtype": "method",
+            "name": "pause",
+            "class": "Timer",
+            "module": "game"
+        },
+        {
+            "file": "../panda.js/src/engine/timer.js",
+            "line": 65,
+            "description": "Resume paused timer.",
+            "itemtype": "method",
+            "name": "unpause",
+            "class": "Timer",
             "module": "game"
         }
     ],

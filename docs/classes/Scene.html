@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Core - Panda.js</title>
+    <title>Scene - Panda.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -94,7 +94,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Core Class</h1>
+                        <h1>Scene Class</h1>
 <div class="box meta">
     
 
@@ -102,7 +102,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/.._panda.js_src_engine_core.js.html#l30"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;core.js:30</code></a>
+            Defined in: <a href="../files/.._panda.js_src_engine_scene.js.html#l7"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;scene.js:7</code></a>
         </div>
     
 
@@ -118,8 +118,7 @@
 
 
 <div class="box intro">
-    <p>Automatically created at <code>game</code> and <code>game.core</code></p>
-
+    
 </div>
 
 
@@ -149,42 +148,42 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_addAsset">addAsset</a>
+                                <a href="#method_addTimer">addTimer</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_addMusic">addMusic</a>
+                                <a href="#method_click">click</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_addSound">addSound</a>
+                                <a href="#method_mousedown">mousedown</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_body">body</a>
+                                <a href="#method_mousemove">mousemove</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_module">module</a>
+                                <a href="#method_mouseout">mouseout</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_require">require</a>
+                                <a href="#method_mouseup">mouseup</a>
 
                                 
                                 
@@ -201,14 +200,14 @@
                     <ul class="index-list properties">
                         
                             <li class="index-item property">
-                                <a href="#property_scale">scale</a>
+                                <a href="#property_clearColor">clearColor</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#property_scene">scene</a>
+                                <a href="#property_stage">stage</a>
 
                                 
                                 
@@ -228,8 +227,8 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_addAsset" class="method item">
-    <h3 class="name"><code>addAsset</code></h3>
+                    <div id="method_addTimer" class="method item">
+    <h3 class="name"><code>addTimer</code></h3>
 
     
         <div class="args">
@@ -237,7 +236,13 @@
             
                 <li class="arg">
                     
-                        <code>path</code>
+                        <code>time</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>callback</code>
                     
                 </li>
             
@@ -270,7 +275,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_core.js.html#l139"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;core.js:139</code></a>
+        <a href="../files/.._panda.js_src_engine_scene.js.html#l56"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;scene.js:56</code></a>
         
         </p>
 
@@ -281,7 +286,7 @@
     </div>
 
     <div class="description">
-        <p>Add asset to preloader.</p>
+        <p>Add timer to game scene.</p>
 
     </div>
 
@@ -293,8 +298,113 @@
             
                 <li class="param">
                     
-                        <code class="param-name">path</code>
-                        <span class="type">String</span>
+                        <code class="param-name">time</code>
+                        <span class="type">Number</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Time in seconds</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">callback</code>
+                        <span class="type">Function</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Callback function to run, when timer ends.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_click" class="method item">
+    <h3 class="name"><code>click</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>InteractionData</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/.._panda.js_src_engine_scene.js.html#l80"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;scene.js:80</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Callback for mouse click and touch tap on the scene stage.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">InteractionData</code>
+                        <span class="type">InteractionData</span>
                     
 
                     
@@ -316,8 +426,8 @@
 </div>
 
                 
-                    <div id="method_addMusic" class="method item">
-    <h3 class="name"><code>addMusic</code></h3>
+                    <div id="method_mousedown" class="method item">
+    <h3 class="name"><code>mousedown</code></h3>
 
     
         <div class="args">
@@ -325,13 +435,7 @@
             
                 <li class="arg">
                     
-                        <code>path</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[name]</code>
+                        <code>InteractionData</code>
                     
                 </li>
             
@@ -364,7 +468,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_core.js.html#l159"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;core.js:159</code></a>
+        <a href="../files/.._panda.js_src_engine_scene.js.html#l86"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;scene.js:86</code></a>
         
         </p>
 
@@ -375,7 +479,7 @@
     </div>
 
     <div class="description">
-        <p>Add music to preloader.</p>
+        <p>Callback for mousedown and touchstart on the scene stage.</p>
 
     </div>
 
@@ -387,24 +491,8 @@
             
                 <li class="param">
                     
-                        <code class="param-name">path</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[name]</code>
-                        <span class="type">String</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                        <code class="param-name">InteractionData</code>
+                        <span class="type">InteractionData</span>
                     
 
                     
@@ -426,8 +514,8 @@
 </div>
 
                 
-                    <div id="method_addSound" class="method item">
-    <h3 class="name"><code>addSound</code></h3>
+                    <div id="method_mousemove" class="method item">
+    <h3 class="name"><code>mousemove</code></h3>
 
     
         <div class="args">
@@ -435,13 +523,7 @@
             
                 <li class="arg">
                     
-                        <code>path</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[name]</code>
+                        <code>InteractionData</code>
                     
                 </li>
             
@@ -474,7 +556,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_core.js.html#l148"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;core.js:148</code></a>
+        <a href="../files/.._panda.js_src_engine_scene.js.html#l98"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;scene.js:98</code></a>
         
         </p>
 
@@ -485,7 +567,7 @@
     </div>
 
     <div class="description">
-        <p>Add sound to preloader.</p>
+        <p>Callback for mousemove and touchmove on the scene stage.</p>
 
     </div>
 
@@ -497,24 +579,8 @@
             
                 <li class="param">
                     
-                        <code class="param-name">path</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[name]</code>
-                        <span class="type">String</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                        <code class="param-name">InteractionData</code>
+                        <span class="type">InteractionData</span>
                     
 
                     
@@ -536,63 +602,8 @@
 </div>
 
                 
-                    <div id="method_body" class="method item">
-    <h3 class="name"><code>body</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/.._panda.js_src_engine_core.js.html#l203"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;core.js:203</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Define body for module.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_module" class="method item">
-    <h3 class="name"><code>module</code></h3>
+                    <div id="method_mouseout" class="method item">
+    <h3 class="name"><code>mouseout</code></h3>
 
     
         <div class="args">
@@ -600,13 +611,7 @@
             
                 <li class="arg">
                     
-                        <code>name</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[version]</code>
+                        <code>InteractionData</code>
                     
                 </li>
             
@@ -639,7 +644,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_core.js.html#l174"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;core.js:174</code></a>
+        <a href="../files/.._panda.js_src_engine_scene.js.html#l104"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;scene.js:104</code></a>
         
         </p>
 
@@ -650,7 +655,7 @@
     </div>
 
     <div class="description">
-        <p>Define new module.</p>
+        <p>Callback for mouseout on the scene stage.</p>
 
     </div>
 
@@ -662,24 +667,8 @@
             
                 <li class="param">
                     
-                        <code class="param-name">name</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[version]</code>
-                        <span class="type">String</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                        <code class="param-name">InteractionData</code>
+                        <span class="type">InteractionData</span>
                     
 
                     
@@ -701,8 +690,8 @@
 </div>
 
                 
-                    <div id="method_require" class="method item">
-    <h3 class="name"><code>require</code></h3>
+                    <div id="method_mouseup" class="method item">
+    <h3 class="name"><code>mouseup</code></h3>
 
     
         <div class="args">
@@ -710,7 +699,7 @@
             
                 <li class="arg">
                     
-                        <code>modules</code>
+                        <code>InteractionData</code>
                     
                 </li>
             
@@ -743,7 +732,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_core.js.html#l190"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;core.js:190</code></a>
+        <a href="../files/.._panda.js_src_engine_scene.js.html#l92"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;scene.js:92</code></a>
         
         </p>
 
@@ -754,7 +743,7 @@
     </div>
 
     <div class="description">
-        <p>Require modules for module.</p>
+        <p>Callback for mouseup and touchend on the scene stage.</p>
 
     </div>
 
@@ -766,8 +755,8 @@
             
                 <li class="param">
                     
-                        <code class="param-name">modules</code>
-                        <span class="type">Array</span>
+                        <code class="param-name">InteractionData</code>
+                        <span class="type">InteractionData</span>
                     
 
                     
@@ -797,8 +786,8 @@
                 <h2 class="off-left">Properties</h2>
 
                 
-                    <div id="property_scale" class="property item">
-    <h3 class="name"><code>scale</code></h3>
+                    <div id="property_clearColor" class="property item">
+    <h3 class="name"><code>clearColor</code></h3>
     <span class="type">Number</span>
 
     
@@ -820,7 +809,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_core.js.html#l58"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;core.js:58</code></a>
+        <a href="../files/.._panda.js_src_engine_scene.js.html#l11"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;scene.js:11</code></a>
         
         </p>
 
@@ -830,7 +819,7 @@
     </div>
 
     <div class="description">
-        <p>Scale factor for game engine. (Used in Retina and HiRes mode.)</p>
+        <p>Background color of scene.</p>
 
     </div>
 
@@ -842,9 +831,9 @@
 </div>
 
                 
-                    <div id="property_scene" class="property item">
-    <h3 class="name"><code>scene</code></h3>
-    <span class="type"><a href="../classes/Scene.html" class="crosslink">Scene</a></span>
+                    <div id="property_stage" class="property item">
+    <h3 class="name"><code>stage</code></h3>
+    <span class="type">Class</span>
 
     
 
@@ -865,7 +854,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_core.js.html#l39"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;core.js:39</code></a>
+        <a href="../files/.._panda.js_src_engine_scene.js.html#l112"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;scene.js:112</code></a>
         
         </p>
 
@@ -875,7 +864,7 @@
     </div>
 
     <div class="description">
-        <p>Current scene.</p>
+        <p>Main stage for scene.</p>
 
     </div>
 

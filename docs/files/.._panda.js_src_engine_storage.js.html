@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>game - Panda.js</title>
+    <title>../panda.js/src/engine/storage.js - Panda.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -94,79 +94,79 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>game Module</h1>
-<div class="box clearfix meta">
-    
+                        <h1 class="file-heading">File: ../panda.js/src/engine/storage.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+game.module(
+    &#x27;engine.storage&#x27;,
+    &#x27;1.0.0&#x27;
+)
+.body(function() { &#x27;use strict&#x27;;
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/.._panda.js_src_engine_tween.js.html#l57"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;tween.js:57</code></a>
-        </div>
-    
+/**
+    Automatically created at &#x60;game.storage&#x60; if &#x60;game.Storage.id&#x60; is set.
 
-    
-</div>
+        game.Storage.id = &#x27;com.company.mygame&#x27;;
 
+        game.storage.set(&#x27;highScore&#x27;, 1000);
+        var highScore = game.storage.get(&#x27;highscore&#x27;);
+    @class Storage
+**/
+game.Storage = game.Class.extend({
+    id: null,
 
+    init: function(id) {
+        this.id = id;
+    },
 
-<div class="box intro">
-    
-</div>
+    /**
+        Set value to local storage.
+        @method set
+        @param {String} key
+        @param {String} value
+    **/
+    set: function(key, value) {
+        localStorage[this.id + &#x27;.&#x27; + key] = value;
+    },
 
+    /**
+        Get key from local storage.
+        @method get
+        @param {String} key
+    **/
+    get: function(key) {
+        return localStorage[this.id + &#x27;.&#x27; + key];
+    },
 
+    /**
+        Remove key from local storage.
+        @method remove
+        @param {String} key
+    **/
+    remove: function(key) {
+        localStorage.removeItem(this.id + &#x27;.&#x27; + key);
+    },
 
-<div class="yui3-g">
-    <div class="yui3-u-1-2">
-        
-            <p>This module provides the following classes:</p>
+    /**
+        Reset local storage. This removes ALL keys.
+        @method reset
+    **/
+    reset: function() {
+        for(var i in localStorage) {
+            if(i.indexOf(this.id+&#x27;.&#x27;) !== -1) localStorage.removeItem(i);
+        }
+    }
+});
 
-            <ul class="module-classes">
-            
-                <li class="module-class">
-                    <a href="../classes/Core.html">
-                        Core
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/Scene.html">
-                        Scene
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/Storage.html">
-                        Storage
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/System.html">
-                        System
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/Timer.html">
-                        Timer
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/Tween.html">
-                        Tween
-                    </a>
-                </li>
-            
-            </ul>
-        
-    </div>
+/**
+    Id for local storage.
+    @attribute {String} id
+**/
+game.Storage.id = null;
 
-    <div class="yui3-u-1-2">
-        
-    </div>
+});
+    </pre>
 </div>
 
                     </div>

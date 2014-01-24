@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Core - Panda.js</title>
+    <title>Storage - Panda.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -94,7 +94,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Core Class</h1>
+                        <h1>Storage Class</h1>
 <div class="box meta">
     
 
@@ -102,7 +102,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/.._panda.js_src_engine_core.js.html#l30"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;core.js:30</code></a>
+            Defined in: <a href="../files/.._panda.js_src_engine_storage.js.html#l7"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;storage.js:7</code></a>
         </div>
     
 
@@ -118,7 +118,11 @@
 
 
 <div class="box intro">
-    <p>Automatically created at <code>game</code> and <code>game.core</code></p>
+    <p>Automatically created at <code>game.storage</code> if <code>game.Storage.id</code> is set.</p>
+<pre class="code prettyprint"><code>game.Storage.id = &#39;com.company.mygame&#39;;
+
+game.storage.set(&#39;highScore&#39;, 1000);
+var highScore = game.storage.get(&#39;highscore&#39;);</code></pre>
 
 </div>
 
@@ -132,8 +136,8 @@
             <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
         
         
-            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
         
+            <li class="api-class-tab attrs"><a href="#attrs">Attributes</a></li>
         
         
     </ul>
@@ -149,42 +153,28 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_addAsset">addAsset</a>
+                                <a href="#method_get">get</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_addMusic">addMusic</a>
+                                <a href="#method_remove">remove</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_addSound">addSound</a>
+                                <a href="#method_reset">reset</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_body">body</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_module">module</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_require">require</a>
+                                <a href="#method_set">set</a>
 
                                 
                                 
@@ -195,29 +185,19 @@
             
 
             
-                <div class="index-section properties">
-                    <h3>Properties</h3>
 
-                    <ul class="index-list properties">
+            
+                <div class="index-section attrs">
+                    <h3>Attributes</h3>
+
+                    <ul class="index-list attrs">
                         
-                            <li class="index-item property">
-                                <a href="#property_scale">scale</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#property_scene">scene</a>
-
-                                
-                                
+                            <li class="index-item attr">
+                                <a href="#attr_id">id</a>
                             </li>
                         
                     </ul>
                 </div>
-            
-
             
 
             
@@ -228,8 +208,8 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_addAsset" class="method item">
-    <h3 class="name"><code>addAsset</code></h3>
+                    <div id="method_get" class="method item">
+    <h3 class="name"><code>get</code></h3>
 
     
         <div class="args">
@@ -237,7 +217,7 @@
             
                 <li class="arg">
                     
-                        <code>path</code>
+                        <code>key</code>
                     
                 </li>
             
@@ -270,7 +250,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_core.js.html#l139"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;core.js:139</code></a>
+        <a href="../files/.._panda.js_src_engine_storage.js.html#l33"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;storage.js:33</code></a>
         
         </p>
 
@@ -281,7 +261,7 @@
     </div>
 
     <div class="description">
-        <p>Add asset to preloader.</p>
+        <p>Get key from local storage.</p>
 
     </div>
 
@@ -293,7 +273,7 @@
             
                 <li class="param">
                     
-                        <code class="param-name">path</code>
+                        <code class="param-name">key</code>
                         <span class="type">String</span>
                     
 
@@ -316,8 +296,8 @@
 </div>
 
                 
-                    <div id="method_addMusic" class="method item">
-    <h3 class="name"><code>addMusic</code></h3>
+                    <div id="method_remove" class="method item">
+    <h3 class="name"><code>remove</code></h3>
 
     
         <div class="args">
@@ -325,13 +305,7 @@
             
                 <li class="arg">
                     
-                        <code>path</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[name]</code>
+                        <code>key</code>
                     
                 </li>
             
@@ -364,7 +338,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_core.js.html#l159"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;core.js:159</code></a>
+        <a href="../files/.._panda.js_src_engine_storage.js.html#l42"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;storage.js:42</code></a>
         
         </p>
 
@@ -375,7 +349,7 @@
     </div>
 
     <div class="description">
-        <p>Add music to preloader.</p>
+        <p>Remove key from local storage.</p>
 
     </div>
 
@@ -387,24 +361,8 @@
             
                 <li class="param">
                     
-                        <code class="param-name">path</code>
+                        <code class="param-name">key</code>
                         <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[name]</code>
-                        <span class="type">String</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
@@ -426,118 +384,8 @@
 </div>
 
                 
-                    <div id="method_addSound" class="method item">
-    <h3 class="name"><code>addSound</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>path</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[name]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/.._panda.js_src_engine_core.js.html#l148"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;core.js:148</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Add sound to preloader.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">path</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[name]</code>
-                        <span class="type">String</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_body" class="method item">
-    <h3 class="name"><code>body</code></h3>
+                    <div id="method_reset" class="method item">
+    <h3 class="name"><code>reset</code></h3>
 
     
         <span class="paren">()</span>
@@ -568,7 +416,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_core.js.html#l203"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;core.js:203</code></a>
+        <a href="../files/.._panda.js_src_engine_storage.js.html#l51"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;storage.js:51</code></a>
         
         </p>
 
@@ -579,7 +427,7 @@
     </div>
 
     <div class="description">
-        <p>Define body for module.</p>
+        <p>Reset local storage. This removes ALL keys.</p>
 
     </div>
 
@@ -591,8 +439,8 @@
 </div>
 
                 
-                    <div id="method_module" class="method item">
-    <h3 class="name"><code>module</code></h3>
+                    <div id="method_set" class="method item">
+    <h3 class="name"><code>set</code></h3>
 
     
         <div class="args">
@@ -600,13 +448,13 @@
             
                 <li class="arg">
                     
-                        <code>name</code>
+                        <code>key</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code class="optional">[version]</code>
+                        <code>value</code>
                     
                 </li>
             
@@ -639,7 +487,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_core.js.html#l174"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;core.js:174</code></a>
+        <a href="../files/.._panda.js_src_engine_storage.js.html#l23"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;storage.js:23</code></a>
         
         </p>
 
@@ -650,7 +498,7 @@
     </div>
 
     <div class="description">
-        <p>Define new module.</p>
+        <p>Set value to local storage.</p>
 
     </div>
 
@@ -662,7 +510,7 @@
             
                 <li class="param">
                     
-                        <code class="param-name">name</code>
+                        <code class="param-name">key</code>
                         <span class="type">String</span>
                     
 
@@ -677,97 +525,8 @@
             
                 <li class="param">
                     
-                        <code class="param-name optional">[version]</code>
+                        <code class="param-name">value</code>
                         <span class="type">String</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_require" class="method item">
-    <h3 class="name"><code>require</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>modules</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/.._panda.js_src_engine_core.js.html#l190"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;core.js:190</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Require modules for module.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">modules</code>
-                        <span class="type">Array</span>
                     
 
                     
@@ -793,13 +552,22 @@
         
 
         
-            <div id="properties" class="api-class-tabpanel">
-                <h2 class="off-left">Properties</h2>
+
+        
+            <div id="attrs" class="api-class-tabpanel">
+                <h2 class="off-left">Attributes</h2>
 
                 
-                    <div id="property_scale" class="property item">
-    <h3 class="name"><code>scale</code></h3>
-    <span class="type">Number</span>
+                    <div id="attr_id" class="attr item">
+    <a name="config_id"></a> 
+    <h3 class="name"><code>id</code></h3>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
 
     
 
@@ -820,7 +588,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_core.js.html#l58"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;core.js:58</code></a>
+        <a href="../files/.._panda.js_src_engine_storage.js.html#l62"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;storage.js:62</code></a>
         
         </p>
 
@@ -830,52 +598,7 @@
     </div>
 
     <div class="description">
-        <p>Scale factor for game engine. (Used in Retina and HiRes mode.)</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_scene" class="property item">
-    <h3 class="name"><code>scene</code></h3>
-    <span class="type"><a href="../classes/Scene.html" class="crosslink">Scene</a></span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/.._panda.js_src_engine_core.js.html#l39"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;core.js:39</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Current scene.</p>
+        <p>Id for local storage.</p>
 
     </div>
 
@@ -888,8 +611,6 @@
 
                 
             </div>
-        
-
         
 
         
