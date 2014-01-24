@@ -4,11 +4,11 @@
         "description": "HTML5 game engine",
         "version": "1.0.0",
         "url": "https://github.com/ekelokorpi/panda.js",
-        "logo": "../media/logo_small2.png"
+        "logo": "../logo.png"
     },
     "files": {
-        "src/engine/core.js": {
-            "name": "src/engine/core.js",
+        "../panda.js/src/engine/core.js": {
+            "name": "../panda.js/src/engine/core.js",
             "modules": {
                 "game": 1
             },
@@ -18,8 +18,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "src/engine/system.js": {
-            "name": "src/engine/system.js",
+        "../panda.js/src/engine/system.js": {
+            "name": "../panda.js/src/engine/system.js",
             "modules": {},
             "classes": {
                 "System": 1
@@ -39,7 +39,7 @@
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 10
         }
     },
@@ -54,7 +54,7 @@
             "extension_for": [],
             "module": "game",
             "namespace": "",
-            "file": "src/engine/core.js",
+            "file": "../panda.js/src/engine/core.js",
             "line": 12,
             "description": "Automatically created at `game` and `game.core`"
         },
@@ -68,14 +68,14 @@
             "extension_for": [],
             "module": "game",
             "namespace": "",
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 10,
             "description": "Automatically created at `game.system`"
         }
     },
     "classitems": [
         {
-            "file": "src/engine/core.js",
+            "file": "../panda.js/src/engine/core.js",
             "line": 36,
             "description": "Scale factor for game engine. (Used in Retina and HiRes mode.)",
             "itemtype": "property",
@@ -85,7 +85,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/core.js",
+            "file": "../panda.js/src/engine/core.js",
             "line": 117,
             "description": "Add asset to preloader.",
             "itemtype": "method",
@@ -101,7 +101,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/core.js",
+            "file": "../panda.js/src/engine/core.js",
             "line": 126,
             "description": "Add sound to preloader.",
             "itemtype": "method",
@@ -123,7 +123,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/core.js",
+            "file": "../panda.js/src/engine/core.js",
             "line": 137,
             "description": "Add music to preloader.",
             "itemtype": "method",
@@ -145,7 +145,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/core.js",
+            "file": "../panda.js/src/engine/core.js",
             "line": 152,
             "description": "Define new module.",
             "itemtype": "method",
@@ -167,7 +167,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/core.js",
+            "file": "../panda.js/src/engine/core.js",
             "line": 168,
             "description": "Require modules for module.",
             "itemtype": "method",
@@ -183,7 +183,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/core.js",
+            "file": "../panda.js/src/engine/core.js",
             "line": 181,
             "description": "Define body for module.",
             "itemtype": "method",
@@ -192,7 +192,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 15,
             "description": "Width of the game screen.",
             "itemtype": "property",
@@ -202,7 +202,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 20,
             "description": "Height of the game screen.",
             "itemtype": "property",
@@ -212,7 +212,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 25,
             "description": "Current delta-time.",
             "itemtype": "property",
@@ -222,7 +222,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 34,
             "description": "Current game scene class.",
             "itemtype": "property",
@@ -232,7 +232,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 40,
             "description": "Canvas element.",
             "itemtype": "property",
@@ -242,7 +242,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 45,
             "description": "Id of canvas element.",
             "itemtype": "property",
@@ -253,7 +253,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 51,
             "description": "Is engine paused.",
             "itemtype": "property",
@@ -263,7 +263,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 56,
             "description": "Is engine in HiRes mode.",
             "itemtype": "property",
@@ -273,7 +273,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 61,
             "description": "Is engine in Retina mode.",
             "itemtype": "property",
@@ -283,7 +283,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 134,
             "description": "Pause game engine.",
             "itemtype": "method",
@@ -292,7 +292,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 144,
             "description": "Resume paused game engine.",
             "itemtype": "method",
@@ -301,7 +301,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 154,
             "description": "Change current scene.",
             "itemtype": "method",
@@ -317,7 +317,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 319,
             "description": "Minimum width for canvas.",
             "itemtype": "attribute",
@@ -328,7 +328,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 325,
             "description": "Minimum height for canvas.",
             "itemtype": "attribute",
@@ -339,7 +339,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 331,
             "description": "Maximum width for canvas.",
             "itemtype": "attribute",
@@ -350,7 +350,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 337,
             "description": "Maximum height for canvas.",
             "itemtype": "attribute",
@@ -361,7 +361,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 343,
             "description": "Scaling method for CocoonJS.",
             "itemtype": "attribute",
@@ -372,7 +372,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 349,
             "description": "Use ScreenCanvas on CocoonJS.\nhttp://support.ludei.com/hc/en-us/articles/201810268-ScreenCanvas",
             "itemtype": "attribute",
@@ -383,7 +383,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 356,
             "description": "Use HiRes mode.",
             "itemtype": "attribute",
@@ -394,7 +394,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 362,
             "description": "System width/height factor, when to use HiRes mode.",
             "itemtype": "attribute",
@@ -405,7 +405,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 368,
             "description": "Use Retina mode.",
             "itemtype": "attribute",
@@ -416,7 +416,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 374,
             "description": "Pause game engine, when page is hidden.",
             "itemtype": "attribute",
@@ -427,7 +427,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 380,
             "description": "Mobile orientation for the game.",
             "itemtype": "attribute",
@@ -438,7 +438,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 387,
             "description": "Background color for game screen.",
             "itemtype": "attribute",
@@ -448,7 +448,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 393,
             "description": "Background color for rotate screen.",
             "itemtype": "attribute",
@@ -458,7 +458,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 401,
             "description": "Background image for game screen.",
             "itemtype": "attribute",
@@ -468,7 +468,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 407,
             "description": "Background image for rotate screen.",
             "itemtype": "attribute",
@@ -478,7 +478,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 414,
             "description": "Rotate message for mobile.",
             "itemtype": "attribute",
@@ -489,7 +489,7 @@
             "module": "game"
         },
         {
-            "file": "src/engine/system.js",
+            "file": "../panda.js/src/engine/system.js",
             "line": 421,
             "description": "Rotate image for mobile.",
             "itemtype": "attribute",

@@ -5,6 +5,7 @@
     "url": "https://github.com/ekelokorpi/panda.js",
     "logo": "../logo.png",
     "options": {
+        "paths": "../panda.js/src/",
         "outdir": "docs",
         "exclude": "renderer.js,particle.js"
     }
