@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>../panda.js/src/engine/storage.js - Panda.js</title>
+    <title>src/engine/sprite.js - Panda.js</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -86,77 +86,74 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1 class="file-heading">File: ../panda.js/src/engine/storage.js</h1>
+                <h1 class="file-heading">File: src/engine/sprite.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 game.module(
-    &#x27;engine.storage&#x27;,
+    &#x27;engine.sprite&#x27;,
     &#x27;1.0.0&#x27;
+)
+.require(
+    &#x27;engine.renderer&#x27;
 )
 .body(function() { &#x27;use strict&#x27;;
 
 /**
-    Automatically created at &#x60;game.storage&#x60; if &#x60;game.Storage.id&#x60; is set.
-
-        game.Storage.id = &#x27;com.company.mygame&#x27;;
-
-        game.storage.set(&#x27;highScore&#x27;, 1000);
-        var highScore = game.storage.get(&#x27;highscore&#x27;);
-    @class Storage
+    http://www.goodboydigital.com/pixijs/docs/classes/Sprite%E2%84%A2.html
+    @class Sprite
     @extends Class
+    @constructor
+    @param {Number} x
+    @param {Number} y
+    @param {Object} [settings]
 **/
-game.Storage = game.Class.extend({
-    id: null,
-
-    init: function(id) {
-        this.id = id;
-    },
-
+game.Sprite = game.Class.extend({
     /**
-        Set value to local storage.
-        @method set
-        @param {String} key
-        @param {String} value
+        @property {String} image
     **/
-    set: function(key, value) {
-        localStorage[this.id + &#x27;.&#x27; + key] = value;
-    },
+    image: null,
 
-    /**
-        Get key from local storage.
-        @method get
-        @param {String} key
-    **/
-    get: function(key) {
-        return localStorage[this.id + &#x27;.&#x27; + key];
-    },
+    staticInit: function(x, y, settings) {
+        settings = settings || {};
+        var sprite = game.Sprite.fromFrame(settings.image || this.image);
+        sprite.position.x = this.x || x;
+        sprite.position.y = this.y || y;
 
-    /**
-        Remove key from local storage.
-        @method remove
-        @param {String} key
-    **/
-    remove: function(key) {
-        localStorage.removeItem(this.id + &#x27;.&#x27; + key);
-    },
-
-    /**
-        Reset local storage. This removes ALL keys.
-        @method reset
-    **/
-    reset: function() {
-        for(var i in localStorage) {
-            if(i.indexOf(this.id+&#x27;.&#x27;) !== -1) localStorage.removeItem(i);
+        // merge from class
+        for(var i in this) {
+            if(i !== &#x27;staticInit&#x27; &amp;&amp; i !== &#x27;constructor&#x27;) {
+                if(typeof(this[i]) === &#x27;function&#x27;) sprite[i] = this[i].bind(sprite);
+                else sprite[i] = this[i];
+            }
         }
-    }
+
+        game.merge(sprite, settings);
+
+        sprite.tap = sprite.click;
+        sprite.touchstart = sprite.mousedown;
+        sprite.mouseupoutside = sprite.touchend = sprite.touchendoutside = sprite.mouseup;
+        sprite.touchmove = sprite.mousemove;
+
+        return sprite;
+    },
+
+    /**
+        @method remove
+    **/
+    remove: function() {
+        if(this.parent) this.parent.removeChild(this);
+        game.scene.sprites.erase(this);
+    },
+
+    click: function() {},
+    mousedown: function() {},
+    mouseup: function() {},
+    mousemove: function() {}
 });
 
-/**
-    Id for local storage.
-    @attribute {String} id
-**/
-game.Storage.id = null;
+game.Sprite.fromImage = PIXI.Sprite.fromImage;
+game.Sprite.fromFrame = PIXI.Sprite.fromFrame;
 
 });
     </pre>

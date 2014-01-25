@@ -8,8 +8,8 @@
         "themedir": "friendly-theme"
     },
     "files": {
-        "../panda.js/src/engine/core.js": {
-            "name": "../panda.js/src/engine/core.js",
+        "src/engine/core.js": {
+            "name": "src/engine/core.js",
             "modules": {
                 "game": 1
             },
@@ -20,8 +20,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "../panda.js/src/engine/debug.js": {
-            "name": "../panda.js/src/engine/debug.js",
+        "src/engine/debug.js": {
+            "name": "src/engine/debug.js",
             "modules": {},
             "classes": {
                 "Debug": 1
@@ -29,8 +29,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "../panda.js/src/engine/loader.js": {
-            "name": "../panda.js/src/engine/loader.js",
+        "src/engine/loader.js": {
+            "name": "src/engine/loader.js",
             "modules": {},
             "classes": {
                 "Loader": 1
@@ -38,8 +38,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "../panda.js/src/engine/pool.js": {
-            "name": "../panda.js/src/engine/pool.js",
+        "src/engine/pool.js": {
+            "name": "src/engine/pool.js",
             "modules": {},
             "classes": {
                 "Pool": 1
@@ -47,8 +47,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "../panda.js/src/engine/scene.js": {
-            "name": "../panda.js/src/engine/scene.js",
+        "src/engine/scene.js": {
+            "name": "src/engine/scene.js",
             "modules": {},
             "classes": {
                 "Scene": 1
@@ -56,8 +56,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "../panda.js/src/engine/sound.js": {
-            "name": "../panda.js/src/engine/sound.js",
+        "src/engine/sound.js": {
+            "name": "src/engine/sound.js",
             "modules": {},
             "classes": {
                 "SoundManager": 1
@@ -65,8 +65,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "../panda.js/src/engine/sprite.js": {
-            "name": "../panda.js/src/engine/sprite.js",
+        "src/engine/sprite.js": {
+            "name": "src/engine/sprite.js",
             "modules": {},
             "classes": {
                 "Sprite": 1
@@ -74,8 +74,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "../panda.js/src/engine/storage.js": {
-            "name": "../panda.js/src/engine/storage.js",
+        "src/engine/storage.js": {
+            "name": "src/engine/storage.js",
             "modules": {},
             "classes": {
                 "Storage": 1
@@ -83,8 +83,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "../panda.js/src/engine/system.js": {
-            "name": "../panda.js/src/engine/system.js",
+        "src/engine/system.js": {
+            "name": "src/engine/system.js",
             "modules": {},
             "classes": {
                 "System": 1
@@ -92,8 +92,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "../panda.js/src/engine/timer.js": {
-            "name": "../panda.js/src/engine/timer.js",
+        "src/engine/timer.js": {
+            "name": "src/engine/timer.js",
             "modules": {},
             "classes": {
                 "Timer": 1
@@ -101,8 +101,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "../panda.js/src/engine/tween.js": {
-            "name": "../panda.js/src/engine/tween.js",
+        "src/engine/tween.js": {
+            "name": "src/engine/tween.js",
             "modules": {},
             "classes": {
                 "Tween": 1
@@ -132,7 +132,7 @@
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "../panda.js/src/engine/tween.js",
+            "file": "src/engine/tween.js",
             "line": 7
         }
     },
@@ -147,7 +147,7 @@
             "extension_for": [],
             "module": "game",
             "namespace": "",
-            "file": "../panda.js/src/engine/core.js",
+            "file": "src/engine/core.js",
             "line": 30,
             "description": "Automatically created at `game` and `game.core`."
         },
@@ -161,7 +161,7 @@
             "extension_for": [],
             "module": "game",
             "namespace": "",
-            "file": "../panda.js/src/engine/core.js",
+            "file": "src/engine/core.js",
             "line": 454
         },
         "Debug": {
@@ -174,7 +174,7 @@
             "extension_for": [],
             "module": "game",
             "namespace": "",
-            "file": "../panda.js/src/engine/debug.js",
+            "file": "src/engine/debug.js",
             "line": 7,
             "description": "Debug is enabled if url contains `?debug`.",
             "extends": "Class"
@@ -189,7 +189,7 @@
             "extension_for": [],
             "module": "game",
             "namespace": "",
-            "file": "../panda.js/src/engine/loader.js",
+            "file": "src/engine/loader.js",
             "line": 7,
             "extends": "Class"
         },
@@ -203,7 +203,7 @@
             "extension_for": [],
             "module": "game",
             "namespace": "",
-            "file": "../panda.js/src/engine/pool.js",
+            "file": "src/engine/pool.js",
             "line": 7,
             "description": "Automatically created at `game.pool`",
             "extends": "Class"
@@ -218,7 +218,7 @@
             "extension_for": [],
             "module": "game",
             "namespace": "",
-            "file": "../panda.js/src/engine/scene.js",
+            "file": "src/engine/scene.js",
             "line": 7,
             "extends": "Class"
         },
@@ -232,7 +232,7 @@
             "extension_for": [],
             "module": "game",
             "namespace": "",
-            "file": "../panda.js/src/engine/sound.js",
+            "file": "src/engine/sound.js",
             "line": 7,
             "description": "Automatically created at `game.sound`",
             "extends": "Class"
@@ -247,7 +247,7 @@
             "extension_for": [],
             "module": "game",
             "namespace": "",
-            "file": "../panda.js/src/engine/sprite.js",
+            "file": "src/engine/sprite.js",
             "line": 10,
             "description": "http://www.goodboydigital.com/pixijs/docs/classes/Sprite%E2%84%A2.html",
             "extends": "Class",
@@ -281,7 +281,7 @@
             "extension_for": [],
             "module": "game",
             "namespace": "",
-            "file": "../panda.js/src/engine/storage.js",
+            "file": "src/engine/storage.js",
             "line": 7,
             "description": "Automatically created at `game.storage` if `game.Storage.id` is set.\n\n    game.Storage.id = 'com.company.mygame';\n\n    game.storage.set('highScore', 1000);\n    var highScore = game.storage.get('highscore');",
             "extends": "Class"
@@ -296,7 +296,7 @@
             "extension_for": [],
             "module": "game",
             "namespace": "",
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 10,
             "description": "Automatically created at `game.system`",
             "extends": "Class"
@@ -311,7 +311,7 @@
             "extension_for": [],
             "module": "game",
             "namespace": "",
-            "file": "../panda.js/src/engine/timer.js",
+            "file": "src/engine/timer.js",
             "line": 7,
             "description": "Basic timer.\n\n__Example__\n\n    var timer = new game.Timer(2);\n    if(timer.delta() >= 0) {\n        timer.set(2);\n    }",
             "extends": "Class",
@@ -334,7 +334,7 @@
             "extension_for": [],
             "module": "game",
             "namespace": "",
-            "file": "../panda.js/src/engine/tween.js",
+            "file": "src/engine/tween.js",
             "line": 7,
             "description": "__Hint__: Use {{#crossLink \"Scene/addTween:method\"}}{{/crossLink}}",
             "extends": "Class",
@@ -366,7 +366,7 @@
     },
     "classitems": [
         {
-            "file": "../panda.js/src/engine/core.js",
+            "file": "src/engine/core.js",
             "line": 35,
             "description": "Scale factor for game engine (used in Retina and HiRes mode).",
             "itemtype": "property",
@@ -376,7 +376,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/core.js",
+            "file": "src/engine/core.js",
             "line": 40,
             "description": "Instance of current scene.",
             "itemtype": "property",
@@ -386,7 +386,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/core.js",
+            "file": "src/engine/core.js",
             "line": 45,
             "itemtype": "property",
             "name": "debug",
@@ -395,7 +395,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/core.js",
+            "file": "src/engine/core.js",
             "line": 49,
             "itemtype": "property",
             "name": "system",
@@ -404,7 +404,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/core.js",
+            "file": "src/engine/core.js",
             "line": 53,
             "description": "Instance of SoundManager.",
             "itemtype": "property",
@@ -414,7 +414,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/core.js",
+            "file": "src/engine/core.js",
             "line": 58,
             "itemtype": "property",
             "name": "pool",
@@ -423,7 +423,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/core.js",
+            "file": "src/engine/core.js",
             "line": 62,
             "itemtype": "property",
             "name": "storage",
@@ -432,7 +432,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/core.js",
+            "file": "src/engine/core.js",
             "line": 154,
             "description": "Add asset to preloader.",
             "itemtype": "method",
@@ -448,7 +448,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/core.js",
+            "file": "src/engine/core.js",
             "line": 163,
             "description": "Add sound to preloader.",
             "itemtype": "method",
@@ -470,7 +470,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/core.js",
+            "file": "src/engine/core.js",
             "line": 174,
             "description": "Add music to preloader.",
             "itemtype": "method",
@@ -492,7 +492,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/core.js",
+            "file": "src/engine/core.js",
             "line": 189,
             "description": "Define new module.",
             "itemtype": "method",
@@ -514,7 +514,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/core.js",
+            "file": "src/engine/core.js",
             "line": 205,
             "description": "Require modules for module.",
             "itemtype": "method",
@@ -530,7 +530,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/core.js",
+            "file": "src/engine/core.js",
             "line": 218,
             "description": "Define body for module.",
             "itemtype": "method",
@@ -539,7 +539,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/core.js",
+            "file": "src/engine/core.js",
             "line": 458,
             "itemtype": "method",
             "name": "extend",
@@ -551,7 +551,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/core.js",
+            "file": "src/engine/core.js",
             "line": 494,
             "description": "If Class has `staticInit` function, it is called before `init` function.",
             "itemtype": "property",
@@ -561,7 +561,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/core.js",
+            "file": "src/engine/core.js",
             "line": 509,
             "description": "Automatically called, when creating new class.",
             "itemtype": "property",
@@ -571,7 +571,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/core.js",
+            "file": "src/engine/core.js",
             "line": 522,
             "itemtype": "method",
             "name": "inject",
@@ -579,7 +579,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/debug.js",
+            "file": "src/engine/debug.js",
             "line": 175,
             "itemtype": "attribute",
             "name": "backgroundColor.canvas",
@@ -589,7 +589,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/debug.js",
+            "file": "src/engine/debug.js",
             "line": 180,
             "itemtype": "attribute",
             "name": "backgroundColor.webGL",
@@ -599,7 +599,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/debug.js",
+            "file": "src/engine/debug.js",
             "line": 207,
             "itemtype": "attribute",
             "name": "position.desktop",
@@ -609,7 +609,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/debug.js",
+            "file": "src/engine/debug.js",
             "line": 212,
             "itemtype": "attribute",
             "name": "position.mobile",
@@ -619,7 +619,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/loader.js",
+            "file": "src/engine/loader.js",
             "line": 185,
             "description": "Minimum time to show preloader. In milliseconds.",
             "itemtype": "attribute",
@@ -633,7 +633,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/pool.js",
+            "file": "src/engine/pool.js",
             "line": 13,
             "description": "Create new pool.",
             "itemtype": "method",
@@ -653,7 +653,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/pool.js",
+            "file": "src/engine/pool.js",
             "line": 27,
             "description": "Get object from pool.",
             "itemtype": "method",
@@ -673,7 +673,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/pool.js",
+            "file": "src/engine/pool.js",
             "line": 38,
             "description": "Put object to pool.",
             "itemtype": "method",
@@ -698,7 +698,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/scene.js",
+            "file": "src/engine/scene.js",
             "line": 12,
             "description": "Background color of scene.",
             "itemtype": "property",
@@ -708,7 +708,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/scene.js",
+            "file": "src/engine/scene.js",
             "line": 17,
             "itemtype": "property",
             "name": "sprites",
@@ -717,7 +717,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/scene.js",
+            "file": "src/engine/scene.js",
             "line": 21,
             "itemtype": "property",
             "name": "timers",
@@ -726,7 +726,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/scene.js",
+            "file": "src/engine/scene.js",
             "line": 25,
             "itemtype": "property",
             "name": "tweens",
@@ -735,7 +735,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/scene.js",
+            "file": "src/engine/scene.js",
             "line": 48,
             "description": "This is called every frame.",
             "itemtype": "method",
@@ -744,7 +744,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/scene.js",
+            "file": "src/engine/scene.js",
             "line": 66,
             "itemtype": "method",
             "name": "addTween",
@@ -775,7 +775,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/scene.js",
+            "file": "src/engine/scene.js",
             "line": 79,
             "itemtype": "method",
             "name": "getTween",
@@ -790,7 +790,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/scene.js",
+            "file": "src/engine/scene.js",
             "line": 90,
             "itemtype": "method",
             "name": "stopTweens",
@@ -812,7 +812,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/scene.js",
+            "file": "src/engine/scene.js",
             "line": 101,
             "itemtype": "method",
             "name": "pauseTweens",
@@ -828,7 +828,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/scene.js",
+            "file": "src/engine/scene.js",
             "line": 111,
             "itemtype": "method",
             "name": "resumeTweens",
@@ -844,7 +844,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/scene.js",
+            "file": "src/engine/scene.js",
             "line": 121,
             "description": "Add timer to game scene.",
             "itemtype": "method",
@@ -865,7 +865,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/scene.js",
+            "file": "src/engine/scene.js",
             "line": 133,
             "description": "Callback for mouse click and touch tap on the scene stage.",
             "itemtype": "method",
@@ -881,7 +881,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/scene.js",
+            "file": "src/engine/scene.js",
             "line": 140,
             "description": "Callback for mousedown and touchstart on the scene stage.",
             "itemtype": "method",
@@ -897,7 +897,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/scene.js",
+            "file": "src/engine/scene.js",
             "line": 147,
             "description": "Callback for mouseup and touchend on the scene stage.",
             "itemtype": "method",
@@ -913,7 +913,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/scene.js",
+            "file": "src/engine/scene.js",
             "line": 154,
             "description": "Callback for mousemove and touchmove on the scene stage.",
             "itemtype": "method",
@@ -929,7 +929,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/scene.js",
+            "file": "src/engine/scene.js",
             "line": 161,
             "description": "Callback for mouseout on the scene stage.",
             "itemtype": "method",
@@ -945,7 +945,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/scene.js",
+            "file": "src/engine/scene.js",
             "line": 194,
             "description": "Main stage for scene.\nhttp://www.goodboydigital.com/pixijs/docs/classes/Stage.html",
             "itemtype": "property",
@@ -955,7 +955,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/sound.js",
+            "file": "src/engine/sound.js",
             "line": 21,
             "itemtype": "property",
             "name": "soundVolume",
@@ -965,7 +965,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/sound.js",
+            "file": "src/engine/sound.js",
             "line": 26,
             "itemtype": "property",
             "name": "musicVolume",
@@ -975,7 +975,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/sound.js",
+            "file": "src/engine/sound.js",
             "line": 188,
             "itemtype": "method",
             "name": "playSound",
@@ -1002,7 +1002,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/sound.js",
+            "file": "src/engine/sound.js",
             "line": 200,
             "description": "Stop sound. If name is not defined, stops all sounds.",
             "itemtype": "method",
@@ -1019,7 +1019,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/sound.js",
+            "file": "src/engine/sound.js",
             "line": 222,
             "itemtype": "method",
             "name": "muteSound",
@@ -1027,7 +1027,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/sound.js",
+            "file": "src/engine/sound.js",
             "line": 233,
             "itemtype": "method",
             "name": "unmuteSound",
@@ -1035,7 +1035,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/sound.js",
+            "file": "src/engine/sound.js",
             "line": 244,
             "itemtype": "method",
             "name": "toggleSound",
@@ -1043,7 +1043,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/sound.js",
+            "file": "src/engine/sound.js",
             "line": 253,
             "itemtype": "method",
             "name": "playMusic",
@@ -1058,7 +1058,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/sound.js",
+            "file": "src/engine/sound.js",
             "line": 265,
             "itemtype": "method",
             "name": "stopMusic",
@@ -1066,7 +1066,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/sound.js",
+            "file": "src/engine/sound.js",
             "line": 283,
             "itemtype": "method",
             "name": "muteMusic",
@@ -1074,7 +1074,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/sound.js",
+            "file": "src/engine/sound.js",
             "line": 292,
             "itemtype": "method",
             "name": "unmuteMusic",
@@ -1082,7 +1082,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/sound.js",
+            "file": "src/engine/sound.js",
             "line": 301,
             "itemtype": "method",
             "name": "toggleMusic",
@@ -1090,7 +1090,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/sound.js",
+            "file": "src/engine/sound.js",
             "line": 310,
             "description": "Stops all sounds and music.",
             "itemtype": "method",
@@ -1099,7 +1099,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/sound.js",
+            "file": "src/engine/sound.js",
             "line": 319,
             "itemtype": "method",
             "name": "muteAll",
@@ -1107,7 +1107,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/sound.js",
+            "file": "src/engine/sound.js",
             "line": 327,
             "itemtype": "method",
             "name": "unmuteAll",
@@ -1115,7 +1115,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/sound.js",
+            "file": "src/engine/sound.js",
             "line": 347,
             "description": "Use Web Audio API.",
             "itemtype": "attribute",
@@ -1125,7 +1125,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/sprite.js",
+            "file": "src/engine/sprite.js",
             "line": 20,
             "itemtype": "property",
             "name": "image",
@@ -1134,7 +1134,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/sprite.js",
+            "file": "src/engine/sprite.js",
             "line": 49,
             "itemtype": "method",
             "name": "remove",
@@ -1142,7 +1142,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/storage.js",
+            "file": "src/engine/storage.js",
             "line": 24,
             "description": "Set value to local storage.",
             "itemtype": "method",
@@ -1163,7 +1163,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/storage.js",
+            "file": "src/engine/storage.js",
             "line": 34,
             "description": "Get key from local storage.",
             "itemtype": "method",
@@ -1179,7 +1179,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/storage.js",
+            "file": "src/engine/storage.js",
             "line": 43,
             "description": "Remove key from local storage.",
             "itemtype": "method",
@@ -1195,7 +1195,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/storage.js",
+            "file": "src/engine/storage.js",
             "line": 52,
             "description": "Reset local storage. This removes ALL keys.",
             "itemtype": "method",
@@ -1204,7 +1204,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/storage.js",
+            "file": "src/engine/storage.js",
             "line": 63,
             "description": "Id for local storage.",
             "itemtype": "attribute",
@@ -1214,7 +1214,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 16,
             "description": "Width of the game screen.",
             "itemtype": "property",
@@ -1224,7 +1224,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 21,
             "description": "Height of the game screen.",
             "itemtype": "property",
@@ -1234,7 +1234,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 26,
             "description": "Current delta-time.",
             "itemtype": "property",
@@ -1244,7 +1244,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 35,
             "description": "Main game timer.",
             "itemtype": "property",
@@ -1254,7 +1254,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 40,
             "description": "Canvas element.",
             "itemtype": "property",
@@ -1264,7 +1264,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 45,
             "description": "Id of canvas element.",
             "itemtype": "property",
@@ -1275,7 +1275,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 51,
             "description": "Is engine paused.",
             "itemtype": "property",
@@ -1285,7 +1285,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 56,
             "description": "Is engine in HiRes mode.",
             "itemtype": "property",
@@ -1295,7 +1295,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 61,
             "description": "Is engine in Retina mode.",
             "itemtype": "property",
@@ -1305,7 +1305,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 134,
             "description": "Pause game engine.",
             "itemtype": "method",
@@ -1314,7 +1314,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 144,
             "description": "Resume paused game engine.",
             "itemtype": "method",
@@ -1323,7 +1323,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 154,
             "description": "Change current scene.",
             "itemtype": "method",
@@ -1339,7 +1339,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 319,
             "description": "Minimum width for canvas.",
             "itemtype": "attribute",
@@ -1350,7 +1350,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 325,
             "description": "Minimum height for canvas.",
             "itemtype": "attribute",
@@ -1361,7 +1361,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 331,
             "description": "Maximum width for canvas.",
             "itemtype": "attribute",
@@ -1372,7 +1372,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 337,
             "description": "Maximum height for canvas.",
             "itemtype": "attribute",
@@ -1383,7 +1383,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 343,
             "description": "Scaling method for CocoonJS.",
             "itemtype": "attribute",
@@ -1394,7 +1394,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 349,
             "description": "Use ScreenCanvas on CocoonJS.\nhttp://support.ludei.com/hc/en-us/articles/201810268-ScreenCanvas",
             "itemtype": "attribute",
@@ -1405,7 +1405,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 356,
             "description": "Use HiRes mode.",
             "itemtype": "attribute",
@@ -1416,7 +1416,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 362,
             "description": "System width/height factor, when to use HiRes mode.",
             "itemtype": "attribute",
@@ -1427,7 +1427,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 368,
             "description": "Use Retina mode.",
             "itemtype": "attribute",
@@ -1438,7 +1438,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 374,
             "description": "Pause game engine, when page is hidden.",
             "itemtype": "attribute",
@@ -1449,7 +1449,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 380,
             "description": "Mobile orientation for the game.",
             "itemtype": "attribute",
@@ -1460,7 +1460,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 387,
             "description": "Background color for game screen.",
             "itemtype": "attribute",
@@ -1470,7 +1470,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 393,
             "description": "Background color for rotate screen.",
             "itemtype": "attribute",
@@ -1480,7 +1480,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 401,
             "description": "Background image for game screen.",
             "itemtype": "attribute",
@@ -1490,7 +1490,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 407,
             "description": "Background image for rotate screen.",
             "itemtype": "attribute",
@@ -1500,7 +1500,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 414,
             "description": "Rotate message for mobile.",
             "itemtype": "attribute",
@@ -1511,7 +1511,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/system.js",
+            "file": "src/engine/system.js",
             "line": 420,
             "description": "Rotate image for mobile.",
             "itemtype": "attribute",
@@ -1522,7 +1522,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/timer.js",
+            "file": "src/engine/timer.js",
             "line": 32,
             "itemtype": "method",
             "name": "set",
@@ -1537,7 +1537,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/timer.js",
+            "file": "src/engine/timer.js",
             "line": 42,
             "itemtype": "method",
             "name": "reset",
@@ -1545,7 +1545,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/timer.js",
+            "file": "src/engine/timer.js",
             "line": 60,
             "description": "Pause timer.",
             "itemtype": "method",
@@ -1554,7 +1554,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/timer.js",
+            "file": "src/engine/timer.js",
             "line": 68,
             "description": "Resume paused timer.",
             "itemtype": "method",
@@ -1563,7 +1563,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/tween.js",
+            "file": "src/engine/tween.js",
             "line": 19,
             "itemtype": "property",
             "name": "easing",
@@ -1572,7 +1572,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/tween.js",
+            "file": "src/engine/tween.js",
             "line": 23,
             "itemtype": "property",
             "name": "loop",
@@ -1581,7 +1581,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/tween.js",
+            "file": "src/engine/tween.js",
             "line": 27,
             "itemtype": "property",
             "name": "delay",
@@ -1590,7 +1590,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/tween.js",
+            "file": "src/engine/tween.js",
             "line": 31,
             "itemtype": "property",
             "name": "onComplete",
@@ -1599,7 +1599,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/tween.js",
+            "file": "src/engine/tween.js",
             "line": 35,
             "itemtype": "property",
             "name": "onStart",
@@ -1608,7 +1608,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/tween.js",
+            "file": "src/engine/tween.js",
             "line": 64,
             "itemtype": "method",
             "name": "start",
@@ -1616,7 +1616,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/tween.js",
+            "file": "src/engine/tween.js",
             "line": 84,
             "itemtype": "method",
             "name": "pause",
@@ -1624,7 +1624,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/tween.js",
+            "file": "src/engine/tween.js",
             "line": 92,
             "itemtype": "method",
             "name": "resume",
@@ -1632,7 +1632,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/tween.js",
+            "file": "src/engine/tween.js",
             "line": 100,
             "itemtype": "method",
             "name": "stop",
@@ -1647,7 +1647,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/tween.js",
+            "file": "src/engine/tween.js",
             "line": 115,
             "itemtype": "method",
             "name": "chain",
@@ -1662,7 +1662,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/tween.js",
+            "file": "src/engine/tween.js",
             "line": 234,
             "itemtype": "attribute",
             "name": "Loop",
@@ -1671,7 +1671,7 @@
             "module": "game"
         },
         {
-            "file": "../panda.js/src/engine/tween.js",
+            "file": "src/engine/tween.js",
             "line": 239,
             "description": "Easing types: `In`, `Out` and `InOut`.",
             "itemtype": "attribute",

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>../panda.js/src/engine/sprite.js - Panda.js</title>
+    <title>src/engine/pool.js - Panda.js</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -86,75 +86,61 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1 class="file-heading">File: ../panda.js/src/engine/sprite.js</h1>
+                <h1 class="file-heading">File: src/engine/pool.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 game.module(
-    &#x27;engine.sprite&#x27;,
+    &#x27;engine.pool&#x27;,
     &#x27;1.0.0&#x27;
-)
-.require(
-    &#x27;engine.renderer&#x27;
 )
 .body(function() { &#x27;use strict&#x27;;
 
 /**
-    http://www.goodboydigital.com/pixijs/docs/classes/Sprite%E2%84%A2.html
-    @class Sprite
+    Automatically created at &#x60;game.pool&#x60;
+    @class Pool
     @extends Class
-    @constructor
-    @param {Number} x
-    @param {Number} y
-    @param {Object} [settings]
 **/
-game.Sprite = game.Class.extend({
+game.Pool = game.Class.extend({
     /**
-        @property {String} image
+        Create new pool.
+        @method create
+        @param {String} pool
+        @return {Boolean} Returns false, if pool already exists.
     **/
-    image: null,
-
-    staticInit: function(x, y, settings) {
-        settings = settings || {};
-        var sprite = game.Sprite.fromFrame(settings.image || this.image);
-        sprite.position.x = this.x || x;
-        sprite.position.y = this.y || y;
-
-        // merge from class
-        for(var i in this) {
-            if(i !== &#x27;staticInit&#x27; &amp;&amp; i !== &#x27;constructor&#x27;) {
-                if(typeof(this[i]) === &#x27;function&#x27;) sprite[i] = this[i].bind(sprite);
-                else sprite[i] = this[i];
-            }
+    create: function(pool) {
+        if(!this[pool]) {
+            this[pool] = [];
+            return true;
         }
-
-        game.merge(sprite, settings);
-
-        sprite.tap = sprite.click;
-        sprite.touchstart = sprite.mousedown;
-        sprite.mouseupoutside = sprite.touchend = sprite.touchendoutside = sprite.mouseup;
-        sprite.touchmove = sprite.mousemove;
-
-        return sprite;
+        return false;
     },
 
     /**
-        @method remove
+        Get object from pool.
+        @method get
+        @param {String} pool
+        @return {Object} Returns false, if pool not found or empty.
     **/
-    remove: function() {
-        if(this.parent) this.parent.removeChild(this);
-        game.scene.sprites.erase(this);
+    get: function(pool) {
+        if(!this[pool] || this[pool].length === 0) return false;
+        else return this[pool].pop();
     },
 
-    click: function() {},
-    mousedown: function() {},
-    mouseup: function() {},
-    mousemove: function() {}
+    /**
+        Put object to pool.
+        @method put
+        @param {String} pool
+        @param {Object} item
+        @return {Boolean} Returns false, if pool not found.
+    **/
+    put: function(pool, item) {
+        if(!this[pool]) return false;
+        this[pool].push(item);
+        return true;
+    }
 });
-
-game.Sprite.fromImage = PIXI.Sprite.fromImage;
-game.Sprite.fromFrame = PIXI.Sprite.fromFrame;
-
+    
 });
     </pre>
 </div>

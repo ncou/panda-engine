@@ -6,7 +6,7 @@
     "logo": "../logo.png",
     "themedir": "friendly-theme",
     "options": {
-        "paths": "../panda.js/src/",
+        "paths": "src/",
         "outdir": "docs",
         "exclude": "renderer.js,particle.js"
     }
