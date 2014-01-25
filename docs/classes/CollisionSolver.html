@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Sprite - Panda.js</title>
+    <title>CollisionSolver - Panda.js</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -100,7 +100,7 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>Sprite Class</h1>
+                <h1>CollisionSolver Class</h1>
 <div class="box meta">
     
 
@@ -112,7 +112,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_engine_sprite.js.html#l10"><code>src&#x2F;engine&#x2F;sprite.js:10</code></a>
+            Defined in: <a href="../files/src_engine_physics.js.html#l113"><code>src&#x2F;engine&#x2F;physics.js:113</code></a>
         </div>
     
 
@@ -128,7 +128,7 @@
 
 
 <div class="box intro">
-    <p><a href="http://www.goodboydigital.com/pixijs/docs/classes/Sprite%E2%84%A2.html">http://www.goodboydigital.com/pixijs/docs/classes/Sprite%E2%84%A2.html</a></p>
+    <p>Physics collision solver.</p>
 
 </div>
 
@@ -169,12 +169,6 @@
 
         <ul class="index-list properties extends">
             
-                <li class="index-item property">
-                    <a href="#property_image">image</a>
-
-                    
-                </li>
-            
                 <li class="index-item property inherited">
                     <a href="#property_init">init</a>
 
@@ -201,19 +195,24 @@
         <ul class="index-list methods extends">
 
             
-                <li class="index-item method constructor">
-                    <a href="#method_Sprite">Sprite</a>
 
-                    <span class="flag constructor">constructor</span>
+            
+                <li class="index-item method inherited">
+                    <a href="#method_extend">extend</a>
 
                     
                     
                 </li>
             
+                <li class="index-item method">
+                    <a href="#method_hitResponse">hitResponse</a>
 
+                    
+                    
+                </li>
             
-                <li class="index-item method inherited">
-                    <a href="#method_extend">extend</a>
+                <li class="index-item method">
+                    <a href="#method_hitTest">hitTest</a>
 
                     
                     
@@ -227,7 +226,7 @@
                 </li>
             
                 <li class="index-item method">
-                    <a href="#method_remove">remove</a>
+                    <a href="#method_solve">solve</a>
 
                     
                     
@@ -246,55 +245,6 @@
 
     <div class="properties-detail">
         <h2>Properties</h2>
-
-        
-            <a name="property_image" class="anchor-link"></a>
-<div class="property item">
-    <h3 class="name"><code>image</code>
-    <span class="type">String</span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_sprite.js.html#l20"><code>src&#x2F;engine&#x2F;sprite.js:20</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
 
         
             <a name="property_init" class="anchor-link"></a>
@@ -402,145 +352,6 @@
 
 
 
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <a name="method_Sprite" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>Sprite</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>x</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>y</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[settings]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_sprite.js.html#l10"><code>src&#x2F;engine&#x2F;sprite.js:10</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">x</code>
-                            <span class="type">Number</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name">y</code>
-                            <span class="type">Number</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name optional">[settings]</code>
-                            <span class="type">Object</span>
-                            <span class="flag optional" title="This parameter is optional.">optional</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-
-        
-    </div>
-</div>
-
-    </div>
-
 
 
     <div class="methods-detail">
@@ -620,6 +431,266 @@
 </div>
 
         
+            <a name="method_hitResponse" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>hitResponse</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>a</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>b</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_physics.js.html#l247"><code>src&#x2F;engine&#x2F;physics.js:247</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">a</code>
+                            <span class="type"><a href="../classes/Body.html" class="crosslink">Body</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">b</code>
+                            <span class="type"><a href="../classes/Body.html" class="crosslink">Body</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Boolean</span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_hitTest" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>hitTest</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>a</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>b</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_physics.js.html#l133"><code>src&#x2F;engine&#x2F;physics.js:133</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">a</code>
+                            <span class="type"><a href="../classes/Body.html" class="crosslink">Body</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">b</code>
+                            <span class="type"><a href="../classes/Body.html" class="crosslink">Body</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Boolean</span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
             <a name="method_inject" class="anchor-link"></a>
 <div class="method item inherited">
     <h3 class="name"><code>inject</code>
@@ -677,12 +748,28 @@
 </div>
 
         
-            <a name="method_remove" class="anchor-link"></a>
+            <a name="method_solve" class="anchor-link"></a>
 <div class="method item">
-    <h3 class="name"><code>remove</code>
+    <h3 class="name"><code>solve</code>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>a</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>b</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -712,7 +799,7 @@
             
         
         
-        <a href="../files/src_engine_sprite.js.html#l49"><code>src&#x2F;engine&#x2F;sprite.js:49</code></a>
+        <a href="../files/src_engine_physics.js.html#l121"><code>src&#x2F;engine&#x2F;physics.js:121</code></a>
         
         </p>
 
@@ -725,9 +812,48 @@
     <div class="extended-detail">
 
         <div class="description">
-            
+            <p>Solve collision a versus b.</p>
+
         </div>
 
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">a</code>
+                            <span class="type"><a href="../classes/Body.html" class="crosslink">Body</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">b</code>
+                            <span class="type"><a href="../classes/Body.html" class="crosslink">Body</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
         
 
         

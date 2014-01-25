@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Core - Panda.js</title>
+    <title>World - Panda.js</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -100,15 +100,19 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>Core Class</h1>
+                <h1>World Class</h1>
 <div class="box meta">
     
 
     
+        <div class="extends">
+            Extends <a href="../classes/Class.html" class="crosslink">Class</a>
+        </div>
+    
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_engine_core.js.html#l30"><code>src&#x2F;engine&#x2F;core.js:30</code></a>
+            Defined in: <a href="../files/src_engine_physics.js.html#l7"><code>src&#x2F;engine&#x2F;physics.js:7</code></a>
         </div>
     
 
@@ -124,7 +128,7 @@
 
 
 <div class="box intro">
-    <p>Instance automatically created at <code>game</code></p>
+    <p>Physics world.</p>
 
 </div>
 
@@ -163,46 +167,40 @@
     <div class="index-section properties">
         <h3>Properties</h3>
 
-        <ul class="index-list properties">
+        <ul class="index-list properties extends">
             
                 <li class="index-item property">
-                    <a href="#property_debug">debug</a>
+                    <a href="#property_bodies">bodies</a>
 
                     
                 </li>
             
                 <li class="index-item property">
-                    <a href="#property_pool">pool</a>
+                    <a href="#property_collisionGroups">collisionGroups</a>
 
                     
                 </li>
             
                 <li class="index-item property">
-                    <a href="#property_scale">scale</a>
+                    <a href="#property_gravity">gravity</a>
+
+                    
+                </li>
+            
+                <li class="index-item property inherited">
+                    <a href="#property_init">init</a>
 
                     
                 </li>
             
                 <li class="index-item property">
-                    <a href="#property_scene">scene</a>
+                    <a href="#property_solver">solver</a>
 
                     
                 </li>
             
-                <li class="index-item property">
-                    <a href="#property_sound">sound</a>
-
-                    
-                </li>
-            
-                <li class="index-item property">
-                    <a href="#property_storage">storage</a>
-
-                    
-                </li>
-            
-                <li class="index-item property">
-                    <a href="#property_system">system</a>
+                <li class="index-item property inherited">
+                    <a href="#property_staticInit">staticInit</a>
 
                     
                 </li>
@@ -218,48 +216,71 @@
     <div class="index-section methods">
         <h3>Methods</h3>
 
-        <ul class="index-list methods">
+        <ul class="index-list methods extends">
 
+            
+                <li class="index-item method constructor">
+                    <a href="#method_World">World</a>
+
+                    <span class="flag constructor">constructor</span>
+
+                    
+                    
+                </li>
             
 
             
                 <li class="index-item method">
-                    <a href="#method_addAsset">addAsset</a>
+                    <a href="#method_addBody">addBody</a>
 
                     
                     
                 </li>
             
                 <li class="index-item method">
-                    <a href="#method_addMusic">addMusic</a>
+                    <a href="#method_collide">collide</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method inherited">
+                    <a href="#method_extend">extend</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method inherited">
+                    <a href="#method_inject">inject</a>
 
                     
                     
                 </li>
             
                 <li class="index-item method">
-                    <a href="#method_addSound">addSound</a>
+                    <a href="#method_removeBody">removeBody</a>
 
                     
                     
                 </li>
             
                 <li class="index-item method">
-                    <a href="#method_body">body</a>
+                    <a href="#method_removeBodyCollision">removeBodyCollision</a>
 
                     
                     
                 </li>
             
                 <li class="index-item method">
-                    <a href="#method_module">module</a>
+                    <a href="#method_removeCollisionGroup">removeCollisionGroup</a>
 
                     
                     
                 </li>
             
                 <li class="index-item method">
-                    <a href="#method_require">require</a>
+                    <a href="#method_update">update</a>
 
                     
                     
@@ -280,10 +301,10 @@
         <h2>Properties</h2>
 
         
-            <a name="property_debug" class="anchor-link"></a>
+            <a name="property_bodies" class="anchor-link"></a>
 <div class="property item">
-    <h3 class="name"><code>debug</code>
-    <span class="type"><a href="../classes/Debug.html" class="crosslink">Debug</a></span>
+    <h3 class="name"><code>bodies</code>
+    <span class="type">Array</span>
 
     
 
@@ -306,7 +327,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l45"><code>src&#x2F;engine&#x2F;core.js:45</code></a>
+        <a href="../files/src_engine_physics.js.html#l24"><code>src&#x2F;engine&#x2F;physics.js:24</code></a>
         
         </p>
 
@@ -317,7 +338,151 @@
 
     <div class="extended-detail">
         <div class="description">
-            <p>Instance of <a href="../classes/Debug.html" class="crosslink">Debug</a>.</p>
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_collisionGroups" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>collisionGroups</code>
+    <span class="type">Array</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_physics.js.html#l28"><code>src&#x2F;engine&#x2F;physics.js:28</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_gravity" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>gravity</code>
+    <span class="type"><a href="../classes/Vector.html" class="crosslink">Vector</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_physics.js.html#l16"><code>src&#x2F;engine&#x2F;physics.js:16</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_init" class="anchor-link"></a>
+<div class="property item inherited">
+    <h3 class="name"><code>init</code>
+    <span class="type">Function</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Class.html#property_init" class="type">Class</a>:
+            
+        
+        
+        <a href="../files/src_engine_core.js.html#l520"><code>src&#x2F;engine&#x2F;core.js:520</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Automatically called, when creating new class.</p>
 
         </div>
 
@@ -330,10 +495,10 @@
 </div>
 
         
-            <a name="property_pool" class="anchor-link"></a>
+            <a name="property_solver" class="anchor-link"></a>
 <div class="property item">
-    <h3 class="name"><code>pool</code>
-    <span class="type"><a href="../classes/Pool.html" class="crosslink">Pool</a></span>
+    <h3 class="name"><code>solver</code>
+    <span class="type"><a href="../classes/CollisionSolver.html" class="crosslink">CollisionSolver</a></span>
 
     
 
@@ -356,7 +521,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l60"><code>src&#x2F;engine&#x2F;core.js:60</code></a>
+        <a href="../files/src_engine_physics.js.html#l20"><code>src&#x2F;engine&#x2F;physics.js:20</code></a>
         
         </p>
 
@@ -367,8 +532,7 @@
 
     <div class="extended-detail">
         <div class="description">
-            <p>Instance of <a href="../classes/Pool.html" class="crosslink">Pool</a>.</p>
-
+            
         </div>
 
         
@@ -380,10 +544,10 @@
 </div>
 
         
-            <a name="property_scale" class="anchor-link"></a>
-<div class="property item">
-    <h3 class="name"><code>scale</code>
-    <span class="type">Number</span>
+            <a name="property_staticInit" class="anchor-link"></a>
+<div class="property item inherited">
+    <h3 class="name"><code>staticInit</code>
+    <span class="type">Function</span>
 
     
 
@@ -398,15 +562,12 @@
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/Class.html#property_staticInit" class="type">Class</a>:
             
         
         
-        <a href="../files/src_engine_core.js.html#l35"><code>src&#x2F;engine&#x2F;core.js:35</code></a>
+        <a href="../files/src_engine_core.js.html#l505"><code>src&#x2F;engine&#x2F;core.js:505</code></a>
         
         </p>
 
@@ -417,207 +578,7 @@
 
     <div class="extended-detail">
         <div class="description">
-            <p>Scale factor for Retina and HiRes mode.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_scene" class="anchor-link"></a>
-<div class="property item">
-    <h3 class="name"><code>scene</code>
-    <span class="type"><a href="../classes/Scene.html" class="crosslink">Scene</a></span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_core.js.html#l40"><code>src&#x2F;engine&#x2F;core.js:40</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>Instance of current <a href="../classes/Scene.html" class="crosslink">Scene</a>.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_sound" class="anchor-link"></a>
-<div class="property item">
-    <h3 class="name"><code>sound</code>
-    <span class="type"><a href="../classes/SoundManager.html" class="crosslink">SoundManager</a></span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_core.js.html#l55"><code>src&#x2F;engine&#x2F;core.js:55</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>Instance of <a href="../classes/SoundManager.html" class="crosslink">SoundManager</a>.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_storage" class="anchor-link"></a>
-<div class="property item">
-    <h3 class="name"><code>storage</code>
-    <span class="type"><a href="../classes/Storage.html" class="crosslink">Storage</a></span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_core.js.html#l65"><code>src&#x2F;engine&#x2F;core.js:65</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>Instance of <a href="../classes/Storage.html" class="crosslink">Storage</a>.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_system" class="anchor-link"></a>
-<div class="property item">
-    <h3 class="name"><code>system</code>
-    <span class="type"><a href="../classes/System.html" class="crosslink">System</a></span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_core.js.html#l50"><code>src&#x2F;engine&#x2F;core.js:50</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>Instance of <a href="../classes/System.html" class="crosslink">System</a>.</p>
+            <p>If Class has <code>staticInit</code> function, it is called before <code>init</code> function.</p>
 
         </div>
 
@@ -641,15 +602,134 @@
 
 
 
+    <div class="constructor">
+        <h2>Constructor</h2>
+        <a name="method_World" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>World</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>x</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>y</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_physics.js.html#l7"><code>src&#x2F;engine&#x2F;physics.js:7</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">x</code>
+                            <span class="type">Number</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>Velocity x</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">y</code>
+                            <span class="type">Number</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>Velocity y</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+    </div>
+
 
 
     <div class="methods-detail">
         <h2>Methods</h2>
 
         
-            <a name="method_addAsset" class="anchor-link"></a>
+            <a name="method_addBody" class="anchor-link"></a>
 <div class="method item">
-    <h3 class="name"><code>addAsset</code>
+    <h3 class="name"><code>addBody</code>
 
     
         <div class="args">
@@ -657,7 +737,7 @@
             
                 <li class="arg">
                     
-                        <code>path</code>
+                        <code>body</code>
                     
                 </li>
             
@@ -692,7 +772,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l158"><code>src&#x2F;engine&#x2F;core.js:158</code></a>
+        <a href="../files/src_engine_physics.js.html#l40"><code>src&#x2F;engine&#x2F;physics.js:40</code></a>
         
         </p>
 
@@ -705,7 +785,7 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>Add asset to preloader.</p>
+            <p>Add body to world.</p>
 
         </div>
 
@@ -717,8 +797,8 @@
                 
                     <li class="param">
                         
-                            <code class="param-name">path</code>
-                            <span class="type">String</span>
+                            <code class="param-name">body</code>
+                            <span class="type"><a href="../classes/Body.html" class="crosslink">Body</a></span>
                         
 
                         
@@ -737,22 +817,236 @@
         
 
         
-            <div class="example">
-                <h4>Example:</h4>
+    </div>
+</div>
 
-                <div class="example-content">
-                    <pre class="code prettyprint"><code>game.addAsset(&#39;media/logo.png&#39;);</code></pre>
+        
+            <a name="method_collide" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>collide</code>
 
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>a</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_physics.js.html#l81"><code>src&#x2F;engine&#x2F;physics.js:81</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">a</code>
+                            <span class="type"><a href="../classes/Body.html" class="crosslink">Body</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_extend" class="anchor-link"></a>
+<div class="method item inherited">
+    <h3 class="name"><code>extend</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/Class.html" class="crosslink">Class</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Class.html#method_extend" class="type">Class</a>:
+            
+        
+        
+        <a href="../files/src_engine_core.js.html#l469"><code>src&#x2F;engine&#x2F;core.js:469</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="../classes/Class.html" class="crosslink">Class</a></span>:
+                        
+                    
                 </div>
             </div>
         
+
+        
     </div>
 </div>
 
         
-            <a name="method_addMusic" class="anchor-link"></a>
+            <a name="method_inject" class="anchor-link"></a>
+<div class="method item inherited">
+    <h3 class="name"><code>inject</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Class.html#method_inject" class="type">Class</a>:
+            
+        
+        
+        <a href="../files/src_engine_core.js.html#l533"><code>src&#x2F;engine&#x2F;core.js:533</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_removeBody" class="anchor-link"></a>
 <div class="method item">
-    <h3 class="name"><code>addMusic</code>
+    <h3 class="name"><code>removeBody</code>
 
     
         <div class="args">
@@ -760,13 +1054,7 @@
             
                 <li class="arg">
                     
-                        <code>path</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[name]</code>
+                        <code>body</code>
                     
                 </li>
             
@@ -801,7 +1089,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l182"><code>src&#x2F;engine&#x2F;core.js:182</code></a>
+        <a href="../files/src_engine_physics.js.html#l54"><code>src&#x2F;engine&#x2F;physics.js:54</code></a>
         
         </p>
 
@@ -814,8 +1102,7 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>Add music to preloader.</p>
-
+            
         </div>
 
         
@@ -826,24 +1113,8 @@
                 
                     <li class="param">
                         
-                            <code class="param-name">path</code>
-                            <span class="type">String</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name optional">[name]</code>
-                            <span class="type">String</span>
-                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                            <code class="param-name">body</code>
+                            <span class="type"><a href="../classes/Body.html" class="crosslink">Body</a></span>
                         
 
                         
@@ -866,9 +1137,9 @@
 </div>
 
         
-            <a name="method_addSound" class="anchor-link"></a>
+            <a name="method_removeBodyCollision" class="anchor-link"></a>
 <div class="method item">
-    <h3 class="name"><code>addSound</code>
+    <h3 class="name"><code>removeBodyCollision</code>
 
     
         <div class="args">
@@ -876,13 +1147,7 @@
             
                 <li class="arg">
                     
-                        <code>path</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[name]</code>
+                        <code>body</code>
                     
                 </li>
             
@@ -917,7 +1182,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l169"><code>src&#x2F;engine&#x2F;core.js:169</code></a>
+        <a href="../files/src_engine_physics.js.html#l63"><code>src&#x2F;engine&#x2F;physics.js:63</code></a>
         
         </p>
 
@@ -930,7 +1195,7 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>Add sound to preloader.</p>
+            <p>Remove body from it&#39;s collision group.</p>
 
         </div>
 
@@ -942,24 +1207,8 @@
                 
                     <li class="param">
                         
-                            <code class="param-name">path</code>
-                            <span class="type">String</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name optional">[name]</code>
-                            <span class="type">String</span>
-                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                            <code class="param-name">body</code>
+                            <span class="type"><a href="../classes/Body.html" class="crosslink">Body</a></span>
                         
 
                         
@@ -978,22 +1227,107 @@
         
 
         
-            <div class="example">
-                <h4>Example:</h4>
+    </div>
+</div>
 
-                <div class="example-content">
-                    <pre class="code prettyprint"><code>game.addSound(&#39;media/sound/jump.m4a&#39;, &#39;jump&#39;);</code></pre>
+        
+            <a name="method_removeCollisionGroup" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>removeCollisionGroup</code>
 
-                </div>
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>i</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_physics.js.html#l72"><code>src&#x2F;engine&#x2F;physics.js:72</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Remove collision group from world.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">i</code>
+                            <span class="type">Number</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
             </div>
+        
+
+        
+
         
     </div>
 </div>
 
         
-            <a name="method_body" class="anchor-link"></a>
+            <a name="method_update" class="anchor-link"></a>
 <div class="method item">
-    <h3 class="name"><code>body</code>
+    <h3 class="name"><code>update</code>
 
     
         <span class="paren">()</span>
@@ -1026,7 +1360,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l230"><code>src&#x2F;engine&#x2F;core.js:230</code></a>
+        <a href="../files/src_engine_physics.js.html#l95"><code>src&#x2F;engine&#x2F;physics.js:95</code></a>
         
         </p>
 
@@ -1039,231 +1373,9 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>Define body for module.</p>
-
+            
         </div>
 
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_module" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>module</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>name</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[version]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_core.js.html#l197"><code>src&#x2F;engine&#x2F;core.js:197</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Define new module.</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">name</code>
-                            <span class="type">String</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name optional">[version]</code>
-                            <span class="type">String</span>
-                            <span class="flag optional" title="This parameter is optional.">optional</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-
-        
-            <div class="example">
-                <h4>Example:</h4>
-
-                <div class="example-content">
-                    <pre class="code prettyprint"><code>game.module(&#39;game.mymodule&#39;).body(function() {
-    // body of new module
-});</code></pre>
-
-                </div>
-            </div>
-        
-    </div>
-</div>
-
-        
-            <a name="method_require" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>require</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>modules</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_core.js.html#l217"><code>src&#x2F;engine&#x2F;core.js:217</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Require modules for module.</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">modules</code>
-                            <span class="type">Array</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
         
 
         

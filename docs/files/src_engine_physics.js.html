@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/engine/physics.js - Panda.js</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                
+                    <img class="logo" src="../../logo.png" title="Panda.js">
+                
+                
+                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.0.0</span>
+                
+                
+                    <p class="description">HTML5 game engine</p>
+                
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/Body.html">Body</a></li>
+            
+                <li><a class="type" href="../classes/Circle.html">Circle</a></li>
+            
+                <li><a class="type" href="../classes/Class.html">Class</a></li>
+            
+                <li><a class="type" href="../classes/CollisionSolver.html">CollisionSolver</a></li>
+            
+                <li><a class="type" href="../classes/Core.html">Core</a></li>
+            
+                <li><a class="type" href="../classes/Debug.html">Debug</a></li>
+            
+                <li><a class="type" href="../classes/Line.html">Line</a></li>
+            
+                <li><a class="type" href="../classes/Loader.html">Loader</a></li>
+            
+                <li><a class="type" href="../classes/Pool.html">Pool</a></li>
+            
+                <li><a class="type" href="../classes/Rectangle.html">Rectangle</a></li>
+            
+                <li><a class="type" href="../classes/Scene.html">Scene</a></li>
+            
+                <li><a class="type" href="../classes/SoundManager.html">SoundManager</a></li>
+            
+                <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+            
+                <li><a class="type" href="../classes/Storage.html">Storage</a></li>
+            
+                <li><a class="type" href="../classes/System.html">System</a></li>
+            
+                <li><a class="type" href="../classes/Timer.html">Timer</a></li>
+            
+                <li><a class="type" href="../classes/Tween.html">Tween</a></li>
+            
+                <li><a class="type" href="../classes/Vector.html">Vector</a></li>
+            
+                <li><a class="type" href="../classes/World.html">World</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a class="module" href="../modules/game.html">game</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: src/engine/physics.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+game.module(
+	&#x27;engine.physics&#x27;,
+    &#x27;1.0.0&#x27;
+)
+.body(function() { &#x27;use strict&#x27;;
+
+/**
+    Physics world.
+    @class World
+    @extends Class
+    @constructor
+    @param {Number} x Velocity x
+    @param {Number} y Velocity y
+**/
+game.World = game.Class.extend({
+    /**
+        @property {Vector} gravity
+    **/
+    gravity: null,
+    /**
+        @property {CollisionSolver} solver
+    **/
+    solver: null,
+    /**
+        @property {Array} bodies
+    **/
+    bodies: [],
+    /**
+        @property {Array} collisionGroups
+    **/
+    collisionGroups: [],
+
+    init: function(x, y) {
+        this.gravity = new game.Vector();
+        this.gravity.x = typeof(x) === &#x27;number&#x27; ? x : 0;
+        this.gravity.y = typeof(y) === &#x27;number&#x27; ? y : -980;
+        this.solver = new game.CollisionSolver();
+    },
+
+    /**
+        Add body to world.
+        @method addBody
+        @param {Body} body
+    **/
+    addBody: function(body) {
+        body.world = this;
+        this.bodies.push(body);
+        if(typeof(body.collisionGroup) === &#x27;number&#x27;) {
+            this.collisionGroups[body.collisionGroup] = this.collisionGroups[body.collisionGroup] || [];
+            this.collisionGroups[body.collisionGroup].push(body);
+        }
+    },
+
+    /**
+        @method removeBody
+        @param {Body} body
+    **/
+    removeBody: function(body) {
+        this.removeBodyCollision(body);
+        this.bodies.erase(body);
+    },
+
+    /**
+        Remove body from it&#x27;s collision group.
+        @method removeBodyCollision
+        @param {Body} body
+    **/
+    removeBodyCollision: function(body) {
+        this.collisionGroups[body.collisionGroup].erase(body);
+    },
+
+    /**
+        Remove collision group from world.
+        @method removeCollisionGroup
+        @param {Number} i
+    **/
+    removeCollisionGroup: function(i) {
+        this.collisionGroups.erase(this.collisionGroups[i]);
+    },
+
+    /**
+        @method collide
+        @param {Body} a
+    **/
+    collide: function(a) {
+        if(!this.collisionGroups[a.collideAgainst]) return;
+
+        var i, b;
+        for (i = this.collisionGroups[a.collideAgainst].length - 1; i &gt;= 0; i--) {
+            b = this.collisionGroups[a.collideAgainst][i];
+            if(a !== b) this.solver.solve(a, b);
+        }
+    },
+
+    /**
+        @method update
+    **/
+    update: function() {
+        var i, j;
+        for (i = this.bodies.length - 1; i &gt;= 0; i--) {
+            this.bodies[i].update();
+        }
+        for (i = this.collisionGroups.length - 1; i &gt;= 0; i--) {
+            if(this.collisionGroups[i]) {
+                for (j = this.collisionGroups[i].length - 1; j &gt;= 0; j--) {
+                    if(typeof(this.collisionGroups[i][j].collideAgainst) === &#x27;number&#x27;) this.collide(this.collisionGroups[i][j]);
+                }
+            }
+        }
+    }
+});
+
+/**
+    Physics collision solver.
+    @class CollisionSolver
+    @extends Class
+**/
+game.CollisionSolver = game.Class.extend({
+    hitTestData: [],
+
+    /**
+        Solve collision a versus b.
+        @method solve
+        @param {Body} a
+        @param {Body} b
+    **/
+    solve: function(a, b) {
+        this.hitTestData.length = 0;
+        if(!this.hitTest(a, b)) return;
+        if(!this.hitResponse(a, b)) return;
+    },
+
+    /**
+        @method hitTest
+        @param {Body} a
+        @param {Body} b
+        @return {Boolean}
+    **/
+    hitTest: function(a, b) {
+        if(a.shape instanceof game.Rectangle &amp;&amp; b.shape instanceof game.Rectangle) {
+            return !(
+                a.position.y + a.shape.height / 2 &lt;= b.position.y - b.shape.height / 2 ||
+                a.position.y - a.shape.height / 2 &gt;= b.position.y + b.shape.height / 2 ||
+                a.position.x - a.shape.width / 2 &gt;= b.position.x + b.shape.width / 2 ||
+                a.position.x + a.shape.width / 2 &lt;= b.position.x - b.shape.width / 2
+            );
+        }
+        if(a.shape instanceof game.Circle &amp;&amp; b.shape instanceof game.Circle) {
+            return (a.shape.radius + b.shape.radius &gt; this.distance(a.position.x, a.position.y, b.position.x, b.position.y));
+        }
+        if(
+            a.shape instanceof game.Rectangle &amp;&amp; b.shape instanceof game.Circle ||
+            a.shape instanceof game.Circle &amp;&amp; b.shape instanceof game.Rectangle
+        ) {
+            var rect = a.shape instanceof game.Rectangle ? a : b;
+            var circle = a.shape instanceof game.Circle ? a : b;
+
+            var x = Math.max(rect.position.x - rect.shape.width / 2, Math.min(rect.position.x + rect.shape.width / 2, circle.position.x));
+            var y = Math.max(rect.position.y - rect.shape.height / 2, Math.min(rect.position.y + rect.shape.height / 2, circle.position.y));
+
+            var dist = Math.pow(circle.position.x - x, 2) + Math.pow(circle.position.y - y, 2);
+            return dist &lt; (circle.shape.radius * circle.shape.radius);
+        }
+        if(a.shape instanceof game.Line &amp;&amp; b.shape instanceof game.Line) {
+            var a1x = a.position.x - Math.sin(a.shape.rotation) * (a.shape.length / 2);
+            var a1y = a.position.y - Math.cos(a.shape.rotation) * (a.shape.length / 2);
+            var a2x = a.position.x + Math.sin(a.shape.rotation) * (a.shape.length / 2);
+            var a2y = a.position.y + Math.cos(a.shape.rotation) * (a.shape.length / 2);
+            var b1x = b.position.x - Math.sin(b.shape.rotation) * (b.shape.length / 2);
+            var b1y = b.position.y - Math.cos(b.shape.rotation) * (b.shape.length / 2);
+            var b2x = b.position.x + Math.sin(b.shape.rotation) * (b.shape.length / 2);
+            var b2y = b.position.y + Math.cos(b.shape.rotation) * (b.shape.length / 2);
+
+            var ub = (b2y - b1y) * (a2x - a1x) - (b2x - b1x) * (a2y - a1y);
+
+            if(ub !== 0) {
+                var uat = (b2x - b1x) * (a1y - b1y) - (b2y - b1y) * (a1x - b1x);
+                var ubt = (a2x - a1x) * (a1y - b1y) - (a2y - a1y) * (a1x - b1x);
+                var ua = uat / ub;
+                ub = ubt / ub;
+
+                if(ua &gt;= 0 &amp;&amp; ua &lt;= 1 &amp;&amp; ub &gt;= 0 &amp;&amp; ub &lt;= 1) return true;
+            }
+            return false;
+        }
+        if(
+            a.shape instanceof game.Line &amp;&amp; b.shape instanceof game.Circle ||
+            a.shape instanceof game.Circle &amp;&amp; b.shape instanceof game.Line
+        ) {
+            var line = a.shape instanceof game.Line ? a : b;
+            var circle = a.shape instanceof game.Circle ? a : b;
+
+            var a1x = line.position.x - Math.sin(line.shape.rotation - line.rotation) * (line.shape.length / 2);
+            var a1y = line.position.y - Math.cos(line.shape.rotation - line.rotation) * (line.shape.length / 2);
+            var a2x = line.position.x + Math.sin(line.shape.rotation - line.rotation) * (line.shape.length / 2);
+            var a2y = line.position.y + Math.cos(line.shape.rotation - line.rotation) * (line.shape.length / 2);
+
+            var dx = a2x - a1x;
+            var dy = a2y - a1y;
+
+            var cx = circle.position.x;
+            var cy = circle.position.y;
+
+            var px = cx - a1x;
+            var py = cy - a1y;
+
+            var t = (dx * px + dy * py) / (line.shape.length * line.shape.length);
+
+            if(t &lt; 0) {
+                var d = Math.sqrt(px * px + py * py);
+                if(d &lt; circle.shape.radius) {
+                    this.hitTestData[0] = a1x;
+                    this.hitTestData[1] = a1y;
+                    this.hitTestData[2] = d;
+                    this.hitTestData[3] = px / d;
+                    this.hitTestData[4] = py / d;
+                    return true;
+                }
+            }
+            else if(t &gt; 1) {
+                var d = this.distance(cx, cy, a2x, a2y);
+                if(d &lt; circle.shape.radius) {
+                    this.hitTestData[0] = a2x;
+                    this.hitTestData[1] = a2y;
+                    this.hitTestData[2] = d;
+                    this.hitTestData[3] = (cx - a2x) / d;
+                    this.hitTestData[4] = (cy - a2y) / d;
+                    return true;
+                }
+            }
+            else {
+                var d = this.distance(px, py, dx * t, dy * t);
+                if(d &lt; circle.shape.radius) {
+                    this.hitTestData[0] = a1x + dx * t;
+                    this.hitTestData[1] = a1y + dy * t;
+                    this.hitTestData[2] = d;
+                    this.hitTestData[3] = (px - dx * t) / d;
+                    this.hitTestData[4] = (py - dy * t) / d;
+                    return true;
+                }
+            }
+            return false;
+        }
+        return false;
+    },
+
+    /**
+        @method hitResponse
+        @param {Body} a
+        @param {Body} b
+        @return {Boolean}
+    **/
+    hitResponse: function(a, b) {
+        if(a.shape instanceof game.Rectangle &amp;&amp; b.shape instanceof game.Rectangle) {
+            // 0 = up, 1 = down, 2 = left, 3 = right
+            if(a.last.y + a.shape.height / 2 &lt;= b.last.y - b.shape.height / 2) {
+                if(a.collide(b, 0)) {
+                    a.position.y = b.position.y - b.shape.height / 2 - a.shape.height / 2;
+                }
+            }
+            if(a.last.y - a.shape.height / 2 &gt;= b.last.y + b.shape.height / 2) {
+                if(a.collide(b, 1)) {
+                    a.position.y = b.position.y + b.shape.height / 2 + a.shape.height / 2;
+                }
+            }
+            if(a.last.x + a.shape.width /2 &lt;= b.last.x - b.shape.width / 2) {
+                if(a.collide(b, 2)) {
+                    a.position.x = b.position.x - b.shape.width / 2 - a.shape.width / 2;
+                }
+            }
+            if(a.last.x - a.shape.width /2 &gt;= b.last.x + b.shape.width / 2) {
+                if(a.collide(b, 3)) {
+                    a.position.x = b.position.x + b.shape.width / 2 + a.shape.width / 2;
+                }
+            }
+        }
+        if(a.shape instanceof game.Circle &amp;&amp; b.shape instanceof game.Circle) {
+            if(a.collide(b)) {
+                var angle = Math.atan2(a.position.x - b.position.x, a.position.y - b.position.y);
+                var dist = a.shape.radius + b.shape.radius;
+
+                var aSpeed = Math.sqrt(Math.pow(a.velocity.x, 2) + Math.pow(a.velocity.y, 2));
+                var bSpeed = Math.sqrt(Math.pow(b.velocity.x, 2) + Math.pow(b.velocity.y, 2));
+
+                a.position.x = b.position.x + Math.sin(angle) * dist;
+                a.position.y = b.position.y + Math.cos(angle) * dist;
+
+                a.velocity.x = Math.sin(angle) * bSpeed;
+                a.velocity.y = Math.cos(angle) * bSpeed;
+
+                b.velocity.x = Math.sin(angle + Math.PI) * aSpeed;
+                b.velocity.y = Math.cos(angle + Math.PI) * aSpeed;
+            }
+        }
+        if(a.shape instanceof game.Rectangle &amp;&amp; b.shape instanceof game.Circle) {
+            if(a.collide(b)) {
+                // collision response
+                return false;
+            }
+        }
+        if(a.shape instanceof game.Circle &amp;&amp; b.shape instanceof game.Rectangle) {
+            if(a.collide(b)) {
+                // collision response
+                if(a.last.x - a.shape.radius &lt; b.last.x + b.shape.width) {
+                    var angle = Math.atan2(a.position.x - a.last.x, a.position.y - a.last.y);
+                    var dist = this.distance(a.last.x, a.last.y, a.position.x, a.position.y);
+
+                    // how much to push circle forward from last position ???
+                    var dist = 0;
+
+                    a.position.x = a.last.x + Math.sin(angle) * dist;
+                    a.position.y = a.last.y + Math.cos(angle) * dist;
+
+                    a.velocity.x *= -1;
+                }
+            }
+        }
+        if(a.shape instanceof game.Line &amp;&amp; b.shape instanceof game.Line) {
+            if(a.collide(b)) {
+                // collision response
+                return false;
+            }
+        }
+        if(a.shape instanceof game.Circle &amp;&amp; b.shape instanceof game.Line) {
+            if(a.collide(b)) {
+                var cx = this.hitTestData[0];
+                var cy = this.hitTestData[1];
+                var d = this.hitTestData[2];
+                var nx = this.hitTestData[3];
+                var ny = this.hitTestData[4];
+
+                var x = a.position.x - cx;
+                var y = a.position.y - cy;
+
+                a.position.x = cx + a.shape.radius * x / d;
+                a.position.y = cy + a.shape.radius * y / d;
+
+                var m = a.velocity.x * nx + a.velocity.y * ny;
+
+                a.velocity.x -= nx * m * (1 + 1);
+                a.velocity.y -= ny * m * (1 + 1);
+            }
+        }
+        if(a.shape instanceof game.Line &amp;&amp; b.shape instanceof game.Circle) {
+            if(a.collide(b)) {
+                // collision response
+                return false;
+            }
+        }
+    }
+});
+
+/**
+    Physics body.
+    @class Body
+    @extends Class
+    @constructor
+    @param {Object} [settings]
+**/
+game.Body = game.Class.extend({
+    /**
+        @property {World} world
+    **/
+    world: null,
+    /**
+        @property {Shape} shape
+    **/
+    shape: null,
+    /**
+        @property {Vector} position
+    **/
+    position: null,
+    /**
+        @property {Vector} last
+    **/
+    last: null,
+    /**
+        @property {Vector} velocity
+    **/
+    velocity: null,
+    /**
+        @property {Vector} velocityLimit
+    **/
+    velocityLimit: null,
+    /**
+        @property {Number} mass
+        @default 0
+    **/
+    mass: 0,
+    /**
+        @property {Number} collisionGroup
+        @default 0
+    **/
+    collisionGroup: 0,
+    /**
+        @property {Number} collideAgainst
+        @default 0
+    **/
+    collideAgainst: 0,
+    /**
+        @property {Number} rotation
+        @default 0
+    **/
+    rotation: 0,
+
+    init: function(settings) {
+        this.position = new game.Vector();
+        this.velocity = new game.Vector();
+        this.velocityLimit = new game.Vector(500, 500);
+        this.last = new game.Vector();
+
+        game.merge(this, settings);
+    },
+
+    /**
+        Add shape to body.
+        @method addShape
+        @param {Shape} shape
+    **/
+    addShape: function(shape) {
+        this.shape = shape;
+    },
+
+    /**
+        Callback for collision.
+        @method collide
+        @return {Boolean} Return true, to call hit response.
+    **/
+    collide: function() {
+        return true;
+    },
+
+    /**
+        @method update
+    **/
+    update: function() {
+        this.last.copy(this.position);
+
+        if(this.mass &gt; 0) {
+            this.velocity.multiplyAdd(this.world.gravity, game.system.tick);
+            this.velocity.limit(this.velocityLimit);
+        }
+
+        this.position.multiplyAdd(this.velocity, game.scale * game.system.tick);
+    }
+});
+
+/**
+    @class Rectangle
+    @extends Class
+    @constructor
+    @param {Number} width
+    @param {Number} height
+**/
+game.Rectangle = game.Class.extend({
+    /**
+        @property {Number} width
+        @default 50
+    **/
+    width: 50,
+    /**
+        @property {Number} height
+        @default 50
+    **/
+    height: 50,
+
+    init: function(width, height) {
+        this.width = width || this.width * game.scale;
+        this.height = height || this.height * game.scale;
+    }
+});
+
+/**
+    @class Circle
+    @extends Class
+    @constructor
+    @param {Number} radius
+**/
+game.Circle = game.Class.extend({
+    /**
+        @property {Number} radius
+        @default 50
+    **/
+    radius: 50,
+
+    init: function(radius) {
+        this.radius = radius || this.radius * game.scale;
+    }
+});
+
+/**
+    @class Line
+    @extends Class
+    @constructor
+    @param {Number} length
+    @param {Number} rotation
+**/
+game.Line = game.Class.extend({
+    /**
+        @property {Number} length
+        @default 50
+    **/
+    length: 50,
+    /**
+        @property {Number} rotation
+        @default 0
+    **/
+    rotation: 0,
+
+    init: function(length, rotation) {
+        this.length = length || this.length * game.scale;
+        this.rotation = rotation || this.rotation;
+    }
+});
+
+/**
+    @class Vector
+    @extends Class
+    @constructor
+    @param {Number} x
+    @param {Number} y
+**/
+game.Vector = game.Class.extend({
+    value: null,
+
+    init: function(x, y) {
+        this.value = new Float32Array(2);
+        this.x = x || 0;
+        this.y = y || 0;
+    },
+
+    /**
+        @method set
+        @param {Number} x
+        @param {Number} y
+        @return {Vector}
+    **/
+    set: function(x, y) {
+        this.x = x;
+        this.y = y;
+        return this;
+    },
+
+    /**
+        @method clone
+        @return {Vector}
+    **/
+    clone: function() {
+        return new game.Vector(this.x, this.y);
+    },
+
+    /**
+        @method copy
+        @param {Vector} v
+        @return {Vector}
+    **/
+    copy: function(v) {
+        this.x = v.x;
+        this.y = v.y;
+        return this;
+    },
+
+    /**
+        @method add
+        @param {Vector} target
+        @param {Number|Vector} x
+        @param {Number} [y]
+        @return {Vector}
+    **/
+    add: function(target, x, y) {
+        target.x += x instanceof game.Vector ? x.x : x;
+        target.y += x instanceof game.Vector ? x.y : y || x;
+        return this;
+    },
+
+    /**
+        @method subtract
+        @param {Vector} target
+        @param {Number|Vector} x
+        @param {Number} [y]
+        @return {Vector}
+    **/
+    subtract: function(target, x, y) {
+        target.x -= x instanceof game.Vector ? x.x : x;
+        target.y -= x instanceof game.Vector ? x.y : y || x;
+        return this;
+    },
+
+    /**
+        @method multiply
+        @param {Vector} target
+        @param {Number|Vector} x
+        @param {Number} [y]
+        @return {Vector}
+    **/
+    multiply: function(target, x, y) {
+        target.x *= x instanceof game.Vector ? x.x : x;
+        target.y *= x instanceof game.Vector ? x.y : y || x;
+        return this;
+    },
+
+    /**
+        @method divide
+        @param {Vector} target
+        @param {Number|Vector} x
+        @param {Number} [y]
+        @return {Vector}
+    **/
+    divide: function(target, x, y) {
+        target.x /= x instanceof game.Vector ? x.x : x;
+        target.y /= x instanceof game.Vector ? x.y : y || x;
+        return this;
+    },
+
+    /**
+        @method distance
+        @param {Vector} vector
+        @return {Number}
+    **/
+    distance: function(vector) {
+        var x = vector.x - this.x;
+        var y = vector.y - this.y;
+        return Math.sqrt(x * x + y * y);
+    },
+
+    /**
+        @method length
+        @return {Number}
+    **/
+    length: function() {
+        return Math.sqrt(this.dot());
+    },
+
+    /**
+        @method dot
+        @param {Vector} [vector]
+        @return {Number}
+    **/
+    dot: function(vector) {
+        if(vector instanceof game.Vector) return this.x * vector.x + this.y * vector.y;
+        else return this.x * this.x + this.y * this.y;
+    },
+
+    /**
+        @method dotNormalized
+        @param {Vector} [vector]
+        @return {Number}
+    **/
+    dotNormalized: function(vector) {
+        var len1 = this.length();
+        var x1 = this.x / len1;
+        var y1 = this.y / len1;
+
+        if(vector instanceof game.Vector) {
+            var len2 = vector.length();
+            var x2 = vector.x / len2;
+            var y2 = vector.y / len2;
+            return x1 * x2 + y1 * y2;
+        } else return x1 * x1 + y1 * y1;
+    },
+
+    /**
+        @method rotate
+        @param {Vector} target
+        @param {Number} angle
+        @return {Vector}
+    **/
+    rotate: function(target, angle) {
+        var c = Math.cos(angle);
+        var s = Math.sin(angle);
+        var x = target.x * c - target.y * s;
+        var y = target.y * c + target.x * s;
+        target.x = x;
+        target.y = y;
+        return this;
+    },
+
+    /**
+        @method normalize
+        @return {Vector}
+    **/
+    normalize: function() {
+        var len = this.length();
+        this.x /= len;
+        this.y /= len;
+        return this;
+    },
+
+    /**
+        @method limit
+        @param {Vector} target
+        @param {Vector} vector
+        @return {Vector}
+    **/
+    limit: function(target, vector) {
+        target.x = Math.min(vector.x, Math.max(-vector.x, target.x));
+        target.y = Math.min(vector.y, Math.max(-vector.y, target.y));
+        return this;
+    },
+
+    /**
+        @method angle
+        @param {Vector} vector
+        @return {Number}
+    **/
+    angle: function(vector) {
+        return Math.atan2(vector.y - this.y, vector.x - this.x);
+    },
+
+    /**
+        @method round
+        @param {Vector} target
+        @return {Vector}
+    **/
+    round: function(target) {
+        target.x = Math.round(target.x);
+        target.y = Math.round(target.y);
+        return this;
+    }
+});
+
+/**
+    @property {Number} x
+**/
+Object.defineProperty(game.Vector.prototype, &#x27;x&#x27;, {
+    get: function() {
+        return this.value[0];
+    },
+    set: function(value) {
+        this.value[0] = value;
+    }
+});
+
+/**
+    @property {Number} y
+**/
+Object.defineProperty(game.Vector.prototype, &#x27;y&#x27;, {
+    get: function() {
+        return this.value[1];
+    },
+    set: function(value) {
+        this.value[1] = value;
+    }
+});
+
+game.BodySprite = game.Class.extend({
+    collisionGroup: 0,
+    collideAgainst: null,
+    mass: 0,
+    velocity: {x:0, y:0},
+    color: 0xff0000,
+    type: &#x27;Circle&#x27;,
+    a: 50,
+    b: 50,
+
+    init: function(x, y, settings) {
+        game.merge(this, settings);
+
+        var shape = new game[this.type](this.a, this.b);
+
+        this.body = new game.Body({
+            position: {x: x, y: y},
+            velocity: {x: this.velocity.x, y: this.velocity.y},
+            collisionGroup: this.collisionGroup,
+            collideAgainst: this.collideAgainst,
+            mass: this.mass
+        });
+        this.body.addShape(shape);
+        this.body.collide = this.collide.bind(this);
+
+        this.sprite = new PIXI.Graphics();
+        this.sprite.beginFill(this.color);
+        if(this.type === &#x27;Circle&#x27;) {
+            this.sprite.drawCircle(0, 0, this.a);
+        }
+        if(this.type === &#x27;Rectangle&#x27;) {
+            this.sprite.drawRect(-this.a / 2, -this.b / 2, this.a, this.b);
+        }
+        if(this.type === &#x27;Line&#x27;) {
+            this.sprite.lineStyle(1, this.color);
+            this.sprite.moveTo(-Math.sin(this.b) * (this.a / 2), -Math.cos(this.b) * (this.a / 2));
+            this.sprite.lineTo(Math.sin(this.b) * (this.a / 2), Math.cos(this.b) * (this.a / 2));
+        }
+        this.sprite.position.x = x;
+        this.sprite.position.y = y;
+
+        game.scene.world.addBody(this.body);
+    },
+
+    collide: function() {
+        return true;
+    },
+
+    update: function() {
+        this.sprite.position.x = this.body.position.x;
+        this.sprite.position.y = this.body.position.y;
+        this.sprite.rotation = this.body.rotation;
+    }
+});
+
+});
+    </pre>
+</div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

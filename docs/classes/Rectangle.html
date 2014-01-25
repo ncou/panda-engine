@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Sprite - Panda.js</title>
+    <title>Rectangle - Panda.js</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -100,7 +100,7 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>Sprite Class</h1>
+                <h1>Rectangle Class</h1>
 <div class="box meta">
     
 
@@ -112,7 +112,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_engine_sprite.js.html#l10"><code>src&#x2F;engine&#x2F;sprite.js:10</code></a>
+            Defined in: <a href="../files/src_engine_physics.js.html#l448"><code>src&#x2F;engine&#x2F;physics.js:448</code></a>
         </div>
     
 
@@ -128,8 +128,7 @@
 
 
 <div class="box intro">
-    <p><a href="http://www.goodboydigital.com/pixijs/docs/classes/Sprite%E2%84%A2.html">http://www.goodboydigital.com/pixijs/docs/classes/Sprite%E2%84%A2.html</a></p>
-
+    
 </div>
 
 <!-- Class member index -->
@@ -170,7 +169,7 @@
         <ul class="index-list properties extends">
             
                 <li class="index-item property">
-                    <a href="#property_image">image</a>
+                    <a href="#property_height">height</a>
 
                     
                 </li>
@@ -183,6 +182,12 @@
             
                 <li class="index-item property inherited">
                     <a href="#property_staticInit">staticInit</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_width">width</a>
 
                     
                 </li>
@@ -202,7 +207,7 @@
 
             
                 <li class="index-item method constructor">
-                    <a href="#method_Sprite">Sprite</a>
+                    <a href="#method_Rectangle">Rectangle</a>
 
                     <span class="flag constructor">constructor</span>
 
@@ -226,13 +231,6 @@
                     
                 </li>
             
-                <li class="index-item method">
-                    <a href="#method_remove">remove</a>
-
-                    
-                    
-                </li>
-            
         </ul>
     </div>
 
@@ -248,10 +246,10 @@
         <h2>Properties</h2>
 
         
-            <a name="property_image" class="anchor-link"></a>
+            <a name="property_height" class="anchor-link"></a>
 <div class="property item">
-    <h3 class="name"><code>image</code>
-    <span class="type">String</span>
+    <h3 class="name"><code>height</code>
+    <span class="type">Number</span>
 
     
 
@@ -274,7 +272,7 @@
             
         
         
-        <a href="../files/src_engine_sprite.js.html#l20"><code>src&#x2F;engine&#x2F;sprite.js:20</code></a>
+        <a href="../files/src_engine_physics.js.html#l461"><code>src&#x2F;engine&#x2F;physics.js:461</code></a>
         
         </p>
 
@@ -288,6 +286,8 @@
             
         </div>
 
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">50</span></p>
         
 
         
@@ -391,6 +391,57 @@
 </div>
 
         
+            <a name="property_width" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>width</code>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_physics.js.html#l456"><code>src&#x2F;engine&#x2F;physics.js:456</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">50</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
 
         <div class="no-visible-items-message">
             <p>There are no properties that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
@@ -404,9 +455,9 @@
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <a name="method_Sprite" class="anchor-link"></a>
+        <a name="method_Rectangle" class="anchor-link"></a>
 <div class="method item">
-    <h3 class="name"><code>Sprite</code>
+    <h3 class="name"><code>Rectangle</code>
 
     
         <div class="args">
@@ -414,19 +465,13 @@
             
                 <li class="arg">
                     
-                        <code>x</code>
+                        <code>width</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>y</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[settings]</code>
+                        <code>height</code>
                     
                 </li>
             
@@ -461,7 +506,7 @@
             
         
         
-        <a href="../files/src_engine_sprite.js.html#l10"><code>src&#x2F;engine&#x2F;sprite.js:10</code></a>
+        <a href="../files/src_engine_physics.js.html#l448"><code>src&#x2F;engine&#x2F;physics.js:448</code></a>
         
         </p>
 
@@ -485,7 +530,7 @@
                 
                     <li class="param">
                         
-                            <code class="param-name">x</code>
+                            <code class="param-name">width</code>
                             <span class="type">Number</span>
                         
 
@@ -500,24 +545,8 @@
                 
                     <li class="param">
                         
-                            <code class="param-name">y</code>
+                            <code class="param-name">height</code>
                             <span class="type">Number</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name optional">[settings]</code>
-                            <span class="type">Object</span>
-                            <span class="flag optional" title="This parameter is optional.">optional</span>
                         
 
                         
@@ -653,66 +682,6 @@
         
         
         <a href="../files/src_engine_core.js.html#l533"><code>src&#x2F;engine&#x2F;core.js:533</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_remove" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>remove</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_sprite.js.html#l49"><code>src&#x2F;engine&#x2F;sprite.js:49</code></a>
         
         </p>
 

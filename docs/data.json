@@ -38,6 +38,21 @@
             "fors": {},
             "namespaces": {}
         },
+        "src/engine/physics.js": {
+            "name": "src/engine/physics.js",
+            "modules": {},
+            "classes": {
+                "World": 1,
+                "CollisionSolver": 1,
+                "Body": 1,
+                "Rectangle": 1,
+                "Circle": 1,
+                "Line": 1,
+                "Vector": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src/engine/pool.js": {
             "name": "src/engine/pool.js",
             "modules": {},
@@ -120,6 +135,13 @@
                 "Class": 1,
                 "Debug": 1,
                 "Loader": 1,
+                "World": 1,
+                "CollisionSolver": 1,
+                "Body": 1,
+                "Rectangle": 1,
+                "Circle": 1,
+                "Line": 1,
+                "Vector": 1,
                 "Pool": 1,
                 "Scene": 1,
                 "SoundManager": 1,
@@ -192,6 +214,176 @@
             "file": "src/engine/loader.js",
             "line": 7,
             "extends": "Class"
+        },
+        "World": {
+            "name": "World",
+            "shortname": "World",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "game",
+            "namespace": "",
+            "file": "src/engine/physics.js",
+            "line": 7,
+            "description": "Physics world.",
+            "extends": "Class",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Velocity x",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "Velocity y",
+                    "type": "Number"
+                }
+            ]
+        },
+        "CollisionSolver": {
+            "name": "CollisionSolver",
+            "shortname": "CollisionSolver",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "game",
+            "namespace": "",
+            "file": "src/engine/physics.js",
+            "line": 113,
+            "description": "Physics collision solver.",
+            "extends": "Class"
+        },
+        "Body": {
+            "name": "Body",
+            "shortname": "Body",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "game",
+            "namespace": "",
+            "file": "src/engine/physics.js",
+            "line": 353,
+            "description": "Physics body.",
+            "extends": "Class",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "settings",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ]
+        },
+        "Rectangle": {
+            "name": "Rectangle",
+            "shortname": "Rectangle",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "game",
+            "namespace": "",
+            "file": "src/engine/physics.js",
+            "line": 448,
+            "extends": "Class",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "width",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "height",
+                    "description": "",
+                    "type": "Number"
+                }
+            ]
+        },
+        "Circle": {
+            "name": "Circle",
+            "shortname": "Circle",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "game",
+            "namespace": "",
+            "file": "src/engine/physics.js",
+            "line": 473,
+            "extends": "Class",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "radius",
+                    "description": "",
+                    "type": "Number"
+                }
+            ]
+        },
+        "Line": {
+            "name": "Line",
+            "shortname": "Line",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "game",
+            "namespace": "",
+            "file": "src/engine/physics.js",
+            "line": 491,
+            "extends": "Class",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "length",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "rotation",
+                    "description": "",
+                    "type": "Number"
+                }
+            ]
+        },
+        "Vector": {
+            "name": "Vector",
+            "shortname": "Vector",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "game",
+            "namespace": "",
+            "file": "src/engine/physics.js",
+            "line": 516,
+            "extends": "Class",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "x",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "",
+                    "type": "Number"
+                }
+            ]
         },
         "Pool": {
             "name": "Pool",
@@ -643,6 +835,740 @@
                 "\n    game.Loader.timeout = 1000;"
             ],
             "class": "Loader",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 16,
+            "itemtype": "property",
+            "name": "gravity",
+            "type": "Vector",
+            "class": "World",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 20,
+            "itemtype": "property",
+            "name": "solver",
+            "type": "CollisionSolver",
+            "class": "World",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 24,
+            "itemtype": "property",
+            "name": "bodies",
+            "type": "Array",
+            "class": "World",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 28,
+            "itemtype": "property",
+            "name": "collisionGroups",
+            "type": "Array",
+            "class": "World",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 40,
+            "description": "Add body to world.",
+            "itemtype": "method",
+            "name": "addBody",
+            "params": [
+                {
+                    "name": "body",
+                    "description": "",
+                    "type": "Body"
+                }
+            ],
+            "class": "World",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 54,
+            "itemtype": "method",
+            "name": "removeBody",
+            "params": [
+                {
+                    "name": "body",
+                    "description": "",
+                    "type": "Body"
+                }
+            ],
+            "class": "World",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 63,
+            "description": "Remove body from it's collision group.",
+            "itemtype": "method",
+            "name": "removeBodyCollision",
+            "params": [
+                {
+                    "name": "body",
+                    "description": "",
+                    "type": "Body"
+                }
+            ],
+            "class": "World",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 72,
+            "description": "Remove collision group from world.",
+            "itemtype": "method",
+            "name": "removeCollisionGroup",
+            "params": [
+                {
+                    "name": "i",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "World",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 81,
+            "itemtype": "method",
+            "name": "collide",
+            "params": [
+                {
+                    "name": "a",
+                    "description": "",
+                    "type": "Body"
+                }
+            ],
+            "class": "World",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 95,
+            "itemtype": "method",
+            "name": "update",
+            "class": "World",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 121,
+            "description": "Solve collision a versus b.",
+            "itemtype": "method",
+            "name": "solve",
+            "params": [
+                {
+                    "name": "a",
+                    "description": "",
+                    "type": "Body"
+                },
+                {
+                    "name": "b",
+                    "description": "",
+                    "type": "Body"
+                }
+            ],
+            "class": "CollisionSolver",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 133,
+            "itemtype": "method",
+            "name": "hitTest",
+            "params": [
+                {
+                    "name": "a",
+                    "description": "",
+                    "type": "Body"
+                },
+                {
+                    "name": "b",
+                    "description": "",
+                    "type": "Body"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "CollisionSolver",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 247,
+            "itemtype": "method",
+            "name": "hitResponse",
+            "params": [
+                {
+                    "name": "a",
+                    "description": "",
+                    "type": "Body"
+                },
+                {
+                    "name": "b",
+                    "description": "",
+                    "type": "Body"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "CollisionSolver",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 361,
+            "itemtype": "property",
+            "name": "world",
+            "type": "World",
+            "class": "Body",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 365,
+            "itemtype": "property",
+            "name": "shape",
+            "type": "Shape",
+            "class": "Body",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 369,
+            "itemtype": "property",
+            "name": "position",
+            "type": "Vector",
+            "class": "Body",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 373,
+            "itemtype": "property",
+            "name": "last",
+            "type": "Vector",
+            "class": "Body",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 377,
+            "itemtype": "property",
+            "name": "velocity",
+            "type": "Vector",
+            "class": "Body",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 381,
+            "itemtype": "property",
+            "name": "velocityLimit",
+            "type": "Vector",
+            "class": "Body",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 385,
+            "itemtype": "property",
+            "name": "mass",
+            "type": "Number",
+            "default": "0",
+            "class": "Body",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 390,
+            "itemtype": "property",
+            "name": "collisionGroup",
+            "type": "Number",
+            "default": "0",
+            "class": "Body",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 395,
+            "itemtype": "property",
+            "name": "collideAgainst",
+            "type": "Number",
+            "default": "0",
+            "class": "Body",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 400,
+            "itemtype": "property",
+            "name": "rotation",
+            "type": "Number",
+            "default": "0",
+            "class": "Body",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 415,
+            "description": "Add shape to body.",
+            "itemtype": "method",
+            "name": "addShape",
+            "params": [
+                {
+                    "name": "shape",
+                    "description": "",
+                    "type": "Shape"
+                }
+            ],
+            "class": "Body",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 424,
+            "description": "Callback for collision.",
+            "itemtype": "method",
+            "name": "collide",
+            "return": {
+                "description": "Return true, to call hit response.",
+                "type": "Boolean"
+            },
+            "class": "Body",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 433,
+            "itemtype": "method",
+            "name": "update",
+            "class": "Body",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 456,
+            "itemtype": "property",
+            "name": "width",
+            "type": "Number",
+            "default": "50",
+            "class": "Rectangle",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 461,
+            "itemtype": "property",
+            "name": "height",
+            "type": "Number",
+            "default": "50",
+            "class": "Rectangle",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 480,
+            "itemtype": "property",
+            "name": "radius",
+            "type": "Number",
+            "default": "50",
+            "class": "Circle",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 499,
+            "itemtype": "property",
+            "name": "length",
+            "type": "Number",
+            "default": "50",
+            "class": "Line",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 504,
+            "itemtype": "property",
+            "name": "rotation",
+            "type": "Number",
+            "default": "0",
+            "class": "Line",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 532,
+            "itemtype": "method",
+            "name": "set",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Vector"
+            },
+            "class": "Vector",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 544,
+            "itemtype": "method",
+            "name": "clone",
+            "return": {
+                "description": "",
+                "type": "Vector"
+            },
+            "class": "Vector",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 552,
+            "itemtype": "method",
+            "name": "copy",
+            "params": [
+                {
+                    "name": "v",
+                    "description": "",
+                    "type": "Vector"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Vector"
+            },
+            "class": "Vector",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 563,
+            "itemtype": "method",
+            "name": "add",
+            "params": [
+                {
+                    "name": "target",
+                    "description": "",
+                    "type": "Vector"
+                },
+                {
+                    "name": "x",
+                    "description": "",
+                    "type": "Number|Vector"
+                },
+                {
+                    "name": "y",
+                    "description": "",
+                    "type": "Number",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Vector"
+            },
+            "class": "Vector",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 576,
+            "itemtype": "method",
+            "name": "subtract",
+            "params": [
+                {
+                    "name": "target",
+                    "description": "",
+                    "type": "Vector"
+                },
+                {
+                    "name": "x",
+                    "description": "",
+                    "type": "Number|Vector"
+                },
+                {
+                    "name": "y",
+                    "description": "",
+                    "type": "Number",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Vector"
+            },
+            "class": "Vector",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 589,
+            "itemtype": "method",
+            "name": "multiply",
+            "params": [
+                {
+                    "name": "target",
+                    "description": "",
+                    "type": "Vector"
+                },
+                {
+                    "name": "x",
+                    "description": "",
+                    "type": "Number|Vector"
+                },
+                {
+                    "name": "y",
+                    "description": "",
+                    "type": "Number",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Vector"
+            },
+            "class": "Vector",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 602,
+            "itemtype": "method",
+            "name": "divide",
+            "params": [
+                {
+                    "name": "target",
+                    "description": "",
+                    "type": "Vector"
+                },
+                {
+                    "name": "x",
+                    "description": "",
+                    "type": "Number|Vector"
+                },
+                {
+                    "name": "y",
+                    "description": "",
+                    "type": "Number",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Vector"
+            },
+            "class": "Vector",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 615,
+            "itemtype": "method",
+            "name": "distance",
+            "params": [
+                {
+                    "name": "vector",
+                    "description": "",
+                    "type": "Vector"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "Vector",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 626,
+            "itemtype": "method",
+            "name": "length",
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "Vector",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 634,
+            "itemtype": "method",
+            "name": "dot",
+            "params": [
+                {
+                    "name": "vector",
+                    "description": "",
+                    "type": "Vector",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "Vector",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 644,
+            "itemtype": "method",
+            "name": "dotNormalized",
+            "params": [
+                {
+                    "name": "vector",
+                    "description": "",
+                    "type": "Vector",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "Vector",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 662,
+            "itemtype": "method",
+            "name": "rotate",
+            "params": [
+                {
+                    "name": "target",
+                    "description": "",
+                    "type": "Vector"
+                },
+                {
+                    "name": "angle",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Vector"
+            },
+            "class": "Vector",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 678,
+            "itemtype": "method",
+            "name": "normalize",
+            "return": {
+                "description": "",
+                "type": "Vector"
+            },
+            "class": "Vector",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 689,
+            "itemtype": "method",
+            "name": "limit",
+            "params": [
+                {
+                    "name": "target",
+                    "description": "",
+                    "type": "Vector"
+                },
+                {
+                    "name": "vector",
+                    "description": "",
+                    "type": "Vector"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Vector"
+            },
+            "class": "Vector",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 701,
+            "itemtype": "method",
+            "name": "angle",
+            "params": [
+                {
+                    "name": "vector",
+                    "description": "",
+                    "type": "Vector"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "Vector",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 710,
+            "itemtype": "method",
+            "name": "round",
+            "params": [
+                {
+                    "name": "target",
+                    "description": "",
+                    "type": "Vector"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Vector"
+            },
+            "class": "Vector",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 722,
+            "itemtype": "property",
+            "name": "x",
+            "type": "Number",
+            "class": "Vector",
+            "module": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 734,
+            "itemtype": "property",
+            "name": "y",
+            "type": "Number",
+            "class": "Vector",
             "module": "game"
         },
         {
