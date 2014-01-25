@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>../panda.js/src/engine/debug.js - Panda.js</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                
+                    <img class="logo" src="../../logo.png" title="Panda.js">
+                
+                
+                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.0.0</span>
+                
+                
+                    <p class="description">HTML5 game engine</p>
+                
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/Class.html">Class</a></li>
+            
+                <li><a class="type" href="../classes/Core.html">Core</a></li>
+            
+                <li><a class="type" href="../classes/Debug.html">Debug</a></li>
+            
+                <li><a class="type" href="../classes/Loader.html">Loader</a></li>
+            
+                <li><a class="type" href="../classes/Scene.html">Scene</a></li>
+            
+                <li><a class="type" href="../classes/SoundManager.html">SoundManager</a></li>
+            
+                <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+            
+                <li><a class="type" href="../classes/Storage.html">Storage</a></li>
+            
+                <li><a class="type" href="../classes/System.html">System</a></li>
+            
+                <li><a class="type" href="../classes/Timer.html">Timer</a></li>
+            
+                <li><a class="type" href="../classes/Tween.html">Tween</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a class="module" href="../modules/game.html">game</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: ../panda.js/src/engine/debug.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+game.module(
+    &#x27;engine.debug&#x27;,
+    &#x27;1.0.0&#x27;
+)
+.body(function() { &#x27;use strict&#x27;;
+
+/**
+    Debug is enabled if url contains &#x60;?debug&#x60;.
+    @class Debug
+**/
+game.Debug = game.Class.extend({
+    init: function() {
+        var Stats = function () {
+
+            var startTime = Date.now(), prevTime = startTime;
+            var ms = 0, msMin = Infinity, msMax = 0;
+            var fps = 0, fpsMin = Infinity, fpsMax = 0;
+            var frames = 0, mode = 0, bar;
+
+            var container = document.createElement( &#x27;div&#x27; );
+            container.id = &#x27;stats&#x27;;
+            container.addEventListener( &#x27;mousedown&#x27;, function ( event ) { event.preventDefault(); setMode( ++ mode % 2 ); }, false );
+            container.style.cssText = &#x27;width:80px;opacity:0.9;cursor:pointer&#x27;;
+
+            var fpsDiv = document.createElement( &#x27;div&#x27; );
+            fpsDiv.id = &#x27;fps&#x27;;
+            fpsDiv.style.cssText = &#x27;padding:0 0 3px 3px;text-align:left;background-color:#002&#x27;;
+            container.appendChild( fpsDiv );
+
+            var fpsText = document.createElement( &#x27;div&#x27; );
+            fpsText.id = &#x27;fpsText&#x27;;
+            fpsText.style.cssText = &#x27;color:#0ff;font-family:Helvetica,Arial,sans-serif;font-size:9px;font-weight:bold;line-height:15px&#x27;;
+            fpsText.innerHTML = &#x27;FPS&#x27;;
+            fpsDiv.appendChild( fpsText );
+
+            var fpsGraph = document.createElement( &#x27;div&#x27; );
+            fpsGraph.id = &#x27;fpsGraph&#x27;;
+            fpsGraph.style.cssText = &#x27;position:relative;width:74px;height:30px;background-color:#0ff&#x27;;
+            fpsDiv.appendChild( fpsGraph );
+
+            while ( fpsGraph.children.length &lt; 74 ) {
+
+                bar = document.createElement( &#x27;span&#x27; );
+                bar.style.cssText = &#x27;width:1px;height:30px;float:left;background-color:#113&#x27;;
+                fpsGraph.appendChild( bar );
+
+            }
+
+            var msDiv = document.createElement( &#x27;div&#x27; );
+            msDiv.id = &#x27;ms&#x27;;
+            msDiv.style.cssText = &#x27;padding:0 0 3px 3px;text-align:left;background-color:#020;display:none&#x27;;
+            container.appendChild( msDiv );
+
+            var msText = document.createElement( &#x27;div&#x27; );
+            msText.id = &#x27;msText&#x27;;
+            msText.style.cssText = &#x27;color:#0f0;font-family:Helvetica,Arial,sans-serif;font-size:9px;font-weight:bold;line-height:15px&#x27;;
+            msText.innerHTML = &#x27;MS&#x27;;
+            msDiv.appendChild( msText );
+
+            var msGraph = document.createElement( &#x27;div&#x27; );
+            msGraph.id = &#x27;msGraph&#x27;;
+            msGraph.style.cssText = &#x27;position:relative;width:74px;height:30px;background-color:#0f0&#x27;;
+            msDiv.appendChild( msGraph );
+
+            while ( msGraph.children.length &lt; 74 ) {
+
+                bar = document.createElement( &#x27;span&#x27; );
+                bar.style.cssText = &#x27;width:1px;height:30px;float:left;background-color:#131&#x27;;
+                msGraph.appendChild( bar );
+
+            }
+
+            var setMode = function ( value ) {
+
+                mode = value;
+
+                switch ( mode ) {
+
+                    case 0:
+                        fpsDiv.style.display = &#x27;block&#x27;;
+                        msDiv.style.display = &#x27;none&#x27;;
+                        break;
+                    case 1:
+                        fpsDiv.style.display = &#x27;none&#x27;;
+                        msDiv.style.display = &#x27;block&#x27;;
+                        break;
+                }
+
+            };
+
+            var updateGraph = function ( dom, value ) {
+
+                var child = dom.appendChild( dom.firstChild );
+                child.style.height = value + &#x27;px&#x27;;
+
+            };
+
+            return {
+
+                REVISION: 11,
+
+                domElement: container,
+
+                setMode: setMode,
+
+                begin: function () {
+
+                    startTime = Date.now();
+
+                },
+
+                end: function () {
+
+                    var time = Date.now();
+
+                    ms = time - startTime;
+                    msMin = Math.min( msMin, ms );
+                    msMax = Math.max( msMax, ms );
+
+                    msText.textContent = ms + &#x27; MS (&#x27; + msMin + &#x27;-&#x27; + msMax + &#x27;)&#x27;;
+                    updateGraph( msGraph, Math.min( 30, 30 - ( ms / 200 ) * 30 ) );
+
+                    frames ++;
+
+                    if ( time &gt; prevTime + 1000 ) {
+
+                        fps = Math.round( ( frames * 1000 ) / ( time - prevTime ) );
+                        fpsMin = Math.min( fpsMin, fps );
+                        fpsMax = Math.max( fpsMax, fps );
+
+                        fpsText.textContent = fps + &#x27; FPS (&#x27; + fpsMin + &#x27;-&#x27; + fpsMax + &#x27;)&#x27;;
+                        updateGraph( fpsGraph, Math.min( 30, 30 - ( fps / 100 ) * 30 ) );
+
+                        prevTime = time;
+                        frames = 0;
+
+                    }
+
+                    return time;
+
+                },
+
+                update: function () {
+
+                    startTime = this.end();
+
+                }
+
+            };
+
+        };
+
+        this.stats = new Stats();
+        document.body.appendChild(this.stats.domElement);
+        this.stats.domElement.style.position = &#x27;absolute&#x27;;
+
+        if(game.ua.mobile) {
+            this.setPosition = game.Debug.position.mobile;
+            this.setPosition();
+            document.getElementById(&#x27;fpsGraph&#x27;).style.display = &#x27;none&#x27;;
+            document.getElementById(&#x27;msGraph&#x27;).style.display = &#x27;none&#x27;;
+        }
+        else {
+            this.setPosition = game.Debug.position.desktop;
+            this.setPosition();
+        }
+
+        if(game.renderer.gl) document.getElementById(&#x27;fps&#x27;).style.backgroundColor = game.Debug.backgroundColor.webGL;
+        else document.getElementById(&#x27;fps&#x27;).style.backgroundColor = game.Debug.backgroundColor.canvas;
+    }
+});
+
+game.Debug.backgroundColor = {
+    /**
+        @attribute {String} backgroundColor.canvas
+        @default &#x27;#ff0000&#x27;
+    **/
+    canvas: &#x27;#ff0000&#x27;,
+    /**
+        @attribute {String} backgroundColor.webGL
+        @default &#x27;#0000ff&#x27;
+    **/
+    webGL: &#x27;#0000ff&#x27;
+};
+
+game.Debug.POSITION = {
+    TOPLEFT: function() {
+        this.stats.domElement.style.left = &#x27;0px&#x27;;
+        this.stats.domElement.style.top = &#x27;0px&#x27;;
+    },
+    BOTTOMLEFT: function() {
+        this.stats.domElement.style.left = &#x27;0px&#x27;;
+        this.stats.domElement.style.bottom = &#x27;0px&#x27;;
+    },
+    TOPRIGHT: function() {
+        this.stats.domElement.style.right = &#x27;0px&#x27;;
+        this.stats.domElement.style.top = &#x27;0px&#x27;;
+    },
+    BOTTOMRIGHT: function() {
+        this.stats.domElement.style.right = &#x27;0px&#x27;;
+        this.stats.domElement.style.bottom = &#x27;0px&#x27;;
+    }
+};
+
+game.Debug.position = {
+    /**
+        @attribute {TOPLEFT|BOTTOMLEFT|TOPRIGHT|BOTTOMRIGHT} position.desktop
+        @default game.Debug.POSITION.TOPLEFT
+    **/
+    desktop: game.Debug.POSITION.TOPLEFT,
+    /**
+        @attribute {TOPLEFT|BOTTOMLEFT|TOPRIGHT|BOTTOMRIGHT} position.mobile
+        @default game.Debug.POSITION.TOPLEFT
+    **/
+    mobile: game.Debug.POSITION.TOPLEFT
+};
+
+game.Debug.enabled = document.location.href.match(/\?debug/) ? true : false;
+
+});
+    </pre>
+</div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

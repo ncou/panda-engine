@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>../panda.js/src/engine/sprite.js - Panda.js</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                
+                    <img class="logo" src="../../logo.png" title="Panda.js">
+                
+                
+                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.0.0</span>
+                
+                
+                    <p class="description">HTML5 game engine</p>
+                
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/Class.html">Class</a></li>
+            
+                <li><a class="type" href="../classes/Core.html">Core</a></li>
+            
+                <li><a class="type" href="../classes/Debug.html">Debug</a></li>
+            
+                <li><a class="type" href="../classes/Loader.html">Loader</a></li>
+            
+                <li><a class="type" href="../classes/Scene.html">Scene</a></li>
+            
+                <li><a class="type" href="../classes/SoundManager.html">SoundManager</a></li>
+            
+                <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+            
+                <li><a class="type" href="../classes/Storage.html">Storage</a></li>
+            
+                <li><a class="type" href="../classes/System.html">System</a></li>
+            
+                <li><a class="type" href="../classes/Timer.html">Timer</a></li>
+            
+                <li><a class="type" href="../classes/Tween.html">Tween</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a class="module" href="../modules/game.html">game</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: ../panda.js/src/engine/sprite.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+game.module(
+    &#x27;engine.sprite&#x27;,
+    &#x27;1.0.0&#x27;
+)
+.require(
+    &#x27;engine.renderer&#x27;
+)
+.body(function() { &#x27;use strict&#x27;;
+
+/**
+    http://www.goodboydigital.com/pixijs/docs/classes/Sprite%E2%84%A2.html
+    @class Sprite
+    @constructor
+    @param {Number} x
+    @param {Number} y
+    @param {Object} [settings]
+**/
+game.Sprite = game.Class.extend({
+    /**
+        @property {String} image
+    **/
+    image: null,
+
+    staticInit: function(x, y, settings) {
+        settings = settings || {};
+        var sprite = game.Sprite.fromFrame(settings.image || this.image);
+        sprite.position.x = this.x || x;
+        sprite.position.y = this.y || y;
+
+        // merge from class
+        for(var i in this) {
+            if(i !== &#x27;staticInit&#x27; &amp;&amp; i !== &#x27;constructor&#x27;) {
+                if(typeof(this[i]) === &#x27;function&#x27;) sprite[i] = this[i].bind(sprite);
+                else sprite[i] = this[i];
+            }
+        }
+
+        game.merge(sprite, settings);
+
+        sprite.tap = sprite.click;
+        sprite.touchstart = sprite.mousedown;
+        sprite.mouseupoutside = sprite.touchend = sprite.touchendoutside = sprite.mouseup;
+        sprite.touchmove = sprite.mousemove;
+
+        return sprite;
+    },
+
+    /**
+        @method remove
+    **/
+    remove: function() {
+        if(this.parent) this.parent.removeChild(this);
+        game.scene.sprites.erase(this);
+    },
+
+    click: function() {},
+    mousedown: function() {},
+    mouseup: function() {},
+    mousemove: function() {}
+});
+
+game.Sprite.fromImage = PIXI.Sprite.fromImage;
+game.Sprite.fromFrame = PIXI.Sprite.fromFrame;
+
+});
+    </pre>
+</div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

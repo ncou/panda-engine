@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>SoundManager - Panda.js</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                
+                    <img class="logo" src="../../logo.png" title="Panda.js">
+                
+                
+                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.0.0</span>
+                
+                
+                    <p class="description">HTML5 game engine</p>
+                
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/Class.html">Class</a></li>
+            
+                <li><a class="type" href="../classes/Core.html">Core</a></li>
+            
+                <li><a class="type" href="../classes/Debug.html">Debug</a></li>
+            
+                <li><a class="type" href="../classes/Loader.html">Loader</a></li>
+            
+                <li><a class="type" href="../classes/Scene.html">Scene</a></li>
+            
+                <li><a class="type" href="../classes/SoundManager.html">SoundManager</a></li>
+            
+                <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+            
+                <li><a class="type" href="../classes/Storage.html">Storage</a></li>
+            
+                <li><a class="type" href="../classes/System.html">System</a></li>
+            
+                <li><a class="type" href="../classes/Timer.html">Timer</a></li>
+            
+                <li><a class="type" href="../classes/Tween.html">Tween</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a class="module" href="../modules/game.html">game</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1>SoundManager Class</h1>
+<div class="box meta">
+    
+
+    
+
+    
+        <div class="foundat">
+            Defined in: <a href="../files/.._panda.js_src_engine_sound.js.html#l7"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:7</code></a>
+        </div>
+    
+
+    
+        
+            Module: <a href="../modules/game.html">game</a>
+        
+    
+
+    
+</div>
+
+
+
+<div class="box intro">
+    <p>Automatically created at <code>game.sound</code></p>
+
+</div>
+
+<!-- Class member index -->
+
+<a name="index" class="anchor-link"></a>
+<div class="index">
+<h2>Index</h2>
+
+    <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited">
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+
+
+    <div class="index-section properties">
+        <h3>Properties</h3>
+
+        <ul class="index-list properties">
+            
+                <li class="index-item property">
+                    <a href="#property_musicVolume">musicVolume</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_soundVolume">soundVolume</a>
+
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+
+
+    <div class="index-section attrs">
+        <h3>Attributes</h3>
+
+        <ul class="index-list attrs">
+            
+                <li class="index-item attr">
+                    <a href="#attr_webAudio">webAudio</a>
+                </li>
+            
+        </ul>
+    </div>
+
+
+
+
+    <div class="index-section methods">
+        <h3>Methods</h3>
+
+        <ul class="index-list methods">
+
+            
+
+            
+                <li class="index-item method">
+                    <a href="#method_muteAll">muteAll</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_muteMusic">muteMusic</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_muteSound">muteSound</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_playMusic">playMusic</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_playSound">playSound</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_stopAll">stopAll</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_stopMusic">stopMusic</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_stopSound">stopSound</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_toggleMusic">toggleMusic</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_toggleSound">toggleSound</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_unmuteAll">unmuteAll</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_unmuteMusic">unmuteMusic</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_unmuteSound">unmuteSound</a>
+
+                    
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+
+
+</div>
+
+
+<div class="class-detail">
+
+
+    <div class="properties-detail">
+        <h2>Properties</h2>
+
+        
+            <a name="property_musicVolume" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>musicVolume</code>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l25"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:25</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">1.0</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_soundVolume" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>soundVolume</code>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l20"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:20</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">1.0</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+
+        <div class="no-visible-items-message">
+            <p>There are no properties that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
+        </div>
+
+    </div>
+
+
+
+    <div class="attrs-detail">
+        <h2>Attributes</h2>
+
+        
+            <div id="attr_webAudio" class="attr item">
+    <a name="config_webAudio"></a> 
+    <h3 class="name"><code>webAudio</code></h3>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l346"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:346</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Use Web Audio API.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+        
+    </div>
+
+
+
+
+
+    <div class="methods-detail">
+        <h2>Methods</h2>
+
+        
+            <a name="method_muteAll" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>muteAll</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l318"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:318</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_muteMusic" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>muteMusic</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l282"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:282</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_muteSound" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>muteSound</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l221"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:221</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_playMusic" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>playMusic</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l252"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:252</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">name</code>
+                            <span class="type">String</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_playSound" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>playSound</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[loop]</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[delay]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l187"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:187</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">name</code>
+                            <span class="type">String</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[loop]</code>
+                            <span class="type">Boolean</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[delay]</code>
+                            <span class="type">Number</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_stopAll" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>stopAll</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l309"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:309</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Stops all sounds and music.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_stopMusic" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>stopMusic</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l264"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:264</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_stopSound" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>stopSound</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code class="optional">[name]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l199"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:199</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Stop sound. If name is not defined, stops all sounds.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[name]</code>
+                            <span class="type">String</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_toggleMusic" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>toggleMusic</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l300"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:300</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_toggleSound" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>toggleSound</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l243"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:243</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_unmuteAll" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>unmuteAll</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l326"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:326</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_unmuteMusic" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>unmuteMusic</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l291"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:291</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_unmuteSound" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>unmuteSound</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l232"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:232</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+
+        <div class="no-visible-items-message">
+            <p>There are no methods that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
+        </div>
+
+    </div>
+
+
+
+
+</div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
