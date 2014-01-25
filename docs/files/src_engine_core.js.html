@@ -47,49 +47,71 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a class="type" href="../classes/Body.html">Body</a></li>
+                <li><a class="type" href="../classes/game.Body.html">game.Body</a></li>
             
-                <li><a class="type" href="../classes/Circle.html">Circle</a></li>
+                <li><a class="type" href="../classes/game.Circle.html">game.Circle</a></li>
             
-                <li><a class="type" href="../classes/Class.html">Class</a></li>
+                <li><a class="type" href="../classes/game.Class.html">game.Class</a></li>
             
-                <li><a class="type" href="../classes/CollisionSolver.html">CollisionSolver</a></li>
+                <li><a class="type" href="../classes/game.CollisionSolver.html">game.CollisionSolver</a></li>
             
-                <li><a class="type" href="../classes/Core.html">Core</a></li>
+                <li><a class="type" href="../classes/game.Core.html">game.Core</a></li>
             
-                <li><a class="type" href="../classes/Debug.html">Debug</a></li>
+                <li><a class="type" href="../classes/game.Debug.html">game.Debug</a></li>
             
-                <li><a class="type" href="../classes/Line.html">Line</a></li>
+                <li><a class="type" href="../classes/game.Line.html">game.Line</a></li>
             
-                <li><a class="type" href="../classes/Loader.html">Loader</a></li>
+                <li><a class="type" href="../classes/game.Loader.html">game.Loader</a></li>
             
-                <li><a class="type" href="../classes/Pool.html">Pool</a></li>
+                <li><a class="type" href="../classes/game.Pool.html">game.Pool</a></li>
             
-                <li><a class="type" href="../classes/Rectangle.html">Rectangle</a></li>
+                <li><a class="type" href="../classes/game.Rectangle.html">game.Rectangle</a></li>
             
-                <li><a class="type" href="../classes/Scene.html">Scene</a></li>
+                <li><a class="type" href="../classes/game.Scene.html">game.Scene</a></li>
             
-                <li><a class="type" href="../classes/SoundManager.html">SoundManager</a></li>
+                <li><a class="type" href="../classes/game.SoundManager.html">game.SoundManager</a></li>
             
-                <li><a class="type" href="../classes/Sprite.html">Sprite</a></li>
+                <li><a class="type" href="../classes/game.Sprite.html">game.Sprite</a></li>
             
-                <li><a class="type" href="../classes/Storage.html">Storage</a></li>
+                <li><a class="type" href="../classes/game.Storage.html">game.Storage</a></li>
             
-                <li><a class="type" href="../classes/System.html">System</a></li>
+                <li><a class="type" href="../classes/game.System.html">game.System</a></li>
             
-                <li><a class="type" href="../classes/Timer.html">Timer</a></li>
+                <li><a class="type" href="../classes/game.Timer.html">game.Timer</a></li>
             
-                <li><a class="type" href="../classes/Tween.html">Tween</a></li>
+                <li><a class="type" href="../classes/game.Tween.html">game.Tween</a></li>
             
-                <li><a class="type" href="../classes/Vector.html">Vector</a></li>
+                <li><a class="type" href="../classes/game.Vector.html">game.Vector</a></li>
             
-                <li><a class="type" href="../classes/World.html">World</a></li>
+                <li><a class="type" href="../classes/game.World.html">game.World</a></li>
             
             </ul>
 
             <ul id="api-modules" class="apis modules">
             
-                <li><a class="module" href="../modules/game.html">game</a></li>
+                <li><a class="module" href="../modules/core.html">core</a></li>
+            
+                <li><a class="module" href="../modules/debug.html">debug</a></li>
+            
+                <li><a class="module" href="../modules/loader.html">loader</a></li>
+            
+                <li><a class="module" href="../modules/physics.html">physics</a></li>
+            
+                <li><a class="module" href="../modules/pool.html">pool</a></li>
+            
+                <li><a class="module" href="../modules/scene.html">scene</a></li>
+            
+                <li><a class="module" href="../modules/sound.html">sound</a></li>
+            
+                <li><a class="module" href="../modules/sprite.html">sprite</a></li>
+            
+                <li><a class="module" href="../modules/storage.html">storage</a></li>
+            
+                <li><a class="module" href="../modules/system.html">system</a></li>
+            
+                <li><a class="module" href="../modules/timer.html">timer</a></li>
+            
+                <li><a class="module" href="../modules/tween.html">tween</a></li>
             
             </ul>
         </div>
@@ -131,7 +153,8 @@
 (function(window){ &#x27;use strict&#x27;;
 
 /**
-    @module game
+    @module core
+    @namespace game
 **/
 /**
     Instance automatically created at &#x60;game&#x60;
@@ -144,33 +167,33 @@ var core = {
     **/
     scale: 1,
     /**
-        Instance of current {{#crossLink &quot;Scene&quot;}}{{/crossLink}}.
-        @property {Scene} scene
+        Instance of current {{#crossLink &quot;game.Scene&quot;}}{{/crossLink}}.
+        @property {game.Scene} scene
     **/
     scene: null,
     /**
-        Instance of {{#crossLink &quot;Debug&quot;}}{{/crossLink}}.
-        @property {Debug} debug
+        Instance of {{#crossLink &quot;game.Debug&quot;}}{{/crossLink}}.
+        @property {game.Debug} debug
     **/
     debug: null,
     /**
-        Instance of {{#crossLink &quot;System&quot;}}{{/crossLink}}.
-        @property {System} system
+        Instance of {{#crossLink &quot;game.System&quot;}}{{/crossLink}}.
+        @property {game.System} system
     **/
     system: null,
     /**
-        Instance of {{#crossLink &quot;SoundManager&quot;}}{{/crossLink}}.
-        @property {SoundManager} sound
+        Instance of {{#crossLink &quot;game.SoundManager&quot;}}{{/crossLink}}.
+        @property {game.SoundManager} sound
     **/
     sound: null,
     /**
-        Instance of {{#crossLink &quot;Pool&quot;}}{{/crossLink}}.
-        @property {Pool} pool
+        Instance of {{#crossLink &quot;game.Pool&quot;}}{{/crossLink}}.
+        @property {game.Pool} pool
     **/
     pool: null,
     /**
-        Instance of {{#crossLink &quot;Storage&quot;}}{{/crossLink}}.
-        @property {Storage} storage
+        Instance of {{#crossLink &quot;game.Storage&quot;}}{{/crossLink}}.
+        @property {game.Storage} storage
     **/
     storage: null,
     renderer: null,

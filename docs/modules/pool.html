@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/engine/timer.js - Panda.js</title>
+    <title>pool - Panda.js</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -122,107 +122,50 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1 class="file-heading">File: src/engine/timer.js</h1>
-
-<div class="file">
-    <pre class="code prettyprint linenums">
-/**
-    @module timer
-    @namespace game
-**/
-game.module(
-    &#x27;engine.timer&#x27;,
-    &#x27;1.0.0&#x27;
-)
-.body(function(){ &#x27;use strict&#x27;;
-
-/**
-    Basic timer.
+                <h1>pool Module</h1>
+<div class="box clearfix meta">
     
-    __Example__
 
-        var timer = new game.Timer(2);
-        if(timer.delta() &gt;= 0) {
-            timer.set(2);
-        }
-    @class Timer
-    @extends game.Class
-    @constructor
-    @param {Number} seconds
-**/
-game.Timer = game.Class.extend({
-    target: 0,
-    base: 0,
-    last: 0,
-    pausedAt: 0,
     
-    init: function(seconds) {
-        this.last = game.Timer.time;
-        this.set(seconds);
-    },
+
     
-    /**
-        @method set
-        @param {Number} seconds
-    **/
-    set: function(seconds) {
-        if(typeof(seconds) !== &#x27;number&#x27;) seconds = 0;
-        this.target = seconds || 0;
-        this.reset();
-    },
+        <div class="foundat">
+            Defined in: <a href="../files/src_engine_pool.js.html#l13"><code>src&#x2F;engine&#x2F;pool.js:13</code></a>
+        </div>
     
-    /**
-        @method reset
-    **/
-    reset: function() {
-        this.base = game.Timer.time;
-        this.pausedAt = 0;
-    },
+
     
-    tick: function() {
-        var delta = game.Timer.time - this.last;
-        this.last = game.Timer.time;
-        return this.pausedAt ? 0 : delta;
-    },
-    
-    delta: function() {
-        return (this.pausedAt || game.Timer.time) - this.base - this.target;
-    },
+</div>
 
-    /**
-        Pause timer.
-        @method pause
-    **/
-    pause: function() {
-        if(!this.pausedAt) this.pausedAt = game.Timer.time;
-    },
 
-    /**
-        Resume paused timer.
-        @method unpause
-    **/
-    unpause: function() {
-        if(this.pausedAt) {
-            this.base += game.Timer.time - this.pausedAt;
-            this.pausedAt = 0;
-        }
-    }
-});
 
-game.Timer.last = 0;
-game.Timer.time = Number.MIN_VALUE;
-game.Timer.speedFactor = 1;
-game.Timer.maxStep = 0.05;
+<div class="box intro">
+    <p>Object pooling.</p>
 
-game.Timer.step = function() {
-    var current = Date.now();
-    var delta = (current - game.Timer.last) / 1000;
-    game.Timer.time += Math.min(delta, game.Timer.maxStep) * game.Timer.speedFactor;
-    game.Timer.last = current;
-};
+</div>
 
-});
-    </pre>
+
+
+<div class="yui3-g">
+    <div class="yui3-u-1-2">
+        
+            <p>This module provides the following classes:</p>
+
+            <ul class="module-classes">
+            
+                <li class="module-class">
+                    <a href="../classes/game.Pool.html">
+                        game.Pool
+                    </a>
+                </li>
+            
+            </ul>
+        
+    </div>
+
+    <div class="yui3-u-1-2">
+        
+    </div>
 </div>
 
             </div>

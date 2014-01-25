@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>game.Line - Panda.js</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                
+                    <img class="logo" src="../../logo.png" title="Panda.js">
+                
+                
+                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.0.0</span>
+                
+                
+                    <p class="description">HTML5 game engine</p>
+                
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/game.Body.html">game.Body</a></li>
+            
+                <li><a class="type" href="../classes/game.Circle.html">game.Circle</a></li>
+            
+                <li><a class="type" href="../classes/game.Class.html">game.Class</a></li>
+            
+                <li><a class="type" href="../classes/game.CollisionSolver.html">game.CollisionSolver</a></li>
+            
+                <li><a class="type" href="../classes/game.Core.html">game.Core</a></li>
+            
+                <li><a class="type" href="../classes/game.Debug.html">game.Debug</a></li>
+            
+                <li><a class="type" href="../classes/game.Line.html">game.Line</a></li>
+            
+                <li><a class="type" href="../classes/game.Loader.html">game.Loader</a></li>
+            
+                <li><a class="type" href="../classes/game.Pool.html">game.Pool</a></li>
+            
+                <li><a class="type" href="../classes/game.Rectangle.html">game.Rectangle</a></li>
+            
+                <li><a class="type" href="../classes/game.Scene.html">game.Scene</a></li>
+            
+                <li><a class="type" href="../classes/game.SoundManager.html">game.SoundManager</a></li>
+            
+                <li><a class="type" href="../classes/game.Sprite.html">game.Sprite</a></li>
+            
+                <li><a class="type" href="../classes/game.Storage.html">game.Storage</a></li>
+            
+                <li><a class="type" href="../classes/game.System.html">game.System</a></li>
+            
+                <li><a class="type" href="../classes/game.Timer.html">game.Timer</a></li>
+            
+                <li><a class="type" href="../classes/game.Tween.html">game.Tween</a></li>
+            
+                <li><a class="type" href="../classes/game.Vector.html">game.Vector</a></li>
+            
+                <li><a class="type" href="../classes/game.World.html">game.World</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a class="module" href="../modules/core.html">core</a></li>
+            
+                <li><a class="module" href="../modules/debug.html">debug</a></li>
+            
+                <li><a class="module" href="../modules/loader.html">loader</a></li>
+            
+                <li><a class="module" href="../modules/physics.html">physics</a></li>
+            
+                <li><a class="module" href="../modules/pool.html">pool</a></li>
+            
+                <li><a class="module" href="../modules/scene.html">scene</a></li>
+            
+                <li><a class="module" href="../modules/sound.html">sound</a></li>
+            
+                <li><a class="module" href="../modules/sprite.html">sprite</a></li>
+            
+                <li><a class="module" href="../modules/storage.html">storage</a></li>
+            
+                <li><a class="module" href="../modules/system.html">system</a></li>
+            
+                <li><a class="module" href="../modules/timer.html">timer</a></li>
+            
+                <li><a class="module" href="../modules/tween.html">tween</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1>game.Line Class</h1>
+<div class="box meta">
+    
+
+    
+        <div class="extends">
+            Extends <a href="../classes/game.Class.html" class="crosslink">game.Class</a>
+        </div>
+    
+
+    
+        <div class="foundat">
+            Defined in: <a href="../files/src_engine_physics.js.html#l497"><code>src&#x2F;engine&#x2F;physics.js:497</code></a>
+        </div>
+    
+
+    
+        
+            Module: <a href="../modules/physics.html">physics</a>
+        
+    
+
+    
+</div>
+
+
+
+<div class="box intro">
+    
+</div>
+
+<!-- Class member index -->
+
+<a name="index" class="anchor-link"></a>
+<div class="index">
+<h2>Index</h2>
+
+    <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited">
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+
+
+    <div class="index-section properties">
+        <h3>Properties</h3>
+
+        <ul class="index-list properties extends">
+            
+                <li class="index-item property inherited">
+                    <a href="#property_init">init</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_length">length</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_rotation">rotation</a>
+
+                    
+                </li>
+            
+                <li class="index-item property inherited">
+                    <a href="#property_staticInit">staticInit</a>
+
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+
+
+
+
+
+    <div class="index-section methods">
+        <h3>Methods</h3>
+
+        <ul class="index-list methods extends">
+
+            
+                <li class="index-item method constructor">
+                    <a href="#method_game.Line">game.Line</a>
+
+                    <span class="flag constructor">constructor</span>
+
+                    
+                    
+                </li>
+            
+
+            
+                <li class="index-item method inherited">
+                    <a href="#method_extend">extend</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method inherited">
+                    <a href="#method_inject">inject</a>
+
+                    
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+
+
+</div>
+
+
+<div class="class-detail">
+
+
+    <div class="properties-detail">
+        <h2>Properties</h2>
+
+        
+            <a name="property_init" class="anchor-link"></a>
+<div class="property item inherited">
+    <h3 class="name"><code>init</code>
+    <span class="type">Function</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/game.Class.html#property_init" class="type">game.Class</a>:
+            
+        
+        
+        <a href="../files/src_engine_core.js.html#l521"><code>src&#x2F;engine&#x2F;core.js:521</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Automatically called, when creating new class.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_length" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>length</code>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_physics.js.html#l505"><code>src&#x2F;engine&#x2F;physics.js:505</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">50</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_rotation" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>rotation</code>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_physics.js.html#l510"><code>src&#x2F;engine&#x2F;physics.js:510</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">0</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_staticInit" class="anchor-link"></a>
+<div class="property item inherited">
+    <h3 class="name"><code>staticInit</code>
+    <span class="type">Function</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/game.Class.html#property_staticInit" class="type">game.Class</a>:
+            
+        
+        
+        <a href="../files/src_engine_core.js.html#l506"><code>src&#x2F;engine&#x2F;core.js:506</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>If Class has <code>staticInit</code> function, it is called before <code>init</code> function.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+
+        <div class="no-visible-items-message">
+            <p>There are no properties that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
+        </div>
+
+    </div>
+
+
+
+
+
+    <div class="constructor">
+        <h2>Constructor</h2>
+        <a name="method_game.Line" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>game.Line</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>length</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>rotation</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_physics.js.html#l497"><code>src&#x2F;engine&#x2F;physics.js:497</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">length</code>
+                            <span class="type">Number</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">rotation</code>
+                            <span class="type">Number</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+    </div>
+
+
+
+    <div class="methods-detail">
+        <h2>Methods</h2>
+
+        
+            <a name="method_extend" class="anchor-link"></a>
+<div class="method item inherited">
+    <h3 class="name"><code>extend</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Class</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/game.Class.html#method_extend" class="type">game.Class</a>:
+            
+        
+        
+        <a href="../files/src_engine_core.js.html#l470"><code>src&#x2F;engine&#x2F;core.js:470</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Class</span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_inject" class="anchor-link"></a>
+<div class="method item inherited">
+    <h3 class="name"><code>inject</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/game.Class.html#method_inject" class="type">game.Class</a>:
+            
+        
+        
+        <a href="../files/src_engine_core.js.html#l534"><code>src&#x2F;engine&#x2F;core.js:534</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+
+        <div class="no-visible-items-message">
+            <p>There are no methods that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
+        </div>
+
+    </div>
+
+
+
+
+</div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
