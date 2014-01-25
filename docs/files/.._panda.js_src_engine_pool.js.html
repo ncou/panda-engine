@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>../panda.js/src/engine/timer.js - Panda.js</title>
+    <title>../panda.js/src/engine/pool.js - Panda.js</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -86,101 +86,61 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1 class="file-heading">File: ../panda.js/src/engine/timer.js</h1>
+                <h1 class="file-heading">File: ../panda.js/src/engine/pool.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 game.module(
-    &#x27;engine.timer&#x27;,
+    &#x27;engine.pool&#x27;,
     &#x27;1.0.0&#x27;
 )
-.body(function(){ &#x27;use strict&#x27;;
+.body(function() { &#x27;use strict&#x27;;
 
 /**
-    Basic timer.
-    
-    __Example__
-
-        var timer = new game.Timer(2);
-        if(timer.delta() &gt;= 0) {
-            timer.set(2);
-        }
-    @class Timer
+    Automatically created at &#x60;game.pool&#x60;
+    @class Pool
     @extends Class
-    @constructor
-    @param {Number} seconds
 **/
-game.Timer = game.Class.extend({
-    target: 0,
-    base: 0,
-    last: 0,
-    pausedAt: 0,
-    
-    init: function(seconds) {
-        this.last = game.Timer.time;
-        this.set(seconds);
-    },
-    
+game.Pool = game.Class.extend({
     /**
-        @method set
-        @param {Number} seconds
+        Create new pool.
+        @method create
+        @param {String} pool
+        @return {Boolean} Returns false, if pool already exists.
     **/
-    set: function(seconds) {
-        if(typeof(seconds) !== &#x27;number&#x27;) seconds = 0;
-        this.target = seconds || 0;
-        this.reset();
-    },
-    
-    /**
-        @method reset
-    **/
-    reset: function() {
-        this.base = game.Timer.time;
-        this.pausedAt = 0;
-    },
-    
-    tick: function() {
-        var delta = game.Timer.time - this.last;
-        this.last = game.Timer.time;
-        return this.pausedAt ? 0 : delta;
-    },
-    
-    delta: function() {
-        return (this.pausedAt || game.Timer.time) - this.base - this.target;
-    },
-
-    /**
-        Pause timer.
-        @method pause
-    **/
-    pause: function() {
-        if(!this.pausedAt) this.pausedAt = game.Timer.time;
-    },
-
-    /**
-        Resume paused timer.
-        @method unpause
-    **/
-    unpause: function() {
-        if(this.pausedAt) {
-            this.base += game.Timer.time - this.pausedAt;
-            this.pausedAt = 0;
+    create: function(pool) {
+        if(!this[pool]) {
+            this[pool] = [];
+            return true;
         }
+        return false;
+    },
+
+    /**
+        Get object from pool.
+        @method get
+        @param {String} pool
+        @return {Object} Returns false, if pool not found or empty.
+    **/
+    get: function(pool) {
+        if(!this[pool] || this[pool].length === 0) return false;
+        else return this[pool].pop();
+    },
+
+    /**
+        Put object to pool.
+        @method put
+        @param {String} pool
+        @param {Object} item
+        @return {Boolean} Returns false, if pool not found.
+    **/
+    put: function(pool, item) {
+        if(!this[pool]) return false;
+        this[pool].push(item);
+        return true;
     }
 });
-
-game.Timer.last = 0;
-game.Timer.time = Number.MIN_VALUE;
-game.Timer.speedFactor = 1;
-game.Timer.maxStep = 0.05;
-
-game.Timer.step = function() {
-    var current = Date.now();
-    var delta = (current - game.Timer.last) / 1000;
-    game.Timer.time += Math.min(delta, game.Timer.maxStep) * game.Timer.speedFactor;
-    game.Timer.last = current;
-};
-
+    
 });
     </pre>
 </div>

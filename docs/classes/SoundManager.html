@@ -55,6 +55,8 @@
             
                 <li><a class="type" href="../classes/Loader.html">Loader</a></li>
             
+                <li><a class="type" href="../classes/Pool.html">Pool</a></li>
+            
                 <li><a class="type" href="../classes/Scene.html">Scene</a></li>
             
                 <li><a class="type" href="../classes/SoundManager.html">SoundManager</a></li>
@@ -88,6 +90,10 @@
 <div class="box meta">
     
 
+    
+        <div class="extends">
+            Extends <a href="../classes/Class.html" class="crosslink">Class</a>
+        </div>
     
 
     
@@ -147,7 +153,13 @@
     <div class="index-section properties">
         <h3>Properties</h3>
 
-        <ul class="index-list properties">
+        <ul class="index-list properties extends">
+            
+                <li class="index-item property inherited">
+                    <a href="#property_init">init</a>
+
+                    
+                </li>
             
                 <li class="index-item property">
                     <a href="#property_musicVolume">musicVolume</a>
@@ -161,6 +173,12 @@
                     
                 </li>
             
+                <li class="index-item property inherited">
+                    <a href="#property_staticInit">staticInit</a>
+
+                    
+                </li>
+            
         </ul>
     </div>
 
@@ -169,7 +187,7 @@
     <div class="index-section attrs">
         <h3>Attributes</h3>
 
-        <ul class="index-list attrs">
+        <ul class="index-list attrs extends">
             
                 <li class="index-item attr">
                     <a href="#attr_webAudio">webAudio</a>
@@ -184,10 +202,24 @@
     <div class="index-section methods">
         <h3>Methods</h3>
 
-        <ul class="index-list methods">
+        <ul class="index-list methods extends">
 
             
 
+            
+                <li class="index-item method inherited">
+                    <a href="#method_extend">extend</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method inherited">
+                    <a href="#method_inject">inject</a>
+
+                    
+                    
+                </li>
             
                 <li class="index-item method">
                     <a href="#method_muteAll">muteAll</a>
@@ -295,6 +327,53 @@
         <h2>Properties</h2>
 
         
+            <a name="property_init" class="anchor-link"></a>
+<div class="property item inherited">
+    <h3 class="name"><code>init</code>
+    <span class="type">Function</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Class.html#property_init" class="type">Class</a>:
+            
+        
+        
+        <a href="../files/.._panda.js_src_engine_core.js.html#l509"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;core.js:509</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Automatically called, when creating new class.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
             <a name="property_musicVolume" class="anchor-link"></a>
 <div class="property item">
     <h3 class="name"><code>musicVolume</code>
@@ -321,7 +400,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_sound.js.html#l25"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:25</code></a>
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l26"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:26</code></a>
         
         </p>
 
@@ -372,7 +451,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_sound.js.html#l20"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:20</code></a>
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l21"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:21</code></a>
         
         </p>
 
@@ -388,6 +467,53 @@
 
         
             <p class="default"><strong>Default:</strong> <span class="default-value">1.0</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_staticInit" class="anchor-link"></a>
+<div class="property item inherited">
+    <h3 class="name"><code>staticInit</code>
+    <span class="type">Function</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Class.html#property_staticInit" class="type">Class</a>:
+            
+        
+        
+        <a href="../files/.._panda.js_src_engine_core.js.html#l494"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;core.js:494</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>If Class has <code>staticInit</code> function, it is called before <code>init</code> function.</p>
+
+        </div>
+
         
 
         
@@ -440,7 +566,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_sound.js.html#l346"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:346</code></a>
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l347"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:347</code></a>
         
         </p>
 
@@ -470,6 +596,136 @@
 
     <div class="methods-detail">
         <h2>Methods</h2>
+
+        
+            <a name="method_extend" class="anchor-link"></a>
+<div class="method item inherited">
+    <h3 class="name"><code>extend</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/Class.html" class="crosslink">Class</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Class.html#method_extend" class="type">Class</a>:
+            
+        
+        
+        <a href="../files/.._panda.js_src_engine_core.js.html#l458"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;core.js:458</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="../classes/Class.html" class="crosslink">Class</a></span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_inject" class="anchor-link"></a>
+<div class="method item inherited">
+    <h3 class="name"><code>inject</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Class.html#method_inject" class="type">Class</a>:
+            
+        
+        
+        <a href="../files/.._panda.js_src_engine_core.js.html#l522"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;core.js:522</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
 
         
             <a name="method_muteAll" class="anchor-link"></a>
@@ -507,7 +763,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_sound.js.html#l318"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:318</code></a>
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l319"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:319</code></a>
         
         </p>
 
@@ -567,7 +823,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_sound.js.html#l282"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:282</code></a>
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l283"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:283</code></a>
         
         </p>
 
@@ -627,7 +883,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_sound.js.html#l221"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:221</code></a>
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l222"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:222</code></a>
         
         </p>
 
@@ -697,7 +953,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_sound.js.html#l252"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:252</code></a>
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l253"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:253</code></a>
         
         </p>
 
@@ -802,7 +1058,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_sound.js.html#l187"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:187</code></a>
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l188"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:188</code></a>
         
         </p>
 
@@ -917,7 +1173,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_sound.js.html#l309"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:309</code></a>
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l310"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:310</code></a>
         
         </p>
 
@@ -978,7 +1234,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_sound.js.html#l264"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:264</code></a>
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l265"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:265</code></a>
         
         </p>
 
@@ -1048,7 +1304,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_sound.js.html#l199"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:199</code></a>
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l200"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:200</code></a>
         
         </p>
 
@@ -1133,7 +1389,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_sound.js.html#l300"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:300</code></a>
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l301"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:301</code></a>
         
         </p>
 
@@ -1193,7 +1449,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_sound.js.html#l243"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:243</code></a>
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l244"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:244</code></a>
         
         </p>
 
@@ -1253,7 +1509,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_sound.js.html#l326"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:326</code></a>
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l327"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:327</code></a>
         
         </p>
 
@@ -1313,7 +1569,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_sound.js.html#l291"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:291</code></a>
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l292"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:292</code></a>
         
         </p>
 
@@ -1373,7 +1629,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_sound.js.html#l232"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:232</code></a>
+        <a href="../files/.._panda.js_src_engine_sound.js.html#l233"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sound.js:233</code></a>
         
         </p>
 

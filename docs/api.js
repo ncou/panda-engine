@@ -5,6 +5,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "Core",
         "Debug",
         "Loader",
+        "Pool",
         "Scene",
         "SoundManager",
         "Sprite",

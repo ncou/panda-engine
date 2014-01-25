@@ -55,6 +55,8 @@
             
                 <li><a class="type" href="../classes/Loader.html">Loader</a></li>
             
+                <li><a class="type" href="../classes/Pool.html">Pool</a></li>
+            
                 <li><a class="type" href="../classes/Scene.html">Scene</a></li>
             
                 <li><a class="type" href="../classes/SoundManager.html">SoundManager</a></li>
@@ -88,6 +90,10 @@
 <div class="box meta">
     
 
+    
+        <div class="extends">
+            Extends <a href="../classes/Class.html" class="crosslink">Class</a>
+        </div>
     
 
     
@@ -147,10 +153,22 @@
     <div class="index-section properties">
         <h3>Properties</h3>
 
-        <ul class="index-list properties">
+        <ul class="index-list properties extends">
             
                 <li class="index-item property">
                     <a href="#property_image">image</a>
+
+                    
+                </li>
+            
+                <li class="index-item property inherited">
+                    <a href="#property_init">init</a>
+
+                    
+                </li>
+            
+                <li class="index-item property inherited">
+                    <a href="#property_staticInit">staticInit</a>
 
                     
                 </li>
@@ -166,7 +184,7 @@
     <div class="index-section methods">
         <h3>Methods</h3>
 
-        <ul class="index-list methods">
+        <ul class="index-list methods extends">
 
             
                 <li class="index-item method constructor">
@@ -179,6 +197,20 @@
                 </li>
             
 
+            
+                <li class="index-item method inherited">
+                    <a href="#method_extend">extend</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method inherited">
+                    <a href="#method_inject">inject</a>
+
+                    
+                    
+                </li>
             
                 <li class="index-item method">
                     <a href="#method_remove">remove</a>
@@ -228,7 +260,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_sprite.js.html#l19"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sprite.js:19</code></a>
+        <a href="../files/.._panda.js_src_engine_sprite.js.html#l20"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sprite.js:20</code></a>
         
         </p>
 
@@ -240,6 +272,100 @@
     <div class="extended-detail">
         <div class="description">
             
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_init" class="anchor-link"></a>
+<div class="property item inherited">
+    <h3 class="name"><code>init</code>
+    <span class="type">Function</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Class.html#property_init" class="type">Class</a>:
+            
+        
+        
+        <a href="../files/.._panda.js_src_engine_core.js.html#l509"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;core.js:509</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Automatically called, when creating new class.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_staticInit" class="anchor-link"></a>
+<div class="property item inherited">
+    <h3 class="name"><code>staticInit</code>
+    <span class="type">Function</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Class.html#property_staticInit" class="type">Class</a>:
+            
+        
+        
+        <a href="../files/.._panda.js_src_engine_core.js.html#l494"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;core.js:494</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>If Class has <code>staticInit</code> function, it is called before <code>init</code> function.</p>
+
         </div>
 
         
@@ -407,6 +533,136 @@
         <h2>Methods</h2>
 
         
+            <a name="method_extend" class="anchor-link"></a>
+<div class="method item inherited">
+    <h3 class="name"><code>extend</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/Class.html" class="crosslink">Class</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Class.html#method_extend" class="type">Class</a>:
+            
+        
+        
+        <a href="../files/.._panda.js_src_engine_core.js.html#l458"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;core.js:458</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="../classes/Class.html" class="crosslink">Class</a></span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_inject" class="anchor-link"></a>
+<div class="method item inherited">
+    <h3 class="name"><code>inject</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Class.html#method_inject" class="type">Class</a>:
+            
+        
+        
+        <a href="../files/.._panda.js_src_engine_core.js.html#l522"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;core.js:522</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
             <a name="method_remove" class="anchor-link"></a>
 <div class="method item">
     <h3 class="name"><code>remove</code>
@@ -442,7 +698,7 @@
             
         
         
-        <a href="../files/.._panda.js_src_engine_sprite.js.html#l48"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sprite.js:48</code></a>
+        <a href="../files/.._panda.js_src_engine_sprite.js.html#l49"><code>..&#x2F;panda.js&#x2F;src&#x2F;engine&#x2F;sprite.js:49</code></a>
         
         </p>
 
