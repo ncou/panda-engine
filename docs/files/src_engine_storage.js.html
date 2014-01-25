@@ -97,12 +97,14 @@ game.module(
 .body(function() { &#x27;use strict&#x27;;
 
 /**
-    Automatically created at &#x60;game.storage&#x60; if &#x60;game.Storage.id&#x60; is set.
+    Instance automatically created at {{#crossLink &quot;Core&quot;}}{{/crossLink}}, if {{#crossLink &quot;Storage/id:attribute&quot;}}{{/crossLink}} is set.
 
-        game.Storage.id = &#x27;com.company.mygame&#x27;;
+    __Example__
+
+        game.Storage.id = &#x27;com.company.mygame&#x27;; // id must be set before engine is started.
 
         game.storage.set(&#x27;highScore&#x27;, 1000);
-        var highScore = game.storage.get(&#x27;highscore&#x27;);
+        var highScore = game.storage.get(&#x27;highScore&#x27;);
     @class Storage
     @extends Class
 **/
@@ -127,6 +129,7 @@ game.Storage = game.Class.extend({
         Get key from local storage.
         @method get
         @param {String} key
+        @return {String} value
     **/
     get: function(key) {
         return localStorage[this.id + &#x27;.&#x27; + key];
@@ -153,7 +156,7 @@ game.Storage = game.Class.extend({
 });
 
 /**
-    Id for local storage.
+    Identifier for local storage.
     @attribute {String} id
 **/
 game.Storage.id = null;
