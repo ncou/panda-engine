@@ -198,7 +198,7 @@
             },
             "tag": "module",
             "file": "src/engine/core.js",
-            "line": 466
+            "line": 468
         },
         "debug": {
             "name": "debug",
@@ -405,7 +405,7 @@
             "module": "core",
             "namespace": "game",
             "file": "src/engine/core.js",
-            "line": 466
+            "line": 468
         },
         "game.Debug": {
             "name": "game.Debug",
@@ -876,7 +876,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 159,
+            "line": 161,
             "description": "Add asset to preloader.",
             "itemtype": "method",
             "name": "addAsset",
@@ -896,7 +896,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 170,
+            "line": 172,
             "description": "Add sound to preloader.",
             "itemtype": "method",
             "name": "addSound",
@@ -922,7 +922,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 183,
+            "line": 185,
             "description": "Add music to preloader.",
             "itemtype": "method",
             "name": "addMusic",
@@ -945,7 +945,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 198,
+            "line": 200,
             "description": "Define new module.",
             "itemtype": "method",
             "name": "module",
@@ -971,7 +971,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 218,
+            "line": 220,
             "description": "Require modules for module.",
             "itemtype": "method",
             "name": "require",
@@ -988,7 +988,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 231,
+            "line": 233,
             "description": "Define body for module.",
             "itemtype": "method",
             "name": "body",
@@ -998,7 +998,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 470,
+            "line": 472,
             "itemtype": "method",
             "name": "extend",
             "return": {
@@ -1011,7 +1011,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 482,
+            "line": 484,
             "description": "Call functions parent function.",
             "itemtype": "method",
             "name": "super",
@@ -1021,7 +1021,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 511,
+            "line": 513,
             "description": "If Class has `staticInit` function, it is called before `init` function.",
             "itemtype": "property",
             "name": "staticInit",
@@ -1032,7 +1032,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 526,
+            "line": 528,
             "description": "Automatically called, when creating new class.",
             "itemtype": "property",
             "name": "init",
@@ -1043,7 +1043,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 539,
+            "line": 541,
             "itemtype": "method",
             "name": "inject",
             "class": "game.Class",
@@ -2002,7 +2002,18 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 49,
+            "line": 32,
+            "description": "Main container for scene.",
+            "itemtype": "property",
+            "name": "stage",
+            "type": "game.Container",
+            "class": "game.Scene",
+            "module": "scene",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/scene.js",
+            "line": 57,
             "description": "This is called every frame.",
             "itemtype": "method",
             "name": "update",
@@ -2012,7 +2023,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 67,
+            "line": 75,
             "description": "Helper function for {{#crossLink \"game.Tween\"}}{{/crossLink}}",
             "itemtype": "method",
             "name": "addTween",
@@ -2045,7 +2056,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 81,
+            "line": 89,
             "itemtype": "method",
             "name": "getTween",
             "params": [
@@ -2061,7 +2072,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 92,
+            "line": 100,
             "itemtype": "method",
             "name": "stopTweens",
             "params": [
@@ -2084,7 +2095,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 103,
+            "line": 111,
             "itemtype": "method",
             "name": "pauseTweens",
             "params": [
@@ -2101,7 +2112,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 113,
+            "line": 121,
             "itemtype": "method",
             "name": "resumeTweens",
             "params": [
@@ -2118,7 +2129,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 123,
+            "line": 131,
             "description": "Add timer to game scene.",
             "itemtype": "method",
             "name": "addTimer",
@@ -2140,7 +2151,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 135,
+            "line": 143,
             "description": "Callback for mouse click and touch tap on the scene stage.",
             "itemtype": "method",
             "name": "click",
@@ -2157,7 +2168,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 142,
+            "line": 150,
             "description": "Callback for mousedown and touchstart on the scene stage.",
             "itemtype": "method",
             "name": "mousedown",
@@ -2174,7 +2185,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 149,
+            "line": 157,
             "description": "Callback for mouseup and touchend on the scene stage.",
             "itemtype": "method",
             "name": "mouseup",
@@ -2191,7 +2202,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 156,
+            "line": 164,
             "description": "Callback for mousemove and touchmove on the scene stage.",
             "itemtype": "method",
             "name": "mousemove",
@@ -2208,7 +2219,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 163,
+            "line": 171,
             "description": "Callback for mouseout on the scene stage.",
             "itemtype": "method",
             "name": "mouseout",
@@ -2219,17 +2230,6 @@
                     "type": "InteractionData"
                 }
             ],
-            "class": "game.Scene",
-            "module": "scene",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/scene.js",
-            "line": 196,
-            "description": "Main stage for scene.\nhttp://www.goodboydigital.com/pixijs/docs/classes/Stage.html",
-            "itemtype": "property",
-            "name": "stage",
-            "type": "Class",
             "class": "game.Scene",
             "module": "scene",
             "namespace": "game"
