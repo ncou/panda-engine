@@ -5,6 +5,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "game.Circle",
         "game.Class",
         "game.CollisionSolver",
+        "game.Container",
         "game.Core",
         "game.Debug",
         "game.Line",
@@ -25,6 +26,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "core",
         "debug",
         "loader",
+        "particle",
         "physics",
         "pool",
         "scene",
@@ -47,6 +49,11 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "loader",
             "name": "loader"
+        },
+        {
+            "displayName": "particle",
+            "name": "particle",
+            "description": "Particle engine."
         },
         {
             "displayName": "physics",

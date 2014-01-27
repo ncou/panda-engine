@@ -48,6 +48,17 @@
                 "game": 1
             }
         },
+        "src/engine/particle.js": {
+            "name": "src/engine/particle.js",
+            "modules": {
+                "particle": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {
+                "game": 1
+            }
+        },
         "src/engine/physics.js": {
             "name": "src/engine/physics.js",
             "modules": {
@@ -112,7 +123,8 @@
                 "sprite": 1
             },
             "classes": {
-                "game.Sprite": 1
+                "game.Sprite": 1,
+                "game.Container": 1
             },
             "fors": {},
             "namespaces": {
@@ -216,6 +228,19 @@
             "file": "src/engine/loader.js",
             "line": 11
         },
+        "particle": {
+            "name": "particle",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {
+                "game": 1
+            },
+            "tag": "module",
+            "file": "src/engine/particle.js",
+            "line": 1,
+            "description": "Particle engine."
+        },
         "physics": {
             "name": "physics",
             "submodules": {},
@@ -284,7 +309,8 @@
             "name": "sprite",
             "submodules": {},
             "classes": {
-                "game.Sprite": 1
+                "game.Sprite": 1,
+                "game.Container": 1
             },
             "fors": {},
             "namespaces": {
@@ -292,7 +318,7 @@
             },
             "tag": "module",
             "file": "src/engine/sprite.js",
-            "line": 14
+            "line": 50
         },
         "storage": {
             "name": "storage",
@@ -636,8 +662,8 @@
             "namespace": "game",
             "file": "src/engine/sprite.js",
             "line": 14,
-            "description": "http://www.goodboydigital.com/pixijs/docs/classes/Sprite%E2%84%A2.html",
-            "extends": "game.Class",
+            "description": "http://www.goodboydigital.com/pixijs/docs/classes/Sprite%E2%84%A2.html\n\n__Example__\n\n    var sprite = new game.Sprite(100, 200, 'media/logo.png');\n    game.scene.stage.addChild(sprite);",
+            "extends": "PIXI.Sprite",
             "is_constructor": 1,
             "params": [
                 {
@@ -651,12 +677,31 @@
                     "type": "Number"
                 },
                 {
+                    "name": "path",
+                    "description": "",
+                    "type": "String"
+                },
+                {
                     "name": "settings",
                     "description": "",
                     "type": "Object",
                     "optional": true
                 }
             ]
+        },
+        "game.Container": {
+            "name": "game.Container",
+            "shortname": "Container",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "sprite",
+            "namespace": "game",
+            "file": "src/engine/sprite.js",
+            "line": 50,
+            "description": "Sprite container."
         },
         "game.Storage": {
             "name": "game.Storage",
@@ -966,7 +1011,17 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 506,
+            "line": 482,
+            "description": "Call functions parent function.",
+            "itemtype": "method",
+            "name": "super",
+            "class": "game.Class",
+            "module": "core",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/core.js",
+            "line": 511,
             "description": "If Class has `staticInit` function, it is called before `init` function.",
             "itemtype": "property",
             "name": "staticInit",
@@ -977,7 +1032,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 521,
+            "line": 526,
             "description": "Automatically called, when creating new class.",
             "itemtype": "property",
             "name": "init",
@@ -988,7 +1043,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 534,
+            "line": 539,
             "itemtype": "method",
             "name": "inject",
             "class": "game.Class",
@@ -1041,7 +1096,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 189,
+            "line": 188,
             "description": "Minimum time to show preloader. In milliseconds.",
             "itemtype": "attribute",
             "name": "timeout",
@@ -1908,9 +1963,8 @@
         {
             "file": "src/engine/scene.js",
             "line": 16,
-            "description": "Background color of scene.",
             "itemtype": "property",
-            "name": "clearColor",
+            "name": "backgroundColor",
             "type": "Number",
             "class": "game.Scene",
             "module": "scene",
@@ -1918,7 +1972,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 21,
+            "line": 20,
             "itemtype": "property",
             "name": "sprites",
             "type": "Array",
@@ -1928,7 +1982,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 25,
+            "line": 24,
             "itemtype": "property",
             "name": "timers",
             "type": "Array",
@@ -1938,7 +1992,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 29,
+            "line": 28,
             "itemtype": "property",
             "name": "tweens",
             "type": "Array",
@@ -1948,7 +2002,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 52,
+            "line": 49,
             "description": "This is called every frame.",
             "itemtype": "method",
             "name": "update",
@@ -1958,7 +2012,8 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 70,
+            "line": 67,
+            "description": "Helper function for {{#crossLink \"game.Tween\"}}{{/crossLink}}",
             "itemtype": "method",
             "name": "addTween",
             "params": [
@@ -1990,7 +2045,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 83,
+            "line": 81,
             "itemtype": "method",
             "name": "getTween",
             "params": [
@@ -2006,7 +2061,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 94,
+            "line": 92,
             "itemtype": "method",
             "name": "stopTweens",
             "params": [
@@ -2029,7 +2084,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 105,
+            "line": 103,
             "itemtype": "method",
             "name": "pauseTweens",
             "params": [
@@ -2046,7 +2101,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 115,
+            "line": 113,
             "itemtype": "method",
             "name": "resumeTweens",
             "params": [
@@ -2063,7 +2118,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 125,
+            "line": 123,
             "description": "Add timer to game scene.",
             "itemtype": "method",
             "name": "addTimer",
@@ -2085,7 +2140,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 137,
+            "line": 135,
             "description": "Callback for mouse click and touch tap on the scene stage.",
             "itemtype": "method",
             "name": "click",
@@ -2102,7 +2157,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 144,
+            "line": 142,
             "description": "Callback for mousedown and touchstart on the scene stage.",
             "itemtype": "method",
             "name": "mousedown",
@@ -2119,7 +2174,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 151,
+            "line": 149,
             "description": "Callback for mouseup and touchend on the scene stage.",
             "itemtype": "method",
             "name": "mouseup",
@@ -2136,7 +2191,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 158,
+            "line": 156,
             "description": "Callback for mousemove and touchmove on the scene stage.",
             "itemtype": "method",
             "name": "mousemove",
@@ -2153,7 +2208,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 165,
+            "line": 163,
             "description": "Callback for mouseout on the scene stage.",
             "itemtype": "method",
             "name": "mouseout",
@@ -2170,7 +2225,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 198,
+            "line": 196,
             "description": "Main stage for scene.\nhttp://www.goodboydigital.com/pixijs/docs/classes/Stage.html",
             "itemtype": "property",
             "name": "stage",
@@ -2367,17 +2422,8 @@
         },
         {
             "file": "src/engine/sprite.js",
-            "line": 24,
-            "itemtype": "property",
-            "name": "image",
-            "type": "String",
-            "class": "game.Sprite",
-            "module": "sprite",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/sprite.js",
-            "line": 53,
+            "line": 39,
+            "description": "Remove sprite from it's container.",
             "itemtype": "method",
             "name": "remove",
             "class": "game.Sprite",

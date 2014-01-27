@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/engine/pool.js - Panda.js</title>
+    <title>game.Container - Panda.js</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -126,70 +126,90 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1 class="file-heading">File: src/engine/pool.js</h1>
-
-<div class="file">
-    <pre class="code prettyprint linenums">
-/**
-    Object pooling.
-
-    @module pool
-    @namespace game
-**/
-game.module(
-    &#x27;engine.pool&#x27;,
-    &#x27;1.0.0&#x27;
-)
-.body(function() { &#x27;use strict&#x27;;
-
-/**
-    Instance automatically created at {{#crossLink &quot;game.Core&quot;}}{{/crossLink}}
-    @class Pool
-    @extends game.Class
-**/
-game.Pool = game.Class.extend({
-    /**
-        Create new pool.
-        @method create
-        @param {String} pool
-        @return {Boolean} Returns false, if pool already exists.
-    **/
-    create: function(pool) {
-        if(!this[pool]) {
-            this[pool] = [];
-            return true;
-        }
-        return false;
-    },
-
-    /**
-        Get object from pool.
-        @method get
-        @param {String} pool
-        @return {Object} Returns false, if pool not found or empty.
-    **/
-    get: function(pool) {
-        if(!this[pool] || this[pool].length === 0) return false;
-        else return this[pool].pop();
-    },
-
-    /**
-        Put object to pool.
-        @method put
-        @param {String} pool
-        @param {Object} item
-        @return {Boolean} Returns false, if pool not found.
-    **/
-    put: function(pool, item) {
-        if(!this[pool]) return false;
-        this[pool].push(item);
-        return true;
-    }
-});
+                <h1>game.Container Class</h1>
+<div class="box meta">
     
-});
-    </pre>
+
+    
+
+    
+        <div class="foundat">
+            Defined in: <a href="../files/src_engine_sprite.js.html#l50"><code>src&#x2F;engine&#x2F;sprite.js:50</code></a>
+        </div>
+    
+
+    
+        
+            Module: <a href="../modules/sprite.html">sprite</a>
+        
+    
+
+    
 </div>
+
+
+
+<div class="box intro">
+    <p>Sprite container.</p>
+
+</div>
+
+<!-- Class member index -->
+
+<a name="index" class="anchor-link"></a>
+<div class="index">
+<h2>Index</h2>
+
+    <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited">
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div class="class-detail">
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
 
             </div>
         </div>

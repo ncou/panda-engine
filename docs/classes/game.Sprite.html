@@ -55,6 +55,8 @@
             
                 <li><a class="type" href="../classes/game.CollisionSolver.html">game.CollisionSolver</a></li>
             
+                <li><a class="type" href="../classes/game.Container.html">game.Container</a></li>
+            
                 <li><a class="type" href="../classes/game.Core.html">game.Core</a></li>
             
                 <li><a class="type" href="../classes/game.Debug.html">game.Debug</a></li>
@@ -95,6 +97,8 @@
             
                 <li><a class="module" href="../modules/loader.html">loader</a></li>
             
+                <li><a class="module" href="../modules/particle.html">particle</a></li>
+            
                 <li><a class="module" href="../modules/physics.html">physics</a></li>
             
                 <li><a class="module" href="../modules/pool.html">pool</a></li>
@@ -128,7 +132,7 @@
 
     
         <div class="extends">
-            Extends <a href="../classes/game.Class.html" class="crosslink">game.Class</a>
+            Extends PIXI.Sprite
         </div>
     
 
@@ -151,6 +155,9 @@
 
 <div class="box intro">
     <p><a href="http://www.goodboydigital.com/pixijs/docs/classes/Sprite%E2%84%A2.html">http://www.goodboydigital.com/pixijs/docs/classes/Sprite%E2%84%A2.html</a></p>
+<p><strong>Example</strong></p>
+<pre class="code prettyprint"><code>var sprite = new game.Sprite(100, 200, &#39;media/logo.png&#39;);
+game.scene.stage.addChild(sprite);</code></pre>
 
 </div>
 
@@ -186,32 +193,6 @@
 
 
 
-    <div class="index-section properties">
-        <h3>Properties</h3>
-
-        <ul class="index-list properties extends">
-            
-                <li class="index-item property">
-                    <a href="#property_image">image</a>
-
-                    
-                </li>
-            
-                <li class="index-item property inherited">
-                    <a href="#property_init">init</a>
-
-                    
-                </li>
-            
-                <li class="index-item property inherited">
-                    <a href="#property_staticInit">staticInit</a>
-
-                    
-                </li>
-            
-        </ul>
-    </div>
-
 
 
 
@@ -234,20 +215,6 @@
             
 
             
-                <li class="index-item method inherited">
-                    <a href="#method_extend">extend</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method inherited">
-                    <a href="#method_inject">inject</a>
-
-                    
-                    
-                </li>
-            
                 <li class="index-item method">
                     <a href="#method_remove">remove</a>
 
@@ -265,160 +232,6 @@
 
 <div class="class-detail">
 
-
-    <div class="properties-detail">
-        <h2>Properties</h2>
-
-        
-            <a name="property_image" class="anchor-link"></a>
-<div class="property item">
-    <h3 class="name"><code>image</code>
-    <span class="type">String</span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_sprite.js.html#l24"><code>src&#x2F;engine&#x2F;sprite.js:24</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_init" class="anchor-link"></a>
-<div class="property item inherited">
-    <h3 class="name"><code>init</code>
-    <span class="type">Function</span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/game.Class.html#property_init" class="type">game.Class</a>:
-            
-        
-        
-        <a href="../files/src_engine_core.js.html#l521"><code>src&#x2F;engine&#x2F;core.js:521</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>Automatically called, when creating new class.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_staticInit" class="anchor-link"></a>
-<div class="property item inherited">
-    <h3 class="name"><code>staticInit</code>
-    <span class="type">Function</span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/game.Class.html#property_staticInit" class="type">game.Class</a>:
-            
-        
-        
-        <a href="../files/src_engine_core.js.html#l506"><code>src&#x2F;engine&#x2F;core.js:506</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>If Class has <code>staticInit</code> function, it is called before <code>init</code> function.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-
-        <div class="no-visible-items-message">
-            <p>There are no properties that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
-        </div>
-
-    </div>
 
 
 
@@ -443,6 +256,12 @@
                 <li class="arg">
                     
                         <code>y</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>path</code>
                     
                 </li>
             
@@ -537,6 +356,21 @@
                 
                     <li class="param">
                         
+                            <code class="param-name">path</code>
+                            <span class="type">String</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
                             <code class="param-name optional">[settings]</code>
                             <span class="type">Object</span>
                             <span class="flag optional" title="This parameter is optional.">optional</span>
@@ -567,136 +401,6 @@
 
     <div class="methods-detail">
         <h2>Methods</h2>
-
-        
-            <a name="method_extend" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>extend</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Class</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/game.Class.html#method_extend" class="type">game.Class</a>:
-            
-        
-        
-        <a href="../files/src_engine_core.js.html#l470"><code>src&#x2F;engine&#x2F;core.js:470</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            
-        </div>
-
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">Class</span>:
-                        
-                    
-                </div>
-            </div>
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_inject" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>inject</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/game.Class.html#method_inject" class="type">game.Class</a>:
-            
-        
-        
-        <a href="../files/src_engine_core.js.html#l534"><code>src&#x2F;engine&#x2F;core.js:534</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
 
         
             <a name="method_remove" class="anchor-link"></a>
@@ -734,7 +438,7 @@
             
         
         
-        <a href="../files/src_engine_sprite.js.html#l53"><code>src&#x2F;engine&#x2F;sprite.js:53</code></a>
+        <a href="../files/src_engine_sprite.js.html#l39"><code>src&#x2F;engine&#x2F;sprite.js:39</code></a>
         
         </p>
 
@@ -747,7 +451,8 @@
     <div class="extended-detail">
 
         <div class="description">
-            
+            <p>Remove sprite from it&#39;s container.</p>
+
         </div>
 
         

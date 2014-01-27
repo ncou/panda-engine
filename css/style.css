@@ -1,0 +1,179 @@
+html,body {
+	height: 100%;
+}
+body {
+	margin: 0;
+	padding: 0;
+	background: #fff;
+	font: 14px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #333333;
+	height: 100%;
+}
+b {
+	background: #f2f2f2;
+	border: 1px solid #fff;
+	border-radius: 5px;
+	padding: 5px 8px;
+	/*font-weight: normal;*/
+}
+a {
+	color: #39c;
+	text-decoration: none;
+}
+a:hover {
+	color: #333;
+}
+h1,h2,h3 {
+	font-weight: normal;
+}
+h1 {
+	margin-top: 0px;
+	font-weight: bold;
+	margin-bottom: 10px;
+	/*float: left;*/
+}
+h2 {
+	font-size: 15px;
+
+	color: #777;
+
+}
+h3 {
+	border-bottom: 2px dashed #eee;
+	margin-bottom: 15px;
+	font-size: 17px;
+	font-weight: bold;
+}
+#bg {
+	width: 100%;
+	margin: auto;
+	height: auto;
+	min-height: 100%;
+	/*background: #fff;*/
+	/*border-left: 2px dashed #ccc;*/
+	/*border-right: 2px dashed #ccc;*/
+	max-width: 960px;
+}
+#wrapper {
+	padding: 20px 0px;
+	padding-top: 140px;
+}
+
+h4 {
+	margin: 0;
+	background: #eee;
+	display: block;
+	padding: 5px 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin-bottom: 20px;
+	text-align: center;
+	font-size: 18px;
+}
+p {
+	margin: 0;
+	margin-bottom: 20px;
+}
+code {
+	white-space: pre-wrap;
+	display: block;
+	background: #555;
+	color: #eee;
+	padding: 20px;
+	border-radius: 10px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#footer {
+	background: #111;
+	text-align: center;
+	color: #ccc;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	font-size: 12px;
+	font-family: Arial;
+}
+
+#header {
+	position: absolute;
+	width: 100%;
+	background: #222;
+	margin: 0;
+	height: 120px;
+	border-bottom: 1px solid #ddd;
+}
+
+#header .wrapper {
+	width: auto;
+	max-width: 960px;
+	margin: auto;
+	padding: 10px;
+	position: relative;
+}
+
+#header img {
+}
+
+#header h1 {
+	margin-top: 12px;
+	font-family: sans-serif;
+	
+	color: #fbfbfb;
+	font-size: 40px;
+	letter-spacing: -2px;
+	text-shadow: 0px 1px 0px #000;
+}
+
+#header h1 span {
+	color: #d90057;
+}
+
+#header h2 {
+	color: #999;
+	font-size: 14px;
+	position: absolute;
+	left: 210px;
+	top: 47px;
+	text-shadow: 0px 2px 0px #000;
+}
+
+#footer span {
+	width: 20px;
+	display: inline-block;
+}
+
+#footer a:hover {
+	color: #eee;
+}
+
+@media all and (max-width: 968px) {
+	body {
+		line-height: 30px;
+	}
+	#bg {
+		border-style: none;
+	}
+	#wrapper {
+		/*padding: 20px 5px;*/
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	#header {
+		text-align: center;
+	}
+	#header h1 {
+		margin-top: 25px;
+	}
+	#header h2 {
+		width: 100%;
+		left: 0px;
+		top: 55px;
+	}
+	#footer span {
+		display: block;
+		visibility: hidden;
+	}
+}
