@@ -53,7 +53,10 @@
             "modules": {
                 "particle": 1
             },
-            "classes": {},
+            "classes": {
+                "game.Particle": 1,
+                "game.Emitter": 1
+            },
             "fors": {},
             "namespaces": {
                 "game": 1
@@ -198,7 +201,7 @@
             },
             "tag": "module",
             "file": "src/engine/core.js",
-            "line": 468
+            "line": 492
         },
         "debug": {
             "name": "debug",
@@ -231,14 +234,17 @@
         "particle": {
             "name": "particle",
             "submodules": {},
-            "classes": {},
+            "classes": {
+                "game.Particle": 1,
+                "game.Emitter": 1
+            },
             "fors": {},
             "namespaces": {
                 "game": 1
             },
             "tag": "module",
             "file": "src/engine/particle.js",
-            "line": 1,
+            "line": 50,
             "description": "Particle engine."
         },
         "physics": {
@@ -405,7 +411,7 @@
             "module": "core",
             "namespace": "game",
             "file": "src/engine/core.js",
-            "line": 468
+            "line": 492
         },
         "game.Debug": {
             "name": "game.Debug",
@@ -435,6 +441,44 @@
             "file": "src/engine/loader.js",
             "line": 11,
             "extends": "game.Class"
+        },
+        "game.Particle": {
+            "name": "game.Particle",
+            "shortname": "Particle",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "particle",
+            "namespace": "game",
+            "file": "src/engine/particle.js",
+            "line": 16,
+            "extends": "game.Class"
+        },
+        "game.Emitter": {
+            "name": "game.Emitter",
+            "shortname": "Emitter",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "particle",
+            "namespace": "game",
+            "file": "src/engine/particle.js",
+            "line": 50,
+            "description": "Particle emitter. Uses pool named `emitter`.\n\n__Example__\n\n    var emitter = new game.Emitter();\n    emitter.container = game.scene.stage;\n    emitter.textures.push('media/particle.png');\n    emitter.position.x = game.system.width / 2;\n    emitter.position.y = game.system.height / 2;",
+            "extends": "game.Class",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "settings",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ]
         },
         "game.World": {
             "name": "game.World",
@@ -998,7 +1042,39 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 472,
+            "line": 243,
+            "description": "Start the game engine.",
+            "itemtype": "method",
+            "name": "start",
+            "params": [
+                {
+                    "name": "scene",
+                    "description": "",
+                    "type": "game.Scene"
+                },
+                {
+                    "name": "width",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "height",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "canvasId",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "game.Core",
+            "module": "core",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/core.js",
+            "line": 496,
             "itemtype": "method",
             "name": "extend",
             "return": {
@@ -1011,7 +1087,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 484,
+            "line": 508,
             "description": "Call functions parent function.",
             "itemtype": "method",
             "name": "super",
@@ -1021,7 +1097,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 513,
+            "line": 537,
             "description": "If Class has `staticInit` function, it is called before `init` function.",
             "itemtype": "property",
             "name": "staticInit",
@@ -1032,7 +1108,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 528,
+            "line": 552,
             "description": "Automatically called, when creating new class.",
             "itemtype": "property",
             "name": "init",
@@ -1043,7 +1119,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 541,
+            "line": 565,
             "itemtype": "method",
             "name": "inject",
             "class": "game.Class",
@@ -1107,6 +1183,326 @@
             ],
             "class": "game.Loader",
             "module": "loader",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 21,
+            "itemtype": "property",
+            "name": "position",
+            "type": "game.Vector",
+            "class": "game.Particle",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 25,
+            "itemtype": "property",
+            "name": "velocity",
+            "type": "game.Vector",
+            "class": "game.Particle",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 29,
+            "itemtype": "property",
+            "name": "sprite",
+            "type": "game.Sprite",
+            "class": "game.Particle",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 39,
+            "itemtype": "method",
+            "name": "setVelocity",
+            "params": [
+                {
+                    "name": "angle",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "speed",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "game.Particle",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 67,
+            "itemtype": "property",
+            "name": "particles",
+            "type": "Array",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 71,
+            "itemtype": "property",
+            "name": "gravity",
+            "type": "game.Vector",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 75,
+            "itemtype": "property",
+            "name": "position",
+            "type": "game.Vector",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 79,
+            "itemtype": "property",
+            "name": "positionVar",
+            "type": "game.Vector",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 83,
+            "itemtype": "property",
+            "name": "angle",
+            "type": "Number",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 87,
+            "itemtype": "property",
+            "name": "angle",
+            "type": "Number",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 91,
+            "itemtype": "property",
+            "name": "speed",
+            "type": "Number",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 95,
+            "itemtype": "property",
+            "name": "speedVar",
+            "type": "Number",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 99,
+            "description": "Particle's life in seconds.",
+            "itemtype": "property",
+            "name": "life",
+            "type": "Number",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 104,
+            "description": "Particle's life variance.",
+            "itemtype": "property",
+            "name": "lifeVar",
+            "type": "Number",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 109,
+            "description": "Emitter duration in seconds. 0 = forever",
+            "itemtype": "property",
+            "name": "duration",
+            "type": "Number",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 115,
+            "description": "Emitter rate.",
+            "itemtype": "property",
+            "name": "rate",
+            "type": "Number",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 121,
+            "description": "Emit count.",
+            "itemtype": "property",
+            "name": "count",
+            "type": "Number",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 126,
+            "itemtype": "property",
+            "name": "active",
+            "type": "Boolean",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 130,
+            "description": "Particle's velocity rotation speed.",
+            "itemtype": "property",
+            "name": "velRotate",
+            "type": "Number",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 135,
+            "itemtype": "property",
+            "name": "velRotateVar",
+            "type": "Number",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 139,
+            "description": "Particle's sprite rotation speed.",
+            "itemtype": "property",
+            "name": "rotate",
+            "type": "Number",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 144,
+            "itemtype": "property",
+            "name": "rotateVar",
+            "type": "Number",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 148,
+            "itemtype": "property",
+            "name": "startAlpha",
+            "type": "Number",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 152,
+            "itemtype": "property",
+            "name": "endAlpha",
+            "type": "Number",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 156,
+            "itemtype": "property",
+            "name": "startScale",
+            "type": "Number",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 160,
+            "itemtype": "property",
+            "name": "startScaleVar",
+            "type": "Number",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 164,
+            "itemtype": "property",
+            "name": "endScale",
+            "type": "Number",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 168,
+            "itemtype": "property",
+            "name": "endScaleVar",
+            "type": "Number",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 172,
+            "description": "List of texture paths.",
+            "itemtype": "property",
+            "name": "textures",
+            "type": "Array",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 177,
+            "description": "Container for particle sprites.",
+            "itemtype": "property",
+            "name": "container",
+            "type": "game.Container",
+            "class": "game.Emitter",
+            "module": "particle",
             "namespace": "game"
         },
         {
@@ -1531,7 +1927,7 @@
             ],
             "return": {
                 "description": "",
-                "type": "Vector"
+                "type": "game.Vector"
             },
             "class": "game.Vector",
             "module": "physics",
@@ -1544,7 +1940,7 @@
             "name": "clone",
             "return": {
                 "description": "",
-                "type": "Vector"
+                "type": "game.Vector"
             },
             "class": "game.Vector",
             "module": "physics",
@@ -1564,7 +1960,7 @@
             ],
             "return": {
                 "description": "",
-                "type": "Vector"
+                "type": "game.Vector"
             },
             "class": "game.Vector",
             "module": "physics",
@@ -1577,14 +1973,9 @@
             "name": "add",
             "params": [
                 {
-                    "name": "target",
-                    "description": "",
-                    "type": "Vector"
-                },
-                {
                     "name": "x",
                     "description": "",
-                    "type": "Number|Vector"
+                    "type": "Number|game.Vector"
                 },
                 {
                     "name": "y",
@@ -1595,7 +1986,7 @@
             ],
             "return": {
                 "description": "",
-                "type": "Vector"
+                "type": "game.Vector"
             },
             "class": "game.Vector",
             "module": "physics",
@@ -1603,19 +1994,14 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 582,
+            "line": 581,
             "itemtype": "method",
             "name": "subtract",
             "params": [
                 {
-                    "name": "target",
-                    "description": "",
-                    "type": "Vector"
-                },
-                {
                     "name": "x",
                     "description": "",
-                    "type": "Number|Vector"
+                    "type": "Number|game.Vector"
                 },
                 {
                     "name": "y",
@@ -1626,7 +2012,7 @@
             ],
             "return": {
                 "description": "",
-                "type": "Vector"
+                "type": "game.Vector"
             },
             "class": "game.Vector",
             "module": "physics",
@@ -1634,19 +2020,14 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 595,
+            "line": 593,
             "itemtype": "method",
             "name": "multiply",
             "params": [
                 {
-                    "name": "target",
-                    "description": "",
-                    "type": "Vector"
-                },
-                {
                     "name": "x",
                     "description": "",
-                    "type": "Number|Vector"
+                    "type": "Number|game.Vector"
                 },
                 {
                     "name": "y",
@@ -1657,7 +2038,7 @@
             ],
             "return": {
                 "description": "",
-                "type": "Vector"
+                "type": "game.Vector"
             },
             "class": "game.Vector",
             "module": "physics",
@@ -1665,19 +2046,40 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 608,
+            "line": 605,
+            "itemtype": "method",
+            "name": "multiplyAdd",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "",
+                    "type": "Number|game.Vector"
+                },
+                {
+                    "name": "y",
+                    "description": "",
+                    "type": "Number",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "game.Vector"
+            },
+            "class": "game.Vector",
+            "module": "physics",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 617,
             "itemtype": "method",
             "name": "divide",
             "params": [
                 {
-                    "name": "target",
-                    "description": "",
-                    "type": "Vector"
-                },
-                {
                     "name": "x",
                     "description": "",
-                    "type": "Number|Vector"
+                    "type": "Number|game.Vector"
                 },
                 {
                     "name": "y",
@@ -1688,7 +2090,7 @@
             ],
             "return": {
                 "description": "",
-                "type": "Vector"
+                "type": "game.Vector"
             },
             "class": "game.Vector",
             "module": "physics",
@@ -1696,7 +2098,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 621,
+            "line": 629,
             "itemtype": "method",
             "name": "distance",
             "params": [
@@ -1716,7 +2118,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 632,
+            "line": 640,
             "itemtype": "method",
             "name": "length",
             "return": {
@@ -1729,7 +2131,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 640,
+            "line": 648,
             "itemtype": "method",
             "name": "dot",
             "params": [
@@ -1750,7 +2152,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 650,
+            "line": 658,
             "itemtype": "method",
             "name": "dotNormalized",
             "params": [
@@ -1771,15 +2173,10 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 668,
+            "line": 676,
             "itemtype": "method",
             "name": "rotate",
             "params": [
-                {
-                    "name": "target",
-                    "description": "",
-                    "type": "Vector"
-                },
                 {
                     "name": "angle",
                     "description": "",
@@ -1788,7 +2185,7 @@
             ],
             "return": {
                 "description": "",
-                "type": "Vector"
+                "type": "game.Vector"
             },
             "class": "game.Vector",
             "module": "physics",
@@ -1796,12 +2193,12 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 684,
+            "line": 691,
             "itemtype": "method",
             "name": "normalize",
             "return": {
                 "description": "",
-                "type": "Vector"
+                "type": "game.Vector"
             },
             "class": "game.Vector",
             "module": "physics",
@@ -1809,15 +2206,10 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 695,
+            "line": 702,
             "itemtype": "method",
             "name": "limit",
             "params": [
-                {
-                    "name": "target",
-                    "description": "",
-                    "type": "Vector"
-                },
                 {
                     "name": "vector",
                     "description": "",
@@ -1826,7 +2218,7 @@
             ],
             "return": {
                 "description": "",
-                "type": "Vector"
+                "type": "game.Vector"
             },
             "class": "game.Vector",
             "module": "physics",
@@ -1834,7 +2226,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 707,
+            "line": 713,
             "itemtype": "method",
             "name": "angle",
             "params": [
@@ -1854,19 +2246,12 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 716,
+            "line": 722,
             "itemtype": "method",
             "name": "round",
-            "params": [
-                {
-                    "name": "target",
-                    "description": "",
-                    "type": "Vector"
-                }
-            ],
             "return": {
                 "description": "",
-                "type": "Vector"
+                "type": "game.Vector"
             },
             "class": "game.Vector",
             "module": "physics",
@@ -1874,7 +2259,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 728,
+            "line": 733,
             "itemtype": "property",
             "name": "x",
             "type": "Number",
@@ -1884,7 +2269,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 740,
+            "line": 745,
             "itemtype": "property",
             "name": "y",
             "type": "Number",
@@ -2023,7 +2408,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 75,
+            "line": 79,
             "description": "Helper function for {{#crossLink \"game.Tween\"}}{{/crossLink}}",
             "itemtype": "method",
             "name": "addTween",
@@ -2056,7 +2441,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 89,
+            "line": 93,
             "itemtype": "method",
             "name": "getTween",
             "params": [
@@ -2072,7 +2457,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 100,
+            "line": 104,
             "itemtype": "method",
             "name": "stopTweens",
             "params": [
@@ -2095,7 +2480,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 111,
+            "line": 115,
             "itemtype": "method",
             "name": "pauseTweens",
             "params": [
@@ -2112,7 +2497,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 121,
+            "line": 125,
             "itemtype": "method",
             "name": "resumeTweens",
             "params": [
@@ -2129,7 +2514,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 131,
+            "line": 135,
             "description": "Add timer to game scene.",
             "itemtype": "method",
             "name": "addTimer",
@@ -2151,7 +2536,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 143,
+            "line": 147,
             "description": "Callback for mouse click and touch tap on the scene stage.",
             "itemtype": "method",
             "name": "click",
@@ -2168,7 +2553,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 150,
+            "line": 154,
             "description": "Callback for mousedown and touchstart on the scene stage.",
             "itemtype": "method",
             "name": "mousedown",
@@ -2185,7 +2570,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 157,
+            "line": 161,
             "description": "Callback for mouseup and touchend on the scene stage.",
             "itemtype": "method",
             "name": "mouseup",
@@ -2202,7 +2587,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 164,
+            "line": 168,
             "description": "Callback for mousemove and touchmove on the scene stage.",
             "itemtype": "method",
             "name": "mousemove",
@@ -2219,7 +2604,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 171,
+            "line": 175,
             "description": "Callback for mouseout on the scene stage.",
             "itemtype": "method",
             "name": "mouseout",
@@ -2626,7 +3011,7 @@
             "line": 148,
             "description": "Resume paused game engine.",
             "itemtype": "method",
-            "name": "unpause",
+            "name": "resume",
             "class": "game.System",
             "module": "system",
             "namespace": "game"

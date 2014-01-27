@@ -61,9 +61,13 @@
             
                 <li><a class="type" href="../classes/game.Debug.html">game.Debug</a></li>
             
+                <li><a class="type" href="../classes/game.Emitter.html">game.Emitter</a></li>
+            
                 <li><a class="type" href="../classes/game.Line.html">game.Line</a></li>
             
                 <li><a class="type" href="../classes/game.Loader.html">game.Loader</a></li>
+            
+                <li><a class="type" href="../classes/game.Particle.html">game.Particle</a></li>
             
                 <li><a class="type" href="../classes/game.Pool.html">game.Pool</a></li>
             
@@ -199,6 +203,10 @@ game.Scene = game.Class.extend({
                 this.timers.erase(this.timers[i]);
             }
         }
+        for (i = this.tweens.length - 1; i &gt;= 0; i--) {
+            this.tweens[i].update();
+            if(this.tweens[i].complete) this.tweens.erase(this.tweens[i]);
+        }
         for (i = this.sprites.length - 1; i &gt;= 0; i--) {
             this.sprites[i].update();
         }
@@ -308,7 +316,6 @@ game.Scene = game.Class.extend({
     mouseout: function() {},
 
     run: function() {
-        this.updateTweens();
         this.update();
         this.render();
     },
@@ -321,15 +328,8 @@ game.Scene = game.Class.extend({
         game.sound.muteAll();
     },
 
-    unpause: function() {
+    resume: function() {
         game.sound.unmuteAll();
-    },
-
-    updateTweens: function() {
-        for (var i = this.tweens.length - 1; i &gt;= 0; i--) {
-            this.tweens[i].update();
-            if(this.tweens[i].complete) this.tweens.erase(this.tweens[i]);
-        }
     }
 });
 

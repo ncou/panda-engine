@@ -61,9 +61,13 @@
             
                 <li><a class="type" href="../classes/game.Debug.html">game.Debug</a></li>
             
+                <li><a class="type" href="../classes/game.Emitter.html">game.Emitter</a></li>
+            
                 <li><a class="type" href="../classes/game.Line.html">game.Line</a></li>
             
                 <li><a class="type" href="../classes/game.Loader.html">game.Loader</a></li>
+            
+                <li><a class="type" href="../classes/game.Particle.html">game.Particle</a></li>
             
                 <li><a class="type" href="../classes/game.Pool.html">game.Pool</a></li>
             
@@ -370,6 +374,30 @@ var core = {
         this._current.body = body;
         this._current = null;
         if(this._initDOMReady) this._initDOMReady();
+    },
+
+    /**
+        Start the game engine.
+        @method start
+        @param {game.Scene} scene
+        @param {Number} width
+        @param {Number} height
+        @param {String} canvasId
+    **/
+    start: function(scene, width, height, canvasId) {
+        width = width || (game.System.orientation === game.System.PORTRAIT ? 768 : 1024);
+        height = height || (game.System.orientation === game.System.PORTRAIT ? 927 : 671);
+
+        this.system = new game.System(width, height, canvasId);
+        this.sound = new game.SoundManager();
+        this.pool = new game.Pool();
+        if(game.Debug.enabled &amp;&amp; !navigator.isCocoonJS) this.debug = new game.Debug();
+        if(game.Storage.id) this.storage = new game.Storage(game.Storage.id);
+
+        this.ready = true;
+        
+        var loader = new game.Loader(scene || SceneTitle, this.resources, this.audioResources);
+        loader.start();
     },
     
     _loadScript: function(name, requiredFrom) {
@@ -723,22 +751,6 @@ game.module(
     &#x27;engine.pool&#x27;
 )
 .body(function(){ &#x27;use strict&#x27;;
-
-game.start = function(scene, width, height, canvasId) {
-    width = width || (game.System.orientation === game.System.PORTRAIT ? 768 : 1024);
-    height = height || (game.System.orientation === game.System.PORTRAIT ? 927 : 671);
-
-    game.system = new game.System(width, height, canvasId);
-    game.sound = new game.SoundManager();
-    game.pool = new game.Pool();
-    if(game.Debug.enabled &amp;&amp; !navigator.isCocoonJS) game.debug = new game.Debug();
-    if(game.Storage.id) game.storage = new game.Storage(game.Storage.id);
-
-    game.ready = true;
-    
-    var loader = new game.Loader(scene || SceneTitle, game.resources, game.audioResources);
-    loader.start();
-};
 
 });
     </pre>

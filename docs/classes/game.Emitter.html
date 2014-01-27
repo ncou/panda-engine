@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>game.System - Panda.js</title>
+    <title>game.Emitter - Panda.js</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -130,7 +130,7 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>game.System Class</h1>
+                <h1>game.Emitter Class</h1>
 <div class="box meta">
     
 
@@ -142,13 +142,13 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_engine_system.js.html#l14"><code>src&#x2F;engine&#x2F;system.js:14</code></a>
+            Defined in: <a href="../files/src_engine_particle.js.html#l50"><code>src&#x2F;engine&#x2F;particle.js:50</code></a>
         </div>
     
 
     
         
-            Module: <a href="../modules/system.html">system</a>
+            Module: <a href="../modules/particle.html">particle</a>
         
     
 
@@ -158,7 +158,13 @@
 
 
 <div class="box intro">
-    <p>Instance automatically created at <a href="../classes/game.Core.html" class="crosslink">game.Core</a></p>
+    <p>Particle emitter. Uses pool named <code>emitter</code>.</p>
+<p><strong>Example</strong></p>
+<pre class="code prettyprint"><code>var emitter = new game.Emitter();
+emitter.container = game.scene.stage;
+emitter.textures.push(&#39;media/particle.png&#39;);
+emitter.position.x = game.system.width / 2;
+emitter.position.y = game.system.height / 2;</code></pre>
 
 </div>
 
@@ -200,31 +206,61 @@
         <ul class="index-list properties extends">
             
                 <li class="index-item property">
-                    <a href="#property_canvas">canvas</a>
+                    <a href="#property_active">active</a>
 
                     
                 </li>
             
                 <li class="index-item property">
-                    <a href="#property_canvasId">canvasId</a>
+                    <a href="#property_angle">angle</a>
 
                     
                 </li>
             
                 <li class="index-item property">
-                    <a href="#property_delta">delta</a>
+                    <a href="#property_angle">angle</a>
 
                     
                 </li>
             
                 <li class="index-item property">
-                    <a href="#property_height">height</a>
+                    <a href="#property_container">container</a>
 
                     
                 </li>
             
                 <li class="index-item property">
-                    <a href="#property_hires">hires</a>
+                    <a href="#property_count">count</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_duration">duration</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_endAlpha">endAlpha</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_endScale">endScale</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_endScaleVar">endScaleVar</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_gravity">gravity</a>
 
                     
                 </li>
@@ -236,13 +272,79 @@
                 </li>
             
                 <li class="index-item property">
-                    <a href="#property_paused">paused</a>
+                    <a href="#property_life">life</a>
 
                     
                 </li>
             
                 <li class="index-item property">
-                    <a href="#property_retina">retina</a>
+                    <a href="#property_lifeVar">lifeVar</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_particles">particles</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_position">position</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_positionVar">positionVar</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_rate">rate</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_rotate">rotate</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_rotateVar">rotateVar</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_speed">speed</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_speedVar">speedVar</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_startAlpha">startAlpha</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_startScale">startScale</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_startScaleVar">startScaleVar</a>
 
                     
                 </li>
@@ -254,13 +356,19 @@
                 </li>
             
                 <li class="index-item property">
-                    <a href="#property_timer">timer</a>
+                    <a href="#property_textures">textures</a>
 
                     
                 </li>
             
                 <li class="index-item property">
-                    <a href="#property_width">width</a>
+                    <a href="#property_velRotate">velRotate</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_velRotateVar">velRotateVar</a>
 
                     
                 </li>
@@ -269,82 +377,6 @@
     </div>
 
 
-
-    <div class="index-section attrs">
-        <h3>Attributes</h3>
-
-        <ul class="index-list attrs extends">
-            
-                <li class="index-item attr">
-                    <a href="#attr_backgroundColor.game">backgroundColor.game</a>
-                </li>
-            
-                <li class="index-item attr">
-                    <a href="#attr_backgroundColor.rotate">backgroundColor.rotate</a>
-                </li>
-            
-                <li class="index-item attr">
-                    <a href="#attr_backgroundImage.game">backgroundImage.game</a>
-                </li>
-            
-                <li class="index-item attr">
-                    <a href="#attr_backgroundImage.rotate">backgroundImage.rotate</a>
-                </li>
-            
-                <li class="index-item attr">
-                    <a href="#attr_hires">hires</a>
-                </li>
-            
-                <li class="index-item attr">
-                    <a href="#attr_hiresFactor">hiresFactor</a>
-                </li>
-            
-                <li class="index-item attr">
-                    <a href="#attr_idtkScale">idtkScale</a>
-                </li>
-            
-                <li class="index-item attr">
-                    <a href="#attr_maxHeight">maxHeight</a>
-                </li>
-            
-                <li class="index-item attr">
-                    <a href="#attr_maxWidth">maxWidth</a>
-                </li>
-            
-                <li class="index-item attr">
-                    <a href="#attr_minHeight">minHeight</a>
-                </li>
-            
-                <li class="index-item attr">
-                    <a href="#attr_minWidth">minWidth</a>
-                </li>
-            
-                <li class="index-item attr">
-                    <a href="#attr_orientation">orientation</a>
-                </li>
-            
-                <li class="index-item attr">
-                    <a href="#attr_pauseOnHide">pauseOnHide</a>
-                </li>
-            
-                <li class="index-item attr">
-                    <a href="#attr_retina">retina</a>
-                </li>
-            
-                <li class="index-item attr">
-                    <a href="#attr_rotateImg">rotateImg</a>
-                </li>
-            
-                <li class="index-item attr">
-                    <a href="#attr_rotateMsg">rotateMsg</a>
-                </li>
-            
-                <li class="index-item attr">
-                    <a href="#attr_screenCanvas">screenCanvas</a>
-                </li>
-            
-        </ul>
-    </div>
 
 
 
@@ -354,6 +386,15 @@
 
         <ul class="index-list methods extends">
 
+            
+                <li class="index-item method constructor">
+                    <a href="#method_game.Emitter">game.Emitter</a>
+
+                    <span class="flag constructor">constructor</span>
+
+                    
+                    
+                </li>
             
 
             
@@ -366,27 +407,6 @@
             
                 <li class="index-item method inherited">
                     <a href="#method_inject">inject</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method">
-                    <a href="#method_pause">pause</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method">
-                    <a href="#method_resume">resume</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method">
-                    <a href="#method_setScene">setScene</a>
 
                     
                     
@@ -414,211 +434,9 @@
         <h2>Properties</h2>
 
         
-            <a name="property_canvas" class="anchor-link"></a>
+            <a name="property_active" class="anchor-link"></a>
 <div class="property item">
-    <h3 class="name"><code>canvas</code>
-    <span class="type">HTMLCanvasElement</span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_system.js.html#l44"><code>src&#x2F;engine&#x2F;system.js:44</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>Canvas element.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_canvasId" class="anchor-link"></a>
-<div class="property item">
-    <h3 class="name"><code>canvasId</code>
-    <span class="type">String</span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_system.js.html#l49"><code>src&#x2F;engine&#x2F;system.js:49</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>Id of canvas element.</p>
-
-        </div>
-
-        
-            <p class="default"><strong>Default:</strong> <span class="default-value">canvas</span></p>
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_delta" class="anchor-link"></a>
-<div class="property item">
-    <h3 class="name"><code>delta</code>
-    <span class="type">Number</span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_system.js.html#l30"><code>src&#x2F;engine&#x2F;system.js:30</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>Current delta-time.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_height" class="anchor-link"></a>
-<div class="property item">
-    <h3 class="name"><code>height</code>
-    <span class="type">Number</span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_system.js.html#l25"><code>src&#x2F;engine&#x2F;system.js:25</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>Height of the game screen.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_hires" class="anchor-link"></a>
-<div class="property item">
-    <h3 class="name"><code>hires</code>
+    <h3 class="name"><code>active</code>
     <span class="type">Boolean</span>
 
     
@@ -642,7 +460,7 @@
             
         
         
-        <a href="../files/src_engine_system.js.html#l60"><code>src&#x2F;engine&#x2F;system.js:60</code></a>
+        <a href="../files/src_engine_particle.js.html#l126"><code>src&#x2F;engine&#x2F;particle.js:126</code></a>
         
         </p>
 
@@ -653,8 +471,451 @@
 
     <div class="extended-detail">
         <div class="description">
-            <p>Is engine in HiRes mode.</p>
+            
+        </div>
 
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_angle" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>angle</code>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_particle.js.html#l83"><code>src&#x2F;engine&#x2F;particle.js:83</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_angle" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>angle</code>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_particle.js.html#l87"><code>src&#x2F;engine&#x2F;particle.js:87</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_container" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>container</code>
+    <span class="type"><a href="../classes/game.Container.html" class="crosslink">game.Container</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_particle.js.html#l177"><code>src&#x2F;engine&#x2F;particle.js:177</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Container for particle sprites.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_count" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>count</code>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_particle.js.html#l121"><code>src&#x2F;engine&#x2F;particle.js:121</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Emit count.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_duration" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>duration</code>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_particle.js.html#l109"><code>src&#x2F;engine&#x2F;particle.js:109</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Emitter duration in seconds. 0 = forever</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_endAlpha" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>endAlpha</code>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_particle.js.html#l152"><code>src&#x2F;engine&#x2F;particle.js:152</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_endScale" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>endScale</code>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_particle.js.html#l164"><code>src&#x2F;engine&#x2F;particle.js:164</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_endScaleVar" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>endScaleVar</code>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_particle.js.html#l168"><code>src&#x2F;engine&#x2F;particle.js:168</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_gravity" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>gravity</code>
+    <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_particle.js.html#l71"><code>src&#x2F;engine&#x2F;particle.js:71</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
         </div>
 
         
@@ -713,10 +974,10 @@
 </div>
 
         
-            <a name="property_paused" class="anchor-link"></a>
+            <a name="property_life" class="anchor-link"></a>
 <div class="property item">
-    <h3 class="name"><code>paused</code>
-    <span class="type">Boolean</span>
+    <h3 class="name"><code>life</code>
+    <span class="type">Number</span>
 
     
 
@@ -739,7 +1000,7 @@
             
         
         
-        <a href="../files/src_engine_system.js.html#l55"><code>src&#x2F;engine&#x2F;system.js:55</code></a>
+        <a href="../files/src_engine_particle.js.html#l99"><code>src&#x2F;engine&#x2F;particle.js:99</code></a>
         
         </p>
 
@@ -750,7 +1011,7 @@
 
     <div class="extended-detail">
         <div class="description">
-            <p>Is engine paused.</p>
+            <p>Particle&#39;s life in seconds.</p>
 
         </div>
 
@@ -763,10 +1024,10 @@
 </div>
 
         
-            <a name="property_retina" class="anchor-link"></a>
+            <a name="property_lifeVar" class="anchor-link"></a>
 <div class="property item">
-    <h3 class="name"><code>retina</code>
-    <span class="type">Boolean</span>
+    <h3 class="name"><code>lifeVar</code>
+    <span class="type">Number</span>
 
     
 
@@ -789,7 +1050,7 @@
             
         
         
-        <a href="../files/src_engine_system.js.html#l65"><code>src&#x2F;engine&#x2F;system.js:65</code></a>
+        <a href="../files/src_engine_particle.js.html#l104"><code>src&#x2F;engine&#x2F;particle.js:104</code></a>
         
         </p>
 
@@ -800,8 +1061,549 @@
 
     <div class="extended-detail">
         <div class="description">
-            <p>Is engine in Retina mode.</p>
+            <p>Particle&#39;s life variance.</p>
 
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_particles" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>particles</code>
+    <span class="type">Array</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_particle.js.html#l67"><code>src&#x2F;engine&#x2F;particle.js:67</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_position" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>position</code>
+    <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_particle.js.html#l75"><code>src&#x2F;engine&#x2F;particle.js:75</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_positionVar" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>positionVar</code>
+    <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_particle.js.html#l79"><code>src&#x2F;engine&#x2F;particle.js:79</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_rate" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>rate</code>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_particle.js.html#l115"><code>src&#x2F;engine&#x2F;particle.js:115</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Emitter rate.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_rotate" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>rotate</code>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_particle.js.html#l139"><code>src&#x2F;engine&#x2F;particle.js:139</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Particle&#39;s sprite rotation speed.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_rotateVar" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>rotateVar</code>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_particle.js.html#l144"><code>src&#x2F;engine&#x2F;particle.js:144</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_speed" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>speed</code>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_particle.js.html#l91"><code>src&#x2F;engine&#x2F;particle.js:91</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_speedVar" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>speedVar</code>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_particle.js.html#l95"><code>src&#x2F;engine&#x2F;particle.js:95</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_startAlpha" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>startAlpha</code>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_particle.js.html#l148"><code>src&#x2F;engine&#x2F;particle.js:148</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_startScale" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>startScale</code>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_particle.js.html#l156"><code>src&#x2F;engine&#x2F;particle.js:156</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_startScaleVar" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>startScaleVar</code>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_particle.js.html#l160"><code>src&#x2F;engine&#x2F;particle.js:160</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
         </div>
 
         
@@ -860,10 +1662,10 @@
 </div>
 
         
-            <a name="property_timer" class="anchor-link"></a>
+            <a name="property_textures" class="anchor-link"></a>
 <div class="property item">
-    <h3 class="name"><code>timer</code>
-    <span class="type">Timer</span>
+    <h3 class="name"><code>textures</code>
+    <span class="type">Array</span>
 
     
 
@@ -886,7 +1688,7 @@
             
         
         
-        <a href="../files/src_engine_system.js.html#l39"><code>src&#x2F;engine&#x2F;system.js:39</code></a>
+        <a href="../files/src_engine_particle.js.html#l172"><code>src&#x2F;engine&#x2F;particle.js:172</code></a>
         
         </p>
 
@@ -897,7 +1699,7 @@
 
     <div class="extended-detail">
         <div class="description">
-            <p>Main game timer.</p>
+            <p>List of texture paths.</p>
 
         </div>
 
@@ -910,9 +1712,9 @@
 </div>
 
         
-            <a name="property_width" class="anchor-link"></a>
+            <a name="property_velRotate" class="anchor-link"></a>
 <div class="property item">
-    <h3 class="name"><code>width</code>
+    <h3 class="name"><code>velRotate</code>
     <span class="type">Number</span>
 
     
@@ -936,7 +1738,7 @@
             
         
         
-        <a href="../files/src_engine_system.js.html#l20"><code>src&#x2F;engine&#x2F;system.js:20</code></a>
+        <a href="../files/src_engine_particle.js.html#l130"><code>src&#x2F;engine&#x2F;particle.js:130</code></a>
         
         </p>
 
@@ -947,8 +1749,57 @@
 
     <div class="extended-detail">
         <div class="description">
-            <p>Width of the game screen.</p>
+            <p>Particle&#39;s velocity rotation speed.</p>
 
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_velRotateVar" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>velRotateVar</code>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_particle.js.html#l135"><code>src&#x2F;engine&#x2F;particle.js:135</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
         </div>
 
         
@@ -969,15 +1820,26 @@
 
 
 
-    <div class="attrs-detail">
-        <h2>Attributes</h2>
 
-        
-            <div id="attr_backgroundColor.game" class="attr item">
-    <a name="config_backgroundColor.game"></a> 
-    <h3 class="name"><code>backgroundColor.game</code></h3>
-    <span class="type">String</span>
 
+    <div class="constructor">
+        <h2>Constructor</h2>
+        <a name="method_game.Emitter" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>game.Emitter</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code class="optional">[settings]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -991,6 +1853,10 @@
     
 
     
+
+    
+
+    </h3>
 
     <div class="meta">
         
@@ -1003,890 +1869,55 @@
             
         
         
-        <a href="../files/src_engine_system.js.html#l391"><code>src&#x2F;engine&#x2F;system.js:391</code></a>
+        <a href="../files/src_engine_particle.js.html#l50"><code>src&#x2F;engine&#x2F;particle.js:50</code></a>
         
         </p>
 
+
         
 
         
     </div>
 
-    <div class="description">
-        <p>Background color for game screen.</p>
+    <div class="extended-detail">
 
+        <div class="description">
+            
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[settings]</code>
+                            <span class="type">Object</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
     </div>
-
-    
-
-    
-
-    
 </div>
 
-        
-            <div id="attr_backgroundColor.rotate" class="attr item">
-    <a name="config_backgroundColor.rotate"></a> 
-    <h3 class="name"><code>backgroundColor.rotate</code></h3>
-    <span class="type">String</span>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_system.js.html#l397"><code>src&#x2F;engine&#x2F;system.js:397</code></a>
-        
-        </p>
-
-        
-
-        
     </div>
-
-    <div class="description">
-        <p>Background color for rotate screen.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-        
-            <div id="attr_backgroundImage.game" class="attr item">
-    <a name="config_backgroundImage.game"></a> 
-    <h3 class="name"><code>backgroundImage.game</code></h3>
-    <span class="type">URL</span>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_system.js.html#l405"><code>src&#x2F;engine&#x2F;system.js:405</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Background image for game screen.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-        
-            <div id="attr_backgroundImage.rotate" class="attr item">
-    <a name="config_backgroundImage.rotate"></a> 
-    <h3 class="name"><code>backgroundImage.rotate</code></h3>
-    <span class="type">URL</span>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_system.js.html#l411"><code>src&#x2F;engine&#x2F;system.js:411</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Background image for rotate screen.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-        
-            <div id="attr_hires" class="attr item">
-    <a name="config_hires"></a> 
-    <h3 class="name"><code>hires</code></h3>
-    <span class="type">Boolean</span>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_system.js.html#l360"><code>src&#x2F;engine&#x2F;system.js:360</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Use HiRes mode.</p>
-
-    </div>
-
-    
-        <p><strong>Default:</strong> false</p>
-    
-
-    
-
-    
-</div>
-
-        
-            <div id="attr_hiresFactor" class="attr item">
-    <a name="config_hiresFactor"></a> 
-    <h3 class="name"><code>hiresFactor</code></h3>
-    <span class="type">Number</span>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_system.js.html#l366"><code>src&#x2F;engine&#x2F;system.js:366</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>System width/height factor, when to use HiRes mode.</p>
-
-    </div>
-
-    
-        <p><strong>Default:</strong> 1.5</p>
-    
-
-    
-
-    
-</div>
-
-        
-            <div id="attr_idtkScale" class="attr item">
-    <a name="config_idtkScale"></a> 
-    <h3 class="name"><code>idtkScale</code></h3>
-    <span class="type">ScaleToFill | ScaleAspectFit | ScaleAspectFill</span>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_system.js.html#l347"><code>src&#x2F;engine&#x2F;system.js:347</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Scaling method for CocoonJS.</p>
-
-    </div>
-
-    
-        <p><strong>Default:</strong> ScaleAspectFit</p>
-    
-
-    
-
-    
-</div>
-
-        
-            <div id="attr_maxHeight" class="attr item">
-    <a name="config_maxHeight"></a> 
-    <h3 class="name"><code>maxHeight</code></h3>
-    <span class="type">Number</span>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_system.js.html#l341"><code>src&#x2F;engine&#x2F;system.js:341</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Maximum height for canvas.</p>
-
-    </div>
-
-    
-        <p><strong>Default:</strong> auto</p>
-    
-
-    
-
-    
-</div>
-
-        
-            <div id="attr_maxWidth" class="attr item">
-    <a name="config_maxWidth"></a> 
-    <h3 class="name"><code>maxWidth</code></h3>
-    <span class="type">Number</span>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_system.js.html#l335"><code>src&#x2F;engine&#x2F;system.js:335</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Maximum width for canvas.</p>
-
-    </div>
-
-    
-        <p><strong>Default:</strong> auto</p>
-    
-
-    
-
-    
-</div>
-
-        
-            <div id="attr_minHeight" class="attr item">
-    <a name="config_minHeight"></a> 
-    <h3 class="name"><code>minHeight</code></h3>
-    <span class="type">Number</span>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_system.js.html#l329"><code>src&#x2F;engine&#x2F;system.js:329</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Minimum height for canvas.</p>
-
-    </div>
-
-    
-        <p><strong>Default:</strong> auto</p>
-    
-
-    
-
-    
-</div>
-
-        
-            <div id="attr_minWidth" class="attr item">
-    <a name="config_minWidth"></a> 
-    <h3 class="name"><code>minWidth</code></h3>
-    <span class="type">Number</span>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_system.js.html#l323"><code>src&#x2F;engine&#x2F;system.js:323</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Minimum width for canvas.</p>
-
-    </div>
-
-    
-        <p><strong>Default:</strong> auto</p>
-    
-
-    
-
-    
-</div>
-
-        
-            <div id="attr_orientation" class="attr item">
-    <a name="config_orientation"></a> 
-    <h3 class="name"><code>orientation</code></h3>
-    <span class="type">game.System.LANDSCAPE | game.System.PORTRAIT</span>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_system.js.html#l384"><code>src&#x2F;engine&#x2F;system.js:384</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Mobile orientation for the game.</p>
-
-    </div>
-
-    
-        <p><strong>Default:</strong> game.System.LANDSCAPE</p>
-    
-
-    
-
-    
-</div>
-
-        
-            <div id="attr_pauseOnHide" class="attr item">
-    <a name="config_pauseOnHide"></a> 
-    <h3 class="name"><code>pauseOnHide</code></h3>
-    <span class="type">Boolean</span>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_system.js.html#l378"><code>src&#x2F;engine&#x2F;system.js:378</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Pause game engine, when page is hidden.</p>
-
-    </div>
-
-    
-        <p><strong>Default:</strong> true</p>
-    
-
-    
-
-    
-</div>
-
-        
-            <div id="attr_retina" class="attr item">
-    <a name="config_retina"></a> 
-    <h3 class="name"><code>retina</code></h3>
-    <span class="type">Boolean</span>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_system.js.html#l372"><code>src&#x2F;engine&#x2F;system.js:372</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Use Retina mode.</p>
-
-    </div>
-
-    
-        <p><strong>Default:</strong> false</p>
-    
-
-    
-
-    
-</div>
-
-        
-            <div id="attr_rotateImg" class="attr item">
-    <a name="config_rotateImg"></a> 
-    <h3 class="name"><code>rotateImg</code></h3>
-    <span class="type">URL</span>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_system.js.html#l424"><code>src&#x2F;engine&#x2F;system.js:424</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Rotate image for mobile.</p>
-
-    </div>
-
-    
-        <p><strong>Default:</strong> null</p>
-    
-
-    
-
-    
-</div>
-
-        
-            <div id="attr_rotateMsg" class="attr item">
-    <a name="config_rotateMsg"></a> 
-    <h3 class="name"><code>rotateMsg</code></h3>
-    <span class="type">String</span>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_system.js.html#l418"><code>src&#x2F;engine&#x2F;system.js:418</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Rotate message for mobile.</p>
-
-    </div>
-
-    
-        <p><strong>Default:</strong> Please rotate your device</p>
-    
-
-    
-
-    
-</div>
-
-        
-            <div id="attr_screenCanvas" class="attr item">
-    <a name="config_screenCanvas"></a> 
-    <h3 class="name"><code>screenCanvas</code></h3>
-    <span class="type">Boolean</span>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_system.js.html#l353"><code>src&#x2F;engine&#x2F;system.js:353</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Use ScreenCanvas on CocoonJS.
-<a href="http://support.ludei.com/hc/en-us/articles/201810268-ScreenCanvas">http://support.ludei.com/hc/en-us/articles/201810268-ScreenCanvas</a></p>
-
-    </div>
-
-    
-        <p><strong>Default:</strong> true</p>
-    
-
-    
-
-    
-</div>
-
-        
-    </div>
-
-
 
 
 
@@ -2015,222 +2046,6 @@
             
         </div>
 
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_pause" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>pause</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_system.js.html#l138"><code>src&#x2F;engine&#x2F;system.js:138</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Pause game engine.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_resume" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>resume</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_system.js.html#l148"><code>src&#x2F;engine&#x2F;system.js:148</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Resume paused game engine.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_setScene" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>setScene</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>sceneClass</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_system.js.html#l158"><code>src&#x2F;engine&#x2F;system.js:158</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Change current scene.</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">sceneClass</code>
-                            <span class="type">Class</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
         
 
         

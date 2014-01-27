@@ -61,9 +61,13 @@
             
                 <li><a class="type" href="../classes/game.Debug.html">game.Debug</a></li>
             
+                <li><a class="type" href="../classes/game.Emitter.html">game.Emitter</a></li>
+            
                 <li><a class="type" href="../classes/game.Line.html">game.Line</a></li>
             
                 <li><a class="type" href="../classes/game.Loader.html">game.Loader</a></li>
+            
+                <li><a class="type" href="../classes/game.Particle.html">game.Particle</a></li>
             
                 <li><a class="type" href="../classes/game.Pool.html">game.Pool</a></li>
             
@@ -256,7 +260,7 @@ game.System = game.Class.extend({
             document.addEventListener(visibilityChange, function() {
                 var hidden = !!game.getVendorAttribute(document, &#x27;hidden&#x27;);
                 if(hidden &amp;&amp; game.System.pauseOnHide) game.system.pause();
-                if(!hidden &amp;&amp; game.System.pauseOnHide) game.system.unpause();
+                if(!hidden &amp;&amp; game.System.pauseOnHide) game.system.resume();
             }, false);
         }
         
@@ -279,12 +283,12 @@ game.System = game.Class.extend({
 
     /**
         Resume paused game engine.
-        @method unpause
+        @method resume
     **/
-    unpause: function() {
+    resume: function() {
         if(!this.paused) return;
         this.paused = false;
-        if(game.scene) game.scene.unpause();
+        if(game.scene) game.scene.resume();
     },
 
     /**
@@ -402,7 +406,7 @@ game.System = game.Class.extend({
         if(!game.System.rotateScreen) document.body.style.backgroundImage = game.System.backgroundImage.game ? &#x27;url(&#x27; + game.System.backgroundImage.game + &#x27;)&#x27; : &#x27;none&#x27;;
 
         if(game.System.rotateScreen &amp;&amp; game.system &amp;&amp; typeof(game.system.pause) === &#x27;function&#x27;) game.system.pause();
-        if(!game.System.rotateScreen &amp;&amp; game.system &amp;&amp; typeof(game.system.unpause) === &#x27;function&#x27;) game.system.unpause();
+        if(!game.System.rotateScreen &amp;&amp; game.system &amp;&amp; typeof(game.system.resume) === &#x27;function&#x27;) game.system.resume();
 
         if(game.System.rotateScreen) this.resizeRotateImage();
     },
