@@ -244,7 +244,7 @@
             },
             "tag": "module",
             "file": "src/engine/particle.js",
-            "line": 50,
+            "line": 65,
             "description": "Particle engine."
         },
         "physics": {
@@ -467,8 +467,8 @@
             "module": "particle",
             "namespace": "game",
             "file": "src/engine/particle.js",
-            "line": 50,
-            "description": "Particle emitter. Uses pool named `emitter`.\n\n__Example__\n\n    var emitter = new game.Emitter();\n    emitter.container = game.scene.stage;\n    emitter.textures.push('media/particle.png');\n    emitter.position.x = game.system.width / 2;\n    emitter.position.y = game.system.height / 2;",
+            "line": 65,
+            "description": "Particle emitter.\n\n__Example__\n\n    var emitter = new game.Emitter();\n    emitter.container = game.scene.stage;\n    emitter.textures.push('media/particle.png');\n    emitter.position.x = game.system.width / 2;\n    emitter.position.y = game.system.height / 2;",
             "extends": "game.Class",
             "is_constructor": 1,
             "params": [
@@ -1217,7 +1217,17 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 39,
+            "line": 33,
+            "itemtype": "property",
+            "name": "accel",
+            "type": "game.Vector",
+            "class": "game.Particle",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 44,
             "itemtype": "method",
             "name": "setVelocity",
             "params": [
@@ -1238,7 +1248,40 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 67,
+            "line": 54,
+            "itemtype": "method",
+            "name": "setAccel",
+            "params": [
+                {
+                    "name": "angle",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "speed",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "game.Particle",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 82,
+            "description": "Pool name for particles.",
+            "itemtype": "property",
+            "name": "poolName",
+            "type": "String",
+            "default": "emitter",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 88,
             "itemtype": "property",
             "name": "particles",
             "type": "Array",
@@ -1248,244 +1291,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 71,
-            "itemtype": "property",
-            "name": "gravity",
-            "type": "game.Vector",
-            "class": "game.Emitter",
-            "module": "particle",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/particle.js",
-            "line": 75,
-            "itemtype": "property",
-            "name": "position",
-            "type": "game.Vector",
-            "class": "game.Emitter",
-            "module": "particle",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/particle.js",
-            "line": 79,
-            "itemtype": "property",
-            "name": "positionVar",
-            "type": "game.Vector",
-            "class": "game.Emitter",
-            "module": "particle",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/particle.js",
-            "line": 83,
-            "itemtype": "property",
-            "name": "angle",
-            "type": "Number",
-            "class": "game.Emitter",
-            "module": "particle",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/particle.js",
-            "line": 87,
-            "itemtype": "property",
-            "name": "angle",
-            "type": "Number",
-            "class": "game.Emitter",
-            "module": "particle",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/particle.js",
-            "line": 91,
-            "itemtype": "property",
-            "name": "speed",
-            "type": "Number",
-            "class": "game.Emitter",
-            "module": "particle",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/particle.js",
-            "line": 95,
-            "itemtype": "property",
-            "name": "speedVar",
-            "type": "Number",
-            "class": "game.Emitter",
-            "module": "particle",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/particle.js",
-            "line": 99,
-            "description": "Particle's life in seconds.",
-            "itemtype": "property",
-            "name": "life",
-            "type": "Number",
-            "class": "game.Emitter",
-            "module": "particle",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/particle.js",
-            "line": 104,
-            "description": "Particle's life variance.",
-            "itemtype": "property",
-            "name": "lifeVar",
-            "type": "Number",
-            "class": "game.Emitter",
-            "module": "particle",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/particle.js",
-            "line": 109,
-            "description": "Emitter duration in seconds. 0 = forever",
-            "itemtype": "property",
-            "name": "duration",
-            "type": "Number",
-            "class": "game.Emitter",
-            "module": "particle",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/particle.js",
-            "line": 115,
-            "description": "Emitter rate.",
-            "itemtype": "property",
-            "name": "rate",
-            "type": "Number",
-            "class": "game.Emitter",
-            "module": "particle",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/particle.js",
-            "line": 121,
-            "description": "Emit count.",
-            "itemtype": "property",
-            "name": "count",
-            "type": "Number",
-            "class": "game.Emitter",
-            "module": "particle",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/particle.js",
-            "line": 126,
-            "itemtype": "property",
-            "name": "active",
-            "type": "Boolean",
-            "class": "game.Emitter",
-            "module": "particle",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/particle.js",
-            "line": 130,
-            "description": "Particle's velocity rotation speed.",
-            "itemtype": "property",
-            "name": "velRotate",
-            "type": "Number",
-            "class": "game.Emitter",
-            "module": "particle",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/particle.js",
-            "line": 135,
-            "itemtype": "property",
-            "name": "velRotateVar",
-            "type": "Number",
-            "class": "game.Emitter",
-            "module": "particle",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/particle.js",
-            "line": 139,
-            "description": "Particle's sprite rotation speed.",
-            "itemtype": "property",
-            "name": "rotate",
-            "type": "Number",
-            "class": "game.Emitter",
-            "module": "particle",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/particle.js",
-            "line": 144,
-            "itemtype": "property",
-            "name": "rotateVar",
-            "type": "Number",
-            "class": "game.Emitter",
-            "module": "particle",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/particle.js",
-            "line": 148,
-            "itemtype": "property",
-            "name": "startAlpha",
-            "type": "Number",
-            "class": "game.Emitter",
-            "module": "particle",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/particle.js",
-            "line": 152,
-            "itemtype": "property",
-            "name": "endAlpha",
-            "type": "Number",
-            "class": "game.Emitter",
-            "module": "particle",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/particle.js",
-            "line": 156,
-            "itemtype": "property",
-            "name": "startScale",
-            "type": "Number",
-            "class": "game.Emitter",
-            "module": "particle",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/particle.js",
-            "line": 160,
-            "itemtype": "property",
-            "name": "startScaleVar",
-            "type": "Number",
-            "class": "game.Emitter",
-            "module": "particle",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/particle.js",
-            "line": 164,
-            "itemtype": "property",
-            "name": "endScale",
-            "type": "Number",
-            "class": "game.Emitter",
-            "module": "particle",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/particle.js",
-            "line": 168,
-            "itemtype": "property",
-            "name": "endScaleVar",
-            "type": "Number",
-            "class": "game.Emitter",
-            "module": "particle",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/particle.js",
-            "line": 172,
+            "line": 92,
             "description": "List of texture paths.",
             "itemtype": "property",
             "name": "textures",
@@ -1496,11 +1302,412 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 177,
+            "line": 97,
             "description": "Container for particle sprites.",
             "itemtype": "property",
             "name": "container",
             "type": "game.Container",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 102,
+            "itemtype": "property",
+            "name": "position",
+            "type": "game.Vector",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 106,
+            "itemtype": "property",
+            "name": "positionVar",
+            "type": "game.Vector",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 110,
+            "description": "Emit angle in radians.",
+            "itemtype": "property",
+            "name": "angle",
+            "type": "Number",
+            "default": "0",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 116,
+            "itemtype": "property",
+            "name": "angleVar",
+            "type": "Number",
+            "default": "Math.PI",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 121,
+            "itemtype": "property",
+            "name": "speed",
+            "type": "Number",
+            "default": "100",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 126,
+            "itemtype": "property",
+            "name": "speedVar",
+            "type": "Number",
+            "default": "0",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 131,
+            "description": "Particle's life in seconds.",
+            "itemtype": "property",
+            "name": "life",
+            "type": "Number",
+            "default": "2",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 137,
+            "description": "Particle's life variance.",
+            "itemtype": "property",
+            "name": "lifeVar",
+            "type": "Number",
+            "default": "0",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 143,
+            "description": "Emitter duration in seconds. 0 = forever",
+            "itemtype": "property",
+            "name": "duration",
+            "type": "Number",
+            "default": "0",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 150,
+            "description": "Emitter rate.",
+            "itemtype": "property",
+            "name": "rate",
+            "type": "Number",
+            "default": "0.1",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 157,
+            "description": "Emit count.",
+            "itemtype": "property",
+            "name": "count",
+            "type": "Number",
+            "default": "10",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 163,
+            "itemtype": "property",
+            "name": "active",
+            "type": "Boolean",
+            "default": "true",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 168,
+            "description": "Particle's velocity rotation speed.",
+            "itemtype": "property",
+            "name": "velRotate",
+            "type": "Number",
+            "default": "0",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 174,
+            "itemtype": "property",
+            "name": "velRotateVar",
+            "type": "Number",
+            "default": "0",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 179,
+            "description": "Particle's sprite rotation speed.",
+            "itemtype": "property",
+            "name": "rotate",
+            "type": "Number",
+            "default": "0",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 185,
+            "itemtype": "property",
+            "name": "rotateVar",
+            "type": "Number",
+            "default": "0",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 190,
+            "itemtype": "property",
+            "name": "startAlpha",
+            "type": "Number",
+            "default": "1",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 195,
+            "itemtype": "property",
+            "name": "endAlpha",
+            "type": "Number",
+            "default": "0",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 200,
+            "itemtype": "property",
+            "name": "startScale",
+            "type": "Number",
+            "default": "1",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 205,
+            "itemtype": "property",
+            "name": "startScaleVar",
+            "type": "Number",
+            "default": "0",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 210,
+            "itemtype": "property",
+            "name": "endScale",
+            "type": "Number",
+            "default": "1",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 215,
+            "itemtype": "property",
+            "name": "endScaleVar",
+            "type": "Number",
+            "default": "0",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 220,
+            "description": "Target position for particles.",
+            "itemtype": "property",
+            "name": "target",
+            "type": "game.Vector",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 225,
+            "description": "Target positions force.",
+            "itemtype": "property",
+            "name": "targetForce",
+            "type": "Number",
+            "default": "0",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 231,
+            "description": "Acceleration angle in radians.",
+            "itemtype": "property",
+            "name": "accelAngle",
+            "type": "Number",
+            "default": "Math.PI / 2",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 237,
+            "itemtype": "property",
+            "name": "accelAngleVar",
+            "type": "Number",
+            "default": "0",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 242,
+            "description": "Acceleration speed.",
+            "itemtype": "property",
+            "name": "accelSpeed",
+            "type": "Number",
+            "default": "0",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 248,
+            "itemtype": "property",
+            "name": "accelSpeedVar",
+            "type": "Number",
+            "default": "0",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 253,
+            "description": "Settings to apply on particle sprite.",
+            "itemtype": "property",
+            "name": "spriteSettings",
+            "type": "Object",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 270,
+            "description": "Reset emitter values to defaults.",
+            "itemtype": "method",
+            "name": "reset",
+            "params": [
+                {
+                    "name": "resetVec",
+                    "description": "Reset vector values.",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 286,
+            "itemtype": "method",
+            "name": "getVariance",
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 294,
+            "itemtype": "method",
+            "name": "addParticle",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 342,
+            "itemtype": "method",
+            "name": "updateParticle",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 370,
+            "itemtype": "method",
+            "name": "emit",
+            "params": [
+                {
+                    "name": "count",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 381,
+            "itemtype": "method",
+            "name": "update",
             "class": "game.Emitter",
             "module": "particle",
             "namespace": "game"
