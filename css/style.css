@@ -1,27 +1,36 @@
 html,body {
-	height: 100%;
+	min-height: 100%;
 }
 body {
 	margin: 0;
 	padding: 0;
-	background: #fff;
+	background: #fff url('../mountains.png') bottom center repeat-x;
 	font: 14px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color: #333333;
-	height: 100%;
+	line-height: 32px;
 }
-b {
+b,a.box {
 	background: #f2f2f2;
 	border: 1px solid #fff;
 	border-radius: 5px;
-	padding: 5px 8px;
+	padding: 0px 10px;
+	margin: 2px 0px;
 	/*font-weight: normal;*/
+	display: inline-block;
 }
+
 a {
-	color: #39c;
+	font-weight: bold;
+	color: #6e899c;
 	text-decoration: none;
 }
 a:hover {
 	color: #333;
+	cursor: pointer;
+}
+b:hover, a.box:hover {
+	background: #bbb;
+	color: #fff;
 }
 h1,h2,h3 {
 	font-weight: normal;
@@ -29,8 +38,9 @@ h1,h2,h3 {
 h1 {
 	margin-top: 0px;
 	font-weight: bold;
-	margin-bottom: 10px;
-	/*float: left;*/
+	margin-bottom: 20px;
+	color: #000;
+	/*text-shadow: 0px 1px 0px #b7c4ce;*/
 }
 h2 {
 	font-size: 15px;
@@ -53,6 +63,7 @@ h3 {
 	/*border-left: 2px dashed #ccc;*/
 	/*border-right: 2px dashed #ccc;*/
 	max-width: 960px;
+	padding-bottom: 40px;
 }
 #wrapper {
 	padding: 20px 0px;
@@ -91,30 +102,35 @@ code {
 	background: #111;
 	text-align: center;
 	color: #ccc;
-	padding-top: 40px;
-	padding-bottom: 40px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	font-size: 12px;
 	font-family: Arial;
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
 }
 
 #header {
 	position: absolute;
 	width: 100%;
-	background: #222;
+	background: #6e899c;
 	margin: 0;
 	height: 120px;
-	border-bottom: 1px solid #ddd;
+	border-bottom: 4px solid #000;
 }
 
 #header .wrapper {
 	width: auto;
 	max-width: 960px;
 	margin: auto;
-	padding: 10px;
 	position: relative;
+	text-align: center;
 }
 
-#header img {
+#header img.left {
+	position: absolute;
+	left: -20px;
 }
 
 #header h1 {
@@ -155,6 +171,7 @@ code {
 	}
 	#bg {
 		border-style: none;
+		padding-bottom: 0px;
 	}
 	#wrapper {
 		/*padding: 20px 5px;*/
@@ -164,6 +181,9 @@ code {
 	#header {
 		text-align: center;
 	}
+	#header img.center {
+		display: none;
+	}
 	#header h1 {
 		margin-top: 25px;
 	}
@@ -171,6 +191,9 @@ code {
 		width: 100%;
 		left: 0px;
 		top: 55px;
+	}
+	#footer {
+		position: relative;
 	}
 	#footer span {
 		display: block;
