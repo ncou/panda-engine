@@ -324,7 +324,7 @@
             },
             "tag": "module",
             "file": "src/engine/sprite.js",
-            "line": 50
+            "line": 56
         },
         "storage": {
             "name": "storage",
@@ -744,7 +744,7 @@
             "module": "sprite",
             "namespace": "game",
             "file": "src/engine/sprite.js",
-            "line": 50,
+            "line": 56,
             "description": "Sprite container."
         },
         "game.Storage": {
@@ -1172,14 +1172,47 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 188,
-            "description": "Minimum time to show preloader. In milliseconds.",
+            "line": 16,
+            "description": "Game scene to start, when loader is finished.",
+            "itemtype": "property",
+            "name": "gameScene",
+            "type": "game.Scene",
+            "class": "game.Loader",
+            "module": "loader",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/loader.js",
+            "line": 21,
+            "description": "Number of files loaded.",
+            "itemtype": "property",
+            "name": "loaded",
+            "type": "Number",
+            "class": "game.Loader",
+            "module": "loader",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/loader.js",
+            "line": 26,
+            "description": "Percent of files loaded.",
+            "itemtype": "property",
+            "name": "percent",
+            "type": "Number",
+            "class": "game.Loader",
+            "module": "loader",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/loader.js",
+            "line": 194,
+            "description": "Minimum time to show preloader, in seconds.",
             "itemtype": "attribute",
             "name": "timeout",
             "type": "Number",
-            "default": "500",
+            "default": "0.5",
             "example": [
-                "\n    game.Loader.timeout = 1000;"
+                "\n    game.Loader.timeout = 1;"
             ],
             "class": "game.Loader",
             "module": "loader",
@@ -3014,7 +3047,7 @@
         },
         {
             "file": "src/engine/sprite.js",
-            "line": 39,
+            "line": 46,
             "description": "Remove sprite from it's container.",
             "itemtype": "method",
             "name": "remove",
@@ -3138,7 +3171,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 39,
+            "line": 35,
             "description": "Main game timer.",
             "itemtype": "property",
             "name": "timer",
@@ -3149,7 +3182,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 44,
+            "line": 40,
             "description": "Canvas element.",
             "itemtype": "property",
             "name": "canvas",
@@ -3160,7 +3193,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 49,
+            "line": 45,
             "description": "Id of canvas element.",
             "itemtype": "property",
             "name": "canvasId",
@@ -3172,7 +3205,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 55,
+            "line": 51,
             "description": "Is engine paused.",
             "itemtype": "property",
             "name": "paused",
@@ -3183,7 +3216,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 60,
+            "line": 56,
             "description": "Is engine in HiRes mode.",
             "itemtype": "property",
             "name": "hires",
@@ -3194,7 +3227,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 65,
+            "line": 61,
             "description": "Is engine in Retina mode.",
             "itemtype": "property",
             "name": "retina",
@@ -3205,7 +3238,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 138,
+            "line": 136,
             "description": "Pause game engine.",
             "itemtype": "method",
             "name": "pause",
@@ -3215,7 +3248,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 148,
+            "line": 146,
             "description": "Resume paused game engine.",
             "itemtype": "method",
             "name": "resume",
@@ -3225,7 +3258,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 158,
+            "line": 156,
             "description": "Change current scene.",
             "itemtype": "method",
             "name": "setScene",
@@ -3242,7 +3275,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 323,
+            "line": 327,
             "description": "Minimum width for canvas.",
             "itemtype": "attribute",
             "name": "minWidth",
@@ -3254,7 +3287,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 329,
+            "line": 333,
             "description": "Minimum height for canvas.",
             "itemtype": "attribute",
             "name": "minHeight",
@@ -3266,7 +3299,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 335,
+            "line": 339,
             "description": "Maximum width for canvas.",
             "itemtype": "attribute",
             "name": "maxWidth",
@@ -3278,7 +3311,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 341,
+            "line": 345,
             "description": "Maximum height for canvas.",
             "itemtype": "attribute",
             "name": "maxHeight",
@@ -3290,7 +3323,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 347,
+            "line": 351,
             "description": "Scaling method for CocoonJS.",
             "itemtype": "attribute",
             "name": "idtkScale",
@@ -3302,7 +3335,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 353,
+            "line": 357,
             "description": "Use ScreenCanvas on CocoonJS.\nhttp://support.ludei.com/hc/en-us/articles/201810268-ScreenCanvas",
             "itemtype": "attribute",
             "name": "screenCanvas",
@@ -3314,7 +3347,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 360,
+            "line": 364,
             "description": "Use HiRes mode.",
             "itemtype": "attribute",
             "name": "hires",
@@ -3326,7 +3359,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 366,
+            "line": 370,
             "description": "System width/height factor, when to use HiRes mode.",
             "itemtype": "attribute",
             "name": "hiresFactor",
@@ -3338,7 +3371,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 372,
+            "line": 376,
             "description": "Use Retina mode.",
             "itemtype": "attribute",
             "name": "retina",
@@ -3350,7 +3383,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 378,
+            "line": 382,
             "description": "Pause game engine, when page is hidden.",
             "itemtype": "attribute",
             "name": "pauseOnHide",
@@ -3362,7 +3395,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 384,
+            "line": 388,
             "description": "Mobile orientation for the game.",
             "itemtype": "attribute",
             "name": "orientation",
@@ -3374,8 +3407,8 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 391,
-            "description": "Background color for game screen.",
+            "line": 395,
+            "description": "Background color for game screen on mobile.",
             "itemtype": "attribute",
             "name": "backgroundColor.game",
             "type": "{String}",
@@ -3385,8 +3418,8 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 397,
-            "description": "Background color for rotate screen.",
+            "line": 401,
+            "description": "Background color for rotate screen on mobile.",
             "itemtype": "attribute",
             "name": "backgroundColor.rotate",
             "type": "{String}",
@@ -3396,8 +3429,8 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 405,
-            "description": "Background image for game screen.",
+            "line": 409,
+            "description": "Background image for game screen on mobile.",
             "itemtype": "attribute",
             "name": "backgroundImage.game",
             "type": "{URL}",
@@ -3407,8 +3440,8 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 411,
-            "description": "Background image for rotate screen.",
+            "line": 415,
+            "description": "Background image for rotate screen on mobile.",
             "itemtype": "attribute",
             "name": "backgroundImage.rotate",
             "type": "{URL}",
@@ -3418,7 +3451,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 418,
+            "line": 422,
             "description": "Rotate message for mobile.",
             "itemtype": "attribute",
             "name": "rotateMsg",
@@ -3430,7 +3463,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 424,
+            "line": 428,
             "description": "Rotate image for mobile.",
             "itemtype": "attribute",
             "name": "rotateImg",
@@ -3546,7 +3579,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 90,
+            "line": 91,
             "itemtype": "method",
             "name": "pause",
             "class": "game.Tween",
@@ -3555,7 +3588,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 98,
+            "line": 99,
             "itemtype": "method",
             "name": "resume",
             "class": "game.Tween",
@@ -3564,7 +3597,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 106,
+            "line": 107,
             "itemtype": "method",
             "name": "stop",
             "params": [
@@ -3580,7 +3613,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 121,
+            "line": 122,
             "itemtype": "method",
             "name": "chain",
             "params": [
@@ -3596,7 +3629,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 240,
+            "line": 241,
             "itemtype": "attribute",
             "name": "Loop",
             "type": "Revert|Reverse",
@@ -3606,7 +3639,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 245,
+            "line": 246,
             "description": "Easing types: `In`, `Out` and `InOut`.",
             "itemtype": "attribute",
             "name": "Easing",

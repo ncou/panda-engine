@@ -170,11 +170,17 @@ game.Sprite = PIXI.Sprite.extend({
 
         this.position.x = x;
         this.position.y = y;
+
+        // auto bind touch events for mobile
+        if(game.ua.mobile &amp;&amp; !this.tap &amp;&amp; this.click) this.tap = this.click;
+        if(game.ua.mobile &amp;&amp; !this.touchmove &amp;&amp; this.mousemove) this.touchmove = this.mousemove;
+        if(game.ua.mobile &amp;&amp; !this.touchstart &amp;&amp; this.mousedown) this.touchstart = this.mousedown;
+        if(game.ua.mobile &amp;&amp; !this.touchend &amp;&amp; this.mouseup) this.touchend = this.mouseup;
+        if(game.ua.mobile &amp;&amp; !this.touchendoutside &amp;&amp; this.mouseupoutside) this.touchendoutside = this.mouseupoutside;
     },
 
     /**
         Remove sprite from it&#x27;s container.
-
         @method remove
     **/
     remove: function() {
@@ -185,11 +191,13 @@ game.Sprite = PIXI.Sprite.extend({
 
 /**
     Sprite container.
-    
     @class Container
 **/
 game.Container = PIXI.DisplayObjectContainer.extend({
 });
+
+game.Texture = PIXI.Texture.extend();
+game.Texture.fromImage = PIXI.Texture.fromImage;
 
 });
     </pre>
