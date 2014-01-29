@@ -201,7 +201,7 @@
             },
             "tag": "module",
             "file": "src/engine/core.js",
-            "line": 492
+            "line": 511
         },
         "debug": {
             "name": "debug",
@@ -411,7 +411,7 @@
             "module": "core",
             "namespace": "game",
             "file": "src/engine/core.js",
-            "line": 492
+            "line": 511
         },
         "game.Debug": {
             "name": "game.Debug",
@@ -1074,7 +1074,43 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 496,
+            "line": 270,
+            "description": "Distance between two points.",
+            "itemtype": "method",
+            "name": "Math.distance",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "x2",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "y2",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "game.Core",
+            "module": "core",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/core.js",
+            "line": 515,
             "itemtype": "method",
             "name": "extend",
             "return": {
@@ -1087,7 +1123,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 508,
+            "line": 527,
             "description": "Call functions parent function.",
             "itemtype": "method",
             "name": "super",
@@ -1097,7 +1133,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 537,
+            "line": 555,
             "description": "If Class has `staticInit` function, it is called before `init` function.",
             "itemtype": "property",
             "name": "staticInit",
@@ -1108,7 +1144,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 552,
+            "line": 570,
             "description": "Automatically called, when creating new class.",
             "itemtype": "property",
             "name": "init",
@@ -1119,7 +1155,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 565,
+            "line": 583,
             "itemtype": "method",
             "name": "inject",
             "class": "game.Class",
@@ -1205,7 +1241,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 194,
+            "line": 197,
             "description": "Minimum time to show preloader, in seconds.",
             "itemtype": "attribute",
             "name": "timeout",
