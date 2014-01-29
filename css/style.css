@@ -4,7 +4,7 @@ html,body {
 body {
 	margin: 0;
 	padding: 0;
-	background: #fff url('../mountains.png') bottom center repeat-x;
+	background: #fff url('/mountains.png') bottom center repeat-x;
 	font: 14px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color: #333333;
 	line-height: 32px;

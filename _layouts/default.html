@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+{% include head.html %}
+<body>
+    {% include header.html %}
+    <div id="bg">
+    <div id="wrapper">
+        <h1>{% if page.header %}{{ page.header }}{% else %}{{ page.title }}{% endif %}</h1>
+        {{ content }}
+    </div>
+    </div>
+    {% include footer.html %}
+</body>
+</html>
