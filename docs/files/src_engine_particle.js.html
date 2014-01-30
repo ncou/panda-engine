@@ -208,6 +208,7 @@ game.Particle = game.Class.extend({
         emitter.textures.push(&#x27;media/particle.png&#x27;);
         emitter.position.x = game.system.width / 2;
         emitter.position.y = game.system.height / 2;
+        game.scene.emitters.push(emitter);
 
     @class Emitter
     @extends game.Class
@@ -393,11 +394,17 @@ game.Emitter = game.Class.extend({
     spriteSettings: {
         anchor: {x: 0.5, y: 0.5},
     },
+    /**
+        @property {game.Vector} velocityLimit
+        @default 100
+    **/
+    velocityLimit: null,
 
     init: function(settings) {
         game.pool.create(this.poolName);
         this.position = new game.Vector();
         this.positionVar = new game.Vector();
+        this.velocityLimit = new game.Vector(100, 100);
         this.target = new game.Vector();
 
         game.merge(this, settings);
@@ -488,6 +495,7 @@ game.Emitter = game.Class.extend({
             }
 
             particle.velocity.multiplyAdd(particle.accel, game.system.delta);
+            particle.velocity.limit(this.velocityLimit);
             particle.velocity.rotate(particle.velRotate * game.system.delta);
             particle.position.multiplyAdd(particle.velocity, game.scale * game.system.delta);
 
@@ -532,6 +540,14 @@ game.Emitter = game.Class.extend({
         for (var i = this.particles.length - 1; i &gt;= 0; i--) {
             this.updateParticle(this.particles[i]);
         }
+    },
+
+    /**
+        Remove emitter from scene.
+        @method remove
+    **/
+    remove: function() {
+        this._remove = true;
     }
 });
 

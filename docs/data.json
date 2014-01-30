@@ -201,7 +201,7 @@
             },
             "tag": "module",
             "file": "src/engine/core.js",
-            "line": 511
+            "line": 528
         },
         "debug": {
             "name": "debug",
@@ -324,7 +324,7 @@
             },
             "tag": "module",
             "file": "src/engine/sprite.js",
-            "line": 56
+            "line": 55
         },
         "storage": {
             "name": "storage",
@@ -411,7 +411,7 @@
             "module": "core",
             "namespace": "game",
             "file": "src/engine/core.js",
-            "line": 511
+            "line": 528
         },
         "game.Debug": {
             "name": "game.Debug",
@@ -468,7 +468,7 @@
             "namespace": "game",
             "file": "src/engine/particle.js",
             "line": 65,
-            "description": "Particle emitter.\n\n__Example__\n\n    var emitter = new game.Emitter();\n    emitter.container = game.scene.stage;\n    emitter.textures.push('media/particle.png');\n    emitter.position.x = game.system.width / 2;\n    emitter.position.y = game.system.height / 2;",
+            "description": "Particle emitter.\n\n__Example__\n\n    var emitter = new game.Emitter();\n    emitter.container = game.scene.stage;\n    emitter.textures.push('media/particle.png');\n    emitter.position.x = game.system.width / 2;\n    emitter.position.y = game.system.height / 2;\n    game.scene.emitters.push(emitter);",
             "extends": "game.Class",
             "is_constructor": 1,
             "params": [
@@ -744,7 +744,7 @@
             "module": "sprite",
             "namespace": "game",
             "file": "src/engine/sprite.js",
-            "line": 56,
+            "line": 55,
             "description": "Sprite container."
         },
         "game.Storage": {
@@ -921,6 +921,29 @@
         {
             "file": "src/engine/core.js",
             "line": 161,
+            "description": "Request fullscreen mode.",
+            "itemtype": "method",
+            "name": "fullscreen",
+            "class": "game.Core",
+            "module": "core",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/core.js",
+            "line": 170,
+            "itemtype": "method",
+            "name": "fullscreenSupport",
+            "return": {
+                "description": "Return true, if browser supports fullscreen mode.",
+                "type": "Boolean"
+            },
+            "class": "game.Core",
+            "module": "core",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/core.js",
+            "line": 178,
             "description": "Add asset to preloader.",
             "itemtype": "method",
             "name": "addAsset",
@@ -940,7 +963,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 172,
+            "line": 189,
             "description": "Add sound to preloader.",
             "itemtype": "method",
             "name": "addSound",
@@ -966,7 +989,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 185,
+            "line": 202,
             "description": "Add music to preloader.",
             "itemtype": "method",
             "name": "addMusic",
@@ -989,7 +1012,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 200,
+            "line": 217,
             "description": "Define new module.",
             "itemtype": "method",
             "name": "module",
@@ -1015,7 +1038,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 220,
+            "line": 237,
             "description": "Require modules for module.",
             "itemtype": "method",
             "name": "require",
@@ -1032,7 +1055,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 233,
+            "line": 250,
             "description": "Define body for module.",
             "itemtype": "method",
             "name": "body",
@@ -1042,7 +1065,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 243,
+            "line": 260,
             "description": "Start the game engine.",
             "itemtype": "method",
             "name": "start",
@@ -1074,7 +1097,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 270,
+            "line": 287,
             "description": "Distance between two points.",
             "itemtype": "method",
             "name": "Math.distance",
@@ -1110,7 +1133,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 515,
+            "line": 532,
             "itemtype": "method",
             "name": "extend",
             "return": {
@@ -1123,7 +1146,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 527,
+            "line": 544,
             "description": "Call functions parent function.",
             "itemtype": "method",
             "name": "super",
@@ -1133,7 +1156,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 555,
+            "line": 572,
             "description": "If Class has `staticInit` function, it is called before `init` function.",
             "itemtype": "property",
             "name": "staticInit",
@@ -1144,7 +1167,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 570,
+            "line": 587,
             "description": "Automatically called, when creating new class.",
             "itemtype": "property",
             "name": "init",
@@ -1155,7 +1178,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 583,
+            "line": 600,
             "itemtype": "method",
             "name": "inject",
             "class": "game.Class",
@@ -1338,7 +1361,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 82,
+            "line": 83,
             "description": "Pool name for particles.",
             "itemtype": "property",
             "name": "poolName",
@@ -1350,7 +1373,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 88,
+            "line": 89,
             "itemtype": "property",
             "name": "particles",
             "type": "Array",
@@ -1360,7 +1383,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 92,
+            "line": 93,
             "description": "List of texture paths.",
             "itemtype": "property",
             "name": "textures",
@@ -1371,7 +1394,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 97,
+            "line": 98,
             "description": "Container for particle sprites.",
             "itemtype": "property",
             "name": "container",
@@ -1382,7 +1405,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 102,
+            "line": 103,
             "itemtype": "property",
             "name": "position",
             "type": "game.Vector",
@@ -1392,7 +1415,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 106,
+            "line": 107,
             "itemtype": "property",
             "name": "positionVar",
             "type": "game.Vector",
@@ -1402,7 +1425,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 110,
+            "line": 111,
             "description": "Emit angle in radians.",
             "itemtype": "property",
             "name": "angle",
@@ -1414,7 +1437,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 116,
+            "line": 117,
             "itemtype": "property",
             "name": "angleVar",
             "type": "Number",
@@ -1425,7 +1448,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 121,
+            "line": 122,
             "itemtype": "property",
             "name": "speed",
             "type": "Number",
@@ -1436,7 +1459,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 126,
+            "line": 127,
             "itemtype": "property",
             "name": "speedVar",
             "type": "Number",
@@ -1447,7 +1470,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 131,
+            "line": 132,
             "description": "Particle's life in seconds.",
             "itemtype": "property",
             "name": "life",
@@ -1459,7 +1482,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 137,
+            "line": 138,
             "description": "Particle's life variance.",
             "itemtype": "property",
             "name": "lifeVar",
@@ -1471,7 +1494,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 143,
+            "line": 144,
             "description": "Emitter duration in seconds. 0 = forever",
             "itemtype": "property",
             "name": "duration",
@@ -1483,7 +1506,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 150,
+            "line": 151,
             "description": "Emitter rate.",
             "itemtype": "property",
             "name": "rate",
@@ -1495,7 +1518,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 157,
+            "line": 158,
             "description": "Emit count.",
             "itemtype": "property",
             "name": "count",
@@ -1507,7 +1530,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 163,
+            "line": 164,
             "itemtype": "property",
             "name": "active",
             "type": "Boolean",
@@ -1518,7 +1541,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 168,
+            "line": 169,
             "description": "Particle's velocity rotation speed.",
             "itemtype": "property",
             "name": "velRotate",
@@ -1530,7 +1553,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 174,
+            "line": 175,
             "itemtype": "property",
             "name": "velRotateVar",
             "type": "Number",
@@ -1541,7 +1564,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 179,
+            "line": 180,
             "description": "Particle's sprite rotation speed.",
             "itemtype": "property",
             "name": "rotate",
@@ -1553,7 +1576,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 185,
+            "line": 186,
             "itemtype": "property",
             "name": "rotateVar",
             "type": "Number",
@@ -1564,7 +1587,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 190,
+            "line": 191,
             "itemtype": "property",
             "name": "startAlpha",
             "type": "Number",
@@ -1575,7 +1598,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 195,
+            "line": 196,
             "itemtype": "property",
             "name": "endAlpha",
             "type": "Number",
@@ -1586,7 +1609,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 200,
+            "line": 201,
             "itemtype": "property",
             "name": "startScale",
             "type": "Number",
@@ -1597,7 +1620,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 205,
+            "line": 206,
             "itemtype": "property",
             "name": "startScaleVar",
             "type": "Number",
@@ -1608,7 +1631,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 210,
+            "line": 211,
             "itemtype": "property",
             "name": "endScale",
             "type": "Number",
@@ -1619,7 +1642,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 215,
+            "line": 216,
             "itemtype": "property",
             "name": "endScaleVar",
             "type": "Number",
@@ -1630,7 +1653,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 220,
+            "line": 221,
             "description": "Target position for particles.",
             "itemtype": "property",
             "name": "target",
@@ -1641,7 +1664,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 225,
+            "line": 226,
             "description": "Target positions force.",
             "itemtype": "property",
             "name": "targetForce",
@@ -1653,7 +1676,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 231,
+            "line": 232,
             "description": "Acceleration angle in radians.",
             "itemtype": "property",
             "name": "accelAngle",
@@ -1665,7 +1688,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 237,
+            "line": 238,
             "itemtype": "property",
             "name": "accelAngleVar",
             "type": "Number",
@@ -1676,7 +1699,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 242,
+            "line": 243,
             "description": "Acceleration speed.",
             "itemtype": "property",
             "name": "accelSpeed",
@@ -1688,7 +1711,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 248,
+            "line": 249,
             "itemtype": "property",
             "name": "accelSpeedVar",
             "type": "Number",
@@ -1699,7 +1722,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 253,
+            "line": 254,
             "description": "Settings to apply on particle sprite.",
             "itemtype": "property",
             "name": "spriteSettings",
@@ -1710,7 +1733,18 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 270,
+            "line": 261,
+            "itemtype": "property",
+            "name": "velocityLimit",
+            "type": "game.Vector",
+            "default": "100",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 277,
             "description": "Reset emitter values to defaults.",
             "itemtype": "method",
             "name": "reset",
@@ -1727,7 +1761,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 286,
+            "line": 293,
             "itemtype": "method",
             "name": "getVariance",
             "return": {
@@ -1740,7 +1774,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 294,
+            "line": 301,
             "itemtype": "method",
             "name": "addParticle",
             "class": "game.Emitter",
@@ -1749,7 +1783,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 342,
+            "line": 349,
             "itemtype": "method",
             "name": "updateParticle",
             "class": "game.Emitter",
@@ -1758,7 +1792,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 370,
+            "line": 378,
             "itemtype": "method",
             "name": "emit",
             "params": [
@@ -1774,9 +1808,19 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 381,
+            "line": 389,
             "itemtype": "method",
             "name": "update",
+            "class": "game.Emitter",
+            "module": "particle",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/particle.js",
+            "line": 409,
+            "description": "Remove emitter from scene.",
+            "itemtype": "method",
+            "name": "remove",
             "class": "game.Emitter",
             "module": "particle",
             "namespace": "game"
@@ -2635,7 +2679,7 @@
             "file": "src/engine/scene.js",
             "line": 20,
             "itemtype": "property",
-            "name": "sprites",
+            "name": "objects",
             "type": "Array",
             "class": "game.Scene",
             "module": "scene",
@@ -2664,6 +2708,16 @@
         {
             "file": "src/engine/scene.js",
             "line": 32,
+            "itemtype": "property",
+            "name": "emitters",
+            "type": "Array",
+            "class": "game.Scene",
+            "module": "scene",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/scene.js",
+            "line": 36,
             "description": "Main container for scene.",
             "itemtype": "property",
             "name": "stage",
@@ -2674,7 +2728,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 57,
+            "line": 61,
             "description": "This is called every frame.",
             "itemtype": "method",
             "name": "update",
@@ -2684,7 +2738,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 79,
+            "line": 96,
             "description": "Helper function for {{#crossLink \"game.Tween\"}}{{/crossLink}}",
             "itemtype": "method",
             "name": "addTween",
@@ -2717,7 +2771,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 93,
+            "line": 110,
             "itemtype": "method",
             "name": "getTween",
             "params": [
@@ -2733,7 +2787,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 104,
+            "line": 121,
             "itemtype": "method",
             "name": "stopTweens",
             "params": [
@@ -2756,7 +2810,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 115,
+            "line": 132,
             "itemtype": "method",
             "name": "pauseTweens",
             "params": [
@@ -2773,7 +2827,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 125,
+            "line": 142,
             "itemtype": "method",
             "name": "resumeTweens",
             "params": [
@@ -2790,7 +2844,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 135,
+            "line": 152,
             "description": "Add timer to game scene.",
             "itemtype": "method",
             "name": "addTimer",
@@ -2812,7 +2866,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 147,
+            "line": 164,
             "description": "Callback for mouse click and touch tap on the scene stage.",
             "itemtype": "method",
             "name": "click",
@@ -2829,7 +2883,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 154,
+            "line": 171,
             "description": "Callback for mousedown and touchstart on the scene stage.",
             "itemtype": "method",
             "name": "mousedown",
@@ -2846,7 +2900,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 161,
+            "line": 178,
             "description": "Callback for mouseup and touchend on the scene stage.",
             "itemtype": "method",
             "name": "mouseup",
@@ -2863,7 +2917,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 168,
+            "line": 185,
             "description": "Callback for mousemove and touchmove on the scene stage.",
             "itemtype": "method",
             "name": "mousemove",
@@ -2880,7 +2934,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 175,
+            "line": 192,
             "description": "Callback for mouseout on the scene stage.",
             "itemtype": "method",
             "name": "mouseout",
@@ -3084,7 +3138,7 @@
         {
             "file": "src/engine/sprite.js",
             "line": 46,
-            "description": "Remove sprite from it's container.",
+            "description": "Remove sprite from it's parent.",
             "itemtype": "method",
             "name": "remove",
             "class": "game.Sprite",
@@ -3274,7 +3328,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 136,
+            "line": 139,
             "description": "Pause game engine.",
             "itemtype": "method",
             "name": "pause",
@@ -3284,7 +3338,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 146,
+            "line": 149,
             "description": "Resume paused game engine.",
             "itemtype": "method",
             "name": "resume",
@@ -3294,7 +3348,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 156,
+            "line": 159,
             "description": "Change current scene.",
             "itemtype": "method",
             "name": "setScene",
@@ -3311,7 +3365,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 327,
+            "line": 330,
             "description": "Minimum width for canvas.",
             "itemtype": "attribute",
             "name": "minWidth",
@@ -3323,7 +3377,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 333,
+            "line": 336,
             "description": "Minimum height for canvas.",
             "itemtype": "attribute",
             "name": "minHeight",
@@ -3335,7 +3389,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 339,
+            "line": 342,
             "description": "Maximum width for canvas.",
             "itemtype": "attribute",
             "name": "maxWidth",
@@ -3347,7 +3401,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 345,
+            "line": 348,
             "description": "Maximum height for canvas.",
             "itemtype": "attribute",
             "name": "maxHeight",
@@ -3359,7 +3413,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 351,
+            "line": 354,
             "description": "Scaling method for CocoonJS.",
             "itemtype": "attribute",
             "name": "idtkScale",
@@ -3371,7 +3425,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 357,
+            "line": 360,
             "description": "Use ScreenCanvas on CocoonJS.\nhttp://support.ludei.com/hc/en-us/articles/201810268-ScreenCanvas",
             "itemtype": "attribute",
             "name": "screenCanvas",
@@ -3383,7 +3437,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 364,
+            "line": 367,
             "description": "Use HiRes mode.",
             "itemtype": "attribute",
             "name": "hires",
@@ -3395,8 +3449,8 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 370,
-            "description": "System width/height factor, when to use HiRes mode.",
+            "line": 373,
+            "description": "Canvas width/height factor, when to enable HiRes mode.",
             "itemtype": "attribute",
             "name": "hiresFactor",
             "type": "Number",
@@ -3407,7 +3461,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 376,
+            "line": 379,
             "description": "Use Retina mode.",
             "itemtype": "attribute",
             "name": "retina",
@@ -3419,7 +3473,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 382,
+            "line": 385,
             "description": "Pause game engine, when page is hidden.",
             "itemtype": "attribute",
             "name": "pauseOnHide",
@@ -3431,11 +3485,11 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 388,
+            "line": 391,
             "description": "Mobile orientation for the game.",
             "itemtype": "attribute",
             "name": "orientation",
-            "type": "game.System.LANDSCAPE|game.System.PORTRAIT",
+            "type": "LANDSCAPE|PORTRAIT",
             "default": "game.System.LANDSCAPE",
             "class": "game.System",
             "module": "system",
@@ -3443,7 +3497,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 395,
+            "line": 398,
             "description": "Background color for game screen on mobile.",
             "itemtype": "attribute",
             "name": "backgroundColor.game",
@@ -3454,7 +3508,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 401,
+            "line": 404,
             "description": "Background color for rotate screen on mobile.",
             "itemtype": "attribute",
             "name": "backgroundColor.rotate",
@@ -3465,7 +3519,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 409,
+            "line": 412,
             "description": "Background image for game screen on mobile.",
             "itemtype": "attribute",
             "name": "backgroundImage.game",
@@ -3476,7 +3530,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 415,
+            "line": 418,
             "description": "Background image for rotate screen on mobile.",
             "itemtype": "attribute",
             "name": "backgroundImage.rotate",
@@ -3487,7 +3541,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 422,
+            "line": 425,
             "description": "Rotate message for mobile.",
             "itemtype": "attribute",
             "name": "rotateMsg",
@@ -3499,7 +3553,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 428,
+            "line": 431,
             "description": "Rotate image for mobile.",
             "itemtype": "attribute",
             "name": "rotateImg",

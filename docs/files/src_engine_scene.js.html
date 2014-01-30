@@ -154,9 +154,9 @@ game.Scene = game.Class.extend({
     **/
     backgroundColor: 0x000000,
     /**
-        @property {Array} sprites
+        @property {Array} objects
     **/
-    sprites: [],
+    objects: [],
     /**
         @property {Array} timers
     **/
@@ -165,6 +165,10 @@ game.Scene = game.Class.extend({
         @property {Array} tweens
     **/
     tweens: [],
+    /**
+        @property {Array} emitters
+    **/
+    emitters: [],
     /**
         Main container for scene.
         @property {game.Container} stage
@@ -203,13 +207,26 @@ game.Scene = game.Class.extend({
                 this.timers.erase(this.timers[i]);
             }
         }
+        for (i = this.emitters.length - 1; i &gt;= 0; i--) {
+            this.emitters[i].update();
+            if(this.emitters[i]._remove) this.emitters.erase(this.emitters[i]);
+        }
         for (i = this.tweens.length - 1; i &gt;= 0; i--) {
             this.tweens[i].update();
             if(this.tweens[i].complete) this.tweens.erase(this.tweens[i]);
         }
-        for (i = this.sprites.length - 1; i &gt;= 0; i--) {
-            this.sprites[i].update();
+        for (i = this.objects.length - 1; i &gt;= 0; i--) {
+            this.objects[i].update();
+            if(this.objects[i]._remove) this.objects.erase(this.objects[i]);
         }
+    },
+
+    addObject: function(object) {
+        this.objects.push(object);
+    },
+
+    removeObject: function(object) {
+        object._remove = true;
     },
 
     /**
