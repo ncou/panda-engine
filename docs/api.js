@@ -8,6 +8,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "game.Container",
         "game.Core",
         "game.Debug",
+        "game.DebugDraw",
         "game.Emitter",
         "game.Line",
         "game.Loader",

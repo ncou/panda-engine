@@ -61,6 +61,8 @@
             
                 <li><a class="type" href="../classes/game.Debug.html">game.Debug</a></li>
             
+                <li><a class="type" href="../classes/game.DebugDraw.html">game.DebugDraw</a></li>
+            
                 <li><a class="type" href="../classes/game.Emitter.html">game.Emitter</a></li>
             
                 <li><a class="type" href="../classes/game.Line.html">game.Line</a></li>
@@ -175,7 +177,7 @@ game.World = game.Class.extend({
     init: function(x, y) {
         this.gravity = new game.Vector();
         this.gravity.x = typeof(x) === &#x27;number&#x27; ? x : 0;
-        this.gravity.y = typeof(y) === &#x27;number&#x27; ? y : -980;
+        this.gravity.y = typeof(y) === &#x27;number&#x27; ? y : 980;
         this.solver = new game.CollisionSolver();
     },
 
@@ -579,11 +581,11 @@ game.Body = game.Class.extend({
         this.last.copy(this.position);
 
         if(this.mass &gt; 0) {
-            this.velocity.multiplyAdd(this.world.gravity, game.system.tick);
+            this.velocity.multiplyAdd(this.world.gravity, game.system.delta);
             this.velocity.limit(this.velocityLimit);
         }
 
-        this.position.multiplyAdd(this.velocity, game.scale * game.system.tick);
+        this.position.multiplyAdd(this.velocity, game.scale * game.system.delta);
     }
 });
 

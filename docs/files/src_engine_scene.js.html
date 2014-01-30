@@ -61,6 +61,8 @@
             
                 <li><a class="type" href="../classes/game.Debug.html">game.Debug</a></li>
             
+                <li><a class="type" href="../classes/game.DebugDraw.html">game.DebugDraw</a></li>
+            
                 <li><a class="type" href="../classes/game.Emitter.html">game.Emitter</a></li>
             
                 <li><a class="type" href="../classes/game.Line.html">game.Line</a></li>
@@ -174,6 +176,10 @@ game.Scene = game.Class.extend({
         @property {game.Container} stage
     **/
     stage: null,
+    /**
+        @property {game.DebugDraw} debugDraw
+    **/
+    debugDraw: null,
     
     staticInit: function() {
         game.scene = this;
@@ -334,6 +340,7 @@ game.Scene = game.Class.extend({
 
     run: function() {
         this.update();
+        if(this.debugDraw) this.debugDraw.update();
         this.render();
     },
 

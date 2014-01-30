@@ -28,6 +28,7 @@
                 "debug": 1
             },
             "classes": {
+                "game.DebugDraw": 1,
                 "game.Debug": 1
             },
             "fors": {},
@@ -207,6 +208,7 @@
             "name": "debug",
             "submodules": {},
             "classes": {
+                "game.DebugDraw": 1,
                 "game.Debug": 1
             },
             "fors": {},
@@ -215,7 +217,7 @@
             },
             "tag": "module",
             "file": "src/engine/debug.js",
-            "line": 11
+            "line": 111
         },
         "loader": {
             "name": "loader",
@@ -413,6 +415,20 @@
             "file": "src/engine/core.js",
             "line": 528
         },
+        "game.DebugDraw": {
+            "name": "game.DebugDraw",
+            "shortname": "DebugDraw",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "debug",
+            "namespace": "game",
+            "file": "src/engine/debug.js",
+            "line": 11,
+            "description": "DebugDraw will draw all interactive sprite hit areas and physic shapes.\nAutomatically enabled, if URL contains `?debugdraw`."
+        },
         "game.Debug": {
             "name": "game.Debug",
             "shortname": "Debug",
@@ -424,7 +440,7 @@
             "module": "debug",
             "namespace": "game",
             "file": "src/engine/debug.js",
-            "line": 11,
+            "line": 111,
             "description": "Instance automatically created at {{#crossLink \"game.Core\"}}{{/crossLink}}, if URL contains `?debug`.",
             "extends": "game.Class"
         },
@@ -1187,7 +1203,61 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 179,
+            "line": 86,
+            "itemtype": "attribute",
+            "name": "spriteColor",
+            "type": "Number",
+            "default": "0xff0000",
+            "class": "game.DebugDraw",
+            "module": "debug",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/debug.js",
+            "line": 91,
+            "itemtype": "attribute",
+            "name": "spriteAlpha",
+            "type": "Number",
+            "default": "0.3",
+            "class": "game.DebugDraw",
+            "module": "debug",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/debug.js",
+            "line": 96,
+            "itemtype": "attribute",
+            "name": "shapeColor",
+            "type": "Number",
+            "default": "0x0000ff",
+            "class": "game.DebugDraw",
+            "module": "debug",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/debug.js",
+            "line": 101,
+            "itemtype": "attribute",
+            "name": "shapeAlpha",
+            "type": "Number",
+            "default": "0.3",
+            "class": "game.DebugDraw",
+            "module": "debug",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/debug.js",
+            "line": 106,
+            "itemtype": "attribute",
+            "name": "enabled",
+            "type": "Boolean",
+            "class": "game.DebugDraw",
+            "module": "debug",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/debug.js",
+            "line": 279,
             "itemtype": "attribute",
             "name": "backgroundColor.canvas",
             "type": "String",
@@ -1198,7 +1268,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 184,
+            "line": 284,
             "itemtype": "attribute",
             "name": "backgroundColor.webGL",
             "type": "String",
@@ -1209,7 +1279,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 211,
+            "line": 311,
             "itemtype": "attribute",
             "name": "position.desktop",
             "type": "TOPLEFT|BOTTOMLEFT|TOPRIGHT|BOTTOMRIGHT",
@@ -1220,11 +1290,21 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 216,
+            "line": 316,
             "itemtype": "attribute",
             "name": "position.mobile",
             "type": "TOPLEFT|BOTTOMLEFT|TOPRIGHT|BOTTOMRIGHT",
             "default": "game.Debug.POSITION.TOPLEFT",
+            "class": "game.Debug",
+            "module": "debug",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/debug.js",
+            "line": 323,
+            "itemtype": "attribute",
+            "name": "enabled",
+            "type": "Boolean",
             "class": "game.Debug",
             "module": "debug",
             "namespace": "game"
@@ -2728,7 +2808,17 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 61,
+            "line": 41,
+            "itemtype": "property",
+            "name": "debugDraw",
+            "type": "game.DebugDraw",
+            "class": "game.Scene",
+            "module": "scene",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/scene.js",
+            "line": 65,
             "description": "This is called every frame.",
             "itemtype": "method",
             "name": "update",
@@ -2738,7 +2828,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 96,
+            "line": 100,
             "description": "Helper function for {{#crossLink \"game.Tween\"}}{{/crossLink}}",
             "itemtype": "method",
             "name": "addTween",
@@ -2771,7 +2861,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 110,
+            "line": 114,
             "itemtype": "method",
             "name": "getTween",
             "params": [
@@ -2787,7 +2877,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 121,
+            "line": 125,
             "itemtype": "method",
             "name": "stopTweens",
             "params": [
@@ -2810,7 +2900,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 132,
+            "line": 136,
             "itemtype": "method",
             "name": "pauseTweens",
             "params": [
@@ -2827,7 +2917,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 142,
+            "line": 146,
             "itemtype": "method",
             "name": "resumeTweens",
             "params": [
@@ -2844,7 +2934,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 152,
+            "line": 156,
             "description": "Add timer to game scene.",
             "itemtype": "method",
             "name": "addTimer",
@@ -2866,7 +2956,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 164,
+            "line": 168,
             "description": "Callback for mouse click and touch tap on the scene stage.",
             "itemtype": "method",
             "name": "click",
@@ -2883,7 +2973,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 171,
+            "line": 175,
             "description": "Callback for mousedown and touchstart on the scene stage.",
             "itemtype": "method",
             "name": "mousedown",
@@ -2900,7 +2990,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 178,
+            "line": 182,
             "description": "Callback for mouseup and touchend on the scene stage.",
             "itemtype": "method",
             "name": "mouseup",
@@ -2917,7 +3007,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 185,
+            "line": 189,
             "description": "Callback for mousemove and touchmove on the scene stage.",
             "itemtype": "method",
             "name": "mousemove",
@@ -2934,7 +3024,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 192,
+            "line": 196,
             "description": "Callback for mouseout on the scene stage.",
             "itemtype": "method",
             "name": "mouseout",
@@ -3365,7 +3455,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 330,
+            "line": 331,
             "description": "Minimum width for canvas.",
             "itemtype": "attribute",
             "name": "minWidth",
@@ -3377,7 +3467,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 336,
+            "line": 337,
             "description": "Minimum height for canvas.",
             "itemtype": "attribute",
             "name": "minHeight",
@@ -3389,7 +3479,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 342,
+            "line": 343,
             "description": "Maximum width for canvas.",
             "itemtype": "attribute",
             "name": "maxWidth",
@@ -3401,7 +3491,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 348,
+            "line": 349,
             "description": "Maximum height for canvas.",
             "itemtype": "attribute",
             "name": "maxHeight",
@@ -3413,7 +3503,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 354,
+            "line": 355,
             "description": "Scaling method for CocoonJS.",
             "itemtype": "attribute",
             "name": "idtkScale",
@@ -3425,7 +3515,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 360,
+            "line": 361,
             "description": "Use ScreenCanvas on CocoonJS.\nhttp://support.ludei.com/hc/en-us/articles/201810268-ScreenCanvas",
             "itemtype": "attribute",
             "name": "screenCanvas",
@@ -3437,7 +3527,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 367,
+            "line": 368,
             "description": "Use HiRes mode.",
             "itemtype": "attribute",
             "name": "hires",
@@ -3449,7 +3539,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 373,
+            "line": 374,
             "description": "Canvas width/height factor, when to enable HiRes mode.",
             "itemtype": "attribute",
             "name": "hiresFactor",
@@ -3461,7 +3551,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 379,
+            "line": 380,
             "description": "Use Retina mode.",
             "itemtype": "attribute",
             "name": "retina",
@@ -3473,7 +3563,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 385,
+            "line": 386,
             "description": "Pause game engine, when page is hidden.",
             "itemtype": "attribute",
             "name": "pauseOnHide",
@@ -3485,7 +3575,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 391,
+            "line": 392,
             "description": "Mobile orientation for the game.",
             "itemtype": "attribute",
             "name": "orientation",
@@ -3497,7 +3587,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 398,
+            "line": 399,
             "description": "Background color for game screen on mobile.",
             "itemtype": "attribute",
             "name": "backgroundColor.game",
@@ -3508,7 +3598,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 404,
+            "line": 405,
             "description": "Background color for rotate screen on mobile.",
             "itemtype": "attribute",
             "name": "backgroundColor.rotate",
@@ -3519,7 +3609,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 412,
+            "line": 413,
             "description": "Background image for game screen on mobile.",
             "itemtype": "attribute",
             "name": "backgroundImage.game",
@@ -3530,7 +3620,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 418,
+            "line": 419,
             "description": "Background image for rotate screen on mobile.",
             "itemtype": "attribute",
             "name": "backgroundImage.rotate",
@@ -3541,7 +3631,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 425,
+            "line": 426,
             "description": "Rotate message for mobile.",
             "itemtype": "attribute",
             "name": "rotateMsg",
@@ -3553,7 +3643,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 431,
+            "line": 432,
             "description": "Rotate image for mobile.",
             "itemtype": "attribute",
             "name": "rotateImg",
