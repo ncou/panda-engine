@@ -413,6 +413,7 @@ var core = {
         this.sound = new game.SoundManager();
         this.pool = new game.Pool();
         if(game.Debug.enabled &amp;&amp; !navigator.isCocoonJS) this.debug = new game.Debug();
+        if(game.DebugDraw.enabled) this.debugDraw = new game.DebugDraw();
         if(game.Storage.id) this.storage = new game.Storage(game.Storage.id);
 
         this.ready = true;
@@ -435,6 +436,16 @@ var core = {
             x = x2 - x;
             y = y2 - y;
             return Math.sqrt(x * x + y * y);
+        },
+
+        /**
+            Generate random number between &#x60;min&#x60; and &#x60;max&#x60;.
+            @method Math.random
+            @param {Number} min
+            @param {Number} max
+        **/
+        random: function(min, max) {
+            return Math.random() * (max - min) + min;
         }
     },
     
@@ -535,8 +546,10 @@ var core = {
         this.ua.wp8 = (this.ua.wp &amp;&amp; /Windows Phone 8/i.test(navigator.userAgent));
         this.ua.wpApp = (this.ua.wp &amp;&amp; typeof(window.external) !== &#x27;undefined&#x27; &amp;&amp; typeof(window.external.notify) !== &#x27;undefined&#x27;);
 
+        // TODO add ie9 detection
         this.ua.ie10 = /MSIE 10/i.test(navigator.userAgent);
         this.ua.ie11 = /rv:11.0/i.test(navigator.userAgent);
+        this.ua.ie = this.ua.ie10 || this.ua.ie11;
         
         this.ua.opera = /Opera/i.test(navigator.userAgent);
         this.ua.crosswalk = /Crosswalk/i.test(navigator.userAgent);
