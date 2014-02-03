@@ -340,8 +340,8 @@ game.System = game.Class.extend({
 
     initResize: function() {
         this.ratio = game.System.orientation === game.System.LANDSCAPE ? this.width / this.height : this.height / this.width;
-        
-        this.canvas.style.margin = &#x27;auto&#x27;;
+
+        if(game.System.center) this.canvas.style.margin = &#x27;auto&#x27;;
 
         if(game.ua.mobile) {
             document.addEventListener(&#x27;touchstart&#x27;, function(e) { e.preventDefault(); }, false);
@@ -376,23 +376,33 @@ game.System = game.Class.extend({
         } else {
             // Desktop center
             this.canvas.style.position = &#x27;absolute&#x27;;
-            this.canvas.style.top = 0;
-            this.canvas.style.left = 0;
-            this.canvas.style.bottom = 0;
-            this.canvas.style.right = 0;
+            if(game.System.center) {
+                this.canvas.style.top = 0;
+                this.canvas.style.left = 0;
+                this.canvas.style.bottom = 0;
+                this.canvas.style.right = 0;
+            } else {
+                this.canvas.style.left = game.System.left + &#x27;px&#x27;;
+                this.canvas.style.top = game.System.top + &#x27;px&#x27;;
+            }
+
             // Desktop resize
-            var minWidth = game.System.minWidth === &#x27;auto&#x27; ? this.retina ? this.width / 4 : this.width / 2 : game.System.minWidth;
-            var minHeight = game.System.minHeight === &#x27;auto&#x27; ? this.retina ? this.height / 4 : this.height / 2 : game.System.minHeight;
-            var maxWidth = game.System.maxWidth === &#x27;auto&#x27; ? this.retina ? this.width / 2 : this.width : game.System.maxWidth;
-            var maxHeight = game.System.maxHeight === &#x27;auto&#x27; ? this.retina ? this.height / 2 : this.height : game.System.maxHeight;
-            if(game.System.minWidth) this.canvas.style.minWidth = minWidth + &#x27;px&#x27;;
-            if(game.System.minHeight) this.canvas.style.minHeight = minHeight + &#x27;px&#x27;;
-            if(game.System.maxWidth) this.canvas.style.maxWidth = maxWidth + &#x27;px&#x27;;
-            if(game.System.maxHeight) this.canvas.style.maxHeight = maxHeight + &#x27;px&#x27;;
+            if(game.System.resize) {
+                var minWidth = game.System.minWidth === &#x27;auto&#x27; ? this.retina ? this.width / 4 : this.width / 2 : game.System.minWidth;
+                var minHeight = game.System.minHeight === &#x27;auto&#x27; ? this.retina ? this.height / 4 : this.height / 2 : game.System.minHeight;
+                var maxWidth = game.System.maxWidth === &#x27;auto&#x27; ? this.retina ? this.width / 2 : this.width : game.System.maxWidth;
+                var maxHeight = game.System.maxHeight === &#x27;auto&#x27; ? this.retina ? this.height / 2 : this.height : game.System.maxHeight;
+                if(game.System.minWidth) this.canvas.style.minWidth = minWidth + &#x27;px&#x27;;
+                if(game.System.minHeight) this.canvas.style.minHeight = minHeight + &#x27;px&#x27;;
+                if(game.System.maxWidth) this.canvas.style.maxWidth = maxWidth + &#x27;px&#x27;;
+                if(game.System.maxHeight) this.canvas.style.maxHeight = maxHeight + &#x27;px&#x27;;
+            }
         }
 
-        window.onresize = this.onResize.bind(this);
-        this.onResize();
+        if(game.System.resize) {
+            window.onresize = this.onResize.bind(this);
+            this.onResize();
+        }
     },
 
     checkOrientation: function() {
@@ -464,6 +474,21 @@ game.System = game.Class.extend({
 game.System.rotateScreen = false;
 game.System.LANDSCAPE = 0;
 game.System.PORTRAIT = 1;
+
+/**
+    Turn canvas centering on/off.
+    @attribute {Boolean} center
+    @default true
+**/
+game.System.center = true;
+game.System.left = 0;
+game.System.top = 0;
+/**
+    Turn canvas resizing on/off.
+    @attribute {Boolean} resize
+    @default true
+**/
+game.System.resize = true;
 
 /**
     Minimum width for canvas.

@@ -217,7 +217,7 @@
             },
             "tag": "module",
             "file": "src/engine/debug.js",
-            "line": 91
+            "line": 121
         },
         "loader": {
             "name": "loader",
@@ -440,7 +440,7 @@
             "module": "debug",
             "namespace": "game",
             "file": "src/engine/debug.js",
-            "line": 91,
+            "line": 121,
             "description": "Instance automatically created at {{#crossLink \"game.Core\"}}{{/crossLink}}, if URL contains `?debug`.",
             "extends": "game.Class"
         },
@@ -1225,7 +1225,67 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 66,
+            "line": 17,
+            "itemtype": "property",
+            "name": "container",
+            "type": "game.Container",
+            "class": "game.DebugDraw",
+            "module": "debug",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/debug.js",
+            "line": 26,
+            "itemtype": "method",
+            "name": "reset",
+            "class": "game.DebugDraw",
+            "module": "debug",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/debug.js",
+            "line": 36,
+            "itemtype": "method",
+            "name": "addSprite",
+            "params": [
+                {
+                    "name": "sprite",
+                    "description": "",
+                    "type": "game.Sprite"
+                }
+            ],
+            "class": "game.DebugDraw",
+            "module": "debug",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/debug.js",
+            "line": 51,
+            "itemtype": "method",
+            "name": "addBody",
+            "params": [
+                {
+                    "name": "body",
+                    "description": "",
+                    "type": "game.Body"
+                }
+            ],
+            "class": "game.DebugDraw",
+            "module": "debug",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/debug.js",
+            "line": 69,
+            "itemtype": "method",
+            "name": "update",
+            "class": "game.DebugDraw",
+            "module": "debug",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/debug.js",
+            "line": 96,
             "itemtype": "attribute",
             "name": "spriteColor",
             "type": "Number",
@@ -1236,7 +1296,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 71,
+            "line": 101,
             "itemtype": "attribute",
             "name": "spriteAlpha",
             "type": "Number",
@@ -1247,7 +1307,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 76,
+            "line": 106,
             "itemtype": "attribute",
             "name": "shapeColor",
             "type": "Number",
@@ -1258,7 +1318,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 81,
+            "line": 111,
             "itemtype": "attribute",
             "name": "shapeAlpha",
             "type": "Number",
@@ -1269,7 +1329,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 86,
+            "line": 116,
             "itemtype": "attribute",
             "name": "enabled",
             "type": "Boolean",
@@ -1279,7 +1339,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 259,
+            "line": 289,
             "itemtype": "attribute",
             "name": "backgroundColor.canvas",
             "type": "String",
@@ -1290,7 +1350,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 264,
+            "line": 294,
             "itemtype": "attribute",
             "name": "backgroundColor.webGL",
             "type": "String",
@@ -1301,7 +1361,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 291,
+            "line": 321,
             "itemtype": "attribute",
             "name": "position.desktop",
             "type": "TOPLEFT|BOTTOMLEFT|TOPRIGHT|BOTTOMRIGHT",
@@ -1312,7 +1372,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 296,
+            "line": 326,
             "itemtype": "attribute",
             "name": "position.mobile",
             "type": "TOPLEFT|BOTTOMLEFT|TOPRIGHT|BOTTOMRIGHT",
@@ -1323,7 +1383,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 303,
+            "line": 333,
             "itemtype": "attribute",
             "name": "enabled",
             "type": "Boolean",
@@ -3497,7 +3557,31 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 330,
+            "line": 340,
+            "description": "Turn canvas centering on/off.",
+            "itemtype": "attribute",
+            "name": "center",
+            "type": "Boolean",
+            "default": "true",
+            "class": "game.System",
+            "module": "system",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/system.js",
+            "line": 348,
+            "description": "Turn canvas resizing on/off.",
+            "itemtype": "attribute",
+            "name": "resize",
+            "type": "Boolean",
+            "default": "true",
+            "class": "game.System",
+            "module": "system",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/system.js",
+            "line": 355,
             "description": "Minimum width for canvas.",
             "itemtype": "attribute",
             "name": "minWidth",
@@ -3509,7 +3593,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 336,
+            "line": 361,
             "description": "Minimum height for canvas.",
             "itemtype": "attribute",
             "name": "minHeight",
@@ -3521,7 +3605,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 342,
+            "line": 367,
             "description": "Maximum width for canvas.",
             "itemtype": "attribute",
             "name": "maxWidth",
@@ -3533,7 +3617,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 348,
+            "line": 373,
             "description": "Maximum height for canvas.",
             "itemtype": "attribute",
             "name": "maxHeight",
@@ -3545,7 +3629,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 354,
+            "line": 379,
             "description": "Scaling method for CocoonJS.",
             "itemtype": "attribute",
             "name": "idtkScale",
@@ -3557,7 +3641,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 360,
+            "line": 385,
             "description": "Use ScreenCanvas on CocoonJS.\nhttp://support.ludei.com/hc/en-us/articles/201810268-ScreenCanvas",
             "itemtype": "attribute",
             "name": "screenCanvas",
@@ -3569,7 +3653,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 367,
+            "line": 392,
             "description": "Use HiRes mode.",
             "itemtype": "attribute",
             "name": "hires",
@@ -3581,7 +3665,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 373,
+            "line": 398,
             "description": "Canvas width/height factor, when to enable HiRes mode.",
             "itemtype": "attribute",
             "name": "hiresFactor",
@@ -3593,7 +3677,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 379,
+            "line": 404,
             "description": "Use Retina mode.",
             "itemtype": "attribute",
             "name": "retina",
@@ -3605,7 +3689,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 385,
+            "line": 410,
             "description": "Pause game engine, when page is hidden.",
             "itemtype": "attribute",
             "name": "pauseOnHide",
@@ -3617,7 +3701,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 391,
+            "line": 416,
             "description": "Mobile orientation for the game.",
             "itemtype": "attribute",
             "name": "orientation",
@@ -3629,7 +3713,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 398,
+            "line": 423,
             "description": "Background color for game screen on mobile.",
             "itemtype": "attribute",
             "name": "backgroundColor.game",
@@ -3640,7 +3724,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 404,
+            "line": 429,
             "description": "Background color for rotate screen on mobile.",
             "itemtype": "attribute",
             "name": "backgroundColor.rotate",
@@ -3651,7 +3735,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 412,
+            "line": 437,
             "description": "Background image for game screen on mobile.",
             "itemtype": "attribute",
             "name": "backgroundImage.game",
@@ -3662,7 +3746,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 418,
+            "line": 443,
             "description": "Background image for rotate screen on mobile.",
             "itemtype": "attribute",
             "name": "backgroundImage.rotate",
@@ -3673,7 +3757,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 425,
+            "line": 450,
             "description": "Rotate message for mobile.",
             "itemtype": "attribute",
             "name": "rotateMsg",
@@ -3685,7 +3769,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 431,
+            "line": 456,
             "description": "Rotate image for mobile.",
             "itemtype": "attribute",
             "name": "rotateImg",
