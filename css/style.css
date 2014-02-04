@@ -204,8 +204,8 @@ img.game.wip {
 	opacity: 0.3;
 }
 a img.game:hover {
-	cursor: pointer;
-	opacity: 0.8;
+	/*cursor: pointer;*/
+	/*opacity: 0.8;*/
 }
 #header .wrapper {
 	width: auto;
