@@ -6,7 +6,7 @@ html,body {
 body {
 	margin: 0;
 	padding: 0;
-	background: #fff url('{{ site.baseurl }}/mountains.png') bottom center repeat-x;
+	background: #fff;
 	font: 14px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color: #333333;
 	line-height: 32px;
@@ -20,7 +20,9 @@ b,a.box {
 	/*font-weight: normal;*/
 	display: inline-block;
 }
+b {
 
+}
 a {
 	font-weight: bold;
 	color: #6e899c;
@@ -30,7 +32,7 @@ a:hover {
 	color: #333;
 	cursor: pointer;
 }
-b:hover, a.box:hover {
+a.box:hover {
 	background: #bbb;
 	color: #fff;
 }
@@ -71,7 +73,6 @@ h3 {
 	padding: 20px 0px;
 	padding-top: 140px;
 }
-
 h4 {
 	margin: 0;
 	background: #eee;
@@ -85,7 +86,7 @@ h4 {
 }
 p {
 	margin: 0;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 code {
 	white-space: pre-wrap;
@@ -116,10 +117,11 @@ code {
 #header {
 	position: absolute;
 	width: 100%;
-	background: #6e899c;
+	background: #999;
 	margin: 0;
-	height: 120px;
-	border-bottom: 4px solid #000;
+	height: 118px;
+	overflow: hidden;
+	border-bottom: 0px solid #000;
 }
 
 #header .wrapper {
@@ -200,5 +202,8 @@ code {
 	#footer span {
 		display: block;
 		visibility: hidden;
+	}
+	img.mockup {
+		width: 100%;
 	}
 }

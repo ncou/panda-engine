@@ -18,13 +18,9 @@
 	width: 100%;
 	overflow: auto;
 	/*margin: 18px 0 18px 0 !important;*/
-	
-	border-radius: 10px;
-
 	background: #222;
 	color: #eee;
-	
-	border-radius: 10px;
+	border-radius: 5px;
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
@@ -83,7 +79,7 @@
 	border-left: 3px solid #6CE26C;
 	/*background-color: #F8F8F8;*/
 	color: #5C5C5C;
-	padding: 0 3px 0 10px !important;
+	/*padding: 0 3px 0 10px !important;*/
 	margin: 0 !important;
 	line-height: 14px;
 }
