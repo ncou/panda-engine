@@ -71,7 +71,7 @@ a:hover {
 	cursor: pointer;
 }
 a.box:hover {
-	background: #eee;
+	background: #ccc;
 	color: #000;
 }
 h1,h2,h3 {
