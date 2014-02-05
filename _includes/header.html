@@ -1,14 +1,16 @@
+{% assign current = page.url | downcase | split: '/' %}
+
 <div id="header">
     <div class="wrapper">
         <a href="{{ site.baseurl }}"><img src="{{ site.baseurl }}img/panda.png" class="left"></a>
         <!-- <img src="{{ site.baseurl }}logo2.png" class="center"> -->
 
         <div id="nav">
-            <a href="{{ site.baseurl }}download/"><img src="{{ site.baseurl }}img/download.png">Download</a>
-            <a href="{{ site.baseurl }}features/"><img src="{{ site.baseurl }}img/flame.png">Features</a>
-            <a href="{{ site.baseurl }}games/"><img src="{{ site.baseurl }}img/gamecontroller.png">Games</a>
-            <a href="{{ site.baseurl }}tutorials/"><img src="{{ site.baseurl }}img/clipboard.png">Tutorials</a>
-            <a href="{{ site.baseurl }}docs/"><img src="{{ site.baseurl }}img/document.png">Documentation</a>
+            <a href="{{ site.baseurl }}download/" {% if current[1] == 'download' %}class='current'{% endif %}><img src="{{ site.baseurl }}img/download.png"><span>Download</span></a>
+            <a href="{{ site.baseurl }}features/" {% if current[1] == 'features' %}class='current'{% endif %}><img src="{{ site.baseurl }}img/flame.png"><span>Features</span></a>
+            <a href="{{ site.baseurl }}games/" {% if current[1] == 'games' %}class='current'{% endif %}><img src="{{ site.baseurl }}img/gamecontroller.png"><span>Games</span></a>
+            <a href="{{ site.baseurl }}tutorials/" {% if current[1] == 'tutorials' %}class='current'{% endif %}><img src="{{ site.baseurl }}img/clipboard.png"><span>Tutorials</span></a>
+            <a href="{{ site.baseurl }}docs/"><img src="{{ site.baseurl }}img/document.png"><span>Documentation</span></a>
         </div>
     </div>
 </div>
