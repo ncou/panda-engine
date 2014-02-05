@@ -2,7 +2,7 @@
 layout: default
 title: Download
 ---
-<a href="https://github.com/ekelokorpi/panda.js/archive/master.zip" class="box" id="download" target="_blank">Download ZIP</a>
+<a href="https://github.com/ekelokorpi/panda.js/archive/master.zip" class="box" onclick="ga('send', 'event', 'download', 'click');" target="_blank">Download ZIP</a>
 <a href="https://github.com/ekelokorpi/panda.js/" class="box">View at GitHub</a>
 
 <h3>Contributing</h3>
@@ -13,16 +13,3 @@ title: Download
 
 <p>Panda.js is released under the <a href="http://opensource.org/licenses/MIT" target="_blank">MIT License</a>.</p>
 <p>Sponsored by <a href="http://en.wikipedia.org/wiki/Yle" target="_blank">Yle</a>.</p>
-
-<script type="text/javascript">
-    var button = document.getElementById('download');
-
-    addListener(button, 'click', function() {
-        ga('send', 'event', 'button', 'click', 'download');
-    });
-
-    function addListener(element, type, callback) {
-        if (element.addEventListener) element.addEventListener(type, callback);
-        else if (element.attachEvent) element.attachEvent('on' + type, callback);
-    }
-</script>
