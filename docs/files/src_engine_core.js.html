@@ -213,7 +213,6 @@ var core = {
     resources: [],
     audioResources: [],
     ready: false,
-    baked: false, // ???
     nocache: &#x27;&#x27;,
     ua: {},
     _current: null,
@@ -365,6 +364,8 @@ var core = {
             });
     **/
     module: function(name, version) {
+        if(name === &#x27;engine.debug&#x27; &amp;&amp; window.pandaMinified) return this;
+
         if(this._current) throw(&#x27;Module &#x27; + this._current.name + &#x27; has no body&#x27;);
         if(this.modules[name] &amp;&amp; this.modules[name].body) throw(&#x27;Module &#x27; + name + &#x27; is already defined&#x27;);
         
@@ -382,6 +383,7 @@ var core = {
     require: function() {
         var i, modules = Array.prototype.slice.call(arguments);
         for (i = 0; i &lt; modules.length; i++) {
+            if(modules[i] === &#x27;engine.debug&#x27; &amp;&amp; window.pandaMinified) continue;
             if(modules[i]) this._current.requires.push(modules[i]);
         }
         return this;
@@ -414,8 +416,8 @@ var core = {
         this.system = new game.System(width, height, canvasId);
         this.sound = new game.SoundManager();
         this.pool = new game.Pool();
-        if(game.Debug.enabled &amp;&amp; !navigator.isCocoonJS) this.debug = new game.Debug();
-        if(game.DebugDraw.enabled) this.debugDraw = new game.DebugDraw();
+        if(game.Debug &amp;&amp; game.Debug.enabled &amp;&amp; !navigator.isCocoonJS) this.debug = new game.Debug();
+        if(game.DebugDraw &amp;&amp; game.DebugDraw.enabled) this.debugDraw = new game.DebugDraw();
         if(game.Storage.id) this.storage = new game.Storage(game.Storage.id);
 
         this.ready = true;
@@ -498,7 +500,7 @@ var core = {
         if(moduleLoaded &amp;&amp; this._loadQueue.length &gt; 0) {
             game._loadModules();
         }
-        else if(!game.baked &amp;&amp; game._waitForLoad === 0 &amp;&amp; game._loadQueue.length !== 0) {
+        else if(game._waitForLoad === 0 &amp;&amp; game._loadQueue.length !== 0) {
             var unresolved = [];
             for(i = 0; i &lt; game._loadQueue.length; i++ ) {
                 var unloaded = [];

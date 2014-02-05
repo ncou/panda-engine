@@ -202,7 +202,7 @@
             },
             "tag": "module",
             "file": "src/engine/core.js",
-            "line": 543
+            "line": 545
         },
         "debug": {
             "name": "debug",
@@ -413,7 +413,7 @@
             "module": "core",
             "namespace": "game",
             "file": "src/engine/core.js",
-            "line": 543
+            "line": 545
         },
         "game.DebugDraw": {
             "name": "game.DebugDraw",
@@ -936,7 +936,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 163,
+            "line": 162,
             "description": "Request fullscreen mode.",
             "itemtype": "method",
             "name": "fullscreen",
@@ -946,7 +946,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 172,
+            "line": 171,
             "itemtype": "method",
             "name": "fullscreenSupport",
             "return": {
@@ -959,7 +959,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 180,
+            "line": 179,
             "description": "Add asset to preloader.",
             "itemtype": "method",
             "name": "addAsset",
@@ -979,7 +979,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 191,
+            "line": 190,
             "description": "Add sound to preloader.",
             "itemtype": "method",
             "name": "addSound",
@@ -1005,7 +1005,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 204,
+            "line": 203,
             "description": "Add music to preloader.",
             "itemtype": "method",
             "name": "addMusic",
@@ -1028,7 +1028,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 219,
+            "line": 218,
             "description": "Define new module.",
             "itemtype": "method",
             "name": "module",
@@ -1054,7 +1054,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 239,
+            "line": 240,
             "description": "Require modules for module.",
             "itemtype": "method",
             "name": "require",
@@ -1071,7 +1071,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 252,
+            "line": 254,
             "description": "Define body for module.",
             "itemtype": "method",
             "name": "body",
@@ -1081,7 +1081,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 262,
+            "line": 264,
             "description": "Start the game engine.",
             "itemtype": "method",
             "name": "start",
@@ -1113,7 +1113,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 290,
+            "line": 292,
             "description": "Distance between two points.",
             "itemtype": "method",
             "name": "Math.distance",
@@ -1149,7 +1149,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 305,
+            "line": 307,
             "description": "Generate random number between `min` and `max`.",
             "itemtype": "method",
             "name": "Math.random",
@@ -1171,7 +1171,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 547,
+            "line": 549,
             "itemtype": "method",
             "name": "extend",
             "return": {
@@ -1184,7 +1184,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 559,
+            "line": 561,
             "description": "Call functions parent function.",
             "itemtype": "method",
             "name": "super",
@@ -1194,7 +1194,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 587,
+            "line": 589,
             "description": "If Class has `staticInit` function, it is called before `init` function.",
             "itemtype": "property",
             "name": "staticInit",
@@ -1205,7 +1205,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 602,
+            "line": 604,
             "description": "Automatically called, when creating new class.",
             "itemtype": "property",
             "name": "init",
@@ -1216,7 +1216,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 615,
+            "line": 617,
             "itemtype": "method",
             "name": "inject",
             "class": "game.Class",
@@ -3548,7 +3548,7 @@
                 {
                     "name": "sceneClass",
                     "description": "",
-                    "type": "Class"
+                    "type": "game.Scene"
                 }
             ],
             "class": "game.System",
@@ -3706,7 +3706,7 @@
             "itemtype": "attribute",
             "name": "orientation",
             "type": "LANDSCAPE|PORTRAIT",
-            "default": "game.System.LANDSCAPE",
+            "default": "game.System.PORTRAIT",
             "class": "game.System",
             "module": "system",
             "namespace": "game"
