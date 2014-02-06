@@ -2,7 +2,7 @@
     "name": "Panda.js",
     "description": "HTML5 game engine",
     "version": "1.0.0",
-    "url": "https://github.com/ekelokorpi/panda.js",
+    "url": "https://www.pandajs.net",
     "logo": "../img/logo.png",
     "themedir": "friendly-theme",
     "options": {

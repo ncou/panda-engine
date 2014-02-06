@@ -1,1 +1,1 @@
-http://ekelokorpi.github.io/panda.js/docs/
+http://www.pandajs.net

@@ -3,7 +3,7 @@
         "name": "Panda.js",
         "description": "HTML5 game engine",
         "version": "1.0.0",
-        "url": "https://github.com/ekelokorpi/panda.js",
+        "url": "https://www.pandajs.net",
         "logo": "../img/logo.png",
         "themedir": "friendly-theme"
     },
@@ -3806,7 +3806,27 @@
         },
         {
             "file": "src/engine/timer.js",
+            "line": 54,
+            "description": "Get time since last delta.",
+            "itemtype": "method",
+            "name": "delta",
+            "class": "game.Timer",
+            "module": "timer",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/timer.js",
             "line": 64,
+            "description": "Get time since start.",
+            "itemtype": "method",
+            "name": "delta",
+            "class": "game.Timer",
+            "module": "timer",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/timer.js",
+            "line": 72,
             "description": "Pause timer.",
             "itemtype": "method",
             "name": "pause",
@@ -3816,7 +3836,7 @@
         },
         {
             "file": "src/engine/timer.js",
-            "line": 72,
+            "line": 80,
             "description": "Resume paused timer.",
             "itemtype": "method",
             "name": "unpause",
@@ -3850,13 +3870,14 @@
             "itemtype": "property",
             "name": "delay",
             "type": "Number",
+            "default": "0",
             "class": "game.Tween",
             "module": "tween",
             "namespace": "game"
         },
         {
             "file": "src/engine/tween.js",
-            "line": 37,
+            "line": 38,
             "itemtype": "property",
             "name": "onComplete",
             "type": "Function",
@@ -3866,7 +3887,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 41,
+            "line": 42,
             "itemtype": "property",
             "name": "onStart",
             "type": "Function",
@@ -3876,7 +3897,18 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 70,
+            "line": 46,
+            "itemtype": "property",
+            "name": "duration",
+            "type": "Number",
+            "default": "1",
+            "class": "game.Tween",
+            "module": "tween",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/tween.js",
+            "line": 75,
             "itemtype": "method",
             "name": "start",
             "class": "game.Tween",
@@ -3885,7 +3917,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 90,
+            "line": 95,
             "itemtype": "method",
             "name": "pause",
             "class": "game.Tween",
@@ -3894,7 +3926,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 98,
+            "line": 103,
             "itemtype": "method",
             "name": "resume",
             "class": "game.Tween",
@@ -3903,7 +3935,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 106,
+            "line": 111,
             "itemtype": "method",
             "name": "stop",
             "params": [
@@ -3919,14 +3951,14 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 121,
+            "line": 126,
             "itemtype": "method",
             "name": "chain",
             "params": [
                 {
-                    "name": "chainObj",
+                    "name": "tween",
                     "description": "",
-                    "type": "Tween"
+                    "type": "game.Tween"
                 }
             ],
             "class": "game.Tween",
@@ -3935,7 +3967,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 240,
+            "line": 245,
             "itemtype": "attribute",
             "name": "Loop",
             "type": "Revert|Reverse",
@@ -3945,7 +3977,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 245,
+            "line": 250,
             "description": "Easing types: `In`, `Out` and `InOut`.",
             "itemtype": "attribute",
             "name": "Easing",

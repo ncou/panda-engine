@@ -206,7 +206,7 @@ game.Scene = game.Class.extend({
         var i;
         if(this.world) this.world.update();
         for (i = this.timers.length - 1; i &gt;= 0; i--) {
-            if(this.timers[i].delta() &gt;= 0) {
+            if(this.timers[i].time() &gt;= 0) {
                 if(typeof(this.timers[i].callback) === &#x27;function&#x27;) this.timers[i].callback();
                 if(this.timers[i].repeat) this.timers[i].reset();
                 else this.timers.erase(this.timers[i]);
