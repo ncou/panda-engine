@@ -22,7 +22,7 @@ SceneTitle = game.Scene.extend({
         var text;
         var sprite;
 
-        sprite = new game.Sprite(game.system.width / 2 - 200, game.system.height / 2 - 200, 'media/particle.png', {anchor: {x:0.5, y:0.5}});
+        sprite = new game.Sprite(game.system.width / 2 - 200, game.system.height / 2 - 200, 'media/panda2.png', {anchor: {x:0.5, y:0.5}});
         this.stage.addChild(sprite);
         this.addTween(sprite.position, {y: game.system.height / 2 + 200}, 2, {easing: game.Tween.Easing[easings[currentEasing]]['In'], loop: game.Tween.Loop.Reverse}).start();
         text = new game.BitmapText('In', {font: 'HelveticaNeue'});
@@ -30,7 +30,7 @@ SceneTitle = game.Scene.extend({
         text.position.y = game.system.height / 2 + 300;
         this.stage.addChild(text);
 
-        sprite = new game.Sprite(game.system.width / 2, game.system.height / 2 - 200, 'media/particle.png', {anchor: {x:0.5, y:0.5}});
+        sprite = new game.Sprite(game.system.width / 2, game.system.height / 2 - 200, 'media/panda2.png', {anchor: {x:0.5, y:0.5}});
         this.stage.addChild(sprite);
         this.addTween(sprite.position, {y: game.system.height / 2 + 200}, 2, {easing: game.Tween.Easing[easings[currentEasing]]['Out'], loop: game.Tween.Loop.Reverse}).start();        
         text = new game.BitmapText('Out', {font: 'HelveticaNeue'});
@@ -38,7 +38,7 @@ SceneTitle = game.Scene.extend({
         text.position.y = game.system.height / 2 + 300;
         this.stage.addChild(text);
 
-        sprite = new game.Sprite(game.system.width / 2 + 200, game.system.height / 2 - 200, 'media/particle.png', {anchor: {x:0.5, y:0.5}});
+        sprite = new game.Sprite(game.system.width / 2 + 200, game.system.height / 2 - 200, 'media/panda2.png', {anchor: {x:0.5, y:0.5}});
         this.stage.addChild(sprite);
         this.addTween(sprite.position, {y: game.system.height / 2 + 200}, 2, {easing: game.Tween.Easing[easings[currentEasing]]['InOut'], loop: game.Tween.Loop.Reverse}).start();
         text = new game.BitmapText('InOut', {font: 'HelveticaNeue'});
