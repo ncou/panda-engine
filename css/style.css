@@ -204,20 +204,28 @@ code {
 	overflow: hidden;
 	border-bottom: 0px solid #000;
 }
-a.game {
+a.showcase {
+	width: 192px;
+	height: 172px;
 	float: left;
 	margin-left: 24px;
 	margin-right: 24px;
 	margin-bottom: 0px;
 	text-align: center;
+	border-radius: 10px;
+	padding-top: 20px;
 }
-a.game img {
+a.showcase img {
 	border-radius: 10px;
 	display: block;
+	margin: auto;
 
 	/*box-shadow: 0px 6px 0px #ccc;*/
 }
-a.game p {
+a.showcase:hover{
+	background: #eee;
+}
+a.showcase p {
 	clear: both;
 }
 #header .wrapper {
@@ -449,7 +457,11 @@ div.file {
 	#nav a {
 		margin: 0;
 	}
-	img.game {
+	a.showcase {
+		width: 100%;
+		margin: 0;
+	}
+	a.showcase img {
 		display: block;
 		/*width: auto;*/
 		float: none;
