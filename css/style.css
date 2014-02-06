@@ -204,20 +204,21 @@ code {
 	overflow: hidden;
 	border-bottom: 0px solid #000;
 }
-img.game {
-	border-radius: 10px;
+a.game {
 	float: left;
 	margin-left: 24px;
 	margin-right: 24px;
-	margin-bottom: 20px;
+	margin-bottom: 0px;
+	text-align: center;
+}
+a.game img {
+	border-radius: 10px;
+	display: block;
+
 	/*box-shadow: 0px 6px 0px #ccc;*/
 }
-img.game.wip {
-	opacity: 0.3;
-}
-a img.game:hover {
-	/*cursor: pointer;*/
-	/*opacity: 0.8;*/
+a.game p {
+	clear: both;
 }
 #header .wrapper {
 	width: auto;
