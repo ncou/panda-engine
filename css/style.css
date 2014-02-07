@@ -351,6 +351,11 @@ div.file {
 a img {
 	border-style: none;
 }
+a.center {
+	display: table;
+	margin: auto;
+	/*text-align: center;*/
+}
 
 @media all and (max-width: 980px) {
 	body {
