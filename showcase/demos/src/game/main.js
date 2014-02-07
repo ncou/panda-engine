@@ -7,6 +7,8 @@ game.module(
 .body(function(){
 
 game.Scene.inject({
+    backgroundColor: 0xeeeeee,
+    
     init: function() {
         var sprite = new game.Graphics();
         sprite.beginFill(0xb9bec7);
