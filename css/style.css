@@ -35,13 +35,11 @@ a.box {
 	background: none;
 	background: #848e9d;
 	padding: 10px 12px;
-	/*box-shadow: 0px -2px 0px #4f5d73;*/
 	border-style: none;
 	margin: 0px 0px;
 	border-radius: 10px;
 	border-bottom-left-radius: 0px;
 	border-bottom-right-radius: 0px;
-	/*text-shadow: 0px 1px 0px #333;*/
 	height: 32px;
 	display: inline-block;
 	margin-left: 8px;
@@ -53,7 +51,6 @@ a.box {
 #nav a:hover, #nav a.current {
 	color: #000;
 	background: #fff;
-	/*box-shadow: 0px -2px 0px #ddd;*/
 	text-shadow: none;
 }
 #nav {
