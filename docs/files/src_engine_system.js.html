@@ -209,7 +209,7 @@ game.System = game.Class.extend({
         if(game.System.hires &amp;&amp; window.innerWidth &gt;= width * game.System.hiresFactor &amp;&amp; window.innerHeight &gt;= height * game.System.hiresFactor) {
             this.hires = true;
         }
-        if(game.System.retina &amp;&amp; game.ua.pixelRatio === 2) {
+        if(game.System.retina &amp;&amp; game.device.pixelRatio === 2) {
             this.retina = true;
         }
         if(this.hires || this.retina) {
@@ -229,8 +229,8 @@ game.System = game.Class.extend({
             document.body.appendChild(canvas);
         }
 
-        if(game.Renderer.canvas) this.renderer = new PIXI.CanvasRenderer(width, height, document.getElementById(this.canvasId), game.Renderer.transparent);
-        else this.renderer = new PIXI.autoDetectRenderer(width, height, document.getElementById(this.canvasId), game.Renderer.transparent, game.Renderer.antialias);
+        if(game.System.canvas) this.renderer = new PIXI.CanvasRenderer(width, height, document.getElementById(this.canvasId), game.System.transparent);
+        else this.renderer = new PIXI.autoDetectRenderer(width, height, document.getElementById(this.canvasId), game.System.transparent, game.System.antialias);
         
         this.canvas = this.renderer.view;
         this.stage = new PIXI.Stage(width,height);
@@ -343,7 +343,7 @@ game.System = game.Class.extend({
 
         if(game.System.center) this.canvas.style.margin = &#x27;auto&#x27;;
 
-        if(game.ua.mobile) {
+        if(game.device.mobile) {
             document.addEventListener(&#x27;touchstart&#x27;, function(e) { e.preventDefault(); }, false);
 
             var div = document.createElement(&#x27;div&#x27;);
@@ -436,7 +436,7 @@ game.System = game.Class.extend({
     },
 
     onResize: function() {
-        if(game.ua.mobile) {
+        if(game.device.mobile) {
             // Mobile resize
             this.checkOrientation();
 
@@ -444,7 +444,7 @@ game.System = game.Class.extend({
             var height = window.innerHeight;
             
             // iPad iOS 7 landscape innerHeight bugfix
-            if(game.ua.iPad &amp;&amp; height === 671 &amp;&amp; this.orientation === game.System.LANDSCAPE) height = 672;
+            if(game.device.iPad &amp;&amp; height === 671 &amp;&amp; this.orientation === game.System.LANDSCAPE) height = 672;
 
             if(game.System.orientation === game.System.LANDSCAPE) {
                 this.canvas.style.height = height + &#x27;px&#x27;;
@@ -459,12 +459,12 @@ game.System = game.Class.extend({
             // Desktop resize
             if(window.innerWidth &lt; this.width || window.innerHeight &lt; this.height) {
                 if(window.innerWidth / this.width &lt; window.innerHeight / this.height) {
-                    this.canvas.style.width = &#x27;100%&#x27;;
-                    this.canvas.style.height = &#x27;auto&#x27;;
+                    this.canvas.style.width = window.innerWidth + &#x27;px&#x27;;
+                    this.canvas.style.height = window.innerWidth * (this.height / this.width) + &#x27;px&#x27;;
                 }
                 else {
-                    this.canvas.style.width = &#x27;auto&#x27;;
-                    this.canvas.style.height = &#x27;100%&#x27;;
+                    this.canvas.style.height = window.innerHeight + &#x27;px&#x27;;
+                    this.canvas.style.width = window.innerHeight * (this.width / this.height) + &#x27;px&#x27;;
                 }
             }
         }
@@ -472,8 +472,8 @@ game.System = game.Class.extend({
 });
 
 game.System.rotateScreen = false;
-game.System.LANDSCAPE = 0;
-game.System.PORTRAIT = 1;
+game.System.PORTRAIT = 0;
+game.System.LANDSCAPE = 1;
 
 /**
     Turn canvas centering on/off.
@@ -597,6 +597,10 @@ game.System.rotateMsg = &#x27;Please rotate your device&#x27;;
     @default null
 **/
 game.System.rotateImg = null;
+
+game.System.canvas = true;
+game.System.transparent = false;
+game.System.antialias = false;
 
 });
     </pre>
