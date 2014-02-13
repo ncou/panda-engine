@@ -1,0 +1,37 @@
+---
+layout: default
+title: Examples
+---
+<h3>Retina support</h3>
+
+<pre name="code" class="js:nocontrols:nogutter">
+game.module(
+    'game.main'
+)
+.require(
+    'engine.core'
+)
+.body(function(){
+
+// If Retina is enabled and your device supports it,
+// file 'media/logo@2x.png' will be loaded automatically, but
+// referred as normal 'media/logo.png' in game.
+game.addAsset('media/logo.png');
+
+SceneGame = game.Scene.extend({
+    init: function() {
+        // You need to use game.scale for positions, because Retina canvas is double size.
+        var x = 100 * game.scale; // 100 on normal, 200 on Retina
+        var y = 100 * game.scale;
+        var sprite = new game.Sprite(x, y, 'media/logo.png');
+        this.stage.addChild(sprite);
+    }
+});
+
+// Enable Retina
+game.System.retina = true;
+
+game.start(SceneGame);
+
+});
+</pre>
