@@ -2,57 +2,211 @@
 layout: default
 title: Tutorials - Getting started
 ---
-<h3>Packaging your game</h3>
+<h3>Getting to know Panda.js</h3>
 
-<h4>1. Install Node.js</h4>
+<h4>Modules</h4>
 
-<p>For building, you need <a href="http://nodejs.org/" target="_blank">Node.js</a> installed.</p>
+<p>Panda.js is made out of modules. Modules are basically JavaScript files. Modules are defined with <a href="http://localhost/panda.js-docs/docs/classes/game.Core.html#method_module" target="_blank"><b>module</b></a> function.</p>
 
-<h4>2. Install UglifyJS 2</h4>
+<p>Here is an example of simple module named <b>game.main</b>:</p>
 
-<p>Open Terminal / Command Prompt, go to your game folder and type:</p>
-
+<div class="file">game/main.js</div>
 <pre name="code" class="js:nocontrols:nogutter">
-npm install uglify-js
+game.module(
+    'game.main'
+)
+.body(function() {
+    
+});
 </pre>
 
-<h4>3. Start building</h4>
+<p>Name of the module is also the path to the JavaScript file. For example, <b>game/main.js</b> is the file for the module above.</p>
 
-<p>Then start building with command:</p>
+<p>Every module must have body, and modules can also require other modules.</p>
 
+<div class="file">game/main.js</div>
 <pre name="code" class="js:nocontrols:nogutter">
-node src/engine/build.js
+game.module(
+    'game.main'
+)
+.require(
+    'game.objects'
+)
+.body(function() {
+    
+});
 </pre>
 
-<p>Now you should see something like this:</p>
+<div class="hint">You can require multiple modules. Separate module names with comma.</div>
+
+<h4>Classes</h4>
+
+<p>Game objects are made of classes. You can create new class by extending the base class:</p>
 
 <pre name="code" class="js:nocontrols:nogutter">
-Building...
-engine/core.js 20550 bytes
-engine/loader.js 8794 bytes
-engine/system.js 14807 bytes
-engine/timer.js 1933 bytes
-engine/sound.js 14457 bytes
-engine/renderer.js 355421 bytes
-engine/sprite.js 2540 bytes
-engine/debug.js 10843 bytes
-engine/storage.js 1644 bytes
-engine/tween.js 12059 bytes
-engine/pool.js 1234 bytes
-game/main.js 273 bytes
-editor/main.js 158 bytes
-editor/core.js 1105 bytes
-editor/window.js 4427 bytes
-game/assets.js 121 bytes
-game/objects.js 57 bytes
-game/scenes.js 818 bytes
-engine/scene.js 6402 bytes
-engine/particle.js 10846 bytes
-engine/physics.js 22874 bytes
-Total 491363 bytes
-Saved game.min.js 211343 bytes (43%)
+MyClass = game.Class.extend({
+    init: function() {
+
+    }
+});
 </pre>
 
-<div class="hint">Build script is packaging only modules that your game requires.</div>
+<p>If the class have <b>init</b> function, it is called, when you create new instance of the class, like this:</p>
 
-<p>That's it! Remember to load your new <b>game.min.js</b> in your <b>index.html</b> file.</p>
+<pre name="code" class="js:nocontrols:nogutter">
+Player = game.Class.extend({
+    init: function() {
+        console.log('Hello player!');
+    }
+});
+
+var player = new Player(); // Hello player!
+</pre>
+
+<p>You can also pass parameters to <b>init</b> function:</p>
+
+<pre name="code" class="js:nocontrols:nogutter">
+Player = game.Class.extend({
+    init: function(name) {
+        console.log('Your name is ' + name);
+    }
+});
+
+var player = new Player('Panda'); // Your name is Panda
+</pre>
+
+<p>Classes can contain functions and properties:</p>
+
+<pre name="code" class="js:nocontrols:nogutter">
+Player = game.Class.extend({
+    name: null,
+
+    init: function(name) {
+        this.name = name;
+    },
+
+    jump: function() {
+        console.log(this.name + ' jumps!');
+    }
+});
+
+var player = new Player('Panda');
+player.jump(); // Panda jumps!
+</pre>
+
+<p>Your own classes can also be extended:</p>
+
+<pre name="code" class="js:nocontrols:nogutter">
+Player = game.Class.extend({
+    name: 'Player',
+
+    jump: function() {
+        console.log(this.name + ' jumps!');
+    }
+});
+
+Panda = Player.extend({
+    name: 'Panda'
+});
+
+var player = new Player();
+player.jump(); // Player jumps!
+
+var panda = new Panda();
+panda.jump(); // Panda jumps!
+</pre>
+
+<p>Extending functions is done with <b>this.super</b> function:</p>
+
+<pre name="code" class="js:nocontrols:nogutter">
+Player = game.Class.extend({
+    name: 'Player',
+
+    jump: function() {
+        console.log(this.name + ' jumps!');
+    }
+});
+
+Panda = Player.extend({
+    jump: function() {
+        this.name = 'Panda';
+        this.super();
+    }
+});
+
+var player = new Player();
+player.jump(); // Player jumps!
+
+var panda = new Panda();
+panda.jump(); // Panda jumps!
+</pre>
+
+<h4>Scenes</h4>
+
+<p>Scenes are special classes, that you need for your game to run. Your game need to have at least one scene.</p>
+
+<p>You can create new scene by extending the <a href="http://localhost/panda.js-docs/docs/classes/game.Scene.html" target="_blank"><b>game.Scene</b></a> class:</p>
+
+<pre name="code" class="js:nocontrols:nogutter">
+SceneTitle = game.Scene.extend({
+    backgroundColor: 0x808080,
+
+    init: function() {
+
+    }
+});
+</pre>
+<div class="hint">Panda will by default start your game from scene SceneTitle</div>
+
+<p>You can switch scenes with <a href="http://localhost/panda.js-docs/docs/classes/game.System.html#method_setScene" target="_blank"><b>game.system.setScene</b></a> command:</p>
+
+<pre name="code" class="js:nocontrols:nogutter">
+SceneTitle = game.Scene.extend({
+    backgroundColor: 0x808080,
+
+    init: function() {
+        game.system.setScene(SceneGame);
+    }
+});
+
+SceneGame = game.Scene.extend({ 
+});
+</pre>
+
+<p>Every scene has <b>update</b> function, that is called every frame, when the scene is active.</p>
+
+<h4>Example</h4>
+
+<p>Here is a very basic example of a game, that contains one module with scene and player class:</p>
+
+<div class="file">game/main.js</div>
+<pre name="code" class="js:nocontrols:nogutter">
+game.module(  
+    'game.main'  
+)
+.require(
+    'engine.core'
+)
+.body(function() {  
+     
+Player = game.Class.extend({  
+    name: null,  
+  
+    init: function(name) {  
+        this.name = name;  
+    }      
+});
+  
+SceneTitle = game.Scene.extend({
+    player: null,  
+  
+    init: function() {  
+        this.player = new Player('Panda');  
+    }  
+});  
+  
+game.start();  
+  
+}); 
+</pre>
+<div class="hint">Note that you must require <i>engine.core</i> module for your game to work.</div>

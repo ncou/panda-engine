@@ -1,0 +1,33 @@
+---
+layout: default
+title: Examples
+---
+<h3>Grouping tweens</h3>
+
+<pre name="code" class="js:nocontrols:nogutter">
+// Example 1 - Using one tween
+game.scene.addTween(sprite, {
+    position: {x: 200},
+    alpha: 0
+}, 2, {onComplete: function() {
+    // Tween completed
+}}).start();
+
+game.scene.stopTweens(sprite);
+
+// Example 2 - Using array
+var tweens = [];
+
+var tween1 = game.scene.addTween(sprite.position, {x: 200}, 2);
+tweens.push(tween1);
+var tween2 = game.scene.addTween(sprite.alpha, 0, 2);
+tweens.push(tween2);
+
+for (var i = 0; i < tweens.length; i++) {
+    tweens[i].start();
+};
+
+for (var i = 0; i < tweens.length; i++) {
+    tweens[i].stop();
+};
+</pre>

@@ -1,0 +1,62 @@
+---
+layout: default
+title: Tutorials - Getting started
+---
+<h3>Making things interactive</h3>
+
+<h4>Interacting with stage</h4>
+
+<p>Every scene has four predefined functions: <b>click</b>, <b>mousedown</b>, <b>mouseup</b> and <b>mousemove</b>.</p>
+<p>These can be used for both mouse and touch events.</p>
+<p>Every function get's object as a parameter, that you can use to get your mouse/touch position:</p>
+
+<pre name="code" class="js:nocontrols:nogutter">
+click: function(event) {
+    var x = event.global.x;
+    var y = event.global.y;
+}
+</pre>
+
+<p>Here is example of scene with all four functions:</p>
+
+<pre name="code" class="js:nocontrols:nogutter">
+SceneTitle = game.Scene.extend({
+    mousedown: function(event) {
+        var x = event.global.x;
+        var y = event.global.y;
+    },
+    mouseup: function(event) {
+        var x = event.global.x;
+        var y = event.global.y;
+    },
+    click: function(event) {
+        var x = event.global.x;
+        var y = event.global.y;
+    },
+    mousemove: function(event) {
+        var x = event.global.x;
+        var y = event.global.y;
+    }
+});
+</pre>
+
+<h4>Making sprite interactive</h4>
+
+<p>Sprites are not interactive by default. To make them interactive, you need to define the functions that you need:</p>
+
+<pre name="code" class="js:nocontrols:nogutter">
+sprite.interactive = true;
+sprite.click = function(event) {
+}
+</pre>
+
+<p>You can also define everything in sprite's constructor function:</p>
+
+<pre name="code" class="js:nocontrols:nogutter">
+var sprite = new game.Sprite(100, 100, 'media/player.png', {
+    interactive: true,
+    click: function(event) {
+        this.remove();
+    }
+});
+</pre>
