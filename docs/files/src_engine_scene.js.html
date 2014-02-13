@@ -89,6 +89,8 @@
             
                 <li><a class="type" href="../classes/game.Tween.html">game.Tween</a></li>
             
+                <li><a class="type" href="../classes/game.TweenGroup.html">game.TweenGroup</a></li>
+            
                 <li><a class="type" href="../classes/game.Vector.html">game.Vector</a></li>
             
                 <li><a class="type" href="../classes/game.World.html">game.World</a></li>
@@ -179,11 +181,8 @@ game.Scene = game.Class.extend({
     
     staticInit: function() {
         game.scene = this;
-        
-        for (var i = game.system.stage.children.length - 1; i &gt;= 0; i--) {
-            game.system.stage.removeChild(game.system.stage.children[i]);
-        }
 
+        game.system.stage.removeAll();
         game.system.stage.setBackgroundColor(this.clearColor || this.backgroundColor);
 
         game.system.stage.mousemove = game.system.stage.touchmove = this.mousemove.bind(this);
@@ -262,7 +261,7 @@ game.Scene = game.Class.extend({
     **/
     getTween: function(obj) {
         for (var i = 0; i &lt; this.tweens.length; i++) {
-            if(this.tweens[i]._object === obj) return this.tweens[i];
+            if(this.tweens[i].object === obj) return this.tweens[i];
         }
         return false;
     },
@@ -274,7 +273,7 @@ game.Scene = game.Class.extend({
     **/
     stopTweens: function(obj, doComplete) {
         for (var i = 0; i &lt; this.tweens.length; i++) {
-            if(obj &amp;&amp; this.tweens[i]._object === obj || !obj) this.tweens[i].stop(doComplete);
+            if(obj &amp;&amp; this.tweens[i].object === obj || !obj) this.tweens[i].stop(doComplete);
         }
     },
 
@@ -284,7 +283,7 @@ game.Scene = game.Class.extend({
     **/
     pauseTweens: function(obj) {
         for ( var i = 0; i &lt; this.tweens.length; i++ ) {
-            if(obj &amp;&amp; this.tweens[i]._object === obj || !obj) this.tweens[i].pause();
+            if(obj &amp;&amp; this.tweens[i].object === obj || !obj) this.tweens[i].pause();
         }
     },
 
@@ -294,7 +293,7 @@ game.Scene = game.Class.extend({
     **/
     resumeTweens: function (obj) {
         for ( var i = 0; i &lt; this.tweens.length; i++ ) {
-            if(obj &amp;&amp; this.tweens[i]._object === obj || !obj) this.tweens[i].resume();
+            if(obj &amp;&amp; this.tweens[i].object === obj || !obj) this.tweens[i].resume();
         }
     },
 

@@ -22,6 +22,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "game.System",
         "game.Timer",
         "game.Tween",
+        "game.TweenGroup",
         "game.Vector",
         "game.World"
     ],

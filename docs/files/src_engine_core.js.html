@@ -89,6 +89,8 @@
             
                 <li><a class="type" href="../classes/game.Tween.html">game.Tween</a></li>
             
+                <li><a class="type" href="../classes/game.TweenGroup.html">game.TweenGroup</a></li>
+            
                 <li><a class="type" href="../classes/game.Vector.html">game.Vector</a></li>
             
                 <li><a class="type" href="../classes/game.World.html">game.World</a></li>
@@ -649,13 +651,13 @@ Array.prototype.random = function() {
 
 // http://jsperf.com/array-shuffle-comparator/2
 Array.prototype.shuffle = function () {
-    var l = this.length + 1;
-    while (l--) {
-            var r = ~~(Math.random() * l),
-                    o = this[r];
-
-            this[r] = this[0];
-            this[0] = o;
+    var len = this.length;
+    var i = len;
+    while (i--) {
+        var p = parseInt(Math.random() * len);
+        var t = this[i];
+        this[i] = this[p];
+        this[p] = t;
     }
 
     return this;

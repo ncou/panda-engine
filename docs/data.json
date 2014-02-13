@@ -180,7 +180,8 @@
                 "tween": 1
             },
             "classes": {
-                "game.Tween": 1
+                "game.Tween": 1,
+                "game.TweenGroup": 1
             },
             "fors": {},
             "namespaces": {
@@ -375,7 +376,8 @@
             "name": "tween",
             "submodules": {},
             "classes": {
-                "game.Tween": 1
+                "game.Tween": 1,
+                "game.TweenGroup": 1
             },
             "fors": {},
             "namespaces": {
@@ -383,7 +385,7 @@
             },
             "tag": "module",
             "file": "src/engine/tween.js",
-            "line": 13,
+            "line": 414,
             "description": "Tween engine."
         }
     },
@@ -846,6 +848,40 @@
                     "name": "duration",
                     "description": "",
                     "type": "Number"
+                },
+                {
+                    "name": "settings",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ]
+        },
+        "game.TweenGroup": {
+            "name": "game.TweenGroup",
+            "shortname": "TweenGroup",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "tween",
+            "namespace": "game",
+            "file": "src/engine/tween.js",
+            "line": 414,
+            "extends": "game.Class",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "duration",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "onComplete",
+                    "description": "",
+                    "type": "Function",
+                    "optional": true
                 },
                 {
                     "name": "settings",
@@ -1959,7 +1995,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 354,
+            "line": 356,
             "itemtype": "method",
             "name": "updateParticle",
             "class": "game.Emitter",
@@ -1968,7 +2004,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 386,
+            "line": 388,
             "itemtype": "method",
             "name": "emit",
             "params": [
@@ -1984,7 +2020,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 397,
+            "line": 399,
             "itemtype": "method",
             "name": "update",
             "class": "game.Emitter",
@@ -1993,7 +2029,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 417,
+            "line": 419,
             "description": "Remove emitter from scene.",
             "itemtype": "method",
             "name": "remove",
@@ -2904,7 +2940,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 63,
+            "line": 60,
             "description": "This is called every frame.",
             "itemtype": "method",
             "name": "update",
@@ -2914,7 +2950,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 107,
+            "line": 104,
             "description": "Helper function for {{#crossLink \"game.Tween\"}}{{/crossLink}}",
             "itemtype": "method",
             "name": "addTween",
@@ -2947,7 +2983,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 121,
+            "line": 118,
             "itemtype": "method",
             "name": "getTween",
             "params": [
@@ -2963,7 +2999,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 132,
+            "line": 129,
             "itemtype": "method",
             "name": "stopTweens",
             "params": [
@@ -2986,7 +3022,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 143,
+            "line": 140,
             "itemtype": "method",
             "name": "pauseTweens",
             "params": [
@@ -3003,7 +3039,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 153,
+            "line": 150,
             "itemtype": "method",
             "name": "resumeTweens",
             "params": [
@@ -3020,7 +3056,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 163,
+            "line": 160,
             "description": "Add timer to game scene.",
             "itemtype": "method",
             "name": "addTimer",
@@ -3051,7 +3087,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 179,
+            "line": 176,
             "itemtype": "method",
             "name": "removeTimer",
             "params": [
@@ -3072,7 +3108,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 190,
+            "line": 187,
             "description": "Callback for mouse click and touch tap on the scene stage.",
             "itemtype": "method",
             "name": "click",
@@ -3089,7 +3125,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 197,
+            "line": 194,
             "description": "Callback for mousedown and touchstart on the scene stage.",
             "itemtype": "method",
             "name": "mousedown",
@@ -3106,7 +3142,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 204,
+            "line": 201,
             "description": "Callback for mouseup and touchend on the scene stage.",
             "itemtype": "method",
             "name": "mouseup",
@@ -3123,7 +3159,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 211,
+            "line": 208,
             "description": "Callback for mousemove and touchmove on the scene stage.",
             "itemtype": "method",
             "name": "mousemove",
@@ -3140,7 +3176,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 218,
+            "line": 215,
             "description": "Callback for mouseout on the scene stage.",
             "itemtype": "method",
             "name": "mouseout",
@@ -3571,7 +3607,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 340,
+            "line": 341,
             "description": "Turn canvas centering on/off.",
             "itemtype": "attribute",
             "name": "center",
@@ -3583,7 +3619,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 348,
+            "line": 349,
             "description": "Turn canvas resizing on/off.",
             "itemtype": "attribute",
             "name": "resize",
@@ -3595,7 +3631,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 355,
+            "line": 356,
             "description": "Minimum width for canvas.",
             "itemtype": "attribute",
             "name": "minWidth",
@@ -3607,7 +3643,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 361,
+            "line": 362,
             "description": "Minimum height for canvas.",
             "itemtype": "attribute",
             "name": "minHeight",
@@ -3619,7 +3655,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 367,
+            "line": 368,
             "description": "Maximum width for canvas.",
             "itemtype": "attribute",
             "name": "maxWidth",
@@ -3631,7 +3667,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 373,
+            "line": 374,
             "description": "Maximum height for canvas.",
             "itemtype": "attribute",
             "name": "maxHeight",
@@ -3643,7 +3679,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 379,
+            "line": 380,
             "description": "Scaling method for CocoonJS.",
             "itemtype": "attribute",
             "name": "idtkScale",
@@ -3655,7 +3691,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 385,
+            "line": 386,
             "description": "Use ScreenCanvas on CocoonJS.\nhttp://support.ludei.com/hc/en-us/articles/201810268-ScreenCanvas",
             "itemtype": "attribute",
             "name": "screenCanvas",
@@ -3667,7 +3703,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 392,
+            "line": 393,
             "description": "Use HiRes mode.",
             "itemtype": "attribute",
             "name": "hires",
@@ -3679,7 +3715,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 398,
+            "line": 399,
             "description": "Canvas width/height factor, when to enable HiRes mode.",
             "itemtype": "attribute",
             "name": "hiresFactor",
@@ -3691,7 +3727,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 404,
+            "line": 405,
             "description": "Use Retina mode.",
             "itemtype": "attribute",
             "name": "retina",
@@ -3703,7 +3739,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 410,
+            "line": 411,
             "description": "Pause game engine, when page is hidden.",
             "itemtype": "attribute",
             "name": "pauseOnHide",
@@ -3715,7 +3751,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 416,
+            "line": 417,
             "description": "Mobile orientation for the game.",
             "itemtype": "attribute",
             "name": "orientation",
@@ -3727,7 +3763,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 423,
+            "line": 424,
             "description": "Background color for game screen on mobile.",
             "itemtype": "attribute",
             "name": "backgroundColor.game",
@@ -3738,7 +3774,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 429,
+            "line": 430,
             "description": "Background color for rotate screen on mobile.",
             "itemtype": "attribute",
             "name": "backgroundColor.rotate",
@@ -3749,7 +3785,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 437,
+            "line": 438,
             "description": "Background image for game screen on mobile.",
             "itemtype": "attribute",
             "name": "backgroundImage.game",
@@ -3760,7 +3796,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 443,
+            "line": 444,
             "description": "Background image for rotate screen on mobile.",
             "itemtype": "attribute",
             "name": "backgroundImage.rotate",
@@ -3771,7 +3807,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 450,
+            "line": 451,
             "description": "Rotate message for mobile.",
             "itemtype": "attribute",
             "name": "rotateMsg",
@@ -3783,7 +3819,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 456,
+            "line": 457,
             "description": "Rotate image for mobile.",
             "itemtype": "attribute",
             "name": "rotateImg",
@@ -3997,6 +4033,90 @@
             "name": "Easing",
             "type": "Linear|Quadratic|Cubic|Quartic|Quintic|Sinusoidal|Exponential|Circular|Elastic|Back|Bounce",
             "class": "game.Tween",
+            "module": "tween",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/tween.js",
+            "line": 434,
+            "itemtype": "method",
+            "name": "add",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "props",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "tween",
+                "type": "game.Tween"
+            },
+            "class": "game.TweenGroup",
+            "module": "tween",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/tween.js",
+            "line": 446,
+            "itemtype": "method",
+            "name": "remove",
+            "params": [
+                {
+                    "name": "tween",
+                    "description": "",
+                    "type": "game.Tween"
+                }
+            ],
+            "class": "game.TweenGroup",
+            "module": "tween",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/tween.js",
+            "line": 454,
+            "itemtype": "method",
+            "name": "start",
+            "class": "game.TweenGroup",
+            "module": "tween",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/tween.js",
+            "line": 467,
+            "itemtype": "method",
+            "name": "pause",
+            "class": "game.TweenGroup",
+            "module": "tween",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/tween.js",
+            "line": 476,
+            "itemtype": "method",
+            "name": "resume",
+            "class": "game.TweenGroup",
+            "module": "tween",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/tween.js",
+            "line": 485,
+            "itemtype": "method",
+            "name": "stop",
+            "params": [
+                {
+                    "name": "doComplete",
+                    "description": "",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "game.TweenGroup",
             "module": "tween",
             "namespace": "game"
         }

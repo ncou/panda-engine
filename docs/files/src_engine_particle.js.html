@@ -89,6 +89,8 @@
             
                 <li><a class="type" href="../classes/game.Tween.html">game.Tween</a></li>
             
+                <li><a class="type" href="../classes/game.TweenGroup.html">game.TweenGroup</a></li>
+            
                 <li><a class="type" href="../classes/game.Vector.html">game.Vector</a></li>
             
                 <li><a class="type" href="../classes/game.World.html">game.World</a></li>
@@ -149,7 +151,7 @@ game.module(
 .require(
     &#x27;engine.physics&#x27;
 )
-.body(function() {
+.body(function() { &#x27;use strict&#x27;;
 
 /**
     @class Particle
@@ -452,7 +454,7 @@ game.Emitter = game.Class.extend({
 
         particle.setVeloctity(angle, speed);
 
-        if(this.angleVar != this.accelAngleVar) angleVar = this.getVariance(this.accelAngleVar);
+        if(this.angleVar !== this.accelAngleVar) angleVar = this.getVariance(this.accelAngleVar);
 
         angle = this.accelAngle + angleVar;
         speed = this.accelSpeed + this.getVariance(this.accelSpeedVar);
@@ -465,12 +467,14 @@ game.Emitter = game.Class.extend({
             particle.sprite = new game.Sprite(particle.position.x, particle.position.y, this.textures.random(), this.spriteSettings);
         } else {
             particle.sprite.setTexture(game.TextureCache[this.textures.random()]);
+            particle.sprite.position.x = particle.position.x;
+            particle.sprite.position.y = particle.position.y;
         }
 
         particle.rotate = this.rotate + this.getVariance(this.rotateVar);
         particle.velRotate = this.velRotate + this.getVariance(this.velRotateVar);
 
-        if(this.startAlpha != this.endAlpha) {
+        if(this.startAlpha !== this.endAlpha) {
             particle.deltaAlpha = this.endAlpha - this.startAlpha;
             particle.deltaAlpha /= particle.life;
         } else particle.deltaAlpha = 0;
@@ -478,7 +482,7 @@ game.Emitter = game.Class.extend({
         particle.sprite.alpha = this.startAlpha;
 
         var startScale = this.startScale + this.getVariance(this.startScaleVar);
-        if(this.startScale != this.endScale) {
+        if(this.startScale !== this.endScale) {
             particle.deltaScale = (this.endScale + this.getVariance(this.endScaleVar)) - startScale;
             particle.deltaScale /= particle.life;
         } else particle.deltaScale = 0;
@@ -492,7 +496,7 @@ game.Emitter = game.Class.extend({
     /**
         @method updateParticle
     **/
-    updateParticle: function(particle) {        
+    updateParticle: function(particle) {
         if(particle.life &gt; 0) {
             particle.life -= game.system.delta;
             if(particle.life &lt;= 0) return this.removeParticle(particle);

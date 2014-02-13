@@ -89,6 +89,8 @@
             
                 <li><a class="type" href="../classes/game.Tween.html">game.Tween</a></li>
             
+                <li><a class="type" href="../classes/game.TweenGroup.html">game.TweenGroup</a></li>
+            
                 <li><a class="type" href="../classes/game.Vector.html">game.Vector</a></li>
             
                 <li><a class="type" href="../classes/game.World.html">game.World</a></li>
@@ -457,6 +459,7 @@ game.System = game.Class.extend({
             window.scroll(0,1);
         } else {
             // Desktop resize
+            if(window.innerWidth === 0) return; // Chrome bug
             if(window.innerWidth &lt; this.width || window.innerHeight &lt; this.height) {
                 if(window.innerWidth / this.width &lt; window.innerHeight / this.height) {
                     this.canvas.style.width = window.innerWidth + &#x27;px&#x27;;
