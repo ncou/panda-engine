@@ -1,0 +1,37 @@
+---
+layout: default
+title: Examples
+---
+<h3>Local storage</h3>
+
+<pre name="code" class="js:nocontrols:nogutter">
+game.module(
+    'game.main'
+)
+.require(
+    'engine.core'
+)
+.body(function(){
+
+SceneGame = game.Scene.extend({
+    init: function() {
+        this.score = 0;
+        this.highscore = game.storage.get('highscore') || 0;
+    },
+
+    mousedown: function() {
+        this.score++;
+
+        if(this.score > this.highscore) {
+            console.log('New highscore!');
+            game.storage.set('highscore', this.score);
+        }
+    }
+});
+
+game.Storage.id = 'com.mycompany.mygame';
+
+game.start(SceneGame);
+
+});
+</pre>
