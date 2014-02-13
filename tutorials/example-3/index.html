@@ -1,0 +1,59 @@
+---
+layout: default
+title: Examples
+---
+<h3>Simple physics</h3>
+
+<pre name="code" class="js:nocontrols:nogutter">
+game.module(
+    'game.main'
+)
+.require(
+    'engine.core',
+    'engine.physics' // physics module is not required in core
+)
+.body(function(){
+
+SceneGame = game.Scene.extend({
+    backgroundColor: 0x888888,
+
+    init: function() {
+        this.world = new game.World();
+
+        // Box
+        var boxBody = new game.Body();
+        boxBody.position.x = 300;
+        boxBody.position.y = 100;
+        boxBody.mass = 1;
+        boxBody.collideAgainst = 1;
+        boxBody.collide = function() {
+            // box colliding with ground
+            this.mass = 0;
+            this.velocity.y = 0;
+            return true; // return true to apply hit response
+        }
+
+        var boxShape = new game.Rectangle(50, 50);
+        boxBody.addShape(boxShape);
+
+        // Ground
+        var groundBody = new game.Body();
+        groundBody.position.x = 300;
+        groundBody.position.y = 500;
+        groundBody.collisionGroup = 1;
+
+        var groundShape = new game.Rectangle(250, 50);
+
+        groundBody.addShape(groundShape);
+
+        this.world.addBody(boxBody);
+        this.world.addBody(groundBody);
+    }
+});
+
+game.DebugDraw.enabled = true;
+
+game.start(SceneGame);
+
+});
+</pre>
