@@ -1,0 +1,56 @@
+---
+layout: default
+title: Examples
+---
+<h3>Sounds</h3>
+
+<pre name="code" class="js:nocontrols:nogutter">
+game.module(
+    'game.main'
+)
+.require(
+    'engine.core'
+)
+.body(function(){
+
+// Adding sound to preloader
+game.addSound('media/sound/jump.m4a', 'jump');
+
+// Adding music to preloader
+game.addMusic('media/sound/music.m4a', 'music');
+
+SceneGame = game.Scene.extend({
+    init: function() {
+        // Change main sound volume
+        game.sound.soundVolume = 0.8;
+
+        // Change main music volume
+        game.sound.musicVolume = 0.2;
+
+        // Play sound
+        game.sound.playSound('jump');
+
+        // Play sound looped
+        game.sound.playSound('jump', true);
+
+        // Play music
+        game.sound.playMusic('music');
+
+        // Stop sound
+        game.sound.stopSound('jump');
+
+        // Stop all sounds
+        game.sound.stopSound();
+
+        // Stop current music
+        game.sound.stopMusic();
+
+        // Stop all sounds and music
+        game.sound.stopAll();
+    }
+});
+
+game.start(SceneGame);
+
+});
+</pre>
