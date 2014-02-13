@@ -1,0 +1,52 @@
+---
+layout: default
+title: Examples
+---
+<h3>Timers</h3>
+
+<pre name="code" class="js:nocontrols:nogutter">
+game.module(
+    'game.main'
+)
+.require(
+    'engine.core'
+)
+.body(function(){
+
+// Adding timer to scene
+SceneGame = game.Scene.extend({
+    init: function() {
+        // Add 2 second timer that repeats
+        this.addTimer(2, function() {
+            // This is called every 2 seconds
+            console.log('Scene timer');
+        }, true);
+
+        var player = new Player();
+        // Add player to scene with addObject() so it's update() is called every frame
+        this.addObject(player);
+    }
+});
+
+// Adding timer to class
+Player = game.Class.extend({
+    init: function() {
+        this.timer = new game.Timer();
+    },
+
+    update: function() {
+        // Get timers current time
+        var time = this.timer.time();
+
+        if(time >= 1) {
+            // This is called every second
+            console.log('Player timer');
+            this.timer.reset();
+        }
+    }
+});
+
+game.start(SceneGame);
+
+});
+</pre>
