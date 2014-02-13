@@ -47,6 +47,8 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
+                <li><a class="type" href="../classes/game.Analytics.html">game.Analytics</a></li>
+            
                 <li><a class="type" href="../classes/game.Body.html">game.Body</a></li>
             
                 <li><a class="type" href="../classes/game.Circle.html">game.Circle</a></li>
@@ -98,6 +100,8 @@
             </ul>
 
             <ul id="api-modules" class="apis modules">
+            
+                <li><a class="module" href="../modules/analytics.html">analytics</a></li>
             
                 <li><a class="module" href="../modules/core.html">core</a></li>
             
@@ -451,6 +455,7 @@ var core = {
         if(game.Debug &amp;&amp; game.Debug.enabled &amp;&amp; !navigator.isCocoonJS) this.debug = new game.Debug();
         if(game.DebugDraw &amp;&amp; game.DebugDraw.enabled) this.debugDraw = new game.DebugDraw();
         if(game.Storage.id) this.storage = new game.Storage(game.Storage.id);
+        if(game.Analytics.id) this.analytics = new game.Analytics(game.Analytics.id);
 
         this.ready = true;
         
@@ -838,7 +843,8 @@ game.module(
     &#x27;engine.storage&#x27;,
     &#x27;engine.tween&#x27;,
     &#x27;engine.scene&#x27;,
-    &#x27;engine.pool&#x27;
+    &#x27;engine.pool&#x27;,
+    &#x27;engine.analytics&#x27;
 )
 .body(function(){
     // ready to start engine

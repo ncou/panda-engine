@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>game.CollisionSolver - Panda.js</title>
+    <title>game.Analytics - Panda.js</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -138,25 +138,21 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>game.CollisionSolver Class</h1>
+                <h1>game.Analytics Class</h1>
 <div class="box meta">
     
 
     
-        <div class="extends">
-            Extends <a href="../classes/game.Class.html" class="crosslink">game.Class</a>
-        </div>
-    
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_engine_physics.js.html#l122"><code>src&#x2F;engine&#x2F;physics.js:122</code></a>
+            Defined in: <a href="../files/src_engine_analytics.js.html#l12"><code>src&#x2F;engine&#x2F;analytics.js:12</code></a>
         </div>
     
 
     
         
-            Module: <a href="../modules/physics.html">physics</a>
+            Module: <a href="../modules/analytics.html">analytics</a>
         
     
 
@@ -166,8 +162,7 @@
 
 
 <div class="box intro">
-    <p>Physics collision solver.</p>
-
+    
 </div>
 
 <!-- Class member index -->
@@ -202,21 +197,15 @@
 
 
 
-    <div class="index-section properties">
-        <h3>Properties</h3>
 
-        <ul class="index-list properties extends">
+
+    <div class="index-section attrs">
+        <h3>Attributes</h3>
+
+        <ul class="index-list attrs">
             
-                <li class="index-item property inherited">
-                    <a href="#property_init">init</a>
-
-                    
-                </li>
-            
-                <li class="index-item property inherited">
-                    <a href="#property_staticInit">staticInit</a>
-
-                    
+                <li class="index-item attr">
+                    <a href="#attr_id">id</a>
                 </li>
             
         </ul>
@@ -225,53 +214,25 @@
 
 
 
-
-
     <div class="index-section methods">
         <h3>Methods</h3>
 
-        <ul class="index-list methods extends">
+        <ul class="index-list methods">
 
             
+                <li class="index-item method constructor">
+                    <a href="#method_game.Analytics">game.Analytics</a>
 
-            
-                <li class="index-item method inherited">
-                    <a href="#method_extend">extend</a>
+                    <span class="flag constructor">constructor</span>
 
                     
                     
                 </li>
+            
+
             
                 <li class="index-item method">
-                    <a href="#method_hitResponse">hitResponse</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method">
-                    <a href="#method_hitTest">hitTest</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method inherited">
-                    <a href="#method_inject">inject</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method">
-                    <a href="#method_solve">solve</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method inherited">
-                    <a href="#method_super">super</a>
+                    <a href="#method_event">event</a>
 
                     
                     
@@ -288,14 +249,92 @@
 <div class="class-detail">
 
 
-    <div class="properties-detail">
-        <h2>Properties</h2>
+
+
+    <div class="attrs-detail">
+        <h2>Attributes</h2>
 
         
-            <a name="property_init" class="anchor-link"></a>
-<div class="property item inherited">
-    <h3 class="name"><code>init</code>
-    <span class="type">Function</span>
+            <div id="attr_id" class="attr item">
+    <a name="config_id"></a> 
+    <h3 class="name"><code>id</code></h3>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_analytics.js.html#l38"><code>src&#x2F;engine&#x2F;analytics.js:38</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+        
+    </div>
+
+
+
+    <div class="constructor">
+        <h2>Constructor</h2>
+        <a name="method_game.Analytics" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>game.Analytics</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>id</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
 
     
 
@@ -310,14 +349,18 @@
     <div class="meta">
         
             
-                <p>Inherited from
-                <a href="../classes/game.Class.html#property_init" class="type">game.Class</a>:
+                
+                <p>
+                
+                Defined in
+                
             
         
         
-        <a href="../files/src_engine_core.js.html#l638"><code>src&#x2F;engine&#x2F;core.js:638</code></a>
+        <a href="../files/src_engine_analytics.js.html#l12"><code>src&#x2F;engine&#x2F;analytics.js:12</code></a>
         
         </p>
+
 
         
 
@@ -325,11 +368,34 @@
     </div>
 
     <div class="extended-detail">
-        <div class="description">
-            <p>Automatically called, when creating new class.</p>
 
+        <div class="description">
+            
         </div>
 
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">id</code>
+                            <span class="type">String</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
         
 
         
@@ -338,64 +404,7 @@
     </div>
 </div>
 
-        
-            <a name="property_staticInit" class="anchor-link"></a>
-<div class="property item inherited">
-    <h3 class="name"><code>staticInit</code>
-    <span class="type">Function</span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/game.Class.html#property_staticInit" class="type">game.Class</a>:
-            
-        
-        
-        <a href="../files/src_engine_core.js.html#l623"><code>src&#x2F;engine&#x2F;core.js:623</code></a>
-        
-        </p>
-
-        
-
-        
     </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>If Class has <code>staticInit</code> function, it is called before <code>init</code> function.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-
-        <div class="no-visible-items-message">
-            <p>There are no properties that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
-        </div>
-
-    </div>
-
-
-
-
 
 
 
@@ -403,82 +412,9 @@
         <h2>Methods</h2>
 
         
-            <a name="method_extend" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>extend</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Class</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/game.Class.html#method_extend" class="type">game.Class</a>:
-            
-        
-        
-        <a href="../files/src_engine_core.js.html#l583"><code>src&#x2F;engine&#x2F;core.js:583</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            
-        </div>
-
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">Class</span>:
-                        
-                    
-                </div>
-            </div>
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_hitResponse" class="anchor-link"></a>
+            <a name="method_event" class="anchor-link"></a>
 <div class="method item">
-    <h3 class="name"><code>hitResponse</code>
+    <h3 class="name"><code>event</code>
 
     
         <div class="args">
@@ -486,330 +422,13 @@
             
                 <li class="arg">
                     
-                        <code>a</code>
+                        <code>category</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>b</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Boolean</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_physics.js.html#l256"><code>src&#x2F;engine&#x2F;physics.js:256</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">a</code>
-                            <span class="type">Body</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name">b</code>
-                            <span class="type">Body</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">Boolean</span>:
-                        
-                    
-                </div>
-            </div>
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_hitTest" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>hitTest</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>a</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>b</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Boolean</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_physics.js.html#l142"><code>src&#x2F;engine&#x2F;physics.js:142</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">a</code>
-                            <span class="type">Body</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name">b</code>
-                            <span class="type">Body</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">Boolean</span>:
-                        
-                    
-                </div>
-            </div>
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_inject" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>inject</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/game.Class.html#method_inject" class="type">game.Class</a>:
-            
-        
-        
-        <a href="../files/src_engine_core.js.html#l651"><code>src&#x2F;engine&#x2F;core.js:651</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_solve" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>solve</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>a</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>b</code>
+                        <code>action</code>
                     
                 </li>
             
@@ -844,7 +463,7 @@
             
         
         
-        <a href="../files/src_engine_physics.js.html#l130"><code>src&#x2F;engine&#x2F;physics.js:130</code></a>
+        <a href="../files/src_engine_analytics.js.html#l28"><code>src&#x2F;engine&#x2F;analytics.js:28</code></a>
         
         </p>
 
@@ -857,8 +476,7 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>Solve collision a versus b.</p>
-
+            
         </div>
 
         
@@ -869,8 +487,8 @@
                 
                     <li class="param">
                         
-                            <code class="param-name">a</code>
-                            <span class="type">Body</span>
+                            <code class="param-name">category</code>
+                            <span class="type">String</span>
                         
 
                         
@@ -884,8 +502,8 @@
                 
                     <li class="param">
                         
-                            <code class="param-name">b</code>
-                            <span class="type">Body</span>
+                            <code class="param-name">action</code>
+                            <span class="type">String</span>
                         
 
                         
@@ -899,64 +517,6 @@
                 
                 </ul>
             </div>
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_super" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>super</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/game.Class.html#method_super" class="type">game.Class</a>:
-            
-        
-        
-        <a href="../files/src_engine_core.js.html#l595"><code>src&#x2F;engine&#x2F;core.js:595</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Call functions parent function.</p>
-
-        </div>
-
         
 
         

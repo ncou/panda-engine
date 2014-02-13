@@ -1,0 +1,26 @@
+---
+layout: default
+title: Examples
+---
+<h3>Analytics</h3>
+
+<pre name="code" class="js:nocontrols:nogutter">
+game.module(
+    'game.main'
+)
+.body(function() {
+    SceneGame = game.Scene.extend({
+        init: function() {
+            game.analytics.event('start');
+        },
+
+        gameOver: function() {
+            game.analytics.event('gameover');  
+        }
+    });
+
+    game.Analytics.id = 'UA-12345678-9':
+
+    game.start(SceneGame, 1024, 768);
+});
+</pre>

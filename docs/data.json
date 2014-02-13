@@ -8,6 +8,19 @@
         "themedir": "friendly-theme"
     },
     "files": {
+        "src/engine/analytics.js": {
+            "name": "src/engine/analytics.js",
+            "modules": {
+                "analytics": 1
+            },
+            "classes": {
+                "game.Analytics": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "game": 1
+            }
+        },
         "src/engine/core.js": {
             "name": "src/engine/core.js",
             "modules": {
@@ -190,6 +203,21 @@
         }
     },
     "modules": {
+        "analytics": {
+            "name": "analytics",
+            "submodules": {},
+            "classes": {
+                "game.Analytics": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "game": 1
+            },
+            "tag": "module",
+            "file": "src/engine/analytics.js",
+            "line": 12,
+            "description": "Google Analytics."
+        },
         "core": {
             "name": "core",
             "submodules": {},
@@ -203,7 +231,7 @@
             },
             "tag": "module",
             "file": "src/engine/core.js",
-            "line": 578
+            "line": 579
         },
         "debug": {
             "name": "debug",
@@ -390,6 +418,27 @@
         }
     },
     "classes": {
+        "game.Analytics": {
+            "name": "game.Analytics",
+            "shortname": "game.Analytics",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "analytics",
+            "namespace": "game",
+            "file": "src/engine/analytics.js",
+            "line": 12,
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ]
+        },
         "game.Core": {
             "name": "game.Core",
             "shortname": "Core",
@@ -415,7 +464,7 @@
             "module": "core",
             "namespace": "game",
             "file": "src/engine/core.js",
-            "line": 578
+            "line": 579
         },
         "game.DebugDraw": {
             "name": "game.DebugDraw",
@@ -894,6 +943,37 @@
     },
     "classitems": [
         {
+            "file": "src/engine/analytics.js",
+            "line": 28,
+            "itemtype": "method",
+            "name": "event",
+            "params": [
+                {
+                    "name": "category",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "action",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "game.Analytics",
+            "module": "analytics",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/analytics.js",
+            "line": 38,
+            "itemtype": "attribute",
+            "name": "id",
+            "type": "String",
+            "class": "game.Analytics",
+            "module": "analytics",
+            "namespace": "game"
+        },
+        {
             "file": "src/engine/core.js",
             "line": 38,
             "description": "Scale factor for Retina and HiRes mode.",
@@ -1163,7 +1243,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 322,
+            "line": 323,
             "description": "Distance between two points.",
             "itemtype": "method",
             "name": "Math.distance",
@@ -1199,7 +1279,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 337,
+            "line": 338,
             "description": "Generate random number between `min` and `max`.",
             "itemtype": "method",
             "name": "Math.random",
@@ -1221,7 +1301,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 582,
+            "line": 583,
             "itemtype": "method",
             "name": "extend",
             "return": {
@@ -1234,7 +1314,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 594,
+            "line": 595,
             "description": "Call functions parent function.",
             "itemtype": "method",
             "name": "super",
@@ -1244,7 +1324,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 622,
+            "line": 623,
             "description": "If Class has `staticInit` function, it is called before `init` function.",
             "itemtype": "property",
             "name": "staticInit",
@@ -1255,7 +1335,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 637,
+            "line": 638,
             "description": "Automatically called, when creating new class.",
             "itemtype": "property",
             "name": "init",
@@ -1266,7 +1346,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 650,
+            "line": 651,
             "itemtype": "method",
             "name": "inject",
             "class": "game.Class",

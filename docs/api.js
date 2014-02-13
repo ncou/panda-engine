@@ -1,6 +1,7 @@
 YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
     "classes": [
+        "game.Analytics",
         "game.Body",
         "game.Circle",
         "game.Class",
@@ -27,6 +28,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "game.World"
     ],
     "modules": [
+        "analytics",
         "core",
         "debug",
         "loader",
@@ -42,6 +44,11 @@ YUI.add("yuidoc-meta", function(Y) {
         "tween"
     ],
     "allModules": [
+        {
+            "displayName": "analytics",
+            "name": "analytics",
+            "description": "Google Analytics."
+        },
         {
             "displayName": "core",
             "name": "core"
