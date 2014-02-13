@@ -14,6 +14,7 @@ game.module(
 .body(function() {
     SceneGame = game.Scene.extend({
         init: function() {
+            // Send event to analytics
             game.analytics.event('start');
         },
 
@@ -22,6 +23,7 @@ game.module(
         }
     });
 
+    // Set id for Google Analytics
     game.Analytics.id = 'UA-12345678-9':
 
     game.start(SceneGame);
