@@ -10,7 +10,8 @@ game.module(
 )
 .require(
     'engine.core',
-    'engine.particle' // Particle engine is not required from core
+    // Particle engine is not required from core
+    'engine.particle'
 )
 .body(function(){
 
@@ -18,13 +19,20 @@ game.addAsset('media/particle.png');
 
 SceneGame = game.Scene.extend({
     init: function() {
+        // Create new particle emitter
         var emitter = new game.Emitter();
+        
+        // Set container for emitter
         emitter.container = this.stage;
+        
+        // Add texture to emitter
         emitter.textures.push('media/particle.png');
+
         // Put emitter on center of screen
         emitter.position.x = game.system.width / 2;
         emitter.position.y = game.system.height / 2;
 
+        // Add emitter to scene, so it will get updated
         this.addEmitter(emitter);
     }
 });

@@ -16,6 +16,7 @@ game.module(
 SceneGame = game.Scene.extend({
     init: function() {
         this.score = 0;
+        // Get value from storage
         this.highscore = game.storage.get('highscore') || 0;
     },
 
@@ -24,11 +25,13 @@ SceneGame = game.Scene.extend({
 
         if(this.score > this.highscore) {
             console.log('New highscore!');
+            // Set value to storage
             game.storage.set('highscore', this.score);
         }
     }
 });
 
+// Set id for storage
 game.Storage.id = 'com.mycompany.mygame';
 
 game.start(SceneGame);

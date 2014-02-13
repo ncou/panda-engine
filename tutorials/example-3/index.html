@@ -10,7 +10,8 @@ game.module(
 )
 .require(
     'engine.core',
-    'engine.physics' // physics module is not required in core
+    // Physics module is not required in core
+    'engine.physics'
 )
 .body(function(){
 
@@ -18,39 +19,63 @@ SceneGame = game.Scene.extend({
     backgroundColor: 0x888888,
 
     init: function() {
+        // Create new physics world
         this.world = new game.World();
 
-        // Box
+        // Create new physics body for box
         var boxBody = new game.Body();
+
+        // Set body position
         boxBody.position.x = 300;
         boxBody.position.y = 100;
+
+        // Set body mass, so it will fall
         boxBody.mass = 1;
+
+        // Set body to collide against group 1
         boxBody.collideAgainst = 1;
+
+        // Set callback on collision
         boxBody.collide = function() {
-            // box colliding with ground
+            // Box body colliding with ground body
+
+            // Set body mass and velocity to 0, so it will stop falling
             this.mass = 0;
             this.velocity.y = 0;
-            return true; // return true to apply hit response
+
+            // Return true to apply hit response
+            return true;
         }
 
+        // Create physics shape for box
         var boxShape = new game.Rectangle(50, 50);
+
+        // Add shape to body
         boxBody.addShape(boxShape);
 
-        // Ground
+        // Create body for ground
         var groundBody = new game.Body();
+
+        // Set body position
         groundBody.position.x = 300;
         groundBody.position.y = 500;
+
+        // Set body collision group to 1, so box will collide against it
         groundBody.collisionGroup = 1;
 
+        // Create shape for ground
         var groundShape = new game.Rectangle(250, 50);
 
+        // Add shape to body
         groundBody.addShape(groundShape);
 
+        // Add bodies to world, that handles collisions and gravity
         this.world.addBody(boxBody);
         this.world.addBody(groundBody);
     }
 });
 
+// Enable debug drawing to see physics shapes
 game.DebugDraw.enabled = true;
 
 game.start(SceneGame);
