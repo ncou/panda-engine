@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/engine/scene.js - Panda.js</title>
+    <title>src/engine/keyboard.js - Panda.js</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -142,258 +142,253 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1 class="file-heading">File: src/engine/scene.js</h1>
+                <h1 class="file-heading">File: src/engine/keyboard.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 /**
-    @module scene
+    @module keyboard
     @namespace game
 **/
 game.module(
-    &#x27;engine.scene&#x27;
+    &#x27;engine.keyboard&#x27;
 )
-.body(function(){ &#x27;use strict&#x27;;
+.body(function() {
 
 /**
-    @class Scene
+    Instance automatically created at {{#crossLink &quot;game.Core&quot;}}{{/crossLink}}
+    @class Keyboard
     @extends game.Class
 **/
-game.Scene = game.Class.extend({
+game.Keyboard = game.Class.extend({
     /**
-        @property {Number} backgroundColor
-    **/
-    backgroundColor: 0x000000,
-    /**
-        @property {Array} objects
-    **/
-    objects: [],
-    /**
-        @property {Array} timers
-    **/
-    timers: [],
-    /**
-        @property {Array} tweens
-    **/
-    tweens: [],
-    /**
-        @property {Array} emitters
-    **/
-    emitters: [],
-    /**
-        Main container for scene.
-        @property {game.Container} stage
-    **/
-    stage: null,
-    
-    staticInit: function() {
-        game.scene = this;
+        List of keys.
 
-        game.system.stage.removeAll();
-        game.system.stage.setBackgroundColor(this.clearColor || this.backgroundColor);
+            BACKSPACE
+            TAB
+            ENTER
+            SHIFT
+            CTRL
+            ALT
+            PAUSE
+            CAPS_LOCK
+            ESC
+            SPACE
+            PAGE_UP
+            PAGE_DOWN
+            END
+            HOME
+            LEFT
+            UP
+            RIGHT
+            DOWN
+            PRINT_SCREEN
+            INSERT
+            DELETE
+            ZERO
+            ONE
+            TWO
+            THREE
+            FOUR
+            FIVE
+            SIX
+            SEVEN
+            EIGHT
+            NINE
+            A
+            B
+            C
+            D
+            E
+            F
+            G
+            H
+            I
+            J
+            K
+            L
+            M
+            N
+            O
+            P
+            Q
+            R
+            S
+            T
+            U
+            V
+            W
+            X
+            Y
+            Z
+            NUM_ZERO
+            NUM_ONE
+            NUM_TWO
+            NUM_THREE
+            NUM_FOUR
+            NUM_FIVE
+            NUM_SIX
+            NUM_SEVEN
+            NUM_EIGHT
+            NUM_NINE
+            NUM_MULTIPLY
+            NUM_PLUS
+            NUM_MINUS
+            NUM_PERIOD
+            NUM_DIVISION
+            F1
+            F2
+            F3
+            F4
+            F5
+            F6
+            F7
+            F8
+            F9
+            F10
+            F11
+            F12
 
-        game.system.stage.mousemove = game.system.stage.touchmove = this.mousemove.bind(this);
-        game.system.stage.click = game.system.stage.tap = this.click.bind(this);
-        game.system.stage.mousedown = game.system.stage.touchstart = this.mousedown.bind(this);
-        game.system.stage.mouseup = game.system.stage.mouseupoutside = game.system.stage.touchend = game.system.stage.touchendoutside = this.mouseup.bind(this);
-        game.system.stage.mouseout = this.mouseout.bind(this);
+        @property {Array} keys
+    **/
+    keys: [],
+    /**
+        List of keys, that are pressed down.
+        @property {Array} keysDown
+    **/
+    keysDown: [],
 
-        this.stage = new game.Container();
-        game.system.stage.addChild(this.stage);
+    init: function() {
+        this.keys[8] = &#x27;BACKSPACE&#x27;;
+        this.keys[9] = &#x27;TAB&#x27;;
+        this.keys[13] = &#x27;ENTER&#x27;;
+        this.keys[16] = &#x27;SHIFT&#x27;;
+        this.keys[17] = &#x27;CTRL&#x27;;
+        this.keys[18] = &#x27;ALT&#x27;;
+        this.keys[19] = &#x27;PAUSE&#x27;;
+        this.keys[20] = &#x27;CAPS_LOCK&#x27;;
+        this.keys[27] = &#x27;ESC&#x27;;
+        this.keys[32] = &#x27;SPACE&#x27;;
+        this.keys[33] = &#x27;PAGE_UP&#x27;;
+        this.keys[34] = &#x27;PAGE_DOWN&#x27;;
+        this.keys[35] = &#x27;END&#x27;;
+        this.keys[36] = &#x27;HOME&#x27;;
+        this.keys[37] = &#x27;LEFT&#x27;;
+        this.keys[38] = &#x27;UP&#x27;;
+        this.keys[39] = &#x27;RIGHT&#x27;;
+        this.keys[40] = &#x27;DOWN&#x27;;
+        this.keys[44] = &#x27;PRINT_SCREEN&#x27;;
+        this.keys[45] = &#x27;INSERT&#x27;;
+        this.keys[46] = &#x27;DELETE&#x27;;
+        this.keys[48] = &#x27;ZERO&#x27;;
+        this.keys[49] = &#x27;ONE&#x27;;
+        this.keys[50] = &#x27;TWO&#x27;;
+        this.keys[51] = &#x27;THREE&#x27;;
+        this.keys[52] = &#x27;FOUR&#x27;;
+        this.keys[53] = &#x27;FIVE&#x27;;
+        this.keys[54] = &#x27;SIX&#x27;;
+        this.keys[55] = &#x27;SEVEN&#x27;;
+        this.keys[56] = &#x27;EIGHT&#x27;;
+        this.keys[57] = &#x27;NINE&#x27;;
+        this.keys[65] = &#x27;A&#x27;;
+        this.keys[66] = &#x27;B&#x27;;
+        this.keys[67] = &#x27;C&#x27;;
+        this.keys[68] = &#x27;D&#x27;;
+        this.keys[69] = &#x27;E&#x27;;
+        this.keys[70] = &#x27;F&#x27;;
+        this.keys[71] = &#x27;G&#x27;;
+        this.keys[72] = &#x27;H&#x27;;
+        this.keys[73] = &#x27;I&#x27;;
+        this.keys[74] = &#x27;J&#x27;;
+        this.keys[75] = &#x27;K&#x27;;
+        this.keys[76] = &#x27;L&#x27;;
+        this.keys[77] = &#x27;M&#x27;;
+        this.keys[78] = &#x27;N&#x27;;
+        this.keys[79] = &#x27;O&#x27;;
+        this.keys[80] = &#x27;P&#x27;;
+        this.keys[81] = &#x27;Q&#x27;;
+        this.keys[82] = &#x27;R&#x27;;
+        this.keys[83] = &#x27;S&#x27;;
+        this.keys[84] = &#x27;T&#x27;;
+        this.keys[85] = &#x27;U&#x27;;
+        this.keys[86] = &#x27;V&#x27;;
+        this.keys[87] = &#x27;W&#x27;;
+        this.keys[88] = &#x27;X&#x27;;
+        this.keys[89] = &#x27;Y&#x27;;
+        this.keys[90] = &#x27;Z&#x27;;
+        this.keys[96] = &#x27;NUM_ZERO&#x27;;
+        this.keys[97] = &#x27;NUM_ONE&#x27;;
+        this.keys[98] = &#x27;NUM_TWO&#x27;;
+        this.keys[99] = &#x27;NUM_THREE&#x27;;
+        this.keys[100] = &#x27;NUM_FOUR&#x27;;
+        this.keys[101] = &#x27;NUM_FIVE&#x27;;
+        this.keys[102] = &#x27;NUM_SIX&#x27;;
+        this.keys[103] = &#x27;NUM_SEVEN&#x27;;
+        this.keys[104] = &#x27;NUM_EIGHT&#x27;;
+        this.keys[105] = &#x27;NUM_NINE&#x27;;
+        this.keys[106] = &#x27;NUM_MULTIPLY&#x27;;
+        this.keys[107] = &#x27;NUM_PLUS&#x27;;
+        this.keys[109] = &#x27;NUM_MINUS&#x27;;
+        this.keys[110] = &#x27;NUM_PERIOD&#x27;;
+        this.keys[111] = &#x27;NUM_DIVISION&#x27;;
+        this.keys[112] = &#x27;F1&#x27;;
+        this.keys[113] = &#x27;F2&#x27;;
+        this.keys[114] = &#x27;F3&#x27;;
+        this.keys[115] = &#x27;F4&#x27;;
+        this.keys[116] = &#x27;F5&#x27;;
+        this.keys[117] = &#x27;F6&#x27;;
+        this.keys[118] = &#x27;F7&#x27;;
+        this.keys[119] = &#x27;F8&#x27;;
+        this.keys[120] = &#x27;F9&#x27;;
+        this.keys[121] = &#x27;F10&#x27;;
+        this.keys[122] = &#x27;F11&#x27;;
+        this.keys[123] = &#x27;F12&#x27;;
 
-        if(game.debugDraw) game.debugDraw.reset();
+        window.addEventListener(&#x27;keydown&#x27;, this.keydown.bind(this), false);
+        window.addEventListener(&#x27;keyup&#x27;, this.keyup.bind(this), false);
     },
-    
-    /**
-        This is called every frame.
-        @method update
-    **/
-    update: function(){
-        var i;
-        if(this.world) this.world.update();
-        for (i = this.timers.length - 1; i &gt;= 0; i--) {
-            if(this.timers[i].time() &gt;= 0) {
-                if(typeof(this.timers[i].callback) === &#x27;function&#x27;) this.timers[i].callback();
-                if(this.timers[i].repeat) this.timers[i].reset();
-                else this.timers.splice(i, 1);
-            }
-        }
-        for (i = this.emitters.length - 1; i &gt;= 0; i--) {
-            this.emitters[i].update();
-            if(this.emitters[i]._remove) this.emitters.splice(i, 1);
-        }
-        for (i = this.tweens.length - 1; i &gt;= 0; i--) {
-            this.tweens[i].update();
-            if(this.tweens[i].complete) this.tweens.splice(i, 1);
-        }
-        for (i = this.objects.length - 1; i &gt;= 0; i--) {
-            this.objects[i].update();
-            if(this.objects[i]._remove) this.objects.splice(i, 1);
-        }
-    },
-
-    addObject: function(object) {
-        this.objects.push(object);
-    },
-
-    removeObject: function(object) {
-        object._remove = true;
-    },
-
-    addEmitter: function(emitter) {
-        this.emitters.push(emitter);
-    },
-
-    removeEmitter: function(emitter) {
-        emitter._remove = true;
-    },
-
-    /**
-        Helper function for {{#crossLink &quot;game.Tween&quot;}}{{/crossLink}}
-        @method addTween
-        @param {Object} obj
-        @param {Object} props
-        @param {Number} duration
-        @param {Object} [settings]
-    **/
-    addTween: function(obj, props, duration, settings) {
-        var tween = new game.Tween(obj, props, duration, settings);
-        this.tweens.push(tween);
-        return tween;
-    },
-
-    /**
-        @method getTween
-        @param {Object} obj
-    **/
-    getTween: function(obj) {
-        for (var i = 0; i &lt; this.tweens.length; i++) {
-            if(this.tweens[i].object === obj) return this.tweens[i];
-        }
-        return false;
-    },
-
-    /**
-        @method stopTweens
-        @param {Object} [obj]
-        @param {Boolean} [doComplete]
-    **/
-    stopTweens: function(obj, doComplete) {
-        for (var i = 0; i &lt; this.tweens.length; i++) {
-            if(obj &amp;&amp; this.tweens[i].object === obj || !obj) this.tweens[i].stop(doComplete);
-        }
-    },
-
-    /**
-        @method pauseTweens
-        @param {Object} [obj]
-    **/
-    pauseTweens: function(obj) {
-        for ( var i = 0; i &lt; this.tweens.length; i++ ) {
-            if(obj &amp;&amp; this.tweens[i].object === obj || !obj) this.tweens[i].pause();
-        }
-    },
-
-    /**
-        @method resumeTweens
-        @param {Object} [obj]
-    **/
-    resumeTweens: function (obj) {
-        for ( var i = 0; i &lt; this.tweens.length; i++ ) {
-            if(obj &amp;&amp; this.tweens[i].object === obj || !obj) this.tweens[i].resume();
-        }
-    },
-
-    /**
-        Add timer to game scene.
-        @method addTimer
-        @param {Number} time Time in seconds
-        @param {Function} callback Callback function to run, when timer ends.
-        @param {Boolean} repeat
-        @return {game.Timer}
-    **/
-    addTimer: function(time, callback, repeat) {
-        var timer = new game.Timer(time);
-        timer.repeat = !!repeat;
-        timer.callback = callback;
-        this.timers.push(timer);
-        return timer;
-    },
-
-    /**
-        @method removeTimer
-        @param {game.Timer} timer
-        @param {Boolean} doCallback
-    **/
-    removeTimer: function(timer, doCallback) {
-        if(!doCallback) timer.callback = null;
-        timer.repeat = false;
-        timer.set(0);
-    },
-    
-    /**
-        Callback for mouse click and touch tap on the scene stage.
-        @method click
-        @param {InteractionData} InteractionData
-    **/
-    click: function() {},
-
-    /**
-        Callback for mousedown and touchstart on the scene stage.
-        @method mousedown
-        @param {InteractionData} InteractionData
-    **/
-    mousedown: function() {},
-
-    /**
-        Callback for mouseup and touchend on the scene stage.
-        @method mouseup
-        @param {InteractionData} InteractionData
-    **/
-    mouseup: function() {},
-
-    /**
-        Callback for mousemove and touchmove on the scene stage.
-        @method mousemove
-        @param {InteractionData} InteractionData
-    **/
-    mousemove: function() {},
-
-    /**
-        Callback for mouseout on the scene stage.
-        @method mouseout
-        @param {InteractionData} InteractionData
-    **/
-    mouseout: function() {},
 
     /**
         @method keydown
     **/
-    keydown: function() {},
+    keydown: function(event) {
+        if(game.Keyboard.preventDefault) event.preventDefault();
+
+        if(!this.keys[event.keyCode]) return; // unkown key
+        if(this.keysDown[this.keys[event.keyCode]]) return; // key already down
+
+        this.keysDown[this.keys[event.keyCode]] = true;
+        if(game.scene) game.scene.keydown(this.keys[event.keyCode]);
+    },
 
     /**
         @method keyup
     **/
-    keyup: function() {},
-
-    run: function() {
-        this.update();
-        if(game.debugDraw) game.debugDraw.update();
-        this.render();
+    keyup: function(event) {
+        if(game.Keyboard.preventDefault) event.preventDefault();
+        
+        this.keysDown[this.keys[event.keyCode]] = false;
+        if(game.scene) game.scene.keyup(this.keys[event.keyCode]);
     },
 
-    render: function(){
-        game.renderer.render(game.system.stage);
-    },
-
-    pause: function() {
-        game.sound.muteAll();
-    },
-
-    resume: function() {
-        game.sound.unmuteAll();
+    /**
+        Check if key is pressed down.
+        @method down
+        @return {Boolean}
+    **/
+    down: function(key) {
+        return (this.keysDown[key]);
     }
 });
+
+/**
+    Prevent default keyboard action.
+    @attribute {Boolean} preventDefault
+    @default false
+**/
+game.Keyboard.preventDefault = false;
+
+game.keyboard = new game.Keyboard();
 
 });
     </pre>

@@ -67,6 +67,8 @@
             
                 <li><a class="type" href="../classes/game.Emitter.html">game.Emitter</a></li>
             
+                <li><a class="type" href="../classes/game.Keyboard.html">game.Keyboard</a></li>
+            
                 <li><a class="type" href="../classes/game.Line.html">game.Line</a></li>
             
                 <li><a class="type" href="../classes/game.Loader.html">game.Loader</a></li>
@@ -106,6 +108,8 @@
                 <li><a class="module" href="../modules/core.html">core</a></li>
             
                 <li><a class="module" href="../modules/debug.html">debug</a></li>
+            
+                <li><a class="module" href="../modules/keyboard.html">keyboard</a></li>
             
                 <li><a class="module" href="../modules/loader.html">loader</a></li>
             
@@ -231,12 +235,14 @@ game.Loader = game.Class.extend({
         });
         game.system.stage.addChild(this.symbol);
 
-        var tween = new game.Tween(this.symbol, {rotation: 0.1}, 0.5, {
-            easing: game.Tween.Easing.Cubic.InOut,
-            loop: game.Tween.Loop.Reverse
-        });
-        this.tweens.push(tween);
-        tween.start();
+        if(game.Tween) {
+            var tween = new game.Tween(this.symbol, {rotation: 0.1}, 0.5, {
+                easing: game.Tween.Easing.Cubic.InOut,
+                loop: game.Tween.Loop.Reverse
+            });
+            this.tweens.push(tween);
+            tween.start();
+        }
     },
 
     getPath: function(path) {

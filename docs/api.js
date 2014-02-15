@@ -11,6 +11,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "game.Debug",
         "game.DebugDraw",
         "game.Emitter",
+        "game.Keyboard",
         "game.Line",
         "game.Loader",
         "game.Particle",
@@ -31,6 +32,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "analytics",
         "core",
         "debug",
+        "keyboard",
         "loader",
         "particle",
         "physics",
@@ -56,6 +58,10 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "debug",
             "name": "debug"
+        },
+        {
+            "displayName": "keyboard",
+            "name": "keyboard"
         },
         {
             "displayName": "loader",

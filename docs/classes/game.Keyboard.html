@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>game.Particle - Panda.js</title>
+    <title>game.Keyboard - Panda.js</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -142,7 +142,7 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>game.Particle Class</h1>
+                <h1>game.Keyboard Class</h1>
 <div class="box meta">
     
 
@@ -154,13 +154,13 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_engine_particle.js.html#l15"><code>src&#x2F;engine&#x2F;particle.js:15</code></a>
+            Defined in: <a href="../files/src_engine_keyboard.js.html#l10"><code>src&#x2F;engine&#x2F;keyboard.js:10</code></a>
         </div>
     
 
     
         
-            Module: <a href="../modules/particle.html">particle</a>
+            Module: <a href="../modules/keyboard.html">keyboard</a>
         
     
 
@@ -170,7 +170,8 @@
 
 
 <div class="box intro">
-    
+    <p>Instance automatically created at <a href="../classes/game.Core.html" class="crosslink">game.Core</a></p>
+
 </div>
 
 <!-- Class member index -->
@@ -210,12 +211,6 @@
 
         <ul class="index-list properties extends">
             
-                <li class="index-item property">
-                    <a href="#property_accel">accel</a>
-
-                    
-                </li>
-            
                 <li class="index-item property inherited">
                     <a href="#property_init">init</a>
 
@@ -223,13 +218,13 @@
                 </li>
             
                 <li class="index-item property">
-                    <a href="#property_position">position</a>
+                    <a href="#property_keys">keys</a>
 
                     
                 </li>
             
                 <li class="index-item property">
-                    <a href="#property_sprite">sprite</a>
+                    <a href="#property_keysDown">keysDown</a>
 
                     
                 </li>
@@ -240,16 +235,22 @@
                     
                 </li>
             
-                <li class="index-item property">
-                    <a href="#property_velocity">velocity</a>
-
-                    
-                </li>
-            
         </ul>
     </div>
 
 
+
+    <div class="index-section attrs">
+        <h3>Attributes</h3>
+
+        <ul class="index-list attrs extends">
+            
+                <li class="index-item attr">
+                    <a href="#attr_preventDefault">preventDefault</a>
+                </li>
+            
+        </ul>
+    </div>
 
 
 
@@ -261,6 +262,13 @@
 
             
 
+            
+                <li class="index-item method">
+                    <a href="#method_down">down</a>
+
+                    
+                    
+                </li>
             
                 <li class="index-item method inherited">
                     <a href="#method_extend">extend</a>
@@ -277,14 +285,14 @@
                 </li>
             
                 <li class="index-item method">
-                    <a href="#method_setAccel">setAccel</a>
+                    <a href="#method_keydown">keydown</a>
 
                     
                     
                 </li>
             
                 <li class="index-item method">
-                    <a href="#method_setVelocity">setVelocity</a>
+                    <a href="#method_keyup">keyup</a>
 
                     
                     
@@ -310,55 +318,6 @@
 
     <div class="properties-detail">
         <h2>Properties</h2>
-
-        
-            <a name="property_accel" class="anchor-link"></a>
-<div class="property item">
-    <h3 class="name"><code>accel</code>
-    <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_particle.js.html#l32"><code>src&#x2F;engine&#x2F;particle.js:32</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
 
         
             <a name="property_init" class="anchor-link"></a>
@@ -408,10 +367,10 @@
 </div>
 
         
-            <a name="property_position" class="anchor-link"></a>
+            <a name="property_keys" class="anchor-link"></a>
 <div class="property item">
-    <h3 class="name"><code>position</code>
-    <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+    <h3 class="name"><code>keys</code>
+    <span class="type">Array</span>
 
     
 
@@ -434,7 +393,7 @@
             
         
         
-        <a href="../files/src_engine_particle.js.html#l20"><code>src&#x2F;engine&#x2F;particle.js:20</code></a>
+        <a href="../files/src_engine_keyboard.js.html#l16"><code>src&#x2F;engine&#x2F;keyboard.js:16</code></a>
         
         </p>
 
@@ -445,7 +404,92 @@
 
     <div class="extended-detail">
         <div class="description">
-            
+            <p>List of keys.</p>
+<pre class="code prettyprint"><code>BACKSPACE
+TAB
+ENTER
+SHIFT
+CTRL
+ALT
+PAUSE
+CAPS_LOCK
+ESC
+SPACE
+PAGE_UP
+PAGE_DOWN
+END
+HOME
+LEFT
+UP
+RIGHT
+DOWN
+PRINT_SCREEN
+INSERT
+DELETE
+ZERO
+ONE
+TWO
+THREE
+FOUR
+FIVE
+SIX
+SEVEN
+EIGHT
+NINE
+A
+B
+C
+D
+E
+F
+G
+H
+I
+J
+K
+L
+M
+N
+O
+P
+Q
+R
+S
+T
+U
+V
+W
+X
+Y
+Z
+NUM_ZERO
+NUM_ONE
+NUM_TWO
+NUM_THREE
+NUM_FOUR
+NUM_FIVE
+NUM_SIX
+NUM_SEVEN
+NUM_EIGHT
+NUM_NINE
+NUM_MULTIPLY
+NUM_PLUS
+NUM_MINUS
+NUM_PERIOD
+NUM_DIVISION
+F1
+F2
+F3
+F4
+F5
+F6
+F7
+F8
+F9
+F10
+F11
+F12</code></pre>
+
         </div>
 
         
@@ -457,10 +501,10 @@
 </div>
 
         
-            <a name="property_sprite" class="anchor-link"></a>
+            <a name="property_keysDown" class="anchor-link"></a>
 <div class="property item">
-    <h3 class="name"><code>sprite</code>
-    <span class="type"><a href="../classes/game.Sprite.html" class="crosslink">game.Sprite</a></span>
+    <h3 class="name"><code>keysDown</code>
+    <span class="type">Array</span>
 
     
 
@@ -483,7 +527,7 @@
             
         
         
-        <a href="../files/src_engine_particle.js.html#l28"><code>src&#x2F;engine&#x2F;particle.js:28</code></a>
+        <a href="../files/src_engine_keyboard.js.html#l107"><code>src&#x2F;engine&#x2F;keyboard.js:107</code></a>
         
         </p>
 
@@ -494,7 +538,8 @@
 
     <div class="extended-detail">
         <div class="description">
-            
+            <p>List of keys, that are pressed down.</p>
+
         </div>
 
         
@@ -553,10 +598,100 @@
 </div>
 
         
-            <a name="property_velocity" class="anchor-link"></a>
-<div class="property item">
-    <h3 class="name"><code>velocity</code>
-    <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+
+        <div class="no-visible-items-message">
+            <p>There are no properties that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
+        </div>
+
+    </div>
+
+
+
+    <div class="attrs-detail">
+        <h2>Attributes</h2>
+
+        
+            <div id="attr_preventDefault" class="attr item">
+    <a name="config_preventDefault"></a> 
+    <h3 class="name"><code>preventDefault</code></h3>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_keyboard.js.html#l236"><code>src&#x2F;engine&#x2F;keyboard.js:236</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Prevent default keyboard action.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> false</p>
+    
+
+    
+
+    
+</div>
+
+        
+    </div>
+
+
+
+
+
+    <div class="methods-detail">
+        <h2>Methods</h2>
+
+        
+            <a name="method_down" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>down</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
 
     
 
@@ -579,9 +714,10 @@
             
         
         
-        <a href="../files/src_engine_particle.js.html#l24"><code>src&#x2F;engine&#x2F;particle.js:24</code></a>
+        <a href="../files/src_engine_keyboard.js.html#l226"><code>src&#x2F;engine&#x2F;keyboard.js:226</code></a>
         
         </p>
+
 
         
 
@@ -589,34 +725,31 @@
     </div>
 
     <div class="extended-detail">
+
         <div class="description">
-            
+            <p>Check if key is pressed down.</p>
+
         </div>
 
         
 
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Boolean</span>:
+                        
+                    
+                </div>
+            </div>
         
 
         
     </div>
 </div>
-
-        
-
-        <div class="no-visible-items-message">
-            <p>There are no properties that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
-        </div>
-
-    </div>
-
-
-
-
-
-
-
-    <div class="methods-detail">
-        <h2>Methods</h2>
 
         
             <a name="method_extend" class="anchor-link"></a>
@@ -749,28 +882,12 @@
 </div>
 
         
-            <a name="method_setAccel" class="anchor-link"></a>
+            <a name="method_keydown" class="anchor-link"></a>
 <div class="method item">
-    <h3 class="name"><code>setAccel</code>
+    <h3 class="name"><code>keydown</code>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>angle</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>speed</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
     
 
     
@@ -800,7 +917,7 @@
             
         
         
-        <a href="../files/src_engine_particle.js.html#l53"><code>src&#x2F;engine&#x2F;particle.js:53</code></a>
+        <a href="../files/src_engine_keyboard.js.html#l203"><code>src&#x2F;engine&#x2F;keyboard.js:203</code></a>
         
         </p>
 
@@ -816,44 +933,6 @@
             
         </div>
 
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">angle</code>
-                            <span class="type">Number</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name">speed</code>
-                            <span class="type">Number</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
         
 
         
@@ -863,28 +942,12 @@
 </div>
 
         
-            <a name="method_setVelocity" class="anchor-link"></a>
+            <a name="method_keyup" class="anchor-link"></a>
 <div class="method item">
-    <h3 class="name"><code>setVelocity</code>
+    <h3 class="name"><code>keyup</code>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>angle</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>speed</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
     
 
     
@@ -914,7 +977,7 @@
             
         
         
-        <a href="../files/src_engine_particle.js.html#l43"><code>src&#x2F;engine&#x2F;particle.js:43</code></a>
+        <a href="../files/src_engine_keyboard.js.html#l216"><code>src&#x2F;engine&#x2F;keyboard.js:216</code></a>
         
         </p>
 
@@ -930,44 +993,6 @@
             
         </div>
 
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">angle</code>
-                            <span class="type">Number</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name">speed</code>
-                            <span class="type">Number</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
         
 
         

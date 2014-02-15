@@ -67,6 +67,8 @@
             
                 <li><a class="type" href="../classes/game.Emitter.html">game.Emitter</a></li>
             
+                <li><a class="type" href="../classes/game.Keyboard.html">game.Keyboard</a></li>
+            
                 <li><a class="type" href="../classes/game.Line.html">game.Line</a></li>
             
                 <li><a class="type" href="../classes/game.Loader.html">game.Loader</a></li>
@@ -106,6 +108,8 @@
                 <li><a class="module" href="../modules/core.html">core</a></li>
             
                 <li><a class="module" href="../modules/debug.html">debug</a></li>
+            
+                <li><a class="module" href="../modules/keyboard.html">keyboard</a></li>
             
                 <li><a class="module" href="../modules/loader.html">loader</a></li>
             
@@ -216,6 +220,11 @@ var core = {
     **/
     storage: null,
     /**
+        Instance of {{#crossLink &quot;game.Keyboard&quot;}}{{/crossLink}}.
+        @property {game.Keyboard} keyboard
+    **/
+    keyboard: null,
+    /**
         Device / browser detection.
         
             game.device.iPhone
@@ -263,7 +272,7 @@ var core = {
             !object || typeof(object) !== &#x27;object&#x27; ||
             object instanceof HTMLElement ||
             object instanceof game.Class ||
-            object instanceof game.Container
+            (game.Container &amp;&amp; object instanceof game.Container)
         ) {
             return object;
         }
@@ -402,8 +411,6 @@ var core = {
             });
     **/
     module: function(name, version) {
-        if(name === &#x27;engine.debug&#x27; &amp;&amp; window.pandaMinified) return this;
-
         if(this._current) throw(&#x27;Module &#x27; + this._current.name + &#x27; has no body&#x27;);
         if(this.modules[name] &amp;&amp; this.modules[name].body) throw(&#x27;Module &#x27; + name + &#x27; is already defined&#x27;);
         
@@ -421,7 +428,6 @@ var core = {
     require: function() {
         var i, modules = Array.prototype.slice.call(arguments);
         for (i = 0; i &lt; modules.length; i++) {
-            if(modules[i] === &#x27;engine.debug&#x27; &amp;&amp; window.pandaMinified) continue;
             if(modules[i]) this._current.requires.push(modules[i]);
         }
         return this;
@@ -452,12 +458,12 @@ var core = {
         height = height || (game.System.orientation === game.System.PORTRAIT ? 927 : 672);
 
         this.system = new game.System(width, height, canvasId);
-        this.sound = new game.SoundManager();
-        this.pool = new game.Pool();
+        if(game.SoundManager) this.sound = new game.SoundManager();
+        if(game.Pool) this.pool = new game.Pool();
         if(game.Debug &amp;&amp; game.Debug.enabled &amp;&amp; !navigator.isCocoonJS) this.debug = new game.Debug();
         if(game.DebugDraw &amp;&amp; game.DebugDraw.enabled) this.debugDraw = new game.DebugDraw();
-        if(game.Storage.id) this.storage = new game.Storage(game.Storage.id);
-        if(game.Analytics.id) this.analytics = new game.Analytics(game.Analytics.id);
+        if(game.Storage &amp;&amp; game.Storage.id) this.storage = new game.Storage(game.Storage.id);
+        if(game.Analytics &amp;&amp; game.Analytics.id) this.analytics = new game.Analytics(game.Analytics.id);
 
         this.ready = true;
         

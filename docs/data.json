@@ -49,6 +49,19 @@
                 "game": 1
             }
         },
+        "src/engine/keyboard.js": {
+            "name": "src/engine/keyboard.js",
+            "modules": {
+                "keyboard": 1
+            },
+            "classes": {
+                "game.Keyboard": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "game": 1
+            }
+        },
         "src/engine/loader.js": {
             "name": "src/engine/loader.js",
             "modules": {
@@ -231,7 +244,7 @@
             },
             "tag": "module",
             "file": "src/engine/core.js",
-            "line": 581
+            "line": 583
         },
         "debug": {
             "name": "debug",
@@ -246,7 +259,21 @@
             },
             "tag": "module",
             "file": "src/engine/debug.js",
-            "line": 120
+            "line": 123
+        },
+        "keyboard": {
+            "name": "keyboard",
+            "submodules": {},
+            "classes": {
+                "game.Keyboard": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "game": 1
+            },
+            "tag": "module",
+            "file": "src/engine/keyboard.js",
+            "line": 10
         },
         "loader": {
             "name": "loader",
@@ -296,7 +323,7 @@
             },
             "tag": "module",
             "file": "src/engine/physics.js",
-            "line": 518,
+            "line": 466,
             "description": "Physics engine."
         },
         "pool": {
@@ -464,7 +491,7 @@
             "module": "core",
             "namespace": "game",
             "file": "src/engine/core.js",
-            "line": 581
+            "line": 583
         },
         "game.DebugDraw": {
             "name": "game.DebugDraw",
@@ -491,8 +518,23 @@
             "module": "debug",
             "namespace": "game",
             "file": "src/engine/debug.js",
-            "line": 120,
+            "line": 123,
             "description": "Instance automatically created at {{#crossLink \"game.Core\"}}{{/crossLink}}, if URL contains `?debug`.",
+            "extends": "game.Class"
+        },
+        "game.Keyboard": {
+            "name": "game.Keyboard",
+            "shortname": "Keyboard",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "keyboard",
+            "namespace": "game",
+            "file": "src/engine/keyboard.js",
+            "line": 10,
+            "description": "Instance automatically created at {{#crossLink \"game.Core\"}}{{/crossLink}}",
             "extends": "game.Class"
         },
         "game.Loader": {
@@ -601,7 +643,7 @@
             "module": "physics",
             "namespace": "game",
             "file": "src/engine/physics.js",
-            "line": 354,
+            "line": 302,
             "description": "Physics body.",
             "extends": "game.Class",
             "is_constructor": 1,
@@ -625,7 +667,7 @@
             "module": "physics",
             "namespace": "game",
             "file": "src/engine/physics.js",
-            "line": 450,
+            "line": 398,
             "extends": "game.Class",
             "is_constructor": 1,
             "params": [
@@ -652,7 +694,7 @@
             "module": "physics",
             "namespace": "game",
             "file": "src/engine/physics.js",
-            "line": 475,
+            "line": 423,
             "extends": "game.Class",
             "is_constructor": 1,
             "params": [
@@ -674,7 +716,7 @@
             "module": "physics",
             "namespace": "game",
             "file": "src/engine/physics.js",
-            "line": 493,
+            "line": 441,
             "extends": "game.Class",
             "is_constructor": 1,
             "params": [
@@ -701,7 +743,7 @@
             "module": "physics",
             "namespace": "game",
             "file": "src/engine/physics.js",
-            "line": 518,
+            "line": 466,
             "extends": "game.Class",
             "is_constructor": 1,
             "params": [
@@ -1053,6 +1095,17 @@
         {
             "file": "src/engine/core.js",
             "line": 74,
+            "description": "Instance of {{#crossLink \"game.Keyboard\"}}{{/crossLink}}.",
+            "itemtype": "property",
+            "name": "keyboard",
+            "type": "game.Keyboard",
+            "class": "game.Core",
+            "module": "core",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/core.js",
+            "line": 79,
             "description": "Device / browser detection.\n\n    game.device.iPhone\n    game.device.iPhone4\n    game.device.iPhone5\n    game.device.iPad\n    game.device.iPadRetina\n    game.device.iOS\n    game.device.iOS5\n    game.device.iOS6\n    game.device.iOS7\n    game.device.android\n    game.device.android2\n    game.device.wp7\n    game.device.wp8\n    game.device.wpApp\n    game.device.wp\n    game.device.ie9\n    game.device.ie10\n    game.device.ie11\n    game.device.ie\n    game.device.opera\n    game.device.crosswalk\n    game.device.cocoonJS\n    game.device.mobile",
             "itemtype": "property",
             "name": "device",
@@ -1066,7 +1119,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 194,
+            "line": 199,
             "description": "Request fullscreen mode.",
             "itemtype": "method",
             "name": "fullscreen",
@@ -1076,7 +1129,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 203,
+            "line": 208,
             "itemtype": "method",
             "name": "fullscreenSupport",
             "return": {
@@ -1089,7 +1142,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 211,
+            "line": 216,
             "description": "Add asset to preloader.",
             "itemtype": "method",
             "name": "addAsset",
@@ -1109,7 +1162,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 222,
+            "line": 227,
             "description": "Add sound to preloader.",
             "itemtype": "method",
             "name": "addSound",
@@ -1135,7 +1188,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 235,
+            "line": 240,
             "description": "Add music to preloader.",
             "itemtype": "method",
             "name": "addMusic",
@@ -1158,7 +1211,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 250,
+            "line": 255,
             "description": "Define new module.",
             "itemtype": "method",
             "name": "module",
@@ -1184,7 +1237,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 272,
+            "line": 275,
             "description": "Require modules for module.",
             "itemtype": "method",
             "name": "require",
@@ -1201,7 +1254,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 286,
+            "line": 288,
             "description": "Define body for module.",
             "itemtype": "method",
             "name": "body",
@@ -1211,7 +1264,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 296,
+            "line": 298,
             "description": "Start the game engine.",
             "itemtype": "method",
             "name": "start",
@@ -1243,7 +1296,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 325,
+            "line": 327,
             "description": "Distance between two points.",
             "itemtype": "method",
             "name": "Math.distance",
@@ -1279,7 +1332,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 340,
+            "line": 342,
             "description": "Generate random number between `min` and `max`.",
             "itemtype": "method",
             "name": "Math.random",
@@ -1301,7 +1354,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 585,
+            "line": 587,
             "itemtype": "method",
             "name": "extend",
             "return": {
@@ -1314,7 +1367,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 597,
+            "line": 599,
             "description": "Call functions parent function.",
             "itemtype": "method",
             "name": "super",
@@ -1324,7 +1377,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 625,
+            "line": 627,
             "description": "If Class has `staticInit` function, it is called before `init` function.",
             "itemtype": "property",
             "name": "staticInit",
@@ -1335,7 +1388,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 640,
+            "line": 642,
             "description": "Automatically called, when creating new class.",
             "itemtype": "property",
             "name": "init",
@@ -1346,7 +1399,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 653,
+            "line": 655,
             "itemtype": "method",
             "name": "inject",
             "class": "game.Class",
@@ -1406,7 +1459,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 68,
+            "line": 71,
             "itemtype": "method",
             "name": "update",
             "class": "game.DebugDraw",
@@ -1415,7 +1468,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 95,
+            "line": 98,
             "itemtype": "attribute",
             "name": "spriteColor",
             "type": "Number",
@@ -1426,7 +1479,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 100,
+            "line": 103,
             "itemtype": "attribute",
             "name": "spriteAlpha",
             "type": "Number",
@@ -1437,7 +1490,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 105,
+            "line": 108,
             "itemtype": "attribute",
             "name": "shapeColor",
             "type": "Number",
@@ -1448,7 +1501,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 110,
+            "line": 113,
             "itemtype": "attribute",
             "name": "shapeAlpha",
             "type": "Number",
@@ -1459,7 +1512,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 115,
+            "line": 118,
             "itemtype": "attribute",
             "name": "enabled",
             "type": "Boolean",
@@ -1469,7 +1522,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 288,
+            "line": 291,
             "itemtype": "attribute",
             "name": "backgroundColor.canvas",
             "type": "String",
@@ -1480,7 +1533,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 293,
+            "line": 296,
             "itemtype": "attribute",
             "name": "backgroundColor.webGL",
             "type": "String",
@@ -1491,7 +1544,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 320,
+            "line": 323,
             "itemtype": "attribute",
             "name": "position.desktop",
             "type": "TOPLEFT|BOTTOMLEFT|TOPRIGHT|BOTTOMRIGHT",
@@ -1502,7 +1555,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 325,
+            "line": 328,
             "itemtype": "attribute",
             "name": "position.mobile",
             "type": "TOPLEFT|BOTTOMLEFT|TOPRIGHT|BOTTOMRIGHT",
@@ -1513,12 +1566,78 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 332,
+            "line": 335,
             "itemtype": "attribute",
             "name": "enabled",
             "type": "Boolean",
             "class": "game.Debug",
             "module": "debug",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/keyboard.js",
+            "line": 16,
+            "description": "List of keys.\n\n    BACKSPACE\n    TAB\n    ENTER\n    SHIFT\n    CTRL\n    ALT\n    PAUSE\n    CAPS_LOCK\n    ESC\n    SPACE\n    PAGE_UP\n    PAGE_DOWN\n    END\n    HOME\n    LEFT\n    UP\n    RIGHT\n    DOWN\n    PRINT_SCREEN\n    INSERT\n    DELETE\n    ZERO\n    ONE\n    TWO\n    THREE\n    FOUR\n    FIVE\n    SIX\n    SEVEN\n    EIGHT\n    NINE\n    A\n    B\n    C\n    D\n    E\n    F\n    G\n    H\n    I\n    J\n    K\n    L\n    M\n    N\n    O\n    P\n    Q\n    R\n    S\n    T\n    U\n    V\n    W\n    X\n    Y\n    Z\n    NUM_ZERO\n    NUM_ONE\n    NUM_TWO\n    NUM_THREE\n    NUM_FOUR\n    NUM_FIVE\n    NUM_SIX\n    NUM_SEVEN\n    NUM_EIGHT\n    NUM_NINE\n    NUM_MULTIPLY\n    NUM_PLUS\n    NUM_MINUS\n    NUM_PERIOD\n    NUM_DIVISION\n    F1\n    F2\n    F3\n    F4\n    F5\n    F6\n    F7\n    F8\n    F9\n    F10\n    F11\n    F12",
+            "itemtype": "property",
+            "name": "keys",
+            "type": "Array",
+            "class": "game.Keyboard",
+            "module": "keyboard",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/keyboard.js",
+            "line": 107,
+            "description": "List of keys, that are pressed down.",
+            "itemtype": "property",
+            "name": "keysDown",
+            "type": "Array",
+            "class": "game.Keyboard",
+            "module": "keyboard",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/keyboard.js",
+            "line": 203,
+            "itemtype": "method",
+            "name": "keydown",
+            "class": "game.Keyboard",
+            "module": "keyboard",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/keyboard.js",
+            "line": 216,
+            "itemtype": "method",
+            "name": "keyup",
+            "class": "game.Keyboard",
+            "module": "keyboard",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/keyboard.js",
+            "line": 226,
+            "description": "Check if key is pressed down.",
+            "itemtype": "method",
+            "name": "down",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "game.Keyboard",
+            "module": "keyboard",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/keyboard.js",
+            "line": 236,
+            "description": "Prevent default keyboard action.",
+            "itemtype": "attribute",
+            "name": "preventDefault",
+            "type": "Boolean",
+            "default": "false",
+            "class": "game.Keyboard",
+            "module": "keyboard",
             "namespace": "game"
         },
         {
@@ -1556,7 +1675,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 206,
+            "line": 208,
             "description": "Minimum time to show preloader, in seconds.",
             "itemtype": "attribute",
             "name": "timeout",
@@ -2251,7 +2370,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 129,
+            "line": 127,
             "description": "Solve collision a versus b.",
             "itemtype": "method",
             "name": "solve",
@@ -2273,7 +2392,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 141,
+            "line": 137,
             "itemtype": "method",
             "name": "hitTest",
             "params": [
@@ -2298,7 +2417,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 255,
+            "line": 230,
             "itemtype": "method",
             "name": "hitResponse",
             "params": [
@@ -2323,7 +2442,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 362,
+            "line": 310,
             "itemtype": "property",
             "name": "world",
             "type": "World",
@@ -2333,7 +2452,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 366,
+            "line": 314,
             "itemtype": "property",
             "name": "shape",
             "type": "Shape",
@@ -2343,7 +2462,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 370,
+            "line": 318,
             "itemtype": "property",
             "name": "position",
             "type": "Vector",
@@ -2353,7 +2472,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 374,
+            "line": 322,
             "itemtype": "property",
             "name": "last",
             "type": "Vector",
@@ -2363,7 +2482,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 378,
+            "line": 326,
             "itemtype": "property",
             "name": "velocity",
             "type": "Vector",
@@ -2373,7 +2492,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 382,
+            "line": 330,
             "itemtype": "property",
             "name": "velocityLimit",
             "type": "Vector",
@@ -2383,7 +2502,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 386,
+            "line": 334,
             "itemtype": "property",
             "name": "mass",
             "type": "Number",
@@ -2394,7 +2513,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 391,
+            "line": 339,
             "itemtype": "property",
             "name": "collisionGroup",
             "type": "Number",
@@ -2405,7 +2524,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 396,
+            "line": 344,
             "itemtype": "property",
             "name": "collideAgainst",
             "type": "Number",
@@ -2416,7 +2535,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 401,
+            "line": 349,
             "itemtype": "property",
             "name": "rotation",
             "type": "Number",
@@ -2427,7 +2546,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 416,
+            "line": 364,
             "description": "Add shape to body.",
             "itemtype": "method",
             "name": "addShape",
@@ -2444,7 +2563,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 425,
+            "line": 373,
             "description": "Callback for collision.",
             "itemtype": "method",
             "name": "collide",
@@ -2458,7 +2577,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 434,
+            "line": 382,
             "itemtype": "method",
             "name": "update",
             "class": "game.Body",
@@ -2467,7 +2586,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 458,
+            "line": 406,
             "itemtype": "property",
             "name": "width",
             "type": "Number",
@@ -2478,7 +2597,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 463,
+            "line": 411,
             "itemtype": "property",
             "name": "height",
             "type": "Number",
@@ -2489,7 +2608,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 482,
+            "line": 430,
             "itemtype": "property",
             "name": "radius",
             "type": "Number",
@@ -2500,7 +2619,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 501,
+            "line": 449,
             "itemtype": "property",
             "name": "length",
             "type": "Number",
@@ -2511,7 +2630,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 506,
+            "line": 454,
             "itemtype": "property",
             "name": "rotation",
             "type": "Number",
@@ -2522,7 +2641,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 534,
+            "line": 482,
             "itemtype": "method",
             "name": "set",
             "params": [
@@ -2547,7 +2666,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 546,
+            "line": 494,
             "itemtype": "method",
             "name": "clone",
             "return": {
@@ -2560,7 +2679,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 554,
+            "line": 502,
             "itemtype": "method",
             "name": "copy",
             "params": [
@@ -2580,7 +2699,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 565,
+            "line": 513,
             "itemtype": "method",
             "name": "add",
             "params": [
@@ -2606,7 +2725,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 577,
+            "line": 525,
             "itemtype": "method",
             "name": "subtract",
             "params": [
@@ -2632,7 +2751,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 589,
+            "line": 537,
             "itemtype": "method",
             "name": "multiply",
             "params": [
@@ -2658,7 +2777,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 601,
+            "line": 549,
             "itemtype": "method",
             "name": "multiplyAdd",
             "params": [
@@ -2684,7 +2803,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 613,
+            "line": 561,
             "itemtype": "method",
             "name": "divide",
             "params": [
@@ -2710,7 +2829,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 625,
+            "line": 573,
             "itemtype": "method",
             "name": "distance",
             "params": [
@@ -2730,7 +2849,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 636,
+            "line": 584,
             "itemtype": "method",
             "name": "length",
             "return": {
@@ -2743,7 +2862,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 644,
+            "line": 592,
             "itemtype": "method",
             "name": "dot",
             "params": [
@@ -2764,7 +2883,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 654,
+            "line": 602,
             "itemtype": "method",
             "name": "dotNormalized",
             "params": [
@@ -2785,7 +2904,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 672,
+            "line": 620,
             "itemtype": "method",
             "name": "rotate",
             "params": [
@@ -2805,7 +2924,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 687,
+            "line": 635,
             "itemtype": "method",
             "name": "normalize",
             "return": {
@@ -2818,7 +2937,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 698,
+            "line": 646,
             "itemtype": "method",
             "name": "limit",
             "params": [
@@ -2838,7 +2957,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 709,
+            "line": 657,
             "itemtype": "method",
             "name": "angle",
             "params": [
@@ -2858,7 +2977,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 718,
+            "line": 666,
             "itemtype": "method",
             "name": "round",
             "return": {
@@ -2871,7 +2990,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 729,
+            "line": 677,
             "itemtype": "property",
             "name": "x",
             "type": "Number",
@@ -2881,7 +3000,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 741,
+            "line": 689,
             "itemtype": "property",
             "name": "y",
             "type": "Number",
@@ -3267,6 +3386,24 @@
                     "type": "InteractionData"
                 }
             ],
+            "class": "game.Scene",
+            "module": "scene",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/scene.js",
+            "line": 221,
+            "itemtype": "method",
+            "name": "keydown",
+            "class": "game.Scene",
+            "module": "scene",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/scene.js",
+            "line": 226,
+            "itemtype": "method",
+            "name": "keyup",
             "class": "game.Scene",
             "module": "scene",
             "namespace": "game"

@@ -67,6 +67,8 @@
             
                 <li><a class="type" href="../classes/game.Emitter.html">game.Emitter</a></li>
             
+                <li><a class="type" href="../classes/game.Keyboard.html">game.Keyboard</a></li>
+            
                 <li><a class="type" href="../classes/game.Line.html">game.Line</a></li>
             
                 <li><a class="type" href="../classes/game.Loader.html">game.Loader</a></li>
@@ -106,6 +108,8 @@
                 <li><a class="module" href="../modules/core.html">core</a></li>
             
                 <li><a class="module" href="../modules/debug.html">debug</a></li>
+            
+                <li><a class="module" href="../modules/keyboard.html">keyboard</a></li>
             
                 <li><a class="module" href="../modules/loader.html">loader</a></li>
             
@@ -199,10 +203,13 @@ game.DebugDraw = game.Class.extend({
         var sprite = new game.Graphics();
         sprite.beginFill(game.DebugDraw.shapeColor);
 
-        // TODO add support for game.Circle and game.Line
         if(body.shape instanceof game.Rectangle) {
             sprite.drawRect(-body.shape.width/2, -body.shape.height/2, body.shape.width, body.shape.height);
         }
+        if(body.shape instanceof game.Circle) {
+            sprite.drawCircle(0, 0, body.shape.radius);
+        }
+        // TODO add support for game.Line
 
         sprite.target = body;
         sprite.alpha = game.DebugDraw.shapeAlpha;
