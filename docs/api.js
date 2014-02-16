@@ -53,19 +53,23 @@ YUI.add("yuidoc-meta", function(Y) {
         },
         {
             "displayName": "core",
-            "name": "core"
+            "name": "core",
+            "description": "Panda.js core."
         },
         {
             "displayName": "debug",
-            "name": "debug"
+            "name": "debug",
+            "description": "Debugging."
         },
         {
             "displayName": "keyboard",
-            "name": "keyboard"
+            "name": "keyboard",
+            "description": "Keyboard manager."
         },
         {
             "displayName": "loader",
-            "name": "loader"
+            "name": "loader",
+            "description": "Preloader for assets and sounds."
         },
         {
             "displayName": "particle",
@@ -84,28 +88,33 @@ YUI.add("yuidoc-meta", function(Y) {
         },
         {
             "displayName": "scene",
-            "name": "scene"
+            "name": "scene",
+            "description": "Scene manager."
         },
         {
             "displayName": "sound",
-            "name": "sound"
+            "name": "sound",
+            "description": "Sound manager."
         },
         {
             "displayName": "sprite",
-            "name": "sprite"
+            "name": "sprite",
+            "description": "Game graphics."
         },
         {
             "displayName": "storage",
             "name": "storage",
-            "description": "Local storage."
+            "description": "Local storage for saving data."
         },
         {
             "displayName": "system",
-            "name": "system"
+            "name": "system",
+            "description": "System."
         },
         {
             "displayName": "timer",
-            "name": "timer"
+            "name": "timer",
+            "description": "Timer engine."
         },
         {
             "displayName": "tween",
