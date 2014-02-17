@@ -148,7 +148,7 @@ panda.jump(); // Panda jumps!
 <p>You can create new scene by extending the <a href="http://localhost/panda.js-docs/docs/classes/game.Scene.html" target="_blank"><b>game.Scene</b></a> class:</p>
 
 <pre name="code" class="js:nocontrols:nogutter">
-SceneTitle = game.Scene.extend({
+SceneGame = game.Scene.extend({
     backgroundColor: 0x808080,
 
     init: function() {
@@ -156,12 +156,12 @@ SceneTitle = game.Scene.extend({
     }
 });
 </pre>
-<div class="hint">Panda will by default start your game from scene SceneTitle</div>
+<div class="hint">Panda will by default start your game from scene SceneGame</div>
 
 <p>You can switch scenes with <a href="http://localhost/panda.js-docs/docs/classes/game.System.html#method_setScene" target="_blank"><b>game.system.setScene</b></a> command:</p>
 
 <pre name="code" class="js:nocontrols:nogutter">
-SceneTitle = game.Scene.extend({
+SceneGame = game.Scene.extend({
     backgroundColor: 0x808080,
 
     init: function() {
@@ -197,7 +197,7 @@ Player = game.Class.extend({
     }      
 });
   
-SceneTitle = game.Scene.extend({
+SceneGame = game.Scene.extend({
     player: null,  
   
     init: function() {  
