@@ -155,9 +155,6 @@
 game.module(
     &#x27;engine.system&#x27;
 )
-.require(
-    &#x27;engine.timer&#x27;
-)
 .body(function(){ &#x27;use strict&#x27;;
 
 /**
@@ -277,6 +274,10 @@ game.System = game.Class.extend({
                 if(!hidden &amp;&amp; game.System.pauseOnHide) game.system.resume();
             }, false);
         }
+
+        window.addEventListener(&#x27;devicemotion&#x27;, function(event) {
+            game.accelerometer = game.accel = event.accelerationIncludingGravity;
+        }, false);
         
         if(navigator.isCocoonJS) this.canvas.style.cssText=&#x27;idtkscale:&#x27;+game.System.idtkScale+&#x27;;&#x27;;
         

@@ -179,6 +179,17 @@ if(typeof(global) !== &#x27;undefined&#x27;) return;
 
     @module core
     @namespace game
+    @requires loader
+    @requires timer
+    @requires system
+    @requires sound
+    @requires sprite
+    @requires debug
+    @requires storage
+    @requires tween
+    @requires scene
+    @requires pool
+    @requires analytics
 **/
 /**
     Instance automatically created at &#x60;game&#x60;
@@ -448,9 +459,9 @@ var core = {
     /**
         Start the game engine.
         @method start
-        @param {game.Scene} scene
-        @param {Number} width
-        @param {Number} height
+        @param {game.Scene} scene Starting scene.
+        @param {Number} width Width of canvas.
+        @param {Number} height Height of canvas.
         @param {String} canvasId
     **/
     start: function(scene, width, height, canvasId) {
@@ -844,6 +855,7 @@ game.module(
 )
 .require(
     &#x27;engine.loader&#x27;,
+    &#x27;engine.timer&#x27;,
     &#x27;engine.system&#x27;,
     &#x27;engine.sound&#x27;,
     &#x27;engine.renderer&#x27;,
