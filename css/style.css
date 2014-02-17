@@ -356,6 +356,18 @@ a.center {
 	margin: auto;
 	/*text-align: center;*/
 }
+.feature .version {
+	display: inline-block;
+	font-size: 12px;
+	/*background: #eee;*/
+	border-radius: 3px;
+	color: #888;
+	padding: 0px 5px;
+	line-height: 18px;
+	margin-left: 2px;
+	margin-top: 5px;
+	position: absolute;
+}
 
 @media all and (max-width: 980px) {
 	body {
