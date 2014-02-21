@@ -287,7 +287,7 @@ div.feature img {
 	width: 128px;
 	margin-bottom: 10px;
 }
-div.feature p, div.box {
+div.feature p, div.box, div.review {
 	text-align: center;
 	font-weight: bold;
 	margin: 5px;
@@ -298,6 +298,11 @@ div.feature p, div.box {
 	border-radius: 10px;
 	padding: 10px 10px;
 	line-height: 20px;
+}
+div.review {
+	display: inline-block;
+	width: 450px;
+	float: left;
 }
 div.feature.small {
 	width: 320px;
@@ -430,6 +435,13 @@ a.center {
 	}
 	img.screenshot {
 		width: 100%;
+	}
+	div.review {
+		display: block;
+		width: auto;
+		padding: 10px 10px;
+		float: none;
+		margin: 10px 0px;
 	}
 }
 
