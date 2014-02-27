@@ -2,6 +2,7 @@ YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
     "classes": [
         "game.Analytics",
+        "game.Audio",
         "game.Body",
         "game.Circle",
         "game.Class",
@@ -18,18 +19,19 @@ YUI.add("yuidoc-meta", function(Y) {
         "game.Pool",
         "game.Rectangle",
         "game.Scene",
-        "game.SoundManager",
         "game.Sprite",
         "game.Storage",
         "game.System",
         "game.Timer",
         "game.Tween",
+        "game.TweenEngine",
         "game.TweenGroup",
         "game.Vector",
         "game.World"
     ],
     "modules": [
         "analytics",
+        "audio",
         "core",
         "debug",
         "keyboard",
@@ -38,7 +40,6 @@ YUI.add("yuidoc-meta", function(Y) {
         "physics",
         "pool",
         "scene",
-        "sound",
         "sprite",
         "storage",
         "system",
@@ -50,6 +51,11 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "analytics",
             "name": "analytics",
             "description": "Google Analytics."
+        },
+        {
+            "displayName": "audio",
+            "name": "audio",
+            "description": "Audio manager."
         },
         {
             "displayName": "core",
@@ -69,7 +75,7 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "loader",
             "name": "loader",
-            "description": "Preloader for assets and sounds."
+            "description": "Dynamic loader for assets and audio."
         },
         {
             "displayName": "particle",
@@ -90,11 +96,6 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "scene",
             "name": "scene",
             "description": "Scene manager."
-        },
-        {
-            "displayName": "sound",
-            "name": "sound",
-            "description": "Sound manager."
         },
         {
             "displayName": "sprite",

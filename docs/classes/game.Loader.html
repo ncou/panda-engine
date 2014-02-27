@@ -18,7 +18,7 @@
                     <img class="logo" src="../../img/logo.png" title="Panda.js">
                 
                 
-                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.0.3</span>
+                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.0</span>
                 
                 
                     <p class="description">HTML5 game engine</p>
@@ -48,6 +48,8 @@
             <ul id="api-classes" class="apis classes">
             
                 <li><a class="type" href="../classes/game.Analytics.html">game.Analytics</a></li>
+            
+                <li><a class="type" href="../classes/game.Audio.html">game.Audio</a></li>
             
                 <li><a class="type" href="../classes/game.Body.html">game.Body</a></li>
             
@@ -81,8 +83,6 @@
             
                 <li><a class="type" href="../classes/game.Scene.html">game.Scene</a></li>
             
-                <li><a class="type" href="../classes/game.SoundManager.html">game.SoundManager</a></li>
-            
                 <li><a class="type" href="../classes/game.Sprite.html">game.Sprite</a></li>
             
                 <li><a class="type" href="../classes/game.Storage.html">game.Storage</a></li>
@@ -92,6 +92,8 @@
                 <li><a class="type" href="../classes/game.Timer.html">game.Timer</a></li>
             
                 <li><a class="type" href="../classes/game.Tween.html">game.Tween</a></li>
+            
+                <li><a class="type" href="../classes/game.TweenEngine.html">game.TweenEngine</a></li>
             
                 <li><a class="type" href="../classes/game.TweenGroup.html">game.TweenGroup</a></li>
             
@@ -104,6 +106,8 @@
             <ul id="api-modules" class="apis modules">
             
                 <li><a class="module" href="../modules/analytics.html">analytics</a></li>
+            
+                <li><a class="module" href="../modules/audio.html">audio</a></li>
             
                 <li><a class="module" href="../modules/core.html">core</a></li>
             
@@ -120,8 +124,6 @@
                 <li><a class="module" href="../modules/pool.html">pool</a></li>
             
                 <li><a class="module" href="../modules/scene.html">scene</a></li>
-            
-                <li><a class="module" href="../modules/sound.html">sound</a></li>
             
                 <li><a class="module" href="../modules/sprite.html">sprite</a></li>
             
@@ -170,7 +172,7 @@
 
 
 <div class="box intro">
-    <p>Preloader.</p>
+    <p>Loader.</p>
 
 </div>
 
@@ -259,12 +261,6 @@
                     
                 </li>
             
-                <li class="index-item property">
-                    <a href="#property_tweens">tweens</a>
-
-                    
-                </li>
-            
         </ul>
     </div>
 
@@ -347,14 +343,14 @@
                 </li>
             
                 <li class="index-item method">
-                    <a href="#method_start">start</a>
+                    <a href="#method_setScene">setScene</a>
 
                     
                     
                 </li>
             
                 <li class="index-item method">
-                    <a href="#method_startGame">startGame</a>
+                    <a href="#method_start">start</a>
 
                     
                     
@@ -408,7 +404,7 @@
             
         
         
-        <a href="../files/src_engine_loader.js.html#l44"><code>src&#x2F;engine&#x2F;loader.js:44</code></a>
+        <a href="../files/src_engine_loader.js.html#l39"><code>src&#x2F;engine&#x2F;loader.js:39</code></a>
         
         </p>
 
@@ -458,7 +454,7 @@
             
         
         
-        <a href="../files/src_engine_loader.js.html#l49"><code>src&#x2F;engine&#x2F;loader.js:49</code></a>
+        <a href="../files/src_engine_loader.js.html#l44"><code>src&#x2F;engine&#x2F;loader.js:44</code></a>
         
         </p>
 
@@ -557,7 +553,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l655"><code>src&#x2F;engine&#x2F;core.js:655</code></a>
+        <a href="../files/src_engine_core.js.html#l668"><code>src&#x2F;engine&#x2F;core.js:668</code></a>
         
         </p>
 
@@ -754,7 +750,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l640"><code>src&#x2F;engine&#x2F;core.js:640</code></a>
+        <a href="../files/src_engine_core.js.html#l653"><code>src&#x2F;engine&#x2F;core.js:653</code></a>
         
         </p>
 
@@ -766,56 +762,6 @@
     <div class="extended-detail">
         <div class="description">
             <p>If Class has <code>staticInit</code> function, it is called before <code>init</code> function.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_tweens" class="anchor-link"></a>
-<div class="property item">
-    <h3 class="name"><code>tweens</code>
-    <span class="type">Array</span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_loader.js.html#l39"><code>src&#x2F;engine&#x2F;loader.js:39</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>List of tweens in loader.</p>
 
         </div>
 
@@ -871,7 +817,7 @@
             
         
         
-        <a href="../files/src_engine_loader.js.html#l216"><code>src&#x2F;engine&#x2F;loader.js:216</code></a>
+        <a href="../files/src_engine_loader.js.html#l234"><code>src&#x2F;engine&#x2F;loader.js:234</code></a>
         
         </p>
 
@@ -923,7 +869,7 @@
             
         
         
-        <a href="../files/src_engine_loader.js.html#l225"><code>src&#x2F;engine&#x2F;loader.js:225</code></a>
+        <a href="../files/src_engine_loader.js.html#l243"><code>src&#x2F;engine&#x2F;loader.js:243</code></a>
         
         </p>
 
@@ -933,12 +879,12 @@
     </div>
 
     <div class="description">
-        <p>Minimum time to show preloader, in seconds.</p>
+        <p>Minimum time to show preloader, in milliseconds.</p>
 
     </div>
 
     
-        <p><strong>Default:</strong> 0.5</p>
+        <p><strong>Default:</strong> 500</p>
     
 
     
@@ -948,7 +894,7 @@
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>game.Loader.timeout = 1;</code></pre>
+                <pre class="code prettyprint"><code>game.Loader.timeout = 1000;</code></pre>
 
             </div>
         </div>
@@ -1011,7 +957,7 @@
             
         
         
-        <a href="../files/src_engine_loader.js.html#l119"><code>src&#x2F;engine&#x2F;loader.js:119</code></a>
+        <a href="../files/src_engine_loader.js.html#l140"><code>src&#x2F;engine&#x2F;loader.js:140</code></a>
         
         </p>
 
@@ -1096,7 +1042,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l600"><code>src&#x2F;engine&#x2F;core.js:600</code></a>
+        <a href="../files/src_engine_core.js.html#l613"><code>src&#x2F;engine&#x2F;core.js:613</code></a>
         
         </p>
 
@@ -1165,7 +1111,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l668"><code>src&#x2F;engine&#x2F;core.js:668</code></a>
+        <a href="../files/src_engine_core.js.html#l681"><code>src&#x2F;engine&#x2F;core.js:681</code></a>
         
         </p>
 
@@ -1225,7 +1171,7 @@
             
         
         
-        <a href="../files/src_engine_loader.js.html#l156"><code>src&#x2F;engine&#x2F;loader.js:156</code></a>
+        <a href="../files/src_engine_loader.js.html#l176"><code>src&#x2F;engine&#x2F;loader.js:176</code></a>
         
         </p>
 
@@ -1286,7 +1232,7 @@
             
         
         
-        <a href="../files/src_engine_loader.js.html#l145"><code>src&#x2F;engine&#x2F;loader.js:145</code></a>
+        <a href="../files/src_engine_loader.js.html#l165"><code>src&#x2F;engine&#x2F;loader.js:165</code></a>
         
         </p>
 
@@ -1347,7 +1293,7 @@
             
         
         
-        <a href="../files/src_engine_loader.js.html#l134"><code>src&#x2F;engine&#x2F;loader.js:134</code></a>
+        <a href="../files/src_engine_loader.js.html#l155"><code>src&#x2F;engine&#x2F;loader.js:155</code></a>
         
         </p>
 
@@ -1408,7 +1354,7 @@
             
         
         
-        <a href="../files/src_engine_loader.js.html#l166"><code>src&#x2F;engine&#x2F;loader.js:166</code></a>
+        <a href="../files/src_engine_loader.js.html#l186"><code>src&#x2F;engine&#x2F;loader.js:186</code></a>
         
         </p>
 
@@ -1422,6 +1368,67 @@
 
         <div class="description">
             <p>All files loaded.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_setScene" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>setScene</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_loader.js.html#l194"><code>src&#x2F;engine&#x2F;loader.js:194</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Set scene.</p>
 
         </div>
 
@@ -1469,7 +1476,7 @@
             
         
         
-        <a href="../files/src_engine_loader.js.html#l109"><code>src&#x2F;engine&#x2F;loader.js:109</code></a>
+        <a href="../files/src_engine_loader.js.html#l101"><code>src&#x2F;engine&#x2F;loader.js:101</code></a>
         
         </p>
 
@@ -1482,68 +1489,7 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>Start preloader.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_startGame" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>startGame</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_loader.js.html#l174"><code>src&#x2F;engine&#x2F;loader.js:174</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Start the game.</p>
+            <p>Start loader.</p>
 
         </div>
 
@@ -1588,7 +1534,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l612"><code>src&#x2F;engine&#x2F;core.js:612</code></a>
+        <a href="../files/src_engine_core.js.html#l625"><code>src&#x2F;engine&#x2F;core.js:625</code></a>
         
         </p>
 

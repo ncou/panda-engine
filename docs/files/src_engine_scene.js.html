@@ -18,7 +18,7 @@
                     <img class="logo" src="../../img/logo.png" title="Panda.js">
                 
                 
-                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.0.3</span>
+                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.0</span>
                 
                 
                     <p class="description">HTML5 game engine</p>
@@ -48,6 +48,8 @@
             <ul id="api-classes" class="apis classes">
             
                 <li><a class="type" href="../classes/game.Analytics.html">game.Analytics</a></li>
+            
+                <li><a class="type" href="../classes/game.Audio.html">game.Audio</a></li>
             
                 <li><a class="type" href="../classes/game.Body.html">game.Body</a></li>
             
@@ -81,8 +83,6 @@
             
                 <li><a class="type" href="../classes/game.Scene.html">game.Scene</a></li>
             
-                <li><a class="type" href="../classes/game.SoundManager.html">game.SoundManager</a></li>
-            
                 <li><a class="type" href="../classes/game.Sprite.html">game.Sprite</a></li>
             
                 <li><a class="type" href="../classes/game.Storage.html">game.Storage</a></li>
@@ -92,6 +92,8 @@
                 <li><a class="type" href="../classes/game.Timer.html">game.Timer</a></li>
             
                 <li><a class="type" href="../classes/game.Tween.html">game.Tween</a></li>
+            
+                <li><a class="type" href="../classes/game.TweenEngine.html">game.TweenEngine</a></li>
             
                 <li><a class="type" href="../classes/game.TweenGroup.html">game.TweenGroup</a></li>
             
@@ -104,6 +106,8 @@
             <ul id="api-modules" class="apis modules">
             
                 <li><a class="module" href="../modules/analytics.html">analytics</a></li>
+            
+                <li><a class="module" href="../modules/audio.html">audio</a></li>
             
                 <li><a class="module" href="../modules/core.html">core</a></li>
             
@@ -120,8 +124,6 @@
                 <li><a class="module" href="../modules/pool.html">pool</a></li>
             
                 <li><a class="module" href="../modules/scene.html">scene</a></li>
-            
-                <li><a class="module" href="../modules/sound.html">sound</a></li>
             
                 <li><a class="module" href="../modules/sprite.html">sprite</a></li>
             
@@ -179,11 +181,6 @@ game.Scene = game.Class.extend({
     **/
     timers: [],
     /**
-        List of tweens in scene.
-        @property {Array} tweens
-    **/
-    tweens: [],
-    /**
         List of particle emitters in scene.
         @property {Array} emitters
     **/
@@ -197,7 +194,9 @@ game.Scene = game.Class.extend({
     staticInit: function() {
         game.scene = this;
 
-        game.system.stage.removeAll();
+        for (var i = game.system.stage.children.length - 1; i &gt;= 0; i--) {
+            game.system.stage.removeChild(game.system.stage.children[i]);
+        }
         game.system.stage.setBackgroundColor(this.clearColor || this.backgroundColor);
 
         game.system.stage.mousemove = game.system.stage.touchmove = this.mousemove.bind(this);
@@ -230,10 +229,7 @@ game.Scene = game.Class.extend({
             this.emitters[i].update();
             if(this.emitters[i]._remove) this.emitters.splice(i, 1);
         }
-        for (i = this.tweens.length - 1; i &gt;= 0; i--) {
-            this.tweens[i].update();
-            if(this.tweens[i].complete) this.tweens.splice(i, 1);
-        }
+        if(game.TweenEngine) game.TweenEngine.update();
         for (i = this.objects.length - 1; i &gt;= 0; i--) {
             this.objects[i].update();
             if(this.objects[i]._remove) this.objects.splice(i, 1);
@@ -277,66 +273,6 @@ game.Scene = game.Class.extend({
     },
 
     /**
-        Add {{#crossLink &quot;game.Tween&quot;}}{{/crossLink}} to scene.
-        @method addTween
-        @param {Object} obj
-        @param {Object} props
-        @param {Number} duration
-        @param {Object} [settings]
-    **/
-    addTween: function(obj, props, duration, settings) {
-        var tween = new game.Tween(obj, props, duration, settings);
-        this.tweens.push(tween);
-        return tween;
-    },
-
-    /**
-        Get tween for object.
-        @method getTween
-        @param {Object} obj
-    **/
-    getTween: function(obj) {
-        for (var i = 0; i &lt; this.tweens.length; i++) {
-            if(this.tweens[i].object === obj) return this.tweens[i];
-        }
-        return false;
-    },
-
-    /**
-        Stop tweens for object.
-        @method stopTweens
-        @param {Object} [obj]
-        @param {Boolean} [doComplete]
-    **/
-    stopTweens: function(obj, doComplete) {
-        for (var i = 0; i &lt; this.tweens.length; i++) {
-            if(obj &amp;&amp; this.tweens[i].object === obj || !obj) this.tweens[i].stop(doComplete);
-        }
-    },
-
-    /**
-        Pause tweens for object.
-        @method pauseTweens
-        @param {Object} [obj]
-    **/
-    pauseTweens: function(obj) {
-        for ( var i = 0; i &lt; this.tweens.length; i++ ) {
-            if(obj &amp;&amp; this.tweens[i].object === obj || !obj) this.tweens[i].pause();
-        }
-    },
-
-    /**
-        Resume tweens for object.
-        @method resumeTweens
-        @param {Object} [obj]
-    **/
-    resumeTweens: function (obj) {
-        for ( var i = 0; i &lt; this.tweens.length; i++ ) {
-            if(obj &amp;&amp; this.tweens[i].object === obj || !obj) this.tweens[i].resume();
-        }
-    },
-
-    /**
         Add timer to game scene.
         @method addTimer
         @param {Number} time Time in seconds
@@ -345,11 +281,43 @@ game.Scene = game.Class.extend({
         @return {game.Timer}
     **/
     addTimer: function(time, callback, repeat) {
+        if(game.Timer.seconds) time *= 1000;
         var timer = new game.Timer(time);
         timer.repeat = !!repeat;
         timer.callback = callback;
         this.timers.push(timer);
         return timer;
+    },
+
+    // Deprecated
+    addTween: function(obj, to, time, settings) {
+        var tween = new game.Tween(obj);
+        if(game.Timer.seconds) time *= 1000;
+        tween.to(to, time);
+        settings = settings || {};
+        if(settings.delay) {
+            if(game.Timer.seconds) settings.delay *= 1000;
+            tween.delay(settings.delay);
+        }
+        if(settings.easing) tween.easing(settings.easing);
+        if(settings.onComplete) tween.onComplete(settings.onComplete);
+        if(settings.onStart) tween.onStart(settings.onStart);
+        if(typeof(settings.loop) !== &#x27;undefined&#x27;) {
+            var loopCount = settings.loopCount || Infinity;
+            tween.repeat(loopCount);
+            if(settings.loop === game.Tween.Loop.Reverse) tween.yoyo();
+        }
+        return tween;
+    },
+
+    // Deprecated
+    stopTweens: function(obj) {
+        game.TweenEngine.stopAllForObject(obj);
+    },
+
+    // Deprecated
+    getTween: function(obj) {
+        return game.TweenEngine.getTweenForObject(obj);
     },
 
     /**
@@ -422,11 +390,11 @@ game.Scene = game.Class.extend({
     },
 
     pause: function() {
-        game.sound.muteAll();
+        game.audio.pauseAll();
     },
 
     resume: function() {
-        game.sound.unmuteAll();
+        game.audio.resumeAll();
     }
 });
 

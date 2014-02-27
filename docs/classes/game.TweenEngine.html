@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>game.Sprite - Panda.js</title>
+    <title>game.TweenEngine - Panda.js</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -144,25 +144,21 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>game.Sprite Class</h1>
+                <h1>game.TweenEngine Class</h1>
 <div class="box meta">
     
 
     
-        <div class="extends">
-            Extends PIXI.Sprite
-        </div>
-    
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_engine_sprite.js.html#l15"><code>src&#x2F;engine&#x2F;sprite.js:15</code></a>
+            Defined in: <a href="../files/src_engine_tween.js.html#l33"><code>src&#x2F;engine&#x2F;tween.js:33</code></a>
         </div>
     
 
     
         
-            Module: <a href="../modules/sprite.html">sprite</a>
+            Module: <a href="../modules/tween.html">tween</a>
         
     
 
@@ -172,10 +168,7 @@
 
 
 <div class="box intro">
-    <p><a href="http://www.goodboydigital.com/pixijs/docs/classes/Sprite%E2%84%A2.html">http://www.goodboydigital.com/pixijs/docs/classes/Sprite%E2%84%A2.html</a></p>
-<p><strong>Example</strong></p>
-<pre class="code prettyprint"><code>var sprite = new game.Sprite(100, 200, &#39;media/logo.png&#39;);
-game.scene.stage.addChild(sprite);</code></pre>
+    <p>Tween engine.</p>
 
 </div>
 
@@ -219,22 +212,55 @@ game.scene.stage.addChild(sprite);</code></pre>
     <div class="index-section methods">
         <h3>Methods</h3>
 
-        <ul class="index-list methods extends">
+        <ul class="index-list methods">
 
             
-                <li class="index-item method constructor">
-                    <a href="#method_game.Sprite">game.Sprite</a>
 
-                    <span class="flag constructor">constructor</span>
+            
+                <li class="index-item method">
+                    <a href="#method_add">add</a>
 
                     
                     
                 </li>
             
+                <li class="index-item method">
+                    <a href="#method_getAll">getAll</a>
 
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_getTweenForObject">getTweenForObject</a>
+
+                    
+                    
+                </li>
             
                 <li class="index-item method">
                     <a href="#method_remove">remove</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_removeAll">removeAll</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_stopAllForObject">stopAllForObject</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_update">update</a>
 
                     
                     
@@ -255,11 +281,15 @@ game.scene.stage.addChild(sprite);</code></pre>
 
 
 
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <a name="method_game.Sprite" class="anchor-link"></a>
+
+
+    <div class="methods-detail">
+        <h2>Methods</h2>
+
+        
+            <a name="method_add" class="anchor-link"></a>
 <div class="method item">
-    <h3 class="name"><code>game.Sprite</code>
+    <h3 class="name"><code>add</code>
 
     
         <div class="args">
@@ -267,25 +297,7 @@ game.scene.stage.addChild(sprite);</code></pre>
             
                 <li class="arg">
                     
-                        <code>x</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>y</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>path</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[settings]</code>
+                        <code>tween</code>
                     
                 </li>
             
@@ -320,7 +332,7 @@ game.scene.stage.addChild(sprite);</code></pre>
             
         
         
-        <a href="../files/src_engine_sprite.js.html#l15"><code>src&#x2F;engine&#x2F;sprite.js:15</code></a>
+        <a href="../files/src_engine_tween.js.html#l75"><code>src&#x2F;engine&#x2F;tween.js:75</code></a>
         
         </p>
 
@@ -344,54 +356,8 @@ game.scene.stage.addChild(sprite);</code></pre>
                 
                     <li class="param">
                         
-                            <code class="param-name">x</code>
-                            <span class="type">Number</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name">y</code>
-                            <span class="type">Number</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name">path</code>
-                            <span class="type">String</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name optional">[settings]</code>
-                            <span class="type">Object</span>
-                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                            <code class="param-name">tween</code>
+                            <span class="type"><a href="../classes/game.Tween.html" class="crosslink">game.Tween</a></span>
                         
 
                         
@@ -413,17 +379,10 @@ game.scene.stage.addChild(sprite);</code></pre>
     </div>
 </div>
 
-    </div>
-
-
-
-    <div class="methods-detail">
-        <h2>Methods</h2>
-
         
-            <a name="method_remove" class="anchor-link"></a>
+            <a name="method_getAll" class="anchor-link"></a>
 <div class="method item">
-    <h3 class="name"><code>remove</code>
+    <h3 class="name"><code>getAll</code>
 
     
         <span class="paren">()</span>
@@ -456,7 +415,7 @@ game.scene.stage.addChild(sprite);</code></pre>
             
         
         
-        <a href="../files/src_engine_sprite.js.html#l57"><code>src&#x2F;engine&#x2F;sprite.js:57</code></a>
+        <a href="../files/src_engine_tween.js.html#l42"><code>src&#x2F;engine&#x2F;tween.js:42</code></a>
         
         </p>
 
@@ -469,8 +428,340 @@ game.scene.stage.addChild(sprite);</code></pre>
     <div class="extended-detail">
 
         <div class="description">
-            <p>Remove sprite from it&#39;s parent.</p>
+            
+        </div>
 
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_getTweenForObject" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>getTweenForObject</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_tween.js.html#l65"><code>src&#x2F;engine&#x2F;tween.js:65</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_remove" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>remove</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>tween</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_tween.js.html#l83"><code>src&#x2F;engine&#x2F;tween.js:83</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">tween</code>
+                            <span class="type"><a href="../classes/game.Tween.html" class="crosslink">game.Tween</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_removeAll" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>removeAll</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_tween.js.html#l49"><code>src&#x2F;engine&#x2F;tween.js:49</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_stopAllForObject" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>stopAllForObject</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_tween.js.html#l56"><code>src&#x2F;engine&#x2F;tween.js:56</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_update" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>update</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_tween.js.html#l94"><code>src&#x2F;engine&#x2F;tween.js:94</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
         </div>
 
         

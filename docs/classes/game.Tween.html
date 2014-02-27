@@ -18,7 +18,7 @@
                     <img class="logo" src="../../img/logo.png" title="Panda.js">
                 
                 
-                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.0.3</span>
+                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.0</span>
                 
                 
                     <p class="description">HTML5 game engine</p>
@@ -48,6 +48,8 @@
             <ul id="api-classes" class="apis classes">
             
                 <li><a class="type" href="../classes/game.Analytics.html">game.Analytics</a></li>
+            
+                <li><a class="type" href="../classes/game.Audio.html">game.Audio</a></li>
             
                 <li><a class="type" href="../classes/game.Body.html">game.Body</a></li>
             
@@ -81,8 +83,6 @@
             
                 <li><a class="type" href="../classes/game.Scene.html">game.Scene</a></li>
             
-                <li><a class="type" href="../classes/game.SoundManager.html">game.SoundManager</a></li>
-            
                 <li><a class="type" href="../classes/game.Sprite.html">game.Sprite</a></li>
             
                 <li><a class="type" href="../classes/game.Storage.html">game.Storage</a></li>
@@ -92,6 +92,8 @@
                 <li><a class="type" href="../classes/game.Timer.html">game.Timer</a></li>
             
                 <li><a class="type" href="../classes/game.Tween.html">game.Tween</a></li>
+            
+                <li><a class="type" href="../classes/game.TweenEngine.html">game.TweenEngine</a></li>
             
                 <li><a class="type" href="../classes/game.TweenGroup.html">game.TweenGroup</a></li>
             
@@ -104,6 +106,8 @@
             <ul id="api-modules" class="apis modules">
             
                 <li><a class="module" href="../modules/analytics.html">analytics</a></li>
+            
+                <li><a class="module" href="../modules/audio.html">audio</a></li>
             
                 <li><a class="module" href="../modules/core.html">core</a></li>
             
@@ -120,8 +124,6 @@
                 <li><a class="module" href="../modules/pool.html">pool</a></li>
             
                 <li><a class="module" href="../modules/scene.html">scene</a></li>
-            
-                <li><a class="module" href="../modules/sound.html">sound</a></li>
             
                 <li><a class="module" href="../modules/sprite.html">sprite</a></li>
             
@@ -147,14 +149,10 @@
     
 
     
-        <div class="extends">
-            Extends <a href="../classes/game.Class.html" class="crosslink">game.Class</a>
-        </div>
-    
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_engine_tween.js.html#l12"><code>src&#x2F;engine&#x2F;tween.js:12</code></a>
+            Defined in: <a href="../files/src_engine_tween.js.html#l108"><code>src&#x2F;engine&#x2F;tween.js:108</code></a>
         </div>
     
 
@@ -170,7 +168,7 @@
 
 
 <div class="box intro">
-    <p><strong>Hint</strong>: Use <a href="../classes/game.Scene.html#method_addTween" class="crosslink">addTween</a></p>
+    <p>Tween.</p>
 
 </div>
 
@@ -206,79 +204,7 @@
 
 
 
-    <div class="index-section properties">
-        <h3>Properties</h3>
 
-        <ul class="index-list properties extends">
-            
-                <li class="index-item property">
-                    <a href="#property_delay">delay</a>
-
-                    
-                </li>
-            
-                <li class="index-item property">
-                    <a href="#property_duration">duration</a>
-
-                    
-                </li>
-            
-                <li class="index-item property">
-                    <a href="#property_easing">easing</a>
-
-                    
-                </li>
-            
-                <li class="index-item property inherited">
-                    <a href="#property_init">init</a>
-
-                    
-                </li>
-            
-                <li class="index-item property">
-                    <a href="#property_loop">loop</a>
-
-                    
-                </li>
-            
-                <li class="index-item property">
-                    <a href="#property_onComplete">onComplete</a>
-
-                    
-                </li>
-            
-                <li class="index-item property">
-                    <a href="#property_onStart">onStart</a>
-
-                    
-                </li>
-            
-                <li class="index-item property inherited">
-                    <a href="#property_staticInit">staticInit</a>
-
-                    
-                </li>
-            
-        </ul>
-    </div>
-
-
-
-    <div class="index-section attrs">
-        <h3>Attributes</h3>
-
-        <ul class="index-list attrs extends">
-            
-                <li class="index-item attr">
-                    <a href="#attr_Easing">Easing</a>
-                </li>
-            
-                <li class="index-item attr">
-                    <a href="#attr_Loop">Loop</a>
-                </li>
-            
-        </ul>
-    </div>
 
 
 
@@ -286,17 +212,8 @@
     <div class="index-section methods">
         <h3>Methods</h3>
 
-        <ul class="index-list methods extends">
+        <ul class="index-list methods">
 
-            
-                <li class="index-item method constructor">
-                    <a href="#method_game.Tween">game.Tween</a>
-
-                    <span class="flag constructor">constructor</span>
-
-                    
-                    
-                </li>
             
 
             
@@ -307,29 +224,64 @@
                     
                 </li>
             
-                <li class="index-item method inherited">
-                    <a href="#method_extend">extend</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method inherited">
-                    <a href="#method_inject">inject</a>
+                <li class="index-item method">
+                    <a href="#method_delay">delay</a>
 
                     
                     
                 </li>
             
                 <li class="index-item method">
-                    <a href="#method_pause">pause</a>
+                    <a href="#method_easing">easing</a>
 
                     
                     
                 </li>
             
                 <li class="index-item method">
-                    <a href="#method_resume">resume</a>
+                    <a href="#method_getObject">getObject</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_interpolation">interpolation</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_isPlaying">isPlaying</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_onComplete">onComplete</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_onStart">onStart</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_onUpdate">onUpdate</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_repeat">repeat</a>
 
                     
                     
@@ -349,8 +301,22 @@
                     
                 </li>
             
-                <li class="index-item method inherited">
-                    <a href="#method_super">super</a>
+                <li class="index-item method">
+                    <a href="#method_stopChainedTweens">stopChainedTweens</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_to">to</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_yoyo">yoyo</a>
 
                     
                     
@@ -367,681 +333,9 @@
 <div class="class-detail">
 
 
-    <div class="properties-detail">
-        <h2>Properties</h2>
 
-        
-            <a name="property_delay" class="anchor-link"></a>
-<div class="property item">
-    <h3 class="name"><code>delay</code>
-    <span class="type">Number</span>
 
-    
 
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_tween.js.html#l32"><code>src&#x2F;engine&#x2F;tween.js:32</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            
-        </div>
-
-        
-            <p class="default"><strong>Default:</strong> <span class="default-value">0</span></p>
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_duration" class="anchor-link"></a>
-<div class="property item">
-    <h3 class="name"><code>duration</code>
-    <span class="type">Number</span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_tween.js.html#l45"><code>src&#x2F;engine&#x2F;tween.js:45</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            
-        </div>
-
-        
-            <p class="default"><strong>Default:</strong> <span class="default-value">1</span></p>
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_easing" class="anchor-link"></a>
-<div class="property item">
-    <h3 class="name"><code>easing</code>
-    <span class="type">Easing</span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_tween.js.html#l24"><code>src&#x2F;engine&#x2F;tween.js:24</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_init" class="anchor-link"></a>
-<div class="property item inherited">
-    <h3 class="name"><code>init</code>
-    <span class="type">Function</span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/game.Class.html#property_init" class="type">game.Class</a>:
-            
-        
-        
-        <a href="../files/src_engine_core.js.html#l655"><code>src&#x2F;engine&#x2F;core.js:655</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>Automatically called, when creating new class.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_loop" class="anchor-link"></a>
-<div class="property item">
-    <h3 class="name"><code>loop</code>
-    <span class="type">Loop</span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_tween.js.html#l28"><code>src&#x2F;engine&#x2F;tween.js:28</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_onComplete" class="anchor-link"></a>
-<div class="property item">
-    <h3 class="name"><code>onComplete</code>
-    <span class="type">Function</span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_tween.js.html#l37"><code>src&#x2F;engine&#x2F;tween.js:37</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_onStart" class="anchor-link"></a>
-<div class="property item">
-    <h3 class="name"><code>onStart</code>
-    <span class="type">Function</span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_tween.js.html#l41"><code>src&#x2F;engine&#x2F;tween.js:41</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_staticInit" class="anchor-link"></a>
-<div class="property item inherited">
-    <h3 class="name"><code>staticInit</code>
-    <span class="type">Function</span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/game.Class.html#property_staticInit" class="type">game.Class</a>:
-            
-        
-        
-        <a href="../files/src_engine_core.js.html#l640"><code>src&#x2F;engine&#x2F;core.js:640</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>If Class has <code>staticInit</code> function, it is called before <code>init</code> function.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-
-        <div class="no-visible-items-message">
-            <p>There are no properties that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
-        </div>
-
-    </div>
-
-
-
-    <div class="attrs-detail">
-        <h2>Attributes</h2>
-
-        
-            <div id="attr_Easing" class="attr item">
-    <a name="config_Easing"></a> 
-    <h3 class="name"><code>Easing</code></h3>
-    <span class="type">Linear | Quadratic | Cubic | Quartic | Quintic | Sinusoidal | Exponential | Circular | Elastic | Back | Bounce</span>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_tween.js.html#l253"><code>src&#x2F;engine&#x2F;tween.js:253</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Easing types: <code>In</code>, <code>Out</code> and <code>InOut</code>.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-        
-            <div id="attr_Loop" class="attr item">
-    <a name="config_Loop"></a> 
-    <h3 class="name"><code>Loop</code></h3>
-    <span class="type">Revert | Reverse</span>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_tween.js.html#l248"><code>src&#x2F;engine&#x2F;tween.js:248</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-        
-    </div>
-
-
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <a name="method_game.Tween" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>game.Tween</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>obj</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>properties</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>duration</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[settings]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_tween.js.html#l12"><code>src&#x2F;engine&#x2F;tween.js:12</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">obj</code>
-                            <span class="type">Object</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name">properties</code>
-                            <span class="type">Object</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name">duration</code>
-                            <span class="type">Number</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name optional">[settings]</code>
-                            <span class="type">Object</span>
-                            <span class="flag optional" title="This parameter is optional.">optional</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-
-        
-    </div>
-</div>
-
-    </div>
 
 
 
@@ -1094,7 +388,7 @@
             
         
         
-        <a href="../files/src_engine_tween.js.html#l128"><code>src&#x2F;engine&#x2F;tween.js:128</code></a>
+        <a href="../files/src_engine_tween.js.html#l260"><code>src&#x2F;engine&#x2F;tween.js:260</code></a>
         
         </p>
 
@@ -1107,8 +401,7 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>Chain tween to another tween.</p>
-
+            
         </div>
 
         
@@ -1143,9 +436,369 @@
 </div>
 
         
-            <a name="method_extend" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>extend</code>
+            <a name="method_delay" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>delay</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>time</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>repeat</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_tween.js.html#l211"><code>src&#x2F;engine&#x2F;tween.js:211</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">time</code>
+                            <span class="type">Number</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">repeat</code>
+                            <span class="type">Boolean</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_easing" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>easing</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>easing</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_tween.js.html#l242"><code>src&#x2F;engine&#x2F;tween.js:242</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">easing</code>
+                            <span class="type">Function</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_getObject" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>getObject</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_tween.js.html#l141"><code>src&#x2F;engine&#x2F;tween.js:141</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_interpolation" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>interpolation</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>interpolation</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_tween.js.html#l251"><code>src&#x2F;engine&#x2F;tween.js:251</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">interpolation</code>
+                            <span class="type">Function</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_isPlaying" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>isPlaying</code>
 
     
         <span class="paren">()</span>
@@ -1153,7 +806,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">Class</span>
+            <span class="type">Boolean</span>
         </span>
     
 
@@ -1174,12 +827,15 @@
     <div class="meta">
         
             
-                <p>Inherited from
-                <a href="../classes/game.Class.html#method_extend" class="type">game.Class</a>:
+                
+                <p>
+                
+                Defined in
+                
             
         
         
-        <a href="../files/src_engine_core.js.html#l600"><code>src&#x2F;engine&#x2F;core.js:600</code></a>
+        <a href="../files/src_engine_tween.js.html#l296"><code>src&#x2F;engine&#x2F;tween.js:296</code></a>
         
         </p>
 
@@ -1204,7 +860,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">Class</span>:
+                            <span class="type">Boolean</span>:
                         
                     
                 </div>
@@ -1216,69 +872,22 @@
 </div>
 
         
-            <a name="method_inject" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>inject</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/game.Class.html#method_inject" class="type">game.Class</a>:
-            
-        
-        
-        <a href="../files/src_engine_core.js.html#l668"><code>src&#x2F;engine&#x2F;core.js:668</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_pause" class="anchor-link"></a>
+            <a name="method_onComplete" class="anchor-link"></a>
 <div class="method item">
-    <h3 class="name"><code>pause</code>
+    <h3 class="name"><code>onComplete</code>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>callback</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -1308,7 +917,7 @@
             
         
         
-        <a href="../files/src_engine_tween.js.html#l95"><code>src&#x2F;engine&#x2F;tween.js:95</code></a>
+        <a href="../files/src_engine_tween.js.html#l287"><code>src&#x2F;engine&#x2F;tween.js:287</code></a>
         
         </p>
 
@@ -1321,10 +930,32 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>Pause tween.</p>
-
+            
         </div>
 
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">callback</code>
+                            <span class="type">Function</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
         
 
         
@@ -1334,12 +965,22 @@
 </div>
 
         
-            <a name="method_resume" class="anchor-link"></a>
+            <a name="method_onStart" class="anchor-link"></a>
 <div class="method item">
-    <h3 class="name"><code>resume</code>
+    <h3 class="name"><code>onStart</code>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>callback</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -1369,7 +1010,7 @@
             
         
         
-        <a href="../files/src_engine_tween.js.html#l104"><code>src&#x2F;engine&#x2F;tween.js:104</code></a>
+        <a href="../files/src_engine_tween.js.html#l269"><code>src&#x2F;engine&#x2F;tween.js:269</code></a>
         
         </p>
 
@@ -1385,6 +1026,215 @@
             
         </div>
 
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">callback</code>
+                            <span class="type">Function</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_onUpdate" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>onUpdate</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>callback</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_tween.js.html#l278"><code>src&#x2F;engine&#x2F;tween.js:278</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">callback</code>
+                            <span class="type">Function</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_repeat" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>repeat</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>times</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_tween.js.html#l222"><code>src&#x2F;engine&#x2F;tween.js:222</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">times</code>
+                            <span class="type">Number</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
         
 
         
@@ -1429,7 +1279,7 @@
             
         
         
-        <a href="../files/src_engine_tween.js.html#l74"><code>src&#x2F;engine&#x2F;tween.js:74</code></a>
+        <a href="../files/src_engine_tween.js.html#l161"><code>src&#x2F;engine&#x2F;tween.js:161</code></a>
         
         </p>
 
@@ -1442,8 +1292,7 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>Start tween.</p>
-
+            
         </div>
 
         
@@ -1460,12 +1309,138 @@
     <h3 class="name"><code>stop</code>
 
     
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_tween.js.html#l189"><code>src&#x2F;engine&#x2F;tween.js:189</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_stopChainedTweens" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>stopChainedTweens</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_tween.js.html#l202"><code>src&#x2F;engine&#x2F;tween.js:202</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_to" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>to</code>
+
+    
         <div class="args">
             <span class="paren">(</span><ul class="args-list inline commas">
             
                 <li class="arg">
                     
-                        <code>doComplete</code>
+                        <code>properties</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>duration</code>
                     
                 </li>
             
@@ -1500,7 +1475,7 @@
             
         
         
-        <a href="../files/src_engine_tween.js.html#l112"><code>src&#x2F;engine&#x2F;tween.js:112</code></a>
+        <a href="../files/src_engine_tween.js.html#l148"><code>src&#x2F;engine&#x2F;tween.js:148</code></a>
         
         </p>
 
@@ -1513,8 +1488,7 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>Stop tween.</p>
-
+            
         </div>
 
         
@@ -1525,8 +1499,23 @@
                 
                     <li class="param">
                         
-                            <code class="param-name">doComplete</code>
-                            <span class="type">Boolean</span>
+                            <code class="param-name">properties</code>
+                            <span class="type">Object</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">duration</code>
+                            <span class="type">Number</span>
                         
 
                         
@@ -1549,12 +1538,22 @@
 </div>
 
         
-            <a name="method_super" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>super</code>
+            <a name="method_yoyo" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>yoyo</code>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>enabled</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -1576,12 +1575,15 @@
     <div class="meta">
         
             
-                <p>Inherited from
-                <a href="../classes/game.Class.html#method_super" class="type">game.Class</a>:
+                
+                <p>
+                
+                Defined in
+                
             
         
         
-        <a href="../files/src_engine_core.js.html#l612"><code>src&#x2F;engine&#x2F;core.js:612</code></a>
+        <a href="../files/src_engine_tween.js.html#l232"><code>src&#x2F;engine&#x2F;tween.js:232</code></a>
         
         </p>
 
@@ -1594,10 +1596,32 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>Call functions parent function.</p>
-
+            
         </div>
 
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">enabled</code>
+                            <span class="type">Boolean</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
         
 
         

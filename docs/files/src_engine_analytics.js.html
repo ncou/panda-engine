@@ -18,7 +18,7 @@
                     <img class="logo" src="../../img/logo.png" title="Panda.js">
                 
                 
-                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.0.3</span>
+                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.0</span>
                 
                 
                     <p class="description">HTML5 game engine</p>
@@ -48,6 +48,8 @@
             <ul id="api-classes" class="apis classes">
             
                 <li><a class="type" href="../classes/game.Analytics.html">game.Analytics</a></li>
+            
+                <li><a class="type" href="../classes/game.Audio.html">game.Audio</a></li>
             
                 <li><a class="type" href="../classes/game.Body.html">game.Body</a></li>
             
@@ -81,8 +83,6 @@
             
                 <li><a class="type" href="../classes/game.Scene.html">game.Scene</a></li>
             
-                <li><a class="type" href="../classes/game.SoundManager.html">game.SoundManager</a></li>
-            
                 <li><a class="type" href="../classes/game.Sprite.html">game.Sprite</a></li>
             
                 <li><a class="type" href="../classes/game.Storage.html">game.Storage</a></li>
@@ -92,6 +92,8 @@
                 <li><a class="type" href="../classes/game.Timer.html">game.Timer</a></li>
             
                 <li><a class="type" href="../classes/game.Tween.html">game.Tween</a></li>
+            
+                <li><a class="type" href="../classes/game.TweenEngine.html">game.TweenEngine</a></li>
             
                 <li><a class="type" href="../classes/game.TweenGroup.html">game.TweenGroup</a></li>
             
@@ -104,6 +106,8 @@
             <ul id="api-modules" class="apis modules">
             
                 <li><a class="module" href="../modules/analytics.html">analytics</a></li>
+            
+                <li><a class="module" href="../modules/audio.html">audio</a></li>
             
                 <li><a class="module" href="../modules/core.html">core</a></li>
             
@@ -120,8 +124,6 @@
                 <li><a class="module" href="../modules/pool.html">pool</a></li>
             
                 <li><a class="module" href="../modules/scene.html">scene</a></li>
-            
-                <li><a class="module" href="../modules/sound.html">sound</a></li>
             
                 <li><a class="module" href="../modules/sprite.html">sprite</a></li>
             
@@ -161,15 +163,18 @@ game.module(
     Example: http://www.pandajs.net/tutorials/example-2/
 
     @class game.Analytics
-    @constructor
-    @param {String} id
 **/
 game.Analytics = game.Class.extend({
     init: function(id) {
+        if(!navigator.onLine) return;
+        if(!id) throw(&#x27;Analytics id not set.&#x27;);
+
+        /* jshint ignore:start */
         (function(i,s,o,g,r,a,m){i[&#x27;GoogleAnalyticsObject&#x27;]=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,&#x27;script&#x27;,&#x27;//www.google-analytics.com/analytics.js&#x27;,&#x27;ga&#x27;);
+        /* jshint ignore:end */
 
         ga(&#x27;create&#x27;, id, &#x27;auto&#x27;);
         ga(&#x27;send&#x27;, &#x27;pageview&#x27;);
@@ -182,15 +187,10 @@ game.Analytics = game.Class.extend({
         @param {String} action
     **/
     event: function(category, action) {
+        if(!navigator.onLine) return;
         ga(&#x27;send&#x27;, &#x27;event&#x27;, category, action);
     }
 });
-
-/**
-    Id for your Google Analytics accout, ie. UA-12345678-9
-    @attribute {String} id
-**/
-game.Analytics.id = &#x27;&#x27;;
 
 });
     </pre>

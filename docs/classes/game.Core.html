@@ -18,7 +18,7 @@
                     <img class="logo" src="../../img/logo.png" title="Panda.js">
                 
                 
-                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.0.3</span>
+                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.0</span>
                 
                 
                     <p class="description">HTML5 game engine</p>
@@ -48,6 +48,8 @@
             <ul id="api-classes" class="apis classes">
             
                 <li><a class="type" href="../classes/game.Analytics.html">game.Analytics</a></li>
+            
+                <li><a class="type" href="../classes/game.Audio.html">game.Audio</a></li>
             
                 <li><a class="type" href="../classes/game.Body.html">game.Body</a></li>
             
@@ -81,8 +83,6 @@
             
                 <li><a class="type" href="../classes/game.Scene.html">game.Scene</a></li>
             
-                <li><a class="type" href="../classes/game.SoundManager.html">game.SoundManager</a></li>
-            
                 <li><a class="type" href="../classes/game.Sprite.html">game.Sprite</a></li>
             
                 <li><a class="type" href="../classes/game.Storage.html">game.Storage</a></li>
@@ -92,6 +92,8 @@
                 <li><a class="type" href="../classes/game.Timer.html">game.Timer</a></li>
             
                 <li><a class="type" href="../classes/game.Tween.html">game.Tween</a></li>
+            
+                <li><a class="type" href="../classes/game.TweenEngine.html">game.TweenEngine</a></li>
             
                 <li><a class="type" href="../classes/game.TweenGroup.html">game.TweenGroup</a></li>
             
@@ -104,6 +106,8 @@
             <ul id="api-modules" class="apis modules">
             
                 <li><a class="module" href="../modules/analytics.html">analytics</a></li>
+            
+                <li><a class="module" href="../modules/audio.html">audio</a></li>
             
                 <li><a class="module" href="../modules/core.html">core</a></li>
             
@@ -120,8 +124,6 @@
                 <li><a class="module" href="../modules/pool.html">pool</a></li>
             
                 <li><a class="module" href="../modules/scene.html">scene</a></li>
-            
-                <li><a class="module" href="../modules/sound.html">sound</a></li>
             
                 <li><a class="module" href="../modules/sprite.html">sprite</a></li>
             
@@ -150,7 +152,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_engine_core.js.html#l46"><code>src&#x2F;engine&#x2F;core.js:46</code></a>
+            Defined in: <a href="../files/src_engine_core.js.html#l47"><code>src&#x2F;engine&#x2F;core.js:47</code></a>
         </div>
     
 
@@ -285,14 +287,7 @@
                 </li>
             
                 <li class="index-item method">
-                    <a href="#method_addMusic">addMusic</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method">
-                    <a href="#method_addSound">addSound</a>
+                    <a href="#method_addAudio">addAudio</a>
 
                     
                     
@@ -395,7 +390,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l62"><code>src&#x2F;engine&#x2F;core.js:62</code></a>
+        <a href="../files/src_engine_core.js.html#l66"><code>src&#x2F;engine&#x2F;core.js:66</code></a>
         
         </p>
 
@@ -445,7 +440,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l92"><code>src&#x2F;engine&#x2F;core.js:92</code></a>
+        <a href="../files/src_engine_core.js.html#l96"><code>src&#x2F;engine&#x2F;core.js:96</code></a>
         
         </p>
 
@@ -527,7 +522,7 @@ game.device.mobile</code></pre>
             
         
         
-        <a href="../files/src_engine_core.js.html#l87"><code>src&#x2F;engine&#x2F;core.js:87</code></a>
+        <a href="../files/src_engine_core.js.html#l91"><code>src&#x2F;engine&#x2F;core.js:91</code></a>
         
         </p>
 
@@ -577,7 +572,7 @@ game.device.mobile</code></pre>
             
         
         
-        <a href="../files/src_engine_core.js.html#l77"><code>src&#x2F;engine&#x2F;core.js:77</code></a>
+        <a href="../files/src_engine_core.js.html#l81"><code>src&#x2F;engine&#x2F;core.js:81</code></a>
         
         </p>
 
@@ -627,7 +622,7 @@ game.device.mobile</code></pre>
             
         
         
-        <a href="../files/src_engine_core.js.html#l52"><code>src&#x2F;engine&#x2F;core.js:52</code></a>
+        <a href="../files/src_engine_core.js.html#l56"><code>src&#x2F;engine&#x2F;core.js:56</code></a>
         
         </p>
 
@@ -677,7 +672,7 @@ game.device.mobile</code></pre>
             
         
         
-        <a href="../files/src_engine_core.js.html#l57"><code>src&#x2F;engine&#x2F;core.js:57</code></a>
+        <a href="../files/src_engine_core.js.html#l61"><code>src&#x2F;engine&#x2F;core.js:61</code></a>
         
         </p>
 
@@ -704,7 +699,7 @@ game.device.mobile</code></pre>
             <a name="property_sound" class="anchor-link"></a>
 <div class="property item">
     <h3 class="name"><code>sound</code>
-    <span class="type"><a href="../classes/game.SoundManager.html" class="crosslink">game.SoundManager</a></span>
+    <span class="type">game.SoundManager</span>
 
     
 
@@ -727,7 +722,7 @@ game.device.mobile</code></pre>
             
         
         
-        <a href="../files/src_engine_core.js.html#l72"><code>src&#x2F;engine&#x2F;core.js:72</code></a>
+        <a href="../files/src_engine_core.js.html#l76"><code>src&#x2F;engine&#x2F;core.js:76</code></a>
         
         </p>
 
@@ -738,7 +733,7 @@ game.device.mobile</code></pre>
 
     <div class="extended-detail">
         <div class="description">
-            <p>Instance of <a href="../classes/game.SoundManager.html" class="crosslink">game.SoundManager</a>.</p>
+            <p>Instance of game.SoundManager.</p>
 
         </div>
 
@@ -777,7 +772,7 @@ game.device.mobile</code></pre>
             
         
         
-        <a href="../files/src_engine_core.js.html#l82"><code>src&#x2F;engine&#x2F;core.js:82</code></a>
+        <a href="../files/src_engine_core.js.html#l86"><code>src&#x2F;engine&#x2F;core.js:86</code></a>
         
         </p>
 
@@ -827,7 +822,7 @@ game.device.mobile</code></pre>
             
         
         
-        <a href="../files/src_engine_core.js.html#l67"><code>src&#x2F;engine&#x2F;core.js:67</code></a>
+        <a href="../files/src_engine_core.js.html#l71"><code>src&#x2F;engine&#x2F;core.js:71</code></a>
         
         </p>
 
@@ -882,10 +877,20 @@ game.device.mobile</code></pre>
                     
                 </li>
             
+                <li class="arg">
+                    
+                        <code>id</code>
+                    
+                </li>
+            
             </ul><span class="paren">)</span>
         </div>
     
 
+    
+        <span class="returns-inline">
+            <span class="type">String</span>
+        </span>
     
 
     
@@ -913,7 +918,7 @@ game.device.mobile</code></pre>
             
         
         
-        <a href="../files/src_engine_core.js.html#l229"><code>src&#x2F;engine&#x2F;core.js:229</code></a>
+        <a href="../files/src_engine_core.js.html#l233"><code>src&#x2F;engine&#x2F;core.js:233</code></a>
         
         </p>
 
@@ -926,7 +931,7 @@ game.device.mobile</code></pre>
     <div class="extended-detail">
 
         <div class="description">
-            <p>Add asset to preloader.</p>
+            <p>Add asset to loader.</p>
 
         </div>
 
@@ -951,10 +956,39 @@ game.device.mobile</code></pre>
                         
                     </li>
                 
+                    <li class="param">
+                        
+                            <code class="param-name">id</code>
+                            <span class="type">String</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
                 </ul>
             </div>
         
 
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">String</span>:
+                        
+                        <p>path</p>
+
+                    
+                </div>
+            </div>
         
 
         
@@ -962,7 +996,7 @@ game.device.mobile</code></pre>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>game.addAsset(&#39;media/logo.png&#39;);</code></pre>
+                    <pre class="code prettyprint"><code>game.addAsset(&#39;media/logo.png&#39;, &#39;logo&#39;);</code></pre>
 
                 </div>
             </div>
@@ -971,9 +1005,9 @@ game.device.mobile</code></pre>
 </div>
 
         
-            <a name="method_addMusic" class="anchor-link"></a>
+            <a name="method_addAudio" class="anchor-link"></a>
 <div class="method item">
-    <h3 class="name"><code>addMusic</code>
+    <h3 class="name"><code>addAudio</code>
 
     
         <div class="args">
@@ -987,7 +1021,7 @@ game.device.mobile</code></pre>
             
                 <li class="arg">
                     
-                        <code class="optional">[name]</code>
+                        <code class="optional">[id]</code>
                     
                 </li>
             
@@ -995,6 +1029,10 @@ game.device.mobile</code></pre>
         </div>
     
 
+    
+        <span class="returns-inline">
+            <span class="type">String</span>
+        </span>
     
 
     
@@ -1022,7 +1060,7 @@ game.device.mobile</code></pre>
             
         
         
-        <a href="../files/src_engine_core.js.html#l253"><code>src&#x2F;engine&#x2F;core.js:253</code></a>
+        <a href="../files/src_engine_core.js.html#l249"><code>src&#x2F;engine&#x2F;core.js:249</code></a>
         
         </p>
 
@@ -1035,7 +1073,7 @@ game.device.mobile</code></pre>
     <div class="extended-detail">
 
         <div class="description">
-            <p>Add music to preloader.</p>
+            <p>Add audio to loader.</p>
 
         </div>
 
@@ -1062,7 +1100,7 @@ game.device.mobile</code></pre>
                 
                     <li class="param">
                         
-                            <code class="param-name optional">[name]</code>
+                            <code class="param-name optional">[id]</code>
                             <span class="type">String</span>
                             <span class="flag optional" title="This parameter is optional.">optional</span>
                         
@@ -1081,121 +1119,19 @@ game.device.mobile</code></pre>
         
 
         
+            <div class="returns">
+                <h4>Returns:</h4>
 
-        
-    </div>
-</div>
-
-        
-            <a name="method_addSound" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>addSound</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
+                <div class="returns-description">
                     
-                        <code>path</code>
+                        
+                            <span class="type">String</span>:
+                        
+                        <p>id</p>
+
                     
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[name]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_core.js.html#l240"><code>src&#x2F;engine&#x2F;core.js:240</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Add sound to preloader.</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">path</code>
-                            <span class="type">String</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name optional">[name]</code>
-                            <span class="type">String</span>
-                            <span class="flag optional" title="This parameter is optional.">optional</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
+                </div>
             </div>
-        
-
         
 
         
@@ -1203,7 +1139,7 @@ game.device.mobile</code></pre>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>game.addSound(&#39;media/sound/jump.m4a&#39;, &#39;jump&#39;);</code></pre>
+                    <pre class="code prettyprint"><code>game.addAudio(&#39;media/sound/jump.m4a&#39;, &#39;jump&#39;);</code></pre>
 
                 </div>
             </div>
@@ -1247,7 +1183,7 @@ game.device.mobile</code></pre>
             
         
         
-        <a href="../files/src_engine_core.js.html#l301"><code>src&#x2F;engine&#x2F;core.js:301</code></a>
+        <a href="../files/src_engine_core.js.html#l311"><code>src&#x2F;engine&#x2F;core.js:311</code></a>
         
         </p>
 
@@ -1308,7 +1244,7 @@ game.device.mobile</code></pre>
             
         
         
-        <a href="../files/src_engine_core.js.html#l212"><code>src&#x2F;engine&#x2F;core.js:212</code></a>
+        <a href="../files/src_engine_core.js.html#l216"><code>src&#x2F;engine&#x2F;core.js:216</code></a>
         
         </p>
 
@@ -1373,7 +1309,7 @@ game.device.mobile</code></pre>
             
         
         
-        <a href="../files/src_engine_core.js.html#l221"><code>src&#x2F;engine&#x2F;core.js:221</code></a>
+        <a href="../files/src_engine_core.js.html#l225"><code>src&#x2F;engine&#x2F;core.js:225</code></a>
         
         </p>
 
@@ -1479,7 +1415,7 @@ game.device.mobile</code></pre>
             
         
         
-        <a href="../files/src_engine_core.js.html#l340"><code>src&#x2F;engine&#x2F;core.js:340</code></a>
+        <a href="../files/src_engine_core.js.html#l356"><code>src&#x2F;engine&#x2F;core.js:356</code></a>
         
         </p>
 
@@ -1636,7 +1572,7 @@ game.device.mobile</code></pre>
             
         
         
-        <a href="../files/src_engine_core.js.html#l355"><code>src&#x2F;engine&#x2F;core.js:355</code></a>
+        <a href="../files/src_engine_core.js.html#l371"><code>src&#x2F;engine&#x2F;core.js:371</code></a>
         
         </p>
 
@@ -1751,7 +1687,7 @@ game.device.mobile</code></pre>
             
         
         
-        <a href="../files/src_engine_core.js.html#l268"><code>src&#x2F;engine&#x2F;core.js:268</code></a>
+        <a href="../files/src_engine_core.js.html#l278"><code>src&#x2F;engine&#x2F;core.js:278</code></a>
         
         </p>
 
@@ -1872,7 +1808,7 @@ game.device.mobile</code></pre>
             
         
         
-        <a href="../files/src_engine_core.js.html#l288"><code>src&#x2F;engine&#x2F;core.js:288</code></a>
+        <a href="../files/src_engine_core.js.html#l298"><code>src&#x2F;engine&#x2F;core.js:298</code></a>
         
         </p>
 
@@ -1984,7 +1920,7 @@ game.device.mobile</code></pre>
             
         
         
-        <a href="../files/src_engine_core.js.html#l311"><code>src&#x2F;engine&#x2F;core.js:311</code></a>
+        <a href="../files/src_engine_core.js.html#l321"><code>src&#x2F;engine&#x2F;core.js:321</code></a>
         
         </p>
 

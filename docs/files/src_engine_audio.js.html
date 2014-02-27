@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/engine/audio.js - Panda.js</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                
+                    <img class="logo" src="../../img/logo.png" title="Panda.js">
+                
+                
+                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.0</span>
+                
+                
+                    <p class="description">HTML5 game engine</p>
+                
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/game.Analytics.html">game.Analytics</a></li>
+            
+                <li><a class="type" href="../classes/game.Audio.html">game.Audio</a></li>
+            
+                <li><a class="type" href="../classes/game.Body.html">game.Body</a></li>
+            
+                <li><a class="type" href="../classes/game.Circle.html">game.Circle</a></li>
+            
+                <li><a class="type" href="../classes/game.Class.html">game.Class</a></li>
+            
+                <li><a class="type" href="../classes/game.CollisionSolver.html">game.CollisionSolver</a></li>
+            
+                <li><a class="type" href="../classes/game.Container.html">game.Container</a></li>
+            
+                <li><a class="type" href="../classes/game.Core.html">game.Core</a></li>
+            
+                <li><a class="type" href="../classes/game.Debug.html">game.Debug</a></li>
+            
+                <li><a class="type" href="../classes/game.DebugDraw.html">game.DebugDraw</a></li>
+            
+                <li><a class="type" href="../classes/game.Emitter.html">game.Emitter</a></li>
+            
+                <li><a class="type" href="../classes/game.Keyboard.html">game.Keyboard</a></li>
+            
+                <li><a class="type" href="../classes/game.Line.html">game.Line</a></li>
+            
+                <li><a class="type" href="../classes/game.Loader.html">game.Loader</a></li>
+            
+                <li><a class="type" href="../classes/game.Particle.html">game.Particle</a></li>
+            
+                <li><a class="type" href="../classes/game.Pool.html">game.Pool</a></li>
+            
+                <li><a class="type" href="../classes/game.Rectangle.html">game.Rectangle</a></li>
+            
+                <li><a class="type" href="../classes/game.Scene.html">game.Scene</a></li>
+            
+                <li><a class="type" href="../classes/game.Sprite.html">game.Sprite</a></li>
+            
+                <li><a class="type" href="../classes/game.Storage.html">game.Storage</a></li>
+            
+                <li><a class="type" href="../classes/game.System.html">game.System</a></li>
+            
+                <li><a class="type" href="../classes/game.Timer.html">game.Timer</a></li>
+            
+                <li><a class="type" href="../classes/game.Tween.html">game.Tween</a></li>
+            
+                <li><a class="type" href="../classes/game.TweenEngine.html">game.TweenEngine</a></li>
+            
+                <li><a class="type" href="../classes/game.TweenGroup.html">game.TweenGroup</a></li>
+            
+                <li><a class="type" href="../classes/game.Vector.html">game.Vector</a></li>
+            
+                <li><a class="type" href="../classes/game.World.html">game.World</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a class="module" href="../modules/analytics.html">analytics</a></li>
+            
+                <li><a class="module" href="../modules/audio.html">audio</a></li>
+            
+                <li><a class="module" href="../modules/core.html">core</a></li>
+            
+                <li><a class="module" href="../modules/debug.html">debug</a></li>
+            
+                <li><a class="module" href="../modules/keyboard.html">keyboard</a></li>
+            
+                <li><a class="module" href="../modules/loader.html">loader</a></li>
+            
+                <li><a class="module" href="../modules/particle.html">particle</a></li>
+            
+                <li><a class="module" href="../modules/physics.html">physics</a></li>
+            
+                <li><a class="module" href="../modules/pool.html">pool</a></li>
+            
+                <li><a class="module" href="../modules/scene.html">scene</a></li>
+            
+                <li><a class="module" href="../modules/sprite.html">sprite</a></li>
+            
+                <li><a class="module" href="../modules/storage.html">storage</a></li>
+            
+                <li><a class="module" href="../modules/system.html">system</a></li>
+            
+                <li><a class="module" href="../modules/timer.html">timer</a></li>
+            
+                <li><a class="module" href="../modules/tween.html">tween</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: src/engine/audio.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+/**
+    Audio manager.
+    
+    @module audio
+    @namespace game
+**/
+game.module(
+    &#x27;engine.audio&#x27;
+)
+.body(function(){ &#x27;use strict&#x27;;
+
+/**
+    Audio manager.
+    @class Audio
+**/
+game.Audio = game.Class.extend({
+    /**
+        Supported audio format extension.
+        @property {String} format
+    **/
+    format: null,
+    sources: {},
+    context: null,
+    gainNode: null,
+    /**
+        Is sound muted.
+        @property {Boolean} soundMuted
+        @default false
+    **/
+    soundMuted: false,
+    /**
+        Main sound volume.
+        @property {Number} soundVolume
+        @default 1.0
+    **/
+    soundVolume: 1.0,
+    /**
+        Id of current music.
+        @property {String} currentMusic
+    **/
+    currentMusic: null,
+    /**
+        Is music muted.
+        @property {Boolean} musicMuted
+        @default false
+    **/
+    musicMuted: false,
+    /**
+        Main music volume.
+        @property {Number} musicVolume
+        @default 1.0
+    **/
+    musicVolume: 1.0,
+
+    init: function() {
+        game.normalizeVendorAttribute(window, &#x27;AudioContext&#x27;);
+
+        // Disable audio on Windows Phone
+        if(game.device.wp) game.Audio.enabled = false;
+
+        // Disable audio on mobile, when offline
+        // if(!navigator.onLine &amp;&amp; game.device.mobile) game.Audio.enabled = false;
+
+        // Disable Web Audio if audio disabled
+        if(!game.Audio.enabled) game.Audio.webAudio = false;
+
+        // Disable Web Audio if not supported
+        if(game.Audio.webAudio &amp;&amp; !window.AudioContext) game.Audio.webAudio = false;
+
+        // Get audio format
+        if(game.Audio.enabled) {
+            var audio = new Audio();
+            for (var i = 0; i &lt; game.Audio.formats.length; i++) {
+                if(audio.canPlayType(game.Audio.formats[i].type)) {
+                    this.format = game.Audio.formats[i].ext;
+                    break;
+                }
+            }
+        }
+
+        // Disable audio if no compatible format found
+        if(!this.format) game.Audio.enabled = false;
+
+        // Init Web Audio
+        if(game.Audio.enabled &amp;&amp; game.Audio.webAudio) {
+            this.context = new AudioContext();
+
+            if(this.context.createGain) this.gainNode = this.context.createGain();
+            else if(this.context.createGainNode) this.gainNode = this.context.createGainNode();
+            this.gainNode.connect(this.context.destination);
+        }
+    },
+
+    decode: function(request, path, callback) {
+        if(!this.context) return;
+
+        if(!request.response) throw(&#x27;Error loading audio: &#x27; + path);
+
+        this.context.decodeAudioData(
+            request.response,
+            this.loaded.bind(this, path, callback),
+            this.loadError.bind(this, path)
+        );
+    },
+
+    load: function(path, callback) {
+        if(!game.Audio.enabled) return callback ? callback() : false;
+
+        var realPath = this.getPath(path);
+
+        // Web Audio
+        if(this.context) {
+            var request = new XMLHttpRequest();
+            request.open(&#x27;GET&#x27;, realPath, true);
+            request.responseType = &#x27;arraybuffer&#x27;;
+            request.onload = this.decode.bind(this, request, path, callback);
+            request.send();
+        }
+        // HTML5 Audio
+        else {
+            var audio = new Audio(realPath);
+            audio.loadCallback = this.loaded.bind(this, path, callback, audio);
+            audio.addEventListener(&#x27;canplaythrough&#x27;, audio.loadCallback, false);
+            audio.addEventListener(&#x27;error&#x27;, this.loadError.bind(this, path), false);
+            audio.preload = &#x27;auto&#x27;;
+            audio.load();
+        }
+    },
+
+    loaded: function(path, callback, audio) {
+        if(this.sources[game.Audio.queue[path]]) throw(&#x27;Duplicate audio source: &#x27; + game.Audio.queue[path]);
+        if(!game.Audio.queue[path]) throw(&#x27;Cannot find audio resource: &#x27; + path);
+
+        // Get id for path
+        var id = game.Audio.queue[path];
+
+        this.sources[id] = {
+            clips: [],
+            audio: audio,
+        };
+
+        if(audio instanceof Audio) {
+            audio.removeEventListener(&#x27;canplaythrough&#x27;, audio.loadCallback, false);
+            audio.addEventListener(&#x27;ended&#x27;, function() {
+                this.playing = false;
+            }, false);
+        }
+
+        if(callback) callback(path);
+    },
+
+    loadError: function(path) {
+        throw(&#x27;Error loading: &#x27; + path);
+    },
+
+    getPath: function(path) {
+        return path.replace(/[^\.]+$/, this.format);
+    },
+
+    play: function(id, volume, loop, callback, rate) {
+        if(!this.sources[id]) throw(&#x27;Cannot find source: &#x27; + id);
+
+        // Web Audio
+        if(this.context) {
+            var audio = this.context.createBufferSource();
+            audio.buffer = this.sources[id].audio;
+            audio.loop = !!loop;
+            audio.playbackRate.value = rate || 1;
+            if(typeof(callback) === &#x27;function&#x27;) audio.onended = callback.bind(this);
+            else audio.onended = null;
+
+            var gainNode;
+            if(this.context.createGain) gainNode = this.context.createGain();
+            else if(this.context.createGainNode) gainNode = this.context.createGainNode();
+            gainNode.gain.value = volume || 1;
+
+            gainNode.connect(this.gainNode);
+            audio.connect(gainNode);
+
+            if(audio.start) audio.start(0, this.sources[id].audio.pauseTime || 0);
+            else if(audio.noteOn) audio.noteOn(0, this.sources[id].audio.pauseTime || 0);
+
+            this.sources[id].clips.push(audio);
+            this.sources[id].audio.volume = gainNode.gain.value; // Store volume info for pauses
+            this.sources[id].audio.loop = audio.loop; // Store loop info for pauses
+            this.sources[id].audio.startTime = this.context.currentTime - this.sources[id].audio.pauseTime || 0;
+        }
+        // HTML5 Audio
+        else {
+            this.sources[id].audio.volume = volume || 1;
+            this.sources[id].audio.loop = loop;
+            this.sources[id].audio.playing = true;
+            if(typeof(callback) === &#x27;function&#x27;) this.sources[id].audio.onended = callback.bind(this);
+            else this.sources[id].audio.onended = null;
+            this.sources[id].audio.play();
+        }
+    },
+
+    stop: function(id) {
+        if(!this.sources[id]) throw(&#x27;Cannot find source: &#x27; + id);
+
+        // Web Audio
+        if(this.context) {
+            // Stop all source clips
+            for (var i = 0; i &lt; this.sources[id].clips.length; i++) {
+                if(this.sources[id].clips[i].stop) this.sources[id].clips[i].stop(true);
+                else if(this.sources[id].clips[i].noteOff) this.sources[id].clips[i].noteOff(true);
+            }
+            this.sources[id].clips.length = 0;
+            this.sources[id].audio.pauseTime = 0;
+        }
+        // HTML5 Audio
+        else {
+            this.sources[id].audio.pause();
+            this.sources[id].audio.playing = false;
+            this.sources[id].audio.currentTime = 0;
+        }
+    },
+
+    pause: function(id) {
+        if(!this.sources[id]) throw(&#x27;Cannot find source: &#x27; + id);
+
+        // Web Audio
+        if(this.context) {
+            if(this.sources[id].clips.length === 0) return;
+            // Stop all source clips
+            for (var i = 0; i &lt; this.sources[id].clips.length; i++) {
+                if(this.sources[id].clips[i].stop) this.sources[id].clips[i].stop(true);
+                else if(this.sources[id].clips[i].noteOff) this.sources[id].clips[i].noteOff(true);
+            }
+            this.sources[id].clips.length = 0;
+            this.sources[id].audio.pauseTime = this.context.currentTime - this.sources[id].audio.startTime;
+
+            if(this.sources[id].audio.pauseTime &gt; this.sources[id].audio.duration &amp;&amp; !this.sources[id].audio.loop) {
+                // Trying to pause completed not looping sound
+                this.sources[id].audio.pauseTime = 0;
+            }
+        }
+        // HTML5 Audio
+        else {
+            if(this.sources[id].audio.currentTime &gt; 0 &amp;&amp; this.sources[id].audio.currentTime &lt; this.sources[id].audio.duration || this.sources[id].audio.loop) {
+                this.sources[id].audio.pause();
+            }
+        }
+    },
+
+    /**
+        @method playSound
+        @param {String} id
+        @param {Boolean} [loop]
+        @param {Number} [volume]
+        @param {Function} [callback]
+        @param {Number} [rate] Only on Web Audio
+    **/
+    playSound: function(id, loop, volume, callback, rate) {
+        if(!game.Audio.enabled) return;
+        if(this.soundMuted) return;
+
+        volume = volume || 1;
+        this.play(id, volume * this.soundVolume, loop, callback, rate);
+    },
+
+    /**
+        @method stopSound
+        @param {String} id
+    **/
+    stopSound: function(id) {
+        if(!game.Audio.enabled) return;
+
+        if(id) {
+            // Stop specific sound
+            this.stop(id);
+        } else {
+            // Stop all sounds
+            for(var i in this.sources) this.stop(i);
+        }
+    },
+
+    /**
+        @method playMusic
+        @param {String} id
+        @param {Number} volume
+    **/
+    playMusic: function(id, volume) {
+        if(!game.Audio.enabled) return;
+        if(this.musicMuted) return;
+
+        // Stop current music before playing new
+        if(this.currentMusic) this.stop(this.currentMusic);
+        this.currentMusic = id;
+
+        volume = volume || 1;
+        this.play(id, volume * this.musicVolume, true);
+    },
+
+    /**
+        @method stopMusic
+    **/
+    stopMusic: function() {
+        if(!game.Audio.enabled) return;
+
+        if(this.currentMusic) this.stop(this.currentMusic);
+        this.currentMusic = null;
+    },
+
+    /**
+        @method pauseSound
+        @param {String} id
+    **/
+    pauseSound: function(id) {
+        if(!game.Audio.enabled) return;
+
+        this.pause(id);
+    },
+
+    /**
+        @method pauseAll
+    **/
+    pauseAll: function() {
+        if(!game.Audio.enabled) return;
+
+        for(var id in this.sources) this.pause(id);
+    },
+
+    /**
+        @method resumeAll
+    **/
+    resumeAll: function() {
+        if(!game.Audio.enabled) return;
+
+        for(var id in this.sources) {
+            if(this.context) {
+                if(this.sources[id].audio.pauseTime) {
+                    this.play(id, this.sources[id].audio.volume, this.sources[id].audio.loop);
+                }
+            } else {
+                if(this.sources[id].audio.playing) this.sources[id].audio.play();
+            }
+        }
+    },
+
+    // Deprecated
+    stopAll: function() {
+    }
+});
+
+/**
+    Is audio enabled.
+    @attribute {Boolean} enabled
+    @default true
+**/
+game.Audio.enabled = true;
+
+/**
+    Is Web Audio enabled.
+    @attribute {Boolean} webAudio
+    @default true
+**/
+game.Audio.webAudio = true;
+
+/**
+    List of supported audio formats.
+    @attribute {Array} formats
+**/
+game.Audio.formats = [
+    {ext: &#x27;m4a&#x27;, type: &#x27;audio/mp4; codecs=&quot;mp4a.40.5&quot;&#x27;},
+    {ext: &#x27;ogg&#x27;, type: &#x27;audio/ogg; codecs=&quot;vorbis&quot;&#x27;}
+];
+
+game.Audio.queue = {};
+
+});
+    </pre>
+</div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

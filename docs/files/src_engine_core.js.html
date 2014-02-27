@@ -18,7 +18,7 @@
                     <img class="logo" src="../../img/logo.png" title="Panda.js">
                 
                 
-                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.0.3</span>
+                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.0</span>
                 
                 
                     <p class="description">HTML5 game engine</p>
@@ -48,6 +48,8 @@
             <ul id="api-classes" class="apis classes">
             
                 <li><a class="type" href="../classes/game.Analytics.html">game.Analytics</a></li>
+            
+                <li><a class="type" href="../classes/game.Audio.html">game.Audio</a></li>
             
                 <li><a class="type" href="../classes/game.Body.html">game.Body</a></li>
             
@@ -81,8 +83,6 @@
             
                 <li><a class="type" href="../classes/game.Scene.html">game.Scene</a></li>
             
-                <li><a class="type" href="../classes/game.SoundManager.html">game.SoundManager</a></li>
-            
                 <li><a class="type" href="../classes/game.Sprite.html">game.Sprite</a></li>
             
                 <li><a class="type" href="../classes/game.Storage.html">game.Storage</a></li>
@@ -92,6 +92,8 @@
                 <li><a class="type" href="../classes/game.Timer.html">game.Timer</a></li>
             
                 <li><a class="type" href="../classes/game.Tween.html">game.Tween</a></li>
+            
+                <li><a class="type" href="../classes/game.TweenEngine.html">game.TweenEngine</a></li>
             
                 <li><a class="type" href="../classes/game.TweenGroup.html">game.TweenGroup</a></li>
             
@@ -104,6 +106,8 @@
             <ul id="api-modules" class="apis modules">
             
                 <li><a class="module" href="../modules/analytics.html">analytics</a></li>
+            
+                <li><a class="module" href="../modules/audio.html">audio</a></li>
             
                 <li><a class="module" href="../modules/core.html">core</a></li>
             
@@ -120,8 +124,6 @@
                 <li><a class="module" href="../modules/pool.html">pool</a></li>
             
                 <li><a class="module" href="../modules/scene.html">scene</a></li>
-            
-                <li><a class="module" href="../modules/sound.html">sound</a></li>
             
                 <li><a class="module" href="../modules/sprite.html">sprite</a></li>
             
@@ -170,6 +172,7 @@
 // inspired by Impact Game Engine
 // sponsored by Yle
 
+/* jshint -W020 */
 if(typeof(window) === &#x27;undefined&#x27;) window = {};
 (function(window){ &#x27;use strict&#x27;;
 
@@ -196,7 +199,10 @@ if(typeof(global) !== &#x27;undefined&#x27;) return;
     @class Core
 **/
 var core = {
-    version: &#x27;1.0.2&#x27;,
+    version: &#x27;1.1.0&#x27;,
+    config: window.pandaConfig || {
+        sourceFolder: &#x27;src&#x27;
+    },
     /**
         Scale factor for Retina and HiRes mode.
         @property {Number} scale
@@ -268,10 +274,10 @@ var core = {
             if(game.device.mobile) return;
     **/
     device: {},
+    assets: {},
     renderer: null,
     modules: {},
     resources: [],
-    audioResources: [],
     ready: false,
     nocache: &#x27;&#x27;,
     _current: null,
@@ -375,38 +381,44 @@ var core = {
     },
 
     /**
-        Add asset to preloader.
+        Add asset to loader.
         @method addAsset
         @param {String} path
+        @param {String} id
+        @return {String} path
         @example
-            game.addAsset(&#x27;media/logo.png&#x27;);
+            game.addAsset(&#x27;media/logo.png&#x27;, &#x27;logo&#x27;);
     **/
-    addAsset: function(path) {
-        this.resources.push(path);
+    addAsset: function(path, id) {
+        id = id || path;
+        this.assets[id] = path;
+        if(this.resources.indexOf(path) === -1) this.resources.push(path);
+        return path;
     },
 
     /**
-        Add sound to preloader.
-        @method addSound
+        Add audio to loader.
+        @method addAudio
         @param {String} path
-        @param {String} [name]
+        @param {String} [id]
+        @return {String} id
         @example
-            game.addSound(&#x27;media/sound/jump.m4a&#x27;, &#x27;jump&#x27;);
+            game.addAudio(&#x27;media/sound/jump.m4a&#x27;, &#x27;jump&#x27;);
     **/
-    addSound: function(path, name) {
-        name = name || path;
-        this.SoundCache[name] = new game.Sound(path);
+    addAudio: function(path, id) {
+        id = id || path;
+        game.Audio.queue[path] = id;
+        return id;
     },
 
-    /**
-        Add music to preloader.
-        @method addMusic
-        @param {String} path
-        @param {String} [name]
-    **/
-    addMusic: function(path, name) {
-        name = name || path;
-        this.MusicCache[name] = new game.Music(path);
+    // Deprecated
+    addSound: function(path, id) {
+        this.addAudio(path, id);
+    },
+    
+    // Deprecated
+    addMusic: function(path, id) {
+        this.addAudio(path, id);
     },
     
     setNocache: function() {
@@ -465,22 +477,28 @@ var core = {
         @param {String} canvasId
     **/
     start: function(scene, width, height, canvasId) {
-        if(this._loadQueue.length &gt; 0) throw &#x27;Engine modules not ready.&#x27;;
+        if(this._loadQueue.length &gt; 0) throw(&#x27;Core not ready.&#x27;);
         
         width = width || (game.System.orientation === game.System.PORTRAIT ? 768 : 1024);
         height = height || (game.System.orientation === game.System.PORTRAIT ? 927 : 672);
 
         this.system = new game.System(width, height, canvasId);
-        if(game.SoundManager) this.sound = new game.SoundManager();
+
+        if(game.Audio) {
+            this.audio = new game.Audio();
+            this.sound = this.audio; // Deprecated
+        }
         if(game.Pool) this.pool = new game.Pool();
         if(game.Debug &amp;&amp; game.Debug.enabled &amp;&amp; !navigator.isCocoonJS) this.debug = new game.Debug();
         if(game.DebugDraw &amp;&amp; game.DebugDraw.enabled) this.debugDraw = new game.DebugDraw();
-        if(game.Storage &amp;&amp; game.Storage.id) this.storage = new game.Storage(game.Storage.id);
-        if(game.Analytics &amp;&amp; game.Analytics.id) this.analytics = new game.Analytics(game.Analytics.id);
+        if(game.Storage.id) this.config.storageId = game.Storage.id; // Deprecated
+        if(game.Storage &amp;&amp; this.config.storageId) this.storage = new game.Storage(this.config.storageId);
+        if(game.Analytics.id) this.config.analyticsId = game.Analytics.id; // Deprecated
+        if(game.Analytics &amp;&amp; this.config.analyticsId) this.analytics = new game.Analytics(this.config.analyticsId);
 
         this.ready = true;
         
-        var loader = new game.Loader(scene || SceneGame, this.resources, this.audioResources);
+        var loader = new game.Loader(scene);
         loader.start();
     },
 
@@ -515,7 +533,7 @@ var core = {
         this.modules[name] = true;
         this._waitForLoad++;
         
-        var path = &#x27;src/&#x27; + name.replace(/\./g, &#x27;/&#x27;) + &#x27;.js&#x27; + this.nocache;
+        var path = this.config.sourceFolder + &#x27;/&#x27; + name.replace(/\./g, &#x27;/&#x27;) + &#x27;.js&#x27; + this.nocache;
         var script = document.createElement(&#x27;script&#x27;);
         script.type = &#x27;text/javascript&#x27;;
         script.src = path;
@@ -571,11 +589,7 @@ var core = {
                 }
                 unresolved.push(game._loadQueue[i].name + &#x27; (requires: &#x27; + unloaded.join(&#x27;, &#x27;) + &#x27;)&#x27;);
             }
-            throw(
-                &#x27;Unresolved (circular?) dependencies. &#x27; +
-                &#x27;Most likely there is a name/path mismatch for one of the listed modules:\n&#x27; +
-                unresolved.join(&#x27;\n&#x27;)
-            );
+            throw(&#x27;Unresolved modules:\n&#x27; + unresolved.join(&#x27;\n&#x27;));
         }
     },
     
@@ -603,10 +617,10 @@ var core = {
         this.device.android = /android/i.test(navigator.userAgent);
         this.device.android2 = /android 2/i.test(navigator.userAgent);
 
-        this.device.wp7 = (this.device.wp &amp;&amp; /Windows Phone OS 7/i.test(navigator.userAgent));
-        this.device.wp8 = (this.device.wp &amp;&amp; /Windows Phone 8/i.test(navigator.userAgent));
+        this.device.wp7 = /Windows Phone OS 7/i.test(navigator.userAgent);
+        this.device.wp8 = /Windows Phone 8/i.test(navigator.userAgent);
+        this.device.wp = this.device.wp7 || this.device.wp8;
         this.device.wpApp = (this.device.wp &amp;&amp; typeof(window.external) !== &#x27;undefined&#x27; &amp;&amp; typeof(window.external.notify) !== &#x27;undefined&#x27;);
-        this.device.wp = this.device.wp7 || this.device.wp8 || this.device.wpApp;
 
         this.device.ie9 = /MSIE 9/i.test(navigator.userAgent);
         this.device.ie10 = /MSIE 10/i.test(navigator.userAgent);
@@ -627,7 +641,8 @@ var core = {
             }
         }
 
-        this.ua = this.device; // support for deprecated game.ua
+        // Deprecated
+        this.ua = this.device;
     },
 
     _DOMReady: function() {
@@ -857,7 +872,7 @@ game.module(
     &#x27;engine.loader&#x27;,
     &#x27;engine.timer&#x27;,
     &#x27;engine.system&#x27;,
-    &#x27;engine.sound&#x27;,
+    &#x27;engine.audio&#x27;,
     &#x27;engine.renderer&#x27;,
     &#x27;engine.sprite&#x27;,
     &#x27;engine.debug&#x27;,

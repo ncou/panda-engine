@@ -18,7 +18,7 @@
                     <img class="logo" src="../../img/logo.png" title="Panda.js">
                 
                 
-                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.0.3</span>
+                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.0</span>
                 
                 
                     <p class="description">HTML5 game engine</p>
@@ -48,6 +48,8 @@
             <ul id="api-classes" class="apis classes">
             
                 <li><a class="type" href="../classes/game.Analytics.html">game.Analytics</a></li>
+            
+                <li><a class="type" href="../classes/game.Audio.html">game.Audio</a></li>
             
                 <li><a class="type" href="../classes/game.Body.html">game.Body</a></li>
             
@@ -81,8 +83,6 @@
             
                 <li><a class="type" href="../classes/game.Scene.html">game.Scene</a></li>
             
-                <li><a class="type" href="../classes/game.SoundManager.html">game.SoundManager</a></li>
-            
                 <li><a class="type" href="../classes/game.Sprite.html">game.Sprite</a></li>
             
                 <li><a class="type" href="../classes/game.Storage.html">game.Storage</a></li>
@@ -92,6 +92,8 @@
                 <li><a class="type" href="../classes/game.Timer.html">game.Timer</a></li>
             
                 <li><a class="type" href="../classes/game.Tween.html">game.Tween</a></li>
+            
+                <li><a class="type" href="../classes/game.TweenEngine.html">game.TweenEngine</a></li>
             
                 <li><a class="type" href="../classes/game.TweenGroup.html">game.TweenGroup</a></li>
             
@@ -104,6 +106,8 @@
             <ul id="api-modules" class="apis modules">
             
                 <li><a class="module" href="../modules/analytics.html">analytics</a></li>
+            
+                <li><a class="module" href="../modules/audio.html">audio</a></li>
             
                 <li><a class="module" href="../modules/core.html">core</a></li>
             
@@ -120,8 +124,6 @@
                 <li><a class="module" href="../modules/pool.html">pool</a></li>
             
                 <li><a class="module" href="../modules/scene.html">scene</a></li>
-            
-                <li><a class="module" href="../modules/sound.html">sound</a></li>
             
                 <li><a class="module" href="../modules/sprite.html">sprite</a></li>
             
@@ -147,7 +149,7 @@
 <div class="file">
     <pre class="code prettyprint linenums">
 /**
-    Preloader for assets and sounds.
+    Dynamic loader for assets and audio.
     
     @module loader
     @namespace game
@@ -158,7 +160,7 @@ game.module(
 .body(function(){ &#x27;use strict&#x27;;
 
 /**
-    Preloader.
+    Loader.
     @class Loader
     @extends game.Class
 **/
@@ -185,11 +187,6 @@ game.Loader = game.Class.extend({
     **/
     backgroundColor: null,
     /**
-        List of tweens in loader.
-        @property {Array} tweens
-    **/
-    tweens: [],
-    /**
         List of assets to load.
         @property {Array} assets
     **/
@@ -200,24 +197,21 @@ game.Loader = game.Class.extend({
     **/
     sounds: [],
     
-    staticInit: function(scene, assets, sounds) {
+    init: function(scene) {
         var i;
-        if(this.backgroundColor) {
-            var bg = new game.Graphics();
-            bg.beginFill(this.backgroundColor);
-            bg.drawRect(0, 0, game.system.width, game.system.height);
-            game.system.stage.addChild(bg);
-        }
 
-        this.scene = scene;
+        if(game.Timer.seconds) game.Loader.timeout /= 1000;
+
+        this.scene = scene || SceneGame;
         this.timer = new game.Timer();
 
-        for (i = 0; i &lt; assets.length; i++) {
-            this.assets.push(game.Loader.getPath(assets[i]));
+        for (i = 0; i &lt; game.resources.length; i++) {
+            if(game.TextureCache[game.resources[i]]) continue;
+            this.assets.push(game.Loader.getPath(game.resources[i]));
         }
 
-        for (i = 0; i &lt; sounds.length; i++) {
-            this.sounds.push(sounds[i]);
+        for(var name in game.Audio.queue) {
+            this.sounds.push(name);
         }
 
         if(this.assets.length &gt; 0) {
@@ -230,7 +224,7 @@ game.Loader = game.Class.extend({
         if(this.assets.length === 0 &amp;&amp; this.sounds.length === 0) this.percent = 100;
     },
 
-    init: function() {
+    initStage: function() {
         this.text = new game.Text(this.percent+&#x27;%&#x27;,{font:&#x27;30px Arial&#x27;,fill:&#x27;#ffffff&#x27;});
         this.text.position.x = game.system.width / 2 - this.text.width / 2;
         this.text.position.y = game.system.height/2 + 80;
@@ -245,23 +239,52 @@ game.Loader = game.Class.extend({
         game.system.stage.addChild(this.symbol);
 
         if(game.Tween) {
-            var tween = new game.Tween(this.symbol, {rotation: 0.1}, 0.5, {
-                easing: game.Tween.Easing.Cubic.InOut,
-                loop: game.Tween.Loop.Reverse
-            });
-            this.tweens.push(tween);
+            var tween = new game.Tween(this.symbol)
+                .to({rotation: 0.1}, 500)
+                .easing(game.Tween.Easing.Cubic.InOut)
+                .repeat(Infinity)
+                .yoyo(true);
             tween.start();
         }
     },
 
     /**
-        Start preloader.
+        Start loader.
         @method start
     **/
     start: function() {
+        if(game.scene) {
+            for (var i = game.system.stage.children.length - 1; i &gt;= 0; i--) {
+                game.system.stage.removeChild(game.system.stage.children[i]);
+            }
+            game.system.stage.setBackgroundColor(this.backgroundColor);
+
+            game.system.stage.interactive = false; // this is not working, bug?
+
+            game.system.stage.mousemove = game.system.stage.touchmove = null;
+            game.system.stage.click = game.system.stage.tap = null;
+            game.system.stage.mousedown = game.system.stage.touchstart = null;
+            game.system.stage.mouseup = game.system.stage.mouseupoutside = game.system.stage.touchend = game.system.stage.touchendoutside = null;
+            game.system.stage.mouseout = null;
+        }
+        if(game.sound) game.sound.stopAll();
+
+        if(this.backgroundColor) {
+            var bg = new game.Graphics();
+            bg.beginFill(this.backgroundColor);
+            bg.drawRect(0, 0, game.system.width, game.system.height);
+            game.system.stage.addChild(bg);
+        }
+        
+        this.initStage();
+
         if(this.assets.length &gt; 0) this.loader.load();
         else this.loadAudio();
-        this.loopId = game.setGameLoop(this.run.bind(this), game.system.canvas);
+        
+        if(!game.scene) this.loopId = game.setGameLoop(this.run.bind(this), game.system.canvas);
+        else {
+            game.scene = this;
+        }
     },
 
     /**
@@ -283,8 +306,7 @@ game.Loader = game.Class.extend({
         File loaded.
         @method progress
     **/
-    progress: function(path, loaded) {
-        if(path &amp;&amp; !loaded) this.error(&#x27;Failed to load: &#x27; + path);
+    progress: function() {
         this.loaded++;
         this.percent = Math.round(this.loaded / (this.assets.length + this.sounds.length) * 100);
         this.onPercentChange();
@@ -307,7 +329,7 @@ game.Loader = game.Class.extend({
     **/
     loadAudio: function() {
         for (var i = this.sounds.length - 1; i &gt;= 0; i--) {
-            this.sounds[i].load(this.progress.bind(this));
+            game.audio.load(this.sounds[i], this.progress.bind(this));
         }
     },
 
@@ -316,14 +338,14 @@ game.Loader = game.Class.extend({
         @method ready
     **/
     ready: function() {
-        this.startGame();
+        this.setScene();
     },
 
     /**
-        Start the game.
-        @method startGame
+        Set scene.
+        @method setScene
     **/
-    startGame: function() {
+    setScene: function() {
         if(game.system.retina || game.system.hires) {
             for(var i in game.TextureCache) {
                 if(i.indexOf(&#x27;@2x&#x27;) !== -1) {
@@ -332,7 +354,8 @@ game.Loader = game.Class.extend({
                 }
             }
         }
-
+        game.resources.length = 0;
+        game.Audio.resources = {};
         game.Timer.time = Number.MIN_VALUE;
         game.clearGameLoop(this.loopId);
         game.system.setScene(this.scene);
@@ -345,11 +368,8 @@ game.Loader = game.Class.extend({
     },
 
     update: function() {
-        for (var i = this.tweens.length - 1; i &gt;= 0; i--) {
-            this.tweens[i].update();
-            if(this.tweens[i].complete) this.tweens.splice(i, 1);
-        }
-        if(this.loaded === this.assets.length + this.sounds.length &amp;&amp; this.timer.time() &gt;= game.Loader.timeout + 0.1) {
+        if(game.TweenEngine) game.TweenEngine.update();
+        if(this.loaded === this.assets.length + this.sounds.length &amp;&amp; this.timer.time() &gt;= game.Loader.timeout) {
             this.timer.reset();
             this.timer.pause();
             this.ready();
@@ -358,7 +378,7 @@ game.Loader = game.Class.extend({
 
     render: function() {
         game.system.renderer.render(game.system.stage);
-    },
+    }
 });
 
 /**
@@ -371,13 +391,13 @@ game.Loader.getPath = function(path) {
 };
 
 /**
-    Minimum time to show preloader, in seconds.
+    Minimum time to show preloader, in milliseconds.
     @attribute {Number} timeout
-    @default 0.5
+    @default 500
     @example
-        game.Loader.timeout = 1;
+        game.Loader.timeout = 1000;
 **/
-game.Loader.timeout = 0.5;
+game.Loader.timeout = 500;
 
 });
     </pre>

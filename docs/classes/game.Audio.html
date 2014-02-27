@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>game.SoundManager - Panda.js</title>
+    <title>game.Audio - Panda.js</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -18,7 +18,7 @@
                     <img class="logo" src="../../img/logo.png" title="Panda.js">
                 
                 
-                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.0.3</span>
+                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.0</span>
                 
                 
                     <p class="description">HTML5 game engine</p>
@@ -48,6 +48,8 @@
             <ul id="api-classes" class="apis classes">
             
                 <li><a class="type" href="../classes/game.Analytics.html">game.Analytics</a></li>
+            
+                <li><a class="type" href="../classes/game.Audio.html">game.Audio</a></li>
             
                 <li><a class="type" href="../classes/game.Body.html">game.Body</a></li>
             
@@ -81,8 +83,6 @@
             
                 <li><a class="type" href="../classes/game.Scene.html">game.Scene</a></li>
             
-                <li><a class="type" href="../classes/game.SoundManager.html">game.SoundManager</a></li>
-            
                 <li><a class="type" href="../classes/game.Sprite.html">game.Sprite</a></li>
             
                 <li><a class="type" href="../classes/game.Storage.html">game.Storage</a></li>
@@ -92,6 +92,8 @@
                 <li><a class="type" href="../classes/game.Timer.html">game.Timer</a></li>
             
                 <li><a class="type" href="../classes/game.Tween.html">game.Tween</a></li>
+            
+                <li><a class="type" href="../classes/game.TweenEngine.html">game.TweenEngine</a></li>
             
                 <li><a class="type" href="../classes/game.TweenGroup.html">game.TweenGroup</a></li>
             
@@ -104,6 +106,8 @@
             <ul id="api-modules" class="apis modules">
             
                 <li><a class="module" href="../modules/analytics.html">analytics</a></li>
+            
+                <li><a class="module" href="../modules/audio.html">audio</a></li>
             
                 <li><a class="module" href="../modules/core.html">core</a></li>
             
@@ -120,8 +124,6 @@
                 <li><a class="module" href="../modules/pool.html">pool</a></li>
             
                 <li><a class="module" href="../modules/scene.html">scene</a></li>
-            
-                <li><a class="module" href="../modules/sound.html">sound</a></li>
             
                 <li><a class="module" href="../modules/sprite.html">sprite</a></li>
             
@@ -142,25 +144,21 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>game.SoundManager Class</h1>
+                <h1>game.Audio Class</h1>
 <div class="box meta">
     
 
     
-        <div class="extends">
-            Extends <a href="../classes/game.Class.html" class="crosslink">game.Class</a>
-        </div>
-    
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_engine_sound.js.html#l12"><code>src&#x2F;engine&#x2F;sound.js:12</code></a>
+            Defined in: <a href="../files/src_engine_audio.js.html#l12"><code>src&#x2F;engine&#x2F;audio.js:12</code></a>
         </div>
     
 
     
         
-            Module: <a href="../modules/sound.html">sound</a>
+            Module: <a href="../modules/audio.html">audio</a>
         
     
 
@@ -170,7 +168,7 @@
 
 
 <div class="box intro">
-    <p>Instance automatically created at <a href="../classes/game.Core.html" class="crosslink">game.Core</a></p>
+    <p>Audio manager.</p>
 
 </div>
 
@@ -209,10 +207,22 @@
     <div class="index-section properties">
         <h3>Properties</h3>
 
-        <ul class="index-list properties extends">
+        <ul class="index-list properties">
             
-                <li class="index-item property inherited">
-                    <a href="#property_init">init</a>
+                <li class="index-item property">
+                    <a href="#property_currentMusic">currentMusic</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_format">format</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_musicMuted">musicMuted</a>
 
                     
                 </li>
@@ -224,13 +234,13 @@
                 </li>
             
                 <li class="index-item property">
-                    <a href="#property_soundVolume">soundVolume</a>
+                    <a href="#property_soundMuted">soundMuted</a>
 
                     
                 </li>
             
-                <li class="index-item property inherited">
-                    <a href="#property_staticInit">staticInit</a>
+                <li class="index-item property">
+                    <a href="#property_soundVolume">soundVolume</a>
 
                     
                 </li>
@@ -243,7 +253,15 @@
     <div class="index-section attrs">
         <h3>Attributes</h3>
 
-        <ul class="index-list attrs extends">
+        <ul class="index-list attrs">
+            
+                <li class="index-item attr">
+                    <a href="#attr_enabled">enabled</a>
+                </li>
+            
+                <li class="index-item attr">
+                    <a href="#attr_formats">formats</a>
+                </li>
             
                 <li class="index-item attr">
                     <a href="#attr_webAudio">webAudio</a>
@@ -258,41 +276,20 @@
     <div class="index-section methods">
         <h3>Methods</h3>
 
-        <ul class="index-list methods extends">
+        <ul class="index-list methods">
 
             
 
             
-                <li class="index-item method inherited">
-                    <a href="#method_extend">extend</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method inherited">
-                    <a href="#method_inject">inject</a>
+                <li class="index-item method">
+                    <a href="#method_pauseAll">pauseAll</a>
 
                     
                     
                 </li>
             
                 <li class="index-item method">
-                    <a href="#method_muteAll">muteAll</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method">
-                    <a href="#method_muteMusic">muteMusic</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method">
-                    <a href="#method_muteSound">muteSound</a>
+                    <a href="#method_pauseSound">pauseSound</a>
 
                     
                     
@@ -313,7 +310,7 @@
                 </li>
             
                 <li class="index-item method">
-                    <a href="#method_stopAll">stopAll</a>
+                    <a href="#method_resumeAll">resumeAll</a>
 
                     
                     
@@ -328,48 +325,6 @@
             
                 <li class="index-item method">
                     <a href="#method_stopSound">stopSound</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method inherited">
-                    <a href="#method_super">super</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method">
-                    <a href="#method_toggleMusic">toggleMusic</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method">
-                    <a href="#method_toggleSound">toggleSound</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method">
-                    <a href="#method_unmuteAll">unmuteAll</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method">
-                    <a href="#method_unmuteMusic">unmuteMusic</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method">
-                    <a href="#method_unmuteSound">unmuteSound</a>
 
                     
                     
@@ -390,10 +345,10 @@
         <h2>Properties</h2>
 
         
-            <a name="property_init" class="anchor-link"></a>
-<div class="property item inherited">
-    <h3 class="name"><code>init</code>
-    <span class="type">Function</span>
+            <a name="property_currentMusic" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>currentMusic</code>
+    <span class="type">String</span>
 
     
 
@@ -408,12 +363,15 @@
     <div class="meta">
         
             
-                <p>Inherited from
-                <a href="../classes/game.Class.html#property_init" class="type">game.Class</a>:
+                
+                <p>
+                
+                Defined in
+                
             
         
         
-        <a href="../files/src_engine_core.js.html#l655"><code>src&#x2F;engine&#x2F;core.js:655</code></a>
+        <a href="../files/src_engine_audio.js.html#l37"><code>src&#x2F;engine&#x2F;audio.js:37</code></a>
         
         </p>
 
@@ -424,10 +382,112 @@
 
     <div class="extended-detail">
         <div class="description">
-            <p>Automatically called, when creating new class.</p>
+            <p>Id of current music.</p>
 
         </div>
 
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_format" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>format</code>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_audio.js.html#l17"><code>src&#x2F;engine&#x2F;audio.js:17</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Supported audio format extension.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_musicMuted" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>musicMuted</code>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_audio.js.html#l42"><code>src&#x2F;engine&#x2F;audio.js:42</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Is music muted.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
         
 
         
@@ -463,7 +523,7 @@
             
         
         
-        <a href="../files/src_engine_sound.js.html#l32"><code>src&#x2F;engine&#x2F;sound.js:32</code></a>
+        <a href="../files/src_engine_audio.js.html#l48"><code>src&#x2F;engine&#x2F;audio.js:48</code></a>
         
         </p>
 
@@ -474,12 +534,64 @@
 
     <div class="extended-detail">
         <div class="description">
-            <p>Main volume for music.</p>
+            <p>Main music volume.</p>
 
         </div>
 
         
             <p class="default"><strong>Default:</strong> <span class="default-value">1.0</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_soundMuted" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>soundMuted</code>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_audio.js.html#l25"><code>src&#x2F;engine&#x2F;audio.js:25</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Is sound muted.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
         
 
         
@@ -515,7 +627,7 @@
             
         
         
-        <a href="../files/src_engine_sound.js.html#l26"><code>src&#x2F;engine&#x2F;sound.js:26</code></a>
+        <a href="../files/src_engine_audio.js.html#l31"><code>src&#x2F;engine&#x2F;audio.js:31</code></a>
         
         </p>
 
@@ -526,59 +638,12 @@
 
     <div class="extended-detail">
         <div class="description">
-            <p>Main volume for sounds.</p>
+            <p>Main sound volume.</p>
 
         </div>
 
         
             <p class="default"><strong>Default:</strong> <span class="default-value">1.0</span></p>
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_staticInit" class="anchor-link"></a>
-<div class="property item inherited">
-    <h3 class="name"><code>staticInit</code>
-    <span class="type">Function</span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/game.Class.html#property_staticInit" class="type">game.Class</a>:
-            
-        
-        
-        <a href="../files/src_engine_core.js.html#l640"><code>src&#x2F;engine&#x2F;core.js:640</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>If Class has <code>staticInit</code> function, it is called before <code>init</code> function.</p>
-
-        </div>
-
         
 
         
@@ -599,6 +664,112 @@
 
     <div class="attrs-detail">
         <h2>Attributes</h2>
+
+        
+            <div id="attr_enabled" class="attr item">
+    <a name="config_enabled"></a> 
+    <h3 class="name"><code>enabled</code></h3>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_audio.js.html#l347"><code>src&#x2F;engine&#x2F;audio.js:347</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Is audio enabled.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> true</p>
+    
+
+    
+
+    
+</div>
+
+        
+            <div id="attr_formats" class="attr item">
+    <a name="config_formats"></a> 
+    <h3 class="name"><code>formats</code></h3>
+    <span class="type">Array</span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_audio.js.html#l361"><code>src&#x2F;engine&#x2F;audio.js:361</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>List of supported audio formats.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
 
         
             <div id="attr_webAudio" class="attr item">
@@ -631,7 +802,7 @@
             
         
         
-        <a href="../files/src_engine_sound.js.html#l363"><code>src&#x2F;engine&#x2F;sound.js:363</code></a>
+        <a href="../files/src_engine_audio.js.html#l354"><code>src&#x2F;engine&#x2F;audio.js:354</code></a>
         
         </p>
 
@@ -641,10 +812,12 @@
     </div>
 
     <div class="description">
-        <p>Use Web Audio API.</p>
+        <p>Is Web Audio enabled.</p>
 
     </div>
 
+    
+        <p><strong>Default:</strong> true</p>
     
 
     
@@ -663,139 +836,9 @@
         <h2>Methods</h2>
 
         
-            <a name="method_extend" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>extend</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Class</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/game.Class.html#method_extend" class="type">game.Class</a>:
-            
-        
-        
-        <a href="../files/src_engine_core.js.html#l600"><code>src&#x2F;engine&#x2F;core.js:600</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            
-        </div>
-
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">Class</span>:
-                        
-                    
-                </div>
-            </div>
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_inject" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>inject</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/game.Class.html#method_inject" class="type">game.Class</a>:
-            
-        
-        
-        <a href="../files/src_engine_core.js.html#l668"><code>src&#x2F;engine&#x2F;core.js:668</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_muteAll" class="anchor-link"></a>
+            <a name="method_pauseAll" class="anchor-link"></a>
 <div class="method item">
-    <h3 class="name"><code>muteAll</code>
+    <h3 class="name"><code>pauseAll</code>
 
     
         <span class="paren">()</span>
@@ -828,7 +871,7 @@
             
         
         
-        <a href="../files/src_engine_sound.js.html#l333"><code>src&#x2F;engine&#x2F;sound.js:333</code></a>
+        <a href="../files/src_engine_audio.js.html#l316"><code>src&#x2F;engine&#x2F;audio.js:316</code></a>
         
         </p>
 
@@ -841,8 +884,7 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>Mute all sounds and music.</p>
-
+            
         </div>
 
         
@@ -854,131 +896,9 @@
 </div>
 
         
-            <a name="method_muteMusic" class="anchor-link"></a>
+            <a name="method_pauseSound" class="anchor-link"></a>
 <div class="method item">
-    <h3 class="name"><code>muteMusic</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_sound.js.html#l294"><code>src&#x2F;engine&#x2F;sound.js:294</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Mute music.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_muteSound" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>muteSound</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_sound.js.html#l228"><code>src&#x2F;engine&#x2F;sound.js:228</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Mute sound.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_playMusic" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>playMusic</code>
+    <h3 class="name"><code>pauseSound</code>
 
     
         <div class="args">
@@ -986,7 +906,7 @@
             
                 <li class="arg">
                     
-                        <code>name</code>
+                        <code>id</code>
                     
                 </li>
             
@@ -1021,7 +941,7 @@
             
         
         
-        <a href="../files/src_engine_sound.js.html#l262"><code>src&#x2F;engine&#x2F;sound.js:262</code></a>
+        <a href="../files/src_engine_audio.js.html#l306"><code>src&#x2F;engine&#x2F;audio.js:306</code></a>
         
         </p>
 
@@ -1034,8 +954,7 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>Play music.</p>
-
+            
         </div>
 
         
@@ -1046,8 +965,122 @@
                 
                     <li class="param">
                         
-                            <code class="param-name">name</code>
+                            <code class="param-name">id</code>
                             <span class="type">String</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_playMusic" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>playMusic</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>id</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>volume</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_audio.js.html#l279"><code>src&#x2F;engine&#x2F;audio.js:279</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">id</code>
+                            <span class="type">String</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">volume</code>
+                            <span class="type">Number</span>
                         
 
                         
@@ -1080,7 +1113,7 @@
             
                 <li class="arg">
                     
-                        <code>name</code>
+                        <code>id</code>
                     
                 </li>
             
@@ -1092,7 +1125,19 @@
             
                 <li class="arg">
                     
-                        <code class="optional">[delay]</code>
+                        <code class="optional">[volume]</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[callback]</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[rate]</code>
                     
                 </li>
             
@@ -1127,7 +1172,7 @@
             
         
         
-        <a href="../files/src_engine_sound.js.html#l193"><code>src&#x2F;engine&#x2F;sound.js:193</code></a>
+        <a href="../files/src_engine_audio.js.html#l247"><code>src&#x2F;engine&#x2F;audio.js:247</code></a>
         
         </p>
 
@@ -1140,8 +1185,7 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>Play sound.</p>
-
+            
         </div>
 
         
@@ -1152,7 +1196,7 @@
                 
                     <li class="param">
                         
-                            <code class="param-name">name</code>
+                            <code class="param-name">id</code>
                             <span class="type">String</span>
                         
 
@@ -1183,7 +1227,7 @@
                 
                     <li class="param">
                         
-                            <code class="param-name optional">[delay]</code>
+                            <code class="param-name optional">[volume]</code>
                             <span class="type">Number</span>
                             <span class="flag optional" title="This parameter is optional.">optional</span>
                         
@@ -1192,6 +1236,39 @@
 
                         <div class="param-description">
                              
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[callback]</code>
+                            <span class="type">Function</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[rate]</code>
+                            <span class="type">Number</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>Only on Web Audio</p>
+
                         </div>
 
                         
@@ -1208,9 +1285,9 @@
 </div>
 
         
-            <a name="method_stopAll" class="anchor-link"></a>
+            <a name="method_resumeAll" class="anchor-link"></a>
 <div class="method item">
-    <h3 class="name"><code>stopAll</code>
+    <h3 class="name"><code>resumeAll</code>
 
     
         <span class="paren">()</span>
@@ -1243,7 +1320,7 @@
             
         
         
-        <a href="../files/src_engine_sound.js.html#l324"><code>src&#x2F;engine&#x2F;sound.js:324</code></a>
+        <a href="../files/src_engine_audio.js.html#l325"><code>src&#x2F;engine&#x2F;audio.js:325</code></a>
         
         </p>
 
@@ -1256,8 +1333,7 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>Stops all sounds and music.</p>
-
+            
         </div>
 
         
@@ -1304,7 +1380,7 @@
             
         
         
-        <a href="../files/src_engine_sound.js.html#l275"><code>src&#x2F;engine&#x2F;sound.js:275</code></a>
+        <a href="../files/src_engine_audio.js.html#l296"><code>src&#x2F;engine&#x2F;audio.js:296</code></a>
         
         </p>
 
@@ -1317,8 +1393,7 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>Stop music.</p>
-
+            
         </div>
 
         
@@ -1340,7 +1415,7 @@
             
                 <li class="arg">
                     
-                        <code class="optional">[name]</code>
+                        <code>id</code>
                     
                 </li>
             
@@ -1375,7 +1450,7 @@
             
         
         
-        <a href="../files/src_engine_sound.js.html#l206"><code>src&#x2F;engine&#x2F;sound.js:206</code></a>
+        <a href="../files/src_engine_audio.js.html#l263"><code>src&#x2F;engine&#x2F;audio.js:263</code></a>
         
         </p>
 
@@ -1388,8 +1463,7 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>Stop sound.</p>
-
+            
         </div>
 
         
@@ -1400,16 +1474,14 @@
                 
                     <li class="param">
                         
-                            <code class="param-name optional">[name]</code>
+                            <code class="param-name">id</code>
                             <span class="type">String</span>
-                            <span class="flag optional" title="This parameter is optional.">optional</span>
                         
 
                         
 
                         <div class="param-description">
-                            <p>If not defined, stops all sounds.</p>
-
+                             
                         </div>
 
                         
@@ -1417,369 +1489,6 @@
                 
                 </ul>
             </div>
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_super" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>super</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/game.Class.html#method_super" class="type">game.Class</a>:
-            
-        
-        
-        <a href="../files/src_engine_core.js.html#l612"><code>src&#x2F;engine&#x2F;core.js:612</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Call functions parent function.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_toggleMusic" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>toggleMusic</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_sound.js.html#l314"><code>src&#x2F;engine&#x2F;sound.js:314</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Toggle music mute.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_toggleSound" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>toggleSound</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_sound.js.html#l252"><code>src&#x2F;engine&#x2F;sound.js:252</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Toggle sound mute.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_unmuteAll" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>unmuteAll</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_sound.js.html#l342"><code>src&#x2F;engine&#x2F;sound.js:342</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Unmute all sounds and music.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_unmuteMusic" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>unmuteMusic</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_sound.js.html#l304"><code>src&#x2F;engine&#x2F;sound.js:304</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Unmute music.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_unmuteSound" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>unmuteSound</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_sound.js.html#l240"><code>src&#x2F;engine&#x2F;sound.js:240</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Unmute sound.</p>
-
-        </div>
-
         
 
         
