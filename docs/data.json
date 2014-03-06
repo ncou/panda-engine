@@ -2,7 +2,7 @@
     "project": {
         "name": "Panda.js",
         "description": "HTML5 game engine",
-        "version": "1.1.3",
+        "version": "1.1.4",
         "url": "https://www.pandajs.net",
         "logo": "../img/logo.png",
         "themedir": "friendly-theme"
@@ -260,7 +260,7 @@
             },
             "tag": "module",
             "file": "src/engine/core.js",
-            "line": 626,
+            "line": 636,
             "description": "Panda.js core.",
             "requires": [
                 "loader",
@@ -525,7 +525,7 @@
             "module": "core",
             "namespace": "game",
             "file": "src/engine/core.js",
-            "line": 626
+            "line": 636
         },
         "game.DebugDraw": {
             "name": "game.DebugDraw",
@@ -1578,7 +1578,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 630,
+            "line": 640,
             "itemtype": "method",
             "name": "extend",
             "return": {
@@ -1591,7 +1591,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 642,
+            "line": 652,
             "description": "Call functions parent function.",
             "itemtype": "method",
             "name": "super",
@@ -1601,7 +1601,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 670,
+            "line": 680,
             "description": "If Class has `staticInit` function, it is called before `init` function.",
             "itemtype": "property",
             "name": "staticInit",
@@ -1612,7 +1612,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 685,
+            "line": 695,
             "description": "Automatically called, when creating new class.",
             "itemtype": "property",
             "name": "init",
@@ -1623,7 +1623,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 698,
+            "line": 708,
             "itemtype": "method",
             "name": "inject",
             "class": "game.Class",
@@ -1755,35 +1755,11 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 162,
-            "description": "Fps update frequency in milliseconds.",
-            "itemtype": "property",
-            "name": "frequency",
-            "type": "Number|pandaConfig.fpsFrequency",
-            "default": "1000",
-            "class": "game.Debug",
-            "module": "debug",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/debug.js",
-            "line": 168,
-            "description": "Fps text color.",
-            "itemtype": "property",
-            "name": "color",
-            "type": "String|pandaConfig.fpsColor",
-            "default": "'black'",
-            "class": "game.Debug",
-            "module": "debug",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/debug.js",
-            "line": 197,
+            "line": 181,
             "description": "Enable fps display.",
             "itemtype": "attribute",
             "name": "enabled",
-            "type": "Boolean|pandaConfig.debug",
+            "type": "Boolean",
             "default": "false",
             "class": "game.Debug",
             "module": "debug",
@@ -4670,7 +4646,7 @@
             "line": 638,
             "description": "Add tween to group.",
             "itemtype": "method",
-            "name": "tween",
+            "name": "add",
             "params": [
                 {
                     "name": "obj",
