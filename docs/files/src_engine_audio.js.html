@@ -18,7 +18,7 @@
                     <img class="logo" src="../../img/logo.png" title="Panda.js">
                 
                 
-                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.0</span>
+                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.3</span>
                 
                 
                     <p class="description">HTML5 game engine</p>
@@ -208,6 +208,9 @@ game.Audio = game.Class.extend({
         // Disable audio on Windows Phone
         if(game.device.wp) game.Audio.enabled = false;
 
+        // Disable audio on Android 2.x.x
+        if(game.device.android2) game.Audio.enabled = false;
+
         // Disable audio on mobile, when offline
         // if(!navigator.onLine &amp;&amp; game.device.mobile) game.Audio.enabled = false;
 
@@ -269,9 +272,14 @@ game.Audio = game.Class.extend({
         // HTML5 Audio
         else {
             var audio = new Audio(realPath);
-            audio.loadCallback = this.loaded.bind(this, path, callback, audio);
-            audio.addEventListener(&#x27;canplaythrough&#x27;, audio.loadCallback, false);
-            audio.addEventListener(&#x27;error&#x27;, this.loadError.bind(this, path), false);
+            if(game.device.ie) {
+                // Sometimes IE fails to trigger events, when loading audio
+                this.loaded(path, callback, audio);
+            } else {
+                audio.loadCallback = this.loaded.bind(this, path, callback, audio);
+                audio.addEventListener(&#x27;canplaythrough&#x27;, audio.loadCallback, false);
+                audio.addEventListener(&#x27;error&#x27;, this.loadError.bind(this, path), false);
+            }
             audio.preload = &#x27;auto&#x27;;
             audio.load();
         }

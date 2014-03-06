@@ -18,7 +18,7 @@
                     <img class="logo" src="../../img/logo.png" title="Panda.js">
                 
                 
-                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.0</span>
+                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.3</span>
                 
                 
                     <p class="description">HTML5 game engine</p>
@@ -156,7 +156,7 @@
 **/
 /* jshint -W004 */
 game.module(
-	&#x27;engine.physics&#x27;
+    &#x27;engine.physics&#x27;
 )
 .body(function() { &#x27;use strict&#x27;;
 
@@ -205,10 +205,7 @@ game.World = game.Class.extend({
     addBody: function(body) {
         body.world = this;
         this.bodies.push(body);
-        if(typeof(body.collisionGroup) === &#x27;number&#x27;) {
-            this.collisionGroups[body.collisionGroup] = this.collisionGroups[body.collisionGroup] || [];
-            this.collisionGroups[body.collisionGroup].push(body);
-        }
+        if(typeof(body.collisionGroup) === &#x27;number&#x27;) this.addBodyCollision(body, body.collisionGroup);
         if(game.debugDraw &amp;&amp; body.shape) game.debugDraw.addBody(body);
     },
 
@@ -234,6 +231,18 @@ game.World = game.Class.extend({
     },
 
     /**
+        Add body to collision group.
+        @method addBodyCollision
+        @param {game.Body} body
+        @param {Number} group
+    **/
+    addBodyCollision: function(body, group) {
+        body.collisionGroup = group;
+        this.collisionGroups[body.collisionGroup] = this.collisionGroups[body.collisionGroup] || [];
+        this.collisionGroups[body.collisionGroup].push(body);
+    },
+
+    /**
         Remove collision group from world.
         @method removeCollisionGroup
         @param {Number} i
@@ -252,6 +261,7 @@ game.World = game.Class.extend({
 
         var i, b;
         for (i = this.collisionGroups[body.collideAgainst].length - 1; i &gt;= 0; i--) {
+            if(!this.collisionGroups[body.collideAgainst]) break;
             b = this.collisionGroups[body.collideAgainst][i];
             if(body !== b) this.solver.solve(body, b);
         }
@@ -508,9 +518,9 @@ game.Body = game.Class.extend({
     /**
         Body&#x27;s collision group.
         @property {Number} collisionGroup
-        @default 0
+        @default null
     **/
-    collisionGroup: 0,
+    collisionGroup: null,
     /**
         Group number that body collides against.
         @property {Number} collideAgainst
@@ -549,6 +559,26 @@ game.Body = game.Class.extend({
     **/
     collide: function() {
         return true;
+    },
+
+    /**
+        Set new collision group for body.
+        @method setCollisionGroup
+        @param {Number} group
+    **/
+    setCollisionGroup: function(group) {
+        if(!this.world) return;
+        if(typeof(this.collisionGroup) === &#x27;number&#x27;) this.world.removeBodyCollision(this, this.collisionGroup);
+        this.world.addBodyCollision(this, group);
+    },
+
+    /**
+        Set collision group that body will collide against.
+        @method setCollideAgainst
+        @param {Number} group
+    **/
+    setCollideAgainst: function(group) {
+        this.collideAgainst = group;
     },
 
     /**
