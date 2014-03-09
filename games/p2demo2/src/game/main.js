@@ -10,7 +10,6 @@ game.module(
 game.addAsset('media/bg.png', 'bg');
 game.addAsset('media/panda.png', 'panda');
 game.addAsset('media/acorn.png', 'acorn');
-game.addAsset('media/apple.png', 'apple');
 game.addAsset('media/star.png', 'star');
 
 // game.addAudio('media/audio/music.m4a', 'music');
