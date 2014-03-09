@@ -84,8 +84,8 @@ SceneGame = game.Scene.extend({
         wallBody.addShape(wallShape);
         this.world.addBody(wallBody);
 
-        var wallShape = new game.Rectangle(2, game.system.height * 2 / this.world.ratio);
-        var wallBody = new game.Body({
+        wallShape = new game.Rectangle(2, game.system.height * 2 / this.world.ratio);
+        wallBody = new game.Body({
             position: [game.system.width / this.world.ratio + 1, game.system.height / 2 / this.world.ratio]
         });
         wallBody.addShape(wallShape);
@@ -94,11 +94,7 @@ SceneGame = game.Scene.extend({
         this.addTimer(200, function() {
             var panda = new Panda(game.system.width / 2, game.system.height / 2);
             game.scene.addObject(panda);
-            game.scene.countText.setText(game.scene.objects.length.toString());
         }, true);
-
-        this.countText = new game.Text('0');
-        this.stage.addChild(this.countText);
     },
 
     mousedown: function(event) {
