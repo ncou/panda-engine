@@ -1,13 +1,13 @@
 {
     "name": "Panda.js",
     "description": "HTML5 game engine",
-    "version": "1.1.4",
+    "version": "1.1.6",
     "url": "https://www.pandajs.net",
     "logo": "../img/logo.png",
     "themedir": "friendly-theme",
     "options": {
-        "paths": "src/",
+        "paths": "src/engine/",
         "outdir": "docs",
-        "exclude": "renderer.js,proton.js"
+        "exclude": "renderer.js"
     }
 }

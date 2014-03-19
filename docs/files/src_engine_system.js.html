@@ -18,7 +18,7 @@
                     <img class="logo" src="../../img/logo.png" title="Panda.js">
                 
                 
-                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.4</span>
+                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.6</span>
                 
                 
                     <p class="description">HTML5 game engine</p>
@@ -216,6 +216,11 @@ game.System = game.Class.extend({
     running: false,
 
     init: function(width, height, canvasId) {
+        width = width || game.System.width;
+        height = height || game.System.height;
+        if(!width) width = (game.System.orientation === game.System.PORTRAIT ? 768 : 1024);
+        if(!height) height = (game.System.orientation === game.System.PORTRAIT ? 927 : 672);
+
         if(game.System.hires &amp;&amp; window.innerWidth &gt;= width * game.System.hiresFactor &amp;&amp; window.innerHeight &gt;= height * game.System.hiresFactor) {
             this.hires = true;
         }
@@ -243,7 +248,7 @@ game.System = game.Class.extend({
         else this.renderer = new PIXI.autoDetectRenderer(width, height, document.getElementById(this.canvasId), game.System.transparent, game.System.antialias);
         
         this.canvas = this.renderer.view;
-        this.stage = new PIXI.Stage(width,height);
+        this.stage = new PIXI.Stage();
 
         game.normalizeVendorAttribute(this.canvas, &#x27;requestFullscreen&#x27;);
         game.normalizeVendorAttribute(this.canvas, &#x27;requestFullScreen&#x27;);
@@ -364,6 +369,13 @@ game.System = game.Class.extend({
         if(game.System.center) this.canvas.style.margin = &#x27;auto&#x27;;
 
         if(game.device.mobile) {
+            // Mobile position
+            if(!game.System.center) {
+                this.canvas.style.position = &#x27;absolute&#x27;;
+                this.canvas.style.left = game.System.left + &#x27;px&#x27;;
+                this.canvas.style.top = game.System.top + &#x27;px&#x27;;
+            }
+
             document.addEventListener(&#x27;touchstart&#x27;, function(e) { e.preventDefault(); }, false);
 
             var div = document.createElement(&#x27;div&#x27;);
@@ -419,10 +431,13 @@ game.System = game.Class.extend({
             }
         }
 
-        if(game.System.resize) {
+        if(typeof(window.onorientationchange) !== &#x27;undefined&#x27;) {
+            window.onorientationchange = this.onResize.bind(this);            
+        } else {
             window.onresize = this.onResize.bind(this);
-            this.onResize();
         }
+
+        this.onResize();
     },
 
     checkOrientation: function() {
@@ -460,14 +475,17 @@ game.System = game.Class.extend({
     },
 
     onResize: function() {
+        // Mobile orientation
+        if(game.device.mobile) this.checkOrientation();
+
+        if(!game.System.resize) return;
+
         if(game.device.mobile) {
             // Mobile resize
-            this.checkOrientation();
-
             var width = window.innerWidth;
             var height = window.innerHeight;
             
-            // iPad iOS 7 landscape innerHeight bugfix
+            // iPad iOS 7.0 landscape innerHeight bugfix
             if(game.device.iPad &amp;&amp; height === 671 &amp;&amp; this.orientation === game.System.LANDSCAPE) height = 672;
 
             if(game.System.orientation === game.System.LANDSCAPE) {
@@ -591,13 +609,13 @@ game.System.backgroundColor = {
         @attribute backgroundColor.game
         @type {String}
     **/
-    game: null,
+    game: &#x27;#000000&#x27;,
     /**
         Background color for rotate screen on mobile.
         @attribute backgroundColor.rotate
         @type {String}
     **/
-    rotate: null
+    rotate: &#x27;#000000&#x27;
 };
 game.System.backgroundImage = {
     /**
@@ -624,7 +642,7 @@ game.System.rotateMsg = &#x27;Please rotate your device&#x27;;
     @attribute {URL} rotateImg
     @default null
 **/
-game.System.rotateImg = null;
+game.System.rotateImg = &#x27;media/rotate.png&#x27;;
 
 game.System.canvas = true;
 game.System.transparent = false;

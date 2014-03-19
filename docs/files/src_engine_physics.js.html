@@ -18,7 +18,7 @@
                     <img class="logo" src="../../img/logo.png" title="Panda.js">
                 
                 
-                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.4</span>
+                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.6</span>
                 
                 
                     <p class="description">HTML5 game engine</p>
@@ -217,7 +217,7 @@ game.World = game.Class.extend({
     removeBody: function(body) {
         if(!body.world) return;
         body.world = null;
-        this.removeBodyCollision(body);
+        if(body.collisionGroup) this.removeBodyCollision(body);
         this.bodies.erase(body);
     },
 
@@ -900,6 +900,16 @@ game.Vector = game.Class.extend({
         @return {Number}
     **/
     angle: function(vector) {
+        return Math.atan2(vector.y - this.y, vector.x - this.x);
+    },
+
+    /**
+        Get angle between two vectors from origin.
+        @method angleFromOrigin
+        @param {game.Vector} vector
+        @return {Number}
+    **/
+    angleFromOrigin: function(vector) {
         return Math.atan2(vector.y, vector.x) - Math.atan2(this.y, this.x);
     },
 
@@ -940,6 +950,7 @@ Object.defineProperty(game.Vector.prototype, &#x27;y&#x27;, {
 });
 
 });
+
     </pre>
 </div>
 

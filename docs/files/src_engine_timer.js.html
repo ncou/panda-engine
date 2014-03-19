@@ -18,7 +18,7 @@
                     <img class="logo" src="../../img/logo.png" title="Panda.js">
                 
                 
-                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.4</span>
+                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.6</span>
                 
                 
                     <p class="description">HTML5 game engine</p>
@@ -216,7 +216,7 @@ game.Timer = game.Class.extend({
     
     /**
         Get time since start.
-        @method delta
+        @method time
     **/
     time: function() {
         var time = (this.pauseTime || game.Timer.time) - this.base - this.target;
@@ -234,9 +234,9 @@ game.Timer = game.Class.extend({
 
     /**
         Resume paused timer.
-        @method unpause
+        @method resume
     **/
-    unpause: function() {
+    resume: function() {
         if(this.pauseTime) {
             this.base += game.Timer.time - this.pauseTime;
             this.pauseTime = 0;
@@ -257,6 +257,7 @@ game.Timer.update = function() {
 };
 
 });
+
     </pre>
 </div>
 

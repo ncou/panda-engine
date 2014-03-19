@@ -18,7 +18,7 @@
                     <img class="logo" src="../../img/logo.png" title="Panda.js">
                 
                 
-                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.4</span>
+                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.6</span>
                 
                 
                     <p class="description">HTML5 game engine</p>
@@ -231,7 +231,7 @@ game.Scene = game.Class.extend({
         }
         if(game.TweenEngine) game.TweenEngine.update();
         for (i = this.objects.length - 1; i &gt;= 0; i--) {
-            this.objects[i].update();
+            if(typeof(this.objects[i].update) === &#x27;function&#x27;) this.objects[i].update();
             if(this.objects[i]._remove) this.objects.splice(i, 1);
         }
     },
@@ -242,6 +242,7 @@ game.Scene = game.Class.extend({
         @param {Object} object
     **/
     addObject: function(object) {
+        if(object._remove) object._remove = false;    
         this.objects.push(object);
     },
 
@@ -399,6 +400,7 @@ game.Scene = game.Class.extend({
 });
 
 });
+
     </pre>
 </div>
 

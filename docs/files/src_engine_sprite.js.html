@@ -18,7 +18,7 @@
                     <img class="logo" src="../../img/logo.png" title="Panda.js">
                 
                 
-                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.4</span>
+                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.6</span>
                 
                 
                     <p class="description">HTML5 game engine</p>
@@ -252,13 +252,11 @@ game.Texture.fromFrame = PIXI.Texture.fromFrame;
 game.TilingSprite = PIXI.TilingSprite.extend({
     speed: {x: 0, y: 0},
 
-    init: function(x, y, path, width, height, settings) {
+    init: function(path, width, height, settings) {
+        path = game.assets[path] || path;
         var texture = path instanceof PIXI.Texture ? path : PIXI.Texture.fromFrame(this.path || path);
         this._super(texture, width || texture.width, height || texture.height);
         game.merge(this, settings);
-
-        this.position.x = x;
-        this.position.y = y;
     },
 
     update: function() {

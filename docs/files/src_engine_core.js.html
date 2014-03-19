@@ -18,7 +18,7 @@
                     <img class="logo" src="../../img/logo.png" title="Panda.js">
                 
                 
-                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.4</span>
+                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.6</span>
                 
                 
                     <p class="description">HTML5 game engine</p>
@@ -199,11 +199,7 @@ if(typeof(global) !== &#x27;undefined&#x27; &amp;&amp; global.game) return;
     @class Core
 **/
 var core = {
-    version: &#x27;1.1.4&#x27;,
-    /**
-        Panda config.
-        @property {Object} config
-    **/
+    version: &#x27;1.1.6&#x27;,
     config: window.pandaConfig || {},
     plugins: {},
     json: {},
@@ -398,6 +394,7 @@ var core = {
     **/
     addAsset: function(path, id) {
         id = id || path;
+        path = this.config.mediaFolder + path;
         this.assets[id] = path;
         if(this.resources.indexOf(path) === -1) this.resources.push(path);
         return path;
@@ -414,6 +411,7 @@ var core = {
     **/
     addAudio: function(path, id) {
         id = id || path;
+        path = this.config.mediaFolder + path;
         game.Audio.queue[path] = id;
         return id;
     },
@@ -473,6 +471,7 @@ var core = {
         this._current.body = body;
         this._current = null;
         if(this._initDOMReady) this._initDOMReady();
+        else if(this.loadFinished) this._loadModules();
     },
 
     /**
@@ -486,9 +485,6 @@ var core = {
     **/
     start: function(scene, width, height, loaderClass, canvasId) {
         if(this._loadQueue.length &gt; 0) throw(&#x27;Core not ready.&#x27;);
-        
-        width = width || (game.System.orientation === game.System.PORTRAIT ? 768 : 1024);
-        height = height || (game.System.orientation === game.System.PORTRAIT ? 927 : 672);
 
         this.system = new game.System(width, height, canvasId);
 
@@ -496,22 +492,21 @@ var core = {
             this.audio = new game.Audio();
             this.sound = this.audio; // Deprecated
         }
+
         if(game.Pool) this.pool = new game.Pool();
         if(game.DebugDraw &amp;&amp; game.DebugDraw.enabled) this.debugDraw = new game.DebugDraw();
-        if(game.Storage.id) this.config.storageId = game.Storage.id; // Deprecated
-        if(game.Storage &amp;&amp; this.config.storageId) this.storage = new game.Storage(this.config.storageId);
-        if(game.Analytics.id) this.config.analyticsId = game.Analytics.id; // Deprecated
-        if(game.Analytics &amp;&amp; this.config.analyticsId) this.analytics = new game.Analytics(this.config.analyticsId);
+        if(game.Storage &amp;&amp; game.Storage.id) this.storage = new game.Storage(game.Storage.id);
+        if(game.Analytics &amp;&amp; game.Analytics.id) this.analytics = new game.Analytics(game.Analytics.id);
 
         // Load plugins
         for(var name in this.plugins) {
-            this.plugins[name] = new (this.plugins[name]);
+            this.plugins[name] = new (this.plugins[name])();
         }
 
         this.ready = true;
         
         this.loader = loaderClass || game.Loader;
-        var loader = new this.loader(scene);
+        var loader = new this.loader(window[game.System.startScene] || game[game.System.startScene] || scene);
         loader.start();
     },
 
@@ -582,7 +577,7 @@ var core = {
                 if(game._loadQueue.length === 0) {
                     // Last module loaded, parse config
                     for(var c in window.pandaConfig) {
-                        var m = c.toLowerCase().ucfirst();
+                        var m = c.ucfirst();
                         if(game[m]) {
                             for(var o in window.pandaConfig[c]) {
                                 game[m][o] = window.pandaConfig[c][o];
@@ -614,6 +609,8 @@ var core = {
                 unresolved.push(game._loadQueue[i].name + &#x27; (requires: &#x27; + unloaded.join(&#x27;, &#x27;) + &#x27;)&#x27;);
             }
             throw(&#x27;Unresolved modules:\n&#x27; + unresolved.join(&#x27;\n&#x27;));
+        } else {
+            this.loadFinished = true;
         }
     },
     
@@ -621,6 +618,7 @@ var core = {
         if(document.location.href.match(/\?nocache/)) this.setNocache();
 
         this.config.sourceFolder = this.config.sourceFolder || &#x27;src&#x27;;
+        this.config.mediaFolder = this.config.mediaFolder ?  this.config.mediaFolder + &#x27;/&#x27; : &#x27;&#x27;;
 
         this.device.pixelRatio = window.devicePixelRatio || 1;
         this.device.screen = {
@@ -639,6 +637,7 @@ var core = {
         this.device.iOS5 = (this.device.iOS &amp;&amp; /OS 5/i.test(navigator.userAgent));
         this.device.iOS6 = (this.device.iOS &amp;&amp; /OS 6/i.test(navigator.userAgent));
         this.device.iOS7 = (this.device.iOS &amp;&amp; /OS 7/i.test(navigator.userAgent));
+        this.device.iOS71 = (this.device.iOS &amp;&amp; /OS 7_1/i.test(navigator.userAgent));
 
         this.device.android = /android/i.test(navigator.userAgent);
         this.device.android2 = /android 2/i.test(navigator.userAgent);
@@ -670,6 +669,13 @@ var core = {
 
         // Deprecated
         this.ua = this.device;
+
+        if(this.device.iOS71) {
+            var viewport = document.createElement(&#x27;meta&#x27;);
+            viewport.name = &#x27;viewport&#x27;;
+            viewport.content = &#x27;width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui&#x27;;
+            document.getElementsByTagName(&#x27;head&#x27;)[0].appendChild(viewport);
+        }
     },
 
     _DOMReady: function() {

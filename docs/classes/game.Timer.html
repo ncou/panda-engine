@@ -18,7 +18,7 @@
                     <img class="logo" src="../../img/logo.png" title="Panda.js">
                 
                 
-                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.4</span>
+                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.6</span>
                 
                 
                     <p class="description">HTML5 game engine</p>
@@ -262,13 +262,6 @@ if(timer.delta() &gt;= 0) {
                     
                 </li>
             
-                <li class="index-item method">
-                    <a href="#method_delta">delta</a>
-
-                    
-                    
-                </li>
-            
                 <li class="index-item method inherited">
                     <a href="#method_extend">extend</a>
 
@@ -298,6 +291,13 @@ if(timer.delta() &gt;= 0) {
                 </li>
             
                 <li class="index-item method">
+                    <a href="#method_resume">resume</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
                     <a href="#method_set">set</a>
 
                     
@@ -312,7 +312,7 @@ if(timer.delta() &gt;= 0) {
                 </li>
             
                 <li class="index-item method">
-                    <a href="#method_unpause">unpause</a>
+                    <a href="#method_time">time</a>
 
                     
                     
@@ -356,7 +356,7 @@ if(timer.delta() &gt;= 0) {
             
         
         
-        <a href="../files/src_engine_core.js.html#l695"><code>src&#x2F;engine&#x2F;core.js:695</code></a>
+        <a href="../files/src_engine_core.js.html#l701"><code>src&#x2F;engine&#x2F;core.js:701</code></a>
         
         </p>
 
@@ -403,7 +403,7 @@ if(timer.delta() &gt;= 0) {
             
         
         
-        <a href="../files/src_engine_core.js.html#l680"><code>src&#x2F;engine&#x2F;core.js:680</code></a>
+        <a href="../files/src_engine_core.js.html#l686"><code>src&#x2F;engine&#x2F;core.js:686</code></a>
         
         </p>
 
@@ -601,67 +601,6 @@ if(timer.delta() &gt;= 0) {
 </div>
 
         
-            <a name="method_delta" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>delta</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_engine_timer.js.html#l67"><code>src&#x2F;engine&#x2F;timer.js:67</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Get time since start.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
             <a name="method_extend" class="anchor-link"></a>
 <div class="method item inherited">
     <h3 class="name"><code>extend</code>
@@ -698,7 +637,7 @@ if(timer.delta() &gt;= 0) {
             
         
         
-        <a href="../files/src_engine_core.js.html#l640"><code>src&#x2F;engine&#x2F;core.js:640</code></a>
+        <a href="../files/src_engine_core.js.html#l646"><code>src&#x2F;engine&#x2F;core.js:646</code></a>
         
         </p>
 
@@ -767,7 +706,7 @@ if(timer.delta() &gt;= 0) {
             
         
         
-        <a href="../files/src_engine_core.js.html#l708"><code>src&#x2F;engine&#x2F;core.js:708</code></a>
+        <a href="../files/src_engine_core.js.html#l714"><code>src&#x2F;engine&#x2F;core.js:714</code></a>
         
         </p>
 
@@ -914,6 +853,67 @@ if(timer.delta() &gt;= 0) {
 </div>
 
         
+            <a name="method_resume" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>resume</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_engine_timer.js.html#l85"><code>src&#x2F;engine&#x2F;timer.js:85</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Resume paused timer.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
             <a name="method_set" class="anchor-link"></a>
 <div class="method item">
     <h3 class="name"><code>set</code>
@@ -1040,7 +1040,7 @@ if(timer.delta() &gt;= 0) {
             
         
         
-        <a href="../files/src_engine_core.js.html#l652"><code>src&#x2F;engine&#x2F;core.js:652</code></a>
+        <a href="../files/src_engine_core.js.html#l658"><code>src&#x2F;engine&#x2F;core.js:658</code></a>
         
         </p>
 
@@ -1066,9 +1066,9 @@ if(timer.delta() &gt;= 0) {
 </div>
 
         
-            <a name="method_unpause" class="anchor-link"></a>
+            <a name="method_time" class="anchor-link"></a>
 <div class="method item">
-    <h3 class="name"><code>unpause</code>
+    <h3 class="name"><code>time</code>
 
     
         <span class="paren">()</span>
@@ -1101,7 +1101,7 @@ if(timer.delta() &gt;= 0) {
             
         
         
-        <a href="../files/src_engine_timer.js.html#l85"><code>src&#x2F;engine&#x2F;timer.js:85</code></a>
+        <a href="../files/src_engine_timer.js.html#l67"><code>src&#x2F;engine&#x2F;timer.js:67</code></a>
         
         </p>
 
@@ -1114,7 +1114,7 @@ if(timer.delta() &gt;= 0) {
     <div class="extended-detail">
 
         <div class="description">
-            <p>Resume paused timer.</p>
+            <p>Get time since start.</p>
 
         </div>
 

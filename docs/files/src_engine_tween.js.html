@@ -18,7 +18,7 @@
                     <img class="logo" src="../../img/logo.png" title="Panda.js">
                 
                 
-                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.4</span>
+                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.1.6</span>
                 
                 
                     <p class="description">HTML5 game engine</p>
@@ -788,11 +788,10 @@ game.TweenGroup = game.Class.extend({
     /**
         Add tween to group.
         @method add
-        @param {Object} obj
+        @param {game.Tween} tween
         @return {game.Tween} tween
     **/
-    add: function(obj) {
-        var tween = new game.Tween(obj);
+    add: function(tween) {
         tween.onComplete(this.tweenComplete.bind(this));
         this.tweens.push(tween);
         return tween;
@@ -863,6 +862,7 @@ game.TweenGroup = game.Class.extend({
 });
 
 });
+
     </pre>
 </div>
 
