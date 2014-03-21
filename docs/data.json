@@ -154,7 +154,9 @@
             },
             "classes": {
                 "game.Sprite": 1,
-                "game.Container": 1
+                "game.Container": 1,
+                "game.TilingSprite": 1,
+                "game.Animation": 1
             },
             "fors": {},
             "namespaces": {
@@ -260,7 +262,7 @@
             },
             "tag": "module",
             "file": "src/engine/core.js",
-            "line": 642,
+            "line": 638,
             "description": "Panda.js core.",
             "requires": [
                 "loader",
@@ -359,7 +361,7 @@
             },
             "tag": "module",
             "file": "src/engine/physics.js",
-            "line": 539,
+            "line": 544,
             "description": "Physics engine."
         },
         "pool": {
@@ -397,7 +399,9 @@
             "submodules": {},
             "classes": {
                 "game.Sprite": 1,
-                "game.Container": 1
+                "game.Container": 1,
+                "game.TilingSprite": 1,
+                "game.Animation": 1
             },
             "fors": {},
             "namespaces": {
@@ -405,7 +409,7 @@
             },
             "tag": "module",
             "file": "src/engine/sprite.js",
-            "line": 71,
+            "line": 124,
             "description": "Game graphics."
         },
         "storage": {
@@ -525,7 +529,7 @@
             "module": "core",
             "namespace": "game",
             "file": "src/engine/core.js",
-            "line": 642
+            "line": 638
         },
         "game.DebugDraw": {
             "name": "game.DebugDraw",
@@ -701,7 +705,7 @@
             "module": "physics",
             "namespace": "game",
             "file": "src/engine/physics.js",
-            "line": 463,
+            "line": 468,
             "description": "Rectangle shape for physic body.",
             "extends": "game.Class",
             "is_constructor": 1,
@@ -729,7 +733,7 @@
             "module": "physics",
             "namespace": "game",
             "file": "src/engine/physics.js",
-            "line": 491,
+            "line": 496,
             "description": "Circle shape for physic body.",
             "extends": "game.Class",
             "is_constructor": 1,
@@ -752,7 +756,7 @@
             "module": "physics",
             "namespace": "game",
             "file": "src/engine/physics.js",
-            "line": 511,
+            "line": 516,
             "description": "Line shape for physic body.",
             "extends": "game.Class",
             "is_constructor": 1,
@@ -780,7 +784,7 @@
             "module": "physics",
             "namespace": "game",
             "file": "src/engine/physics.js",
-            "line": 539,
+            "line": 544,
             "description": "Vector class.",
             "extends": "game.Class",
             "is_constructor": 1,
@@ -839,8 +843,7 @@
             "namespace": "game",
             "file": "src/engine/sprite.js",
             "line": 15,
-            "description": "http://www.goodboydigital.com/pixijs/docs/classes/Sprite%E2%84%A2.html\n\n__Example__\n\n    var sprite = new game.Sprite(100, 200, 'media/logo.png');\n    game.scene.stage.addChild(sprite);",
-            "extends": "PIXI.Sprite",
+            "description": "Sprite.\nhttp://www.goodboydigital.com/pixijs/docs/classes/Sprite.html",
             "is_constructor": 1,
             "params": [
                 {
@@ -877,8 +880,68 @@
             "module": "sprite",
             "namespace": "game",
             "file": "src/engine/sprite.js",
-            "line": 71,
-            "description": "Sprite container."
+            "line": 66,
+            "description": "Sprite container.\nhttp://www.goodboydigital.com/pixijs/docs/classes/DisplayObjectContainer.html"
+        },
+        "game.TilingSprite": {
+            "name": "game.TilingSprite",
+            "shortname": "TilingSprite",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "sprite",
+            "namespace": "game",
+            "file": "src/engine/sprite.js",
+            "line": 98,
+            "description": "Tiling sprite.\nhttp://www.goodboydigital.com/pixijs/docs/classes/TilingSprite.html",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "texture",
+                    "description": "",
+                    "type": "String|game.Texture"
+                },
+                {
+                    "name": "width",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "height",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "settings",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ]
+        },
+        "game.Animation": {
+            "name": "game.Animation",
+            "shortname": "Animation",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "sprite",
+            "namespace": "game",
+            "file": "src/engine/sprite.js",
+            "line": 124,
+            "description": "Sprite animation.\nhttp://www.goodboydigital.com/pixijs/docs/classes/MovieClip.html",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "textures",
+                    "description": "",
+                    "type": "Array"
+                }
+            ]
         },
         "game.Storage": {
             "name": "game.Storage",
@@ -1457,7 +1520,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 283,
+            "line": 273,
             "description": "Define new module.",
             "itemtype": "method",
             "name": "module",
@@ -1483,7 +1546,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 303,
+            "line": 293,
             "description": "Require modules for module.",
             "itemtype": "method",
             "name": "require",
@@ -1500,7 +1563,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 316,
+            "line": 306,
             "description": "Define body for module.",
             "itemtype": "method",
             "name": "body",
@@ -1510,7 +1573,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 327,
+            "line": 317,
             "description": "Start the game engine.",
             "itemtype": "method",
             "name": "start",
@@ -1547,7 +1610,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 364,
+            "line": 350,
             "description": "Distance between two points.",
             "itemtype": "method",
             "name": "Math.distance",
@@ -1583,7 +1646,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 379,
+            "line": 365,
             "description": "Generate random number between `min` and `max`.",
             "itemtype": "method",
             "name": "Math.random",
@@ -1605,7 +1668,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 646,
+            "line": 642,
             "itemtype": "method",
             "name": "extend",
             "return": {
@@ -1618,7 +1681,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 658,
+            "line": 654,
             "description": "Call functions parent function.",
             "itemtype": "method",
             "name": "super",
@@ -1628,7 +1691,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 686,
+            "line": 682,
             "description": "If Class has `staticInit` function, it is called before `init` function.",
             "itemtype": "property",
             "name": "staticInit",
@@ -1639,7 +1702,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 701,
+            "line": 697,
             "description": "Automatically called, when creating new class.",
             "itemtype": "property",
             "name": "init",
@@ -1650,7 +1713,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 714,
+            "line": 710,
             "itemtype": "method",
             "name": "inject",
             "class": "game.Class",
@@ -1795,7 +1858,7 @@
         {
             "file": "src/engine/keyboard.js",
             "line": 18,
-            "description": "List of keys.\n\n    BACKSPACE\n    TAB\n    ENTER\n    SHIFT\n    CTRL\n    ALT\n    PAUSE\n    CAPS_LOCK\n    ESC\n    SPACE\n    PAGE_UP\n    PAGE_DOWN\n    END\n    HOME\n    LEFT\n    UP\n    RIGHT\n    DOWN\n    PRINT_SCREEN\n    INSERT\n    DELETE\n    ZERO\n    ONE\n    TWO\n    THREE\n    FOUR\n    FIVE\n    SIX\n    SEVEN\n    EIGHT\n    NINE\n    A\n    B\n    C\n    D\n    E\n    F\n    G\n    H\n    I\n    J\n    K\n    L\n    M\n    N\n    O\n    P\n    Q\n    R\n    S\n    T\n    U\n    V\n    W\n    X\n    Y\n    Z\n    NUM_ZERO\n    NUM_ONE\n    NUM_TWO\n    NUM_THREE\n    NUM_FOUR\n    NUM_FIVE\n    NUM_SIX\n    NUM_SEVEN\n    NUM_EIGHT\n    NUM_NINE\n    NUM_MULTIPLY\n    NUM_PLUS\n    NUM_MINUS\n    NUM_PERIOD\n    NUM_DIVISION\n    F1\n    F2\n    F3\n    F4\n    F5\n    F6\n    F7\n    F8\n    F9\n    F10\n    F11\n    F12",
+            "description": "List of keys.\n\n    BACKSPACE\n    TAB\n    ENTER\n    SHIFT\n    CTRL\n    ALT\n    PAUSE\n    CAPS_LOCK\n    ESC\n    SPACE\n    PAGE_UP\n    PAGE_DOWN\n    END\n    HOME\n    LEFT\n    UP\n    RIGHT\n    DOWN\n    PRINT_SCREEN\n    INSERT\n    DELETE\n    0\n    1\n    2\n    3\n    4\n    5\n    6\n    7\n    8\n    9\n    A\n    B\n    C\n    D\n    E\n    F\n    G\n    H\n    I\n    J\n    K\n    L\n    M\n    N\n    O\n    P\n    Q\n    R\n    S\n    T\n    U\n    V\n    W\n    X\n    Y\n    Z\n    NUM_ZERO\n    NUM_ONE\n    NUM_TWO\n    NUM_THREE\n    NUM_FOUR\n    NUM_FIVE\n    NUM_SIX\n    NUM_SEVEN\n    NUM_EIGHT\n    NUM_NINE\n    NUM_MULTIPLY\n    NUM_PLUS\n    NUM_MINUS\n    NUM_PERIOD\n    NUM_DIVISION\n    F1\n    F2\n    F3\n    F4\n    F5\n    F6\n    F7\n    F8\n    F9\n    F10\n    F11\n    F12",
             "itemtype": "property",
             "name": "keys",
             "type": "Array",
@@ -2976,9 +3039,16 @@
         {
             "file": "src/engine/physics.js",
             "line": 413,
-            "description": "Callback for collision.",
+            "description": "This is called, when body collides with another body.",
             "itemtype": "method",
             "name": "collide",
+            "params": [
+                {
+                    "name": "bodyB",
+                    "description": "",
+                    "type": "game.Body"
+                }
+            ],
             "return": {
                 "description": "Return true, to apply hit response.",
                 "type": "Boolean"
@@ -2989,7 +3059,24 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 426,
+            "line": 423,
+            "description": "This is called, when collision has been resolved.",
+            "itemtype": "method",
+            "name": "afterCollide",
+            "params": [
+                {
+                    "name": "bodyB",
+                    "description": "",
+                    "type": "game.Body"
+                }
+            ],
+            "class": "game.Body",
+            "module": "physics",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/physics.js",
+            "line": 431,
             "description": "Set new collision group for body.",
             "itemtype": "method",
             "name": "setCollisionGroup",
@@ -3006,7 +3093,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 437,
+            "line": 442,
             "description": "Set collision group that body will collide against.",
             "itemtype": "method",
             "name": "setCollideAgainst",
@@ -3023,7 +3110,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 446,
+            "line": 451,
             "description": "Update body's position and velocity.",
             "itemtype": "method",
             "name": "update",
@@ -3033,7 +3120,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 472,
+            "line": 477,
             "description": "Width of rectangle.",
             "itemtype": "property",
             "name": "width",
@@ -3045,7 +3132,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 478,
+            "line": 483,
             "description": "Height of rectangle.",
             "itemtype": "property",
             "name": "height",
@@ -3057,7 +3144,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 499,
+            "line": 504,
             "description": "Radius of circle.",
             "itemtype": "property",
             "name": "radius",
@@ -3069,7 +3156,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 520,
+            "line": 525,
             "description": "Length of line.",
             "itemtype": "property",
             "name": "length",
@@ -3081,7 +3168,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 526,
+            "line": 531,
             "description": "Rotation of line.",
             "itemtype": "property",
             "name": "rotation",
@@ -3093,7 +3180,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 556,
+            "line": 561,
             "description": "Set vector values.",
             "itemtype": "method",
             "name": "set",
@@ -3119,7 +3206,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 569,
+            "line": 574,
             "description": "Clone vector.",
             "itemtype": "method",
             "name": "clone",
@@ -3133,7 +3220,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 578,
+            "line": 583,
             "description": "Copy values from another vector.",
             "itemtype": "method",
             "name": "copy",
@@ -3154,7 +3241,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 590,
+            "line": 595,
             "description": "Add to vector values.",
             "itemtype": "method",
             "name": "add",
@@ -3181,7 +3268,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 603,
+            "line": 608,
             "description": "Subtract from vector values.",
             "itemtype": "method",
             "name": "subtract",
@@ -3208,7 +3295,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 616,
+            "line": 621,
             "description": "Multiply vector values.",
             "itemtype": "method",
             "name": "multiply",
@@ -3235,7 +3322,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 629,
+            "line": 634,
             "description": "Multiply and add vector values.",
             "itemtype": "method",
             "name": "multiplyAdd",
@@ -3262,7 +3349,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 642,
+            "line": 647,
             "description": "Divide vector values.",
             "itemtype": "method",
             "name": "divide",
@@ -3289,7 +3376,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 655,
+            "line": 660,
             "description": "Get distance of two vectors.",
             "itemtype": "method",
             "name": "distance",
@@ -3310,7 +3397,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 667,
+            "line": 672,
             "description": "Get length of vector.",
             "itemtype": "method",
             "name": "length",
@@ -3324,7 +3411,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 676,
+            "line": 681,
             "description": "Get dot of vector.",
             "itemtype": "method",
             "name": "dot",
@@ -3346,7 +3433,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 687,
+            "line": 692,
             "description": "Get normalized dot of vector.",
             "itemtype": "method",
             "name": "dotNormalized",
@@ -3368,7 +3455,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 706,
+            "line": 711,
             "description": "Rotate vector in radians.",
             "itemtype": "method",
             "name": "rotate",
@@ -3389,7 +3476,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 722,
+            "line": 727,
             "description": "Normalize vector.",
             "itemtype": "method",
             "name": "normalize",
@@ -3403,7 +3490,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 734,
+            "line": 739,
             "description": "Limit vector values.",
             "itemtype": "method",
             "name": "limit",
@@ -3424,7 +3511,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 746,
+            "line": 751,
             "description": "Get angle between two vectors.",
             "itemtype": "method",
             "name": "angle",
@@ -3445,7 +3532,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 756,
+            "line": 761,
             "description": "Get angle between two vectors from origin.",
             "itemtype": "method",
             "name": "angleFromOrigin",
@@ -3466,7 +3553,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 766,
+            "line": 771,
             "description": "Round vector values.",
             "itemtype": "method",
             "name": "round",
@@ -3480,7 +3567,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 778,
+            "line": 783,
             "itemtype": "property",
             "name": "x",
             "type": "Number",
@@ -3490,7 +3577,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 790,
+            "line": 795,
             "itemtype": "property",
             "name": "y",
             "type": "Number",
@@ -3623,7 +3710,29 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 64,
+            "line": 43,
+            "description": "Minimum distance to trigger swipe.",
+            "itemtype": "property",
+            "name": "swipeDist",
+            "type": "Number",
+            "class": "game.Scene",
+            "module": "scene",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/scene.js",
+            "line": 48,
+            "description": "Minimum time to trigger swipe.",
+            "itemtype": "property",
+            "name": "swipeTime",
+            "type": "Number",
+            "class": "game.Scene",
+            "module": "scene",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/scene.js",
+            "line": 74,
             "description": "This is called every frame.",
             "itemtype": "method",
             "name": "update",
@@ -3633,7 +3742,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 89,
+            "line": 99,
             "description": "Add object to scene, so it's `update()` function get's called every frame.",
             "itemtype": "method",
             "name": "addObject",
@@ -3650,7 +3759,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 99,
+            "line": 109,
             "description": "Remove object from scene.",
             "itemtype": "method",
             "name": "removeObject",
@@ -3667,7 +3776,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 108,
+            "line": 118,
             "description": "Add particle emitter to scene.",
             "itemtype": "method",
             "name": "addEmitter",
@@ -3684,7 +3793,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 117,
+            "line": 127,
             "description": "Remove emitter from scene.",
             "itemtype": "method",
             "name": "removeEmitter",
@@ -3701,7 +3810,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 126,
+            "line": 136,
             "description": "Add timer to game scene.",
             "itemtype": "method",
             "name": "addTimer",
@@ -3732,7 +3841,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 174,
+            "line": 184,
             "description": "Remove timer from scene.",
             "itemtype": "method",
             "name": "removeTimer",
@@ -3754,7 +3863,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 186,
+            "line": 196,
             "description": "Callback for mouse click and touch tap on the scene stage.",
             "itemtype": "method",
             "name": "click",
@@ -3771,7 +3880,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 193,
+            "line": 203,
             "description": "Callback for mousedown and touchstart on the scene stage.",
             "itemtype": "method",
             "name": "mousedown",
@@ -3788,7 +3897,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 200,
+            "line": 210,
             "description": "Callback for mouseup and touchend on the scene stage.",
             "itemtype": "method",
             "name": "mouseup",
@@ -3805,7 +3914,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 207,
+            "line": 217,
             "description": "Callback for mousemove and touchmove on the scene stage.",
             "itemtype": "method",
             "name": "mousemove",
@@ -3822,7 +3931,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 214,
+            "line": 224,
             "description": "Callback for mouseout on the scene stage.",
             "itemtype": "method",
             "name": "mouseout",
@@ -3839,7 +3948,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 221,
+            "line": 231,
             "description": "Callback for keydown.",
             "itemtype": "method",
             "name": "keydown",
@@ -3849,7 +3958,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 227,
+            "line": 237,
             "description": "Callback for keyup.",
             "itemtype": "method",
             "name": "keyup",
@@ -3858,8 +3967,25 @@
             "namespace": "game"
         },
         {
+            "file": "src/engine/scene.js",
+            "line": 267,
+            "description": "Callback for swipe.",
+            "itemtype": "method",
+            "name": "swipe",
+            "params": [
+                {
+                    "name": "direction",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "game.Scene",
+            "module": "scene",
+            "namespace": "game"
+        },
+        {
             "file": "src/engine/sprite.js",
-            "line": 57,
+            "line": 52,
             "description": "Remove sprite from it's parent.",
             "itemtype": "method",
             "name": "remove",
@@ -3869,7 +3995,7 @@
         },
         {
             "file": "src/engine/sprite.js",
-            "line": 76,
+            "line": 72,
             "description": "Remove object from container.",
             "itemtype": "method",
             "name": "remove",
@@ -3879,7 +4005,7 @@
         },
         {
             "file": "src/engine/sprite.js",
-            "line": 84,
+            "line": 80,
             "description": "Add object to container.",
             "itemtype": "method",
             "name": "addChild",

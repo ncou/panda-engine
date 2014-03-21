@@ -49,6 +49,8 @@
             
                 <li><a class="type" href="../classes/game.Analytics.html">game.Analytics</a></li>
             
+                <li><a class="type" href="../classes/game.Animation.html">game.Animation</a></li>
+            
                 <li><a class="type" href="../classes/game.Audio.html">game.Audio</a></li>
             
                 <li><a class="type" href="../classes/game.Body.html">game.Body</a></li>
@@ -88,6 +90,8 @@
                 <li><a class="type" href="../classes/game.Storage.html">game.Storage</a></li>
             
                 <li><a class="type" href="../classes/game.System.html">game.System</a></li>
+            
+                <li><a class="type" href="../classes/game.TilingSprite.html">game.TilingSprite</a></li>
             
                 <li><a class="type" href="../classes/game.Timer.html">game.Timer</a></li>
             
@@ -199,7 +203,7 @@ if(typeof(global) !== &#x27;undefined&#x27; &amp;&amp; global.game) return;
     @class Core
 **/
 var core = {
-    version: &#x27;1.1.6&#x27;,
+    version: &#x27;1.1.7&#x27;,
     config: window.pandaConfig || {},
     plugins: {},
     json: {},
@@ -415,16 +419,6 @@ var core = {
         game.Audio.queue[path] = id;
         return id;
     },
-
-    // Deprecated
-    addSound: function(path, id) {
-        this.addAudio(path, id);
-    },
-    
-    // Deprecated
-    addMusic: function(path, id) {
-        this.addAudio(path, id);
-    },
     
     setNocache: function() {
         this.nocache = &#x27;?&#x27; + Date.now();
@@ -488,11 +482,7 @@ var core = {
 
         this.system = new game.System(width, height, canvasId);
 
-        if(game.Audio) {
-            this.audio = new game.Audio();
-            this.sound = this.audio; // Deprecated
-        }
-
+        if(game.Audio) this.audio = new game.Audio();
         if(game.Pool) this.pool = new game.Pool();
         if(game.DebugDraw &amp;&amp; game.DebugDraw.enabled) this.debugDraw = new game.DebugDraw();
         if(game.Storage &amp;&amp; game.Storage.id) this.storage = new game.Storage(game.Storage.id);
@@ -617,9 +607,6 @@ var core = {
     _boot: function() {
         if(document.location.href.match(/\?nocache/)) this.setNocache();
 
-        this.config.sourceFolder = this.config.sourceFolder || &#x27;src&#x27;;
-        this.config.mediaFolder = this.config.mediaFolder ?  this.config.mediaFolder + &#x27;/&#x27; : &#x27;&#x27;;
-
         this.device.pixelRatio = window.devicePixelRatio || 1;
         this.device.screen = {
             width: window.screen.availWidth * this.device.pixelRatio,
@@ -666,16 +653,29 @@ var core = {
                 };
             }
         }
-
-        // Deprecated
-        this.ua = this.device;
-
-        if(this.device.iOS71) {
-            var viewport = document.createElement(&#x27;meta&#x27;);
-            viewport.name = &#x27;viewport&#x27;;
-            viewport.content = &#x27;width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui&#x27;;
-            document.getElementsByTagName(&#x27;head&#x27;)[0].appendChild(viewport);
+        
+        var i;
+        if(this.device.iOS &amp;&amp; this.config.iOS) {
+            for(i in this.config.iOS) this.config[i] = this.config.iOS[i];
         }
+
+        if(this.device.android &amp;&amp; this.config.android) {
+            for(i in this.config.android) this.config[i] = this.config.android[i];
+        }
+
+        if(this.device.wp &amp;&amp; this.config.wp) {
+            for(i in this.config.wp) this.config[i] = this.config.wp[i];
+        }
+
+        this.config.sourceFolder = this.config.sourceFolder || &#x27;src&#x27;;
+        this.config.mediaFolder = this.config.mediaFolder ?  this.config.mediaFolder + &#x27;/&#x27; : &#x27;&#x27;;
+
+        var viewport = document.createElement(&#x27;meta&#x27;);
+        viewport.name = &#x27;viewport&#x27;;
+        var content = &#x27;width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no&#x27;;
+        if(this.device.iOS71) content += &#x27;,minimal-ui&#x27;;
+        viewport.content = content;
+        document.getElementsByTagName(&#x27;head&#x27;)[0].appendChild(viewport);
     },
 
     _DOMReady: function() {

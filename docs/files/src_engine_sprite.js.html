@@ -49,6 +49,8 @@
             
                 <li><a class="type" href="../classes/game.Analytics.html">game.Analytics</a></li>
             
+                <li><a class="type" href="../classes/game.Animation.html">game.Animation</a></li>
+            
                 <li><a class="type" href="../classes/game.Audio.html">game.Audio</a></li>
             
                 <li><a class="type" href="../classes/game.Body.html">game.Body</a></li>
@@ -88,6 +90,8 @@
                 <li><a class="type" href="../classes/game.Storage.html">game.Storage</a></li>
             
                 <li><a class="type" href="../classes/game.System.html">game.System</a></li>
+            
+                <li><a class="type" href="../classes/game.TilingSprite.html">game.TilingSprite</a></li>
             
                 <li><a class="type" href="../classes/game.Timer.html">game.Timer</a></li>
             
@@ -163,14 +167,9 @@ game.module(
 .body(function() {
 
 /**
-    http://www.goodboydigital.com/pixijs/docs/classes/Sprite%E2%84%A2.html
-
-    __Example__
-
-        var sprite = new game.Sprite(100, 200, &#x27;media/logo.png&#x27;);
-        game.scene.stage.addChild(sprite);
+    Sprite.
+    http://www.goodboydigital.com/pixijs/docs/classes/Sprite.html
     @class Sprite
-    @extends PIXI.Sprite
     @constructor
     @param {Number} x
     @param {Number} y
@@ -220,6 +219,7 @@ game.Sprite = PIXI.Sprite.extend({
 
 /**
     Sprite container.
+    http://www.goodboydigital.com/pixijs/docs/classes/DisplayObjectContainer.html
     @class Container
 **/
 game.Container = PIXI.DisplayObjectContainer.extend({
@@ -249,6 +249,16 @@ game.Texture.fromImage = function(id, crossorigin) {
 game.Texture.fromCanvas = PIXI.Texture.fromCanvas;
 game.Texture.fromFrame = PIXI.Texture.fromFrame;
 
+/**
+    Tiling sprite.
+    http://www.goodboydigital.com/pixijs/docs/classes/TilingSprite.html
+    @class TilingSprite
+    @constructor
+    @param {String|game.Texture} texture
+    @param {Number} width
+    @param {Number} height
+    @param {Object} [settings]
+**/
 game.TilingSprite = PIXI.TilingSprite.extend({
     speed: {x: 0, y: 0},
 
@@ -265,6 +275,13 @@ game.TilingSprite = PIXI.TilingSprite.extend({
     }
 });
 
+/**
+    Sprite animation.
+    http://www.goodboydigital.com/pixijs/docs/classes/MovieClip.html
+    @class Animation
+    @constructor
+    @param {Array} textures
+**/
 game.Animation = PIXI.MovieClip.extend({
     init: function() {
         var frames = Array.prototype.slice.call(arguments);

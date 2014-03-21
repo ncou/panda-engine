@@ -2,6 +2,7 @@ YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
     "classes": [
         "game.Analytics",
+        "game.Animation",
         "game.Audio",
         "game.Body",
         "game.Circle",
@@ -22,6 +23,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "game.Sprite",
         "game.Storage",
         "game.System",
+        "game.TilingSprite",
         "game.Timer",
         "game.Tween",
         "game.TweenEngine",
