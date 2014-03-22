@@ -12,7 +12,7 @@ github.json('GET', '/users/:user/gists', {user: 'ekelokorpi'}, function (err, re
     for (var i = 0; i < gists.length; i++) {
         if(!gists[i].description) continue;
 
-        data += '<p><a href="/snippets/' + gists[i].id + '.html" class="box">' + gists[i].description + '</a></p>\n';
+        data += '<a href="/snippets/' + gists[i].id + '.html" class="box">' + gists[i].description + '</a>\n';
 
         gistFile = '---\nlayout: default\ntitle: Code snippet\nheader: ' + gists[i].description + '\n---\n<script src="' + gists[i].html_url + '.js"></script>';
 
