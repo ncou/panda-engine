@@ -1,6 +1,6 @@
 var github = require('github-basic');
 var fs = require('fs');
-var categories = ['Sprite', 'Config', 'Core', 'Other'];
+var categories = ['Sprite', 'Config', 'Core', 'Debug', 'Other'];
 
 var categoryData = {};
 for (var i = 0; i < categories.length; i++) {
@@ -45,6 +45,8 @@ github.json('GET', '/users/:user/gists', {user: 'ekelokorpi'}, function (err, re
     }
 
     for(var name in categoryData) {
+        if(categoryData[name].length == 0) continue;
+        
         data += '<h6>' + name + '</h6>';
         for (var i = 0; i < categoryData[name].length; i++) {
             data += '<a href="/snippets/' + categoryData[name][i][0] + '.html" class="box">' + categoryData[name][i][1] + '</a>\n';
