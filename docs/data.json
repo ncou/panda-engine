@@ -231,8 +231,7 @@
             },
             "tag": "module",
             "file": "src/engine/analytics.js",
-            "line": 12,
-            "description": "Google Analytics."
+            "line": 10
         },
         "audio": {
             "name": "audio",
@@ -246,8 +245,7 @@
             },
             "tag": "module",
             "file": "src/engine/audio.js",
-            "line": 12,
-            "description": "Audio manager."
+            "line": 10
         },
         "core": {
             "name": "core",
@@ -262,7 +260,7 @@
             },
             "tag": "module",
             "file": "src/engine/core.js",
-            "line": 629,
+            "line": 599,
             "requires": [
                 "loader",
                 "timer",
@@ -290,8 +288,7 @@
             },
             "tag": "module",
             "file": "src/engine/debug.js",
-            "line": 164,
-            "description": "Debugging."
+            "line": 162
         },
         "keyboard": {
             "name": "keyboard",
@@ -486,7 +483,7 @@
             "module": "analytics",
             "namespace": "game",
             "file": "src/engine/analytics.js",
-            "line": 12
+            "line": 10
         },
         "game.Audio": {
             "name": "game.Audio",
@@ -499,8 +496,7 @@
             "module": "audio",
             "namespace": "game",
             "file": "src/engine/audio.js",
-            "line": 12,
-            "description": "Audio manager."
+            "line": 10
         },
         "game.Core": {
             "name": "game.Core",
@@ -526,7 +522,7 @@
             "module": "core",
             "namespace": "game",
             "file": "src/engine/core.js",
-            "line": 629
+            "line": 599
         },
         "game.DebugDraw": {
             "name": "game.DebugDraw",
@@ -539,7 +535,7 @@
             "module": "debug",
             "namespace": "game",
             "file": "src/engine/debug.js",
-            "line": 12,
+            "line": 10,
             "description": "DebugDraw will draw all interactive sprite hit areas and physic shapes.\nAutomatically enabled, if URL contains `?debugdraw`."
         },
         "game.Debug": {
@@ -553,7 +549,8 @@
             "module": "debug",
             "namespace": "game",
             "file": "src/engine/debug.js",
-            "line": 164,
+            "line": 162,
+            "description": "Show FPS.\nAutomatically enabled, if URL contains `?debug`.",
             "extends": "game.Class"
         },
         "game.Keyboard": {
@@ -789,12 +786,14 @@
                 {
                     "name": "x",
                     "description": "",
-                    "type": "Number"
+                    "type": "Number",
+                    "optional": true
                 },
                 {
                     "name": "y",
                     "description": "",
-                    "type": "Number"
+                    "type": "Number",
+                    "optional": true
                 }
             ]
         },
@@ -1056,7 +1055,7 @@
     "classitems": [
         {
             "file": "src/engine/analytics.js",
-            "line": 31,
+            "line": 29,
             "description": "Send event to analytics.",
             "itemtype": "method",
             "name": "event",
@@ -1078,7 +1077,7 @@
         },
         {
             "file": "src/engine/analytics.js",
-            "line": 43,
+            "line": 41,
             "itemtype": "attribute",
             "name": "id",
             "type": "String",
@@ -1088,7 +1087,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 17,
+            "line": 14,
             "description": "Supported audio format extension.",
             "itemtype": "property",
             "name": "format",
@@ -1099,7 +1098,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 25,
+            "line": 19,
             "description": "Is sound muted.",
             "itemtype": "property",
             "name": "soundMuted",
@@ -1111,7 +1110,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 31,
+            "line": 25,
             "description": "Main sound volume.",
             "itemtype": "property",
             "name": "soundVolume",
@@ -1123,7 +1122,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 37,
+            "line": 31,
             "description": "Id of current music.",
             "itemtype": "property",
             "name": "currentMusic",
@@ -1134,7 +1133,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 42,
+            "line": 36,
             "description": "Is music muted.",
             "itemtype": "property",
             "name": "musicMuted",
@@ -1146,7 +1145,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 48,
+            "line": 42,
             "description": "Main music volume.",
             "itemtype": "property",
             "name": "musicVolume",
@@ -1158,7 +1157,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 275,
+            "line": 272,
             "itemtype": "method",
             "name": "playSound",
             "params": [
@@ -1198,7 +1197,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 291,
+            "line": 288,
             "itemtype": "method",
             "name": "stopSound",
             "params": [
@@ -1214,7 +1213,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 309,
+            "line": 306,
             "itemtype": "method",
             "name": "pauseSound",
             "params": [
@@ -1231,7 +1230,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 325,
+            "line": 322,
             "itemtype": "method",
             "name": "resumeSound",
             "params": [
@@ -1248,7 +1247,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 341,
+            "line": 338,
             "itemtype": "method",
             "name": "playMusic",
             "params": [
@@ -1269,7 +1268,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 358,
+            "line": 355,
             "itemtype": "method",
             "name": "stopMusic",
             "class": "game.Audio",
@@ -1278,7 +1277,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 368,
+            "line": 365,
             "itemtype": "method",
             "name": "pauseMusic",
             "class": "game.Audio",
@@ -1287,7 +1286,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 377,
+            "line": 374,
             "itemtype": "method",
             "name": "resumeMusic",
             "class": "game.Audio",
@@ -1296,7 +1295,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 394,
+            "line": 391,
             "description": "Pause all sounds and music",
             "itemtype": "method",
             "name": "pauseAll",
@@ -1306,7 +1305,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 404,
+            "line": 401,
             "description": "Resume all sounds and music",
             "itemtype": "method",
             "name": "resumeAll",
@@ -1316,7 +1315,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 419,
+            "line": 416,
             "description": "Is audio enabled.",
             "itemtype": "attribute",
             "name": "enabled",
@@ -1328,7 +1327,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 426,
+            "line": 423,
             "description": "Is Web Audio enabled.",
             "itemtype": "attribute",
             "name": "webAudio",
@@ -1340,7 +1339,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 433,
+            "line": 430,
             "description": "List of supported audio formats.",
             "itemtype": "attribute",
             "name": "formats",
@@ -1440,20 +1439,17 @@
         {
             "file": "src/engine/core.js",
             "line": 76,
-            "description": "Device / browser detection.\n\n    game.device.iPhone\n    game.device.iPhone4\n    game.device.iPhone5\n    game.device.iPad\n    game.device.iPadRetina\n    game.device.iOS\n    game.device.iOS5\n    game.device.iOS6\n    game.device.iOS7\n    game.device.android\n    game.device.android2\n    game.device.wp7\n    game.device.wp8\n    game.device.wpApp\n    game.device.wp\n    game.device.ie9\n    game.device.ie10\n    game.device.ie11\n    game.device.ie\n    game.device.opera\n    game.device.crosswalk\n    game.device.cocoonJS\n    game.device.mobile",
+            "description": "Device / browser detection.",
             "itemtype": "property",
             "name": "device",
             "type": "Object",
-            "example": [
-                "\n    if(game.device.mobile) return;"
-            ],
             "class": "game.Core",
             "module": "core",
             "namespace": "game"
         },
         {
             "file": "src/engine/core.js",
-            "line": 196,
+            "line": 170,
             "description": "Request fullscreen mode.",
             "itemtype": "method",
             "name": "fullscreen",
@@ -1463,7 +1459,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 205,
+            "line": 179,
             "itemtype": "method",
             "name": "fullscreenSupport",
             "return": {
@@ -1476,7 +1472,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 213,
+            "line": 187,
             "description": "Add asset to loader.",
             "itemtype": "method",
             "name": "addAsset",
@@ -1505,7 +1501,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 230,
+            "line": 204,
             "description": "Add audio to loader.",
             "itemtype": "method",
             "name": "addAudio",
@@ -1535,7 +1531,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 250,
+            "line": 224,
             "description": "Define new module.",
             "itemtype": "method",
             "name": "module",
@@ -1552,16 +1548,13 @@
                     "optional": true
                 }
             ],
-            "example": [
-                "\n    game.module('game.mymodule').body(function() {\n        // body of new module\n    });"
-            ],
             "class": "game.Core",
             "module": "core",
             "namespace": "game"
         },
         {
             "file": "src/engine/core.js",
-            "line": 271,
+            "line": 241,
             "description": "Require modules for module.",
             "itemtype": "method",
             "name": "require",
@@ -1578,7 +1571,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 284,
+            "line": 254,
             "description": "Define body for module.",
             "itemtype": "method",
             "name": "body",
@@ -1588,7 +1581,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 295,
+            "line": 265,
             "description": "Start the game engine.",
             "itemtype": "method",
             "name": "start",
@@ -1625,7 +1618,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 329,
+            "line": 299,
             "description": "Distance between two points.",
             "itemtype": "method",
             "name": "Math.distance",
@@ -1661,7 +1654,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 344,
+            "line": 314,
             "description": "Generate random number between `min` and `max`.",
             "itemtype": "method",
             "name": "Math.random",
@@ -1683,7 +1676,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 633,
+            "line": 603,
             "itemtype": "method",
             "name": "extend",
             "return": {
@@ -1696,7 +1689,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 645,
+            "line": 615,
             "description": "Call functions parent function.",
             "itemtype": "method",
             "name": "_super",
@@ -1706,7 +1699,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 673,
+            "line": 643,
             "description": "This method is called before init.",
             "itemtype": "method",
             "name": "staticInit",
@@ -1716,7 +1709,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 688,
+            "line": 658,
             "description": "This method is called, when you create new instance of the class.",
             "itemtype": "method",
             "name": "init",
@@ -1726,7 +1719,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 701,
+            "line": 671,
             "itemtype": "method",
             "name": "inject",
             "class": "game.Class",
@@ -1735,7 +1728,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 18,
+            "line": 16,
             "itemtype": "property",
             "name": "container",
             "type": "game.Container",
@@ -1745,7 +1738,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 27,
+            "line": 25,
             "description": "Remove all sprites from DebugDraw.",
             "itemtype": "method",
             "name": "reset",
@@ -1755,7 +1748,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 38,
+            "line": 36,
             "description": "Add sprite to DebugDraw.",
             "itemtype": "method",
             "name": "addSprite",
@@ -1772,7 +1765,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 61,
+            "line": 59,
             "description": "Add body to DebugDraw.",
             "itemtype": "method",
             "name": "addBody",
@@ -1789,7 +1782,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 93,
+            "line": 91,
             "description": "Update DebugDraw sprites.",
             "itemtype": "method",
             "name": "update",
@@ -1799,7 +1792,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 134,
+            "line": 132,
             "description": "Color of DebugDraw sprites.",
             "itemtype": "attribute",
             "name": "spriteColor",
@@ -1811,7 +1804,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 140,
+            "line": 138,
             "description": "Alpha of DebugDraw sprites.",
             "itemtype": "attribute",
             "name": "spriteAlpha",
@@ -1823,7 +1816,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 146,
+            "line": 144,
             "description": "Color of DebugDraw shapes.",
             "itemtype": "attribute",
             "name": "shapeColor",
@@ -1835,7 +1828,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 152,
+            "line": 150,
             "description": "Alpha of DebugDraw shapes.",
             "itemtype": "attribute",
             "name": "shapeAlpha",
@@ -1847,7 +1840,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 158,
+            "line": 156,
             "description": "Enable DebugDraw.",
             "itemtype": "attribute",
             "name": "enabled",
@@ -1863,7 +1856,42 @@
             "itemtype": "attribute",
             "name": "enabled",
             "type": "Boolean",
-            "default": "false",
+            "class": "game.Debug",
+            "module": "debug",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/debug.js",
+            "line": 198,
+            "description": "How often update fps.",
+            "itemtype": "attribute",
+            "name": "frequence",
+            "type": "Number",
+            "default": "1000",
+            "class": "game.Debug",
+            "module": "debug",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/debug.js",
+            "line": 205,
+            "description": "Color of fps text.",
+            "itemtype": "attribute",
+            "name": "color",
+            "type": "String",
+            "default": "white",
+            "class": "game.Debug",
+            "module": "debug",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/debug.js",
+            "line": 212,
+            "description": "Position of fps text.",
+            "itemtype": "attribute",
+            "name": "position",
+            "type": "Object",
+            "default": "10,10",
             "class": "game.Debug",
             "module": "debug",
             "namespace": "game"
@@ -3574,26 +3602,6 @@
                 "description": "",
                 "type": "game.Vector"
             },
-            "class": "game.Vector",
-            "module": "physics",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/physics.js",
-            "line": 783,
-            "itemtype": "property",
-            "name": "x",
-            "type": "Number",
-            "class": "game.Vector",
-            "module": "physics",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/physics.js",
-            "line": 795,
-            "itemtype": "property",
-            "name": "y",
-            "type": "Number",
             "class": "game.Vector",
             "module": "physics",
             "namespace": "game"

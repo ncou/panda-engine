@@ -51,13 +51,11 @@ YUI.add("yuidoc-meta", function(Y) {
     "allModules": [
         {
             "displayName": "analytics",
-            "name": "analytics",
-            "description": "Google Analytics."
+            "name": "analytics"
         },
         {
             "displayName": "audio",
-            "name": "audio",
-            "description": "Audio manager."
+            "name": "audio"
         },
         {
             "displayName": "core",
@@ -65,8 +63,7 @@ YUI.add("yuidoc-meta", function(Y) {
         },
         {
             "displayName": "debug",
-            "name": "debug",
-            "description": "Debugging."
+            "name": "debug"
         },
         {
             "displayName": "keyboard",
