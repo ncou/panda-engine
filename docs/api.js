@@ -61,8 +61,7 @@ YUI.add("yuidoc-meta", function(Y) {
         },
         {
             "displayName": "core",
-            "name": "core",
-            "description": "Panda.js core."
+            "name": "core"
         },
         {
             "displayName": "debug",

@@ -262,13 +262,12 @@
             },
             "tag": "module",
             "file": "src/engine/core.js",
-            "line": 638,
-            "description": "Panda.js core.",
+            "line": 629,
             "requires": [
                 "loader",
                 "timer",
                 "system",
-                "sound",
+                "audio",
                 "sprite",
                 "debug",
                 "storage",
@@ -291,7 +290,7 @@
             },
             "tag": "module",
             "file": "src/engine/debug.js",
-            "line": 153,
+            "line": 164,
             "description": "Debugging."
         },
         "keyboard": {
@@ -409,7 +408,7 @@
             },
             "tag": "module",
             "file": "src/engine/sprite.js",
-            "line": 124,
+            "line": 128,
             "description": "Game graphics."
         },
         "storage": {
@@ -471,7 +470,7 @@
             },
             "tag": "module",
             "file": "src/engine/tween.js",
-            "line": 623,
+            "line": 595,
             "description": "Tween engine."
         }
     },
@@ -487,8 +486,7 @@
             "module": "analytics",
             "namespace": "game",
             "file": "src/engine/analytics.js",
-            "line": 12,
-            "description": "Example: http://www.pandajs.net/tutorials/example-2/"
+            "line": 12
         },
         "game.Audio": {
             "name": "game.Audio",
@@ -515,8 +513,7 @@
             "module": "core",
             "namespace": "game",
             "file": "src/engine/core.js",
-            "line": 47,
-            "description": "Instance automatically created at `game`"
+            "line": 25
         },
         "game.Class": {
             "name": "game.Class",
@@ -529,7 +526,7 @@
             "module": "core",
             "namespace": "game",
             "file": "src/engine/core.js",
-            "line": 638
+            "line": 629
         },
         "game.DebugDraw": {
             "name": "game.DebugDraw",
@@ -556,7 +553,7 @@
             "module": "debug",
             "namespace": "game",
             "file": "src/engine/debug.js",
-            "line": 153,
+            "line": 164,
             "extends": "game.Class"
         },
         "game.Keyboard": {
@@ -880,7 +877,7 @@
             "module": "sprite",
             "namespace": "game",
             "file": "src/engine/sprite.js",
-            "line": 66,
+            "line": 68,
             "description": "Sprite container.\nhttp://www.goodboydigital.com/pixijs/docs/classes/DisplayObjectContainer.html"
         },
         "game.TilingSprite": {
@@ -894,7 +891,7 @@
             "module": "sprite",
             "namespace": "game",
             "file": "src/engine/sprite.js",
-            "line": 98,
+            "line": 102,
             "description": "Tiling sprite.\nhttp://www.goodboydigital.com/pixijs/docs/classes/TilingSprite.html",
             "is_constructor": 1,
             "params": [
@@ -932,7 +929,7 @@
             "module": "sprite",
             "namespace": "game",
             "file": "src/engine/sprite.js",
-            "line": 124,
+            "line": 128,
             "description": "Sprite animation.\nhttp://www.goodboydigital.com/pixijs/docs/classes/MovieClip.html",
             "is_constructor": 1,
             "params": [
@@ -1007,8 +1004,8 @@
             "module": "tween",
             "namespace": "game",
             "file": "src/engine/tween.js",
-            "line": 33,
-            "description": "Tween engine."
+            "line": 14,
+            "extends": "game.Class"
         },
         "game.Tween": {
             "name": "game.Tween",
@@ -1021,8 +1018,16 @@
             "module": "tween",
             "namespace": "game",
             "file": "src/engine/tween.js",
-            "line": 108,
-            "description": "Tween."
+            "line": 82,
+            "extends": "game.Class",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "object",
+                    "description": "",
+                    "type": "Object"
+                }
+            ]
         },
         "game.TweenGroup": {
             "name": "game.TweenGroup",
@@ -1035,7 +1040,7 @@
             "module": "tween",
             "namespace": "game",
             "file": "src/engine/tween.js",
-            "line": 623,
+            "line": 595,
             "extends": "game.Class",
             "is_constructor": 1,
             "params": [
@@ -1051,7 +1056,7 @@
     "classitems": [
         {
             "file": "src/engine/analytics.js",
-            "line": 33,
+            "line": 31,
             "description": "Send event to analytics.",
             "itemtype": "method",
             "name": "event",
@@ -1067,6 +1072,16 @@
                     "type": "String"
                 }
             ],
+            "class": "game.Analytics",
+            "module": "analytics",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/analytics.js",
+            "line": 43,
+            "itemtype": "attribute",
+            "name": "id",
+            "type": "String",
             "class": "game.Analytics",
             "module": "analytics",
             "namespace": "game"
@@ -1336,7 +1351,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 59,
+            "line": 36,
             "description": "Scale factor for Retina and HiRes mode.",
             "itemtype": "property",
             "name": "scale",
@@ -1347,7 +1362,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 64,
+            "line": 41,
             "description": "Instance of current {{#crossLink \"game.Scene\"}}{{/crossLink}}.",
             "itemtype": "property",
             "name": "scene",
@@ -1358,7 +1373,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 69,
+            "line": 46,
             "description": "Instance of {{#crossLink \"game.Debug\"}}{{/crossLink}}.",
             "itemtype": "property",
             "name": "debug",
@@ -1369,7 +1384,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 74,
+            "line": 51,
             "description": "Instance of {{#crossLink \"game.System\"}}{{/crossLink}}.",
             "itemtype": "property",
             "name": "system",
@@ -1380,7 +1395,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 79,
+            "line": 56,
             "description": "Instance of {{#crossLink \"game.SoundManager\"}}{{/crossLink}}.",
             "itemtype": "property",
             "name": "sound",
@@ -1391,7 +1406,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 84,
+            "line": 61,
             "description": "Instance of {{#crossLink \"game.Pool\"}}{{/crossLink}}.",
             "itemtype": "property",
             "name": "pool",
@@ -1402,7 +1417,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 89,
+            "line": 66,
             "description": "Instance of {{#crossLink \"game.Storage\"}}{{/crossLink}}.",
             "itemtype": "property",
             "name": "storage",
@@ -1413,7 +1428,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 94,
+            "line": 71,
             "description": "Instance of {{#crossLink \"game.Keyboard\"}}{{/crossLink}}.",
             "itemtype": "property",
             "name": "keyboard",
@@ -1424,7 +1439,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 99,
+            "line": 76,
             "description": "Device / browser detection.\n\n    game.device.iPhone\n    game.device.iPhone4\n    game.device.iPhone5\n    game.device.iPad\n    game.device.iPadRetina\n    game.device.iOS\n    game.device.iOS5\n    game.device.iOS6\n    game.device.iOS7\n    game.device.android\n    game.device.android2\n    game.device.wp7\n    game.device.wp8\n    game.device.wpApp\n    game.device.wp\n    game.device.ie9\n    game.device.ie10\n    game.device.ie11\n    game.device.ie\n    game.device.opera\n    game.device.crosswalk\n    game.device.cocoonJS\n    game.device.mobile",
             "itemtype": "property",
             "name": "device",
@@ -1438,7 +1453,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 219,
+            "line": 196,
             "description": "Request fullscreen mode.",
             "itemtype": "method",
             "name": "fullscreen",
@@ -1448,7 +1463,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 228,
+            "line": 205,
             "itemtype": "method",
             "name": "fullscreenSupport",
             "return": {
@@ -1461,7 +1476,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 236,
+            "line": 213,
             "description": "Add asset to loader.",
             "itemtype": "method",
             "name": "addAsset",
@@ -1490,7 +1505,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 253,
+            "line": 230,
             "description": "Add audio to loader.",
             "itemtype": "method",
             "name": "addAudio",
@@ -1520,7 +1535,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 273,
+            "line": 250,
             "description": "Define new module.",
             "itemtype": "method",
             "name": "module",
@@ -1546,7 +1561,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 293,
+            "line": 271,
             "description": "Require modules for module.",
             "itemtype": "method",
             "name": "require",
@@ -1563,7 +1578,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 306,
+            "line": 284,
             "description": "Define body for module.",
             "itemtype": "method",
             "name": "body",
@@ -1573,7 +1588,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 317,
+            "line": 295,
             "description": "Start the game engine.",
             "itemtype": "method",
             "name": "start",
@@ -1610,7 +1625,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 350,
+            "line": 329,
             "description": "Distance between two points.",
             "itemtype": "method",
             "name": "Math.distance",
@@ -1646,7 +1661,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 365,
+            "line": 344,
             "description": "Generate random number between `min` and `max`.",
             "itemtype": "method",
             "name": "Math.random",
@@ -1668,12 +1683,12 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 642,
+            "line": 633,
             "itemtype": "method",
             "name": "extend",
             "return": {
-                "description": "",
-                "type": "Class"
+                "description": "Returns extended class",
+                "type": "game.Class"
             },
             "class": "game.Class",
             "module": "core",
@@ -1681,39 +1696,37 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 654,
+            "line": 645,
             "description": "Call functions parent function.",
             "itemtype": "method",
-            "name": "super",
+            "name": "_super",
             "class": "game.Class",
             "module": "core",
             "namespace": "game"
         },
         {
             "file": "src/engine/core.js",
-            "line": 682,
-            "description": "If Class has `staticInit` function, it is called before `init` function.",
-            "itemtype": "property",
+            "line": 673,
+            "description": "This method is called before init.",
+            "itemtype": "method",
             "name": "staticInit",
-            "type": "Function",
             "class": "game.Class",
             "module": "core",
             "namespace": "game"
         },
         {
             "file": "src/engine/core.js",
-            "line": 697,
-            "description": "Automatically called, when creating new class.",
-            "itemtype": "property",
+            "line": 688,
+            "description": "This method is called, when you create new instance of the class.",
+            "itemtype": "method",
             "name": "init",
-            "type": "Function",
             "class": "game.Class",
             "module": "core",
             "namespace": "game"
         },
         {
             "file": "src/engine/core.js",
-            "line": 710,
+            "line": 701,
             "itemtype": "method",
             "name": "inject",
             "class": "game.Class",
@@ -1759,7 +1772,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 55,
+            "line": 61,
             "description": "Add body to DebugDraw.",
             "itemtype": "method",
             "name": "addBody",
@@ -1776,7 +1789,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 87,
+            "line": 93,
             "description": "Update DebugDraw sprites.",
             "itemtype": "method",
             "name": "update",
@@ -1786,7 +1799,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 123,
+            "line": 134,
             "description": "Color of DebugDraw sprites.",
             "itemtype": "attribute",
             "name": "spriteColor",
@@ -1798,7 +1811,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 129,
+            "line": 140,
             "description": "Alpha of DebugDraw sprites.",
             "itemtype": "attribute",
             "name": "spriteAlpha",
@@ -1810,7 +1823,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 135,
+            "line": 146,
             "description": "Color of DebugDraw shapes.",
             "itemtype": "attribute",
             "name": "shapeColor",
@@ -1822,7 +1835,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 141,
+            "line": 152,
             "description": "Alpha of DebugDraw shapes.",
             "itemtype": "attribute",
             "name": "shapeAlpha",
@@ -1834,7 +1847,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 147,
+            "line": 158,
             "description": "Enable DebugDraw.",
             "itemtype": "attribute",
             "name": "enabled",
@@ -1845,7 +1858,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 181,
+            "line": 192,
             "description": "Enable fps display.",
             "itemtype": "attribute",
             "name": "enabled",
@@ -2067,7 +2080,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 241,
+            "line": 244,
             "description": "Used to load correct file when in Retina/HiRes mode.",
             "itemtype": "attribute",
             "name": "getPath",
@@ -2085,7 +2098,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 250,
+            "line": 253,
             "description": "Minimum time to show preloader, in milliseconds.",
             "itemtype": "attribute",
             "name": "timeout",
@@ -3985,7 +3998,7 @@
         },
         {
             "file": "src/engine/sprite.js",
-            "line": 52,
+            "line": 54,
             "description": "Remove sprite from it's parent.",
             "itemtype": "method",
             "name": "remove",
@@ -3995,7 +4008,7 @@
         },
         {
             "file": "src/engine/sprite.js",
-            "line": 72,
+            "line": 76,
             "description": "Remove object from container.",
             "itemtype": "method",
             "name": "remove",
@@ -4005,7 +4018,7 @@
         },
         {
             "file": "src/engine/sprite.js",
-            "line": 80,
+            "line": 84,
             "description": "Add object to container.",
             "itemtype": "method",
             "name": "addChild",
@@ -4185,7 +4198,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 152,
+            "line": 153,
             "description": "Pause game engine.",
             "itemtype": "method",
             "name": "pause",
@@ -4195,7 +4208,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 162,
+            "line": 163,
             "description": "Resume paused game engine.",
             "itemtype": "method",
             "name": "resume",
@@ -4205,7 +4218,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 172,
+            "line": 173,
             "description": "Change current scene.",
             "itemtype": "method",
             "name": "setScene",
@@ -4513,24 +4526,18 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 12,
-            "author": "Ben Delarre / http://delarre.net",
+            "line": 19,
+            "description": "List of tweens.",
+            "itemtype": "property",
+            "name": "tweens",
+            "type": "Array",
             "class": "game.TweenEngine",
             "module": "tween",
             "namespace": "game"
         },
         {
             "file": "src/engine/tween.js",
-            "line": 42,
-            "itemtype": "method",
-            "name": "getAll",
-            "class": "game.TweenEngine",
-            "module": "tween",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/tween.js",
-            "line": 49,
+            "line": 25,
             "itemtype": "method",
             "name": "removeAll",
             "class": "game.TweenEngine",
@@ -4539,25 +4546,39 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 56,
+            "line": 32,
             "itemtype": "method",
-            "name": "stopAllForObject",
+            "name": "stopTweensForObject",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
             "class": "game.TweenEngine",
             "module": "tween",
             "namespace": "game"
         },
         {
             "file": "src/engine/tween.js",
-            "line": 65,
+            "line": 42,
             "itemtype": "method",
             "name": "getTweenForObject",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
             "class": "game.TweenEngine",
             "module": "tween",
             "namespace": "game"
         },
         {
             "file": "src/engine/tween.js",
-            "line": 75,
+            "line": 53,
             "itemtype": "method",
             "name": "add",
             "params": [
@@ -4573,7 +4594,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 83,
+            "line": 61,
             "itemtype": "method",
             "name": "remove",
             "params": [
@@ -4589,7 +4610,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 94,
+            "line": 70,
             "itemtype": "method",
             "name": "update",
             "class": "game.TweenEngine",
@@ -4598,16 +4619,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 141,
-            "itemtype": "method",
-            "name": "getObject",
-            "class": "game.Tween",
-            "module": "tween",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/tween.js",
-            "line": 148,
+            "line": 125,
             "itemtype": "method",
             "name": "to",
             "params": [
@@ -4628,7 +4640,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 161,
+            "line": 136,
             "itemtype": "method",
             "name": "start",
             "class": "game.Tween",
@@ -4637,7 +4649,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 189,
+            "line": 163,
             "itemtype": "method",
             "name": "stop",
             "class": "game.Tween",
@@ -4646,7 +4658,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 202,
+            "line": 184,
             "itemtype": "method",
             "name": "stopChainedTweens",
             "class": "game.Tween",
@@ -4655,7 +4667,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 211,
+            "line": 193,
             "itemtype": "method",
             "name": "delay",
             "params": [
@@ -4676,7 +4688,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 222,
+            "line": 204,
             "itemtype": "method",
             "name": "repeat",
             "params": [
@@ -4692,7 +4704,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 232,
+            "line": 214,
             "itemtype": "method",
             "name": "yoyo",
             "params": [
@@ -4708,7 +4720,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 242,
+            "line": 224,
             "itemtype": "method",
             "name": "easing",
             "params": [
@@ -4724,7 +4736,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 251,
+            "line": 233,
             "itemtype": "method",
             "name": "interpolation",
             "params": [
@@ -4740,7 +4752,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 260,
+            "line": 242,
             "itemtype": "method",
             "name": "chain",
             "params": [
@@ -4756,7 +4768,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 269,
+            "line": 251,
             "itemtype": "method",
             "name": "onStart",
             "params": [
@@ -4772,7 +4784,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 278,
+            "line": 260,
             "itemtype": "method",
             "name": "onUpdate",
             "params": [
@@ -4788,7 +4800,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 287,
+            "line": 269,
             "itemtype": "method",
             "name": "onComplete",
             "params": [
@@ -4804,20 +4816,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 296,
-            "itemtype": "method",
-            "name": "isPlaying",
-            "return": {
-                "description": "",
-                "type": "Boolean"
-            },
-            "class": "game.Tween",
-            "module": "tween",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/tween.js",
-            "line": 638,
+            "line": 610,
             "description": "Add tween to group.",
             "itemtype": "method",
             "name": "add",
@@ -4838,7 +4837,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 650,
+            "line": 622,
             "itemtype": "method",
             "name": "tweenComplete",
             "class": "game.TweenGroup",
@@ -4847,7 +4846,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 662,
+            "line": 634,
             "itemtype": "method",
             "name": "remove",
             "params": [
@@ -4863,7 +4862,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 670,
+            "line": 642,
             "itemtype": "method",
             "name": "start",
             "class": "game.TweenGroup",
@@ -4872,7 +4871,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 679,
+            "line": 651,
             "itemtype": "method",
             "name": "pause",
             "class": "game.TweenGroup",
@@ -4881,7 +4880,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 688,
+            "line": 660,
             "itemtype": "method",
             "name": "resume",
             "class": "game.TweenGroup",
@@ -4890,7 +4889,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 697,
+            "line": 669,
             "itemtype": "method",
             "name": "stop",
             "params": [
@@ -4910,10 +4909,5 @@
             "namespace": "game"
         }
     ],
-    "warnings": [
-        {
-            "message": "Missing item type",
-            "line": " src/engine/tween.js:12"
-        }
-    ]
+    "warnings": []
 }
