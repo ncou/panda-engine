@@ -152,9 +152,7 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-/**
-    Dynamic loader for assets and audio.
-    
+/**    
     @module loader
     @namespace game
 **/
@@ -164,7 +162,7 @@ game.module(
 .body(function(){ &#x27;use strict&#x27;;
 
 /**
-    Loader.
+    Dynamic loader for assets and audio.
     @class Loader
     @extends game.Class
 **/
@@ -203,8 +201,6 @@ game.Loader = game.Class.extend({
     
     init: function(scene) {
         var i;
-
-        if(game.Timer.seconds) game.Loader.timeout /= 1000;
 
         this.scene = scene || SceneGame;
         this.stage = game.system.stage;

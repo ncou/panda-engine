@@ -152,9 +152,7 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-/**
-    Local storage for saving data.
-    
+/**    
     @module storage
     @namespace game
 **/
@@ -164,14 +162,7 @@ game.module(
 .body(function() { &#x27;use strict&#x27;;
 
 /**
-    Instance automatically created at {{#crossLink &quot;game.Core&quot;}}{{/crossLink}}, if {{#crossLink &quot;game.Storage/id:attribute&quot;}}{{/crossLink}} is set.
-
-    __Example__
-
-        game.Storage.id = &#x27;com.company.mygame&#x27;; // id must be set before engine is started.
-
-        game.storage.set(&#x27;highScore&#x27;, 1000);
-        var highScore = game.storage.get(&#x27;highScore&#x27;);
+    Local storage.
     @class Storage
     @extends game.Class
 **/
@@ -222,6 +213,9 @@ game.Storage = game.Class.extend({
     }
 });
 
+/**
+    @attribute {String} id
+**/
 game.Storage.id = &#x27;&#x27;;
 
 });

@@ -67,58 +67,47 @@ YUI.add("yuidoc-meta", function(Y) {
         },
         {
             "displayName": "keyboard",
-            "name": "keyboard",
-            "description": "Keyboard manager."
+            "name": "keyboard"
         },
         {
             "displayName": "loader",
-            "name": "loader",
-            "description": "Dynamic loader for assets and audio."
+            "name": "loader"
         },
         {
             "displayName": "particle",
-            "name": "particle",
-            "description": "Particle engine."
+            "name": "particle"
         },
         {
             "displayName": "physics",
-            "name": "physics",
-            "description": "Physics engine."
+            "name": "physics"
         },
         {
             "displayName": "pool",
-            "name": "pool",
-            "description": "Object pooling."
+            "name": "pool"
         },
         {
             "displayName": "scene",
-            "name": "scene",
-            "description": "Scene manager."
+            "name": "scene"
         },
         {
             "displayName": "sprite",
-            "name": "sprite",
-            "description": "Game graphics."
+            "name": "sprite"
         },
         {
             "displayName": "storage",
-            "name": "storage",
-            "description": "Local storage for saving data."
+            "name": "storage"
         },
         {
             "displayName": "system",
-            "name": "system",
-            "description": "System."
+            "name": "system"
         },
         {
             "displayName": "timer",
-            "name": "timer",
-            "description": "Timer engine."
+            "name": "timer"
         },
         {
             "displayName": "tween",
-            "name": "tween",
-            "description": "Tween engine."
+            "name": "tween"
         }
     ]
 } };

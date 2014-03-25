@@ -288,7 +288,7 @@
             },
             "tag": "module",
             "file": "src/engine/debug.js",
-            "line": 162
+            "line": 163
         },
         "keyboard": {
             "name": "keyboard",
@@ -302,8 +302,7 @@
             },
             "tag": "module",
             "file": "src/engine/keyboard.js",
-            "line": 12,
-            "description": "Keyboard manager."
+            "line": 10
         },
         "loader": {
             "name": "loader",
@@ -317,8 +316,7 @@
             },
             "tag": "module",
             "file": "src/engine/loader.js",
-            "line": 12,
-            "description": "Dynamic loader for assets and audio."
+            "line": 10
         },
         "particle": {
             "name": "particle",
@@ -333,11 +331,7 @@
             },
             "tag": "module",
             "file": "src/engine/particle.js",
-            "line": 65,
-            "description": "Particle engine.",
-            "requires": [
-                "physics"
-            ]
+            "line": 59
         },
         "physics": {
             "name": "physics",
@@ -357,8 +351,7 @@
             },
             "tag": "module",
             "file": "src/engine/physics.js",
-            "line": 544,
-            "description": "Physics engine."
+            "line": 542
         },
         "pool": {
             "name": "pool",
@@ -372,8 +365,7 @@
             },
             "tag": "module",
             "file": "src/engine/pool.js",
-            "line": 12,
-            "description": "Object pooling."
+            "line": 10
         },
         "scene": {
             "name": "scene",
@@ -387,8 +379,7 @@
             },
             "tag": "module",
             "file": "src/engine/scene.js",
-            "line": 12,
-            "description": "Scene manager."
+            "line": 10
         },
         "sprite": {
             "name": "sprite",
@@ -405,8 +396,7 @@
             },
             "tag": "module",
             "file": "src/engine/sprite.js",
-            "line": 128,
-            "description": "Game graphics."
+            "line": 126
         },
         "storage": {
             "name": "storage",
@@ -420,8 +410,7 @@
             },
             "tag": "module",
             "file": "src/engine/storage.js",
-            "line": 12,
-            "description": "Local storage for saving data."
+            "line": 10
         },
         "system": {
             "name": "system",
@@ -435,8 +424,7 @@
             },
             "tag": "module",
             "file": "src/engine/system.js",
-            "line": 12,
-            "description": "System."
+            "line": 10
         },
         "timer": {
             "name": "timer",
@@ -450,8 +438,7 @@
             },
             "tag": "module",
             "file": "src/engine/timer.js",
-            "line": 12,
-            "description": "Timer engine."
+            "line": 10
         },
         "tween": {
             "name": "tween",
@@ -467,14 +454,13 @@
             },
             "tag": "module",
             "file": "src/engine/tween.js",
-            "line": 595,
-            "description": "Tween engine."
+            "line": 600
         }
     },
     "classes": {
         "game.Analytics": {
             "name": "game.Analytics",
-            "shortname": "game.Analytics",
+            "shortname": "Analytics",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -483,7 +469,8 @@
             "module": "analytics",
             "namespace": "game",
             "file": "src/engine/analytics.js",
-            "line": 10
+            "line": 10,
+            "extends": "game.Class"
         },
         "game.Audio": {
             "name": "game.Audio",
@@ -496,7 +483,8 @@
             "module": "audio",
             "namespace": "game",
             "file": "src/engine/audio.js",
-            "line": 10
+            "line": 10,
+            "extends": "game.Class"
         },
         "game.Core": {
             "name": "game.Core",
@@ -536,7 +524,8 @@
             "namespace": "game",
             "file": "src/engine/debug.js",
             "line": 10,
-            "description": "DebugDraw will draw all interactive sprite hit areas and physic shapes.\nAutomatically enabled, if URL contains `?debugdraw`."
+            "description": "DebugDraw will draw all interactive sprite hit areas and physic shapes.\nAutomatically enabled, if URL contains `?debugdraw`.",
+            "extends": "game.Class"
         },
         "game.Debug": {
             "name": "game.Debug",
@@ -549,7 +538,7 @@
             "module": "debug",
             "namespace": "game",
             "file": "src/engine/debug.js",
-            "line": 162,
+            "line": 163,
             "description": "Show FPS.\nAutomatically enabled, if URL contains `?debug`.",
             "extends": "game.Class"
         },
@@ -564,8 +553,7 @@
             "module": "keyboard",
             "namespace": "game",
             "file": "src/engine/keyboard.js",
-            "line": 12,
-            "description": "Instance automatically created at {{#crossLink \"game.Core\"}}{{/crossLink}}",
+            "line": 10,
             "extends": "game.Class"
         },
         "game.Loader": {
@@ -579,8 +567,8 @@
             "module": "loader",
             "namespace": "game",
             "file": "src/engine/loader.js",
-            "line": 12,
-            "description": "Loader.",
+            "line": 10,
+            "description": "Dynamic loader for assets and audio.",
             "extends": "game.Class"
         },
         "game.Particle": {
@@ -594,7 +582,7 @@
             "module": "particle",
             "namespace": "game",
             "file": "src/engine/particle.js",
-            "line": 16,
+            "line": 10,
             "extends": "game.Class"
         },
         "game.Emitter": {
@@ -608,8 +596,8 @@
             "module": "particle",
             "namespace": "game",
             "file": "src/engine/particle.js",
-            "line": 65,
-            "description": "Particle emitter.\n\nExample: http://www.pandajs.net/tutorials/example-5/",
+            "line": 59,
+            "description": "Particle emitter.",
             "extends": "game.Class",
             "is_constructor": 1,
             "params": [
@@ -632,7 +620,7 @@
             "module": "physics",
             "namespace": "game",
             "file": "src/engine/physics.js",
-            "line": 13,
+            "line": 11,
             "description": "Physics world.",
             "extends": "game.Class",
             "is_constructor": 1,
@@ -660,7 +648,7 @@
             "module": "physics",
             "namespace": "game",
             "file": "src/engine/physics.js",
-            "line": 139,
+            "line": 137,
             "description": "Physics collision solver.",
             "extends": "game.Class"
         },
@@ -675,7 +663,7 @@
             "module": "physics",
             "namespace": "game",
             "file": "src/engine/physics.js",
-            "line": 332,
+            "line": 330,
             "description": "Physics body.",
             "extends": "game.Class",
             "is_constructor": 1,
@@ -699,7 +687,7 @@
             "module": "physics",
             "namespace": "game",
             "file": "src/engine/physics.js",
-            "line": 468,
+            "line": 466,
             "description": "Rectangle shape for physic body.",
             "extends": "game.Class",
             "is_constructor": 1,
@@ -727,7 +715,7 @@
             "module": "physics",
             "namespace": "game",
             "file": "src/engine/physics.js",
-            "line": 496,
+            "line": 494,
             "description": "Circle shape for physic body.",
             "extends": "game.Class",
             "is_constructor": 1,
@@ -750,7 +738,7 @@
             "module": "physics",
             "namespace": "game",
             "file": "src/engine/physics.js",
-            "line": 516,
+            "line": 514,
             "description": "Line shape for physic body.",
             "extends": "game.Class",
             "is_constructor": 1,
@@ -778,7 +766,7 @@
             "module": "physics",
             "namespace": "game",
             "file": "src/engine/physics.js",
-            "line": 544,
+            "line": 542,
             "description": "Vector class.",
             "extends": "game.Class",
             "is_constructor": 1,
@@ -808,8 +796,8 @@
             "module": "pool",
             "namespace": "game",
             "file": "src/engine/pool.js",
-            "line": 12,
-            "description": "Instance automatically created at {{#crossLink \"game.Core\"}}{{/crossLink}}",
+            "line": 10,
+            "description": "Object pool.",
             "extends": "game.Class"
         },
         "game.Scene": {
@@ -823,7 +811,7 @@
             "module": "scene",
             "namespace": "game",
             "file": "src/engine/scene.js",
-            "line": 12,
+            "line": 10,
             "description": "Game scene.",
             "extends": "game.Class"
         },
@@ -838,7 +826,7 @@
             "module": "sprite",
             "namespace": "game",
             "file": "src/engine/sprite.js",
-            "line": 15,
+            "line": 13,
             "description": "Sprite.\nhttp://www.goodboydigital.com/pixijs/docs/classes/Sprite.html",
             "is_constructor": 1,
             "params": [
@@ -876,7 +864,7 @@
             "module": "sprite",
             "namespace": "game",
             "file": "src/engine/sprite.js",
-            "line": 68,
+            "line": 66,
             "description": "Sprite container.\nhttp://www.goodboydigital.com/pixijs/docs/classes/DisplayObjectContainer.html"
         },
         "game.TilingSprite": {
@@ -890,7 +878,7 @@
             "module": "sprite",
             "namespace": "game",
             "file": "src/engine/sprite.js",
-            "line": 102,
+            "line": 100,
             "description": "Tiling sprite.\nhttp://www.goodboydigital.com/pixijs/docs/classes/TilingSprite.html",
             "is_constructor": 1,
             "params": [
@@ -928,7 +916,7 @@
             "module": "sprite",
             "namespace": "game",
             "file": "src/engine/sprite.js",
-            "line": 128,
+            "line": 126,
             "description": "Sprite animation.\nhttp://www.goodboydigital.com/pixijs/docs/classes/MovieClip.html",
             "is_constructor": 1,
             "params": [
@@ -950,8 +938,8 @@
             "module": "storage",
             "namespace": "game",
             "file": "src/engine/storage.js",
-            "line": 12,
-            "description": "Instance automatically created at {{#crossLink \"game.Core\"}}{{/crossLink}}, if {{#crossLink \"game.Storage/id:attribute\"}}{{/crossLink}} is set.\n\n__Example__\n\n    game.Storage.id = 'com.company.mygame'; // id must be set before engine is started.\n\n    game.storage.set('highScore', 1000);\n    var highScore = game.storage.get('highScore');",
+            "line": 10,
+            "description": "Local storage.",
             "extends": "game.Class"
         },
         "game.System": {
@@ -965,8 +953,7 @@
             "module": "system",
             "namespace": "game",
             "file": "src/engine/system.js",
-            "line": 12,
-            "description": "Instance automatically created at {{#crossLink \"game.Core\"}}{{/crossLink}}",
+            "line": 10,
             "extends": "game.Class"
         },
         "game.Timer": {
@@ -980,15 +967,16 @@
             "module": "timer",
             "namespace": "game",
             "file": "src/engine/timer.js",
-            "line": 12,
-            "description": "Game timer.\n\n__Example__\n\n    var timer = new game.Timer(2);\n    if(timer.delta() >= 0) {\n        timer.set(2);\n    }",
+            "line": 10,
+            "description": "Basic timer.",
             "extends": "game.Class",
             "is_constructor": 1,
             "params": [
                 {
                     "name": "ms",
                     "description": "",
-                    "type": "Number"
+                    "type": "Number",
+                    "optional": true
                 }
             ]
         },
@@ -1003,7 +991,7 @@
             "module": "tween",
             "namespace": "game",
             "file": "src/engine/tween.js",
-            "line": 14,
+            "line": 12,
             "extends": "game.Class"
         },
         "game.Tween": {
@@ -1017,7 +1005,7 @@
             "module": "tween",
             "namespace": "game",
             "file": "src/engine/tween.js",
-            "line": 82,
+            "line": 80,
             "extends": "game.Class",
             "is_constructor": 1,
             "params": [
@@ -1039,7 +1027,7 @@
             "module": "tween",
             "namespace": "game",
             "file": "src/engine/tween.js",
-            "line": 595,
+            "line": 600,
             "extends": "game.Class",
             "is_constructor": 1,
             "params": [
@@ -1055,7 +1043,7 @@
     "classitems": [
         {
             "file": "src/engine/analytics.js",
-            "line": 29,
+            "line": 30,
             "description": "Send event to analytics.",
             "itemtype": "method",
             "name": "event",
@@ -1077,7 +1065,7 @@
         },
         {
             "file": "src/engine/analytics.js",
-            "line": 41,
+            "line": 42,
             "itemtype": "attribute",
             "name": "id",
             "type": "String",
@@ -1087,7 +1075,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 14,
+            "line": 15,
             "description": "Supported audio format extension.",
             "itemtype": "property",
             "name": "format",
@@ -1098,7 +1086,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 19,
+            "line": 20,
             "description": "Is sound muted.",
             "itemtype": "property",
             "name": "soundMuted",
@@ -1110,7 +1098,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 25,
+            "line": 26,
             "description": "Main sound volume.",
             "itemtype": "property",
             "name": "soundVolume",
@@ -1122,7 +1110,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 31,
+            "line": 32,
             "description": "Id of current music.",
             "itemtype": "property",
             "name": "currentMusic",
@@ -1133,7 +1121,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 36,
+            "line": 37,
             "description": "Is music muted.",
             "itemtype": "property",
             "name": "musicMuted",
@@ -1145,7 +1133,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 42,
+            "line": 43,
             "description": "Main music volume.",
             "itemtype": "property",
             "name": "musicVolume",
@@ -1157,7 +1145,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 272,
+            "line": 273,
             "itemtype": "method",
             "name": "playSound",
             "params": [
@@ -1197,7 +1185,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 288,
+            "line": 289,
             "itemtype": "method",
             "name": "stopSound",
             "params": [
@@ -1213,7 +1201,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 306,
+            "line": 307,
             "itemtype": "method",
             "name": "pauseSound",
             "params": [
@@ -1230,7 +1218,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 322,
+            "line": 323,
             "itemtype": "method",
             "name": "resumeSound",
             "params": [
@@ -1247,7 +1235,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 338,
+            "line": 339,
             "itemtype": "method",
             "name": "playMusic",
             "params": [
@@ -1268,7 +1256,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 355,
+            "line": 356,
             "itemtype": "method",
             "name": "stopMusic",
             "class": "game.Audio",
@@ -1277,7 +1265,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 365,
+            "line": 366,
             "itemtype": "method",
             "name": "pauseMusic",
             "class": "game.Audio",
@@ -1286,7 +1274,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 374,
+            "line": 375,
             "itemtype": "method",
             "name": "resumeMusic",
             "class": "game.Audio",
@@ -1295,7 +1283,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 391,
+            "line": 392,
             "description": "Pause all sounds and music",
             "itemtype": "method",
             "name": "pauseAll",
@@ -1305,7 +1293,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 401,
+            "line": 402,
             "description": "Resume all sounds and music",
             "itemtype": "method",
             "name": "resumeAll",
@@ -1315,7 +1303,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 416,
+            "line": 417,
             "description": "Is audio enabled.",
             "itemtype": "attribute",
             "name": "enabled",
@@ -1327,7 +1315,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 423,
+            "line": 424,
             "description": "Is Web Audio enabled.",
             "itemtype": "attribute",
             "name": "webAudio",
@@ -1339,7 +1327,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 430,
+            "line": 431,
             "description": "List of supported audio formats.",
             "itemtype": "attribute",
             "name": "formats",
@@ -1728,7 +1716,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 16,
+            "line": 17,
             "itemtype": "property",
             "name": "container",
             "type": "game.Container",
@@ -1738,7 +1726,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 25,
+            "line": 26,
             "description": "Remove all sprites from DebugDraw.",
             "itemtype": "method",
             "name": "reset",
@@ -1748,7 +1736,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 36,
+            "line": 37,
             "description": "Add sprite to DebugDraw.",
             "itemtype": "method",
             "name": "addSprite",
@@ -1765,7 +1753,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 59,
+            "line": 60,
             "description": "Add body to DebugDraw.",
             "itemtype": "method",
             "name": "addBody",
@@ -1782,7 +1770,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 91,
+            "line": 92,
             "description": "Update DebugDraw sprites.",
             "itemtype": "method",
             "name": "update",
@@ -1792,7 +1780,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 132,
+            "line": 133,
             "description": "Color of DebugDraw sprites.",
             "itemtype": "attribute",
             "name": "spriteColor",
@@ -1804,7 +1792,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 138,
+            "line": 139,
             "description": "Alpha of DebugDraw sprites.",
             "itemtype": "attribute",
             "name": "spriteAlpha",
@@ -1816,7 +1804,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 144,
+            "line": 145,
             "description": "Color of DebugDraw shapes.",
             "itemtype": "attribute",
             "name": "shapeColor",
@@ -1828,7 +1816,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 150,
+            "line": 151,
             "description": "Alpha of DebugDraw shapes.",
             "itemtype": "attribute",
             "name": "shapeAlpha",
@@ -1840,7 +1828,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 156,
+            "line": 157,
             "description": "Enable DebugDraw.",
             "itemtype": "attribute",
             "name": "enabled",
@@ -1851,7 +1839,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 192,
+            "line": 193,
             "description": "Enable fps display.",
             "itemtype": "attribute",
             "name": "enabled",
@@ -1862,7 +1850,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 198,
+            "line": 199,
             "description": "How often update fps.",
             "itemtype": "attribute",
             "name": "frequence",
@@ -1874,7 +1862,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 205,
+            "line": 206,
             "description": "Color of fps text.",
             "itemtype": "attribute",
             "name": "color",
@@ -1886,7 +1874,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 212,
+            "line": 213,
             "description": "Position of fps text.",
             "itemtype": "attribute",
             "name": "position",
@@ -1898,7 +1886,7 @@
         },
         {
             "file": "src/engine/keyboard.js",
-            "line": 18,
+            "line": 15,
             "description": "List of keys.\n\n    BACKSPACE\n    TAB\n    ENTER\n    SHIFT\n    CTRL\n    ALT\n    PAUSE\n    CAPS_LOCK\n    ESC\n    SPACE\n    PAGE_UP\n    PAGE_DOWN\n    END\n    HOME\n    LEFT\n    UP\n    RIGHT\n    DOWN\n    PRINT_SCREEN\n    INSERT\n    DELETE\n    0\n    1\n    2\n    3\n    4\n    5\n    6\n    7\n    8\n    9\n    A\n    B\n    C\n    D\n    E\n    F\n    G\n    H\n    I\n    J\n    K\n    L\n    M\n    N\n    O\n    P\n    Q\n    R\n    S\n    T\n    U\n    V\n    W\n    X\n    Y\n    Z\n    NUM_ZERO\n    NUM_ONE\n    NUM_TWO\n    NUM_THREE\n    NUM_FOUR\n    NUM_FIVE\n    NUM_SIX\n    NUM_SEVEN\n    NUM_EIGHT\n    NUM_NINE\n    NUM_MULTIPLY\n    NUM_PLUS\n    NUM_MINUS\n    NUM_PERIOD\n    NUM_DIVISION\n    F1\n    F2\n    F3\n    F4\n    F5\n    F6\n    F7\n    F8\n    F9\n    F10\n    F11\n    F12",
             "itemtype": "property",
             "name": "keys",
@@ -1909,7 +1897,7 @@
         },
         {
             "file": "src/engine/keyboard.js",
-            "line": 109,
+            "line": 106,
             "description": "List of keys, that are pressed down.",
             "itemtype": "property",
             "name": "keysDown",
@@ -1920,7 +1908,7 @@
         },
         {
             "file": "src/engine/keyboard.js",
-            "line": 205,
+            "line": 202,
             "itemtype": "method",
             "name": "keydown",
             "class": "game.Keyboard",
@@ -1929,7 +1917,7 @@
         },
         {
             "file": "src/engine/keyboard.js",
-            "line": 218,
+            "line": 215,
             "itemtype": "method",
             "name": "keyup",
             "class": "game.Keyboard",
@@ -1938,7 +1926,7 @@
         },
         {
             "file": "src/engine/keyboard.js",
-            "line": 228,
+            "line": 225,
             "description": "Check if key is pressed down.",
             "itemtype": "method",
             "name": "down",
@@ -1952,7 +1940,7 @@
         },
         {
             "file": "src/engine/keyboard.js",
-            "line": 238,
+            "line": 235,
             "description": "Prevent default keyboard action.",
             "itemtype": "attribute",
             "name": "preventDefault",
@@ -1964,7 +1952,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 18,
+            "line": 16,
             "description": "Scene to start, when loader is finished.",
             "itemtype": "property",
             "name": "scene",
@@ -1975,7 +1963,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 23,
+            "line": 21,
             "description": "Number of files loaded.",
             "itemtype": "property",
             "name": "loaded",
@@ -1986,7 +1974,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 28,
+            "line": 26,
             "description": "Percent of files loaded.",
             "itemtype": "property",
             "name": "percent",
@@ -1997,7 +1985,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 33,
+            "line": 31,
             "description": "Background color of preloader.",
             "itemtype": "property",
             "name": "backgroundColor",
@@ -2009,7 +1997,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 39,
+            "line": 37,
             "description": "List of assets to load.",
             "itemtype": "property",
             "name": "assets",
@@ -2020,7 +2008,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 44,
+            "line": 42,
             "description": "List of sounds to load.",
             "itemtype": "property",
             "name": "assets",
@@ -2031,7 +2019,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 108,
+            "line": 104,
             "description": "Start loader.",
             "itemtype": "method",
             "name": "start",
@@ -2041,7 +2029,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 147,
+            "line": 143,
             "description": "Error loading file.",
             "itemtype": "method",
             "name": "error",
@@ -2058,7 +2046,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 156,
+            "line": 152,
             "description": "File loaded.",
             "itemtype": "method",
             "name": "progress",
@@ -2068,7 +2056,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 167,
+            "line": 163,
             "description": "Called when percent is changed.",
             "itemtype": "method",
             "name": "onPercentChange",
@@ -2078,7 +2066,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 175,
+            "line": 171,
             "description": "Start loading audio.",
             "itemtype": "method",
             "name": "loadAudio",
@@ -2088,7 +2076,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 185,
+            "line": 181,
             "description": "All files loaded.",
             "itemtype": "method",
             "name": "ready",
@@ -2098,7 +2086,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 193,
+            "line": 189,
             "description": "Set scene.",
             "itemtype": "method",
             "name": "setScene",
@@ -2108,7 +2096,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 244,
+            "line": 240,
             "description": "Used to load correct file when in Retina/HiRes mode.",
             "itemtype": "attribute",
             "name": "getPath",
@@ -2126,7 +2114,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 253,
+            "line": 249,
             "description": "Minimum time to show preloader, in milliseconds.",
             "itemtype": "attribute",
             "name": "timeout",
@@ -2141,27 +2129,27 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 21,
+            "line": 15,
             "itemtype": "property",
             "name": "position",
-            "type": "game.Vector",
+            "type": "game.Point",
             "class": "game.Particle",
             "module": "particle",
             "namespace": "game"
         },
         {
             "file": "src/engine/particle.js",
-            "line": 25,
+            "line": 19,
             "itemtype": "property",
             "name": "velocity",
-            "type": "game.Vector",
+            "type": "game.Point",
             "class": "game.Particle",
             "module": "particle",
             "namespace": "game"
         },
         {
             "file": "src/engine/particle.js",
-            "line": 29,
+            "line": 23,
             "itemtype": "property",
             "name": "sprite",
             "type": "game.Sprite",
@@ -2171,17 +2159,17 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 33,
+            "line": 27,
             "itemtype": "property",
             "name": "accel",
-            "type": "game.Vector",
+            "type": "game.Point",
             "class": "game.Particle",
             "module": "particle",
             "namespace": "game"
         },
         {
             "file": "src/engine/particle.js",
-            "line": 44,
+            "line": 38,
             "itemtype": "method",
             "name": "setVelocity",
             "params": [
@@ -2202,7 +2190,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 54,
+            "line": 48,
             "itemtype": "method",
             "name": "setAccel",
             "params": [
@@ -2223,7 +2211,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 76,
+            "line": 68,
             "description": "Pool name for particles.",
             "itemtype": "property",
             "name": "poolName",
@@ -2235,7 +2223,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 82,
+            "line": 74,
             "itemtype": "property",
             "name": "particles",
             "type": "Array",
@@ -2245,7 +2233,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 86,
+            "line": 78,
             "description": "List of texture paths.",
             "itemtype": "property",
             "name": "textures",
@@ -2256,7 +2244,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 91,
+            "line": 83,
             "description": "Container for particle sprites.",
             "itemtype": "property",
             "name": "container",
@@ -2267,27 +2255,27 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 96,
+            "line": 88,
             "itemtype": "property",
             "name": "position",
-            "type": "game.Vector",
+            "type": "game.Point",
             "class": "game.Emitter",
             "module": "particle",
             "namespace": "game"
         },
         {
             "file": "src/engine/particle.js",
-            "line": 100,
+            "line": 92,
             "itemtype": "property",
             "name": "positionVar",
-            "type": "game.Vector",
+            "type": "game.Point",
             "class": "game.Emitter",
             "module": "particle",
             "namespace": "game"
         },
         {
             "file": "src/engine/particle.js",
-            "line": 104,
+            "line": 96,
             "description": "Emit angle in radians.",
             "itemtype": "property",
             "name": "angle",
@@ -2299,7 +2287,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 110,
+            "line": 102,
             "description": "Variance of emit angle in radians.",
             "itemtype": "property",
             "name": "angleVar",
@@ -2311,7 +2299,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 116,
+            "line": 108,
             "description": "Particle's initial speed.",
             "itemtype": "property",
             "name": "speed",
@@ -2323,7 +2311,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 122,
+            "line": 114,
             "description": "Variance for particle's initial speed.",
             "itemtype": "property",
             "name": "speedVar",
@@ -2335,7 +2323,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 128,
+            "line": 120,
             "description": "Particle's life in seconds. 0 is forever.",
             "itemtype": "property",
             "name": "life",
@@ -2347,7 +2335,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 134,
+            "line": 126,
             "description": "Particle's life variance.",
             "itemtype": "property",
             "name": "lifeVar",
@@ -2359,7 +2347,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 140,
+            "line": 132,
             "description": "Emitter duration in seconds. 0 is forever.",
             "itemtype": "property",
             "name": "duration",
@@ -2371,7 +2359,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 147,
+            "line": 139,
             "description": "Emitter rate.",
             "itemtype": "property",
             "name": "rate",
@@ -2383,7 +2371,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 154,
+            "line": 146,
             "description": "Emit count of particles.",
             "itemtype": "property",
             "name": "count",
@@ -2395,7 +2383,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 160,
+            "line": 152,
             "description": "Is emitter active.",
             "itemtype": "property",
             "name": "active",
@@ -2407,7 +2395,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 166,
+            "line": 158,
             "description": "Particle's velocity rotation speed.",
             "itemtype": "property",
             "name": "velRotate",
@@ -2419,7 +2407,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 172,
+            "line": 164,
             "description": "Variance for particle's velocity rotation speed.",
             "itemtype": "property",
             "name": "velRotateVar",
@@ -2431,7 +2419,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 178,
+            "line": 170,
             "description": "Particle's sprite rotation speed.",
             "itemtype": "property",
             "name": "rotate",
@@ -2443,7 +2431,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 184,
+            "line": 176,
             "description": "Variance for particle's sprite rotation speed.",
             "itemtype": "property",
             "name": "rotateVar",
@@ -2455,7 +2443,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 190,
+            "line": 182,
             "description": "Starting alpha for particle.",
             "itemtype": "property",
             "name": "startAlpha",
@@ -2467,7 +2455,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 196,
+            "line": 188,
             "description": "End alpha for particle.",
             "itemtype": "property",
             "name": "endAlpha",
@@ -2479,7 +2467,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 202,
+            "line": 194,
             "description": "Starting scale for particle.",
             "itemtype": "property",
             "name": "startScale",
@@ -2491,7 +2479,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 208,
+            "line": 200,
             "itemtype": "property",
             "name": "startScaleVar",
             "type": "Number",
@@ -2502,7 +2490,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 213,
+            "line": 205,
             "itemtype": "property",
             "name": "endScale",
             "type": "Number",
@@ -2513,7 +2501,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 218,
+            "line": 210,
             "itemtype": "property",
             "name": "endScaleVar",
             "type": "Number",
@@ -2524,18 +2512,18 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 223,
+            "line": 215,
             "description": "Target position for particles.",
             "itemtype": "property",
             "name": "target",
-            "type": "game.Vector",
+            "type": "game.Point",
             "class": "game.Emitter",
             "module": "particle",
             "namespace": "game"
         },
         {
             "file": "src/engine/particle.js",
-            "line": 228,
+            "line": 220,
             "description": "Target positions force.",
             "itemtype": "property",
             "name": "targetForce",
@@ -2547,7 +2535,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 234,
+            "line": 226,
             "description": "Acceleration angle in radians.",
             "itemtype": "property",
             "name": "accelAngle",
@@ -2559,7 +2547,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 240,
+            "line": 232,
             "itemtype": "property",
             "name": "accelAngleVar",
             "type": "Number",
@@ -2570,7 +2558,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 245,
+            "line": 237,
             "description": "Acceleration speed.",
             "itemtype": "property",
             "name": "accelSpeed",
@@ -2582,7 +2570,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 251,
+            "line": 243,
             "itemtype": "property",
             "name": "accelSpeedVar",
             "type": "Number",
@@ -2593,7 +2581,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 256,
+            "line": 248,
             "description": "Settings to apply on particle sprite.",
             "itemtype": "property",
             "name": "spriteSettings",
@@ -2604,10 +2592,10 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 263,
+            "line": 255,
             "itemtype": "property",
             "name": "velocityLimit",
-            "type": "game.Vector",
+            "type": "game.Point",
             "default": "0",
             "class": "game.Emitter",
             "module": "particle",
@@ -2615,7 +2603,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 279,
+            "line": 271,
             "description": "Reset emitter values to defaults.",
             "itemtype": "method",
             "name": "reset",
@@ -2632,7 +2620,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 295,
+            "line": 287,
             "description": "Get value with variance.\nExample: if you have value 100 with variance of 50, you will get value between 50 to 150.",
             "itemtype": "method",
             "name": "getVariance",
@@ -2646,7 +2634,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 305,
+            "line": 297,
             "description": "Add particle to emitter.",
             "itemtype": "method",
             "name": "addParticle",
@@ -2656,7 +2644,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 361,
+            "line": 354,
             "description": "Update particle.",
             "itemtype": "method",
             "name": "updateParticle",
@@ -2666,7 +2654,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 388,
+            "line": 401,
             "description": "Remove particle from emitter.",
             "itemtype": "method",
             "name": "removeParticle",
@@ -2676,7 +2664,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 398,
+            "line": 411,
             "description": "Emit particles to emitter.",
             "itemtype": "method",
             "name": "emit",
@@ -2693,7 +2681,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 410,
+            "line": 423,
             "description": "Update particles.",
             "itemtype": "method",
             "name": "update",
@@ -2703,7 +2691,7 @@
         },
         {
             "file": "src/engine/particle.js",
-            "line": 431,
+            "line": 444,
             "description": "Remove emitter from scene.",
             "itemtype": "method",
             "name": "remove",
@@ -2713,7 +2701,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 22,
+            "line": 20,
             "description": "Gravity of physics world.",
             "itemtype": "property",
             "name": "gravity",
@@ -2725,7 +2713,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 28,
+            "line": 26,
             "itemtype": "property",
             "name": "solver",
             "type": "game.CollisionSolver",
@@ -2735,7 +2723,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 32,
+            "line": 30,
             "description": "List of bodies in world.",
             "itemtype": "property",
             "name": "bodies",
@@ -2746,7 +2734,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 37,
+            "line": 35,
             "description": "List of collision groups.",
             "itemtype": "property",
             "name": "collisionGroups",
@@ -2757,7 +2745,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 50,
+            "line": 48,
             "description": "Add body to world.",
             "itemtype": "method",
             "name": "addBody",
@@ -2774,7 +2762,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 62,
+            "line": 60,
             "description": "Remove body from world.",
             "itemtype": "method",
             "name": "removeBody",
@@ -2791,7 +2779,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 74,
+            "line": 72,
             "description": "Remove body from it's collision group.",
             "itemtype": "method",
             "name": "removeBodyCollision",
@@ -2808,7 +2796,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 83,
+            "line": 81,
             "description": "Add body to collision group.",
             "itemtype": "method",
             "name": "addBodyCollision",
@@ -2830,7 +2818,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 95,
+            "line": 93,
             "description": "Remove collision group from world.",
             "itemtype": "method",
             "name": "removeCollisionGroup",
@@ -2847,7 +2835,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 104,
+            "line": 102,
             "description": "Collide body against it's `collideAgainst` group.",
             "itemtype": "method",
             "name": "collide",
@@ -2864,7 +2852,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 120,
+            "line": 118,
             "description": "Update bodies.",
             "itemtype": "method",
             "name": "update",
@@ -2874,7 +2862,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 145,
+            "line": 143,
             "description": "Solve collision a versus b.",
             "itemtype": "method",
             "name": "solve",
@@ -2896,7 +2884,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 159,
+            "line": 157,
             "description": "Hit test a versus b.",
             "itemtype": "method",
             "name": "hitTest",
@@ -2922,7 +2910,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 253,
+            "line": 251,
             "description": "Hit response a versus b.",
             "itemtype": "method",
             "name": "hitResponse",
@@ -2948,7 +2936,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 340,
+            "line": 338,
             "description": "Body's physic world.",
             "itemtype": "property",
             "name": "world",
@@ -2959,7 +2947,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 345,
+            "line": 343,
             "description": "Body's shape.",
             "itemtype": "property",
             "name": "shape",
@@ -2970,7 +2958,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 350,
+            "line": 348,
             "description": "Position of body.",
             "itemtype": "property",
             "name": "position",
@@ -2981,7 +2969,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 355,
+            "line": 353,
             "description": "Last position of body.",
             "itemtype": "property",
             "name": "last",
@@ -2992,7 +2980,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 360,
+            "line": 358,
             "description": "Body's velocity.",
             "itemtype": "property",
             "name": "velocity",
@@ -3003,7 +2991,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 365,
+            "line": 363,
             "description": "Body's maximum velocity.",
             "itemtype": "property",
             "name": "velocityLimit",
@@ -3014,7 +3002,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 370,
+            "line": 368,
             "description": "Body's mass.",
             "itemtype": "property",
             "name": "mass",
@@ -3026,7 +3014,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 376,
+            "line": 374,
             "description": "Body's collision group.",
             "itemtype": "property",
             "name": "collisionGroup",
@@ -3038,7 +3026,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 382,
+            "line": 380,
             "description": "Group number that body collides against.",
             "itemtype": "property",
             "name": "collideAgainst",
@@ -3050,7 +3038,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 388,
+            "line": 386,
             "description": "Rotation of body.",
             "itemtype": "property",
             "name": "rotation",
@@ -3062,7 +3050,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 404,
+            "line": 402,
             "description": "Add shape to body.",
             "itemtype": "method",
             "name": "addShape",
@@ -3079,7 +3067,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 413,
+            "line": 411,
             "description": "This is called, when body collides with another body.",
             "itemtype": "method",
             "name": "collide",
@@ -3100,7 +3088,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 423,
+            "line": 421,
             "description": "This is called, when collision has been resolved.",
             "itemtype": "method",
             "name": "afterCollide",
@@ -3117,7 +3105,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 431,
+            "line": 429,
             "description": "Set new collision group for body.",
             "itemtype": "method",
             "name": "setCollisionGroup",
@@ -3134,7 +3122,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 442,
+            "line": 440,
             "description": "Set collision group that body will collide against.",
             "itemtype": "method",
             "name": "setCollideAgainst",
@@ -3151,7 +3139,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 451,
+            "line": 449,
             "description": "Update body's position and velocity.",
             "itemtype": "method",
             "name": "update",
@@ -3161,7 +3149,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 477,
+            "line": 475,
             "description": "Width of rectangle.",
             "itemtype": "property",
             "name": "width",
@@ -3173,7 +3161,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 483,
+            "line": 481,
             "description": "Height of rectangle.",
             "itemtype": "property",
             "name": "height",
@@ -3185,7 +3173,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 504,
+            "line": 502,
             "description": "Radius of circle.",
             "itemtype": "property",
             "name": "radius",
@@ -3197,7 +3185,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 525,
+            "line": 523,
             "description": "Length of line.",
             "itemtype": "property",
             "name": "length",
@@ -3209,7 +3197,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 531,
+            "line": 529,
             "description": "Rotation of line.",
             "itemtype": "property",
             "name": "rotation",
@@ -3221,7 +3209,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 561,
+            "line": 559,
             "description": "Set vector values.",
             "itemtype": "method",
             "name": "set",
@@ -3247,7 +3235,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 574,
+            "line": 572,
             "description": "Clone vector.",
             "itemtype": "method",
             "name": "clone",
@@ -3261,7 +3249,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 583,
+            "line": 581,
             "description": "Copy values from another vector.",
             "itemtype": "method",
             "name": "copy",
@@ -3282,7 +3270,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 595,
+            "line": 593,
             "description": "Add to vector values.",
             "itemtype": "method",
             "name": "add",
@@ -3309,7 +3297,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 608,
+            "line": 606,
             "description": "Subtract from vector values.",
             "itemtype": "method",
             "name": "subtract",
@@ -3336,7 +3324,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 621,
+            "line": 619,
             "description": "Multiply vector values.",
             "itemtype": "method",
             "name": "multiply",
@@ -3363,7 +3351,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 634,
+            "line": 632,
             "description": "Multiply and add vector values.",
             "itemtype": "method",
             "name": "multiplyAdd",
@@ -3390,7 +3378,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 647,
+            "line": 645,
             "description": "Divide vector values.",
             "itemtype": "method",
             "name": "divide",
@@ -3417,7 +3405,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 660,
+            "line": 658,
             "description": "Get distance of two vectors.",
             "itemtype": "method",
             "name": "distance",
@@ -3438,7 +3426,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 672,
+            "line": 670,
             "description": "Get length of vector.",
             "itemtype": "method",
             "name": "length",
@@ -3452,7 +3440,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 681,
+            "line": 679,
             "description": "Get dot of vector.",
             "itemtype": "method",
             "name": "dot",
@@ -3474,7 +3462,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 692,
+            "line": 690,
             "description": "Get normalized dot of vector.",
             "itemtype": "method",
             "name": "dotNormalized",
@@ -3496,7 +3484,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 711,
+            "line": 709,
             "description": "Rotate vector in radians.",
             "itemtype": "method",
             "name": "rotate",
@@ -3517,7 +3505,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 727,
+            "line": 725,
             "description": "Normalize vector.",
             "itemtype": "method",
             "name": "normalize",
@@ -3531,7 +3519,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 739,
+            "line": 737,
             "description": "Limit vector values.",
             "itemtype": "method",
             "name": "limit",
@@ -3552,7 +3540,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 751,
+            "line": 749,
             "description": "Get angle between two vectors.",
             "itemtype": "method",
             "name": "angle",
@@ -3573,7 +3561,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 761,
+            "line": 759,
             "description": "Get angle between two vectors from origin.",
             "itemtype": "method",
             "name": "angleFromOrigin",
@@ -3594,7 +3582,7 @@
         },
         {
             "file": "src/engine/physics.js",
-            "line": 771,
+            "line": 769,
             "description": "Round vector values.",
             "itemtype": "method",
             "name": "round",
@@ -3608,7 +3596,7 @@
         },
         {
             "file": "src/engine/pool.js",
-            "line": 18,
+            "line": 16,
             "description": "Create new pool.",
             "itemtype": "method",
             "name": "create",
@@ -3629,7 +3617,7 @@
         },
         {
             "file": "src/engine/pool.js",
-            "line": 32,
+            "line": 30,
             "description": "Get object from pool.",
             "itemtype": "method",
             "name": "get",
@@ -3650,7 +3638,7 @@
         },
         {
             "file": "src/engine/pool.js",
-            "line": 43,
+            "line": 41,
             "description": "Put object to pool.",
             "itemtype": "method",
             "name": "put",
@@ -3676,7 +3664,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 18,
+            "line": 16,
             "description": "Background color of scene.",
             "itemtype": "property",
             "name": "backgroundColor",
@@ -3687,7 +3675,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 23,
+            "line": 21,
             "description": "List of objects in scene.",
             "itemtype": "property",
             "name": "objects",
@@ -3698,7 +3686,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 28,
+            "line": 26,
             "description": "List of timers in scene.",
             "itemtype": "property",
             "name": "timers",
@@ -3709,7 +3697,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 33,
+            "line": 31,
             "description": "List of particle emitters in scene.",
             "itemtype": "property",
             "name": "emitters",
@@ -3720,7 +3708,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 38,
+            "line": 36,
             "description": "Main container for scene.",
             "itemtype": "property",
             "name": "stage",
@@ -3731,7 +3719,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 43,
+            "line": 41,
             "description": "Minimum distance to trigger swipe.",
             "itemtype": "property",
             "name": "swipeDist",
@@ -3742,7 +3730,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 48,
+            "line": 46,
             "description": "Minimum time to trigger swipe.",
             "itemtype": "property",
             "name": "swipeTime",
@@ -3753,7 +3741,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 74,
+            "line": 72,
             "description": "This is called every frame.",
             "itemtype": "method",
             "name": "update",
@@ -3763,7 +3751,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 99,
+            "line": 97,
             "description": "Add object to scene, so it's `update()` function get's called every frame.",
             "itemtype": "method",
             "name": "addObject",
@@ -3780,7 +3768,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 109,
+            "line": 107,
             "description": "Remove object from scene.",
             "itemtype": "method",
             "name": "removeObject",
@@ -3797,7 +3785,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 118,
+            "line": 116,
             "description": "Add particle emitter to scene.",
             "itemtype": "method",
             "name": "addEmitter",
@@ -3814,7 +3802,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 127,
+            "line": 125,
             "description": "Remove emitter from scene.",
             "itemtype": "method",
             "name": "removeEmitter",
@@ -3831,7 +3819,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 136,
+            "line": 134,
             "description": "Add timer to game scene.",
             "itemtype": "method",
             "name": "addTimer",
@@ -3862,7 +3850,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 184,
+            "line": 150,
             "description": "Remove timer from scene.",
             "itemtype": "method",
             "name": "removeTimer",
@@ -3884,7 +3872,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 196,
+            "line": 162,
             "description": "Callback for mouse click and touch tap on the scene stage.",
             "itemtype": "method",
             "name": "click",
@@ -3901,7 +3889,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 203,
+            "line": 169,
             "description": "Callback for mousedown and touchstart on the scene stage.",
             "itemtype": "method",
             "name": "mousedown",
@@ -3918,7 +3906,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 210,
+            "line": 176,
             "description": "Callback for mouseup and touchend on the scene stage.",
             "itemtype": "method",
             "name": "mouseup",
@@ -3935,7 +3923,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 217,
+            "line": 183,
             "description": "Callback for mousemove and touchmove on the scene stage.",
             "itemtype": "method",
             "name": "mousemove",
@@ -3952,7 +3940,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 224,
+            "line": 190,
             "description": "Callback for mouseout on the scene stage.",
             "itemtype": "method",
             "name": "mouseout",
@@ -3969,7 +3957,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 231,
+            "line": 197,
             "description": "Callback for keydown.",
             "itemtype": "method",
             "name": "keydown",
@@ -3979,7 +3967,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 237,
+            "line": 203,
             "description": "Callback for keyup.",
             "itemtype": "method",
             "name": "keyup",
@@ -3989,7 +3977,7 @@
         },
         {
             "file": "src/engine/scene.js",
-            "line": 267,
+            "line": 233,
             "description": "Callback for swipe.",
             "itemtype": "method",
             "name": "swipe",
@@ -4006,7 +3994,7 @@
         },
         {
             "file": "src/engine/sprite.js",
-            "line": 54,
+            "line": 52,
             "description": "Remove sprite from it's parent.",
             "itemtype": "method",
             "name": "remove",
@@ -4016,7 +4004,7 @@
         },
         {
             "file": "src/engine/sprite.js",
-            "line": 76,
+            "line": 74,
             "description": "Remove object from container.",
             "itemtype": "method",
             "name": "remove",
@@ -4026,7 +4014,7 @@
         },
         {
             "file": "src/engine/sprite.js",
-            "line": 84,
+            "line": 82,
             "description": "Add object to container.",
             "itemtype": "method",
             "name": "addChild",
@@ -4036,7 +4024,7 @@
         },
         {
             "file": "src/engine/storage.js",
-            "line": 31,
+            "line": 22,
             "description": "Set value to local storage.",
             "itemtype": "method",
             "name": "set",
@@ -4058,7 +4046,7 @@
         },
         {
             "file": "src/engine/storage.js",
-            "line": 41,
+            "line": 32,
             "description": "Get key from local storage.",
             "itemtype": "method",
             "name": "get",
@@ -4079,7 +4067,7 @@
         },
         {
             "file": "src/engine/storage.js",
-            "line": 51,
+            "line": 42,
             "description": "Remove key from local storage.",
             "itemtype": "method",
             "name": "remove",
@@ -4096,7 +4084,7 @@
         },
         {
             "file": "src/engine/storage.js",
-            "line": 60,
+            "line": 51,
             "description": "Reset local storage. This removes ALL keys.",
             "itemtype": "method",
             "name": "reset",
@@ -4105,8 +4093,18 @@
             "namespace": "game"
         },
         {
+            "file": "src/engine/storage.js",
+            "line": 62,
+            "itemtype": "attribute",
+            "name": "id",
+            "type": "String",
+            "class": "game.Storage",
+            "module": "storage",
+            "namespace": "game"
+        },
+        {
             "file": "src/engine/system.js",
-            "line": 18,
+            "line": 15,
             "description": "Width of the game screen.",
             "itemtype": "property",
             "name": "width",
@@ -4117,7 +4115,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 23,
+            "line": 20,
             "description": "Height of the game screen.",
             "itemtype": "property",
             "name": "height",
@@ -4128,7 +4126,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 28,
+            "line": 25,
             "description": "Current delta-time.",
             "itemtype": "property",
             "name": "delta",
@@ -4139,7 +4137,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 33,
+            "line": 30,
             "description": "Main game timer.",
             "itemtype": "property",
             "name": "timer",
@@ -4150,7 +4148,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 38,
+            "line": 35,
             "description": "Canvas element.",
             "itemtype": "property",
             "name": "canvas",
@@ -4161,7 +4159,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 43,
+            "line": 40,
             "description": "Id of canvas element.",
             "itemtype": "property",
             "name": "canvasId",
@@ -4173,7 +4171,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 49,
+            "line": 46,
             "description": "Is engine paused.",
             "itemtype": "property",
             "name": "paused",
@@ -4184,7 +4182,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 54,
+            "line": 51,
             "description": "Is engine in HiRes mode.",
             "itemtype": "property",
             "name": "hires",
@@ -4195,7 +4193,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 59,
+            "line": 56,
             "description": "Is engine in Retina mode.",
             "itemtype": "property",
             "name": "retina",
@@ -4206,7 +4204,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 153,
+            "line": 150,
             "description": "Pause game engine.",
             "itemtype": "method",
             "name": "pause",
@@ -4216,7 +4214,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 163,
+            "line": 160,
             "description": "Resume paused game engine.",
             "itemtype": "method",
             "name": "resume",
@@ -4226,7 +4224,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 173,
+            "line": 170,
             "description": "Change current scene.",
             "itemtype": "method",
             "name": "setScene",
@@ -4243,7 +4241,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 374,
+            "line": 371,
             "description": "Turn canvas centering on/off.",
             "itemtype": "attribute",
             "name": "center",
@@ -4255,7 +4253,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 382,
+            "line": 379,
             "description": "Turn canvas resizing on/off.",
             "itemtype": "attribute",
             "name": "resize",
@@ -4267,7 +4265,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 389,
+            "line": 386,
             "description": "Minimum width for canvas.",
             "itemtype": "attribute",
             "name": "minWidth",
@@ -4279,7 +4277,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 395,
+            "line": 392,
             "description": "Minimum height for canvas.",
             "itemtype": "attribute",
             "name": "minHeight",
@@ -4291,7 +4289,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 401,
+            "line": 398,
             "description": "Maximum width for canvas.",
             "itemtype": "attribute",
             "name": "maxWidth",
@@ -4303,7 +4301,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 407,
+            "line": 404,
             "description": "Maximum height for canvas.",
             "itemtype": "attribute",
             "name": "maxHeight",
@@ -4315,7 +4313,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 413,
+            "line": 410,
             "description": "Scaling method for CocoonJS.",
             "itemtype": "attribute",
             "name": "idtkScale",
@@ -4327,7 +4325,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 419,
+            "line": 416,
             "description": "Use ScreenCanvas on CocoonJS.\nhttp://support.ludei.com/hc/en-us/articles/201810268-ScreenCanvas",
             "itemtype": "attribute",
             "name": "screenCanvas",
@@ -4339,7 +4337,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 426,
+            "line": 423,
             "description": "Use HiRes mode.",
             "itemtype": "attribute",
             "name": "hires",
@@ -4351,7 +4349,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 432,
+            "line": 429,
             "description": "Canvas width/height factor, when to enable HiRes mode.",
             "itemtype": "attribute",
             "name": "hiresFactor",
@@ -4363,7 +4361,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 438,
+            "line": 435,
             "description": "Use Retina mode.",
             "itemtype": "attribute",
             "name": "retina",
@@ -4375,7 +4373,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 444,
+            "line": 441,
             "description": "Pause game engine, when page is hidden.",
             "itemtype": "attribute",
             "name": "pauseOnHide",
@@ -4387,7 +4385,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 450,
+            "line": 447,
             "description": "Mobile orientation for the game.",
             "itemtype": "attribute",
             "name": "orientation",
@@ -4399,7 +4397,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 457,
+            "line": 454,
             "description": "Background color for game screen on mobile.",
             "itemtype": "attribute",
             "name": "backgroundColor.game",
@@ -4410,7 +4408,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 463,
+            "line": 460,
             "description": "Background color for rotate screen on mobile.",
             "itemtype": "attribute",
             "name": "backgroundColor.rotate",
@@ -4421,7 +4419,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 471,
+            "line": 468,
             "description": "Background image for game screen on mobile.",
             "itemtype": "attribute",
             "name": "backgroundImage.game",
@@ -4432,7 +4430,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 477,
+            "line": 474,
             "description": "Background image for rotate screen on mobile.",
             "itemtype": "attribute",
             "name": "backgroundImage.rotate",
@@ -4443,7 +4441,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 484,
+            "line": 481,
             "description": "Rotate message for mobile.",
             "itemtype": "attribute",
             "name": "rotateMsg",
@@ -4455,7 +4453,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 490,
+            "line": 487,
             "description": "Rotate image for mobile.",
             "itemtype": "attribute",
             "name": "rotateImg",
@@ -4467,7 +4465,7 @@
         },
         {
             "file": "src/engine/timer.js",
-            "line": 37,
+            "line": 28,
             "description": "Set time for timer.",
             "itemtype": "method",
             "name": "set",
@@ -4484,7 +4482,7 @@
         },
         {
             "file": "src/engine/timer.js",
-            "line": 48,
+            "line": 39,
             "description": "Reset timer.",
             "itemtype": "method",
             "name": "reset",
@@ -4494,7 +4492,7 @@
         },
         {
             "file": "src/engine/timer.js",
-            "line": 57,
+            "line": 48,
             "description": "Get time since last delta.",
             "itemtype": "method",
             "name": "delta",
@@ -4504,7 +4502,7 @@
         },
         {
             "file": "src/engine/timer.js",
-            "line": 67,
+            "line": 58,
             "description": "Get time since start.",
             "itemtype": "method",
             "name": "time",
@@ -4514,7 +4512,7 @@
         },
         {
             "file": "src/engine/timer.js",
-            "line": 77,
+            "line": 67,
             "description": "Pause timer.",
             "itemtype": "method",
             "name": "pause",
@@ -4524,7 +4522,7 @@
         },
         {
             "file": "src/engine/timer.js",
-            "line": 85,
+            "line": 75,
             "description": "Resume paused timer.",
             "itemtype": "method",
             "name": "resume",
@@ -4534,7 +4532,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 19,
+            "line": 17,
             "description": "List of tweens.",
             "itemtype": "property",
             "name": "tweens",
@@ -4545,7 +4543,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 25,
+            "line": 23,
             "itemtype": "method",
             "name": "removeAll",
             "class": "game.TweenEngine",
@@ -4554,7 +4552,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 32,
+            "line": 30,
             "itemtype": "method",
             "name": "stopTweensForObject",
             "params": [
@@ -4570,7 +4568,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 42,
+            "line": 40,
             "itemtype": "method",
             "name": "getTweenForObject",
             "params": [
@@ -4586,7 +4584,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 53,
+            "line": 51,
             "itemtype": "method",
             "name": "add",
             "params": [
@@ -4602,7 +4600,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 61,
+            "line": 59,
             "itemtype": "method",
             "name": "remove",
             "params": [
@@ -4618,7 +4616,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 70,
+            "line": 68,
             "itemtype": "method",
             "name": "update",
             "class": "game.TweenEngine",
@@ -4627,7 +4625,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 125,
+            "line": 124,
             "itemtype": "method",
             "name": "to",
             "params": [
@@ -4648,7 +4646,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 136,
+            "line": 135,
             "itemtype": "method",
             "name": "start",
             "class": "game.Tween",
@@ -4657,7 +4655,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 163,
+            "line": 162,
             "itemtype": "method",
             "name": "stop",
             "class": "game.Tween",
@@ -4666,7 +4664,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 184,
+            "line": 183,
             "itemtype": "method",
             "name": "stopChainedTweens",
             "class": "game.Tween",
@@ -4675,7 +4673,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 193,
+            "line": 192,
             "itemtype": "method",
             "name": "delay",
             "params": [
@@ -4696,7 +4694,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 204,
+            "line": 203,
             "itemtype": "method",
             "name": "repeat",
             "params": [
@@ -4712,7 +4710,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 214,
+            "line": 213,
             "itemtype": "method",
             "name": "yoyo",
             "params": [
@@ -4728,7 +4726,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 224,
+            "line": 223,
             "itemtype": "method",
             "name": "easing",
             "params": [
@@ -4744,7 +4742,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 233,
+            "line": 232,
             "itemtype": "method",
             "name": "interpolation",
             "params": [
@@ -4760,7 +4758,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 242,
+            "line": 241,
             "itemtype": "method",
             "name": "chain",
             "params": [
@@ -4776,7 +4774,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 251,
+            "line": 250,
             "itemtype": "method",
             "name": "onStart",
             "params": [
@@ -4792,7 +4790,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 260,
+            "line": 259,
             "itemtype": "method",
             "name": "onUpdate",
             "params": [
@@ -4808,7 +4806,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 269,
+            "line": 268,
             "itemtype": "method",
             "name": "onComplete",
             "params": [
@@ -4824,7 +4822,27 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 610,
+            "line": 351,
+            "itemtype": "attribute",
+            "name": "Easing",
+            "type": "Object",
+            "class": "game.Tween",
+            "module": "tween",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/tween.js",
+            "line": 528,
+            "itemtype": "attribute",
+            "name": "Interpolation",
+            "type": "Object",
+            "class": "game.Tween",
+            "module": "tween",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/tween.js",
+            "line": 615,
             "description": "Add tween to group.",
             "itemtype": "method",
             "name": "add",
@@ -4845,7 +4863,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 622,
+            "line": 627,
             "itemtype": "method",
             "name": "tweenComplete",
             "class": "game.TweenGroup",
@@ -4854,7 +4872,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 634,
+            "line": 639,
             "itemtype": "method",
             "name": "remove",
             "params": [
@@ -4870,7 +4888,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 642,
+            "line": 647,
             "itemtype": "method",
             "name": "start",
             "class": "game.TweenGroup",
@@ -4879,7 +4897,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 651,
+            "line": 656,
             "itemtype": "method",
             "name": "pause",
             "class": "game.TweenGroup",
@@ -4888,7 +4906,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 660,
+            "line": 665,
             "itemtype": "method",
             "name": "resume",
             "class": "game.TweenGroup",
@@ -4897,7 +4915,7 @@
         },
         {
             "file": "src/engine/tween.js",
-            "line": 669,
+            "line": 674,
             "itemtype": "method",
             "name": "stop",
             "params": [
