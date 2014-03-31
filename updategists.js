@@ -10,19 +10,13 @@ for (var i = 0; i < categories.length; i++) {
 var perpage = 30;
 var pages = 0;
 var currentPage = 1;
-
-console.log('Getting gist count...');
-github.json('GET', '/users/:user', {user: 'ekelokorpi'}, function(err, res) {
-    if(err) return console.log('Error');
-
-    var gistCount = res.body.public_gists;
-    console.log(gistCount + ' gists found.');
-    pages = Math.ceil(gistCount / perpage);
-
-    getGists();
-});
-
 var totalGistData = '';
+
+var writeFile = function(filename, data) {
+    fs.writeFile(filename, data, function (err) {
+        if(err) console.log('Error writing ' + filename);
+    });
+};
 
 var getGists = function() {
     console.log('Getting gists page ' + currentPage + '...');
@@ -36,7 +30,8 @@ var getGists = function() {
         var description;
         var last;
         var temp;
-        for (var i = 0; i < gists.length; i++) {
+        var i;
+        for (i = 0; i < gists.length; i++) {
             if(!gists[i].description) continue;
 
             temp = gists[i].description.split(' ');
@@ -64,10 +59,10 @@ var getGists = function() {
         currentPage++;
         if(currentPage > pages) {
             for(var name in categoryData) {
-                if(categoryData[name].length == 0) continue;
+                if(categoryData[name].length === 0) continue;
 
                 totalGistData += '<h6>' + name + '</h6>\n';
-                for (var i = 0; i < categoryData[name].length; i++) {
+                for (i = 0; i < categoryData[name].length; i++) {
                     totalGistData += '<a href="/snippets/' + categoryData[name][i][0] + '.html" class="box">' + categoryData[name][i][1] + '</a>\n';
                 }
             }
@@ -77,10 +72,13 @@ var getGists = function() {
     });
 };
 
-var writeFile = function(filename, data) {
-    console.log('Writing ' + filename);
+console.log('Getting gist count...');
+github.json('GET', '/users/:user', {user: 'ekelokorpi'}, function(err, res) {
+    if(err) return console.log('Error');
 
-    fs.writeFile(filename, data, function (err) {
-        if(err) console.log('Error writing ' + filename);
-    });
-};
+    var gistCount = res.body.public_gists;
+    console.log(gistCount + ' gists found.');
+    pages = Math.ceil(gistCount / perpage);
+
+    getGists();
+});
