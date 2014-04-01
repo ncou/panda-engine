@@ -12,9 +12,6 @@ body {
 	color: #333333;
 	line-height: 32px;
 }
-body.index {
-	background: #b9bec7 url('{{ site.baseurl }}img/background.png') center top;
-}
 a b, a.box {
 	background: #f2f2f2;
 	border: 1px solid #fff;
@@ -102,7 +99,7 @@ h3 {
 	/*border-left: 2px dashed #ccc;*/
 	/*border-right: 2px dashed #ccc;*/
 	max-width: 960px;
-	padding-bottom: 40px;
+	padding-bottom: 60px;
 }
 #wrapper {
 	padding: 20px 0px;
@@ -191,7 +188,7 @@ code {
 }
 
 #header {
-	position: absolute;
+	position: fixed;
 	width: 100%;
 	background: #848e9d;
 	margin: 0;
@@ -385,13 +382,28 @@ a.center {
 #nav a:first-child {
 	margin-left: 0px;
 }
+body.index {
+	background: #b9bec7 url('{{ site.baseurl }}img/logo4.png') no-repeat center 0px;
+}
 .index #wrapper {
 	text-align: center;
 }
 .index h1 {
 	color: #515e73;
-	text-shadow: 0px 1px 0px rgba(255,255,255,0.3);
-	margin-top: 20px;
+	/*text-shadow: 0px 1px 0px #fff;*/
+	margin-top: 390px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-size: 29px;
+	margin-bottom: 0px;
+}
+.index h3 {
+	font-size: 22px;
+	color: #fff;
+	/*text-shadow: 0px 1px 0px #515e73;*/
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	margin-top: 0px;
 }
 .index a.box {
 	background: #ffffff;
@@ -402,7 +414,7 @@ a.center {
 	/*font-weight: normal;*/
 	display: inline-block;
 	/*letter-spacing: 1px;*/
-	font-size: 22px;
+	font-size: 18px;
 	color: #848e9d;
 	/*text-shadow: 0px 1px 0px #333;*/
 	box-shadow: 0px 2px 0px #848e9d;
@@ -413,7 +425,10 @@ a.center {
 	color: white;
 }
 img.logo {
-	margin-top: -240px;
+	margin-top: -250px;
+}
+.index #bg {
+	
 }
 @media all and (max-width: 980px) {
 	body {
@@ -476,6 +491,9 @@ img.logo {
 }
 
 @media all and (max-width: 740px) {
+	body.index {
+		background: #b9bec7 url('{{ site.baseurl }}img/pandatext.png') no-repeat center 70px;
+	}
 	#bg {
 		max-width: 480px;
 	}
@@ -486,7 +504,7 @@ img.logo {
 		display: none;
 	}
 	#header {
-		height: 52px;
+		/*height: 52px;*/
 	}
 	#nav {
 		top: 0px;
@@ -500,9 +518,23 @@ img.logo {
 	img.logo {
 		width: 100%;
 	}
+	.index h1 {
+		margin-top: 220px;
+		font-size: 27px;
+	}
+	.index h3 {
+		font-size: 18px;
+	}
 }
 
 @media all and (max-width: 500px) {
+	body.index {
+		background: #b9bec7 url('{{ site.baseurl }}img/pandatext_small.png') no-repeat center 70px;
+	}
+	.index h1 {
+		margin-top: 110px;
+		font-size: 27px;
+	}
 	#bg {
 		max-width: 100%;
 	}

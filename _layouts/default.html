@@ -1,5 +1,5 @@
 ---
-description: Free open source HTML5 game engine for mobile and desktop with Canvas and WebGL rendering.
+description: Free open source HTML5 game framework for mobile and desktop with Canvas and WebGL rendering.
 author: Eemeli Kelokorpi
 ---
 <!DOCTYPE html>
@@ -9,7 +9,6 @@ author: Eemeli Kelokorpi
     {% include header.html %}
     <div id="bg">
     <div id="wrapper">
-        {% if current[1] == 'index.html' %}<img src="{{ site.baseurl}}img/logo3.png" class="logo">{% endif %}
         {% if page.title %}<h1>{% if page.pretitle %}{{ page.pretitle }} {% endif %}{{ page.title }}</h1>{% endif %}
         {% if page.header %}<h3>{{ page.header }}</h3>{% endif %}
         {{ content }}
