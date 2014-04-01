@@ -6,28 +6,30 @@ html,body {
 body {
 	margin: 0;
 	padding: 0;
-	background: #fff;
+	background: #b9bec7;
 	/*background: #fff url('{{ site.baseurl }}mountains.png') bottom center repeat-x;*/
 	font: 14px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color: #333333;
+	color: #515e73;
 	line-height: 32px;
 }
 a b, a.box {
 	background: #f2f2f2;
-	border: 1px solid #fff;
+	/*border: 1px solid #fff;*/
 	border-radius: 5px;
 	padding: 0px 10px;
 	margin: 2px 0px;
 	/*font-weight: normal;*/
 	display: inline-block;
+	box-shadow: 0px 2px 0px #848e9d;
 }
 b.right {
 	float: right;
 }
 a.box {
 	/*letter-spacing: 1px;*/
-	background: #848e9d;
-	color: #fff;
+	background: #fff;
+	color: #848e9d;
 	/*text-shadow: 0px 1px 0px #333;*/
 }
 #nav a {
@@ -42,7 +44,7 @@ a.box {
 	display: inline-block;
 	margin-left: 8px;
 	float: left;
-	text-shadow: 0px 2px 0px #515e73;
+	/*text-shadow: 0px 2px 0px #515e73;*/
 }
 #nav a div {
 	display: inline-block;
@@ -60,9 +62,12 @@ a.box {
 b {
 }
 a {
-	font-weight: bold;
-	color: #6e899c;
+	font-weight: bold;	
+	color: #515e73;
 	text-decoration: none;
+}
+#footer a {
+	color: #6e899c;
 }
 a:hover {
 	color: #333;
@@ -78,17 +83,26 @@ h1,h2,h3 {
 h1 {
 	margin-top: 0px;
 	font-weight: bold;
-	margin-bottom: 20px;
-	color: #000;
+	margin-bottom: 0px;
+	color: #515e73;
+	text-transform: uppercase;
 	/*text-shadow: 0px 1px 0px #ccc;*/
+	/*border-bottom: 2px dashed #848e9d;*/
+	padding-bottom: 0px;
 }
 
 h3 {
+	color: white;
 	clear: both;
-	border-bottom: 2px dashed #b9bec7;
-	margin-bottom: 15px;
-	font-size: 17px;
+	text-transform: uppercase;
+	/*border-bottom: 2px dashed #848e9d;*/
+	border-bottom: 2px dashed #848e9d;
+	margin-top: 0px;
+	margin-bottom: 16px;
+	font-size: 20px;
+	letter-spacing: 1px;
 	font-weight: bold;
+	/*text-align: right;*/
 }
 #bg {
 	width: 100%;
@@ -177,7 +191,7 @@ code {
 #footer {
 	background: #111;
 	text-align: center;
-	color: #ccc;
+	color: #fff;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	font-size: 12px;
@@ -266,6 +280,7 @@ a.showcase p {
 }
 
 div.feature {
+	color: #515e73;
 	font-weight: bold;
 	width: 240px;
 	font-size: 20px;
@@ -286,9 +301,9 @@ div.feature p, div.box, div.review {
 	font-weight: bold;
 	margin: 5px;
 	margin-top: 10px;
-	color: #888;
+	color: #fff;
 	font-size: 14px;
-	background: #eee;
+	background: #848e9d;
 	border-radius: 10px;
 	padding: 10px 10px;
 	line-height: 20px;
@@ -395,7 +410,10 @@ body.index {
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	font-size: 29px;
-	margin-bottom: 0px;
+	margin-bottom: 1px;
+	border-bottom: 2px dashed #848e9d;
+	padding-bottom: 5px;
+	display: inline-block;
 }
 .index h3 {
 	font-size: 22px;
@@ -404,25 +422,33 @@ body.index {
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	margin-top: 0px;
+	border-bottom: none;
 }
-.index a.box {
-	background: #ffffff;
+a.box {
 	border: 0px solid #fff;
 	border-radius: 5px;
-	padding: 10px 30px;
-	margin: 2px 0px;
+	
+	margin: 6px 4px;
 	/*font-weight: normal;*/
 	display: inline-block;
 	/*letter-spacing: 1px;*/
-	font-size: 18px;
-	color: #848e9d;
+	
+	
 	/*text-shadow: 0px 1px 0px #333;*/
 	box-shadow: 0px 2px 0px #848e9d;
-	text-transform: uppercase;
-}
-.index a.box:hover {
+	/*text-transform: uppercase;*/
+
 	background: #4f5d73;
 	color: white;
+}
+.index a.box {
+	font-size: 18px;
+	padding: 10px 30px;
+	text-transform: uppercase;
+}
+a.box:hover {
+	background: #fff;
+	color: #4f5d73;
 }
 img.logo {
 	margin-top: -250px;
