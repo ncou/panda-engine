@@ -174,6 +174,13 @@ h2 img, h3 img, h4 img {
 p {
 	margin: 0;
 	margin-bottom: 10px;
+
+}
+p.box {
+	background: #848e9d;
+	border-radius: 5px;
+	padding: 10px 15px;
+	color: #000;*/
 }
 code {
 	white-space: pre-wrap;
