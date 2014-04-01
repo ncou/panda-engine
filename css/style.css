@@ -13,7 +13,7 @@ body {
 	line-height: 32px;
 }
 body.index {
-	background: #b9bec7;
+	background: #b9bec7 url('{{ site.baseurl }}img/background.png') center top;
 }
 a b, a.box {
 	background: #f2f2f2;
@@ -411,6 +411,9 @@ a.center {
 .index a.box:hover {
 	background: #4f5d73;
 	color: white;
+}
+img.logo {
+	margin-top: -240px;
 }
 @media all and (max-width: 980px) {
 	body {
