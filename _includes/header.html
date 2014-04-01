@@ -1,9 +1,5 @@
-{% assign current = page.url | downcase | split: '/' %}
-
 <div id="header">
     <div class="wrapper">
-        <a href="{{ site.baseurl }}"><img src="{{ site.baseurl }}img/panda.png" class="left"></a>
-
         <div id="nav">
             <a href="{{ site.baseurl }}download/" {% if current[1] == 'download' %}class='current'{% endif %}><img src="{{ site.baseurl }}img/icons/32/download.png"><span>Download</span></a>
             <a href="{{ site.baseurl }}features/" {% if current[1] == 'features' %}class='current'{% endif %}><img src="{{ site.baseurl }}img/icons/32/flame.png"><span>Features</span></a>

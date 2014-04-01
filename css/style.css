@@ -12,6 +12,9 @@ body {
 	color: #333333;
 	line-height: 32px;
 }
+body.index {
+	background: #b9bec7;
+}
 a b, a.box {
 	background: #f2f2f2;
 	border: 1px solid #fff;
@@ -37,27 +40,21 @@ a.box {
 	padding: 10px 12px;
 	border-style: none;
 	margin: 0px 0px;
-	border-radius: 10px;
-	border-bottom-left-radius: 0px;
-	border-bottom-right-radius: 0px;
-	height: 32px;
+
+	height: 34px;
 	display: inline-block;
 	margin-left: 8px;
 	float: left;
+	text-shadow: 0px 2px 0px #515e73;
 }
 #nav a div {
 	display: inline-block;
 }
 #nav a:hover, #nav a.current {
-	color: #000;
-	background: #fff;
+	background: #515e73;
 	text-shadow: none;
 }
-#nav {
-	position: absolute;
-	left: 220px;
-	top: 66px;
-}
+
 #nav a img {
 	width: 32px;
 	vertical-align: middle;
@@ -109,7 +106,7 @@ h3 {
 }
 #wrapper {
 	padding: 20px 0px;
-	padding-top: 140px;
+	padding-top: 100px;
 }
 h4 {
 	margin: 0;
@@ -196,11 +193,11 @@ code {
 #header {
 	position: absolute;
 	width: 100%;
-	background: #b9bec7;
+	background: #848e9d;
 	margin: 0;
-	height: 118px;
+	height: 54px;
 	overflow: hidden;
-	border-bottom: 0px solid #000;
+	border-bottom: 2px solid #515e73;
 }
 a.showcase {
 	width: 192px;
@@ -378,7 +375,43 @@ a.center {
 	margin-top: 5px;
 	position: absolute;
 }
-
+#nav {
+	left: 0px;
+	width: 100%;
+}
+#nav a {
+	float: none;
+}
+#nav a:first-child {
+	margin-left: 0px;
+}
+.index #wrapper {
+	text-align: center;
+}
+.index h1 {
+	color: #515e73;
+	text-shadow: 0px 1px 0px rgba(255,255,255,0.3);
+	margin-top: 20px;
+}
+.index a.box {
+	background: #ffffff;
+	border: 0px solid #fff;
+	border-radius: 5px;
+	padding: 10px 30px;
+	margin: 2px 0px;
+	/*font-weight: normal;*/
+	display: inline-block;
+	/*letter-spacing: 1px;*/
+	font-size: 22px;
+	color: #848e9d;
+	/*text-shadow: 0px 1px 0px #333;*/
+	box-shadow: 0px 2px 0px #848e9d;
+	text-transform: uppercase;
+}
+.index a.box:hover {
+	background: #4f5d73;
+	color: white;
+}
 @media all and (max-width: 980px) {
 	body {
 		line-height: 30px;
@@ -415,23 +448,12 @@ a.center {
 		display: block;
 		visibility: hidden;
 	}
-	img.mockup {
-		width: 100%;
-	}
+
 	div.feature.small {
 		width: 360px;
 		height: 100px;
 	}
-	#nav {
-		left: 0px;
-		width: 100%;
-	}
-	#nav a {
-		float: none;
-	}
-	#nav a:first-child {
-		margin-left: 0px;
-	}
+
 	#nav a span {
 		display: none;
 	}
@@ -471,6 +493,9 @@ a.center {
 	}
 	#wrapper {
 		padding-top: 75px;
+	}
+	img.logo {
+		width: 100%;
 	}
 }
 
