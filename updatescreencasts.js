@@ -16,7 +16,7 @@ var writeFiles = function() {
 
         fs.writeFile('_includes/screencasts.html', fileData, function (err) {
             if(err) console.log('Error writing file');
-            else console.log('Screencasts updated.');
+            // else console.log('Screencasts updated.');
         });
 
         return;
@@ -57,14 +57,16 @@ var getItems = function(pageToken) {
             getItems(data.nextPageToken);
         } else {
             // All found
-            fileData = '<ul>\n';
+            // fileData = '<ul>\n';
+            fileData = '';
             for (var i = 0; i < playlistItems.length; i++) {
                 playlistItems[i].fileId = i + 1;
 
-                fileData += '<li><a href="/screencasts/'+playlistItems[i].fileId+'.html">' + playlistItems[i].snippet.title.replace('Panda.js screencast ', '') + '</a></li>\n';
+                fileData += '<p><a href="/screencasts/'+playlistItems[i].fileId+'.html">' + playlistItems[i].snippet.title.replace('Panda.js screencast ', '') + '</a></p>\n';
             }
-            fileData += '</ul>\n';
+            // fileData += '</ul>\n';
 
+            console.log(playlistItems.length + ' screencasts found.');
             console.log('Writing screencasts...');
             writeFiles();
         }

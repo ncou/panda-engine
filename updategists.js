@@ -19,7 +19,7 @@ var writeFile = function(filename, data) {
 };
 
 var getGists = function() {
-    console.log('Getting gists page ' + currentPage + '...');
+    // console.log('Getting gists page ' + currentPage + '...');
 
     github.json('GET', '/users/:user/gists?page='+currentPage+'&per_page='+perpage, {user: 'ekelokorpi'}, function (err, res) {
         if(err) return console.log('Error');
@@ -61,11 +61,11 @@ var getGists = function() {
             for(var name in categoryData) {
                 if(categoryData[name].length === 0) continue;
 
-                totalGistData += '<h6>' + name + '</h6>\n<p class="box">';
+                totalGistData += '<h6>' + name + '</h6>\n<div class="box"><ul>';
                 for (i = 0; i < categoryData[name].length; i++) {
-                    totalGistData += '<a href="/snippets/' + categoryData[name][i][0] + '.html" class="box">' + categoryData[name][i][1] + '</a>\n';
+                    totalGistData += '<li><a href="/snippets/' + categoryData[name][i][0] + '.html">' + categoryData[name][i][1] + '</a></li>\n';
                 }
-                totalGistData += '</p>\n';
+                totalGistData += '</ul></div>\n';
             }
             
             writeFile('_includes/snippets.html', totalGistData);
@@ -73,7 +73,7 @@ var getGists = function() {
     });
 };
 
-console.log('Getting gist count...');
+console.log('Getting gists...');
 github.json('GET', '/users/:user', {user: 'ekelokorpi'}, function(err, res) {
     if(err) return console.log('Error');
 
@@ -81,5 +81,6 @@ github.json('GET', '/users/:user', {user: 'ekelokorpi'}, function(err, res) {
     console.log(gistCount + ' gists found.');
     pages = Math.ceil(gistCount / perpage);
 
+    console.log('Writing gists...');
     getGists();
 });
