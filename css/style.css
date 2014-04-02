@@ -1,7 +1,7 @@
 ---
 ---
 html,body {
-	min-height: 100%;
+	height: 100%;
 }
 body {
 	margin: 0;
@@ -62,15 +62,15 @@ b {
 }
 a {
 	font-weight: bold;	
-	color: #515e73;
+
 	text-decoration: none;
-	color: #000;
+	color: #515e73;
 }
 #footer a {
 	color: #6e899c;
 }
 a:hover {
-	color: #fff;
+	color: #000;
 	cursor: pointer;
 }
 a.box:hover {
@@ -92,7 +92,7 @@ h1 {
 }
 
 h3 {
-	color: white;
+	color: #848e9d;
 	clear: both;
 	text-transform: uppercase;
 	/*border-bottom: 2px dashed #848e9d;*/
@@ -114,15 +114,29 @@ h3 span {
 	margin: auto;
 	height: auto;
 	min-height: 100%;
-	/*background: #fff;*/
+	background: #fff;
 	/*border-left: 2px dashed #ccc;*/
 	/*border-right: 2px dashed #ccc;*/
 	max-width: 960px;
-	padding-bottom: 60px;
+	padding-bottom: 0px;
+
+	position:relative; /* needed for footer positioning*/
+	margin:0 auto; /* center, not in IE5 */
+	max-width: 960px;
+	background:#fff;
+	
+	height:auto !important; /* real browsers */
+	height:100%; /* IE6: treaded as min-height*/
+
+	min-height:100%; /* real browsers */
 }
 #wrapper {
-	padding: 20px 0px;
+	padding: 20px 20px;
 	padding-top: 80px;
+	padding-bottom: 70px;
+}
+#frame {
+
 }
 h4 {
 	margin: 0;
@@ -189,7 +203,7 @@ div.code {
 	font-weight: normal;
 	padding: 8px 15px;
 	border-radius: 5px;
-	line-height: 22px;
+	line-height: 24px;
 	margin: 10px 0px;
 }
 div.box, p.box {
@@ -198,10 +212,10 @@ div.box, p.box {
 	padding: 10px 15px;
 	color: #000;
 
-	background: #aeb4bf;
+	background: #eee;
 	/*border: 2px dashed #515e73;*/
-	color: #515e73;
-	font-weight: bold;
+	color: #000;
+	/*font-weight: bold;*/
 }
 ul, ol {
 	margin: 0;
@@ -243,6 +257,7 @@ code {
 	margin: 0;
 	height: 54px;
 	overflow: hidden;
+	z-index: 2;
 	/*border-bottom: 2px solid #515e73;*/
 }
 a.showcase {
@@ -264,8 +279,8 @@ a.showcase img {
 	/*box-shadow: 0px 6px 0px #ccc;*/
 }
 a.showcase:hover{
-	background: #848e9d;
-	color: #fff;
+	background: #eee;
+	color: #000;
 }
 a.showcase p {
 	clear: both;
@@ -318,7 +333,7 @@ a.showcase p {
 div.feature {
 	color: #515e73;
 	font-weight: bold;
-	width: 240px;
+	width: 230px;
 	font-size: 20px;
 	text-align: center;
 	float: left;
@@ -337,9 +352,9 @@ div.feature p, div.review {
 	font-weight: bold;
 	margin: 5px;
 	margin-top: 10px;
-	color: #fff;
+	color: #888;
 	font-size: 14px;
-	background: #848e9d;
+	background: #eee;
 	border-radius: 10px;
 	padding: 10px 10px;
 	line-height: 20px;
@@ -350,7 +365,7 @@ div.review {
 	float: left;
 }
 div.feature.small {
-	width: 320px;
+	width: 230px;
 	height: 100px;
 }
 h5 {
@@ -433,6 +448,9 @@ body.index {
 .index #wrapper {
 	text-align: center;
 }
+.index #bg {
+	background: none;
+}
 .index h1 {
 	color: #515e73;
 	/*text-shadow: 0px 1px 0px #fff;*/
@@ -476,7 +494,7 @@ a.box {
 	padding: 10px 30px;
 	text-transform: uppercase;
 }
-a.box:hover {
+.index a.box:hover {
 	background: #fff;
 	color: #4f5d73;
 }
@@ -485,6 +503,10 @@ img.logo {
 }
 .index #bg {
 	
+}
+
+iframe {
+	width: 100%;
 }
 
 @media all and (max-width: 980px) {
@@ -500,6 +522,7 @@ img.logo {
 		/*padding: 20px 5px;*/
 		/*padding-left: 10px;*/
 		/*padding-right: 10px;*/
+		padding-bottom: 20px;
 	}
 	#header {
 		text-align: center;
@@ -523,12 +546,16 @@ img.logo {
 		display: block;
 		visibility: hidden;
 	}
-
+	div.feature {
+		width: 226px;
+	}
 	div.feature.small {
-		width: 360px;
+		width: 340px;
 		height: 100px;
 	}
-
+	a.showcase {
+		width: 178px;
+	}
 	#nav a span {
 		display: none;
 	}
@@ -549,13 +576,21 @@ img.logo {
 
 @media all and (max-width: 740px) {
 	body.index {
-		background: #b9bec7 url('{{ site.baseurl }}img/pandatext.png') no-repeat center 70px;
+		background-size: 100%;
 	}
 	#bg {
 		max-width: 480px;
 	}
+	h3 {
+		margin-left: 0px;
+		text-align: center;
+	}
+	div.feature {
+		width: 220px;
+	}
 	div.feature.small {
-		width: 480px;
+		width: 100%;
+		margin-bottom: 0px;
 	}
 	#header img.left {
 		display: none;
@@ -571,6 +606,7 @@ img.logo {
 	}
 	#wrapper {
 		padding-top: 75px;
+		padding-bottom: 20px;
 	}
 	img.logo {
 		width: 100%;
@@ -582,6 +618,9 @@ img.logo {
 	.index h3 {
 		font-size: 18px;
 	}
+	a.showcase {
+		width: 172px;
+	}
 }
 
 @media all and (max-width: 500px) {
@@ -592,6 +631,10 @@ img.logo {
 		margin-top: 110px;
 		font-size: 27px;
 	}
+	h3 {
+		margin-left: 0px;
+		text-align: center;
+	}
 	#bg {
 		max-width: 100%;
 	}
@@ -599,12 +642,14 @@ img.logo {
 		/*padding: 20px 5px;*/
 		padding-left: 10px;
 		padding-right: 10px;
+		padding-bottom: 10px;
 	}
 	div.feature {
 		width: 100%;
 	}
 	div.feature.small {
 		width: 100%;
+		margin-bottom: 20px;
 	}
 	#nav a {
 		margin: 0;

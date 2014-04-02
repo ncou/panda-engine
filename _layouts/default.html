@@ -7,6 +7,7 @@ author: Eemeli Kelokorpi
 {% include head.html %}
 <body {% if current[1] == 'index.html' %}class='index'{% endif %}>
     {% include header.html %}
+
     <div id="bg">
     <div id="wrapper">
         {% if page.title %}<h1>{% if page.pretitle %}{{ page.pretitle }} {% endif %}{{ page.title }}</h1>{% endif %}
@@ -14,6 +15,7 @@ author: Eemeli Kelokorpi
         {{ content }}
     </div>
     </div>
+
     {% if current[1] != 'index.html' %}{% include footer.html %}{% endif %}
     {% include analytics.html %}
 </body>
