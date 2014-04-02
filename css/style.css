@@ -516,6 +516,7 @@ iframe {
 @media all and (max-width: 980px) {
 	body {
 		line-height: 30px;
+		background-image: none;
 	}
 	#bg {
 		border-style: none;
