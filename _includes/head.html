@@ -13,5 +13,19 @@
     <title>Panda.js - {{ page.title }}</title>
     <link rel="shortcut icon" href="{{ site.baseurl }}favicon.png">
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}css/style.css">
+
+    <script type="text/javascript">
+        // Retina icons support
+        window.onload = function() {
+            if(window.devicePixelRatio === 2) {
+                var images = document.getElementsByTagName('img');
+                for (var i = 0; i < images.length; i++) {
+                    if(images[i].src.indexOf('icons') !== -1 && images[i].src.indexOf('32') !== -1) {
+                        images[i].src = images[i].src.replace('32', '64');
+                    }
+                }
+            }
+        };
+    </script>
 </head>
 {% assign current = page.url | downcase | split: '/' %}

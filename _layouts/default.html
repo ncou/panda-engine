@@ -14,7 +14,7 @@ author: Eemeli Kelokorpi
         {{ content }}
     </div>
     </div>
-    {% include footer.html %}
+    {% if current[1] != 'index.html' %}{% include footer.html %}{% endif %}
     {% include analytics.html %}
 </body>
 </html>

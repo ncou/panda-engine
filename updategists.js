@@ -61,10 +61,11 @@ var getGists = function() {
             for(var name in categoryData) {
                 if(categoryData[name].length === 0) continue;
 
-                totalGistData += '<h6>' + name + '</h6>\n';
+                totalGistData += '<h6>' + name + '</h6>\n<p class="box">';
                 for (i = 0; i < categoryData[name].length; i++) {
                     totalGistData += '<a href="/snippets/' + categoryData[name][i][0] + '.html" class="box">' + categoryData[name][i][1] + '</a>\n';
                 }
+                totalGistData += '</p>\n';
             }
             
             writeFile('_includes/snippets.html', totalGistData);
