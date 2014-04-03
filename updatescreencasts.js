@@ -26,7 +26,7 @@ var writeFiles = function() {
 
     // var header = data.snippet.title.split(' - ')[1];
     var header = data.snippet.title.replace('Panda.js screencast ', '');
-    var content = '---\nlayout: default\ntitle: Screencast\nheader: '+ header +'\n---\n';
+    var content = '---\nlayout: default\ntitle: Screencasts\nheader: '+ header +'\n---\n';
 
     content += '<iframe width="920" height="690" src="//www.youtube.com/embed/'+data.snippet.resourceId.videoId+'" frameborder="0" allowfullscreen></iframe>';
 

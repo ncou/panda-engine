@@ -1,154 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>src/engine/core.js - Panda.js</title>
-    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
-    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
-    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
-    <script src="../assets/vendor/yui-min.js"></script>
-</head>
-<body>
+---
+layout: default
+title: Documentation
+---
 
-<div id="doc">
-    <header class="main-header">
-        <div class="content">
-            <div class="project-title">
-                
-                    <img class="logo" src="../../img/logo.png" title="Panda.js">
-                
-                
-                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.2.0</span>
-                
-                
-                    <p class="description">HTML5 game engine</p>
-                
-            </div>
-            <ul class="jump-links">
-                <li><a href="#index" class="index-jump-link">index</a></li>
-                <li><a href="#top" class="top-jump-link">top</a></li>
-            </ul>
-        </div>
-    </header>
-    <div id="bd" class="main-body">
+<div class="sidebar"></div>
 
-        <div id="docs-sidebar" class="sidebar apidocs">
-            <div id="api-list">
-    <div id="api-tabview" class="tabview">
-        <ul class="tabs">
-            <li><a href="#api-classes">Classes</a></li>
-            <li><a href="#api-modules">Modules</a></li>
-        </ul>
-
-        <div id="api-tabview-filter">
-            <input type="search" id="api-filter" placeholder="Type to filter APIs">
-        </div>
-
-        <div id="api-tabview-panel">
-            <ul id="api-classes" class="apis classes">
-            
-                <li><a class="type" href="../classes/game.Analytics.html">game.Analytics</a></li>
-            
-                <li><a class="type" href="../classes/game.Animation.html">game.Animation</a></li>
-            
-                <li><a class="type" href="../classes/game.Audio.html">game.Audio</a></li>
-            
-                <li><a class="type" href="../classes/game.Body.html">game.Body</a></li>
-            
-                <li><a class="type" href="../classes/game.Circle.html">game.Circle</a></li>
-            
-                <li><a class="type" href="../classes/game.Class.html">game.Class</a></li>
-            
-                <li><a class="type" href="../classes/game.CollisionSolver.html">game.CollisionSolver</a></li>
-            
-                <li><a class="type" href="../classes/game.Container.html">game.Container</a></li>
-            
-                <li><a class="type" href="../classes/game.Core.html">game.Core</a></li>
-            
-                <li><a class="type" href="../classes/game.Debug.html">game.Debug</a></li>
-            
-                <li><a class="type" href="../classes/game.DebugDraw.html">game.DebugDraw</a></li>
-            
-                <li><a class="type" href="../classes/game.Emitter.html">game.Emitter</a></li>
-            
-                <li><a class="type" href="../classes/game.Keyboard.html">game.Keyboard</a></li>
-            
-                <li><a class="type" href="../classes/game.Line.html">game.Line</a></li>
-            
-                <li><a class="type" href="../classes/game.Loader.html">game.Loader</a></li>
-            
-                <li><a class="type" href="../classes/game.Particle.html">game.Particle</a></li>
-            
-                <li><a class="type" href="../classes/game.Pool.html">game.Pool</a></li>
-            
-                <li><a class="type" href="../classes/game.Rectangle.html">game.Rectangle</a></li>
-            
-                <li><a class="type" href="../classes/game.Scene.html">game.Scene</a></li>
-            
-                <li><a class="type" href="../classes/game.Sprite.html">game.Sprite</a></li>
-            
-                <li><a class="type" href="../classes/game.Storage.html">game.Storage</a></li>
-            
-                <li><a class="type" href="../classes/game.System.html">game.System</a></li>
-            
-                <li><a class="type" href="../classes/game.TilingSprite.html">game.TilingSprite</a></li>
-            
-                <li><a class="type" href="../classes/game.Timer.html">game.Timer</a></li>
-            
-                <li><a class="type" href="../classes/game.Tween.html">game.Tween</a></li>
-            
-                <li><a class="type" href="../classes/game.TweenEngine.html">game.TweenEngine</a></li>
-            
-                <li><a class="type" href="../classes/game.TweenGroup.html">game.TweenGroup</a></li>
-            
-                <li><a class="type" href="../classes/game.Vector.html">game.Vector</a></li>
-            
-                <li><a class="type" href="../classes/game.World.html">game.World</a></li>
-            
-            </ul>
-
-            <ul id="api-modules" class="apis modules">
-            
-                <li><a class="module" href="../modules/analytics.html">analytics</a></li>
-            
-                <li><a class="module" href="../modules/audio.html">audio</a></li>
-            
-                <li><a class="module" href="../modules/core.html">core</a></li>
-            
-                <li><a class="module" href="../modules/debug.html">debug</a></li>
-            
-                <li><a class="module" href="../modules/keyboard.html">keyboard</a></li>
-            
-                <li><a class="module" href="../modules/loader.html">loader</a></li>
-            
-                <li><a class="module" href="../modules/particle.html">particle</a></li>
-            
-                <li><a class="module" href="../modules/physics.html">physics</a></li>
-            
-                <li><a class="module" href="../modules/pool.html">pool</a></li>
-            
-                <li><a class="module" href="../modules/scene.html">scene</a></li>
-            
-                <li><a class="module" href="../modules/sprite.html">sprite</a></li>
-            
-                <li><a class="module" href="../modules/storage.html">storage</a></li>
-            
-                <li><a class="module" href="../modules/system.html">system</a></li>
-            
-                <li><a class="module" href="../modules/timer.html">timer</a></li>
-            
-                <li><a class="module" href="../modules/tween.html">tween</a></li>
-            
-            </ul>
-        </div>
-    </div>
-</div>
-
-        </div>
-
-        <div id="docs-main" class="apidocs">
-            <div class="content container">
-                <h1 class="file-heading">File: src/engine/core.js</h1>
+<h1 class="file-heading">File: src/engine/core.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -158,7 +15,7 @@
 // inspired by Impact Game Engine
 // sponsored by Yle
 
-(function(window){ &#x27;use strict&#x27;;
+(function(window) { &#x27;use strict&#x27;;
 
 if(typeof(global) !== &#x27;undefined&#x27; &amp;&amp; global.game) return;
 /**
@@ -180,13 +37,8 @@ if(typeof(global) !== &#x27;undefined&#x27; &amp;&amp; global.game) return;
     @class Core
 **/
 var core = {
-    version: &#x27;1.2.1&#x27;,
+    version: &#x27;1.3.0&#x27;,
     config: window.pandaConfig || {},
-    plugins: {},
-    json: {},
-    getJSON: function(id) {
-        return this.json[this.assets[id]];
-    },
     /**
         Scale factor for Retina and HiRes mode.
         @property {Number} scale
@@ -233,16 +85,21 @@ var core = {
     **/
     device: {},
     assets: {},
+    plugins: {},
+    json: {},
     renderer: null,
     modules: {},
     resources: [],
-    ready: false,
     nocache: &#x27;&#x27;,
-    _current: null,
-    _loadQueue: [],
-    _waitForLoad: 0,
-    _DOMLoaded: false,
-        
+    current: null,
+    loadQueue: [],
+    waitForLoad: 0,
+    DOMLoaded: false,
+    
+    getJSON: function(id) {
+        return this.json[this.assets[id]];
+    },
+
     copy: function(object) {
         var l,c,i;
         if(
@@ -342,17 +199,15 @@ var core = {
         Add asset to loader.
         @method addAsset
         @param {String} path
-        @param {String} id
-        @return {String} path
-        @example
-            game.addAsset(&#x27;media/logo.png&#x27;, &#x27;logo&#x27;);
+        @param {String} [id]
+        @return {String} id
     **/
     addAsset: function(path, id) {
         id = id || path;
         path = this.config.mediaFolder + path + this.nocache;
         this.assets[id] = path;
         if(this.resources.indexOf(path) === -1) this.resources.push(path);
-        return path;
+        return id;
     },
 
     /**
@@ -361,18 +216,12 @@ var core = {
         @param {String} path
         @param {String} [id]
         @return {String} id
-        @example
-            game.addAudio(&#x27;media/sound/jump.m4a&#x27;, &#x27;jump&#x27;);
     **/
     addAudio: function(path, id) {
         id = id || path;
         path = this.config.mediaFolder + path + this.nocache;
         game.Audio.queue[path] = id;
         return id;
-    },
-    
-    setNocache: function() {
-        this.nocache = &#x27;?&#x27; + Date.now();
     },
 
     /**
@@ -382,13 +231,13 @@ var core = {
         @param {String} [version]
     **/
     module: function(name, version) {
-        if(this._current) throw(&#x27;Module &#x27; + this._current.name + &#x27; has no body&#x27;);
+        if(this.current) throw(&#x27;Module &#x27; + this.current.name + &#x27; has no body&#x27;);
         if(this.modules[name] &amp;&amp; this.modules[name].body) throw(&#x27;Module &#x27; + name + &#x27; is already defined&#x27;);
         
-        this._current = {name: name, requires: [], loaded: false, body: null, version: version};
-        if(name === &#x27;game.main&#x27;) this._current.requires.push(&#x27;engine.core&#x27;);
-        this.modules[name] = this._current;
-        this._loadQueue.push(this._current);
+        this.current = {name: name, requires: [], loaded: false, body: null, version: version};
+        if(name === &#x27;game.main&#x27;) this.current.requires.push(&#x27;engine.core&#x27;);
+        this.modules[name] = this.current;
+        this.loadQueue.push(this.current);
         return this;
     },
 
@@ -400,7 +249,7 @@ var core = {
     require: function() {
         var i, modules = Array.prototype.slice.call(arguments);
         for (i = 0; i &lt; modules.length; i++) {
-            if(modules[i] &amp;&amp; this._current.requires.indexOf(modules[i]) === -1) this._current.requires.push(modules[i]);
+            if(modules[i] &amp;&amp; this.current.requires.indexOf(modules[i]) === -1) this.current.requires.push(modules[i]);
         }
         return this;
     },
@@ -408,25 +257,26 @@ var core = {
     /**
         Define body for module.
         @method body
+        @param {Function} body
     **/
     body: function(body) {
-        this._current.body = body;
-        this._current = null;
-        if(this._initDOMReady) this._initDOMReady();
-        else if(this.loadFinished) this._loadModules();
+        this.current.body = body;
+        this.current = null;
+        if(this.initDOMReady) this.initDOMReady();
+        else if(this.loadFinished) this.loadModules();
     },
 
     /**
         Start the game engine.
         @method start
-        @param {game.Scene} scene Starting scene.
-        @param {Number} width Width of canvas.
-        @param {Number} height Height of canvas.
-        @param {game.Loader} loaderClass Custom loader class.
-        @param {String} canvasId
+        @param {game.Scene} [scene] Starting scene.
+        @param {Number} [width] Width of canvas.
+        @param {Number} [height] Height of canvas.
+        @param {game.Loader} [loaderClass] Custom loader class.
+        @param {String} [canvasId] Id of canvas element.
     **/
     start: function(scene, width, height, loaderClass, canvasId) {
-        if(this._loadQueue.length &gt; 0) throw(&#x27;Core not ready.&#x27;);
+        if(this.loadQueue.length &gt; 0) throw(&#x27;Core not ready.&#x27;);
 
         this.system = new game.System(width, height, canvasId);
 
@@ -441,8 +291,6 @@ var core = {
         for(var name in this.plugins) {
             this.plugins[name] = new (this.plugins[name])();
         }
-
-        this.ready = true;
         
         this.loader = loaderClass || game.Loader;
         var loader = new this.loader(window[game.System.startScene] || game[game.System.startScene] || scene);
@@ -476,17 +324,17 @@ var core = {
         }
     },
     
-    _loadScript: function(name, requiredFrom) {
+    loadScript: function(name, requiredFrom) {
         this.modules[name] = true;
-        this._waitForLoad++;
+        this.waitForLoad++;
         
         var path = this.config.sourceFolder + &#x27;/&#x27; + name.replace(/\./g, &#x27;/&#x27;) + &#x27;.js&#x27; + this.nocache;
         var script = document.createElement(&#x27;script&#x27;);
         script.type = &#x27;text/javascript&#x27;;
         script.src = path;
         script.onload = function() {
-            game._waitForLoad--;
-            game._loadModules();
+            game.waitForLoad--;
+            game.loadModules();
         };
         script.onerror = function() {
             throw(&#x27;Failed to load module &#x27; + name + &#x27; at &#x27; + path + &#x27; required from &#x27; + requiredFrom);
@@ -494,17 +342,17 @@ var core = {
         document.getElementsByTagName(&#x27;head&#x27;)[0].appendChild(script);
     },
     
-    _loadModules: function() {
+    loadModules: function() {
         var moduleLoaded, i, j, module, name, dependenciesLoaded;
-        for(i = 0; i &lt; game._loadQueue.length; i++) {
-            module = game._loadQueue[i];
+        for(i = 0; i &lt; game.loadQueue.length; i++) {
+            module = game.loadQueue[i];
             dependenciesLoaded = true;
             
             for(j = 0; j &lt; module.requires.length; j++) {
                 name = module.requires[j];
                 if(!game.modules[name]) {
                     dependenciesLoaded = false;
-                    game._loadScript(name, module.name);
+                    game.loadScript(name, module.name);
                 }
                 else if(!game.modules[name].loaded) {
                     dependenciesLoaded = false;
@@ -512,14 +360,14 @@ var core = {
             }
             
             if(dependenciesLoaded &amp;&amp; module.body) {
-                game._loadQueue.splice(i, 1);
-                if(game._loadQueue.length === 0) {
+                game.loadQueue.splice(i, 1);
+                if(game.loadQueue.length === 0) {
                     // Last module loaded, parse config
-                    for(var c in window.pandaConfig) {
+                    for(var c in this.config) {
                         var m = c.ucfirst();
                         if(game[m]) {
-                            for(var o in window.pandaConfig[c]) {
-                                game[m][o] = window.pandaConfig[c][o];
+                            for(var o in this.config[c]) {
+                                game[m][o] = this.config[c][o];
                             }
                         }
                     }
@@ -531,21 +379,21 @@ var core = {
             }
         }
         
-        if(moduleLoaded &amp;&amp; this._loadQueue.length &gt; 0) {
-            game._loadModules();
+        if(moduleLoaded &amp;&amp; this.loadQueue.length &gt; 0) {
+            game.loadModules();
         }
-        else if(game._waitForLoad === 0 &amp;&amp; game._loadQueue.length !== 0) {
+        else if(game.waitForLoad === 0 &amp;&amp; game.loadQueue.length !== 0) {
             var unresolved = [];
-            for(i = 0; i &lt; game._loadQueue.length; i++ ) {
+            for(i = 0; i &lt; game.loadQueue.length; i++ ) {
                 var unloaded = [];
-                var requires = game._loadQueue[i].requires;
+                var requires = game.loadQueue[i].requires;
                 for(j = 0; j &lt; requires.length; j++ ) {
                     module = game.modules[requires[j]];
                     if(!module || !module.loaded) {
                         unloaded.push(requires[j]);
                     }
                 }
-                unresolved.push(game._loadQueue[i].name + &#x27; (requires: &#x27; + unloaded.join(&#x27;, &#x27;) + &#x27;)&#x27;);
+                unresolved.push(game.loadQueue[i].name + &#x27; (requires: &#x27; + unloaded.join(&#x27;, &#x27;) + &#x27;)&#x27;);
             }
             throw(&#x27;Unresolved modules:\n&#x27; + unresolved.join(&#x27;\n&#x27;));
         } else {
@@ -553,8 +401,8 @@ var core = {
         }
     },
     
-    _boot: function() {
-        if(document.location.href.match(/\?nocache/)) this.setNocache();
+    boot: function() {
+        if(document.location.href.match(/\?nocache/)) this.nocache = &#x27;?&#x27; + Date.now();
 
         this.device.pixelRatio = window.devicePixelRatio || 1;
         this.device.screen = {
@@ -562,58 +410,69 @@ var core = {
             height: window.screen.availHeight * this.device.pixelRatio
         };
         
+        // iPhone
         this.device.iPhone = /iPhone/i.test(navigator.userAgent);
         this.device.iPhone4 = (this.device.iPhone &amp;&amp; this.device.pixelRatio === 2);
         this.device.iPhone5 = (this.device.iPhone &amp;&amp; this.device.pixelRatio === 2 &amp;&amp; this.device.screen.height === 1096);
 
+        // iPad
         this.device.iPad = /iPad/i.test(navigator.userAgent);
         this.device.iPadRetina = (this.device.iPad &amp;&amp; this.device.pixelRatio === 2);
         
+        // iOS
         this.device.iOS = this.device.iPhone || this.device.iPad;
         this.device.iOS5 = (this.device.iOS &amp;&amp; /OS 5/i.test(navigator.userAgent));
         this.device.iOS6 = (this.device.iOS &amp;&amp; /OS 6/i.test(navigator.userAgent));
         this.device.iOS7 = (this.device.iOS &amp;&amp; /OS 7/i.test(navigator.userAgent));
         this.device.iOS71 = (this.device.iOS &amp;&amp; /OS 7_1/i.test(navigator.userAgent));
 
+        // Android
         this.device.android = /android/i.test(navigator.userAgent);
         this.device.android2 = /android 2/i.test(navigator.userAgent);
 
+        // Internet Explorer
+        this.device.ie9 = /MSIE 9/i.test(navigator.userAgent);
+        this.device.ie10 = /MSIE 10/i.test(navigator.userAgent);
+        this.device.ie11 = /rv:11.0/i.test(navigator.userAgent);
+        this.device.ie = this.device.ie10 || this.device.ie11 || this.device.ie9;
+
+        // Windows Phone
         this.device.wp7 = /Windows Phone OS 7/i.test(navigator.userAgent);
         this.device.wp8 = /Windows Phone 8/i.test(navigator.userAgent);
         this.device.wp = this.device.wp7 || this.device.wp8;
         this.device.wpApp = (this.device.wp &amp;&amp; typeof(window.external) !== &#x27;undefined&#x27; &amp;&amp; typeof(window.external.notify) !== &#x27;undefined&#x27;);
 
-        this.device.ie9 = /MSIE 9/i.test(navigator.userAgent);
-        this.device.ie10 = /MSIE 10/i.test(navigator.userAgent);
-        this.device.ie11 = /rv:11.0/i.test(navigator.userAgent);
-        this.device.ie = this.device.ie10 || this.device.ie11 || this.device.ie9;
+        // Windows Tablet
+        this.device.wt = (this.device.ie &amp;&amp; /Tablet/i.test(navigator.userAgent));
         
+        // Others
         this.device.opera = /Opera/i.test(navigator.userAgent);
         this.device.crosswalk = /Crosswalk/i.test(navigator.userAgent);
         this.device.cocoonJS = !!navigator.isCocoonJS;
         this.device.ejecta = /Ejecta/i.test(navigator.userAgent);
 
-        this.device.mobile = this.device.iOS || this.device.android || this.device.wp;
+        this.device.mobile = this.device.iOS || this.device.android || this.device.wp || this.device.wt;
 
         if(typeof(navigator.plugins) === &#x27;undefined&#x27; || navigator.plugins.length === 0) {
             try {
                 new ActiveXObject(&#x27;ShockwaveFlash.ShockwaveFlash&#x27;);
                 this.device.flash = true;
             }
-            catch(err){
+            catch(err) {
                 this.device.flash = false;
             }
         } else {
             this.device.flash = !!navigator.plugins[&#x27;Shockwave Flash&#x27;];
         }
-        
-        if(this.device.wp) {
-            if (typeof(window.external.notify) !== &#x27;undefined&#x27;) {
-                window.console.log = function (message) {
-                    window.external.notify(message);
-                };
-            }
-        }
+
+        // This is going to be used on Windows Phone App
+        // if(this.device.wp) {
+        //     if (typeof(window.external.notify) !== &#x27;undefined&#x27;) {
+        //         window.console.log = function(message) {
+        //             window.external.notify(message);
+        //         };
+        //     }
+        // }
         
         var i;
         if(this.device.iOS &amp;&amp; this.config.iOS) {
@@ -631,34 +490,47 @@ var core = {
         this.config.sourceFolder = this.config.sourceFolder || &#x27;src&#x27;;
         this.config.mediaFolder = this.config.mediaFolder ?  this.config.mediaFolder + &#x27;/&#x27; : &#x27;&#x27;;
 
-        var viewport = document.createElement(&#x27;meta&#x27;);
-        viewport.name = &#x27;viewport&#x27;;
-        var content = &#x27;width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no&#x27;;
-        if(this.device.iOS71) content += &#x27;,minimal-ui&#x27;;
-        viewport.content = content;
-        document.getElementsByTagName(&#x27;head&#x27;)[0].appendChild(viewport);
+        var metaTags = document.getElementsByTagName(&#x27;meta&#x27;);
+        var viewportFound = false;
+        
+        for (i = 0; i &lt; metaTags.length; i++) {
+            if(metaTags[i].name === &#x27;viewport&#x27;) viewportFound = true;
+        }
+
+        if(!viewportFound) {
+            var viewport = document.createElement(&#x27;meta&#x27;);
+            viewport.name = &#x27;viewport&#x27;;
+            var content = &#x27;width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no&#x27;;
+            if(this.device.iOS71) content += &#x27;,minimal-ui&#x27;;
+            viewport.content = content;
+            document.getElementsByTagName(&#x27;head&#x27;)[0].appendChild(viewport);
+        }
     },
 
-    _DOMReady: function() {
-        if(!game._DOMLoaded) {
-            if(!document.body) return setTimeout(game._DOMReady, 13);
-            game._DOMLoaded = true;
-            game._loadModules();
+    DOMReady: function() {
+        if(!game.DOMLoaded) {
+            if(!document.body) return setTimeout(game.DOMReady, 13);
+            game.DOMLoaded = true;
+            game.loadModules();
         }
     },
     
-    _initDOMReady: function() {
-        this._initDOMReady = null;
-        this._boot();
-        if (document.readyState === &#x27;complete&#x27;) this._DOMReady();
+    initDOMReady: function() {
+        this.initDOMReady = null;
+        this.boot();
+        if (document.readyState === &#x27;complete&#x27;) this.DOMReady();
         else {
-            document.addEventListener(&#x27;DOMContentLoaded&#x27;, this._DOMReady, false);
-            window.addEventListener(&#x27;load&#x27;, this._DOMReady, false);
+            document.addEventListener(&#x27;DOMContentLoaded&#x27;, this.DOMReady, false);
+            window.addEventListener(&#x27;load&#x27;, this.DOMReady, false);
         }
     }
 };
 
 window.game = core;
+
+var elem = document.createElement(&#x27;canvas&#x27;);
+var canvasSupported = !!(elem.getContext &amp;&amp; elem.getContext(&#x27;2d&#x27;));
+if(!canvasSupported &amp;&amp; core.config.noCanvasURL) return window.location = core.config.noCanvasURL;
 
 Number.prototype.limit = function(min, max) {
     var i = this;
@@ -685,7 +557,7 @@ Array.prototype.random = function() {
 };
 
 // http://jsperf.com/array-shuffle-comparator/2
-Array.prototype.shuffle = function () {
+Array.prototype.shuffle = function() {
     var len = this.length;
     var i = len;
     while (i--) {
@@ -699,12 +571,12 @@ Array.prototype.shuffle = function () {
 };
 
 // http://jsperf.com/function-bind-performance
-Function.prototype.bind = function(context){
+Function.prototype.bind = function(context) {
     var fn = this, linked = [];
     Array.prototype.push.apply(linked, arguments);
     linked.shift();
 
-    return function(){
+    return function() {
        var args = [];
        Array.prototype.push.apply(args, linked);
        Array.prototype.push.apply(args, arguments);
@@ -720,7 +592,7 @@ game.normalizeVendorAttribute(window, &#x27;requestAnimationFrame&#x27;);
 if(window.requestAnimationFrame) {
     var next = 1, anims = {};
 
-    window.game.setGameLoop = function(callback, element) {
+    game.setGameLoop = function(callback, element) {
         var current = next++;
         anims[current] = true;
 
@@ -733,22 +605,22 @@ if(window.requestAnimationFrame) {
         return current;
     };
 
-    window.game.clearGameLoop = function(id) {
+    game.clearGameLoop = function(id) {
         delete anims[id];
     };
 }
 else {
-    window.game.setGameLoop = function(callback) {
+    game.setGameLoop = function(callback) {
         return window.setInterval(callback, 1000/60);
     };
-    window.game.clearGameLoop = function(id) {
+    game.clearGameLoop = function(id) {
         window.clearInterval(id);
     };
 }
 
 // http://ejohn.org/blog/simple-javascript-inheritance/
 var initializing = false;
-var fnTest = /xyz/.test(function(){ var xyz; return xyz; }) ? /\b_super\b/ : /[\D|\d]*/;
+var fnTest = /xyz/.test(function() { var xyz; return xyz; }) ? /\b_super\b/ : /[\D|\d]*/;
 
 /**
     @class Class
@@ -764,7 +636,7 @@ game.Class.extend = function(prop) {
     var prototype = new this();
     initializing = false;
  
-    var makeFn = function(name, fn){
+    var makeFn = function(name, fn) {
         return function() {
             /**
                 Call functions parent function.
@@ -821,7 +693,7 @@ game.Class.extend = function(prop) {
     
     Class.prototype = prototype;
     Class.prototype.constructor = Class;
-    Class.extend = window.game.Class.extend;
+    Class.extend = game.Class.extend;
     /**
         @method inject
     **/
@@ -829,7 +701,7 @@ game.Class.extend = function(prop) {
         var proto = this.prototype;
         var parent = {};
 
-        var makeFn = function(name, fn){
+        var makeFn = function(name, fn) {
             return function() {
                 var tmp = this._super;
                 this._super = parent[name];
@@ -876,25 +748,8 @@ game.module(
     &#x27;engine.pool&#x27;,
     &#x27;engine.analytics&#x27;
 )
-.body(function(){
+.body(function() {
 });
     </pre>
 </div>
 
-            </div>
-        </div>
-
-    </div>
-</div>
-<script src="../assets/vendor/prettify/prettify-min.js"></script>
-<script>prettyPrint();</script>
-<script src="../assets/vendor/jquery.min.js"></script>
-<script src="../assets/js/jquery-offscreen-trigger.js"></script>
-<script src="../assets/js/yui-prettify.js"></script>
-<script src="../assets/../api.js"></script>
-<script src="../assets/js/api-filter.js"></script>
-<script src="../assets/js/api-list.js"></script>
-<script src="../assets/js/api-search.js"></script>
-<script src="../assets/js/apidocs.js"></script>
-</body>
-</html>

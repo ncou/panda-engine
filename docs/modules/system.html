@@ -1,180 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>system - Panda.js</title>
-    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
-    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
-    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
-    <script src="../assets/vendor/yui-min.js"></script>
-</head>
-<body>
+---
+layout: default
+title: Documentation
+---
 
-<div id="doc">
-    <header class="main-header">
-        <div class="content">
-            <div class="project-title">
-                
-                    <img class="logo" src="../../img/logo.png" title="Panda.js">
-                
-                
-                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.2.0</span>
-                
-                
-                    <p class="description">HTML5 game engine</p>
-                
-            </div>
-            <ul class="jump-links">
-                <li><a href="#index" class="index-jump-link">index</a></li>
-                <li><a href="#top" class="top-jump-link">top</a></li>
-            </ul>
-        </div>
-    </header>
-    <div id="bd" class="main-body">
+<div class="sidebar"></div>
 
-        <div id="docs-sidebar" class="sidebar apidocs">
-            <div id="api-list">
-    <div id="api-tabview" class="tabview">
-        <ul class="tabs">
-            <li><a href="#api-classes">Classes</a></li>
-            <li><a href="#api-modules">Modules</a></li>
-        </ul>
-
-        <div id="api-tabview-filter">
-            <input type="search" id="api-filter" placeholder="Type to filter APIs">
-        </div>
-
-        <div id="api-tabview-panel">
-            <ul id="api-classes" class="apis classes">
-            
-                <li><a class="type" href="../classes/game.Analytics.html">game.Analytics</a></li>
-            
-                <li><a class="type" href="../classes/game.Animation.html">game.Animation</a></li>
-            
-                <li><a class="type" href="../classes/game.Audio.html">game.Audio</a></li>
-            
-                <li><a class="type" href="../classes/game.Body.html">game.Body</a></li>
-            
-                <li><a class="type" href="../classes/game.Circle.html">game.Circle</a></li>
-            
-                <li><a class="type" href="../classes/game.Class.html">game.Class</a></li>
-            
-                <li><a class="type" href="../classes/game.CollisionSolver.html">game.CollisionSolver</a></li>
-            
-                <li><a class="type" href="../classes/game.Container.html">game.Container</a></li>
-            
-                <li><a class="type" href="../classes/game.Core.html">game.Core</a></li>
-            
-                <li><a class="type" href="../classes/game.Debug.html">game.Debug</a></li>
-            
-                <li><a class="type" href="../classes/game.DebugDraw.html">game.DebugDraw</a></li>
-            
-                <li><a class="type" href="../classes/game.Emitter.html">game.Emitter</a></li>
-            
-                <li><a class="type" href="../classes/game.Keyboard.html">game.Keyboard</a></li>
-            
-                <li><a class="type" href="../classes/game.Line.html">game.Line</a></li>
-            
-                <li><a class="type" href="../classes/game.Loader.html">game.Loader</a></li>
-            
-                <li><a class="type" href="../classes/game.Particle.html">game.Particle</a></li>
-            
-                <li><a class="type" href="../classes/game.Pool.html">game.Pool</a></li>
-            
-                <li><a class="type" href="../classes/game.Rectangle.html">game.Rectangle</a></li>
-            
-                <li><a class="type" href="../classes/game.Scene.html">game.Scene</a></li>
-            
-                <li><a class="type" href="../classes/game.Sprite.html">game.Sprite</a></li>
-            
-                <li><a class="type" href="../classes/game.Storage.html">game.Storage</a></li>
-            
-                <li><a class="type" href="../classes/game.System.html">game.System</a></li>
-            
-                <li><a class="type" href="../classes/game.TilingSprite.html">game.TilingSprite</a></li>
-            
-                <li><a class="type" href="../classes/game.Timer.html">game.Timer</a></li>
-            
-                <li><a class="type" href="../classes/game.Tween.html">game.Tween</a></li>
-            
-                <li><a class="type" href="../classes/game.TweenEngine.html">game.TweenEngine</a></li>
-            
-                <li><a class="type" href="../classes/game.TweenGroup.html">game.TweenGroup</a></li>
-            
-                <li><a class="type" href="../classes/game.Vector.html">game.Vector</a></li>
-            
-                <li><a class="type" href="../classes/game.World.html">game.World</a></li>
-            
-            </ul>
-
-            <ul id="api-modules" class="apis modules">
-            
-                <li><a class="module" href="../modules/analytics.html">analytics</a></li>
-            
-                <li><a class="module" href="../modules/audio.html">audio</a></li>
-            
-                <li><a class="module" href="../modules/core.html">core</a></li>
-            
-                <li><a class="module" href="../modules/debug.html">debug</a></li>
-            
-                <li><a class="module" href="../modules/keyboard.html">keyboard</a></li>
-            
-                <li><a class="module" href="../modules/loader.html">loader</a></li>
-            
-                <li><a class="module" href="../modules/particle.html">particle</a></li>
-            
-                <li><a class="module" href="../modules/physics.html">physics</a></li>
-            
-                <li><a class="module" href="../modules/pool.html">pool</a></li>
-            
-                <li><a class="module" href="../modules/scene.html">scene</a></li>
-            
-                <li><a class="module" href="../modules/sprite.html">sprite</a></li>
-            
-                <li><a class="module" href="../modules/storage.html">storage</a></li>
-            
-                <li><a class="module" href="../modules/system.html">system</a></li>
-            
-                <li><a class="module" href="../modules/timer.html">timer</a></li>
-            
-                <li><a class="module" href="../modules/tween.html">tween</a></li>
-            
-            </ul>
-        </div>
-    </div>
-</div>
-
-        </div>
-
-        <div id="docs-main" class="apidocs">
-            <div class="content container">
-                <h1>system Module</h1>
-<div class="box clearfix meta">
+<h4>Module: system</h4>
+<div class="clearfix meta">
     
 
     
 
-    
+<!--     
         <div class="foundat">
             Defined in: <a href="../files/src_engine_system.js.html#l10"><code>src&#x2F;engine&#x2F;system.js:10</code></a>
         </div>
-    
+      -->
 
     
 </div>
 
 
 
-<div class="box intro">
+<!-- <div class="box intro">
     
 </div>
-
+ -->
 
 
 <div class="yui3-g">
     <div class="yui3-u-1-2">
         
-            <p>This module provides the following classes:</p>
+            <h3>Classes</h3>
 
             <ul class="module-classes">
             
@@ -193,20 +50,3 @@
     </div>
 </div>
 
-            </div>
-        </div>
-
-    </div>
-</div>
-<script src="../assets/vendor/prettify/prettify-min.js"></script>
-<script>prettyPrint();</script>
-<script src="../assets/vendor/jquery.min.js"></script>
-<script src="../assets/js/jquery-offscreen-trigger.js"></script>
-<script src="../assets/js/yui-prettify.js"></script>
-<script src="../assets/../api.js"></script>
-<script src="../assets/js/api-filter.js"></script>
-<script src="../assets/js/api-list.js"></script>
-<script src="../assets/js/api-search.js"></script>
-<script src="../assets/js/apidocs.js"></script>
-</body>
-</html>

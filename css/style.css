@@ -139,33 +139,10 @@ h3 span {
 
 }
 h4 {
+	font-size: 20px;
 	margin: 0;
-	background: #eee;
-	display: block;
-	padding: 5px 10px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	margin-bottom: 20px;
-	text-align: center;
-	font-size: 18px;
-	margin-bottom: 20px;
-}
-h4 {
-	margin: 0;
-	background: #eee;
-	display: block;
-	padding: 5px 10px;
-	border: 0px solid #ccc;
-	border-radius: 10px;
-	margin-bottom: 20px;
-	text-align: center;
-	font-size: 18px;
-	color: #333;
-	/*text-shadow: 0px 1px 0px #fff;*/
-	box-shadow: 0px 2px 0px #ccc;
-	/*margin-top: 40px;*/
-	margin-bottom: 20px;
-	margin-top: 20px;
+	padding: 0;
+	margin-left: 10px;
 }
 h2 {
 	/*font-size: 22px;*/
@@ -209,7 +186,7 @@ div.code {
 div.box, p.box {
 	background: #848e9d;
 	border-radius: 5px;
-	padding: 10px 15px;
+	padding: 10px 10px;
 	color: #000;
 
 	background: #eee;
@@ -217,6 +194,7 @@ div.box, p.box {
 	color: #000;
 	/*font-weight: bold;*/
 }
+
 ul, ol {
 	margin: 0;
 	padding-left: 20px;
@@ -224,6 +202,7 @@ ul, ol {
 .center {
 	text-align: center;
 }
+/*
 code {
 	white-space: pre-wrap;
 	display: block;
@@ -236,7 +215,7 @@ code {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
-
+*/
 #footer {
 	background: #111;
 	text-align: center;
@@ -514,6 +493,159 @@ iframe {
 	width: 100%;
 }
 
+.box.float li {
+	width: 300px;
+	float: left;
+}
+
+
+
+
+
+/* Docs styles */
+
+.index-section.classes {
+	margin-right: 20px;
+}
+
+.index-section.classes, .index-section.modules {
+	width: 450px;
+	float: left;
+}
+
+.index-section a, div.box.float li a {
+	/*color: #fff;*/
+	padding: 0px 10px;
+	border-radius: 5px;
+}
+
+.index-section a:hover, div.box.float li a:hover {
+	background: #515e73;
+	color: #fff;
+}
+
+.index-section ul, div.box.float ul {
+	margin: 0;
+	padding: 0;
+}
+.index-section li, div.box.float li {
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
+.index-section li a, div.box.float li a {
+	display: block;
+}
+
+.index-section.properties, .index-section.attrs {
+
+}
+
+.index-item.inherited {
+	display: none;
+}
+
+.box.meta div {
+	float: left;
+	margin-right: 20px;
+	/*background: #848e9d;*/
+	/*color: #fff;*/
+}
+
+div.property, div.attr, div.method {
+	margin-bottom: 20px;
+}
+
+h3.name {
+	margin: 0;
+	color: #515e73;
+	border-radius: 5px;
+	padding: 0px 10px;
+	padding: 0;
+	text-transform: none;
+}
+
+code {
+	font: 14px/1.5 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h3 code {
+	margin: 0;
+
+	font-weight: bold;
+	font-size: 20px;
+}
+
+h3 span {
+	margin: 0;
+	text-transform: none;
+	font-size: 14px;
+}
+
+a.anchor-link {
+	display: block;
+	position: relative;
+	top: -74px;
+}
+
+h3.name, h3.name li, h3.name ul {
+	line-height: normal;
+}
+
+h3.name code {
+	/*margin-right: 10px;*/
+	line-height: normal;
+}
+
+h3.name li code, h3.name .paren {
+	
+}
+
+h3 .args, h3 .args span, h3 .args ul, h3 .args li {
+
+	line-height: normal;
+}
+
+.box h4 {
+	font-size: 16px;
+	margin: 0;
+	padding: 0;
+	color: #000;
+}
+
+div.box li.param a {
+	display: inline;
+	padding: 5px 5px;
+}
+
+.inherited {
+	display: none !important;
+}
+
+a span.constructor {
+	font-size: 12px;
+	line-height: 12px;
+	display: inline;
+	font-weight: normal;
+}
+
+.class-detail {
+	margin-top: 50px;
+}
+
+.classes-index h3 {
+	margin-bottom: 0px;
+}
+
+.classes-meta {
+	margin-top: 10px;
+	margin-left: 10px;
+	line-height: 22px;
+}
+
+
+
 @media all and (max-width: 980px) {
 	body {
 		line-height: 30px;
@@ -578,6 +710,13 @@ iframe {
 		float: none;
 		margin: 10px 0px;
 	}
+	.box.float li {
+		width: 330px;
+	}
+
+	.index-section.classes, .index-section.modules {
+		width: 100%;
+	}
 }
 
 @media all and (max-width: 740px) {
@@ -626,6 +765,9 @@ iframe {
 	}
 	a.showcase {
 		width: 172px;
+	}
+	.box.float li {
+		width: 100%;
 	}
 }
 

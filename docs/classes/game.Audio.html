@@ -1,167 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>game.Audio - Panda.js</title>
-    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
-    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
-    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
-    <script src="../assets/vendor/yui-min.js"></script>
-</head>
-<body>
+---
+layout: default
+title: Documentation
+---
 
-<div id="doc">
-    <header class="main-header">
-        <div class="content">
-            <div class="project-title">
-                
-                    <img class="logo" src="../../img/logo.png" title="Panda.js">
-                
-                
-                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.2.0</span>
-                
-                
-                    <p class="description">HTML5 game engine</p>
-                
-            </div>
-            <ul class="jump-links">
-                <li><a href="#index" class="index-jump-link">index</a></li>
-                <li><a href="#top" class="top-jump-link">top</a></li>
-            </ul>
-        </div>
-    </header>
-    <div id="bd" class="main-body">
+<div class="sidebar"></div>
 
-        <div id="docs-sidebar" class="sidebar apidocs">
-            <div id="api-list">
-    <div id="api-tabview" class="tabview">
-        <ul class="tabs">
-            <li><a href="#api-classes">Classes</a></li>
-            <li><a href="#api-modules">Modules</a></li>
-        </ul>
-
-        <div id="api-tabview-filter">
-            <input type="search" id="api-filter" placeholder="Type to filter APIs">
-        </div>
-
-        <div id="api-tabview-panel">
-            <ul id="api-classes" class="apis classes">
-            
-                <li><a class="type" href="../classes/game.Analytics.html">game.Analytics</a></li>
-            
-                <li><a class="type" href="../classes/game.Animation.html">game.Animation</a></li>
-            
-                <li><a class="type" href="../classes/game.Audio.html">game.Audio</a></li>
-            
-                <li><a class="type" href="../classes/game.Body.html">game.Body</a></li>
-            
-                <li><a class="type" href="../classes/game.Circle.html">game.Circle</a></li>
-            
-                <li><a class="type" href="../classes/game.Class.html">game.Class</a></li>
-            
-                <li><a class="type" href="../classes/game.CollisionSolver.html">game.CollisionSolver</a></li>
-            
-                <li><a class="type" href="../classes/game.Container.html">game.Container</a></li>
-            
-                <li><a class="type" href="../classes/game.Core.html">game.Core</a></li>
-            
-                <li><a class="type" href="../classes/game.Debug.html">game.Debug</a></li>
-            
-                <li><a class="type" href="../classes/game.DebugDraw.html">game.DebugDraw</a></li>
-            
-                <li><a class="type" href="../classes/game.Emitter.html">game.Emitter</a></li>
-            
-                <li><a class="type" href="../classes/game.Keyboard.html">game.Keyboard</a></li>
-            
-                <li><a class="type" href="../classes/game.Line.html">game.Line</a></li>
-            
-                <li><a class="type" href="../classes/game.Loader.html">game.Loader</a></li>
-            
-                <li><a class="type" href="../classes/game.Particle.html">game.Particle</a></li>
-            
-                <li><a class="type" href="../classes/game.Pool.html">game.Pool</a></li>
-            
-                <li><a class="type" href="../classes/game.Rectangle.html">game.Rectangle</a></li>
-            
-                <li><a class="type" href="../classes/game.Scene.html">game.Scene</a></li>
-            
-                <li><a class="type" href="../classes/game.Sprite.html">game.Sprite</a></li>
-            
-                <li><a class="type" href="../classes/game.Storage.html">game.Storage</a></li>
-            
-                <li><a class="type" href="../classes/game.System.html">game.System</a></li>
-            
-                <li><a class="type" href="../classes/game.TilingSprite.html">game.TilingSprite</a></li>
-            
-                <li><a class="type" href="../classes/game.Timer.html">game.Timer</a></li>
-            
-                <li><a class="type" href="../classes/game.Tween.html">game.Tween</a></li>
-            
-                <li><a class="type" href="../classes/game.TweenEngine.html">game.TweenEngine</a></li>
-            
-                <li><a class="type" href="../classes/game.TweenGroup.html">game.TweenGroup</a></li>
-            
-                <li><a class="type" href="../classes/game.Vector.html">game.Vector</a></li>
-            
-                <li><a class="type" href="../classes/game.World.html">game.World</a></li>
-            
-            </ul>
-
-            <ul id="api-modules" class="apis modules">
-            
-                <li><a class="module" href="../modules/analytics.html">analytics</a></li>
-            
-                <li><a class="module" href="../modules/audio.html">audio</a></li>
-            
-                <li><a class="module" href="../modules/core.html">core</a></li>
-            
-                <li><a class="module" href="../modules/debug.html">debug</a></li>
-            
-                <li><a class="module" href="../modules/keyboard.html">keyboard</a></li>
-            
-                <li><a class="module" href="../modules/loader.html">loader</a></li>
-            
-                <li><a class="module" href="../modules/particle.html">particle</a></li>
-            
-                <li><a class="module" href="../modules/physics.html">physics</a></li>
-            
-                <li><a class="module" href="../modules/pool.html">pool</a></li>
-            
-                <li><a class="module" href="../modules/scene.html">scene</a></li>
-            
-                <li><a class="module" href="../modules/sprite.html">sprite</a></li>
-            
-                <li><a class="module" href="../modules/storage.html">storage</a></li>
-            
-                <li><a class="module" href="../modules/system.html">system</a></li>
-            
-                <li><a class="module" href="../modules/timer.html">timer</a></li>
-            
-                <li><a class="module" href="../modules/tween.html">tween</a></li>
-            
-            </ul>
-        </div>
-    </div>
-</div>
-
-        </div>
-
-        <div id="docs-main" class="apidocs">
-            <div class="content container">
-                <h1>game.Audio Class</h1>
-<div class="box meta">
+<h4>Class: game.Audio</h4>
+<div class="classes-meta">
     
 
     
         <div class="extends">
-            Extends <a href="../classes/game.Class.html" class="crosslink">game.Class</a>
+            Extends: <a href="../classes/game.Class.html" class="crosslink">game.Class</a>
         </div>
     
 
     
-        <div class="foundat">
+        <!-- <div class="foundat">
             Defined in: <a href="../files/src_engine_audio.js.html#l10"><code>src&#x2F;engine&#x2F;audio.js:10</code></a>
-        </div>
+        </div> -->
     
 
     
@@ -175,45 +32,19 @@
 
 
 
-<div class="box intro">
+<!-- <div class="box intro">
     
-</div>
+</div> -->
 
 <!-- Class member index -->
 
-<a name="index" class="anchor-link"></a>
-<div class="index">
-<h2>Index</h2>
-
-    <div id="api-options">
-        Show:
-        <label for="api-show-inherited">
-            <input type="checkbox" id="api-show-inherited">
-            Inherited
-        </label>
-
-        <label for="api-show-protected">
-            <input type="checkbox" id="api-show-protected">
-            Protected
-        </label>
-
-        <label for="api-show-private">
-            <input type="checkbox" id="api-show-private">
-            Private
-        </label>
-        <label for="api-show-deprecated">
-            <input type="checkbox" id="api-show-deprecated">
-            Deprecated
-        </label>
-
-    </div>
+<div class="classes-index">
 
 
-
-
+    <h3>Properties</h3>
     <div class="index-section properties">
-        <h3>Properties</h3>
 
+        <div class="box float">
         <ul class="index-list properties extends">
             
                 <li class="index-item property">
@@ -253,13 +84,16 @@
                 </li>
             
         </ul>
+        <div class="clear"></div>
+        </div>
     </div>
 
 
 
+    <h3>Attributes</h3>
     <div class="index-section attrs">
-        <h3>Attributes</h3>
 
+        <div class="box float">
         <ul class="index-list attrs extends">
             
                 <li class="index-item attr">
@@ -275,14 +109,17 @@
                 </li>
             
         </ul>
+        <div class="clear"></div>
+        </div>
     </div>
 
 
 
 
+    <h3>Methods</h3>
     <div class="index-section methods">
-        <h3>Methods</h3>
 
+        <div class="box float">
         <ul class="index-list methods extends">
 
             
@@ -380,6 +217,13 @@
                 </li>
             
                 <li class="index-item method">
+                    <a href="#method_stopAll">stopAll</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
                     <a href="#method_stopMusic">stopMusic</a>
 
                     
@@ -394,22 +238,24 @@
                 </li>
             
         </ul>
+        <div class="clear"></div>
+        </div>
     </div>
 
 
-
 </div>
+<div class="clear"></div>
 
 
 <div class="class-detail">
 
 
     <div class="properties-detail">
-        <h2>Properties</h2>
+        <h6>Properties</h6>
 
         
             <a name="property_currentMusic" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>currentMusic</code>
     <span class="type">String</span>
 
@@ -428,13 +274,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_audio.js.html#l32"><code>src&#x2F;engine&#x2F;audio.js:32</code></a>
+        <!-- <a href="../files/src_engine_audio.js.html#l32"><code>src&#x2F;engine&#x2F;audio.js:32</code></a> -->
         
         </p>
 
@@ -459,7 +305,7 @@
 
         
             <a name="property_format" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>format</code>
     <span class="type">String</span>
 
@@ -478,13 +324,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_audio.js.html#l15"><code>src&#x2F;engine&#x2F;audio.js:15</code></a>
+        <!-- <a href="../files/src_engine_audio.js.html#l15"><code>src&#x2F;engine&#x2F;audio.js:15</code></a> -->
         
         </p>
 
@@ -509,7 +355,7 @@
 
         
             <a name="property_musicMuted" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>musicMuted</code>
     <span class="type">Boolean</span>
 
@@ -528,13 +374,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_audio.js.html#l37"><code>src&#x2F;engine&#x2F;audio.js:37</code></a>
+        <!-- <a href="../files/src_engine_audio.js.html#l37"><code>src&#x2F;engine&#x2F;audio.js:37</code></a> -->
         
         </p>
 
@@ -561,7 +407,7 @@
 
         
             <a name="property_musicVolume" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>musicVolume</code>
     <span class="type">Number</span>
 
@@ -580,13 +426,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_audio.js.html#l43"><code>src&#x2F;engine&#x2F;audio.js:43</code></a>
+        <!-- <a href="../files/src_engine_audio.js.html#l43"><code>src&#x2F;engine&#x2F;audio.js:43</code></a> -->
         
         </p>
 
@@ -613,7 +459,7 @@
 
         
             <a name="property_soundMuted" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>soundMuted</code>
     <span class="type">Boolean</span>
 
@@ -632,13 +478,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_audio.js.html#l20"><code>src&#x2F;engine&#x2F;audio.js:20</code></a>
+        <!-- <a href="../files/src_engine_audio.js.html#l20"><code>src&#x2F;engine&#x2F;audio.js:20</code></a> -->
         
         </p>
 
@@ -665,7 +511,7 @@
 
         
             <a name="property_soundVolume" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>soundVolume</code>
     <span class="type">Number</span>
 
@@ -684,13 +530,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_audio.js.html#l26"><code>src&#x2F;engine&#x2F;audio.js:26</code></a>
+        <!-- <a href="../files/src_engine_audio.js.html#l26"><code>src&#x2F;engine&#x2F;audio.js:26</code></a> -->
         
         </p>
 
@@ -717,22 +563,17 @@
 
         
 
-        <div class="no-visible-items-message">
-            <p>There are no properties that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
-        </div>
-
     </div>
 
 
 
     <div class="attrs-detail">
-        <h2>Attributes</h2>
+        <h6>Attributes</h6>
 
         
-            <div id="attr_enabled" class="attr item">
+            <div id="attr_enabled" class="box attr item">
     <a name="config_enabled"></a> 
-    <h3 class="name"><code>enabled</code></h3>
-    <span class="type">Boolean</span>
+    <h3 class="name"><code>enabled</code> <span class="type">Boolean</span></h3>
 
     
 
@@ -753,13 +594,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_audio.js.html#l417"><code>src&#x2F;engine&#x2F;audio.js:417</code></a>
+        <!-- <a href="../files/src_engine_audio.js.html#l427"><code>src&#x2F;engine&#x2F;audio.js:427</code></a> -->
         
         </p>
 
@@ -783,10 +624,9 @@
 </div>
 
         
-            <div id="attr_formats" class="attr item">
+            <div id="attr_formats" class="box attr item">
     <a name="config_formats"></a> 
-    <h3 class="name"><code>formats</code></h3>
-    <span class="type">Array</span>
+    <h3 class="name"><code>formats</code> <span class="type">Array</span></h3>
 
     
 
@@ -807,13 +647,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_audio.js.html#l431"><code>src&#x2F;engine&#x2F;audio.js:431</code></a>
+        <!-- <a href="../files/src_engine_audio.js.html#l441"><code>src&#x2F;engine&#x2F;audio.js:441</code></a> -->
         
         </p>
 
@@ -835,10 +675,9 @@
 </div>
 
         
-            <div id="attr_webAudio" class="attr item">
+            <div id="attr_webAudio" class="box attr item">
     <a name="config_webAudio"></a> 
-    <h3 class="name"><code>webAudio</code></h3>
-    <span class="type">Boolean</span>
+    <h3 class="name"><code>webAudio</code> <span class="type">Boolean</span></h3>
 
     
 
@@ -859,13 +698,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_audio.js.html#l424"><code>src&#x2F;engine&#x2F;audio.js:424</code></a>
+        <!-- <a href="../files/src_engine_audio.js.html#l434"><code>src&#x2F;engine&#x2F;audio.js:434</code></a> -->
         
         </p>
 
@@ -896,13 +735,12 @@
 
 
     <div class="methods-detail">
-        <h2>Methods</h2>
+        <h6>Methods</h6>
 
         
             <a name="method__super" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>_super</code>
-
+<div class="box method item inherited">
+    <h3 class="name">_super
     
         <span class="paren">()</span>
     
@@ -931,7 +769,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l615"><code>src&#x2F;engine&#x2F;core.js:615</code></a>
+        <!-- <a href="../files/src_engine_core.js.html#l630"><code>src&#x2F;engine&#x2F;core.js:630</code></a> -->
         
         </p>
 
@@ -958,9 +796,8 @@
 
         
             <a name="method_extend" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>extend</code>
-
+<div class="box method item inherited">
+    <h3 class="name">extend
     
         <span class="paren">()</span>
     
@@ -993,7 +830,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l603"><code>src&#x2F;engine&#x2F;core.js:603</code></a>
+        <!-- <a href="../files/src_engine_core.js.html#l618"><code>src&#x2F;engine&#x2F;core.js:618</code></a> -->
         
         </p>
 
@@ -1018,7 +855,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="../classes/game.Class.html" class="crosslink">game.Class</a></span>:
+                            <span class="type"><a href="../classes/game.Class.html" class="crosslink">game.Class</a></span>
                         
                         <p>Returns extended class</p>
 
@@ -1033,9 +870,8 @@
 
         
             <a name="method_init" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>init</code>
-
+<div class="box method item inherited">
+    <h3 class="name">init
     
         <span class="paren">()</span>
     
@@ -1064,7 +900,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l658"><code>src&#x2F;engine&#x2F;core.js:658</code></a>
+        <!-- <a href="../files/src_engine_core.js.html#l673"><code>src&#x2F;engine&#x2F;core.js:673</code></a> -->
         
         </p>
 
@@ -1091,9 +927,8 @@
 
         
             <a name="method_inject" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>inject</code>
-
+<div class="box method item inherited">
+    <h3 class="name">inject
     
         <span class="paren">()</span>
     
@@ -1122,7 +957,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l671"><code>src&#x2F;engine&#x2F;core.js:671</code></a>
+        <!-- <a href="../files/src_engine_core.js.html#l686"><code>src&#x2F;engine&#x2F;core.js:686</code></a> -->
         
         </p>
 
@@ -1148,9 +983,8 @@
 
         
             <a name="method_pauseAll" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>pauseAll</code>
-
+<div class="box method item">
+    <h3 class="name">pauseAll
     
         <span class="paren">()</span>
     
@@ -1176,13 +1010,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_audio.js.html#l392"><code>src&#x2F;engine&#x2F;audio.js:392</code></a>
+        <!-- <a href="../files/src_engine_audio.js.html#l393"><code>src&#x2F;engine&#x2F;audio.js:393</code></a> -->
         
         </p>
 
@@ -1209,9 +1043,8 @@
 
         
             <a name="method_pauseMusic" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>pauseMusic</code>
-
+<div class="box method item">
+    <h3 class="name">pauseMusic
     
         <span class="paren">()</span>
     
@@ -1237,13 +1070,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_audio.js.html#l366"><code>src&#x2F;engine&#x2F;audio.js:366</code></a>
+        <!-- <a href="../files/src_engine_audio.js.html#l367"><code>src&#x2F;engine&#x2F;audio.js:367</code></a> -->
         
         </p>
 
@@ -1269,21 +1102,20 @@
 
         
             <a name="method_pauseSound" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>pauseSound</code>
-
+<div class="box method item">
+    <h3 class="name">pauseSound
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code class="optional">[id]</code>
+                        <span class="optional">[id]</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -1307,13 +1139,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_audio.js.html#l307"><code>src&#x2F;engine&#x2F;audio.js:307</code></a>
+        <!-- <a href="../files/src_engine_audio.js.html#l308"><code>src&#x2F;engine&#x2F;audio.js:308</code></a> -->
         
         </p>
 
@@ -1363,27 +1195,26 @@
 
         
             <a name="method_playMusic" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>playMusic</code>
-
+<div class="box method item">
+    <h3 class="name">playMusic
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>id</code>
+                        <span>id</span>
                     
-                </li>
+
             
-                <li class="arg">
+
                     
-                        <code>volume</code>
+                        <span>volume</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -1407,13 +1238,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_audio.js.html#l339"><code>src&#x2F;engine&#x2F;audio.js:339</code></a>
+        <!-- <a href="../files/src_engine_audio.js.html#l340"><code>src&#x2F;engine&#x2F;audio.js:340</code></a> -->
         
         </p>
 
@@ -1477,45 +1308,44 @@
 
         
             <a name="method_playSound" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>playSound</code>
-
+<div class="box method item">
+    <h3 class="name">playSound
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>id</code>
+                        <span>id</span>
                     
-                </li>
+
             
-                <li class="arg">
+
                     
-                        <code class="optional">[loop]</code>
+                        <span class="optional">[loop]</span>
                     
-                </li>
+
             
-                <li class="arg">
+
                     
-                        <code class="optional">[volume]</code>
+                        <span class="optional">[volume]</span>
                     
-                </li>
+
             
-                <li class="arg">
+
                     
-                        <code class="optional">[callback]</code>
+                        <span class="optional">[callback]</span>
                     
-                </li>
+
             
-                <li class="arg">
+
                     
-                        <code class="optional">[rate]</code>
+                        <span class="optional">[rate]</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -1539,13 +1369,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_audio.js.html#l273"><code>src&#x2F;engine&#x2F;audio.js:273</code></a>
+        <!-- <a href="../files/src_engine_audio.js.html#l274"><code>src&#x2F;engine&#x2F;audio.js:274</code></a> -->
         
         </p>
 
@@ -1659,9 +1489,8 @@
 
         
             <a name="method_resumeAll" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>resumeAll</code>
-
+<div class="box method item">
+    <h3 class="name">resumeAll
     
         <span class="paren">()</span>
     
@@ -1687,13 +1516,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_audio.js.html#l402"><code>src&#x2F;engine&#x2F;audio.js:402</code></a>
+        <!-- <a href="../files/src_engine_audio.js.html#l404"><code>src&#x2F;engine&#x2F;audio.js:404</code></a> -->
         
         </p>
 
@@ -1720,9 +1549,8 @@
 
         
             <a name="method_resumeMusic" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>resumeMusic</code>
-
+<div class="box method item">
+    <h3 class="name">resumeMusic
     
         <span class="paren">()</span>
     
@@ -1748,13 +1576,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_audio.js.html#l375"><code>src&#x2F;engine&#x2F;audio.js:375</code></a>
+        <!-- <a href="../files/src_engine_audio.js.html#l376"><code>src&#x2F;engine&#x2F;audio.js:376</code></a> -->
         
         </p>
 
@@ -1780,21 +1608,20 @@
 
         
             <a name="method_resumeSound" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>resumeSound</code>
-
+<div class="box method item">
+    <h3 class="name">resumeSound
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code class="optional">[id]</code>
+                        <span class="optional">[id]</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -1818,13 +1645,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_audio.js.html#l323"><code>src&#x2F;engine&#x2F;audio.js:323</code></a>
+        <!-- <a href="../files/src_engine_audio.js.html#l324"><code>src&#x2F;engine&#x2F;audio.js:324</code></a> -->
         
         </p>
 
@@ -1874,9 +1701,8 @@
 
         
             <a name="method_staticInit" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>staticInit</code>
-
+<div class="box method item inherited">
+    <h3 class="name">staticInit
     
         <span class="paren">()</span>
     
@@ -1905,7 +1731,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l643"><code>src&#x2F;engine&#x2F;core.js:643</code></a>
+        <!-- <a href="../files/src_engine_core.js.html#l658"><code>src&#x2F;engine&#x2F;core.js:658</code></a> -->
         
         </p>
 
@@ -1931,10 +1757,9 @@
 </div>
 
         
-            <a name="method_stopMusic" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>stopMusic</code>
-
+            <a name="method_stopAll" class="anchor-link"></a>
+<div class="box method item">
+    <h3 class="name">stopAll
     
         <span class="paren">()</span>
     
@@ -1960,13 +1785,73 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_audio.js.html#l356"><code>src&#x2F;engine&#x2F;audio.js:356</code></a>
+        <!-- <a href="../files/src_engine_audio.js.html#l415"><code>src&#x2F;engine&#x2F;audio.js:415</code></a> -->
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Stop all sounds and music</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_stopMusic" class="anchor-link"></a>
+<div class="box method item">
+    <h3 class="name">stopMusic
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                <!-- 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_audio.js.html#l357"><code>src&#x2F;engine&#x2F;audio.js:357</code></a> -->
         
         </p>
 
@@ -1992,21 +1877,20 @@
 
         
             <a name="method_stopSound" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>stopSound</code>
-
+<div class="box method item">
+    <h3 class="name">stopSound
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>id</code>
+                        <span>id</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -2030,13 +1914,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_audio.js.html#l289"><code>src&#x2F;engine&#x2F;audio.js:289</code></a>
+        <!-- <a href="../files/src_engine_audio.js.html#l290"><code>src&#x2F;engine&#x2F;audio.js:290</code></a> -->
         
         </p>
 
@@ -2085,10 +1969,6 @@
 
         
 
-        <div class="no-visible-items-message">
-            <p>There are no methods that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
-        </div>
-
     </div>
 
 
@@ -2097,20 +1977,3 @@
 </div>
 
 
-            </div>
-        </div>
-
-    </div>
-</div>
-<script src="../assets/vendor/prettify/prettify-min.js"></script>
-<script>prettyPrint();</script>
-<script src="../assets/vendor/jquery.min.js"></script>
-<script src="../assets/js/jquery-offscreen-trigger.js"></script>
-<script src="../assets/js/yui-prettify.js"></script>
-<script src="../assets/../api.js"></script>
-<script src="../assets/js/api-filter.js"></script>
-<script src="../assets/js/api-list.js"></script>
-<script src="../assets/js/api-search.js"></script>
-<script src="../assets/js/apidocs.js"></script>
-</body>
-</html>

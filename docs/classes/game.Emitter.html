@@ -1,167 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>game.Emitter - Panda.js</title>
-    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
-    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
-    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
-    <script src="../assets/vendor/yui-min.js"></script>
-</head>
-<body>
+---
+layout: default
+title: Documentation
+---
 
-<div id="doc">
-    <header class="main-header">
-        <div class="content">
-            <div class="project-title">
-                
-                    <img class="logo" src="../../img/logo.png" title="Panda.js">
-                
-                
-                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.2.0</span>
-                
-                
-                    <p class="description">HTML5 game engine</p>
-                
-            </div>
-            <ul class="jump-links">
-                <li><a href="#index" class="index-jump-link">index</a></li>
-                <li><a href="#top" class="top-jump-link">top</a></li>
-            </ul>
-        </div>
-    </header>
-    <div id="bd" class="main-body">
+<div class="sidebar"></div>
 
-        <div id="docs-sidebar" class="sidebar apidocs">
-            <div id="api-list">
-    <div id="api-tabview" class="tabview">
-        <ul class="tabs">
-            <li><a href="#api-classes">Classes</a></li>
-            <li><a href="#api-modules">Modules</a></li>
-        </ul>
-
-        <div id="api-tabview-filter">
-            <input type="search" id="api-filter" placeholder="Type to filter APIs">
-        </div>
-
-        <div id="api-tabview-panel">
-            <ul id="api-classes" class="apis classes">
-            
-                <li><a class="type" href="../classes/game.Analytics.html">game.Analytics</a></li>
-            
-                <li><a class="type" href="../classes/game.Animation.html">game.Animation</a></li>
-            
-                <li><a class="type" href="../classes/game.Audio.html">game.Audio</a></li>
-            
-                <li><a class="type" href="../classes/game.Body.html">game.Body</a></li>
-            
-                <li><a class="type" href="../classes/game.Circle.html">game.Circle</a></li>
-            
-                <li><a class="type" href="../classes/game.Class.html">game.Class</a></li>
-            
-                <li><a class="type" href="../classes/game.CollisionSolver.html">game.CollisionSolver</a></li>
-            
-                <li><a class="type" href="../classes/game.Container.html">game.Container</a></li>
-            
-                <li><a class="type" href="../classes/game.Core.html">game.Core</a></li>
-            
-                <li><a class="type" href="../classes/game.Debug.html">game.Debug</a></li>
-            
-                <li><a class="type" href="../classes/game.DebugDraw.html">game.DebugDraw</a></li>
-            
-                <li><a class="type" href="../classes/game.Emitter.html">game.Emitter</a></li>
-            
-                <li><a class="type" href="../classes/game.Keyboard.html">game.Keyboard</a></li>
-            
-                <li><a class="type" href="../classes/game.Line.html">game.Line</a></li>
-            
-                <li><a class="type" href="../classes/game.Loader.html">game.Loader</a></li>
-            
-                <li><a class="type" href="../classes/game.Particle.html">game.Particle</a></li>
-            
-                <li><a class="type" href="../classes/game.Pool.html">game.Pool</a></li>
-            
-                <li><a class="type" href="../classes/game.Rectangle.html">game.Rectangle</a></li>
-            
-                <li><a class="type" href="../classes/game.Scene.html">game.Scene</a></li>
-            
-                <li><a class="type" href="../classes/game.Sprite.html">game.Sprite</a></li>
-            
-                <li><a class="type" href="../classes/game.Storage.html">game.Storage</a></li>
-            
-                <li><a class="type" href="../classes/game.System.html">game.System</a></li>
-            
-                <li><a class="type" href="../classes/game.TilingSprite.html">game.TilingSprite</a></li>
-            
-                <li><a class="type" href="../classes/game.Timer.html">game.Timer</a></li>
-            
-                <li><a class="type" href="../classes/game.Tween.html">game.Tween</a></li>
-            
-                <li><a class="type" href="../classes/game.TweenEngine.html">game.TweenEngine</a></li>
-            
-                <li><a class="type" href="../classes/game.TweenGroup.html">game.TweenGroup</a></li>
-            
-                <li><a class="type" href="../classes/game.Vector.html">game.Vector</a></li>
-            
-                <li><a class="type" href="../classes/game.World.html">game.World</a></li>
-            
-            </ul>
-
-            <ul id="api-modules" class="apis modules">
-            
-                <li><a class="module" href="../modules/analytics.html">analytics</a></li>
-            
-                <li><a class="module" href="../modules/audio.html">audio</a></li>
-            
-                <li><a class="module" href="../modules/core.html">core</a></li>
-            
-                <li><a class="module" href="../modules/debug.html">debug</a></li>
-            
-                <li><a class="module" href="../modules/keyboard.html">keyboard</a></li>
-            
-                <li><a class="module" href="../modules/loader.html">loader</a></li>
-            
-                <li><a class="module" href="../modules/particle.html">particle</a></li>
-            
-                <li><a class="module" href="../modules/physics.html">physics</a></li>
-            
-                <li><a class="module" href="../modules/pool.html">pool</a></li>
-            
-                <li><a class="module" href="../modules/scene.html">scene</a></li>
-            
-                <li><a class="module" href="../modules/sprite.html">sprite</a></li>
-            
-                <li><a class="module" href="../modules/storage.html">storage</a></li>
-            
-                <li><a class="module" href="../modules/system.html">system</a></li>
-            
-                <li><a class="module" href="../modules/timer.html">timer</a></li>
-            
-                <li><a class="module" href="../modules/tween.html">tween</a></li>
-            
-            </ul>
-        </div>
-    </div>
-</div>
-
-        </div>
-
-        <div id="docs-main" class="apidocs">
-            <div class="content container">
-                <h1>game.Emitter Class</h1>
-<div class="box meta">
+<h4>Class: game.Emitter</h4>
+<div class="classes-meta">
     
 
     
         <div class="extends">
-            Extends <a href="../classes/game.Class.html" class="crosslink">game.Class</a>
+            Extends: <a href="../classes/game.Class.html" class="crosslink">game.Class</a>
         </div>
     
 
     
-        <div class="foundat">
+        <!-- <div class="foundat">
             Defined in: <a href="../files/src_engine_particle.js.html#l59"><code>src&#x2F;engine&#x2F;particle.js:59</code></a>
-        </div>
+        </div> -->
     
 
     
@@ -175,46 +32,20 @@
 
 
 
-<div class="box intro">
+<!-- <div class="box intro">
     <p>Particle emitter.</p>
 
-</div>
+</div> -->
 
 <!-- Class member index -->
 
-<a name="index" class="anchor-link"></a>
-<div class="index">
-<h2>Index</h2>
-
-    <div id="api-options">
-        Show:
-        <label for="api-show-inherited">
-            <input type="checkbox" id="api-show-inherited">
-            Inherited
-        </label>
-
-        <label for="api-show-protected">
-            <input type="checkbox" id="api-show-protected">
-            Protected
-        </label>
-
-        <label for="api-show-private">
-            <input type="checkbox" id="api-show-private">
-            Private
-        </label>
-        <label for="api-show-deprecated">
-            <input type="checkbox" id="api-show-deprecated">
-            Deprecated
-        </label>
-
-    </div>
+<div class="classes-index">
 
 
-
-
+    <h3>Properties</h3>
     <div class="index-section properties">
-        <h3>Properties</h3>
 
+        <div class="box float">
         <ul class="index-list properties extends">
             
                 <li class="index-item property">
@@ -422,6 +253,8 @@
                 </li>
             
         </ul>
+        <div class="clear"></div>
+        </div>
     </div>
 
 
@@ -429,16 +262,15 @@
 
 
 
+    <h3>Methods</h3>
     <div class="index-section methods">
-        <h3>Methods</h3>
 
+        <div class="box float">
         <ul class="index-list methods extends">
 
             
                 <li class="index-item method constructor">
-                    <a href="#method_game.Emitter">game.Emitter</a>
-
-                    <span class="flag constructor">constructor</span>
+                    <a href="#method_game.Emitter">game.Emitter <span class="flag constructor">constructor</span></a>
 
                     
                     
@@ -538,22 +370,24 @@
                 </li>
             
         </ul>
+        <div class="clear"></div>
+        </div>
     </div>
 
 
-
 </div>
+<div class="clear"></div>
 
 
 <div class="class-detail">
 
 
     <div class="properties-detail">
-        <h2>Properties</h2>
+        <h6>Properties</h6>
 
         
             <a name="property_accelAngle" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>accelAngle</code>
     <span class="type">Number</span>
 
@@ -572,13 +406,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l226"><code>src&#x2F;engine&#x2F;particle.js:226</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l226"><code>src&#x2F;engine&#x2F;particle.js:226</code></a> -->
         
         </p>
 
@@ -605,7 +439,7 @@
 
         
             <a name="property_accelAngleVar" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>accelAngleVar</code>
     <span class="type">Number</span>
 
@@ -624,13 +458,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l232"><code>src&#x2F;engine&#x2F;particle.js:232</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l232"><code>src&#x2F;engine&#x2F;particle.js:232</code></a> -->
         
         </p>
 
@@ -656,7 +490,7 @@
 
         
             <a name="property_accelSpeed" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>accelSpeed</code>
     <span class="type">Number</span>
 
@@ -675,13 +509,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l237"><code>src&#x2F;engine&#x2F;particle.js:237</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l237"><code>src&#x2F;engine&#x2F;particle.js:237</code></a> -->
         
         </p>
 
@@ -708,7 +542,7 @@
 
         
             <a name="property_accelSpeedVar" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>accelSpeedVar</code>
     <span class="type">Number</span>
 
@@ -727,13 +561,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l243"><code>src&#x2F;engine&#x2F;particle.js:243</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l243"><code>src&#x2F;engine&#x2F;particle.js:243</code></a> -->
         
         </p>
 
@@ -759,7 +593,7 @@
 
         
             <a name="property_active" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>active</code>
     <span class="type">Boolean</span>
 
@@ -778,13 +612,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l152"><code>src&#x2F;engine&#x2F;particle.js:152</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l152"><code>src&#x2F;engine&#x2F;particle.js:152</code></a> -->
         
         </p>
 
@@ -811,7 +645,7 @@
 
         
             <a name="property_angle" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>angle</code>
     <span class="type">Number</span>
 
@@ -830,13 +664,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l96"><code>src&#x2F;engine&#x2F;particle.js:96</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l96"><code>src&#x2F;engine&#x2F;particle.js:96</code></a> -->
         
         </p>
 
@@ -863,7 +697,7 @@
 
         
             <a name="property_angleVar" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>angleVar</code>
     <span class="type">Number</span>
 
@@ -882,13 +716,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l102"><code>src&#x2F;engine&#x2F;particle.js:102</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l102"><code>src&#x2F;engine&#x2F;particle.js:102</code></a> -->
         
         </p>
 
@@ -915,7 +749,7 @@
 
         
             <a name="property_container" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>container</code>
     <span class="type"><a href="../classes/game.Container.html" class="crosslink">game.Container</a></span>
 
@@ -934,13 +768,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l83"><code>src&#x2F;engine&#x2F;particle.js:83</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l83"><code>src&#x2F;engine&#x2F;particle.js:83</code></a> -->
         
         </p>
 
@@ -965,7 +799,7 @@
 
         
             <a name="property_count" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>count</code>
     <span class="type">Number</span>
 
@@ -984,13 +818,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l146"><code>src&#x2F;engine&#x2F;particle.js:146</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l146"><code>src&#x2F;engine&#x2F;particle.js:146</code></a> -->
         
         </p>
 
@@ -1017,7 +851,7 @@
 
         
             <a name="property_duration" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>duration</code>
     <span class="type">Number</span>
 
@@ -1036,13 +870,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l132"><code>src&#x2F;engine&#x2F;particle.js:132</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l132"><code>src&#x2F;engine&#x2F;particle.js:132</code></a> -->
         
         </p>
 
@@ -1069,7 +903,7 @@
 
         
             <a name="property_endAlpha" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>endAlpha</code>
     <span class="type">Number</span>
 
@@ -1088,13 +922,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l188"><code>src&#x2F;engine&#x2F;particle.js:188</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l188"><code>src&#x2F;engine&#x2F;particle.js:188</code></a> -->
         
         </p>
 
@@ -1121,7 +955,7 @@
 
         
             <a name="property_endScale" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>endScale</code>
     <span class="type">Number</span>
 
@@ -1140,13 +974,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l205"><code>src&#x2F;engine&#x2F;particle.js:205</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l205"><code>src&#x2F;engine&#x2F;particle.js:205</code></a> -->
         
         </p>
 
@@ -1172,7 +1006,7 @@
 
         
             <a name="property_endScaleVar" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>endScaleVar</code>
     <span class="type">Number</span>
 
@@ -1191,13 +1025,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l210"><code>src&#x2F;engine&#x2F;particle.js:210</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l210"><code>src&#x2F;engine&#x2F;particle.js:210</code></a> -->
         
         </p>
 
@@ -1223,7 +1057,7 @@
 
         
             <a name="property_life" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>life</code>
     <span class="type">Number</span>
 
@@ -1242,13 +1076,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l120"><code>src&#x2F;engine&#x2F;particle.js:120</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l120"><code>src&#x2F;engine&#x2F;particle.js:120</code></a> -->
         
         </p>
 
@@ -1275,7 +1109,7 @@
 
         
             <a name="property_lifeVar" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>lifeVar</code>
     <span class="type">Number</span>
 
@@ -1294,13 +1128,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l126"><code>src&#x2F;engine&#x2F;particle.js:126</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l126"><code>src&#x2F;engine&#x2F;particle.js:126</code></a> -->
         
         </p>
 
@@ -1327,7 +1161,7 @@
 
         
             <a name="property_particles" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>particles</code>
     <span class="type">Array</span>
 
@@ -1346,13 +1180,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l74"><code>src&#x2F;engine&#x2F;particle.js:74</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l74"><code>src&#x2F;engine&#x2F;particle.js:74</code></a> -->
         
         </p>
 
@@ -1376,7 +1210,7 @@
 
         
             <a name="property_poolName" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>poolName</code>
     <span class="type">String</span>
 
@@ -1395,13 +1229,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l68"><code>src&#x2F;engine&#x2F;particle.js:68</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l68"><code>src&#x2F;engine&#x2F;particle.js:68</code></a> -->
         
         </p>
 
@@ -1428,7 +1262,7 @@
 
         
             <a name="property_position" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>position</code>
     <span class="type">game.Point</span>
 
@@ -1447,13 +1281,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l88"><code>src&#x2F;engine&#x2F;particle.js:88</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l88"><code>src&#x2F;engine&#x2F;particle.js:88</code></a> -->
         
         </p>
 
@@ -1477,7 +1311,7 @@
 
         
             <a name="property_positionVar" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>positionVar</code>
     <span class="type">game.Point</span>
 
@@ -1496,13 +1330,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l92"><code>src&#x2F;engine&#x2F;particle.js:92</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l92"><code>src&#x2F;engine&#x2F;particle.js:92</code></a> -->
         
         </p>
 
@@ -1526,7 +1360,7 @@
 
         
             <a name="property_rate" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>rate</code>
     <span class="type">Number</span>
 
@@ -1545,13 +1379,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l139"><code>src&#x2F;engine&#x2F;particle.js:139</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l139"><code>src&#x2F;engine&#x2F;particle.js:139</code></a> -->
         
         </p>
 
@@ -1578,7 +1412,7 @@
 
         
             <a name="property_rotate" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>rotate</code>
     <span class="type">Number</span>
 
@@ -1597,13 +1431,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l170"><code>src&#x2F;engine&#x2F;particle.js:170</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l170"><code>src&#x2F;engine&#x2F;particle.js:170</code></a> -->
         
         </p>
 
@@ -1630,7 +1464,7 @@
 
         
             <a name="property_rotateVar" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>rotateVar</code>
     <span class="type">Number</span>
 
@@ -1649,13 +1483,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l176"><code>src&#x2F;engine&#x2F;particle.js:176</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l176"><code>src&#x2F;engine&#x2F;particle.js:176</code></a> -->
         
         </p>
 
@@ -1682,7 +1516,7 @@
 
         
             <a name="property_speed" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>speed</code>
     <span class="type">Number</span>
 
@@ -1701,13 +1535,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l108"><code>src&#x2F;engine&#x2F;particle.js:108</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l108"><code>src&#x2F;engine&#x2F;particle.js:108</code></a> -->
         
         </p>
 
@@ -1734,7 +1568,7 @@
 
         
             <a name="property_speedVar" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>speedVar</code>
     <span class="type">Number</span>
 
@@ -1753,13 +1587,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l114"><code>src&#x2F;engine&#x2F;particle.js:114</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l114"><code>src&#x2F;engine&#x2F;particle.js:114</code></a> -->
         
         </p>
 
@@ -1786,7 +1620,7 @@
 
         
             <a name="property_spriteSettings" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>spriteSettings</code>
     <span class="type">Object</span>
 
@@ -1805,13 +1639,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l248"><code>src&#x2F;engine&#x2F;particle.js:248</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l248"><code>src&#x2F;engine&#x2F;particle.js:248</code></a> -->
         
         </p>
 
@@ -1836,7 +1670,7 @@
 
         
             <a name="property_startAlpha" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>startAlpha</code>
     <span class="type">Number</span>
 
@@ -1855,13 +1689,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l182"><code>src&#x2F;engine&#x2F;particle.js:182</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l182"><code>src&#x2F;engine&#x2F;particle.js:182</code></a> -->
         
         </p>
 
@@ -1888,7 +1722,7 @@
 
         
             <a name="property_startScale" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>startScale</code>
     <span class="type">Number</span>
 
@@ -1907,13 +1741,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l194"><code>src&#x2F;engine&#x2F;particle.js:194</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l194"><code>src&#x2F;engine&#x2F;particle.js:194</code></a> -->
         
         </p>
 
@@ -1940,7 +1774,7 @@
 
         
             <a name="property_startScaleVar" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>startScaleVar</code>
     <span class="type">Number</span>
 
@@ -1959,13 +1793,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l200"><code>src&#x2F;engine&#x2F;particle.js:200</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l200"><code>src&#x2F;engine&#x2F;particle.js:200</code></a> -->
         
         </p>
 
@@ -1991,7 +1825,7 @@
 
         
             <a name="property_target" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>target</code>
     <span class="type">game.Point</span>
 
@@ -2010,13 +1844,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l215"><code>src&#x2F;engine&#x2F;particle.js:215</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l215"><code>src&#x2F;engine&#x2F;particle.js:215</code></a> -->
         
         </p>
 
@@ -2041,7 +1875,7 @@
 
         
             <a name="property_targetForce" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>targetForce</code>
     <span class="type">Number</span>
 
@@ -2060,13 +1894,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l220"><code>src&#x2F;engine&#x2F;particle.js:220</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l220"><code>src&#x2F;engine&#x2F;particle.js:220</code></a> -->
         
         </p>
 
@@ -2093,7 +1927,7 @@
 
         
             <a name="property_textures" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>textures</code>
     <span class="type">Array</span>
 
@@ -2112,13 +1946,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l78"><code>src&#x2F;engine&#x2F;particle.js:78</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l78"><code>src&#x2F;engine&#x2F;particle.js:78</code></a> -->
         
         </p>
 
@@ -2143,7 +1977,7 @@
 
         
             <a name="property_velocityLimit" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>velocityLimit</code>
     <span class="type">game.Point</span>
 
@@ -2162,13 +1996,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l255"><code>src&#x2F;engine&#x2F;particle.js:255</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l255"><code>src&#x2F;engine&#x2F;particle.js:255</code></a> -->
         
         </p>
 
@@ -2194,7 +2028,7 @@
 
         
             <a name="property_velRotate" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>velRotate</code>
     <span class="type">Number</span>
 
@@ -2213,13 +2047,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l158"><code>src&#x2F;engine&#x2F;particle.js:158</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l158"><code>src&#x2F;engine&#x2F;particle.js:158</code></a> -->
         
         </p>
 
@@ -2246,7 +2080,7 @@
 
         
             <a name="property_velRotateVar" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>velRotateVar</code>
     <span class="type">Number</span>
 
@@ -2265,13 +2099,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l164"><code>src&#x2F;engine&#x2F;particle.js:164</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l164"><code>src&#x2F;engine&#x2F;particle.js:164</code></a> -->
         
         </p>
 
@@ -2298,10 +2132,6 @@
 
         
 
-        <div class="no-visible-items-message">
-            <p>There are no properties that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
-        </div>
-
     </div>
 
 
@@ -2309,23 +2139,22 @@
 
 
     <div class="constructor">
-        <h2>Constructor</h2>
+        <h6>Constructor</h6>
         <a name="method_game.Emitter" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>game.Emitter</code>
-
+<div class="box method item">
+    <h3 class="name">game.Emitter
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code class="optional">[settings]</code>
+                        <span class="optional">[settings]</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -2349,13 +2178,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l59"><code>src&#x2F;engine&#x2F;particle.js:59</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l59"><code>src&#x2F;engine&#x2F;particle.js:59</code></a> -->
         
         </p>
 
@@ -2408,13 +2237,12 @@
 
 
     <div class="methods-detail">
-        <h2>Methods</h2>
+        <h6>Methods</h6>
 
         
             <a name="method__super" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>_super</code>
-
+<div class="box method item inherited">
+    <h3 class="name">_super
     
         <span class="paren">()</span>
     
@@ -2443,7 +2271,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l615"><code>src&#x2F;engine&#x2F;core.js:615</code></a>
+        <!-- <a href="../files/src_engine_core.js.html#l630"><code>src&#x2F;engine&#x2F;core.js:630</code></a> -->
         
         </p>
 
@@ -2470,9 +2298,8 @@
 
         
             <a name="method_addParticle" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>addParticle</code>
-
+<div class="box method item">
+    <h3 class="name">addParticle
     
         <span class="paren">()</span>
     
@@ -2498,13 +2325,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l297"><code>src&#x2F;engine&#x2F;particle.js:297</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l297"><code>src&#x2F;engine&#x2F;particle.js:297</code></a> -->
         
         </p>
 
@@ -2531,21 +2358,20 @@
 
         
             <a name="method_emit" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>emit</code>
-
+<div class="box method item">
+    <h3 class="name">emit
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>count</code>
+                        <span>count</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -2569,13 +2395,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l411"><code>src&#x2F;engine&#x2F;particle.js:411</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l411"><code>src&#x2F;engine&#x2F;particle.js:411</code></a> -->
         
         </p>
 
@@ -2625,9 +2451,8 @@
 
         
             <a name="method_extend" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>extend</code>
-
+<div class="box method item inherited">
+    <h3 class="name">extend
     
         <span class="paren">()</span>
     
@@ -2660,7 +2485,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l603"><code>src&#x2F;engine&#x2F;core.js:603</code></a>
+        <!-- <a href="../files/src_engine_core.js.html#l618"><code>src&#x2F;engine&#x2F;core.js:618</code></a> -->
         
         </p>
 
@@ -2685,7 +2510,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="../classes/game.Class.html" class="crosslink">game.Class</a></span>:
+                            <span class="type"><a href="../classes/game.Class.html" class="crosslink">game.Class</a></span>
                         
                         <p>Returns extended class</p>
 
@@ -2700,9 +2525,8 @@
 
         
             <a name="method_getVariance" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>getVariance</code>
-
+<div class="box method item">
+    <h3 class="name">getVariance
     
         <span class="paren">()</span>
     
@@ -2732,13 +2556,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l287"><code>src&#x2F;engine&#x2F;particle.js:287</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l287"><code>src&#x2F;engine&#x2F;particle.js:287</code></a> -->
         
         </p>
 
@@ -2765,7 +2589,7 @@ Example: if you have value 100 with variance of 50, you will get value between 5
                 <div class="returns-description">
                     
                         
-                            <span class="type">Number</span>:
+                            <span class="type">Number</span>
                         
                     
                 </div>
@@ -2778,9 +2602,8 @@ Example: if you have value 100 with variance of 50, you will get value between 5
 
         
             <a name="method_init" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>init</code>
-
+<div class="box method item inherited">
+    <h3 class="name">init
     
         <span class="paren">()</span>
     
@@ -2809,7 +2632,7 @@ Example: if you have value 100 with variance of 50, you will get value between 5
             
         
         
-        <a href="../files/src_engine_core.js.html#l658"><code>src&#x2F;engine&#x2F;core.js:658</code></a>
+        <!-- <a href="../files/src_engine_core.js.html#l673"><code>src&#x2F;engine&#x2F;core.js:673</code></a> -->
         
         </p>
 
@@ -2836,9 +2659,8 @@ Example: if you have value 100 with variance of 50, you will get value between 5
 
         
             <a name="method_inject" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>inject</code>
-
+<div class="box method item inherited">
+    <h3 class="name">inject
     
         <span class="paren">()</span>
     
@@ -2867,7 +2689,7 @@ Example: if you have value 100 with variance of 50, you will get value between 5
             
         
         
-        <a href="../files/src_engine_core.js.html#l671"><code>src&#x2F;engine&#x2F;core.js:671</code></a>
+        <!-- <a href="../files/src_engine_core.js.html#l686"><code>src&#x2F;engine&#x2F;core.js:686</code></a> -->
         
         </p>
 
@@ -2893,9 +2715,8 @@ Example: if you have value 100 with variance of 50, you will get value between 5
 
         
             <a name="method_remove" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>remove</code>
-
+<div class="box method item">
+    <h3 class="name">remove
     
         <span class="paren">()</span>
     
@@ -2921,13 +2742,13 @@ Example: if you have value 100 with variance of 50, you will get value between 5
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l444"><code>src&#x2F;engine&#x2F;particle.js:444</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l444"><code>src&#x2F;engine&#x2F;particle.js:444</code></a> -->
         
         </p>
 
@@ -2954,9 +2775,8 @@ Example: if you have value 100 with variance of 50, you will get value between 5
 
         
             <a name="method_removeParticle" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>removeParticle</code>
-
+<div class="box method item">
+    <h3 class="name">removeParticle
     
         <span class="paren">()</span>
     
@@ -2982,13 +2802,13 @@ Example: if you have value 100 with variance of 50, you will get value between 5
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l401"><code>src&#x2F;engine&#x2F;particle.js:401</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l401"><code>src&#x2F;engine&#x2F;particle.js:401</code></a> -->
         
         </p>
 
@@ -3015,21 +2835,20 @@ Example: if you have value 100 with variance of 50, you will get value between 5
 
         
             <a name="method_reset" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>reset</code>
-
+<div class="box method item">
+    <h3 class="name">reset
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>resetVec</code>
+                        <span>resetVec</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -3053,13 +2872,13 @@ Example: if you have value 100 with variance of 50, you will get value between 5
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l271"><code>src&#x2F;engine&#x2F;particle.js:271</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l271"><code>src&#x2F;engine&#x2F;particle.js:271</code></a> -->
         
         </p>
 
@@ -3110,9 +2929,8 @@ Example: if you have value 100 with variance of 50, you will get value between 5
 
         
             <a name="method_staticInit" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>staticInit</code>
-
+<div class="box method item inherited">
+    <h3 class="name">staticInit
     
         <span class="paren">()</span>
     
@@ -3141,7 +2959,7 @@ Example: if you have value 100 with variance of 50, you will get value between 5
             
         
         
-        <a href="../files/src_engine_core.js.html#l643"><code>src&#x2F;engine&#x2F;core.js:643</code></a>
+        <!-- <a href="../files/src_engine_core.js.html#l658"><code>src&#x2F;engine&#x2F;core.js:658</code></a> -->
         
         </p>
 
@@ -3168,9 +2986,8 @@ Example: if you have value 100 with variance of 50, you will get value between 5
 
         
             <a name="method_update" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>update</code>
-
+<div class="box method item">
+    <h3 class="name">update
     
         <span class="paren">()</span>
     
@@ -3196,13 +3013,13 @@ Example: if you have value 100 with variance of 50, you will get value between 5
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l423"><code>src&#x2F;engine&#x2F;particle.js:423</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l423"><code>src&#x2F;engine&#x2F;particle.js:423</code></a> -->
         
         </p>
 
@@ -3229,9 +3046,8 @@ Example: if you have value 100 with variance of 50, you will get value between 5
 
         
             <a name="method_updateParticle" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>updateParticle</code>
-
+<div class="box method item">
+    <h3 class="name">updateParticle
     
         <span class="paren">()</span>
     
@@ -3257,13 +3073,13 @@ Example: if you have value 100 with variance of 50, you will get value between 5
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_particle.js.html#l354"><code>src&#x2F;engine&#x2F;particle.js:354</code></a>
+        <!-- <a href="../files/src_engine_particle.js.html#l354"><code>src&#x2F;engine&#x2F;particle.js:354</code></a> -->
         
         </p>
 
@@ -3290,10 +3106,6 @@ Example: if you have value 100 with variance of 50, you will get value between 5
 
         
 
-        <div class="no-visible-items-message">
-            <p>There are no methods that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
-        </div>
-
     </div>
 
 
@@ -3302,20 +3114,3 @@ Example: if you have value 100 with variance of 50, you will get value between 5
 </div>
 
 
-            </div>
-        </div>
-
-    </div>
-</div>
-<script src="../assets/vendor/prettify/prettify-min.js"></script>
-<script>prettyPrint();</script>
-<script src="../assets/vendor/jquery.min.js"></script>
-<script src="../assets/js/jquery-offscreen-trigger.js"></script>
-<script src="../assets/js/yui-prettify.js"></script>
-<script src="../assets/../api.js"></script>
-<script src="../assets/js/api-filter.js"></script>
-<script src="../assets/js/api-list.js"></script>
-<script src="../assets/js/api-search.js"></script>
-<script src="../assets/js/apidocs.js"></script>
-</body>
-</html>

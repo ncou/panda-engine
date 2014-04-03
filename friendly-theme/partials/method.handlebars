@@ -1,21 +1,20 @@
 <a name="method_{{name}}" class="anchor-link"></a>
-<div class="method item{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if overwritten_from}} inherited{{/if}}{{#if extended_from}} inherited{{/if}}">
-    <h3 class="name"><code>{{name}}</code>
-
+<div class="box method item{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if overwritten_from}} inherited{{/if}}{{#if extended_from}} inherited{{/if}}">
+    <h3 class="name">{{name}}
     {{#if params}}
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             {{#params}}
-                <li class="arg">
+
                     {{#if optional}}
-                        <code class="optional">[{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]</code>
+                        <span class="optional">[{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]</span>
                     {{else}}
-                        <code>{{name}}</code>
+                        <span>{{name}}</span>
                     {{/if}}
-                </li>
+
             {{/params}}
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     {{else}}
         <span class="paren">()</span>
     {{/if}}
@@ -70,13 +69,13 @@
                     <p>Provided by the <a href="../modules/{{.}}.html" class="module-name">{{.}}</a> module.</p>
                 {{/providedBy}}
                 <p>
-                {{#if foundAt}}
+                <!-- {{#if foundAt}}
                 Defined in
-                {{/if}}
+                {{/if}} -->
             {{/if}}
         {{/if}}
         {{#if foundAt}}
-        <a href="{{foundAt}}">`{{{file}}}:{{{line}}}`</a>
+        <!-- <a href="{{foundAt}}">`{{{file}}}:{{{line}}}`</a> -->
         {{/if}}
         </p>
 
@@ -174,12 +173,12 @@
                 <div class="returns-description">
                     {{#if description}}
                         {{#if type}}
-                            <span class="type">{{#crossLink type}}{{/crossLink}}</span>:
+                            <span class="type">{{#crossLink type}}{{/crossLink}}</span>
                         {{/if}}
                         {{{description}}}
                     {{else}}
                         {{#if type}}
-                            <span class="type">{{#crossLink type}}{{/crossLink}}</span>:
+                            <span class="type">{{#crossLink type}}{{/crossLink}}</span>
                         {{/if}}
                     {{/if}}
                 </div>

@@ -1,167 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>game.Loader - Panda.js</title>
-    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
-    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
-    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
-    <script src="../assets/vendor/yui-min.js"></script>
-</head>
-<body>
+---
+layout: default
+title: Documentation
+---
 
-<div id="doc">
-    <header class="main-header">
-        <div class="content">
-            <div class="project-title">
-                
-                    <img class="logo" src="../../img/logo.png" title="Panda.js">
-                
-                
-                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.2.0</span>
-                
-                
-                    <p class="description">HTML5 game engine</p>
-                
-            </div>
-            <ul class="jump-links">
-                <li><a href="#index" class="index-jump-link">index</a></li>
-                <li><a href="#top" class="top-jump-link">top</a></li>
-            </ul>
-        </div>
-    </header>
-    <div id="bd" class="main-body">
+<div class="sidebar"></div>
 
-        <div id="docs-sidebar" class="sidebar apidocs">
-            <div id="api-list">
-    <div id="api-tabview" class="tabview">
-        <ul class="tabs">
-            <li><a href="#api-classes">Classes</a></li>
-            <li><a href="#api-modules">Modules</a></li>
-        </ul>
-
-        <div id="api-tabview-filter">
-            <input type="search" id="api-filter" placeholder="Type to filter APIs">
-        </div>
-
-        <div id="api-tabview-panel">
-            <ul id="api-classes" class="apis classes">
-            
-                <li><a class="type" href="../classes/game.Analytics.html">game.Analytics</a></li>
-            
-                <li><a class="type" href="../classes/game.Animation.html">game.Animation</a></li>
-            
-                <li><a class="type" href="../classes/game.Audio.html">game.Audio</a></li>
-            
-                <li><a class="type" href="../classes/game.Body.html">game.Body</a></li>
-            
-                <li><a class="type" href="../classes/game.Circle.html">game.Circle</a></li>
-            
-                <li><a class="type" href="../classes/game.Class.html">game.Class</a></li>
-            
-                <li><a class="type" href="../classes/game.CollisionSolver.html">game.CollisionSolver</a></li>
-            
-                <li><a class="type" href="../classes/game.Container.html">game.Container</a></li>
-            
-                <li><a class="type" href="../classes/game.Core.html">game.Core</a></li>
-            
-                <li><a class="type" href="../classes/game.Debug.html">game.Debug</a></li>
-            
-                <li><a class="type" href="../classes/game.DebugDraw.html">game.DebugDraw</a></li>
-            
-                <li><a class="type" href="../classes/game.Emitter.html">game.Emitter</a></li>
-            
-                <li><a class="type" href="../classes/game.Keyboard.html">game.Keyboard</a></li>
-            
-                <li><a class="type" href="../classes/game.Line.html">game.Line</a></li>
-            
-                <li><a class="type" href="../classes/game.Loader.html">game.Loader</a></li>
-            
-                <li><a class="type" href="../classes/game.Particle.html">game.Particle</a></li>
-            
-                <li><a class="type" href="../classes/game.Pool.html">game.Pool</a></li>
-            
-                <li><a class="type" href="../classes/game.Rectangle.html">game.Rectangle</a></li>
-            
-                <li><a class="type" href="../classes/game.Scene.html">game.Scene</a></li>
-            
-                <li><a class="type" href="../classes/game.Sprite.html">game.Sprite</a></li>
-            
-                <li><a class="type" href="../classes/game.Storage.html">game.Storage</a></li>
-            
-                <li><a class="type" href="../classes/game.System.html">game.System</a></li>
-            
-                <li><a class="type" href="../classes/game.TilingSprite.html">game.TilingSprite</a></li>
-            
-                <li><a class="type" href="../classes/game.Timer.html">game.Timer</a></li>
-            
-                <li><a class="type" href="../classes/game.Tween.html">game.Tween</a></li>
-            
-                <li><a class="type" href="../classes/game.TweenEngine.html">game.TweenEngine</a></li>
-            
-                <li><a class="type" href="../classes/game.TweenGroup.html">game.TweenGroup</a></li>
-            
-                <li><a class="type" href="../classes/game.Vector.html">game.Vector</a></li>
-            
-                <li><a class="type" href="../classes/game.World.html">game.World</a></li>
-            
-            </ul>
-
-            <ul id="api-modules" class="apis modules">
-            
-                <li><a class="module" href="../modules/analytics.html">analytics</a></li>
-            
-                <li><a class="module" href="../modules/audio.html">audio</a></li>
-            
-                <li><a class="module" href="../modules/core.html">core</a></li>
-            
-                <li><a class="module" href="../modules/debug.html">debug</a></li>
-            
-                <li><a class="module" href="../modules/keyboard.html">keyboard</a></li>
-            
-                <li><a class="module" href="../modules/loader.html">loader</a></li>
-            
-                <li><a class="module" href="../modules/particle.html">particle</a></li>
-            
-                <li><a class="module" href="../modules/physics.html">physics</a></li>
-            
-                <li><a class="module" href="../modules/pool.html">pool</a></li>
-            
-                <li><a class="module" href="../modules/scene.html">scene</a></li>
-            
-                <li><a class="module" href="../modules/sprite.html">sprite</a></li>
-            
-                <li><a class="module" href="../modules/storage.html">storage</a></li>
-            
-                <li><a class="module" href="../modules/system.html">system</a></li>
-            
-                <li><a class="module" href="../modules/timer.html">timer</a></li>
-            
-                <li><a class="module" href="../modules/tween.html">tween</a></li>
-            
-            </ul>
-        </div>
-    </div>
-</div>
-
-        </div>
-
-        <div id="docs-main" class="apidocs">
-            <div class="content container">
-                <h1>game.Loader Class</h1>
-<div class="box meta">
+<h4>Class: game.Loader</h4>
+<div class="classes-meta">
     
 
     
         <div class="extends">
-            Extends <a href="../classes/game.Class.html" class="crosslink">game.Class</a>
+            Extends: <a href="../classes/game.Class.html" class="crosslink">game.Class</a>
         </div>
     
 
     
-        <div class="foundat">
+        <!-- <div class="foundat">
             Defined in: <a href="../files/src_engine_loader.js.html#l10"><code>src&#x2F;engine&#x2F;loader.js:10</code></a>
-        </div>
+        </div> -->
     
 
     
@@ -175,46 +32,20 @@
 
 
 
-<div class="box intro">
+<!-- <div class="box intro">
     <p>Dynamic loader for assets and audio.</p>
 
-</div>
+</div> -->
 
 <!-- Class member index -->
 
-<a name="index" class="anchor-link"></a>
-<div class="index">
-<h2>Index</h2>
-
-    <div id="api-options">
-        Show:
-        <label for="api-show-inherited">
-            <input type="checkbox" id="api-show-inherited">
-            Inherited
-        </label>
-
-        <label for="api-show-protected">
-            <input type="checkbox" id="api-show-protected">
-            Protected
-        </label>
-
-        <label for="api-show-private">
-            <input type="checkbox" id="api-show-private">
-            Private
-        </label>
-        <label for="api-show-deprecated">
-            <input type="checkbox" id="api-show-deprecated">
-            Deprecated
-        </label>
-
-    </div>
+<div class="classes-index">
 
 
-
-
+    <h3>Properties</h3>
     <div class="index-section properties">
-        <h3>Properties</h3>
 
+        <div class="box float">
         <ul class="index-list properties extends">
             
                 <li class="index-item property">
@@ -254,14 +85,25 @@
                 </li>
             
         </ul>
+        <div class="clear"></div>
+        </div>
     </div>
 
 
 
+    <h3>Attributes</h3>
     <div class="index-section attrs">
-        <h3>Attributes</h3>
 
+        <div class="box float">
         <ul class="index-list attrs extends">
+            
+                <li class="index-item attr">
+                    <a href="#attr_barBg">barBg</a>
+                </li>
+            
+                <li class="index-item attr">
+                    <a href="#attr_barColor">barColor</a>
+                </li>
             
                 <li class="index-item attr">
                     <a href="#attr_getPath">getPath</a>
@@ -271,15 +113,22 @@
                     <a href="#attr_timeout">timeout</a>
                 </li>
             
+                <li class="index-item attr">
+                    <a href="#attr_tween">tween</a>
+                </li>
+            
         </ul>
+        <div class="clear"></div>
+        </div>
     </div>
 
 
 
 
+    <h3>Methods</h3>
     <div class="index-section methods">
-        <h3>Methods</h3>
 
+        <div class="box float">
         <ul class="index-list methods extends">
 
             
@@ -370,22 +219,24 @@
                 </li>
             
         </ul>
+        <div class="clear"></div>
+        </div>
     </div>
 
 
-
 </div>
+<div class="clear"></div>
 
 
 <div class="class-detail">
 
 
     <div class="properties-detail">
-        <h2>Properties</h2>
+        <h6>Properties</h6>
 
         
             <a name="property_assets" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>assets</code>
     <span class="type">Array</span>
 
@@ -404,13 +255,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_loader.js.html#l37"><code>src&#x2F;engine&#x2F;loader.js:37</code></a>
+        <!-- <a href="../files/src_engine_loader.js.html#l37"><code>src&#x2F;engine&#x2F;loader.js:37</code></a> -->
         
         </p>
 
@@ -435,7 +286,7 @@
 
         
             <a name="property_assets" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>assets</code>
     <span class="type">Array</span>
 
@@ -454,13 +305,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_loader.js.html#l42"><code>src&#x2F;engine&#x2F;loader.js:42</code></a>
+        <!-- <a href="../files/src_engine_loader.js.html#l42"><code>src&#x2F;engine&#x2F;loader.js:42</code></a> -->
         
         </p>
 
@@ -485,7 +336,7 @@
 
         
             <a name="property_backgroundColor" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>backgroundColor</code>
     <span class="type">Number</span>
 
@@ -504,13 +355,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_loader.js.html#l31"><code>src&#x2F;engine&#x2F;loader.js:31</code></a>
+        <!-- <a href="../files/src_engine_loader.js.html#l31"><code>src&#x2F;engine&#x2F;loader.js:31</code></a> -->
         
         </p>
 
@@ -537,7 +388,7 @@
 
         
             <a name="property_loaded" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>loaded</code>
     <span class="type">Number</span>
 
@@ -556,13 +407,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_loader.js.html#l21"><code>src&#x2F;engine&#x2F;loader.js:21</code></a>
+        <!-- <a href="../files/src_engine_loader.js.html#l21"><code>src&#x2F;engine&#x2F;loader.js:21</code></a> -->
         
         </p>
 
@@ -587,7 +438,7 @@
 
         
             <a name="property_percent" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>percent</code>
     <span class="type">Number</span>
 
@@ -606,13 +457,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_loader.js.html#l26"><code>src&#x2F;engine&#x2F;loader.js:26</code></a>
+        <!-- <a href="../files/src_engine_loader.js.html#l26"><code>src&#x2F;engine&#x2F;loader.js:26</code></a> -->
         
         </p>
 
@@ -637,7 +488,7 @@
 
         
             <a name="property_scene" class="anchor-link"></a>
-<div class="property item">
+<div class="box property item">
     <h3 class="name"><code>scene</code>
     <span class="type"><a href="../classes/game.Scene.html" class="crosslink">game.Scene</a></span>
 
@@ -656,13 +507,13 @@
             
                 
                 <p>
-                
+<!--                 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_loader.js.html#l16"><code>src&#x2F;engine&#x2F;loader.js:16</code></a>
+        <!-- <a href="../files/src_engine_loader.js.html#l16"><code>src&#x2F;engine&#x2F;loader.js:16</code></a> -->
         
         </p>
 
@@ -687,22 +538,17 @@
 
         
 
-        <div class="no-visible-items-message">
-            <p>There are no properties that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
-        </div>
-
     </div>
 
 
 
     <div class="attrs-detail">
-        <h2>Attributes</h2>
+        <h6>Attributes</h6>
 
         
-            <div id="attr_getPath" class="attr item">
-    <a name="config_getPath"></a> 
-    <h3 class="name"><code>getPath</code></h3>
-    <span class="type">Function</span>
+            <div id="attr_barBg" class="box attr item">
+    <a name="config_barBg"></a> 
+    <h3 class="name"><code>barBg</code> <span class="type">Number</span></h3>
 
     
 
@@ -723,13 +569,119 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_loader.js.html#l240"><code>src&#x2F;engine&#x2F;loader.js:240</code></a>
+        <!-- <a href="../files/src_engine_loader.js.html#l255"><code>src&#x2F;engine&#x2F;loader.js:255</code></a> -->
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Background color of the loading bar.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> 0x231f20</p>
+    
+
+    
+
+    
+</div>
+
+        
+            <div id="attr_barColor" class="box attr item">
+    <a name="config_barColor"></a> 
+    <h3 class="name"><code>barColor</code> <span class="type">Number</span></h3>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                <!-- 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_loader.js.html#l262"><code>src&#x2F;engine&#x2F;loader.js:262</code></a> -->
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Color of the loading bar.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> 0xe6e7e8</p>
+    
+
+    
+
+    
+</div>
+
+        
+            <div id="attr_getPath" class="box attr item">
+    <a name="config_getPath"></a> 
+    <h3 class="name"><code>getPath</code> <span class="type">Function</span></h3>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                <!-- 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_loader.js.html#l239"><code>src&#x2F;engine&#x2F;loader.js:239</code></a> -->
         
         </p>
 
@@ -751,10 +703,9 @@
 </div>
 
         
-            <div id="attr_timeout" class="attr item">
+            <div id="attr_timeout" class="box attr item">
     <a name="config_timeout"></a> 
-    <h3 class="name"><code>timeout</code></h3>
-    <span class="type">Number</span>
+    <h3 class="name"><code>timeout</code> <span class="type">Number</span></h3>
 
     
 
@@ -775,13 +726,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_loader.js.html#l249"><code>src&#x2F;engine&#x2F;loader.js:249</code></a>
+        <!-- <a href="../files/src_engine_loader.js.html#l248"><code>src&#x2F;engine&#x2F;loader.js:248</code></a> -->
         
         </p>
 
@@ -802,14 +753,58 @@
     
 
     
-        <div class="example">
-            <h4>Example:</h4>
+</div>
 
-            <div class="example-content">
-                <pre class="code prettyprint"><code>game.Loader.timeout = 1000;</code></pre>
+        
+            <div id="attr_tween" class="box attr item">
+    <a name="config_tween"></a> 
+    <h3 class="name"><code>tween</code> <span class="type">Boolean</span></h3>
 
-            </div>
-        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                <!-- 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_loader.js.html#l269"><code>src&#x2F;engine&#x2F;loader.js:269</code></a> -->
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Use tween on loader logo.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> true</p>
+    
+
+    
+
     
 </div>
 
@@ -821,13 +816,12 @@
 
 
     <div class="methods-detail">
-        <h2>Methods</h2>
+        <h6>Methods</h6>
 
         
             <a name="method__super" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>_super</code>
-
+<div class="box method item inherited">
+    <h3 class="name">_super
     
         <span class="paren">()</span>
     
@@ -856,7 +850,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l615"><code>src&#x2F;engine&#x2F;core.js:615</code></a>
+        <!-- <a href="../files/src_engine_core.js.html#l630"><code>src&#x2F;engine&#x2F;core.js:630</code></a> -->
         
         </p>
 
@@ -883,21 +877,20 @@
 
         
             <a name="method_error" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>error</code>
-
+<div class="box method item">
+    <h3 class="name">error
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>msg</code>
+                        <span>msg</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -921,13 +914,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_loader.js.html#l143"><code>src&#x2F;engine&#x2F;loader.js:143</code></a>
+        <!-- <a href="../files/src_engine_loader.js.html#l141"><code>src&#x2F;engine&#x2F;loader.js:141</code></a> -->
         
         </p>
 
@@ -977,9 +970,8 @@
 
         
             <a name="method_extend" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>extend</code>
-
+<div class="box method item inherited">
+    <h3 class="name">extend
     
         <span class="paren">()</span>
     
@@ -1012,7 +1004,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l603"><code>src&#x2F;engine&#x2F;core.js:603</code></a>
+        <!-- <a href="../files/src_engine_core.js.html#l618"><code>src&#x2F;engine&#x2F;core.js:618</code></a> -->
         
         </p>
 
@@ -1037,7 +1029,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="../classes/game.Class.html" class="crosslink">game.Class</a></span>:
+                            <span class="type"><a href="../classes/game.Class.html" class="crosslink">game.Class</a></span>
                         
                         <p>Returns extended class</p>
 
@@ -1052,9 +1044,8 @@
 
         
             <a name="method_init" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>init</code>
-
+<div class="box method item inherited">
+    <h3 class="name">init
     
         <span class="paren">()</span>
     
@@ -1083,7 +1074,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l658"><code>src&#x2F;engine&#x2F;core.js:658</code></a>
+        <!-- <a href="../files/src_engine_core.js.html#l673"><code>src&#x2F;engine&#x2F;core.js:673</code></a> -->
         
         </p>
 
@@ -1110,9 +1101,8 @@
 
         
             <a name="method_inject" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>inject</code>
-
+<div class="box method item inherited">
+    <h3 class="name">inject
     
         <span class="paren">()</span>
     
@@ -1141,7 +1131,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l671"><code>src&#x2F;engine&#x2F;core.js:671</code></a>
+        <!-- <a href="../files/src_engine_core.js.html#l686"><code>src&#x2F;engine&#x2F;core.js:686</code></a> -->
         
         </p>
 
@@ -1167,9 +1157,8 @@
 
         
             <a name="method_loadAudio" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>loadAudio</code>
-
+<div class="box method item">
+    <h3 class="name">loadAudio
     
         <span class="paren">()</span>
     
@@ -1195,13 +1184,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_loader.js.html#l171"><code>src&#x2F;engine&#x2F;loader.js:171</code></a>
+        <!-- <a href="../files/src_engine_loader.js.html#l169"><code>src&#x2F;engine&#x2F;loader.js:169</code></a> -->
         
         </p>
 
@@ -1228,9 +1217,8 @@
 
         
             <a name="method_onPercentChange" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>onPercentChange</code>
-
+<div class="box method item">
+    <h3 class="name">onPercentChange
     
         <span class="paren">()</span>
     
@@ -1256,13 +1244,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_loader.js.html#l163"><code>src&#x2F;engine&#x2F;loader.js:163</code></a>
+        <!-- <a href="../files/src_engine_loader.js.html#l161"><code>src&#x2F;engine&#x2F;loader.js:161</code></a> -->
         
         </p>
 
@@ -1289,9 +1277,8 @@
 
         
             <a name="method_progress" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>progress</code>
-
+<div class="box method item">
+    <h3 class="name">progress
     
         <span class="paren">()</span>
     
@@ -1317,13 +1304,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_loader.js.html#l152"><code>src&#x2F;engine&#x2F;loader.js:152</code></a>
+        <!-- <a href="../files/src_engine_loader.js.html#l150"><code>src&#x2F;engine&#x2F;loader.js:150</code></a> -->
         
         </p>
 
@@ -1350,9 +1337,8 @@
 
         
             <a name="method_ready" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>ready</code>
-
+<div class="box method item">
+    <h3 class="name">ready
     
         <span class="paren">()</span>
     
@@ -1378,13 +1364,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_loader.js.html#l181"><code>src&#x2F;engine&#x2F;loader.js:181</code></a>
+        <!-- <a href="../files/src_engine_loader.js.html#l179"><code>src&#x2F;engine&#x2F;loader.js:179</code></a> -->
         
         </p>
 
@@ -1411,9 +1397,8 @@
 
         
             <a name="method_setScene" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>setScene</code>
-
+<div class="box method item">
+    <h3 class="name">setScene
     
         <span class="paren">()</span>
     
@@ -1439,13 +1424,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_loader.js.html#l189"><code>src&#x2F;engine&#x2F;loader.js:189</code></a>
+        <!-- <a href="../files/src_engine_loader.js.html#l187"><code>src&#x2F;engine&#x2F;loader.js:187</code></a> -->
         
         </p>
 
@@ -1472,9 +1457,8 @@
 
         
             <a name="method_start" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>start</code>
-
+<div class="box method item">
+    <h3 class="name">start
     
         <span class="paren">()</span>
     
@@ -1500,13 +1484,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_loader.js.html#l104"><code>src&#x2F;engine&#x2F;loader.js:104</code></a>
+        <!-- <a href="../files/src_engine_loader.js.html#l104"><code>src&#x2F;engine&#x2F;loader.js:104</code></a> -->
         
         </p>
 
@@ -1533,9 +1517,8 @@
 
         
             <a name="method_staticInit" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>staticInit</code>
-
+<div class="box method item inherited">
+    <h3 class="name">staticInit
     
         <span class="paren">()</span>
     
@@ -1564,7 +1547,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l643"><code>src&#x2F;engine&#x2F;core.js:643</code></a>
+        <!-- <a href="../files/src_engine_core.js.html#l658"><code>src&#x2F;engine&#x2F;core.js:658</code></a> -->
         
         </p>
 
@@ -1591,10 +1574,6 @@
 
         
 
-        <div class="no-visible-items-message">
-            <p>There are no methods that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
-        </div>
-
     </div>
 
 
@@ -1603,20 +1582,3 @@
 </div>
 
 
-            </div>
-        </div>
-
-    </div>
-</div>
-<script src="../assets/vendor/prettify/prettify-min.js"></script>
-<script>prettyPrint();</script>
-<script src="../assets/vendor/jquery.min.js"></script>
-<script src="../assets/js/jquery-offscreen-trigger.js"></script>
-<script src="../assets/js/yui-prettify.js"></script>
-<script src="../assets/../api.js"></script>
-<script src="../assets/js/api-filter.js"></script>
-<script src="../assets/js/api-list.js"></script>
-<script src="../assets/js/api-search.js"></script>
-<script src="../assets/js/apidocs.js"></script>
-</body>
-</html>

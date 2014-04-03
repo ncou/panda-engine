@@ -1,167 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>game.Vector - Panda.js</title>
-    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
-    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
-    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
-    <script src="../assets/vendor/yui-min.js"></script>
-</head>
-<body>
+---
+layout: default
+title: Documentation
+---
 
-<div id="doc">
-    <header class="main-header">
-        <div class="content">
-            <div class="project-title">
-                
-                    <img class="logo" src="../../img/logo.png" title="Panda.js">
-                
-                
-                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.2.0</span>
-                
-                
-                    <p class="description">HTML5 game engine</p>
-                
-            </div>
-            <ul class="jump-links">
-                <li><a href="#index" class="index-jump-link">index</a></li>
-                <li><a href="#top" class="top-jump-link">top</a></li>
-            </ul>
-        </div>
-    </header>
-    <div id="bd" class="main-body">
+<div class="sidebar"></div>
 
-        <div id="docs-sidebar" class="sidebar apidocs">
-            <div id="api-list">
-    <div id="api-tabview" class="tabview">
-        <ul class="tabs">
-            <li><a href="#api-classes">Classes</a></li>
-            <li><a href="#api-modules">Modules</a></li>
-        </ul>
-
-        <div id="api-tabview-filter">
-            <input type="search" id="api-filter" placeholder="Type to filter APIs">
-        </div>
-
-        <div id="api-tabview-panel">
-            <ul id="api-classes" class="apis classes">
-            
-                <li><a class="type" href="../classes/game.Analytics.html">game.Analytics</a></li>
-            
-                <li><a class="type" href="../classes/game.Animation.html">game.Animation</a></li>
-            
-                <li><a class="type" href="../classes/game.Audio.html">game.Audio</a></li>
-            
-                <li><a class="type" href="../classes/game.Body.html">game.Body</a></li>
-            
-                <li><a class="type" href="../classes/game.Circle.html">game.Circle</a></li>
-            
-                <li><a class="type" href="../classes/game.Class.html">game.Class</a></li>
-            
-                <li><a class="type" href="../classes/game.CollisionSolver.html">game.CollisionSolver</a></li>
-            
-                <li><a class="type" href="../classes/game.Container.html">game.Container</a></li>
-            
-                <li><a class="type" href="../classes/game.Core.html">game.Core</a></li>
-            
-                <li><a class="type" href="../classes/game.Debug.html">game.Debug</a></li>
-            
-                <li><a class="type" href="../classes/game.DebugDraw.html">game.DebugDraw</a></li>
-            
-                <li><a class="type" href="../classes/game.Emitter.html">game.Emitter</a></li>
-            
-                <li><a class="type" href="../classes/game.Keyboard.html">game.Keyboard</a></li>
-            
-                <li><a class="type" href="../classes/game.Line.html">game.Line</a></li>
-            
-                <li><a class="type" href="../classes/game.Loader.html">game.Loader</a></li>
-            
-                <li><a class="type" href="../classes/game.Particle.html">game.Particle</a></li>
-            
-                <li><a class="type" href="../classes/game.Pool.html">game.Pool</a></li>
-            
-                <li><a class="type" href="../classes/game.Rectangle.html">game.Rectangle</a></li>
-            
-                <li><a class="type" href="../classes/game.Scene.html">game.Scene</a></li>
-            
-                <li><a class="type" href="../classes/game.Sprite.html">game.Sprite</a></li>
-            
-                <li><a class="type" href="../classes/game.Storage.html">game.Storage</a></li>
-            
-                <li><a class="type" href="../classes/game.System.html">game.System</a></li>
-            
-                <li><a class="type" href="../classes/game.TilingSprite.html">game.TilingSprite</a></li>
-            
-                <li><a class="type" href="../classes/game.Timer.html">game.Timer</a></li>
-            
-                <li><a class="type" href="../classes/game.Tween.html">game.Tween</a></li>
-            
-                <li><a class="type" href="../classes/game.TweenEngine.html">game.TweenEngine</a></li>
-            
-                <li><a class="type" href="../classes/game.TweenGroup.html">game.TweenGroup</a></li>
-            
-                <li><a class="type" href="../classes/game.Vector.html">game.Vector</a></li>
-            
-                <li><a class="type" href="../classes/game.World.html">game.World</a></li>
-            
-            </ul>
-
-            <ul id="api-modules" class="apis modules">
-            
-                <li><a class="module" href="../modules/analytics.html">analytics</a></li>
-            
-                <li><a class="module" href="../modules/audio.html">audio</a></li>
-            
-                <li><a class="module" href="../modules/core.html">core</a></li>
-            
-                <li><a class="module" href="../modules/debug.html">debug</a></li>
-            
-                <li><a class="module" href="../modules/keyboard.html">keyboard</a></li>
-            
-                <li><a class="module" href="../modules/loader.html">loader</a></li>
-            
-                <li><a class="module" href="../modules/particle.html">particle</a></li>
-            
-                <li><a class="module" href="../modules/physics.html">physics</a></li>
-            
-                <li><a class="module" href="../modules/pool.html">pool</a></li>
-            
-                <li><a class="module" href="../modules/scene.html">scene</a></li>
-            
-                <li><a class="module" href="../modules/sprite.html">sprite</a></li>
-            
-                <li><a class="module" href="../modules/storage.html">storage</a></li>
-            
-                <li><a class="module" href="../modules/system.html">system</a></li>
-            
-                <li><a class="module" href="../modules/timer.html">timer</a></li>
-            
-                <li><a class="module" href="../modules/tween.html">tween</a></li>
-            
-            </ul>
-        </div>
-    </div>
-</div>
-
-        </div>
-
-        <div id="docs-main" class="apidocs">
-            <div class="content container">
-                <h1>game.Vector Class</h1>
-<div class="box meta">
+<h4>Class: game.Vector</h4>
+<div class="classes-meta">
     
 
     
         <div class="extends">
-            Extends <a href="../classes/game.Class.html" class="crosslink">game.Class</a>
+            Extends: <a href="../classes/game.Class.html" class="crosslink">game.Class</a>
         </div>
     
 
     
-        <div class="foundat">
+        <!-- <div class="foundat">
             Defined in: <a href="../files/src_engine_physics.js.html#l542"><code>src&#x2F;engine&#x2F;physics.js:542</code></a>
-        </div>
+        </div> -->
     
 
     
@@ -175,39 +32,14 @@
 
 
 
-<div class="box intro">
+<!-- <div class="box intro">
     <p>Vector class.</p>
 
-</div>
+</div> -->
 
 <!-- Class member index -->
 
-<a name="index" class="anchor-link"></a>
-<div class="index">
-<h2>Index</h2>
-
-    <div id="api-options">
-        Show:
-        <label for="api-show-inherited">
-            <input type="checkbox" id="api-show-inherited">
-            Inherited
-        </label>
-
-        <label for="api-show-protected">
-            <input type="checkbox" id="api-show-protected">
-            Protected
-        </label>
-
-        <label for="api-show-private">
-            <input type="checkbox" id="api-show-private">
-            Private
-        </label>
-        <label for="api-show-deprecated">
-            <input type="checkbox" id="api-show-deprecated">
-            Deprecated
-        </label>
-
-    </div>
+<div class="classes-index">
 
 
 
@@ -215,18 +47,15 @@
 
 
 
-
-
+    <h3>Methods</h3>
     <div class="index-section methods">
-        <h3>Methods</h3>
 
+        <div class="box float">
         <ul class="index-list methods extends">
 
             
                 <li class="index-item method constructor">
-                    <a href="#method_game.Vector">game.Vector</a>
-
-                    <span class="flag constructor">constructor</span>
+                    <a href="#method_game.Vector">game.Vector <span class="flag constructor">constructor</span></a>
 
                     
                     
@@ -396,11 +225,13 @@
                 </li>
             
         </ul>
+        <div class="clear"></div>
+        </div>
     </div>
 
 
-
 </div>
+<div class="clear"></div>
 
 
 <div class="class-detail">
@@ -411,29 +242,28 @@
 
 
     <div class="constructor">
-        <h2>Constructor</h2>
+        <h6>Constructor</h6>
         <a name="method_game.Vector" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>game.Vector</code>
-
+<div class="box method item">
+    <h3 class="name">game.Vector
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code class="optional">[x]</code>
+                        <span class="optional">[x]</span>
                     
-                </li>
+
             
-                <li class="arg">
+
                     
-                        <code class="optional">[y]</code>
+                        <span class="optional">[y]</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -457,13 +287,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_physics.js.html#l542"><code>src&#x2F;engine&#x2F;physics.js:542</code></a>
+        <!-- <a href="../files/src_engine_physics.js.html#l542"><code>src&#x2F;engine&#x2F;physics.js:542</code></a> -->
         
         </p>
 
@@ -532,13 +362,12 @@
 
 
     <div class="methods-detail">
-        <h2>Methods</h2>
+        <h6>Methods</h6>
 
         
             <a name="method__super" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>_super</code>
-
+<div class="box method item inherited">
+    <h3 class="name">_super
     
         <span class="paren">()</span>
     
@@ -567,7 +396,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l615"><code>src&#x2F;engine&#x2F;core.js:615</code></a>
+        <!-- <a href="../files/src_engine_core.js.html#l630"><code>src&#x2F;engine&#x2F;core.js:630</code></a> -->
         
         </p>
 
@@ -594,27 +423,26 @@
 
         
             <a name="method_add" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>add</code>
-
+<div class="box method item">
+    <h3 class="name">add
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>x</code>
+                        <span>x</span>
                     
-                </li>
+
             
-                <li class="arg">
+
                     
-                        <code class="optional">[y]</code>
+                        <span class="optional">[y]</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -642,13 +470,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_physics.js.html#l593"><code>src&#x2F;engine&#x2F;physics.js:593</code></a>
+        <!-- <a href="../files/src_engine_physics.js.html#l593"><code>src&#x2F;engine&#x2F;physics.js:593</code></a> -->
         
         </p>
 
@@ -713,7 +541,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>:
+                            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
                         
                     
                 </div>
@@ -726,21 +554,20 @@
 
         
             <a name="method_angle" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>angle</code>
-
+<div class="box method item">
+    <h3 class="name">angle
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>vector</code>
+                        <span>vector</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -768,13 +595,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_physics.js.html#l749"><code>src&#x2F;engine&#x2F;physics.js:749</code></a>
+        <!-- <a href="../files/src_engine_physics.js.html#l749"><code>src&#x2F;engine&#x2F;physics.js:749</code></a> -->
         
         </p>
 
@@ -823,7 +650,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">Number</span>:
+                            <span class="type">Number</span>
                         
                     
                 </div>
@@ -836,21 +663,20 @@
 
         
             <a name="method_angleFromOrigin" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>angleFromOrigin</code>
-
+<div class="box method item">
+    <h3 class="name">angleFromOrigin
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>vector</code>
+                        <span>vector</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -878,13 +704,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_physics.js.html#l759"><code>src&#x2F;engine&#x2F;physics.js:759</code></a>
+        <!-- <a href="../files/src_engine_physics.js.html#l759"><code>src&#x2F;engine&#x2F;physics.js:759</code></a> -->
         
         </p>
 
@@ -933,7 +759,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">Number</span>:
+                            <span class="type">Number</span>
                         
                     
                 </div>
@@ -946,9 +772,8 @@
 
         
             <a name="method_clone" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>clone</code>
-
+<div class="box method item">
+    <h3 class="name">clone
     
         <span class="paren">()</span>
     
@@ -978,13 +803,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_physics.js.html#l572"><code>src&#x2F;engine&#x2F;physics.js:572</code></a>
+        <!-- <a href="../files/src_engine_physics.js.html#l572"><code>src&#x2F;engine&#x2F;physics.js:572</code></a> -->
         
         </p>
 
@@ -1010,7 +835,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>:
+                            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
                         
                     
                 </div>
@@ -1023,21 +848,20 @@
 
         
             <a name="method_copy" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>copy</code>
-
+<div class="box method item">
+    <h3 class="name">copy
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>v</code>
+                        <span>v</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -1065,13 +889,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_physics.js.html#l581"><code>src&#x2F;engine&#x2F;physics.js:581</code></a>
+        <!-- <a href="../files/src_engine_physics.js.html#l581"><code>src&#x2F;engine&#x2F;physics.js:581</code></a> -->
         
         </p>
 
@@ -1120,7 +944,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>:
+                            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
                         
                     
                 </div>
@@ -1133,21 +957,20 @@
 
         
             <a name="method_distance" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>distance</code>
-
+<div class="box method item">
+    <h3 class="name">distance
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>vector</code>
+                        <span>vector</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -1175,13 +998,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_physics.js.html#l658"><code>src&#x2F;engine&#x2F;physics.js:658</code></a>
+        <!-- <a href="../files/src_engine_physics.js.html#l658"><code>src&#x2F;engine&#x2F;physics.js:658</code></a> -->
         
         </p>
 
@@ -1230,7 +1053,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">Number</span>:
+                            <span class="type">Number</span>
                         
                     
                 </div>
@@ -1243,27 +1066,26 @@
 
         
             <a name="method_divide" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>divide</code>
-
+<div class="box method item">
+    <h3 class="name">divide
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>x</code>
+                        <span>x</span>
                     
-                </li>
+
             
-                <li class="arg">
+
                     
-                        <code class="optional">[y]</code>
+                        <span class="optional">[y]</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -1291,13 +1113,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_physics.js.html#l645"><code>src&#x2F;engine&#x2F;physics.js:645</code></a>
+        <!-- <a href="../files/src_engine_physics.js.html#l645"><code>src&#x2F;engine&#x2F;physics.js:645</code></a> -->
         
         </p>
 
@@ -1362,7 +1184,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>:
+                            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
                         
                     
                 </div>
@@ -1375,21 +1197,20 @@
 
         
             <a name="method_dot" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>dot</code>
-
+<div class="box method item">
+    <h3 class="name">dot
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code class="optional">[vector]</code>
+                        <span class="optional">[vector]</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -1417,13 +1238,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_physics.js.html#l679"><code>src&#x2F;engine&#x2F;physics.js:679</code></a>
+        <!-- <a href="../files/src_engine_physics.js.html#l679"><code>src&#x2F;engine&#x2F;physics.js:679</code></a> -->
         
         </p>
 
@@ -1473,7 +1294,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">Number</span>:
+                            <span class="type">Number</span>
                         
                     
                 </div>
@@ -1486,21 +1307,20 @@
 
         
             <a name="method_dotNormalized" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>dotNormalized</code>
-
+<div class="box method item">
+    <h3 class="name">dotNormalized
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code class="optional">[vector]</code>
+                        <span class="optional">[vector]</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -1528,13 +1348,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_physics.js.html#l690"><code>src&#x2F;engine&#x2F;physics.js:690</code></a>
+        <!-- <a href="../files/src_engine_physics.js.html#l690"><code>src&#x2F;engine&#x2F;physics.js:690</code></a> -->
         
         </p>
 
@@ -1584,7 +1404,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">Number</span>:
+                            <span class="type">Number</span>
                         
                     
                 </div>
@@ -1597,9 +1417,8 @@
 
         
             <a name="method_extend" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>extend</code>
-
+<div class="box method item inherited">
+    <h3 class="name">extend
     
         <span class="paren">()</span>
     
@@ -1632,7 +1451,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l603"><code>src&#x2F;engine&#x2F;core.js:603</code></a>
+        <!-- <a href="../files/src_engine_core.js.html#l618"><code>src&#x2F;engine&#x2F;core.js:618</code></a> -->
         
         </p>
 
@@ -1657,7 +1476,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="../classes/game.Class.html" class="crosslink">game.Class</a></span>:
+                            <span class="type"><a href="../classes/game.Class.html" class="crosslink">game.Class</a></span>
                         
                         <p>Returns extended class</p>
 
@@ -1672,9 +1491,8 @@
 
         
             <a name="method_init" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>init</code>
-
+<div class="box method item inherited">
+    <h3 class="name">init
     
         <span class="paren">()</span>
     
@@ -1703,7 +1521,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l658"><code>src&#x2F;engine&#x2F;core.js:658</code></a>
+        <!-- <a href="../files/src_engine_core.js.html#l673"><code>src&#x2F;engine&#x2F;core.js:673</code></a> -->
         
         </p>
 
@@ -1730,9 +1548,8 @@
 
         
             <a name="method_inject" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>inject</code>
-
+<div class="box method item inherited">
+    <h3 class="name">inject
     
         <span class="paren">()</span>
     
@@ -1761,7 +1578,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l671"><code>src&#x2F;engine&#x2F;core.js:671</code></a>
+        <!-- <a href="../files/src_engine_core.js.html#l686"><code>src&#x2F;engine&#x2F;core.js:686</code></a> -->
         
         </p>
 
@@ -1787,9 +1604,8 @@
 
         
             <a name="method_length" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>length</code>
-
+<div class="box method item">
+    <h3 class="name">length
     
         <span class="paren">()</span>
     
@@ -1819,13 +1635,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_physics.js.html#l670"><code>src&#x2F;engine&#x2F;physics.js:670</code></a>
+        <!-- <a href="../files/src_engine_physics.js.html#l670"><code>src&#x2F;engine&#x2F;physics.js:670</code></a> -->
         
         </p>
 
@@ -1851,7 +1667,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">Number</span>:
+                            <span class="type">Number</span>
                         
                     
                 </div>
@@ -1864,21 +1680,20 @@
 
         
             <a name="method_limit" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>limit</code>
-
+<div class="box method item">
+    <h3 class="name">limit
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>vector</code>
+                        <span>vector</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -1906,13 +1721,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_physics.js.html#l737"><code>src&#x2F;engine&#x2F;physics.js:737</code></a>
+        <!-- <a href="../files/src_engine_physics.js.html#l737"><code>src&#x2F;engine&#x2F;physics.js:737</code></a> -->
         
         </p>
 
@@ -1961,7 +1776,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>:
+                            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
                         
                     
                 </div>
@@ -1974,27 +1789,26 @@
 
         
             <a name="method_multiply" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>multiply</code>
-
+<div class="box method item">
+    <h3 class="name">multiply
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>x</code>
+                        <span>x</span>
                     
-                </li>
+
             
-                <li class="arg">
+
                     
-                        <code class="optional">[y]</code>
+                        <span class="optional">[y]</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -2022,13 +1836,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_physics.js.html#l619"><code>src&#x2F;engine&#x2F;physics.js:619</code></a>
+        <!-- <a href="../files/src_engine_physics.js.html#l619"><code>src&#x2F;engine&#x2F;physics.js:619</code></a> -->
         
         </p>
 
@@ -2093,7 +1907,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>:
+                            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
                         
                     
                 </div>
@@ -2106,27 +1920,26 @@
 
         
             <a name="method_multiplyAdd" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>multiplyAdd</code>
-
+<div class="box method item">
+    <h3 class="name">multiplyAdd
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>x</code>
+                        <span>x</span>
                     
-                </li>
+
             
-                <li class="arg">
+
                     
-                        <code class="optional">[y]</code>
+                        <span class="optional">[y]</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -2154,13 +1967,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_physics.js.html#l632"><code>src&#x2F;engine&#x2F;physics.js:632</code></a>
+        <!-- <a href="../files/src_engine_physics.js.html#l632"><code>src&#x2F;engine&#x2F;physics.js:632</code></a> -->
         
         </p>
 
@@ -2225,7 +2038,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>:
+                            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
                         
                     
                 </div>
@@ -2238,9 +2051,8 @@
 
         
             <a name="method_normalize" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>normalize</code>
-
+<div class="box method item">
+    <h3 class="name">normalize
     
         <span class="paren">()</span>
     
@@ -2270,13 +2082,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_physics.js.html#l725"><code>src&#x2F;engine&#x2F;physics.js:725</code></a>
+        <!-- <a href="../files/src_engine_physics.js.html#l725"><code>src&#x2F;engine&#x2F;physics.js:725</code></a> -->
         
         </p>
 
@@ -2302,7 +2114,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>:
+                            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
                         
                     
                 </div>
@@ -2315,21 +2127,20 @@
 
         
             <a name="method_rotate" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>rotate</code>
-
+<div class="box method item">
+    <h3 class="name">rotate
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>angle</code>
+                        <span>angle</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -2357,13 +2168,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_physics.js.html#l709"><code>src&#x2F;engine&#x2F;physics.js:709</code></a>
+        <!-- <a href="../files/src_engine_physics.js.html#l709"><code>src&#x2F;engine&#x2F;physics.js:709</code></a> -->
         
         </p>
 
@@ -2412,7 +2223,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>:
+                            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
                         
                     
                 </div>
@@ -2425,9 +2236,8 @@
 
         
             <a name="method_round" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>round</code>
-
+<div class="box method item">
+    <h3 class="name">round
     
         <span class="paren">()</span>
     
@@ -2457,13 +2267,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_physics.js.html#l769"><code>src&#x2F;engine&#x2F;physics.js:769</code></a>
+        <!-- <a href="../files/src_engine_physics.js.html#l769"><code>src&#x2F;engine&#x2F;physics.js:769</code></a> -->
         
         </p>
 
@@ -2489,7 +2299,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>:
+                            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
                         
                     
                 </div>
@@ -2502,27 +2312,26 @@
 
         
             <a name="method_set" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>set</code>
-
+<div class="box method item">
+    <h3 class="name">set
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>x</code>
+                        <span>x</span>
                     
-                </li>
+
             
-                <li class="arg">
+
                     
-                        <code>y</code>
+                        <span>y</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -2550,13 +2359,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_physics.js.html#l559"><code>src&#x2F;engine&#x2F;physics.js:559</code></a>
+        <!-- <a href="../files/src_engine_physics.js.html#l559"><code>src&#x2F;engine&#x2F;physics.js:559</code></a> -->
         
         </p>
 
@@ -2620,7 +2429,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>:
+                            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
                         
                     
                 </div>
@@ -2633,9 +2442,8 @@
 
         
             <a name="method_staticInit" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>staticInit</code>
-
+<div class="box method item inherited">
+    <h3 class="name">staticInit
     
         <span class="paren">()</span>
     
@@ -2664,7 +2472,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l643"><code>src&#x2F;engine&#x2F;core.js:643</code></a>
+        <!-- <a href="../files/src_engine_core.js.html#l658"><code>src&#x2F;engine&#x2F;core.js:658</code></a> -->
         
         </p>
 
@@ -2691,27 +2499,26 @@
 
         
             <a name="method_subtract" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>subtract</code>
-
+<div class="box method item">
+    <h3 class="name">subtract
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>x</code>
+                        <span>x</span>
                     
-                </li>
+
             
-                <li class="arg">
+
                     
-                        <code class="optional">[y]</code>
+                        <span class="optional">[y]</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -2739,13 +2546,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_physics.js.html#l606"><code>src&#x2F;engine&#x2F;physics.js:606</code></a>
+        <!-- <a href="../files/src_engine_physics.js.html#l606"><code>src&#x2F;engine&#x2F;physics.js:606</code></a> -->
         
         </p>
 
@@ -2810,7 +2617,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>:
+                            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
                         
                     
                 </div>
@@ -2823,10 +2630,6 @@
 
         
 
-        <div class="no-visible-items-message">
-            <p>There are no methods that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
-        </div>
-
     </div>
 
 
@@ -2835,20 +2638,3 @@
 </div>
 
 
-            </div>
-        </div>
-
-    </div>
-</div>
-<script src="../assets/vendor/prettify/prettify-min.js"></script>
-<script>prettyPrint();</script>
-<script src="../assets/vendor/jquery.min.js"></script>
-<script src="../assets/js/jquery-offscreen-trigger.js"></script>
-<script src="../assets/js/yui-prettify.js"></script>
-<script src="../assets/../api.js"></script>
-<script src="../assets/js/api-filter.js"></script>
-<script src="../assets/js/api-list.js"></script>
-<script src="../assets/js/api-search.js"></script>
-<script src="../assets/js/apidocs.js"></script>
-</body>
-</html>

@@ -1,167 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>game.Tween - Panda.js</title>
-    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
-    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
-    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
-    <script src="../assets/vendor/yui-min.js"></script>
-</head>
-<body>
+---
+layout: default
+title: Documentation
+---
 
-<div id="doc">
-    <header class="main-header">
-        <div class="content">
-            <div class="project-title">
-                
-                    <img class="logo" src="../../img/logo.png" title="Panda.js">
-                
-                
-                    <h1 class="project-name">Panda.js</h1> <span class="project-version">1.2.0</span>
-                
-                
-                    <p class="description">HTML5 game engine</p>
-                
-            </div>
-            <ul class="jump-links">
-                <li><a href="#index" class="index-jump-link">index</a></li>
-                <li><a href="#top" class="top-jump-link">top</a></li>
-            </ul>
-        </div>
-    </header>
-    <div id="bd" class="main-body">
+<div class="sidebar"></div>
 
-        <div id="docs-sidebar" class="sidebar apidocs">
-            <div id="api-list">
-    <div id="api-tabview" class="tabview">
-        <ul class="tabs">
-            <li><a href="#api-classes">Classes</a></li>
-            <li><a href="#api-modules">Modules</a></li>
-        </ul>
-
-        <div id="api-tabview-filter">
-            <input type="search" id="api-filter" placeholder="Type to filter APIs">
-        </div>
-
-        <div id="api-tabview-panel">
-            <ul id="api-classes" class="apis classes">
-            
-                <li><a class="type" href="../classes/game.Analytics.html">game.Analytics</a></li>
-            
-                <li><a class="type" href="../classes/game.Animation.html">game.Animation</a></li>
-            
-                <li><a class="type" href="../classes/game.Audio.html">game.Audio</a></li>
-            
-                <li><a class="type" href="../classes/game.Body.html">game.Body</a></li>
-            
-                <li><a class="type" href="../classes/game.Circle.html">game.Circle</a></li>
-            
-                <li><a class="type" href="../classes/game.Class.html">game.Class</a></li>
-            
-                <li><a class="type" href="../classes/game.CollisionSolver.html">game.CollisionSolver</a></li>
-            
-                <li><a class="type" href="../classes/game.Container.html">game.Container</a></li>
-            
-                <li><a class="type" href="../classes/game.Core.html">game.Core</a></li>
-            
-                <li><a class="type" href="../classes/game.Debug.html">game.Debug</a></li>
-            
-                <li><a class="type" href="../classes/game.DebugDraw.html">game.DebugDraw</a></li>
-            
-                <li><a class="type" href="../classes/game.Emitter.html">game.Emitter</a></li>
-            
-                <li><a class="type" href="../classes/game.Keyboard.html">game.Keyboard</a></li>
-            
-                <li><a class="type" href="../classes/game.Line.html">game.Line</a></li>
-            
-                <li><a class="type" href="../classes/game.Loader.html">game.Loader</a></li>
-            
-                <li><a class="type" href="../classes/game.Particle.html">game.Particle</a></li>
-            
-                <li><a class="type" href="../classes/game.Pool.html">game.Pool</a></li>
-            
-                <li><a class="type" href="../classes/game.Rectangle.html">game.Rectangle</a></li>
-            
-                <li><a class="type" href="../classes/game.Scene.html">game.Scene</a></li>
-            
-                <li><a class="type" href="../classes/game.Sprite.html">game.Sprite</a></li>
-            
-                <li><a class="type" href="../classes/game.Storage.html">game.Storage</a></li>
-            
-                <li><a class="type" href="../classes/game.System.html">game.System</a></li>
-            
-                <li><a class="type" href="../classes/game.TilingSprite.html">game.TilingSprite</a></li>
-            
-                <li><a class="type" href="../classes/game.Timer.html">game.Timer</a></li>
-            
-                <li><a class="type" href="../classes/game.Tween.html">game.Tween</a></li>
-            
-                <li><a class="type" href="../classes/game.TweenEngine.html">game.TweenEngine</a></li>
-            
-                <li><a class="type" href="../classes/game.TweenGroup.html">game.TweenGroup</a></li>
-            
-                <li><a class="type" href="../classes/game.Vector.html">game.Vector</a></li>
-            
-                <li><a class="type" href="../classes/game.World.html">game.World</a></li>
-            
-            </ul>
-
-            <ul id="api-modules" class="apis modules">
-            
-                <li><a class="module" href="../modules/analytics.html">analytics</a></li>
-            
-                <li><a class="module" href="../modules/audio.html">audio</a></li>
-            
-                <li><a class="module" href="../modules/core.html">core</a></li>
-            
-                <li><a class="module" href="../modules/debug.html">debug</a></li>
-            
-                <li><a class="module" href="../modules/keyboard.html">keyboard</a></li>
-            
-                <li><a class="module" href="../modules/loader.html">loader</a></li>
-            
-                <li><a class="module" href="../modules/particle.html">particle</a></li>
-            
-                <li><a class="module" href="../modules/physics.html">physics</a></li>
-            
-                <li><a class="module" href="../modules/pool.html">pool</a></li>
-            
-                <li><a class="module" href="../modules/scene.html">scene</a></li>
-            
-                <li><a class="module" href="../modules/sprite.html">sprite</a></li>
-            
-                <li><a class="module" href="../modules/storage.html">storage</a></li>
-            
-                <li><a class="module" href="../modules/system.html">system</a></li>
-            
-                <li><a class="module" href="../modules/timer.html">timer</a></li>
-            
-                <li><a class="module" href="../modules/tween.html">tween</a></li>
-            
-            </ul>
-        </div>
-    </div>
-</div>
-
-        </div>
-
-        <div id="docs-main" class="apidocs">
-            <div class="content container">
-                <h1>game.Tween Class</h1>
-<div class="box meta">
+<h4>Class: game.Tween</h4>
+<div class="classes-meta">
     
 
     
         <div class="extends">
-            Extends <a href="../classes/game.Class.html" class="crosslink">game.Class</a>
+            Extends: <a href="../classes/game.Class.html" class="crosslink">game.Class</a>
         </div>
     
 
     
-        <div class="foundat">
+        <!-- <div class="foundat">
             Defined in: <a href="../files/src_engine_tween.js.html#l80"><code>src&#x2F;engine&#x2F;tween.js:80</code></a>
-        </div>
+        </div> -->
     
 
     
@@ -175,47 +32,44 @@
 
 
 
-<div class="box intro">
+<!-- <div class="box intro">
     
-</div>
+</div> -->
 
 <!-- Class member index -->
 
-<a name="index" class="anchor-link"></a>
-<div class="index">
-<h2>Index</h2>
+<div class="classes-index">
 
-    <div id="api-options">
-        Show:
-        <label for="api-show-inherited">
-            <input type="checkbox" id="api-show-inherited">
-            Inherited
-        </label>
 
-        <label for="api-show-protected">
-            <input type="checkbox" id="api-show-protected">
-            Protected
-        </label>
+    <h3>Properties</h3>
+    <div class="index-section properties">
 
-        <label for="api-show-private">
-            <input type="checkbox" id="api-show-private">
-            Private
-        </label>
-        <label for="api-show-deprecated">
-            <input type="checkbox" id="api-show-deprecated">
-            Deprecated
-        </label>
+        <div class="box float">
+        <ul class="index-list properties extends">
+            
+                <li class="index-item property">
+                    <a href="#property_isPlaying">isPlaying</a>
 
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_paused">paused</a>
+
+                    
+                </li>
+            
+        </ul>
+        <div class="clear"></div>
+        </div>
     </div>
 
 
 
-
-
-
+    <h3>Attributes</h3>
     <div class="index-section attrs">
-        <h3>Attributes</h3>
 
+        <div class="box float">
         <ul class="index-list attrs extends">
             
                 <li class="index-item attr">
@@ -227,21 +81,22 @@
                 </li>
             
         </ul>
+        <div class="clear"></div>
+        </div>
     </div>
 
 
 
 
+    <h3>Methods</h3>
     <div class="index-section methods">
-        <h3>Methods</h3>
 
+        <div class="box float">
         <ul class="index-list methods extends">
 
             
                 <li class="index-item method constructor">
-                    <a href="#method_game.Tween">game.Tween</a>
-
-                    <span class="flag constructor">constructor</span>
+                    <a href="#method_game.Tween">game.Tween <span class="flag constructor">constructor</span></a>
 
                     
                     
@@ -376,26 +231,134 @@
                 </li>
             
         </ul>
+        <div class="clear"></div>
+        </div>
     </div>
 
 
-
 </div>
+<div class="clear"></div>
 
 
 <div class="class-detail">
 
 
+    <div class="properties-detail">
+        <h6>Properties</h6>
+
+        
+            <a name="property_isPlaying" class="anchor-link"></a>
+<div class="box property item">
+    <h3 class="name"><code>isPlaying</code>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+<!--                 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_tween.js.html#l87"><code>src&#x2F;engine&#x2F;tween.js:87</code></a> -->
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Is tween playing.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_paused" class="anchor-link"></a>
+<div class="box property item">
+    <h3 class="name"><code>paused</code>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+<!--                 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_tween.js.html#l92"><code>src&#x2F;engine&#x2F;tween.js:92</code></a> -->
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Is tween paused.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+
+    </div>
+
 
 
     <div class="attrs-detail">
-        <h2>Attributes</h2>
+        <h6>Attributes</h6>
 
         
-            <div id="attr_Easing" class="attr item">
+            <div id="attr_Easing" class="box attr item">
     <a name="config_Easing"></a> 
-    <h3 class="name"><code>Easing</code></h3>
-    <span class="type">Object</span>
+    <h3 class="name"><code>Easing</code> <span class="type">Object</span></h3>
 
     
 
@@ -416,13 +379,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_tween.js.html#l351"><code>src&#x2F;engine&#x2F;tween.js:351</code></a>
+        <!-- <a href="../files/src_engine_tween.js.html#l359"><code>src&#x2F;engine&#x2F;tween.js:359</code></a> -->
         
         </p>
 
@@ -443,10 +406,9 @@
 </div>
 
         
-            <div id="attr_Interpolation" class="attr item">
+            <div id="attr_Interpolation" class="box attr item">
     <a name="config_Interpolation"></a> 
-    <h3 class="name"><code>Interpolation</code></h3>
-    <span class="type">Object</span>
+    <h3 class="name"><code>Interpolation</code> <span class="type">Object</span></h3>
 
     
 
@@ -467,13 +429,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_tween.js.html#l528"><code>src&#x2F;engine&#x2F;tween.js:528</code></a>
+        <!-- <a href="../files/src_engine_tween.js.html#l536"><code>src&#x2F;engine&#x2F;tween.js:536</code></a> -->
         
         </p>
 
@@ -499,23 +461,22 @@
 
 
     <div class="constructor">
-        <h2>Constructor</h2>
+        <h6>Constructor</h6>
         <a name="method_game.Tween" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>game.Tween</code>
-
+<div class="box method item">
+    <h3 class="name">game.Tween
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>object</code>
+                        <span>object</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -539,13 +500,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_tween.js.html#l80"><code>src&#x2F;engine&#x2F;tween.js:80</code></a>
+        <!-- <a href="../files/src_engine_tween.js.html#l80"><code>src&#x2F;engine&#x2F;tween.js:80</code></a> -->
         
         </p>
 
@@ -597,13 +558,12 @@
 
 
     <div class="methods-detail">
-        <h2>Methods</h2>
+        <h6>Methods</h6>
 
         
             <a name="method__super" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>_super</code>
-
+<div class="box method item inherited">
+    <h3 class="name">_super
     
         <span class="paren">()</span>
     
@@ -632,7 +592,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l615"><code>src&#x2F;engine&#x2F;core.js:615</code></a>
+        <!-- <a href="../files/src_engine_core.js.html#l630"><code>src&#x2F;engine&#x2F;core.js:630</code></a> -->
         
         </p>
 
@@ -659,21 +619,20 @@
 
         
             <a name="method_chain" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>chain</code>
-
+<div class="box method item">
+    <h3 class="name">chain
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>tween</code>
+                        <span>tween</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -697,13 +656,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_tween.js.html#l241"><code>src&#x2F;engine&#x2F;tween.js:241</code></a>
+        <!-- <a href="../files/src_engine_tween.js.html#l249"><code>src&#x2F;engine&#x2F;tween.js:249</code></a> -->
         
         </p>
 
@@ -752,27 +711,26 @@
 
         
             <a name="method_delay" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>delay</code>
-
+<div class="box method item">
+    <h3 class="name">delay
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>time</code>
+                        <span>time</span>
                     
-                </li>
+
             
-                <li class="arg">
+
                     
-                        <code>repeat</code>
+                        <span>repeat</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -796,13 +754,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_tween.js.html#l192"><code>src&#x2F;engine&#x2F;tween.js:192</code></a>
+        <!-- <a href="../files/src_engine_tween.js.html#l200"><code>src&#x2F;engine&#x2F;tween.js:200</code></a> -->
         
         </p>
 
@@ -866,21 +824,20 @@
 
         
             <a name="method_easing" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>easing</code>
-
+<div class="box method item">
+    <h3 class="name">easing
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>easing</code>
+                        <span>easing</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -904,13 +861,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_tween.js.html#l223"><code>src&#x2F;engine&#x2F;tween.js:223</code></a>
+        <!-- <a href="../files/src_engine_tween.js.html#l231"><code>src&#x2F;engine&#x2F;tween.js:231</code></a> -->
         
         </p>
 
@@ -959,9 +916,8 @@
 
         
             <a name="method_extend" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>extend</code>
-
+<div class="box method item inherited">
+    <h3 class="name">extend
     
         <span class="paren">()</span>
     
@@ -994,7 +950,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l603"><code>src&#x2F;engine&#x2F;core.js:603</code></a>
+        <!-- <a href="../files/src_engine_core.js.html#l618"><code>src&#x2F;engine&#x2F;core.js:618</code></a> -->
         
         </p>
 
@@ -1019,7 +975,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="../classes/game.Class.html" class="crosslink">game.Class</a></span>:
+                            <span class="type"><a href="../classes/game.Class.html" class="crosslink">game.Class</a></span>
                         
                         <p>Returns extended class</p>
 
@@ -1034,9 +990,8 @@
 
         
             <a name="method_init" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>init</code>
-
+<div class="box method item inherited">
+    <h3 class="name">init
     
         <span class="paren">()</span>
     
@@ -1065,7 +1020,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l658"><code>src&#x2F;engine&#x2F;core.js:658</code></a>
+        <!-- <a href="../files/src_engine_core.js.html#l673"><code>src&#x2F;engine&#x2F;core.js:673</code></a> -->
         
         </p>
 
@@ -1092,9 +1047,8 @@
 
         
             <a name="method_inject" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>inject</code>
-
+<div class="box method item inherited">
+    <h3 class="name">inject
     
         <span class="paren">()</span>
     
@@ -1123,7 +1077,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l671"><code>src&#x2F;engine&#x2F;core.js:671</code></a>
+        <!-- <a href="../files/src_engine_core.js.html#l686"><code>src&#x2F;engine&#x2F;core.js:686</code></a> -->
         
         </p>
 
@@ -1149,21 +1103,20 @@
 
         
             <a name="method_interpolation" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>interpolation</code>
-
+<div class="box method item">
+    <h3 class="name">interpolation
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>interpolation</code>
+                        <span>interpolation</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -1187,13 +1140,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_tween.js.html#l232"><code>src&#x2F;engine&#x2F;tween.js:232</code></a>
+        <!-- <a href="../files/src_engine_tween.js.html#l240"><code>src&#x2F;engine&#x2F;tween.js:240</code></a> -->
         
         </p>
 
@@ -1242,21 +1195,20 @@
 
         
             <a name="method_onComplete" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>onComplete</code>
-
+<div class="box method item">
+    <h3 class="name">onComplete
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>callback</code>
+                        <span>callback</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -1280,13 +1232,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_tween.js.html#l268"><code>src&#x2F;engine&#x2F;tween.js:268</code></a>
+        <!-- <a href="../files/src_engine_tween.js.html#l276"><code>src&#x2F;engine&#x2F;tween.js:276</code></a> -->
         
         </p>
 
@@ -1335,21 +1287,20 @@
 
         
             <a name="method_onStart" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>onStart</code>
-
+<div class="box method item">
+    <h3 class="name">onStart
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>callback</code>
+                        <span>callback</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -1373,13 +1324,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_tween.js.html#l250"><code>src&#x2F;engine&#x2F;tween.js:250</code></a>
+        <!-- <a href="../files/src_engine_tween.js.html#l258"><code>src&#x2F;engine&#x2F;tween.js:258</code></a> -->
         
         </p>
 
@@ -1428,21 +1379,20 @@
 
         
             <a name="method_onUpdate" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>onUpdate</code>
-
+<div class="box method item">
+    <h3 class="name">onUpdate
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>callback</code>
+                        <span>callback</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -1466,13 +1416,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_tween.js.html#l259"><code>src&#x2F;engine&#x2F;tween.js:259</code></a>
+        <!-- <a href="../files/src_engine_tween.js.html#l267"><code>src&#x2F;engine&#x2F;tween.js:267</code></a> -->
         
         </p>
 
@@ -1521,21 +1471,20 @@
 
         
             <a name="method_repeat" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>repeat</code>
-
+<div class="box method item">
+    <h3 class="name">repeat
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>times</code>
+                        <span>times</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -1559,13 +1508,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_tween.js.html#l203"><code>src&#x2F;engine&#x2F;tween.js:203</code></a>
+        <!-- <a href="../files/src_engine_tween.js.html#l211"><code>src&#x2F;engine&#x2F;tween.js:211</code></a> -->
         
         </p>
 
@@ -1614,9 +1563,8 @@
 
         
             <a name="method_start" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>start</code>
-
+<div class="box method item">
+    <h3 class="name">start
     
         <span class="paren">()</span>
     
@@ -1642,13 +1590,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_tween.js.html#l135"><code>src&#x2F;engine&#x2F;tween.js:135</code></a>
+        <!-- <a href="../files/src_engine_tween.js.html#l143"><code>src&#x2F;engine&#x2F;tween.js:143</code></a> -->
         
         </p>
 
@@ -1674,9 +1622,8 @@
 
         
             <a name="method_staticInit" class="anchor-link"></a>
-<div class="method item inherited">
-    <h3 class="name"><code>staticInit</code>
-
+<div class="box method item inherited">
+    <h3 class="name">staticInit
     
         <span class="paren">()</span>
     
@@ -1705,7 +1652,7 @@
             
         
         
-        <a href="../files/src_engine_core.js.html#l643"><code>src&#x2F;engine&#x2F;core.js:643</code></a>
+        <!-- <a href="../files/src_engine_core.js.html#l658"><code>src&#x2F;engine&#x2F;core.js:658</code></a> -->
         
         </p>
 
@@ -1732,9 +1679,8 @@
 
         
             <a name="method_stop" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>stop</code>
-
+<div class="box method item">
+    <h3 class="name">stop
     
         <span class="paren">()</span>
     
@@ -1760,13 +1706,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_tween.js.html#l162"><code>src&#x2F;engine&#x2F;tween.js:162</code></a>
+        <!-- <a href="../files/src_engine_tween.js.html#l170"><code>src&#x2F;engine&#x2F;tween.js:170</code></a> -->
         
         </p>
 
@@ -1792,9 +1738,8 @@
 
         
             <a name="method_stopChainedTweens" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>stopChainedTweens</code>
-
+<div class="box method item">
+    <h3 class="name">stopChainedTweens
     
         <span class="paren">()</span>
     
@@ -1820,13 +1765,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_tween.js.html#l183"><code>src&#x2F;engine&#x2F;tween.js:183</code></a>
+        <!-- <a href="../files/src_engine_tween.js.html#l191"><code>src&#x2F;engine&#x2F;tween.js:191</code></a> -->
         
         </p>
 
@@ -1852,27 +1797,26 @@
 
         
             <a name="method_to" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>to</code>
-
+<div class="box method item">
+    <h3 class="name">to
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>properties</code>
+                        <span>properties</span>
                     
-                </li>
+
             
-                <li class="arg">
+
                     
-                        <code>duration</code>
+                        <span>duration</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -1896,13 +1840,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_tween.js.html#l124"><code>src&#x2F;engine&#x2F;tween.js:124</code></a>
+        <!-- <a href="../files/src_engine_tween.js.html#l132"><code>src&#x2F;engine&#x2F;tween.js:132</code></a> -->
         
         </p>
 
@@ -1966,21 +1910,20 @@
 
         
             <a name="method_yoyo" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>yoyo</code>
-
+<div class="box method item">
+    <h3 class="name">yoyo
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
             
-                <li class="arg">
+
                     
-                        <code>enabled</code>
+                        <span>enabled</span>
                     
-                </li>
+
             
-            </ul><span class="paren">)</span>
-        </div>
+            </span><span class="paren">)</span>
+        </span>
     
 
     
@@ -2004,13 +1947,13 @@
             
                 
                 <p>
-                
+                <!-- 
                 Defined in
-                
+                 -->
             
         
         
-        <a href="../files/src_engine_tween.js.html#l213"><code>src&#x2F;engine&#x2F;tween.js:213</code></a>
+        <!-- <a href="../files/src_engine_tween.js.html#l221"><code>src&#x2F;engine&#x2F;tween.js:221</code></a> -->
         
         </p>
 
@@ -2059,10 +2002,6 @@
 
         
 
-        <div class="no-visible-items-message">
-            <p>There are no methods that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
-        </div>
-
     </div>
 
 
@@ -2071,20 +2010,3 @@
 </div>
 
 
-            </div>
-        </div>
-
-    </div>
-</div>
-<script src="../assets/vendor/prettify/prettify-min.js"></script>
-<script>prettyPrint();</script>
-<script src="../assets/vendor/jquery.min.js"></script>
-<script src="../assets/js/jquery-offscreen-trigger.js"></script>
-<script src="../assets/js/yui-prettify.js"></script>
-<script src="../assets/../api.js"></script>
-<script src="../assets/js/api-filter.js"></script>
-<script src="../assets/js/api-list.js"></script>
-<script src="../assets/js/api-search.js"></script>
-<script src="../assets/js/apidocs.js"></script>
-</body>
-</html>

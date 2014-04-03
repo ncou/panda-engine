@@ -1,5 +1,5 @@
 <a name="property_{{name}}" class="anchor-link"></a>
-<div class="property item{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if extended_from}} inherited{{/if}}">
+<div class="box property item{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if extended_from}} inherited{{/if}}">
     <h3 class="name"><code>{{name}}</code>
     <span class="type">{{#crossLink type}}{{/crossLink}}</span>
 
@@ -39,13 +39,13 @@
                     <p>Provided by the <a href="../modules/{{.}}.html" class="module-name">{{.}}</a> module.</p>
                 {{/providedBy}}
                 <p>
-                {{#if foundAt}}
+<!--                 {{#if foundAt}}
                 Defined in
-                {{/if}}
+                {{/if}} -->
             {{/if}}
         {{/if}}
         {{#if foundAt}}
-        <a href="{{foundAt}}">`{{{file}}}:{{{line}}}`</a>
+        <!-- <a href="{{foundAt}}">`{{{file}}}:{{{line}}}`</a> -->
         {{/if}}
         </p>
 
