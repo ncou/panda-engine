@@ -491,6 +491,7 @@ img.logo {
 
 iframe {
 	width: 100%;
+	display: block;
 }
 
 .box.float li {
@@ -679,10 +680,11 @@ a span.constructor {
 	#footer {
 		/*display: none;*/
 		position: relative;
-	}
+	}	
 	#footer span {
 		display: block;
 		visibility: hidden;
+		margin-top: 1px;
 	}
 	div.feature {
 		width: 226px;
@@ -801,6 +803,7 @@ a span.constructor {
 	}
 	#nav a {
 		margin: 0;
+		padding: 10px 9px;
 	}
 	a.showcase {
 		width: 100%;
