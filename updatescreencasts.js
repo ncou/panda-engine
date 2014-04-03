@@ -28,7 +28,7 @@ var writeFiles = function() {
     var header = data.snippet.title.replace('Panda.js screencast ', '');
     var content = '---\nlayout: default\ntitle: Screencasts\nheader: '+ header +'\n---\n';
 
-    content += '<iframe width="920" height="690" src="//www.youtube.com/embed/'+data.snippet.resourceId.videoId+'" frameborder="0" allowfullscreen></iframe>';
+    content += '<iframe width="920" height="561" src="//www.youtube.com/embed/'+data.snippet.resourceId.videoId+'" frameborder="0" allowfullscreen></iframe>';
 
     fs.writeFile('screencasts/' + filename, content, function (err) {
         if(err) console.log('Error writing file');
