@@ -78,24 +78,6 @@
     </div>
 {{/if}}
 
-{{#if attrs}}
-    <h3>Attributes</h3>
-    <div class="index-section attrs">
-
-        <div class="box float">
-        <ul class="index-list attrs{{#if extends}} extends{{/if}}">
-            {{#attrs}}
-                <li class="index-item attr{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if overwritten_from}} inherited{{/if}}{{#if extended_from}} inherited{{/if}}">
-                    <a href="#attr_{{name}}">{{name}}</a>
-                </li>
-            {{/attrs}}
-        </ul>
-        <div class="clear"></div>
-        </div>
-    </div>
-{{/if}}
-
-
 {{#if methods}}
     <h3>Methods</h3>
     <div class="index-section methods">
@@ -134,6 +116,23 @@
     </div>
 {{/if}}
 
+{{#if attrs}}
+    <h3>Attributes</h3>
+    <div class="index-section attrs">
+
+        <div class="box float">
+        <ul class="index-list attrs{{#if extends}} extends{{/if}}">
+            {{#attrs}}
+                <li class="index-item attr{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if overwritten_from}} inherited{{/if}}{{#if extended_from}} inherited{{/if}}">
+                    <a href="#attr_{{name}}">{{name}}</a>
+                </li>
+            {{/attrs}}
+        </ul>
+        <div class="clear"></div>
+        </div>
+    </div>
+{{/if}}
+
 </div>
 <div class="clear"></div>
 
@@ -148,16 +147,6 @@
             {{>props}}
         {{/properties}}
 
-    </div>
-{{/if}}
-
-{{#if attrs}}
-    <div class="attrs-detail">
-        <h6>Attributes</h6>
-
-        {{#attrs}}
-            {{>attrs}}
-        {{/attrs}}
     </div>
 {{/if}}
 
@@ -176,6 +165,16 @@
             {{>method}}
         {{/methods}}
 
+    </div>
+{{/if}}
+
+{{#if attrs}}
+    <div class="attrs-detail">
+        <h6>Attributes</h6>
+
+        {{#attrs}}
+            {{>attrs}}
+        {{/attrs}}
     </div>
 {{/if}}
 

@@ -72,7 +72,7 @@ game.System = game.Class.extend({
     gameLoopId: 0,
     newSceneClass: null,
     running: false,
-    rotateScreen: false,
+    rotateScreenVisible: false,
 
     init: function(width, height, canvasId) {
         width = width || game.System.width;
@@ -103,7 +103,7 @@ game.System = game.Class.extend({
             document.body.appendChild(canvas);
         }
 
-        if(game.System.canvas) this.renderer = new PIXI.CanvasRenderer(width, height, document.getElementById(this.canvasId), game.System.transparent);
+        if(game.System.webGL || !game.System.canvas) this.renderer = new PIXI.CanvasRenderer(width, height, document.getElementById(this.canvasId), game.System.transparent);
         else this.renderer = new PIXI.autoDetectRenderer(width, height, document.getElementById(this.canvasId), game.System.transparent, game.System.antialias);
         
         this.canvas = this.renderer.view;
@@ -137,8 +137,7 @@ game.System = game.Class.extend({
 
             document.addEventListener(visibilityChange, function() {
                 var hidden = !!game.getVendorAttribute(document, &#x27;hidden&#x27;);
-                if(hidden &amp;&amp; game.System.pauseOnHide) game.system.pause();
-                if(!hidden &amp;&amp; game.System.pauseOnHide) game.system.resume();
+                if(game.System.pauseOnHide) hidden ? game.system.pause() : game.system.resume();
             }, false);
         }
 
@@ -223,6 +222,14 @@ game.System = game.Class.extend({
         }
     },
 
+    resize: function(width, height) {
+        this.width = this.canvas.width = width;
+        this.height = this.canvas.height = height;
+        this.canvas.style.width = width + &#x27;px&#x27;;
+        this.canvas.style.height = height + &#x27;px&#x27;;
+        this.renderer.resize(this.width, this.height);
+    },
+
     initResize: function() {
         this.ratio = game.System.orientation === game.System.LANDSCAPE ? this.width / this.height : this.height / this.width;
 
@@ -305,25 +312,25 @@ game.System = game.Class.extend({
             // Android 2.3 portrait fix
             this.orientation = game.System.PORTRAIT;
         }
-        this.rotateScreen = game.System.orientation !== this.orientation ? true : false;
+        this.rotateScreenVisible = game.System.orientation !== this.orientation ? true : false;
 
-        this.canvas.style.display = this.rotateScreen ? &#x27;none&#x27; : &#x27;block&#x27;;
-        game.System.rotateDiv.style.display = this.rotateScreen ? &#x27;block&#x27; : &#x27;none&#x27;;
+        this.canvas.style.display = this.rotateScreenVisible ? &#x27;none&#x27; : &#x27;block&#x27;;
+        game.System.rotateDiv.style.display = this.rotateScreenVisible ? &#x27;block&#x27; : &#x27;none&#x27;;
 
-        if(this.rotateScreen &amp;&amp; game.System.backgroundColor.rotate) document.body.style.backgroundColor = game.System.backgroundColor.rotate;
-        if(!this.rotateScreen &amp;&amp; game.System.backgroundColor.game) document.body.style.backgroundColor = game.System.backgroundColor.game;
+        if(this.rotateScreenVisible &amp;&amp; game.System.backgroundColor.rotate) document.body.style.backgroundColor = game.System.backgroundColor.rotate;
+        if(!this.rotateScreenVisible &amp;&amp; game.System.backgroundColor.game) document.body.style.backgroundColor = game.System.backgroundColor.game;
 
-        if(this.rotateScreen &amp;&amp; game.System.backgroundImage.rotate) document.body.style.backgroundImage = &#x27;url(&#x27; + game.config.mediaFolder + game.System.backgroundImage.rotate + &#x27;)&#x27;;
-        if(!this.rotateScreen &amp;&amp; game.System.backgroundImage.game) document.body.style.backgroundImage = &#x27;url(&#x27; + game.config.mediaFolder + game.System.backgroundImage.game + &#x27;)&#x27;;
+        if(this.rotateScreenVisible &amp;&amp; game.System.backgroundImage.rotate) document.body.style.backgroundImage = &#x27;url(&#x27; + game.config.mediaFolder + game.System.backgroundImage.rotate + &#x27;)&#x27;;
+        if(!this.rotateScreenVisible &amp;&amp; game.System.backgroundImage.game) document.body.style.backgroundImage = &#x27;url(&#x27; + game.config.mediaFolder + game.System.backgroundImage.game + &#x27;)&#x27;;
 
-        if(this.rotateScreen &amp;&amp; game.system &amp;&amp; typeof(game.system.pause) === &#x27;function&#x27;) game.system.pause();
-        if(!this.rotateScreen &amp;&amp; game.system &amp;&amp; typeof(game.system.resume) === &#x27;function&#x27;) game.system.resume();
+        if(this.rotateScreenVisible &amp;&amp; game.system &amp;&amp; typeof(game.system.pause) === &#x27;function&#x27;) game.system.pause();
+        if(!this.rotateScreenVisible &amp;&amp; game.system &amp;&amp; typeof(game.system.resume) === &#x27;function&#x27;) game.system.resume();
 
-        if(this.rotateScreen) this.resizeRotateImage();
+        if(this.rotateScreenVisible) this.resizeRotateImage();
     },
 
     resizeRotateImage: function() {
-        if(this.rotateScreen &amp;&amp; game.System.rotateDiv.image) {
+        if(this.rotateScreenVisible &amp;&amp; game.System.rotateDiv.image) {
             if(window.innerHeight &lt; game.System.rotateDiv.image.height) {
                 game.System.rotateDiv.image.style.height = window.innerHeight + &#x27;px&#x27;;
                 game.System.rotateDiv.image.style.width = &#x27;auto&#x27;;
@@ -503,6 +510,12 @@ game.System.rotateMsg = &#x27;Please rotate your device&#x27;;
     @default null
 **/
 game.System.rotateImg = &#x27;rotate.png&#x27;;
+/**
+    Enable WebGL renderer.
+    @attribute {Boolean} webGL
+    @default false
+**/
+game.System.webGL = false;
 
 game.System.canvas = true;
 game.System.transparent = false;

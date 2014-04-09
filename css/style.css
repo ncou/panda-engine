@@ -645,7 +645,38 @@ a span.constructor {
 	line-height: 22px;
 }
 
+span.flag.optional {
+	color: #fff;
+	font-size: 10px;
+	background: #888;
+	padding: 4px 4px;
+	border-radius: 2px;
 
+	display: inline-block;
+	height: 15px;
+	line-height: 15px;
+	padding: 0px 4px;
+}
+
+span.type {
+	color: #848e9d;
+}
+
+div.method .args, div.method span.paren {
+	display: none;
+}
+
+span.param-description p {
+	/*float: left;*/
+}
+
+span.param-description, li.param span {
+	/*display: inline-block;*/
+}
+
+code.param-name {
+	font-weight: bold;
+}
 
 @media all and (max-width: 980px) {
 	body {
