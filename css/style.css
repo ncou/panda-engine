@@ -183,6 +183,12 @@ div.code {
 	margin: 10px 0px;
 	/*letter-spacing: 1px;*/
 }
+span.code {
+	background: #888;
+	color: #fff;
+	padding: 4px 8px;
+	border-radius: 5px;
+}
 div.box, p.box {
 	background: #848e9d;
 	border-radius: 5px;
