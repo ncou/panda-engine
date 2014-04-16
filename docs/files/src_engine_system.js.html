@@ -16,7 +16,8 @@ title: Documentation
 game.module(
     &#x27;engine.system&#x27;
 )
-.body(function(){ &#x27;use strict&#x27;;
+.body(function() {
+&#x27;use strict&#x27;;
 
 /**
     @class System
@@ -36,6 +37,7 @@ game.System = game.Class.extend({
     /**
         Current delta-time.
         @property {Number} delta
+        @example http://www.pandajs.net/snippets/9930671.html
     **/
     delta: 0,
     /**
@@ -69,45 +71,89 @@ game.System = game.Class.extend({
         @property {Boolean} retina
     **/
     retina: false,
-    gameLoopId: 0,
-    newSceneClass: null,
-    running: false,
+    /**
+        Is mobile rotate screen visible.
+        @property {Boolean} rotateScreenVisible
+    **/
     rotateScreenVisible: false,
+    /**
+        Current id of the game loop.
+        @property {Number} gameLoopId
+    **/
+    gameLoopId: 0,
+    /**
+        New scene to be set on end of run loop.
+        @property {game.Scene} newSceneClass
+    **/
+    newSceneClass: null,
+    /**
+        Is game engine running.
+        @property {Boolean} running
+    **/
+    running: false,
 
     init: function(width, height, canvasId) {
         width = width || game.System.width;
         height = height || game.System.height;
-        if(!width) width = (game.System.orientation === game.System.PORTRAIT ? 768 : 1024);
-        if(!height) height = (game.System.orientation === game.System.PORTRAIT ? 927 : 672);
+        if (!width) width = (game.System.orientation === game.System.PORTRAIT ? 768 : 1024);
+        if (!height) height = (game.System.orientation === game.System.PORTRAIT ? 927 : 672);
 
-        if(game.System.hires &amp;&amp; window.innerWidth &gt;= width * game.System.hiresFactor &amp;&amp; window.innerHeight &gt;= height * game.System.hiresFactor) {
-            this.hires = true;
+        if (typeof game.System.aspectRatio === &#x27;string&#x27;) {
+            var ratio = game.System.aspectRatio.split(&#x27;:&#x27;);
+            if (ratio.length === 2) {
+                if (window.innerWidth / window.innerHeight &gt; ratio[0] / ratio[1]) {
+                    height = window.innerHeight;
+                    width = (height / ratio[1]) * ratio[0];
+                }
+                else {
+                    width = window.innerWidth;
+                    height = (width / ratio[0]) * ratio[1];
+                }
+                game.System.hires = false;
+                game.System.scale = false;
+            }
         }
-        if(game.System.retina &amp;&amp; game.device.pixelRatio === 2) {
+
+        if (game.System.hires) {
+            if (typeof game.System.hiresWidth === &#x27;number&#x27; &amp;&amp; typeof game.System.hiresHeight === &#x27;number&#x27;) {
+                if (window.innerWidth &gt;= game.System.hiresWidth &amp;&amp; window.innerHeight &gt;= game.System.hiresHeight) {
+                    this.hires = true;
+                }
+            }
+            else if (window.innerWidth &gt;= width * game.System.hiresFactor &amp;&amp; window.innerHeight &gt;= height * game.System.hiresFactor) {
+                this.hires = true;
+            }
+        }
+        if (game.System.retina &amp;&amp; game.device.pixelRatio === 2) {
             this.retina = true;
         }
-        if(this.hires || this.retina) {
+        if (this.hires || this.retina) {
             width *= 2;
             height *= 2;
             game.scale = 2;
         }
+
+        if (typeof game.System.resize !== &#x27;undefined&#x27;) game.System.scale = game.System.resize; // Deprecated
 
         this.width = width;
         this.height = height;
         this.canvasId = canvasId || this.canvasId;
         this.timer = new game.Timer();
 
-        if(!document.getElementById(this.canvasId)) {
+        if (!document.getElementById(this.canvasId)) {
             var canvas = document.createElement((navigator.isCocoonJS &amp;&amp; game.System.screenCanvas) ? &#x27;screencanvas&#x27; : &#x27;canvas&#x27;);
             canvas.id = this.canvasId;
             document.body.appendChild(canvas);
         }
 
-        if(game.System.webGL || !game.System.canvas) this.renderer = new PIXI.CanvasRenderer(width, height, document.getElementById(this.canvasId), game.System.transparent);
-        else this.renderer = new PIXI.autoDetectRenderer(width, height, document.getElementById(this.canvasId), game.System.transparent, game.System.antialias);
-        
+        // Deprecated
+        if (game.System.canvas === false) game.System.webGL = true;
+
+        if (game.System.webGL) this.renderer = new game.autoDetectRenderer(width, height, document.getElementById(this.canvasId), game.System.transparent, game.System.antialias);
+        else this.renderer = new game.CanvasRenderer(width, height, document.getElementById(this.canvasId), game.System.transparent);
+
         this.canvas = this.renderer.view;
-        this.stage = new PIXI.Stage();
+        this.stage = new game.Stage();
 
         game.normalizeVendorAttribute(this.canvas, &#x27;requestFullscreen&#x27;);
         game.normalizeVendorAttribute(this.canvas, &#x27;requestFullScreen&#x27;);
@@ -115,45 +161,81 @@ game.System = game.Class.extend({
 
         document.body.style.margin = 0;
 
-        if(this.retina) {
+        if (this.retina) {
             this.canvas.style.width = width / 2 + &#x27;px&#x27;;
             this.canvas.style.height = height / 2 + &#x27;px&#x27;;
-        } else {
+        }
+        else {
             this.canvas.style.width = width + &#x27;px&#x27;;
             this.canvas.style.height = height + &#x27;px&#x27;;
         }
 
-        if(!navigator.isCocoonJS) {
+        if (!navigator.isCocoonJS) {
             var visibilityChange;
             if (typeof document.hidden !== &#x27;undefined&#x27;) {
                 visibilityChange = &#x27;visibilitychange&#x27;;
-            } else if (typeof document.mozHidden !== &#x27;undefined&#x27;) {
+            }
+            else if (typeof document.mozHidden !== &#x27;undefined&#x27;) {
                 visibilityChange = &#x27;mozvisibilitychange&#x27;;
-            } else if (typeof document.msHidden !== &#x27;undefined&#x27;) {
+            }
+            else if (typeof document.msHidden !== &#x27;undefined&#x27;) {
                 visibilityChange = &#x27;msvisibilitychange&#x27;;
-            } else if (typeof document.webkitHidden !== &#x27;undefined&#x27;) {
+            }
+            else if (typeof document.webkitHidden !== &#x27;undefined&#x27;) {
                 visibilityChange = &#x27;webkitvisibilitychange&#x27;;
             }
 
             document.addEventListener(visibilityChange, function() {
-                var hidden = !!game.getVendorAttribute(document, &#x27;hidden&#x27;);
-                if(game.System.pauseOnHide) hidden ? game.system.pause() : game.system.resume();
+                if (game.System.pauseOnHide) {
+                    var hidden = !!game.getVendorAttribute(document, &#x27;hidden&#x27;);
+                    if (hidden) game.system.pause();
+                    else game.system.resume();
+                }
             }, false);
         }
 
         window.addEventListener(&#x27;devicemotion&#x27;, function(event) {
             game.accelerometer = game.accel = event.accelerationIncludingGravity;
         }, false);
-        
-        if(navigator.isCocoonJS) this.canvas.style.cssText=&#x27;idtkscale:&#x27;+game.System.idtkScale+&#x27;;&#x27;;
-        
+
+        if (!navigator.isCocoonJS) {
+            // Deprecated
+            if (typeof game.System.backgroundColor === &#x27;object&#x27;) {
+                game.System.bgColorMobile = game.System.backgroundColor.mobile;
+                game.System.bgColorRotate = game.System.backgroundColor.rotate;
+                game.System.bgImageMobile = game.System.backgroundImage.mobile;
+                game.System.bgImageRotate = game.System.backgroundImage.rotate;
+            }
+
+            if (game.System.bgColor &amp;&amp; !game.System.bgColorMobile) game.System.bgColorMobile = game.System.bgColor;
+            if (game.System.bgColorMobile &amp;&amp; !game.System.bgColorRotate) game.System.bgColorRotate = game.System.bgColorMobile;
+
+            if (game.System.bgImage &amp;&amp; !game.System.bgImageMobile) game.System.bgImageMobile = game.System.bgImage;
+            if (game.System.bgImageMobile &amp;&amp; !game.System.bgImageRotate) game.System.bgImageRotate = game.System.bgImageMobile;
+
+            if (!game.device.mobile) {
+                if (game.System.bgColor) document.body.style.backgroundColor = game.System.bgColor;
+                if (game.System.bgImage) document.body.style.backgroundImage = &#x27;url(&#x27; + game.config.mediaFolder + game.System.bgImage + &#x27;)&#x27;;
+            }
+            if (game.System.bgPosition) document.body.style.backgroundPosition = game.System.bgPosition;
+        }
+
+        if (navigator.isCocoonJS) {
+            this.canvas.style.cssText = &#x27;idtkscale:&#x27; + game.System.idtkScale + &#x27;;&#x27;;
+        }
+
         game.renderer = this.renderer;
 
-        if(!navigator.isCocoonJS) this.initResize();
+        if (!navigator.isCocoonJS) this.initResize();
     },
 
+    /**
+        Vibrate device.
+        @method vibrate
+        @param {Number} time Time to vibrate.
+    **/
     vibrate: function(time) {
-        if(navigator.vibrate) return navigator.vibrate(time);
+        if (navigator.vibrate) return navigator.vibrate(time);
         return false;
     },
 
@@ -162,9 +244,9 @@ game.System = game.Class.extend({
         @method pause
     **/
     pause: function() {
-        if(this.paused) return;
+        if (this.paused) return;
         this.paused = true;
-        if(game.scene) game.scene.pause();
+        if (game.scene) game.scene.pause();
     },
 
     /**
@@ -172,31 +254,31 @@ game.System = game.Class.extend({
         @method resume
     **/
     resume: function() {
-        if(!this.paused) return;
+        if (!this.paused) return;
         this.paused = false;
         game.Timer.last = Date.now();
-        if(game.scene) game.scene.resume();
+        if (game.scene) game.scene.resume();
     },
 
     /**
         Change current scene.
         @method setScene
-        @param  {game.Scene} sceneClass
+        @param {game.Scene} sceneClass
     **/
     setScene: function(sceneClass) {
-        if(this.running) this.newSceneClass = sceneClass;
+        if (this.running) this.newSceneClass = sceneClass;
         else this.setSceneNow(sceneClass);
     },
-    
+
     setSceneNow: function(SceneClass) {
-        if(game.tweenEngine) game.tweenEngine.removeAll();
+        if (game.tweenEngine) game.tweenEngine.tweens.length = 0;
         game.scene = new (SceneClass)();
-        if(game.Debug &amp;&amp; game.Debug.enabled &amp;&amp; !navigator.isCocoonJS) this.debug = new game.Debug();
+        if (game.Debug &amp;&amp; game.Debug.enabled &amp;&amp; !navigator.isCocoonJS) this.debug = new game.Debug();
         this.startRunLoop();
     },
-    
+
     startRunLoop: function() {
-        if(this.gameLoopId) this.stopRunLoop();
+        if (this.gameLoopId) this.stopRunLoop();
         this.gameLoopId = game.setGameLoop(this.run.bind(this), this.canvas);
         this.running = true;
     },
@@ -205,18 +287,18 @@ game.System = game.Class.extend({
         game.clearGameLoop(this.gameLoopId);
         this.running = false;
     },
-    
+
     run: function() {
-        if(this.paused) return;
+        if (this.paused) return;
 
         game.Timer.update();
         this.delta = this.timer.delta() / 1000;
-        
-        game.scene.run();
-        
-        if(this.debug) this.debug.update();
 
-        if(this.newSceneClass) {
+        game.scene.run();
+
+        if (this.debug) this.debug.update();
+
+        if (this.newSceneClass) {
             this.setSceneNow(this.newSceneClass);
             this.newSceneClass = null;
         }
@@ -233,17 +315,19 @@ game.System = game.Class.extend({
     initResize: function() {
         this.ratio = game.System.orientation === game.System.LANDSCAPE ? this.width / this.height : this.height / this.width;
 
-        if(game.System.center) this.canvas.style.margin = &#x27;auto&#x27;;
+        if (game.System.center) this.canvas.style.margin = &#x27;auto&#x27;;
 
-        if(game.device.mobile) {
+        if (game.device.mobile) {
             // Mobile position
-            if(!game.System.center) {
+            if (!game.System.center) {
                 this.canvas.style.position = &#x27;absolute&#x27;;
                 this.canvas.style.left = game.System.left + &#x27;px&#x27;;
                 this.canvas.style.top = game.System.top + &#x27;px&#x27;;
             }
 
-            document.addEventListener(&#x27;touchstart&#x27;, function(e) { e.preventDefault(); }, false);
+            document.addEventListener(&#x27;touchstart&#x27;, function(e) {
+                e.preventDefault();
+            }, false);
 
             var div = document.createElement(&#x27;div&#x27;);
             div.innerHTML = game.System.rotateImg ? &#x27;&#x27; : game.System.rotateMsg;
@@ -259,47 +343,50 @@ game.System = game.Class.extend({
             game.System.rotateDiv = div;
             document.body.appendChild(game.System.rotateDiv);
 
-            if(game.System.rotateImg) {
+            if (game.System.rotateImg) {
                 var img = new Image();
                 var me = this;
                 img.onload = function() {
                     div.image = img;
-                    div.style.height = img.height+&#x27;px&#x27;;
+                    div.style.height = img.height + &#x27;px&#x27;;
                     div.appendChild(img);
                     me.resizeRotateImage();
                 };
                 img.src = game.config.mediaFolder + game.System.rotateImg;
                 img.style.position = &#x27;relative&#x27;;
             }
-        } else {
+        }
+        else {
             // Desktop center
             this.canvas.style.position = &#x27;absolute&#x27;;
-            if(game.System.center) {
+            if (game.System.center) {
                 this.canvas.style.top = 0;
                 this.canvas.style.left = 0;
                 this.canvas.style.bottom = 0;
                 this.canvas.style.right = 0;
-            } else {
+            }
+            else {
                 this.canvas.style.left = game.System.left + &#x27;px&#x27;;
                 this.canvas.style.top = game.System.top + &#x27;px&#x27;;
             }
 
-            // Desktop resize
-            if(game.System.resize) {
+            // Desktop scaling
+            if (game.System.scale) {
                 var minWidth = game.System.minWidth === &#x27;auto&#x27; ? this.retina ? this.width / 4 : this.width / 2 : game.System.minWidth;
                 var minHeight = game.System.minHeight === &#x27;auto&#x27; ? this.retina ? this.height / 4 : this.height / 2 : game.System.minHeight;
                 var maxWidth = game.System.maxWidth === &#x27;auto&#x27; ? this.retina ? this.width / 2 : this.width : game.System.maxWidth;
                 var maxHeight = game.System.maxHeight === &#x27;auto&#x27; ? this.retina ? this.height / 2 : this.height : game.System.maxHeight;
-                if(game.System.minWidth) this.canvas.style.minWidth = minWidth + &#x27;px&#x27;;
-                if(game.System.minHeight) this.canvas.style.minHeight = minHeight + &#x27;px&#x27;;
-                if(game.System.maxWidth) this.canvas.style.maxWidth = maxWidth + &#x27;px&#x27;;
-                if(game.System.maxHeight) this.canvas.style.maxHeight = maxHeight + &#x27;px&#x27;;
+                if (game.System.minWidth) this.canvas.style.minWidth = minWidth + &#x27;px&#x27;;
+                if (game.System.minHeight) this.canvas.style.minHeight = minHeight + &#x27;px&#x27;;
+                if (game.System.maxWidth) this.canvas.style.maxWidth = maxWidth + &#x27;px&#x27;;
+                if (game.System.maxHeight) this.canvas.style.maxHeight = maxHeight + &#x27;px&#x27;;
             }
         }
 
-        if(typeof(window.onorientationchange) !== &#x27;undefined&#x27;) {
+        if (typeof window.onorientationchange !== &#x27;undefined&#x27;) {
             window.onorientationchange = this.onResize.bind(this);
-        } else {
+        }
+        else {
             window.onresize = this.onResize.bind(this);
         }
 
@@ -308,7 +395,7 @@ game.System = game.Class.extend({
 
     checkOrientation: function() {
         this.orientation = window.innerWidth &lt; window.innerHeight ? game.System.PORTRAIT : game.System.LANDSCAPE;
-        if(game.device.android2 &amp;&amp; window.innerWidth === 320 &amp;&amp; window.innerHeight === 251) {
+        if (game.device.android2 &amp;&amp; window.innerWidth === 320 &amp;&amp; window.innerHeight === 251) {
             // Android 2.3 portrait fix
             this.orientation = game.System.PORTRAIT;
         }
@@ -317,21 +404,21 @@ game.System = game.Class.extend({
         this.canvas.style.display = this.rotateScreenVisible ? &#x27;none&#x27; : &#x27;block&#x27;;
         game.System.rotateDiv.style.display = this.rotateScreenVisible ? &#x27;block&#x27; : &#x27;none&#x27;;
 
-        if(this.rotateScreenVisible &amp;&amp; game.System.backgroundColor.rotate) document.body.style.backgroundColor = game.System.backgroundColor.rotate;
-        if(!this.rotateScreenVisible &amp;&amp; game.System.backgroundColor.game) document.body.style.backgroundColor = game.System.backgroundColor.game;
+        if (this.rotateScreenVisible &amp;&amp; game.System.bgColorRotate) document.body.style.backgroundColor = game.System.bgColorRotate;
+        if (!this.rotateScreenVisible &amp;&amp; game.System.bgColorMobile) document.body.style.backgroundColor = game.System.bgColorMobile;
 
-        if(this.rotateScreenVisible &amp;&amp; game.System.backgroundImage.rotate) document.body.style.backgroundImage = &#x27;url(&#x27; + game.config.mediaFolder + game.System.backgroundImage.rotate + &#x27;)&#x27;;
-        if(!this.rotateScreenVisible &amp;&amp; game.System.backgroundImage.game) document.body.style.backgroundImage = &#x27;url(&#x27; + game.config.mediaFolder + game.System.backgroundImage.game + &#x27;)&#x27;;
+        if (this.rotateScreenVisible &amp;&amp; game.System.bgImageRotate) document.body.style.backgroundImage = &#x27;url(&#x27; + game.config.mediaFolder + game.System.bgImageRotate + &#x27;)&#x27;;
+        if (!this.rotateScreenVisible &amp;&amp; game.System.bgImageMobile) document.body.style.backgroundImage = &#x27;url(&#x27; + game.config.mediaFolder + game.System.bgImageMobile + &#x27;)&#x27;;
 
-        if(this.rotateScreenVisible &amp;&amp; game.system &amp;&amp; typeof(game.system.pause) === &#x27;function&#x27;) game.system.pause();
-        if(!this.rotateScreenVisible &amp;&amp; game.system &amp;&amp; typeof(game.system.resume) === &#x27;function&#x27;) game.system.resume();
+        if (this.rotateScreenVisible &amp;&amp; game.system &amp;&amp; typeof game.system.pause === &#x27;function&#x27;) game.system.pause();
+        if (!this.rotateScreenVisible &amp;&amp; game.system &amp;&amp; typeof game.system.resume === &#x27;function&#x27;) game.system.resume();
 
-        if(this.rotateScreenVisible) this.resizeRotateImage();
+        if (this.rotateScreenVisible) this.resizeRotateImage();
     },
 
     resizeRotateImage: function() {
-        if(this.rotateScreenVisible &amp;&amp; game.System.rotateDiv.image) {
-            if(window.innerHeight &lt; game.System.rotateDiv.image.height) {
+        if (this.rotateScreenVisible &amp;&amp; game.System.rotateDiv.image) {
+            if (window.innerHeight &lt; game.System.rotateDiv.image.height) {
                 game.System.rotateDiv.image.style.height = window.innerHeight + &#x27;px&#x27;;
                 game.System.rotateDiv.image.style.width = &#x27;auto&#x27;;
                 game.System.rotateDiv.style.height = window.innerHeight + &#x27;px&#x27;;
@@ -342,34 +429,36 @@ game.System = game.Class.extend({
 
     onResize: function() {
         // Mobile orientation
-        if(game.device.mobile) this.checkOrientation();
+        if (game.device.mobile) this.checkOrientation();
 
-        if(!game.System.resize) return;
+        if (!game.System.scale) return;
 
-        if(game.device.mobile) {
+        if (game.device.mobile) {
             // Mobile resize
             var width = window.innerWidth;
             var height = window.innerHeight;
-            
-            // iPad iOS 7.0 landscape innerHeight bugfix
-            if(game.device.iPad &amp;&amp; height === 671 &amp;&amp; this.orientation === game.System.LANDSCAPE) height = 672;
 
-            if(game.System.orientation === game.System.LANDSCAPE) {
+            // iPad iOS 7.0 landscape innerHeight bugfix
+            if (game.device.iPad &amp;&amp; height === 671 &amp;&amp; this.orientation === game.System.LANDSCAPE) height = 672;
+
+            if (game.System.orientation === game.System.LANDSCAPE) {
                 this.canvas.style.height = height + &#x27;px&#x27;;
                 this.canvas.style.width = height * this.ratio + &#x27;px&#x27;;
-            } else {
+            }
+            else {
                 this.canvas.style.width = width + &#x27;px&#x27;;
                 this.canvas.style.height = width * this.ratio + &#x27;px&#x27;;
             }
 
-            if(game.device.iOS71) setTimeout(this.onResize.bind(this), 100);
+            if (game.device.iOS71) setTimeout(this.onResize.bind(this), 100);
 
-            if(!game.device.ejecta) window.scroll(0,1);
-        } else {
+            if (!game.device.ejecta) window.scroll(0, 1);
+        }
+        else {
             // Desktop resize
-            if(window.innerWidth === 0) return; // Chrome bug
-            if(window.innerWidth &lt; this.width || window.innerHeight &lt; this.height) {
-                if(window.innerWidth / this.width &lt; window.innerHeight / this.height) {
+            if (window.innerWidth === 0) return; // Chrome bug
+            if (window.innerWidth &lt; this.width || window.innerHeight &lt; this.height) {
+                if (window.innerWidth / this.width &lt; window.innerHeight / this.height) {
                     this.canvas.style.width = window.innerWidth + &#x27;px&#x27;;
                     this.canvas.style.height = window.innerWidth * (this.height / this.width) + &#x27;px&#x27;;
                 }
@@ -377,7 +466,8 @@ game.System = game.Class.extend({
                     this.canvas.style.height = window.innerHeight + &#x27;px&#x27;;
                     this.canvas.style.width = window.innerHeight * (this.width / this.height) + &#x27;px&#x27;;
                 }
-            } else {
+            }
+            else {
                 this.canvas.style.width = this.width + &#x27;px&#x27;;
                 this.canvas.style.height = this.height + &#x27;px&#x27;;
             }
@@ -385,44 +475,50 @@ game.System = game.Class.extend({
     }
 });
 
-game.System.PORTRAIT = 0;
-game.System.LANDSCAPE = 1;
-
 /**
-    Turn canvas centering on/off.
+    Enable/disable canvas centering.
     @attribute {Boolean} center
     @default true
 **/
 game.System.center = true;
+/**
+    Canvas position from left, when centering is disabled.
+    @attribute {Number} left
+    @default 0
+**/
 game.System.left = 0;
+/**
+    Canvas position from top, when centering is disabled.
+    @attribute {Number} top
+    @default 0
+**/
 game.System.top = 0;
 /**
-    Turn canvas resizing on/off.
+    Enable/disable canvas scaling.
     @attribute {Boolean} resize
     @default true
 **/
-game.System.resize = true;
-
+game.System.scale = true;
 /**
-    Minimum width for canvas.
+    Minimum width for canvas, when using scaling on desktop.
     @attribute {Number} minWidth
     @default auto
 **/
 game.System.minWidth = &#x27;auto&#x27;;
 /**
-    Minimum height for canvas.
+    Minimum height for canvas, when using scaling on desktop.
     @attribute {Number} minHeight
     @default auto
 **/
 game.System.minHeight = &#x27;auto&#x27;;
 /**
-    Maximum width for canvas.
+    Maximum width for canvas, when using scaling on desktop.
     @attribute {Number} maxWidth
     @default auto
 **/
 game.System.maxWidth = &#x27;auto&#x27;;
 /**
-    Maximum height for canvas.
+    Maximum height for canvas, when using scaling on desktop.
     @attribute {Number} maxHeight
     @default auto
 **/
@@ -447,11 +543,13 @@ game.System.screenCanvas = true;
 **/
 game.System.hires = false;
 /**
-    Canvas width/height factor, when to enable HiRes mode.
+    Canvas width/height factor, when HiRes mode is enabled.
     @attribute {Number} hiresFactor
     @default 1.5
 **/
 game.System.hiresFactor = 1.5;
+game.System.hiresWidth = null;
+game.System.hiresHeight = null;
 /**
     Use Retina mode.
     @attribute {Boolean} retina
@@ -464,40 +562,49 @@ game.System.retina = false;
     @default true
 **/
 game.System.pauseOnHide = true;
+game.System.PORTRAIT = 0;
+game.System.LANDSCAPE = 1;
 /**
     Mobile orientation for the game.
     @attribute {LANDSCAPE|PORTRAIT} orientation
     @default game.System.PORTRAIT
 **/
 game.System.orientation = game.System.PORTRAIT;
-game.System.backgroundColor = {
-    /**
-        Background color for game screen on mobile.
-        @attribute backgroundColor.game
-        @type {String}
-    **/
-    game: &#x27;#000000&#x27;,
-    /**
-        Background color for rotate screen on mobile.
-        @attribute backgroundColor.rotate
-        @type {String}
-    **/
-    rotate: &#x27;#000000&#x27;
-};
-game.System.backgroundImage = {
-    /**
-        Background image for game screen on mobile.
-        @attribute backgroundImage.game
-        @type {URL}
-    **/
-    game: null,
-    /**
-        Background image for rotate screen on mobile.
-        @attribute backgroundImage.rotate
-        @type {URL}
-    **/
-    rotate: null
-};
+/**
+    Body background color.
+    @attribute {String} bgColor
+**/
+game.System.bgColor = &#x27;#000000&#x27;;
+/**
+    Body background color for mobile.
+    @attribute {String} bgColorMobile
+**/
+game.System.bgColorMobile = null;
+/**
+    Body background color for mobile rotate screen.
+    @attribute {String} bgColorRotate
+**/
+game.System.bgColorRotate = null;
+/**
+    Body background image.
+    @attribute {String} bgImage
+**/
+game.System.bgImage = null;
+/**
+    Body background image for mobile.
+    @attribute {String} bgImageMobile
+**/
+game.System.bgImageMobile = null;
+/**
+    Body background image for mobile rotate screen.
+    @attribute {String} bgImageRotate
+**/
+game.System.bgImageRotate = null;
+/**
+    Body background image position.
+    @attribute {String} bgPosition
+**/
+game.System.bgPosition = null;
 /**
     Rotate message for mobile.
     @attribute {String} rotateMsg
@@ -516,10 +623,21 @@ game.System.rotateImg = &#x27;rotate.png&#x27;;
     @default false
 **/
 game.System.webGL = false;
-
-game.System.canvas = true;
+/**
+    Use transparent renderer.
+    @attribute {Boolean} transparent
+    @default false
+**/
 game.System.transparent = false;
+/**
+    Use antialias (only on WebGL).
+    @attribute {Boolean} antialias
+    @default false
+**/
 game.System.antialias = false;
+
+// Testing, is this useful?
+game.System.aspectRatio = null;
 
 });
     </pre>

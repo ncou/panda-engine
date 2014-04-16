@@ -17,6 +17,7 @@ game.module(
     &#x27;engine.keyboard&#x27;
 )
 .body(function() {
+&#x27;use strict&#x27;;
 
 /**
     @class Keyboard
@@ -214,23 +215,23 @@ game.Keyboard = game.Class.extend({
         @method keydown
     **/
     keydown: function(event) {
-        if(game.Keyboard.preventDefault) event.preventDefault();
+        if (game.Keyboard.preventDefault) event.preventDefault();
 
-        if(!this.keys[event.keyCode]) return; // unkown key
-        if(this.keysDown[this.keys[event.keyCode]]) return; // key already down
+        if (!this.keys[event.keyCode]) return; // unkown key
+        if (this.keysDown[this.keys[event.keyCode]]) return; // key already down
 
         this.keysDown[this.keys[event.keyCode]] = true;
-        if(game.scene) game.scene.keydown(this.keys[event.keyCode], !!this.keysDown[&#x27;SHIFT&#x27;], !!this.keysDown[&#x27;CTRL&#x27;], !!this.keysDown[&#x27;ALT&#x27;]);
+        if (game.scene) game.scene.keydown(this.keys[event.keyCode], !!this.keysDown[&#x27;SHIFT&#x27;], !!this.keysDown[&#x27;CTRL&#x27;], !!this.keysDown[&#x27;ALT&#x27;]);
     },
 
     /**
         @method keyup
     **/
     keyup: function(event) {
-        if(game.Keyboard.preventDefault) event.preventDefault();
+        if (game.Keyboard.preventDefault) event.preventDefault();
         
         this.keysDown[this.keys[event.keyCode]] = false;
-        if(game.scene) game.scene.keyup(this.keys[event.keyCode]);
+        if (game.scene) game.scene.keyup(this.keys[event.keyCode]);
     },
 
     /**

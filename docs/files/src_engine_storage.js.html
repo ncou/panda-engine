@@ -9,14 +9,15 @@ title: Documentation
 
 <div class="file">
     <pre class="code prettyprint linenums">
-/**    
+/**
     @module storage
     @namespace game
 **/
 game.module(
     &#x27;engine.storage&#x27;
 )
-.body(function() { &#x27;use strict&#x27;;
+.body(function() {
+&#x27;use strict&#x27;;
 
 /**
     Local storage.
@@ -64,8 +65,8 @@ game.Storage = game.Class.extend({
         @method reset
     **/
     reset: function() {
-        for(var i in localStorage) {
-            if(i.indexOf(this.id+&#x27;.&#x27;) !== -1) localStorage.removeItem(i);
+        for (var i in localStorage) {
+            if (i.indexOf(this.id + &#x27;.&#x27;) !== -1) localStorage.removeItem(i);
         }
     }
 });

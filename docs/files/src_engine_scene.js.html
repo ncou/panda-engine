@@ -16,7 +16,8 @@ title: Documentation
 game.module(
     &#x27;engine.scene&#x27;
 )
-.body(function(){ &#x27;use strict&#x27;;
+.body(function() {
+&#x27;use strict&#x27;;
 
 /**
     Game scene.
@@ -61,6 +62,8 @@ game.Scene = game.Class.extend({
     swipeTime: 500,
     
     staticInit: function() {
+        game.scene = this;
+        
         for (var i = game.system.stage.children.length - 1; i &gt;= 0; i--) {
             game.system.stage.removeChild(game.system.stage.children[i]);
         }
@@ -75,31 +78,31 @@ game.Scene = game.Class.extend({
         this.stage = new game.Container();
         game.system.stage.addChild(this.stage);
 
-        if(game.debugDraw) game.debugDraw.reset();
+        if (game.debugDraw) game.debugDraw.reset();
     },
     
     /**
         This is called every frame.
         @method update
     **/
-    update: function(){
+    update: function() {
         var i;
-        if(this.world) this.world.update();
+        if (this.world) this.world.update();
         for (i = this.timers.length - 1; i &gt;= 0; i--) {
-            if(this.timers[i].time() &gt;= 0) {
-                if(typeof(this.timers[i].callback) === &#x27;function&#x27;) this.timers[i].callback();
-                if(this.timers[i].repeat) this.timers[i].reset();
+            if (this.timers[i].time() &gt;= 0) {
+                if (typeof this.timers[i].callback === &#x27;function&#x27;) this.timers[i].callback();
+                if (this.timers[i].repeat) this.timers[i].reset();
                 else this.timers.splice(i, 1);
             }
         }
         for (i = this.emitters.length - 1; i &gt;= 0; i--) {
             this.emitters[i].update();
-            if(this.emitters[i]._remove) this.emitters.splice(i, 1);
+            if (this.emitters[i]._remove) this.emitters.splice(i, 1);
         }
-        if(game.tweenEngine) game.tweenEngine.update();
+        if (game.tweenEngine) game.tweenEngine.update();
         for (i = this.objects.length - 1; i &gt;= 0; i--) {
-            if(typeof(this.objects[i].update) === &#x27;function&#x27;) this.objects[i].update();
-            if(this.objects[i]._remove) this.objects.splice(i, 1);
+            if (typeof this.objects[i].update === &#x27;function&#x27;) this.objects[i].update();
+            if (this.objects[i]._remove) this.objects.splice(i, 1);
         }
     },
 
@@ -109,7 +112,7 @@ game.Scene = game.Class.extend({
         @param {Object} object
     **/
     addObject: function(object) {
-        if(object._remove) object._remove = false;
+        if (object._remove) object._remove = false;
         this.objects.push(object);
     },
 
@@ -167,7 +170,7 @@ game.Scene = game.Class.extend({
     addTween: function(obj, props, time, settings) {
         var tween = new game.Tween(obj);
         tween.to(props, time);
-        for(var i in settings) {
+        for (var i in settings) {
             tween[i](settings[i]);
         }
         return tween;
@@ -180,7 +183,7 @@ game.Scene = game.Class.extend({
         @param {Boolean} doCallback
     **/
     removeTimer: function(timer, doCallback) {
-        if(!doCallback) timer.callback = null;
+        if (!doCallback) timer.callback = null;
         timer.repeat = false;
         timer.set(0);
     },
@@ -242,18 +245,18 @@ game.Scene = game.Class.extend({
     _mousemove: function(event) {
         this.mousemove(event);
 
-        if(!event.startTime) return;
+        if (!event.startTime) return;
 
-        if(event.global.x - event.swipeX &gt;= this.swipeDist) this._swipe(event, &#x27;right&#x27;);
-        else if(event.global.x - event.swipeX &lt;= -this.swipeDist) this._swipe(event, &#x27;left&#x27;);
-        else if(event.global.y - event.swipeY &gt;= this.swipeDist) this._swipe(event, &#x27;down&#x27;);
-        else if(event.global.y - event.swipeY &lt;= -this.swipeDist) this._swipe(event, &#x27;up&#x27;);
+        if (event.global.x - event.swipeX &gt;= this.swipeDist) this._swipe(event, &#x27;right&#x27;);
+        else if (event.global.x - event.swipeX &lt;= -this.swipeDist) this._swipe(event, &#x27;left&#x27;);
+        else if (event.global.y - event.swipeY &gt;= this.swipeDist) this._swipe(event, &#x27;down&#x27;);
+        else if (event.global.y - event.swipeY &lt;= -this.swipeDist) this._swipe(event, &#x27;up&#x27;);
     },
 
     _swipe: function(event, dir) {
         var time = Date.now() - event.startTime;
         event.startTime = null;
-        if(time &lt;= this.swipeTime) this.swipe(dir);
+        if (time &lt;= this.swipeTime) this.swipe(dir);
     },
 
     /**
@@ -266,11 +269,11 @@ game.Scene = game.Class.extend({
 
     run: function() {
         this.update();
-        if(game.debugDraw) game.debugDraw.update();
+        if (game.debugDraw) game.debugDraw.update();
         this.render();
     },
 
-    render: function(){
+    render: function() {
         game.renderer.render(game.system.stage);
     },
 
