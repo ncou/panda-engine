@@ -9,6 +9,7 @@ title: Documentation
 
 <div class="file">
     <pre class="code prettyprint linenums">
+
 // Panda.js HTML5 game engine
 
 // created by Eemeli Kelokorpi
@@ -40,14 +41,14 @@ var core = {
         Current engine version.
         @property {String} version
     **/
-    version: &#x27;1.3.2&#x27;,
+    version: &#x27;1.4.0&#x27;,
     /**
         Engine settings.
         @property {Object} config
     **/
-    config: window.pandaConfig || {},
+    config: typeof pandaConfig !== &#x27;undefined&#x27; ? pandaConfig : {},
     /**
-        List of modules, that are loaded from core.
+        Configurable list of modules, that are loaded from core.
         @property {Array} coreModules
     **/
     coreModules: [
@@ -120,13 +121,20 @@ var core = {
     loadQueue: [],
     waitForLoad: 0,
     DOMLoaded: false,
+    next: 1,
+    anims: {},
 
+    /**
+        Get JSON data.
+        @method getJSON
+        @param {String} id
+    **/
     getJSON: function(id) {
         return this.json[this.assets[id]];
     },
 
     /**
-        Copy object
+        Copy object.
         @method copy
         @param {Object} object
     **/
@@ -135,22 +143,22 @@ var core = {
         if (
             !object || typeof object !== &#x27;object&#x27; ||
             object instanceof HTMLElement ||
-            object instanceof game.Class ||
-            (game.Container &amp;&amp; object instanceof game.Container)
+            object instanceof this.Class ||
+            (this.Container &amp;&amp; object instanceof this.Container)
         ) {
             return object;
         }
         else if (object instanceof Array) {
             c = [];
             for (i = 0, l = object.length; i &lt; l; i++) {
-                c[i] = game.copy(object[i]);
+                c[i] = this.copy(object[i]);
             }
             return c;
         }
         else {
             c = {};
             for (i in object) {
-                c[i] = game.copy(object[i]);
+                c[i] = this.copy(object[i]);
             }
             return c;
         }
@@ -162,8 +170,8 @@ var core = {
             if (
                 typeof ext !== &#x27;object&#x27; ||
                 ext instanceof HTMLElement ||
-                ext instanceof game.Class ||
-                ext instanceof game.Container
+                ext instanceof this.Class ||
+                ext instanceof this.Container
             ) {
                 to[key] = ext;
             }
@@ -171,7 +179,7 @@ var core = {
                 if (!to[key] || typeof to[key] !== &#x27;object&#x27;) {
                     to[key] = (ext instanceof Array) ? [] : {};
                 }
-                game.merge(to[key], ext);
+                this.merge(to[key], ext);
             }
         }
         return to;
@@ -213,16 +221,17 @@ var core = {
         @method fullscreen
     **/
     fullscreen: function() {
-        if (game.system.canvas.requestFullscreen) game.system.canvas.requestFullscreen();
-        if (game.system.canvas.requestFullScreen) game.system.canvas.requestFullScreen();
+        if (this.system.canvas.requestFullscreen) this.system.canvas.requestFullscreen();
+        if (this.system.canvas.requestFullScreen) this.system.canvas.requestFullScreen();
     },
 
     /**
+        Test fullscreen support.
         @method fullscreenSupport
         @return {Boolean} Return true, if browser supports fullscreen mode.
     **/
     fullscreenSupport: function() {
-        return !!(game.system.canvas.requestFullscreen || game.system.canvas.requestFullScreen);
+        return !!(this.system.canvas.requestFullscreen || this.system.canvas.requestFullScreen);
     },
 
     /**
@@ -250,7 +259,7 @@ var core = {
     addAudio: function(path, id) {
         id = id || path;
         path = this.config.mediaFolder + path + this.nocache;
-        game.Audio.queue[path] = id;
+        this.Audio.queue[path] = id;
         return id;
     },
 
@@ -277,7 +286,7 @@ var core = {
     },
 
     /**
-        Require modules for module.
+        Require module.
         @method require
         @param {Array} modules
     **/
@@ -310,24 +319,24 @@ var core = {
         @param {String} [canvasId] Id of canvas element.
     **/
     start: function(scene, width, height, loaderClass, canvasId) {
-        if (this.loadQueue.length &gt; 0) throw(&#x27;Core not ready.&#x27;);
+        if (this.loadQueue.length &gt; 0) throw(&#x27;Core not ready&#x27;);
 
-        this.system = new game.System(width, height, canvasId);
+        this.system = new this.System(width, height, canvasId);
 
-        if (game.Audio) this.audio = new game.Audio();
-        if (game.Pool) this.pool = new game.Pool();
-        if (game.DebugDraw &amp;&amp; game.DebugDraw.enabled) this.debugDraw = new game.DebugDraw();
-        if (game.Storage &amp;&amp; game.Storage.id) this.storage = new game.Storage(game.Storage.id);
-        if (game.Analytics &amp;&amp; game.Analytics.id) this.analytics = new game.Analytics(game.Analytics.id);
-        if (game.TweenEngine) game.tweenEngine = new game.TweenEngine();
+        if (this.Audio) this.audio = new this.Audio();
+        if (this.Pool) this.pool = new this.Pool();
+        if (this.DebugDraw &amp;&amp; this.DebugDraw.enabled) this.debugDraw = new this.DebugDraw();
+        if (this.Storage &amp;&amp; this.Storage.id) this.storage = new this.Storage(this.Storage.id);
+        if (this.Analytics &amp;&amp; this.Analytics.id) this.analytics = new this.Analytics(this.Analytics.id);
+        if (this.TweenEngine) this.tweenEngine = new this.TweenEngine();
 
         // Load plugins
         for (var name in this.plugins) {
             this.plugins[name] = new (this.plugins[name])();
         }
 
-        this.loader = loaderClass || game.Loader;
-        var loader = new this.loader(window[game.System.startScene] || game[game.System.startScene] || scene);
+        this.loader = loaderClass || this.Loader;
+        var loader = new this.loader(window[this.System.startScene] || this[this.System.startScene] || scene);
         loader.start();
     },
 
@@ -366,9 +375,10 @@ var core = {
         var script = document.createElement(&#x27;script&#x27;);
         script.type = &#x27;text/javascript&#x27;;
         script.src = path;
+        var me = this;
         script.onload = function() {
-            game.waitForLoad--;
-            game.loadModules();
+            me.waitForLoad--;
+            me.loadModules();
         };
         script.onerror = function() {
             throw(&#x27;Failed to load module &#x27; + name + &#x27; at &#x27; + path + &#x27; required from &#x27; + requiredFrom);
@@ -378,56 +388,56 @@ var core = {
 
     loadModules: function() {
         var moduleLoaded, i, j, module, name, dependenciesLoaded;
-        for (i = 0; i &lt; game.loadQueue.length; i++) {
-            module = game.loadQueue[i];
+        for (i = 0; i &lt; this.loadQueue.length; i++) {
+            module = this.loadQueue[i];
             dependenciesLoaded = true;
 
             for (j = 0; j &lt; module.requires.length; j++) {
                 name = module.requires[j];
-                if (!game.modules[name]) {
+                if (!this.modules[name]) {
                     dependenciesLoaded = false;
-                    game.loadScript(name, module.name);
+                    this.loadScript(name, module.name);
                 }
-                else if (!game.modules[name].loaded) {
+                else if (!this.modules[name].loaded) {
                     dependenciesLoaded = false;
                 }
             }
 
             if (dependenciesLoaded &amp;&amp; module.body) {
-                game.loadQueue.splice(i, 1);
-                if (game.loadQueue.length === 0) {
+                this.loadQueue.splice(i, 1);
+                if (this.loadQueue.length === 0) {
                     // Last module loaded, parse config
                     for (var c in this.config) {
                         var m = c.ucfirst();
-                        if (game[m]) {
+                        if (this[m]) {
                             for (var o in this.config[c]) {
-                                game[m][o] = this.config[c][o];
+                                this[m][o] = this.config[c][o];
                             }
                         }
                     }
                 }
                 module.loaded = true;
-                module.body();
+                module.body(this);
                 moduleLoaded = true;
                 i--;
             }
         }
 
         if (moduleLoaded &amp;&amp; this.loadQueue.length &gt; 0) {
-            game.loadModules();
+            this.loadModules();
         }
-        else if (game.waitForLoad === 0 &amp;&amp; game.loadQueue.length !== 0) {
+        else if (this.waitForLoad === 0 &amp;&amp; this.loadQueue.length !== 0) {
             var unresolved = [];
-            for (i = 0; i &lt; game.loadQueue.length; i++) {
+            for (i = 0; i &lt; this.loadQueue.length; i++) {
                 var unloaded = [];
-                var requires = game.loadQueue[i].requires;
+                var requires = this.loadQueue[i].requires;
                 for (j = 0; j &lt; requires.length; j++) {
-                    module = game.modules[requires[j]];
+                    module = this.modules[requires[j]];
                     if (!module || !module.loaded) {
                         unloaded.push(requires[j]);
                     }
                 }
-                unresolved.push(game.loadQueue[i].name + &#x27; (requires: &#x27; + unloaded.join(&#x27;, &#x27;) + &#x27;)&#x27;);
+                unresolved.push(this.loadQueue[i].name + &#x27; (requires: &#x27; + unloaded.join(&#x27;, &#x27;) + &#x27;)&#x27;);
             }
             throw(&#x27;Unresolved modules:\n&#x27; + unresolved.join(&#x27;\n&#x27;));
         }
@@ -436,9 +446,104 @@ var core = {
         }
     },
 
+    setGameLoop: function(callback, element) {
+        if (window.requestAnimationFrame) {
+            var current = this.next++;
+            this.anims[current] = true;
+
+            var me = this;
+            var animate = function() {
+                if (!me.anims[current]) return;
+                window.requestAnimationFrame(animate, element);
+                callback();
+            };
+            window.requestAnimationFrame(animate, element);
+            return current;
+        }
+        else {
+            return window.setInterval(callback, 1000 / 60);
+        }
+    },
+
+    clearGameLoop: function(id) {
+        if (window.requestAnimationFrame) {
+            delete this.anims[id];
+        }
+        else {
+            window.clearInterval(id);
+        }
+    },
+
     boot: function() {
+        // Test canvas support
+        var elem = document.createElement(&#x27;canvas&#x27;);
+        var canvasSupported = !!(elem.getContext &amp;&amp; elem.getContext(&#x27;2d&#x27;));
+        if (!canvasSupported) {
+            if (core.config.noCanvasURL) window.location = core.config.noCanvasURL;
+            else throw(&#x27;Canvas not supported&#x27;);
+        }
+
+        // Native object extensions
+        Number.prototype.limit = function(min, max) {
+            var i = this;
+            if (i &lt; min) i = min;
+            if (i &gt; max) i = max;
+            return i;
+        };
+
+        Number.prototype.round = function(precision) {
+            if (precision) precision = Math.pow(10, precision);
+            else precision = 1;
+            return Math.round(this * precision) / precision;
+        };
+
+        Array.prototype.erase = function(item) {
+            for (var i = this.length; i &gt;= 0; i--) {
+                if (this[i] === item) this.splice(i, 1);
+            }
+            return this;
+        };
+
+        Array.prototype.random = function() {
+            return this[Math.floor(Math.random() * this.length)];
+        };
+
+        // http://jsperf.com/array-shuffle-comparator/2
+        Array.prototype.shuffle = function() {
+            var len = this.length;
+            var i = len;
+            while (i--) {
+                var p = parseInt(Math.random() * len);
+                var t = this[i];
+                this[i] = this[p];
+                this[p] = t;
+            }
+
+            return this;
+        };
+
+        // http://jsperf.com/function-bind-performance
+        Function.prototype.bind = function(context) {
+            var fn = this, linked = [];
+            Array.prototype.push.apply(linked, arguments);
+            linked.shift();
+
+            return function() {
+                var args = [];
+                Array.prototype.push.apply(args, linked);
+                Array.prototype.push.apply(args, arguments);
+                return fn.apply(context, args);
+            };
+        };
+
+        String.prototype.ucfirst = function() {
+            return this.charAt(0).toUpperCase() + this.slice(1);
+        };
+
         this.coreModules = this.config.coreModules || this.coreModules;
         this.module(&#x27;engine.core&#x27;);
+
+        game.normalizeVendorAttribute(window, &#x27;requestAnimationFrame&#x27;);
 
         if (document.location.href.match(/\?nocache/)) this.nocache = &#x27;?&#x27; + Date.now();
 
@@ -539,6 +644,7 @@ var core = {
             if (metaTags[i].name === &#x27;viewport&#x27;) viewportFound = true;
         }
 
+        // Add viewport meta, if none found
         if (!viewportFound) {
             var viewport = document.createElement(&#x27;meta&#x27;);
             viewport.name = &#x27;viewport&#x27;;
@@ -552,141 +658,116 @@ var core = {
             this.DOMReady();
         }
         else {
-            document.addEventListener(&#x27;DOMContentLoaded&#x27;, this.DOMReady, false);
-            window.addEventListener(&#x27;load&#x27;, this.DOMReady, false);
+            document.addEventListener(&#x27;DOMContentLoaded&#x27;, this.DOMReady.bind(this), false);
+            window.addEventListener(&#x27;load&#x27;, this.DOMReady.bind(this), false);
         }
     },
 
     DOMReady: function() {
-        if (!game.DOMLoaded) {
-            if (!document.body) return setTimeout(game.DOMReady, 13);
-            game.DOMLoaded = true;
-            game.loadModules();
+        if (!this.DOMLoaded) {
+            if (!document.body) return setTimeout(this.DOMReady.bind(this), 13);
+            this.DOMLoaded = true;
+            this.loadModules();
         }
     }
 };
 
-window.game = core;
+// http://ejohn.org/blog/simple-javascript-inheritance/
+var initializing = false;
+var fnTest = /xyz/.test(function() {
+    var xyz; return xyz;
+}) ? /\b_super\b/ : /[\D|\d]*/;
 
-(function() {
-    if (typeof global !== &#x27;undefined&#x27; &amp;&amp; global.game) return game.coreModules = core.coreModules;
+/**
+    Base class.
+    @class Class
+**/
+core.Class = function() {};
 
-    var elem = document.createElement(&#x27;canvas&#x27;);
-    var canvasSupported = !!(elem.getContext &amp;&amp; elem.getContext(&#x27;2d&#x27;));
-    if (!canvasSupported &amp;&amp; core.config.noCanvasURL) window.location = core.config.noCanvasURL;
+/**
+    Extend class.
+    @method extend
+    @param {Object} prop
+    @return {game.Class} Returns extended class
+**/
+core.Class.extend = function(prop) {
+    var parent = this.prototype;
+    initializing = true;
+    var prototype = new this();
+    initializing = false;
 
-    Number.prototype.limit = function(min, max) {
-        var i = this;
-        if (i &lt; min) i = min;
-        if (i &gt; max) i = max;
-        return i;
-    };
-
-    Number.prototype.round = function(precision) {
-        if (precision) precision = Math.pow(10, precision);
-        else precision = 1;
-        return Math.round(this * precision) / precision;
-    };
-
-    Array.prototype.erase = function(item) {
-        for (var i = this.length; i &gt;= 0; i--) {
-            if (this[i] === item) this.splice(i, 1);
-        }
-        return this;
-    };
-
-    Array.prototype.random = function() {
-        return this[Math.floor(Math.random() * this.length)];
-    };
-
-    // http://jsperf.com/array-shuffle-comparator/2
-    Array.prototype.shuffle = function() {
-        var len = this.length;
-        var i = len;
-        while (i--) {
-            var p = parseInt(Math.random() * len);
-            var t = this[i];
-            this[i] = this[p];
-            this[p] = t;
-        }
-
-        return this;
-    };
-
-    // http://jsperf.com/function-bind-performance
-    Function.prototype.bind = function(context) {
-        var fn = this, linked = [];
-        Array.prototype.push.apply(linked, arguments);
-        linked.shift();
-
+    var makeFn = function(name, fn) {
         return function() {
-            var args = [];
-            Array.prototype.push.apply(args, linked);
-            Array.prototype.push.apply(args, arguments);
-            return fn.apply(context, args);
+            /**
+                Call functions parent function.
+                @method _super
+                @param {Array} arguments
+            **/
+            var tmp = this._super;
+            this._super = parent[name];
+            var ret = fn.apply(this, arguments);
+            this._super = tmp;
+            return ret;
         };
     };
 
-    String.prototype.ucfirst = function() {
-        return this.charAt(0).toUpperCase() + this.slice(1);
-    };
-
-    game.normalizeVendorAttribute(window, &#x27;requestAnimationFrame&#x27;);
-    if (window.requestAnimationFrame) {
-        var next = 1, anims = {};
-
-        game.setGameLoop = function(callback, element) {
-            var current = next++;
-            anims[current] = true;
-
-            var animate = function() {
-                if (!anims[current]) return;
-                window.requestAnimationFrame(animate, element);
-                callback();
-            };
-            window.requestAnimationFrame(animate, element);
-            return current;
-        };
-
-        game.clearGameLoop = function(id) {
-            delete anims[id];
-        };
-    }
-    else {
-        game.setGameLoop = function(callback) {
-            return window.setInterval(callback, 1000 / 60);
-        };
-        game.clearGameLoop = function(id) {
-            window.clearInterval(id);
-        };
+    for (var name in prop) {
+        if (
+            typeof prop[name] === &#x27;function&#x27; &amp;&amp;
+            typeof parent[name] === &#x27;function&#x27; &amp;&amp;
+            fnTest.test(prop[name])
+        ) {
+            prototype[name] = makeFn(name, prop[name]);
+        }
+        else {
+            prototype[name] = prop[name];
+        }
     }
 
-    // http://ejohn.org/blog/simple-javascript-inheritance/
-    var initializing = false;
-    var fnTest = /xyz/.test(function() {
-        var xyz; return xyz;
-    }) ? /\b_super\b/ : /[\D|\d]*/;
+    function Class() {
+        if (!initializing) {
+            if (this.staticInit) {
+                /**
+                    This method is called before init.
+                    @method staticInit
+                    @param {Array} arguments
+                **/
+                var obj = this.staticInit.apply(this, arguments);
+                if (obj) {
+                    return obj;
+                }
+            }
+            for (var p in this) {
+                if (typeof this[p] === &#x27;object&#x27;) {
+                    this[p] = core.copy(this[p]);
+                }
+            }
+            if (this.init) {
+                /**
+                    This method is called, when you create new instance of the class.
+                    @method init
+                    @param {Array} arguments
+                **/
+                this.init.apply(this, arguments);
+            }
+        }
+        return this;
+    }
 
+    Class.prototype = prototype;
+    Class.prototype.constructor = Class;
+    Class.extend = core.Class.extend;
     /**
-        @class Class
+        Inject class.
+        @method inject
+        @param {Object} prop
     **/
-    game.Class = function() {};
-    /**
-        @method extend
-        @return {game.Class} Returns extended class
-    **/
-    game.Class.extend = function(prop) {
-        var parent = this.prototype;
-        initializing = true;
-        var prototype = new this();
-        initializing = false;
+    Class.inject = function(prop) {
+        var proto = this.prototype;
+        var parent = {};
 
         var makeFn = function(name, fn) {
             return function() {
-                /**
-                    Call functions parent function.
-                    @method _super
-                **/
                 var tmp = this._super;
                 this._super = parent[name];
                 var ret = fn.apply(this, arguments);
@@ -698,84 +779,31 @@ window.game = core;
         for (var name in prop) {
             if (
                 typeof prop[name] === &#x27;function&#x27; &amp;&amp;
-                typeof parent[name] === &#x27;function&#x27; &amp;&amp;
+                typeof proto[name] === &#x27;function&#x27; &amp;&amp;
                 fnTest.test(prop[name])
             ) {
-                prototype[name] = makeFn(name, prop[name]);
+                parent[name] = proto[name];
+                proto[name] = makeFn(name, prop[name]);
             }
             else {
-                prototype[name] = prop[name];
+                proto[name] = prop[name];
             }
         }
-
-        function Class() {
-            if (!initializing) {
-                if (this.staticInit) {
-                    /**
-                        This method is called before init.
-                        @method staticInit
-                    **/
-                    var obj = this.staticInit.apply(this, arguments);
-                    if (obj) {
-                        return obj;
-                    }
-                }
-                for (var p in this) {
-                    if (typeof this[p] === &#x27;object&#x27;) {
-                        this[p] = game.copy(this[p]);
-                    }
-                }
-                if (this.init) {
-                    /**
-                        This method is called, when you create new instance of the class.
-                        @method init
-                    **/
-                    this.init.apply(this, arguments);
-                }
-            }
-            return this;
-        }
-
-        Class.prototype = prototype;
-        Class.prototype.constructor = Class;
-        Class.extend = game.Class.extend;
-        /**
-            @method inject
-        **/
-        Class.inject = function(prop) {
-            var proto = this.prototype;
-            var parent = {};
-
-            var makeFn = function(name, fn) {
-                return function() {
-                    var tmp = this._super;
-                    this._super = parent[name];
-                    var ret = fn.apply(this, arguments);
-                    this._super = tmp;
-                    return ret;
-                };
-            };
-
-            for (var name in prop) {
-                if (
-                    typeof prop[name] === &#x27;function&#x27; &amp;&amp;
-                    typeof proto[name] === &#x27;function&#x27; &amp;&amp;
-                    fnTest.test(prop[name])
-                ) {
-                    parent[name] = proto[name];
-                    proto[name] = makeFn(name, prop[name]);
-                }
-                else {
-                    proto[name] = prop[name];
-                }
-            }
-        };
-
-        return Class;
     };
 
-    game.boot();
-})();
+    return Class;
+};
+
+if (typeof exports !== &#x27;undefined&#x27;) {
+    if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
+        exports = module.exports = core;
+    }
+    exports.core = core;
+}
+else {
+    window.game = window.panda = core;
+    core.boot();
+}
 
     </pre>
 </div>

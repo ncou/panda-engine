@@ -37,7 +37,6 @@ game.System = game.Class.extend({
     /**
         Current delta-time.
         @property {Number} delta
-        @example http://www.pandajs.net/snippets/9930671.html
     **/
     delta: 0,
     /**
@@ -203,6 +202,9 @@ game.System = game.Class.extend({
             if (typeof game.System.backgroundColor === &#x27;object&#x27;) {
                 game.System.bgColorMobile = game.System.backgroundColor.mobile;
                 game.System.bgColorRotate = game.System.backgroundColor.rotate;
+            }
+            // Deprecated
+            if (typeof game.System.backgroundImage === &#x27;object&#x27;) {
                 game.System.bgImageMobile = game.System.backgroundImage.mobile;
                 game.System.bgImageRotate = game.System.backgroundImage.rotate;
             }
@@ -640,6 +642,7 @@ game.System.antialias = false;
 game.System.aspectRatio = null;
 
 });
+
     </pre>
 </div>
 
