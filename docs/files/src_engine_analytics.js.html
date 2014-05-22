@@ -24,25 +24,46 @@ game.module(
     @extends game.Class
 **/
 game.Analytics = game.Class.extend({
-    init: function(id) {
-        if (!navigator.onLine || game.device.cocoonJS) return;
-        if (!id) throw(&#x27;Analytics id not set.&#x27;);
-        
-        (function(i, s, o, g, r, a, m) {
-            i[&#x27;GoogleAnalyticsObject&#x27;] = r;
-            i[r] = i[r] || function() {
-                (i[r].q = i[r].q || []).push(arguments)
-            };
-            i[r].l = 1 * new Date();
-            a = s.createElement(o);
-            m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m);
-        })(window, document, &#x27;script&#x27;, &#x27;//www.google-analytics.com/analytics.js&#x27;, &#x27;ga&#x27;);
+    trackId: null,
+    userId: null,
 
-        ga(&#x27;create&#x27;, id, &#x27;auto&#x27;);
-        ga(&#x27;send&#x27;, &#x27;pageview&#x27;);
+    init: function(id) {
+        if (!navigator.onLine || game.device.cocoonJS &amp;&amp; !game.Analytics.cocoonJS) return;
+        if (!id) throw(&#x27;Analytics id not set.&#x27;);
+
+        this.trackId = id;
+
+        if (game.device.cocoonJS &amp;&amp; game.Analytics.cocoonJS) {
+            this.userId = this.guid();
+            var request = new XMLHttpRequest();
+            var params = &#x27;v=1&amp;tid=&#x27; + this.trackId + &#x27;&amp;cid=&#x27; + this.userId + &#x27;&amp;t=pageview&amp;dp=%2F&#x27;;
+            request.open(&#x27;POST&#x27;, &#x27;http://www.google-analytics.com/collect&#x27;, true);
+            request.send(params);
+        }
+        else {
+            (function(i, s, o, g, r, a, m) {
+                i[&#x27;GoogleAnalyticsObject&#x27;] = r;
+                i[r] = i[r] || function() {
+                    (i[r].q = i[r].q || []).push(arguments)
+                };
+                i[r].l = 1 * new Date();
+                a = s.createElement(o);
+                m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m);
+            })(window, document, &#x27;script&#x27;, &#x27;//www.google-analytics.com/analytics.js&#x27;, &#x27;ga&#x27;);
+
+            ga(&#x27;create&#x27;, id, &#x27;auto&#x27;);
+            ga(&#x27;send&#x27;, &#x27;pageview&#x27;);
+        }
+    },
+
+    guid: function() {
+        function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+        }
+        return s4() + s4() + &#x27;-&#x27; + s4() + &#x27;-&#x27; + s4() + &#x27;-&#x27; + s4() + &#x27;-&#x27; + s4() + s4() + s4();
     },
 
     /**
@@ -50,17 +71,38 @@ game.Analytics = game.Class.extend({
         @method event
         @param {String} category
         @param {String} action
+        @param {String} [label]
+        @param {String} [value]
     **/
-    event: function(category, action) {
-        if (!navigator.onLine || game.device.cocoonJS) return;
-        ga(&#x27;send&#x27;, &#x27;event&#x27;, category, action);
+    event: function(category, action, label, value) {
+        if (!navigator.onLine || game.device.cocoonJS &amp;&amp; !game.Analytics.cocoonJS) return;
+
+        if (game.device.cocoonJS &amp;&amp; game.Analytics.cocoonJS) {
+            var request = new XMLHttpRequest();
+            var params = &#x27;v=1&amp;tid=&#x27; + this.trackId + &#x27;&amp;cid=&#x27; + this.userId + &#x27;&amp;t=event&amp;ec=&#x27; + category + &#x27;&amp;ea=&#x27; + action;
+            if (typeof label !== &#x27;undefined&#x27;) params += &#x27;&amp;el=&#x27; + label;
+            if (typeof value !== &#x27;undefined&#x27;) params += &#x27;&amp;ev=&#x27; + value;
+            request.open(&#x27;POST&#x27;, &#x27;http://www.google-analytics.com/collect&#x27;, true);
+            request.send(params);
+        }
+        else {
+            ga(&#x27;send&#x27;, &#x27;event&#x27;, category, action, label, value);
+        }
     }
 });
 
 /**
+    Tracking id for Analytics.
     @attribute {String} id
 **/
 game.Analytics.id = &#x27;&#x27;;
+
+/**
+    Enable Analytics on CocoonJS.
+    @attribute {Boolean} cocoonJS
+    @default false
+**/
+game.Analytics.cocoonJS = false;
 
 });
 

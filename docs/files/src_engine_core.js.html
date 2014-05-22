@@ -9,7 +9,6 @@ title: Documentation
 
 <div class="file">
     <pre class="code prettyprint linenums">
-
 // Panda.js HTML5 game engine
 
 // created by Eemeli Kelokorpi
@@ -41,7 +40,7 @@ var core = {
         Current engine version.
         @property {String} version
     **/
-    version: &#x27;1.4.0&#x27;,
+    version: &#x27;1.5.0&#x27;,
     /**
         Engine settings.
         @property {Object} config
@@ -335,36 +334,8 @@ var core = {
             this.plugins[name] = new (this.plugins[name])();
         }
 
-        this.loader = loaderClass || this.Loader;
-        var loader = new this.loader(window[this.System.startScene] || this[this.System.startScene] || scene);
-        loader.start();
-    },
-
-    Math: {
-        /**
-            Distance between two points.
-            @method Math.distance
-            @param {Number} x
-            @param {Number} y
-            @param {Number} x2
-            @param {Number} y2
-            @return {Number}
-        **/
-        distance: function(x, y, x2, y2) {
-            x = x2 - x;
-            y = y2 - y;
-            return Math.sqrt(x * x + y * y);
-        },
-
-        /**
-            Generate random number between &#x60;min&#x60; and &#x60;max&#x60;.
-            @method Math.random
-            @param {Number} min
-            @param {Number} max
-        **/
-        random: function(min, max) {
-            return Math.random() * (max - min) + min;
-        }
+        this.loader = new (loaderClass || this.Loader)(scene);
+        if (!this.system.rotateScreenVisible) this.loader.start();
     },
 
     loadScript: function(name, requiredFrom) {
@@ -483,6 +454,19 @@ var core = {
             else throw(&#x27;Canvas not supported&#x27;);
         }
 
+        // Native Math extensions
+        Math.distance = function(x, y, x2, y2) {
+            x = x2 - x;
+            y = y2 - y;
+            return Math.sqrt(x * x + y * y);
+        };
+
+        Math.randomBetween = function(min, max) {
+            return Math.random() * (max - min) + min;
+        };
+
+        this.Math = Math;
+
         // Native object extensions
         Number.prototype.limit = function(min, max) {
             var i = this;
@@ -586,7 +570,6 @@ var core = {
         this.device.wp7 = /Windows Phone OS 7/i.test(navigator.userAgent);
         this.device.wp8 = /Windows Phone 8/i.test(navigator.userAgent);
         this.device.wp = this.device.wp7 || this.device.wp8;
-        this.device.wpApp = (this.device.wp &amp;&amp; typeof window.external !== &#x27;undefined&#x27; &amp;&amp; typeof window.external.notify !== &#x27;undefined&#x27;);
 
         // Windows Tablet
         this.device.wt = (this.device.ie &amp;&amp; /Tablet/i.test(navigator.userAgent));
@@ -596,6 +579,7 @@ var core = {
         this.device.crosswalk = /Crosswalk/i.test(navigator.userAgent);
         this.device.cocoonJS = !!navigator.isCocoonJS;
         this.device.ejecta = /Ejecta/i.test(navigator.userAgent);
+        this.device.facebook = /FB/i.test(navigator.userAgent);
 
         this.device.mobile = this.device.iOS || this.device.android || this.device.wp || this.device.wt;
 
@@ -611,17 +595,20 @@ var core = {
         else {
             this.device.flash = !!navigator.plugins[&#x27;Shockwave Flash&#x27;];
         }
-
-        // This is going to be used on Windows Phone App
-        // if (this.device.wp) {
-        //     if (typeof windowexternal.notify) !== &#x27;undefined&#x27;) {
-        //         window.console.log = function(message) {
-        //             window.external.notify(message);
-        //         };
-        //     }
-        // }
-
+    
         var i;
+        if (this.device.iPod &amp;&amp; this.config.iPod) {
+            for (i in this.config.iPod) this.config[i] = this.config.iPod[i];
+        }
+
+        if (this.device.iPhone &amp;&amp; this.config.iPhone) {
+            for (i in this.config.iPhone) this.config[i] = this.config.iPhone[i];
+        }
+
+        if (this.device.iPad &amp;&amp; this.config.iPad) {
+            for (i in this.config.iPad) this.config[i] = this.config.iPad[i];
+        }
+
         if (this.device.iOS &amp;&amp; this.config.iOS) {
             for (i in this.config.iOS) this.config[i] = this.config.iOS[i];
         }
@@ -635,7 +622,7 @@ var core = {
         }
 
         this.config.sourceFolder = this.config.sourceFolder || &#x27;src&#x27;;
-        this.config.mediaFolder = this.config.mediaFolder ? this.config.mediaFolder + &#x27;/&#x27; : &#x27;&#x27;;
+        this.config.mediaFolder = this.config.mediaFolder ? this.config.mediaFolder + &#x27;/&#x27; : &#x27;media/&#x27;;
 
         var metaTags = document.getElementsByTagName(&#x27;meta&#x27;);
         var viewportFound = false;

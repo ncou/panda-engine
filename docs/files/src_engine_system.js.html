@@ -94,24 +94,12 @@ game.System = game.Class.extend({
     init: function(width, height, canvasId) {
         width = width || game.System.width;
         height = height || game.System.height;
+        if (width === &#x27;window&#x27;) width = window.innerWidth;
+        if (height === &#x27;window&#x27;) height = window.innerHeight;
+        if (game.System.orientation === &#x27;landscape&#x27;) game.System.orientation = game.System.LANDSCAPE;
+        if (game.System.orientation === &#x27;portrait&#x27;) game.System.orientation = game.System.PORTRAIT;
         if (!width) width = (game.System.orientation === game.System.PORTRAIT ? 768 : 1024);
         if (!height) height = (game.System.orientation === game.System.PORTRAIT ? 927 : 672);
-
-        if (typeof game.System.aspectRatio === &#x27;string&#x27;) {
-            var ratio = game.System.aspectRatio.split(&#x27;:&#x27;);
-            if (ratio.length === 2) {
-                if (window.innerWidth / window.innerHeight &gt; ratio[0] / ratio[1]) {
-                    height = window.innerHeight;
-                    width = (height / ratio[1]) * ratio[0];
-                }
-                else {
-                    width = window.innerWidth;
-                    height = (width / ratio[0]) * ratio[1];
-                }
-                game.System.hires = false;
-                game.System.scale = false;
-            }
-        }
 
         if (game.System.hires) {
             if (typeof game.System.hiresWidth === &#x27;number&#x27; &amp;&amp; typeof game.System.hiresHeight === &#x27;number&#x27;) {
@@ -342,6 +330,7 @@ game.System = game.Class.extend({
             div.style.bottom = 0;
             div.style.margin = &#x27;auto&#x27;;
             div.style.display = &#x27;none&#x27;;
+            div.id = &#x27;panda-rotate&#x27;;
             game.System.rotateDiv = div;
             document.body.appendChild(game.System.rotateDiv);
 
@@ -385,7 +374,7 @@ game.System = game.Class.extend({
             }
         }
 
-        if (typeof window.onorientationchange !== &#x27;undefined&#x27;) {
+        if (typeof window.onorientationchange !== &#x27;undefined&#x27; &amp;&amp; !game.device.android) {
             window.onorientationchange = this.onResize.bind(this);
         }
         else {
@@ -440,8 +429,25 @@ game.System = game.Class.extend({
             var width = window.innerWidth;
             var height = window.innerHeight;
 
-            // iPad iOS 7.0 landscape innerHeight bugfix
+            // iOS 7 innerHeight bugfix
             if (game.device.iPad &amp;&amp; height === 671 &amp;&amp; this.orientation === game.System.LANDSCAPE) height = 672;
+            if (game.device.iPhone &amp;&amp; height === 320 &amp;&amp; this.orientation === game.System.LANDSCAPE) height = 319;
+            if (game.device.iPhone &amp;&amp; height === 256 &amp;&amp; this.orientation === game.System.LANDSCAPE) height = 319;
+
+            if (game.System.resizeToFill &amp;&amp; !this.rotateScreenVisible) {
+                if (width / height !== this.width / this.height) {
+                    // Wrong ratio, need to resize
+                    if (this.orientation === game.System.LANDSCAPE) {
+                        this.width = this.height * (width / height);
+                        this.ratio = this.width / this.height;
+                    }
+                    else {
+                        this.height = this.width * (height / width);
+                        this.ratio = this.height / this.width;
+                    }
+                    this.renderer.resize(this.width, this.height);
+                }
+            }
 
             if (game.System.orientation === game.System.LANDSCAPE) {
                 this.canvas.style.height = height + &#x27;px&#x27;;
@@ -452,9 +458,9 @@ game.System = game.Class.extend({
                 this.canvas.style.height = width * this.ratio + &#x27;px&#x27;;
             }
 
-            if (game.device.iOS71) setTimeout(this.onResize.bind(this), 100);
-
             if (!game.device.ejecta) window.scroll(0, 1);
+
+            if (!this.rotateScreenVisible &amp;&amp; game.loader &amp;&amp; !game.loader.started) game.loader.start();
         }
         else {
             // Desktop resize
@@ -575,50 +581,57 @@ game.System.orientation = game.System.PORTRAIT;
 /**
     Body background color.
     @attribute {String} bgColor
+    @default null
 **/
-game.System.bgColor = &#x27;#000000&#x27;;
+game.System.bgColor = null;
 /**
     Body background color for mobile.
     @attribute {String} bgColorMobile
+    @default null
 **/
 game.System.bgColorMobile = null;
 /**
     Body background color for mobile rotate screen.
     @attribute {String} bgColorRotate
+    @default null
 **/
 game.System.bgColorRotate = null;
 /**
     Body background image.
     @attribute {String} bgImage
+    @default null
 **/
 game.System.bgImage = null;
 /**
     Body background image for mobile.
     @attribute {String} bgImageMobile
+    @default null
 **/
 game.System.bgImageMobile = null;
 /**
     Body background image for mobile rotate screen.
     @attribute {String} bgImageRotate
+    @default null
 **/
 game.System.bgImageRotate = null;
 /**
     Body background image position.
     @attribute {String} bgPosition
+    @default null
 **/
 game.System.bgPosition = null;
 /**
     Rotate message for mobile.
     @attribute {String} rotateMsg
-    @default Please rotate your device
+    @default null
 **/
-game.System.rotateMsg = &#x27;Please rotate your device&#x27;;
+game.System.rotateMsg = null;
 /**
     Rotate image for mobile.
     @attribute {URL} rotateImg
     @default null
 **/
-game.System.rotateImg = &#x27;rotate.png&#x27;;
+game.System.rotateImg = null;
 /**
     Enable WebGL renderer.
     @attribute {Boolean} webGL
@@ -638,8 +651,19 @@ game.System.transparent = false;
 **/
 game.System.antialias = false;
 
-// Testing, is this useful?
-game.System.aspectRatio = null;
+/**
+    Resize canvas to fill screen on mobile.
+    @attribute {Boolean} resizeToFill
+    @default false
+**/
+game.System.resizeToFill = false;
+
+/**
+    Default start scene.
+    @attribute {String} startScene
+    @default SceneGame
+**/
+game.System.startScene = &#x27;SceneGame&#x27;;
 
 });
 

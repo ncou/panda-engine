@@ -20,6 +20,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "game.Pool",
         "game.Rectangle",
         "game.Scene",
+        "game.Spine",
         "game.Sprite",
         "game.Storage",
         "game.System",

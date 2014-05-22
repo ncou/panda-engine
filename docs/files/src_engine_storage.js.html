@@ -35,10 +35,10 @@ game.Storage = game.Class.extend({
         Set value to local storage.
         @method set
         @param {String} key
-        @param {String} value
+        @param {String|Object} value
     **/
     set: function(key, value) {
-        localStorage[this.id + &#x27;.&#x27; + key] = value;
+        localStorage[this.id + &#x27;.&#x27; + key] = this.encode(value);
     },
 
     /**
@@ -48,7 +48,7 @@ game.Storage = game.Class.extend({
         @return {String} value
     **/
     get: function(key) {
-        return localStorage[this.id + &#x27;.&#x27; + key];
+        return this.decode(localStorage[this.id + &#x27;.&#x27; + key]);
     },
 
     /**
@@ -68,6 +68,17 @@ game.Storage = game.Class.extend({
         for (var i in localStorage) {
             if (i.indexOf(this.id + &#x27;.&#x27;) !== -1) localStorage.removeItem(i);
         }
+    },
+
+    encode: function(obj) {
+        if (typeof obj === &#x27;object&#x27;) return JSON.stringify(obj);
+        return obj;
+    },
+
+    decode: function(str) {
+        if (typeof str === &#x27;undefined&#x27;) return;
+        if (str.indexOf(&#x27;{&#x27;) === 0) return JSON.parse(str);
+        return str;
     }
 });
 
