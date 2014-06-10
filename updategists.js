@@ -1,6 +1,6 @@
 var github = require('github-basic');
 var fs = require('fs');
-var categories = ['Sprite', 'Tween', 'Particle', 'Config', 'System', 'Core', 'Debug', 'Other'];
+var categories = ['Config', 'Core', 'Debug', 'Particle', 'Sprite', 'System', 'Tween', 'Other'];
 
 var categoryData = {};
 for (var i = 0; i < categories.length; i++) {
@@ -19,8 +19,6 @@ var writeFile = function(filename, data) {
 };
 
 var getGists = function() {
-    // console.log('Getting gists page ' + currentPage + '...');
-
     github.json('GET', '/users/:user/gists?page='+currentPage+'&per_page='+perpage, {user: 'ekelokorpi'}, function (err, res) {
         if(err) return console.log('Error');
         
