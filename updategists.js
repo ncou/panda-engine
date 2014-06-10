@@ -1,6 +1,6 @@
 var github = require('github-basic');
 var fs = require('fs');
-var categories = ['Sprite', 'Tween', 'Particle', 'Config', 'Core', 'Debug', 'Other'];
+var categories = ['Sprite', 'Tween', 'Particle', 'Config', 'System', 'Core', 'Debug', 'Other'];
 
 var categoryData = {};
 for (var i = 0; i < categories.length; i++) {
