@@ -150,11 +150,10 @@ game.Audio = game.Class.extend({
     },
 
     loaded: function(path, callback, audio) {
-        if (this.sources[game.Audio.queue[path]]) throw(&#x27;Duplicate audio source: &#x27; + game.Audio.queue[path]);
-        if (!game.Audio.queue[path]) throw(&#x27;Cannot find audio resource: &#x27; + path);
-
-        // Get id for path
-        var id = game.Audio.queue[path];
+        for (var name in game.paths) {
+            if (game.paths[name] === path) var id = name;
+        }
+        if (!id) throw(&#x27;No id found for audio source&#x27;);
 
         this.sources[id] = {
             clips: [],
@@ -181,7 +180,7 @@ game.Audio = game.Class.extend({
     },
 
     play: function(id, volume, loop, callback, rate) {
-        if (!this.sources[id]) throw(&#x27;Cannot find source: &#x27; + id);
+        if (!this.sources[id]) throw(&#x27;Cannot find audio: &#x27; + id);
 
         // Web Audio
         if (this.context) {
@@ -467,8 +466,6 @@ game.Audio.formats = [
     { ext: &#x27;m4a&#x27;, type: &#x27;audio/mp4; codecs=&quot;mp4a.40.5&quot;&#x27; },
     { ext: &#x27;ogg&#x27;, type: &#x27;audio/ogg; codecs=&quot;vorbis&quot;&#x27; }
 ];
-
-game.Audio.queue = {};
 
 });
 

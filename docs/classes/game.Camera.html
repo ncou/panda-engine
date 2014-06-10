@@ -5,7 +5,7 @@ title: Documentation
 
 <div class="sidebar"></div>
 
-<h4>Class: game.Circle</h4>
+<h4>Class: game.Camera</h4>
 <div class="classes-meta">
     
 
@@ -17,13 +17,13 @@ title: Documentation
 
     
         <!-- <div class="foundat">
-            Defined in: <a href="../files/src_engine_physics.js.html#l499"><code>src&#x2F;engine&#x2F;physics.js:499</code></a>
+            Defined in: <a href="../files/src_engine_camera.js.html#l11"><code>src&#x2F;engine&#x2F;camera.js:11</code></a>
         </div> -->
     
 
     
         
-            Module: <a href="../modules/physics.html">physics</a>
+            Module: <a href="../modules/camera.html">camera</a>
         
     
 
@@ -33,8 +33,7 @@ title: Documentation
 
 
 <!-- <div class="box intro">
-    <p>Circle shape for physic body.</p>
-
+    
 </div> -->
 
 <!-- Class member index -->
@@ -49,7 +48,37 @@ title: Documentation
         <ul class="index-list properties extends">
             
                 <li class="index-item property">
-                    <a href="#property_radius">radius</a>
+                    <a href="#property_acceleration">acceleration</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_container">container</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_maxSpeed">maxSpeed</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_offset">offset</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_speed">speed</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_target">target</a>
 
                     
                 </li>
@@ -68,17 +97,17 @@ title: Documentation
         <ul class="index-list methods extends">
 
             
-                <li class="index-item method constructor">
-                    <a href="#method_game.Circle">game.Circle <span class="flag constructor">constructor</span></a>
+
+            
+                <li class="index-item method inherited">
+                    <a href="#method__super">_super</a>
 
                     
                     
                 </li>
             
-
-            
-                <li class="index-item method inherited">
-                    <a href="#method__super">_super</a>
+                <li class="index-item method">
+                    <a href="#method_addTo">addTo</a>
 
                     
                     
@@ -112,6 +141,13 @@ title: Documentation
                     
                 </li>
             
+                <li class="index-item method">
+                    <a href="#method_target">target</a>
+
+                    
+                    
+                </li>
+            
         </ul>
         <div class="clear"></div>
         </div>
@@ -131,9 +167,9 @@ title: Documentation
         <h6>Properties</h6>
 
         
-            <a name="property_radius" class="anchor-link"></a>
+            <a name="property_acceleration" class="anchor-link"></a>
 <div class="box property item">
-    <h3 class="name"><code>radius</code>
+    <h3 class="name"><code>acceleration</code>
     <span class="type">Number</span>
 
     
@@ -157,7 +193,7 @@ title: Documentation
             
         
         
-        <!-- <a href="../files/src_engine_physics.js.html#l507"><code>src&#x2F;engine&#x2F;physics.js:507</code></a> -->
+        <!-- <a href="../files/src_engine_camera.js.html#l22"><code>src&#x2F;engine&#x2F;camera.js:22</code></a> -->
         
         </p>
 
@@ -168,12 +204,12 @@ title: Documentation
 
     <div class="extended-detail">
         <div class="description">
-            <p>Radius of circle.</p>
+            <p>Camera acceleration speed.</p>
 
         </div>
 
         
-            <p class="default"><strong>Default:</strong> <span class="default-value">50</span></p>
+            <p class="default"><strong>Default:</strong> <span class="default-value">3</span></p>
         
 
         
@@ -183,35 +219,10 @@ title: Documentation
 </div>
 
         
-
-    </div>
-
-
-
-    <div class="constructor">
-        <h6>Constructor</h6>
-        <a name="method_game.Circle" class="anchor-link"></a>
-<div class="box method item">
-    <h3 class="name">game.Circle
-    
-        <span class="args">
-            <span class="paren">(</span><span class="args-list inline commas">
-            
-
-                    
-                        <span>radius</span>
-                    
-
-            
-            </span><span class="paren">)</span>
-        </span>
-    
-
-    
-
-    
-
-    
+            <a name="property_container" class="anchor-link"></a>
+<div class="box property item">
+    <h3 class="name"><code>container</code>
+    <span class="type"><a href="../classes/game.Container.html" class="crosslink">game.Container</a></span>
 
     
 
@@ -228,16 +239,15 @@ title: Documentation
             
                 
                 <p>
-                <!-- 
+<!--                 
                 Defined in
                  -->
             
         
         
-        <!-- <a href="../files/src_engine_physics.js.html#l499"><code>src&#x2F;engine&#x2F;physics.js:499</code></a> -->
+        <!-- <a href="../files/src_engine_camera.js.html#l40"><code>src&#x2F;engine&#x2F;camera.js:40</code></a> -->
         
         </p>
-
 
         
 
@@ -245,34 +255,13 @@ title: Documentation
     </div>
 
     <div class="extended-detail">
-
         <div class="description">
-            
+            <p>Container, that the camera is moving.</p>
+
         </div>
 
         
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">radius</code>
-                            <span class="type">Number</span>
-                        
-
-                        
-
-                        <span class="param-description">
-                             
-                        </span>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
+            <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
         
 
         
@@ -281,7 +270,217 @@ title: Documentation
     </div>
 </div>
 
+        
+            <a name="property_maxSpeed" class="anchor-link"></a>
+<div class="box property item">
+    <h3 class="name"><code>maxSpeed</code>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+<!--                 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_camera.js.html#l16"><code>src&#x2F;engine&#x2F;camera.js:16</code></a> -->
+        
+        </p>
+
+        
+
+        
     </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Camera maximum move speed.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">200</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_offset" class="anchor-link"></a>
+<div class="box property item">
+    <h3 class="name"><code>offset</code>
+    <span class="type">game.Point</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+<!--                 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_camera.js.html#l28"><code>src&#x2F;engine&#x2F;camera.js:28</code></a> -->
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Camera offset.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">game.system.width / 2, game.system.height / 2</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_speed" class="anchor-link"></a>
+<div class="box property item">
+    <h3 class="name"><code>speed</code>
+    <span class="type">game.Point</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+<!--                 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_camera.js.html#l46"><code>src&#x2F;engine&#x2F;camera.js:46</code></a> -->
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Current speed of camera.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_target" class="anchor-link"></a>
+<div class="box property item">
+    <h3 class="name"><code>target</code>
+    <span class="type"><a href="../classes/game.Sprite.html" class="crosslink">game.Sprite</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+<!--                 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_camera.js.html#l34"><code>src&#x2F;engine&#x2F;camera.js:34</code></a> -->
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Sprite, that camera follows.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+
+    </div>
+
+
 
 
 
@@ -357,6 +556,99 @@ title: Documentation
                         
                             <code class="param-name">arguments</code>
                             <span class="type">Array</span>
+                        
+
+                        
+
+                        <span class="param-description">
+                             
+                        </span>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_addTo" class="anchor-link"></a>
+<div class="box method item">
+    <h3 class="name">addTo
+    
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
+            
+
+                    
+                        <span>container</span>
+                    
+
+            
+            </span><span class="paren">)</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                <!-- 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_camera.js.html#l89"><code>src&#x2F;engine&#x2F;camera.js:89</code></a> -->
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Add camera to container.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">container</code>
+                            <span class="type"><a href="../classes/game.Container.html" class="crosslink">game.Container</a></span>
                         
 
                         
@@ -735,6 +1027,99 @@ title: Documentation
                         
                             <code class="param-name">arguments</code>
                             <span class="type">Array</span>
+                        
+
+                        
+
+                        <span class="param-description">
+                             
+                        </span>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_target" class="anchor-link"></a>
+<div class="box method item">
+    <h3 class="name">target
+    
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
+            
+
+                    
+                        <span>target</span>
+                    
+
+            
+            </span><span class="paren">)</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                <!-- 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_camera.js.html#l79"><code>src&#x2F;engine&#x2F;camera.js:79</code></a> -->
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Set target for camera.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">target</code>
+                            <span class="type"><a href="../classes/game.Sprite.html" class="crosslink">game.Sprite</a></span>
                         
 
                         

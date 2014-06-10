@@ -49,19 +49,19 @@ title: Documentation
         <ul class="index-list properties extends">
             
                 <li class="index-item property">
-                    <a href="#property_assets">assets</a>
+                    <a href="#property_assetQueue">assetQueue</a>
 
                     
                 </li>
             
                 <li class="index-item property">
-                    <a href="#property_assets">assets</a>
+                    <a href="#property_callback">callback</a>
 
                     
                 </li>
             
                 <li class="index-item property">
-                    <a href="#property_backgroundColor">backgroundColor</a>
+                    <a href="#property_dynamic">dynamic</a>
 
                     
                 </li>
@@ -80,6 +80,12 @@ title: Documentation
             
                 <li class="index-item property">
                     <a href="#property_scene">scene</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_soundQueue">soundQueue</a>
 
                     
                 </li>
@@ -224,6 +230,10 @@ title: Documentation
                 </li>
             
                 <li class="index-item attr">
+                    <a href="#attr_bgColor">bgColor</a>
+                </li>
+            
+                <li class="index-item attr">
                     <a href="#attr_logo">logo</a>
                 </li>
             
@@ -252,9 +262,9 @@ title: Documentation
         <h6>Properties</h6>
 
         
-            <a name="property_assets" class="anchor-link"></a>
+            <a name="property_assetQueue" class="anchor-link"></a>
 <div class="box property item">
-    <h3 class="name"><code>assets</code>
+    <h3 class="name"><code>assetQueue</code>
     <span class="type">Array</span>
 
     
@@ -278,7 +288,7 @@ title: Documentation
             
         
         
-        <!-- <a href="../files/src_engine_loader.js.html#l38"><code>src&#x2F;engine&#x2F;loader.js:38</code></a> -->
+        <!-- <a href="../files/src_engine_loader.js.html#l33"><code>src&#x2F;engine&#x2F;loader.js:33</code></a> -->
         
         </p>
 
@@ -302,10 +312,10 @@ title: Documentation
 </div>
 
         
-            <a name="property_assets" class="anchor-link"></a>
+            <a name="property_callback" class="anchor-link"></a>
 <div class="box property item">
-    <h3 class="name"><code>assets</code>
-    <span class="type">Array</span>
+    <h3 class="name"><code>callback</code>
+    <span class="type">Function</span>
 
     
 
@@ -328,7 +338,7 @@ title: Documentation
             
         
         
-        <!-- <a href="../files/src_engine_loader.js.html#l43"><code>src&#x2F;engine&#x2F;loader.js:43</code></a> -->
+        <!-- <a href="../files/src_engine_loader.js.html#l55"><code>src&#x2F;engine&#x2F;loader.js:55</code></a> -->
         
         </p>
 
@@ -339,10 +349,12 @@ title: Documentation
 
     <div class="extended-detail">
         <div class="description">
-            <p>List of sounds to load.</p>
+            <p>Callback function for loader.</p>
 
         </div>
 
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
         
 
         
@@ -352,10 +364,10 @@ title: Documentation
 </div>
 
         
-            <a name="property_backgroundColor" class="anchor-link"></a>
+            <a name="property_dynamic" class="anchor-link"></a>
 <div class="box property item">
-    <h3 class="name"><code>backgroundColor</code>
-    <span class="type">Number</span>
+    <h3 class="name"><code>dynamic</code>
+    <span class="type">Boolean</span>
 
     
 
@@ -378,7 +390,7 @@ title: Documentation
             
         
         
-        <!-- <a href="../files/src_engine_loader.js.html#l32"><code>src&#x2F;engine&#x2F;loader.js:32</code></a> -->
+        <!-- <a href="../files/src_engine_loader.js.html#l49"><code>src&#x2F;engine&#x2F;loader.js:49</code></a> -->
         
         </p>
 
@@ -389,12 +401,12 @@ title: Documentation
 
     <div class="extended-detail">
         <div class="description">
-            <p>Background color of preloader.</p>
+            <p>Enable dynamic mode.</p>
 
         </div>
 
         
-            <p class="default"><strong>Default:</strong> <span class="default-value">0x000000</span></p>
+            <p class="default"><strong>Default:</strong> <span class="default-value">true</span></p>
         
 
         
@@ -430,7 +442,7 @@ title: Documentation
             
         
         
-        <!-- <a href="../files/src_engine_loader.js.html#l22"><code>src&#x2F;engine&#x2F;loader.js:22</code></a> -->
+        <!-- <a href="../files/src_engine_loader.js.html#l23"><code>src&#x2F;engine&#x2F;loader.js:23</code></a> -->
         
         </p>
 
@@ -480,7 +492,7 @@ title: Documentation
             
         
         
-        <!-- <a href="../files/src_engine_loader.js.html#l27"><code>src&#x2F;engine&#x2F;loader.js:27</code></a> -->
+        <!-- <a href="../files/src_engine_loader.js.html#l28"><code>src&#x2F;engine&#x2F;loader.js:28</code></a> -->
         
         </p>
 
@@ -546,6 +558,58 @@ title: Documentation
         </div>
 
         
+            <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_soundQueue" class="anchor-link"></a>
+<div class="box property item">
+    <h3 class="name"><code>soundQueue</code>
+    <span class="type">Array</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+<!--                 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_loader.js.html#l38"><code>src&#x2F;engine&#x2F;loader.js:38</code></a> -->
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>List of sounds to load.</p>
+
+        </div>
+
+        
 
         
 
@@ -580,7 +644,7 @@ title: Documentation
             
         
         
-        <!-- <a href="../files/src_engine_loader.js.html#l48"><code>src&#x2F;engine&#x2F;loader.js:48</code></a> -->
+        <!-- <a href="../files/src_engine_loader.js.html#l43"><code>src&#x2F;engine&#x2F;loader.js:43</code></a> -->
         
         </p>
 
@@ -595,6 +659,8 @@ title: Documentation
 
         </div>
 
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
         
 
         
@@ -656,7 +722,7 @@ title: Documentation
             
         
         
-        <!-- <a href="../files/src_engine_core.js.html#l677"><code>src&#x2F;engine&#x2F;core.js:677</code></a> -->
+        <!-- <a href="../files/src_engine_core.js.html#l673"><code>src&#x2F;engine&#x2F;core.js:673</code></a> -->
         
         </p>
 
@@ -688,7 +754,7 @@ title: Documentation
                         
 
                         <span class="param-description">
-                             
+                            
                         </span>
 
                         
@@ -749,7 +815,7 @@ title: Documentation
             
         
         
-        <!-- <a href="../files/src_engine_loader.js.html#l153"><code>src&#x2F;engine&#x2F;loader.js:153</code></a> -->
+        <!-- <a href="../files/src_engine_loader.js.html#l169"><code>src&#x2F;engine&#x2F;loader.js:169</code></a> -->
         
         </p>
 
@@ -843,7 +909,7 @@ title: Documentation
             
         
         
-        <!-- <a href="../files/src_engine_core.js.html#l663"><code>src&#x2F;engine&#x2F;core.js:663</code></a> -->
+        <!-- <a href="../files/src_engine_core.js.html#l659"><code>src&#x2F;engine&#x2F;core.js:659</code></a> -->
         
         </p>
 
@@ -875,7 +941,7 @@ title: Documentation
                         
 
                         <span class="param-description">
-                             
+                            
                         </span>
 
                         
@@ -947,7 +1013,7 @@ title: Documentation
             
         
         
-        <!-- <a href="../files/src_engine_core.js.html#l722"><code>src&#x2F;engine&#x2F;core.js:722</code></a> -->
+        <!-- <a href="../files/src_engine_core.js.html#l718"><code>src&#x2F;engine&#x2F;core.js:718</code></a> -->
         
         </p>
 
@@ -979,7 +1045,7 @@ title: Documentation
                         
 
                         <span class="param-description">
-                             
+                            
                         </span>
 
                         
@@ -1037,7 +1103,7 @@ title: Documentation
             
         
         
-        <!-- <a href="../files/src_engine_core.js.html#l736"><code>src&#x2F;engine&#x2F;core.js:736</code></a> -->
+        <!-- <a href="../files/src_engine_core.js.html#l732"><code>src&#x2F;engine&#x2F;core.js:732</code></a> -->
         
         </p>
 
@@ -1069,7 +1135,7 @@ title: Documentation
                         
 
                         <span class="param-description">
-                             
+                            
                         </span>
 
                         
@@ -1120,7 +1186,7 @@ title: Documentation
             
         
         
-        <!-- <a href="../files/src_engine_loader.js.html#l181"><code>src&#x2F;engine&#x2F;loader.js:181</code></a> -->
+        <!-- <a href="../files/src_engine_loader.js.html#l199"><code>src&#x2F;engine&#x2F;loader.js:199</code></a> -->
         
         </p>
 
@@ -1180,7 +1246,7 @@ title: Documentation
             
         
         
-        <!-- <a href="../files/src_engine_loader.js.html#l173"><code>src&#x2F;engine&#x2F;loader.js:173</code></a> -->
+        <!-- <a href="../files/src_engine_loader.js.html#l191"><code>src&#x2F;engine&#x2F;loader.js:191</code></a> -->
         
         </p>
 
@@ -1240,7 +1306,7 @@ title: Documentation
             
         
         
-        <!-- <a href="../files/src_engine_loader.js.html#l162"><code>src&#x2F;engine&#x2F;loader.js:162</code></a> -->
+        <!-- <a href="../files/src_engine_loader.js.html#l178"><code>src&#x2F;engine&#x2F;loader.js:178</code></a> -->
         
         </p>
 
@@ -1300,7 +1366,7 @@ title: Documentation
             
         
         
-        <!-- <a href="../files/src_engine_loader.js.html#l191"><code>src&#x2F;engine&#x2F;loader.js:191</code></a> -->
+        <!-- <a href="../files/src_engine_loader.js.html#l209"><code>src&#x2F;engine&#x2F;loader.js:209</code></a> -->
         
         </p>
 
@@ -1360,7 +1426,7 @@ title: Documentation
             
         
         
-        <!-- <a href="../files/src_engine_loader.js.html#l199"><code>src&#x2F;engine&#x2F;loader.js:199</code></a> -->
+        <!-- <a href="../files/src_engine_loader.js.html#l230"><code>src&#x2F;engine&#x2F;loader.js:230</code></a> -->
         
         </p>
 
@@ -1420,7 +1486,7 @@ title: Documentation
             
         
         
-        <!-- <a href="../files/src_engine_loader.js.html#l114"><code>src&#x2F;engine&#x2F;loader.js:114</code></a> -->
+        <!-- <a href="../files/src_engine_loader.js.html#l128"><code>src&#x2F;engine&#x2F;loader.js:128</code></a> -->
         
         </p>
 
@@ -1487,7 +1553,7 @@ title: Documentation
             
         
         
-        <!-- <a href="../files/src_engine_core.js.html#l706"><code>src&#x2F;engine&#x2F;core.js:706</code></a> -->
+        <!-- <a href="../files/src_engine_core.js.html#l702"><code>src&#x2F;engine&#x2F;core.js:702</code></a> -->
         
         </p>
 
@@ -1519,7 +1585,7 @@ title: Documentation
                         
 
                         <span class="param-description">
-                             
+                            
                         </span>
 
                         
@@ -1574,7 +1640,7 @@ title: Documentation
             
         
         
-        <!-- <a href="../files/src_engine_loader.js.html#l264"><code>src&#x2F;engine&#x2F;loader.js:264</code></a> -->
+        <!-- <a href="../files/src_engine_loader.js.html#l294"><code>src&#x2F;engine&#x2F;loader.js:294</code></a> -->
         
         </p>
 
@@ -1584,7 +1650,7 @@ title: Documentation
     </div>
 
     <div class="description">
-        <p>Background color of the loading bar.</p>
+        <p>Loading bar background color.</p>
 
     </div>
 
@@ -1627,7 +1693,7 @@ title: Documentation
             
         
         
-        <!-- <a href="../files/src_engine_loader.js.html#l271"><code>src&#x2F;engine&#x2F;loader.js:271</code></a> -->
+        <!-- <a href="../files/src_engine_loader.js.html#l301"><code>src&#x2F;engine&#x2F;loader.js:301</code></a> -->
         
         </p>
 
@@ -1637,7 +1703,7 @@ title: Documentation
     </div>
 
     <div class="description">
-        <p>Color of the loading bar.</p>
+        <p>Loading bar color.</p>
 
     </div>
 
@@ -1680,7 +1746,7 @@ title: Documentation
             
         
         
-        <!-- <a href="../files/src_engine_loader.js.html#l285"><code>src&#x2F;engine&#x2F;loader.js:285</code></a> -->
+        <!-- <a href="../files/src_engine_loader.js.html#l315"><code>src&#x2F;engine&#x2F;loader.js:315</code></a> -->
         
         </p>
 
@@ -1733,7 +1799,7 @@ title: Documentation
             
         
         
-        <!-- <a href="../files/src_engine_loader.js.html#l292"><code>src&#x2F;engine&#x2F;loader.js:292</code></a> -->
+        <!-- <a href="../files/src_engine_loader.js.html#l322"><code>src&#x2F;engine&#x2F;loader.js:322</code></a> -->
         
         </p>
 
@@ -1743,7 +1809,7 @@ title: Documentation
     </div>
 
     <div class="description">
-        <p>Margin of the loading bar.</p>
+        <p>Loading bar margin from logo.</p>
 
     </div>
 
@@ -1786,7 +1852,7 @@ title: Documentation
             
         
         
-        <!-- <a href="../files/src_engine_loader.js.html#l278"><code>src&#x2F;engine&#x2F;loader.js:278</code></a> -->
+        <!-- <a href="../files/src_engine_loader.js.html#l308"><code>src&#x2F;engine&#x2F;loader.js:308</code></a> -->
         
         </p>
 
@@ -1802,6 +1868,59 @@ title: Documentation
 
     
         <p><strong>Default:</strong> 200</p>
+    
+
+    
+
+    
+</div>
+
+        
+            <a id="attr_bgColor" class="anchor-link"></a> 
+<div class="box attr item">
+    <h3 class="name"><code>bgColor</code> <span class="type">Number</span></h3>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                <!-- 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_loader.js.html#l280"><code>src&#x2F;engine&#x2F;loader.js:280</code></a> -->
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Loader background color.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> 0x000000</p>
     
 
     
@@ -1839,7 +1958,7 @@ title: Documentation
             
         
         
-        <!-- <a href="../files/src_engine_loader.js.html#l306"><code>src&#x2F;engine&#x2F;loader.js:306</code></a> -->
+        <!-- <a href="../files/src_engine_loader.js.html#l336"><code>src&#x2F;engine&#x2F;loader.js:336</code></a> -->
         
         </p>
 
@@ -1849,7 +1968,7 @@ title: Documentation
     </div>
 
     <div class="description">
-        <p>Logo to show in loader.</p>
+        <p>Loader logo dataURI.</p>
 
     </div>
 
@@ -1892,7 +2011,7 @@ title: Documentation
             
         
         
-        <!-- <a href="../files/src_engine_loader.js.html#l257"><code>src&#x2F;engine&#x2F;loader.js:257</code></a> -->
+        <!-- <a href="../files/src_engine_loader.js.html#l287"><code>src&#x2F;engine&#x2F;loader.js:287</code></a> -->
         
         </p>
 
@@ -1902,7 +2021,7 @@ title: Documentation
     </div>
 
     <div class="description">
-        <p>Minimum time to show preloader, in milliseconds.</p>
+        <p>Minimum time to show loader, in milliseconds.</p>
 
     </div>
 
@@ -1945,7 +2064,7 @@ title: Documentation
             
         
         
-        <!-- <a href="../files/src_engine_loader.js.html#l299"><code>src&#x2F;engine&#x2F;loader.js:299</code></a> -->
+        <!-- <a href="../files/src_engine_loader.js.html#l329"><code>src&#x2F;engine&#x2F;loader.js:329</code></a> -->
         
         </p>
 

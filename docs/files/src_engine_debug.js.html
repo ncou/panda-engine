@@ -184,11 +184,19 @@ game.Debug = game.Class.extend({
     last: 0,
     fps: 0,
     fpsText: null,
+    lastFps: 0,
 
     init: function() {
-        this.fpsText = new game.Text(&#x27;0&#x27;, { fill: game.Debug.color });
-        this.fpsText.position.set(game.Debug.position.x, game.Debug.position.y);
-        game.system.stage.addChild(this.fpsText);
+        this.debugDiv = document.createElement(&#x27;div&#x27;);
+        this.debugDiv.id = &#x27;pandaDebug&#x27;;
+        this.debugDiv.style.position = &#x27;absolute&#x27;;
+        this.debugDiv.style.left = game.Debug.position.x + &#x27;px&#x27;;
+        this.debugDiv.style.top = game.Debug.position.y + &#x27;px&#x27;;
+        this.debugDiv.style.zIndex = 9999;
+        this.debugDiv.style.color = game.Debug.color;
+        this.debugDiv.style.fontFamily = &#x27;Arial&#x27;;
+        this.debugDiv.style.fontSize = &#x27;20px&#x27;;
+        document.body.appendChild(this.debugDiv);
     },
 
     update: function() {
@@ -196,7 +204,10 @@ game.Debug = game.Class.extend({
 
         if (game.Timer.last &gt;= this.last + game.Debug.frequency) {
             this.fps = (Math.round((this.frames * 1000) / (game.Timer.last - this.last))).toString();
-            if (this.fps !== this.fpsText.text) this.fpsText.setText(this.fps.toString());
+            if (this.fps !== this.lastFps) {
+                this.lastFps = this.fps;
+                this.debugDiv.innerHTML = this.fps;
+            }
             this.last = game.Timer.last;
             this.frames = 0;
         }
@@ -219,9 +230,9 @@ game.Debug.frequency = 1000;
 /**
     Color of fps text.
     @attribute {String} color
-    @default white
+    @default red
 **/
-game.Debug.color = &#x27;white&#x27;;
+game.Debug.color = &#x27;red&#x27;;
 
 /**
     Position of fps text.

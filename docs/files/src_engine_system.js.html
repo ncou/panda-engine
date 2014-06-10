@@ -80,15 +80,7 @@ game.System = game.Class.extend({
         @property {Number} gameLoopId
     **/
     gameLoopId: 0,
-    /**
-        New scene to be set on end of run loop.
-        @property {game.Scene} newSceneClass
-    **/
     newSceneClass: null,
-    /**
-        Is game engine running.
-        @property {Boolean} running
-    **/
     running: false,
 
     init: function(width, height, canvasId) {
@@ -96,10 +88,22 @@ game.System = game.Class.extend({
         height = height || game.System.height;
         if (width === &#x27;window&#x27;) width = window.innerWidth;
         if (height === &#x27;window&#x27;) height = window.innerHeight;
-        if (game.System.orientation === &#x27;landscape&#x27;) game.System.orientation = game.System.LANDSCAPE;
-        if (game.System.orientation === &#x27;portrait&#x27;) game.System.orientation = game.System.PORTRAIT;
-        if (!width) width = (game.System.orientation === game.System.PORTRAIT ? 768 : 1024);
-        if (!height) height = (game.System.orientation === game.System.PORTRAIT ? 927 : 672);
+        // Deprecated
+        if (game.System.orientation === game.System.LANDSCAPE) game.System.orientation = &#x27;landscape&#x27;;
+        if (game.System.orientation === game.System.PORTRAIT) game.System.orientation = &#x27;portrait&#x27;;
+        if (!width) width = (game.System.orientation === &#x27;portrait&#x27; ? 768 : 1024);
+        if (!height) height = (game.System.orientation === &#x27;portrait&#x27; ? 928 : 672);
+
+        if (game.System.resizeToFill &amp;&amp; navigator.isCocoonJS) {
+            if (window.innerWidth / window.innerHeight !== width / height) {
+                if (game.System.orientation === &#x27;landscape&#x27;) {
+                    width = height * (window.innerWidth / window.innerHeight);
+                }
+                else {
+                    height = width * (window.innerHeight / window.innerWidth);
+                }
+            }
+        }
 
         if (game.System.hires) {
             if (typeof game.System.hiresWidth === &#x27;number&#x27; &amp;&amp; typeof game.System.hiresHeight === &#x27;number&#x27;) {
@@ -120,11 +124,9 @@ game.System = game.Class.extend({
             game.scale = 2;
         }
 
-        if (typeof game.System.resize !== &#x27;undefined&#x27;) game.System.scale = game.System.resize; // Deprecated
-
         this.width = width;
         this.height = height;
-        this.canvasId = canvasId || this.canvasId;
+        this.canvasId = canvasId || game.System.canvasId || this.canvasId;
         this.timer = new game.Timer();
 
         if (!document.getElementById(this.canvasId)) {
@@ -132,9 +134,6 @@ game.System = game.Class.extend({
             canvas.id = this.canvasId;
             document.body.appendChild(canvas);
         }
-
-        // Deprecated
-        if (game.System.canvas === false) game.System.webGL = true;
 
         if (game.System.webGL) this.renderer = new game.autoDetectRenderer(width, height, document.getElementById(this.canvasId), game.System.transparent, game.System.antialias);
         else this.renderer = new game.CanvasRenderer(width, height, document.getElementById(this.canvasId), game.System.transparent);
@@ -175,8 +174,8 @@ game.System = game.Class.extend({
             document.addEventListener(visibilityChange, function() {
                 if (game.System.pauseOnHide) {
                     var hidden = !!game.getVendorAttribute(document, &#x27;hidden&#x27;);
-                    if (hidden) game.system.pause();
-                    else game.system.resume();
+                    if (hidden) game.system.pause(true);
+                    else game.system.resume(true);
                 }
             }, false);
         }
@@ -186,17 +185,6 @@ game.System = game.Class.extend({
         }, false);
 
         if (!navigator.isCocoonJS) {
-            // Deprecated
-            if (typeof game.System.backgroundColor === &#x27;object&#x27;) {
-                game.System.bgColorMobile = game.System.backgroundColor.mobile;
-                game.System.bgColorRotate = game.System.backgroundColor.rotate;
-            }
-            // Deprecated
-            if (typeof game.System.backgroundImage === &#x27;object&#x27;) {
-                game.System.bgImageMobile = game.System.backgroundImage.mobile;
-                game.System.bgImageRotate = game.System.backgroundImage.rotate;
-            }
-
             if (game.System.bgColor &amp;&amp; !game.System.bgColorMobile) game.System.bgColorMobile = game.System.bgColor;
             if (game.System.bgColorMobile &amp;&amp; !game.System.bgColorRotate) game.System.bgColorRotate = game.System.bgColorMobile;
 
@@ -233,9 +221,12 @@ game.System = game.Class.extend({
         Pause game engine.
         @method pause
     **/
-    pause: function() {
+    pause: function(onHide) {
         if (this.paused) return;
-        this.paused = true;
+
+        if (onHide) this.pausedOnHide = true;
+        else this.paused = true;
+
         if (game.scene) game.scene.pause();
     },
 
@@ -243,9 +234,13 @@ game.System = game.Class.extend({
         Resume paused game engine.
         @method resume
     **/
-    resume: function() {
-        if (!this.paused) return;
-        this.paused = false;
+    resume: function(onHide) {
+        if (onHide &amp;&amp; this.paused) return;
+        if (!onHide &amp;&amp; !this.paused) return;
+        
+        if (onHide) this.pausedOnHide = false;
+        else this.paused = false;
+
         game.Timer.last = Date.now();
         if (game.scene) game.scene.resume();
     },
@@ -260,10 +255,11 @@ game.System = game.Class.extend({
         else this.setSceneNow(sceneClass);
     },
 
-    setSceneNow: function(SceneClass) {
+    setSceneNow: function(sceneClass) {
         if (game.tweenEngine) game.tweenEngine.tweens.length = 0;
-        game.scene = new (SceneClass)();
-        if (game.Debug &amp;&amp; game.Debug.enabled &amp;&amp; !navigator.isCocoonJS) this.debug = new game.Debug();
+        game.scene = new (sceneClass)();
+        if (game.Debug &amp;&amp; game.Debug.enabled &amp;&amp; !navigator.isCocoonJS &amp;&amp; !this.debug) this.debug = new game.Debug();
+        this.newSceneClass = null;
         this.startRunLoop();
     },
 
@@ -279,7 +275,7 @@ game.System = game.Class.extend({
     },
 
     run: function() {
-        if (this.paused) return;
+        if (this.paused || this.pausedOnHide) return;
 
         game.Timer.update();
         this.delta = this.timer.delta() / 1000;
@@ -287,11 +283,7 @@ game.System = game.Class.extend({
         game.scene.run();
 
         if (this.debug) this.debug.update();
-
-        if (this.newSceneClass) {
-            this.setSceneNow(this.newSceneClass);
-            this.newSceneClass = null;
-        }
+        if (this.newSceneClass) this.setSceneNow(this.newSceneClass);
     },
 
     resize: function(width, height) {
@@ -303,7 +295,7 @@ game.System = game.Class.extend({
     },
 
     initResize: function() {
-        this.ratio = game.System.orientation === game.System.LANDSCAPE ? this.width / this.height : this.height / this.width;
+        this.ratio = game.System.orientation === &#x27;landscape&#x27; ? this.width / this.height : this.height / this.width;
 
         if (game.System.center) this.canvas.style.margin = &#x27;auto&#x27;;
 
@@ -345,18 +337,19 @@ game.System = game.Class.extend({
                 };
                 img.src = game.config.mediaFolder + game.System.rotateImg;
                 img.style.position = &#x27;relative&#x27;;
+                img.style.maxWidth = &#x27;100%&#x27;;
             }
         }
         else {
             // Desktop center
-            this.canvas.style.position = &#x27;absolute&#x27;;
+            if (game.System.center || game.System.left || game.System.top) this.canvas.style.position = &#x27;absolute&#x27;;
             if (game.System.center) {
                 this.canvas.style.top = 0;
                 this.canvas.style.left = 0;
                 this.canvas.style.bottom = 0;
                 this.canvas.style.right = 0;
             }
-            else {
+            else if (game.System.left || game.System.top) {
                 this.canvas.style.left = game.System.left + &#x27;px&#x27;;
                 this.canvas.style.top = game.System.top + &#x27;px&#x27;;
             }
@@ -369,8 +362,8 @@ game.System = game.Class.extend({
                 var maxHeight = game.System.maxHeight === &#x27;auto&#x27; ? this.retina ? this.height / 2 : this.height : game.System.maxHeight;
                 if (game.System.minWidth) this.canvas.style.minWidth = minWidth + &#x27;px&#x27;;
                 if (game.System.minHeight) this.canvas.style.minHeight = minHeight + &#x27;px&#x27;;
-                if (game.System.maxWidth) this.canvas.style.maxWidth = maxWidth + &#x27;px&#x27;;
-                if (game.System.maxHeight) this.canvas.style.maxHeight = maxHeight + &#x27;px&#x27;;
+                if (game.System.maxWidth &amp;&amp; !game.System.scaleToFit) this.canvas.style.maxWidth = maxWidth + &#x27;px&#x27;;
+                if (game.System.maxHeight &amp;&amp; !game.System.scaleToFit) this.canvas.style.maxHeight = maxHeight + &#x27;px&#x27;;
             }
         }
 
@@ -385,10 +378,10 @@ game.System = game.Class.extend({
     },
 
     checkOrientation: function() {
-        this.orientation = window.innerWidth &lt; window.innerHeight ? game.System.PORTRAIT : game.System.LANDSCAPE;
+        this.orientation = window.innerWidth &lt; window.innerHeight ? &#x27;portrait&#x27; : &#x27;landscape&#x27;;
         if (game.device.android2 &amp;&amp; window.innerWidth === 320 &amp;&amp; window.innerHeight === 251) {
             // Android 2.3 portrait fix
-            this.orientation = game.System.PORTRAIT;
+            this.orientation = &#x27;portrait&#x27;;
         }
         this.rotateScreenVisible = game.System.orientation !== this.orientation ? true : false;
 
@@ -429,15 +422,15 @@ game.System = game.Class.extend({
             var width = window.innerWidth;
             var height = window.innerHeight;
 
-            // iOS 7 innerHeight bugfix
-            if (game.device.iPad &amp;&amp; height === 671 &amp;&amp; this.orientation === game.System.LANDSCAPE) height = 672;
-            if (game.device.iPhone &amp;&amp; height === 320 &amp;&amp; this.orientation === game.System.LANDSCAPE) height = 319;
-            if (game.device.iPhone &amp;&amp; height === 256 &amp;&amp; this.orientation === game.System.LANDSCAPE) height = 319;
-
+            // iOS innerHeight bug fixes
+            if (game.device.iOS7 &amp;&amp; window.innerHeight === 256) height = 319;
+            if (game.device.iOS7 &amp;&amp; game.device.pixelRatio === 2 &amp;&amp; this.orientation === &#x27;landscape&#x27;) height += 2;
+            if (game.device.iPad &amp;&amp; height === 671) height = 672;
+            
             if (game.System.resizeToFill &amp;&amp; !this.rotateScreenVisible) {
                 if (width / height !== this.width / this.height) {
                     // Wrong ratio, need to resize
-                    if (this.orientation === game.System.LANDSCAPE) {
+                    if (this.orientation === &#x27;landscape&#x27;) {
                         this.width = this.height * (width / height);
                         this.ratio = this.width / this.height;
                     }
@@ -449,7 +442,7 @@ game.System = game.Class.extend({
                 }
             }
 
-            if (game.System.orientation === game.System.LANDSCAPE) {
+            if (game.System.orientation === &#x27;landscape&#x27;) {
                 this.canvas.style.height = height + &#x27;px&#x27;;
                 this.canvas.style.width = height * this.ratio + &#x27;px&#x27;;
             }
@@ -465,7 +458,7 @@ game.System = game.Class.extend({
         else {
             // Desktop resize
             if (window.innerWidth === 0) return; // Chrome bug
-            if (window.innerWidth &lt; this.width || window.innerHeight &lt; this.height) {
+            if (window.innerWidth &lt; this.width || window.innerHeight &lt; this.height || game.System.scaleToFit) {
                 if (window.innerWidth / this.width &lt; window.innerHeight / this.height) {
                     this.canvas.style.width = window.innerWidth + &#x27;px&#x27;;
                     this.canvas.style.height = window.innerWidth * (this.height / this.width) + &#x27;px&#x27;;
@@ -570,14 +563,14 @@ game.System.retina = false;
     @default true
 **/
 game.System.pauseOnHide = true;
-game.System.PORTRAIT = 0;
-game.System.LANDSCAPE = 1;
+game.System.PORTRAIT = 0; // Deprecated
+game.System.LANDSCAPE = 1; // Deprecated
 /**
     Mobile orientation for the game.
-    @attribute {LANDSCAPE|PORTRAIT} orientation
-    @default game.System.PORTRAIT
+    @attribute {String} orientation
+    @default landscape
 **/
-game.System.orientation = game.System.PORTRAIT;
+game.System.orientation = &#x27;landscape&#x27;;
 /**
     Body background color.
     @attribute {String} bgColor
@@ -664,6 +657,18 @@ game.System.resizeToFill = false;
     @default SceneGame
 **/
 game.System.startScene = &#x27;SceneGame&#x27;;
+/**
+    Scale canvas to fit window size on desktop.
+    @attribute {Boolean} scaleToFit
+    @default false
+**/
+game.System.scaleToFit = false;
+/**
+    Canvas id for game.
+    @attribute {String} canvasId
+    @default null
+**/
+game.System.canvasId = null;
 
 });
 

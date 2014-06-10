@@ -5,6 +5,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "game.Animation",
         "game.Audio",
         "game.Body",
+        "game.Camera",
         "game.Circle",
         "game.Class",
         "game.CollisionSolver",
@@ -35,6 +36,7 @@ YUI.add("yuidoc-meta", function(Y) {
     "modules": [
         "analytics",
         "audio",
+        "camera",
         "core",
         "debug",
         "keyboard",
@@ -57,6 +59,10 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "audio",
             "name": "audio"
+        },
+        {
+            "displayName": "camera",
+            "name": "camera"
         },
         {
             "displayName": "core",
