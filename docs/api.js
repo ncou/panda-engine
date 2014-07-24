@@ -44,6 +44,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "particle",
         "physics",
         "pool",
+        "renderer",
         "scene",
         "storage",
         "system",
@@ -90,6 +91,10 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "pool",
             "name": "pool"
+        },
+        {
+            "displayName": "renderer",
+            "name": "renderer"
         },
         {
             "displayName": "scene",

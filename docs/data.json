@@ -149,7 +149,9 @@
         },
         "src/engine/renderer.js": {
             "name": "src/engine/renderer.js",
-            "modules": {},
+            "modules": {
+                "renderer": 1
+            },
             "classes": {
                 "game.Sprite": 1,
                 "game.Spine": 1,
@@ -158,7 +160,9 @@
                 "game.Animation": 1
             },
             "fors": {},
-            "namespaces": {}
+            "namespaces": {
+                "game": 1
+            }
         },
         "src/engine/scene.js": {
             "name": "src/engine/scene.js",
@@ -380,7 +384,20 @@
             "name": "pool",
             "submodules": {},
             "classes": {
-                "game.Pool": 1,
+                "game.Pool": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "game": 1
+            },
+            "tag": "module",
+            "file": "src/engine/pool.js",
+            "line": 11
+        },
+        "renderer": {
+            "name": "renderer",
+            "submodules": {},
+            "classes": {
                 "game.Sprite": 1,
                 "game.Spine": 1,
                 "game.Container": 1,
@@ -393,7 +410,7 @@
             },
             "tag": "module",
             "file": "src/engine/renderer.js",
-            "line": 303
+            "line": 307
         },
         "scene": {
             "name": "scene",
@@ -842,10 +859,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "pool",
+            "module": "renderer",
             "namespace": "game",
             "file": "src/engine/renderer.js",
-            "line": 91,
+            "line": 95,
             "description": "http://www.goodboydigital.com/pixijs/docs/classes/Sprite.html",
             "is_constructor": 1,
             "params": [
@@ -882,10 +899,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "pool",
+            "module": "renderer",
             "namespace": "game",
             "file": "src/engine/renderer.js",
-            "line": 179,
+            "line": 183,
             "description": "Spine animation.",
             "is_constructor": 1,
             "params": [
@@ -910,10 +927,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "pool",
+            "module": "renderer",
             "namespace": "game",
             "file": "src/engine/renderer.js",
-            "line": 216,
+            "line": 220,
             "description": "http://www.goodboydigital.com/pixijs/docs/classes/DisplayObjectContainer.html"
         },
         "game.TilingSprite": {
@@ -924,10 +941,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "pool",
+            "module": "renderer",
             "namespace": "game",
             "file": "src/engine/renderer.js",
-            "line": 259,
+            "line": 263,
             "description": "Tiling sprite.\nhttp://www.goodboydigital.com/pixijs/docs/classes/TilingSprite.html",
             "is_constructor": 1,
             "params": [
@@ -962,10 +979,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "pool",
+            "module": "renderer",
             "namespace": "game",
             "file": "src/engine/renderer.js",
-            "line": 303,
+            "line": 307,
             "description": "Sprite animation.\nhttp://www.goodboydigital.com/pixijs/docs/classes/MovieClip.html",
             "is_constructor": 1,
             "params": [
@@ -3995,27 +4012,27 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 131,
+            "line": 135,
             "description": "Position sprite to system center.",
             "itemtype": "method",
             "name": "center",
             "class": "game.Sprite",
-            "module": "pool",
+            "module": "renderer",
             "namespace": "game"
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 141,
+            "line": 145,
             "description": "Remove sprite from it's parent.",
             "itemtype": "method",
             "name": "remove",
             "class": "game.Sprite",
-            "module": "pool",
+            "module": "renderer",
             "namespace": "game"
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 154,
+            "line": 158,
             "description": "Add to container.",
             "itemtype": "method",
             "name": "addTo",
@@ -4027,12 +4044,12 @@
                 }
             ],
             "class": "game.Sprite",
-            "module": "pool",
+            "module": "renderer",
             "namespace": "game"
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 192,
+            "line": 196,
             "description": "Play animation.",
             "itemtype": "method",
             "name": "play",
@@ -4054,12 +4071,12 @@
                 }
             ],
             "class": "game.Spine",
-            "module": "pool",
+            "module": "renderer",
             "namespace": "game"
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 204,
+            "line": 208,
             "description": "Mix two animations for smooth transition.",
             "itemtype": "method",
             "name": "mix",
@@ -4081,32 +4098,32 @@
                 }
             ],
             "class": "game.Spine",
-            "module": "pool",
+            "module": "renderer",
             "namespace": "game"
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 223,
+            "line": 227,
             "description": "Remove container from it's parent.",
             "itemtype": "method",
             "name": "remove",
             "class": "game.Container",
-            "module": "pool",
+            "module": "renderer",
             "namespace": "game"
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 231,
+            "line": 235,
             "description": "Add object to container.",
             "itemtype": "method",
             "name": "addChild",
             "class": "game.Container",
-            "module": "pool",
+            "module": "renderer",
             "namespace": "game"
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 240,
+            "line": 244,
             "description": "Add to container.",
             "itemtype": "method",
             "name": "addTo",
@@ -4118,32 +4135,32 @@
                 }
             ],
             "class": "game.Container",
-            "module": "pool",
+            "module": "renderer",
             "namespace": "game"
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 270,
+            "line": 274,
             "itemtype": "property",
             "name": "speed",
             "type": "game.Point",
             "class": "game.TilingSprite",
-            "module": "pool",
+            "module": "renderer",
             "namespace": "game"
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 283,
+            "line": 287,
             "description": "Update tile position with speed.",
             "itemtype": "method",
             "name": "update",
             "class": "game.TilingSprite",
-            "module": "pool",
+            "module": "renderer",
             "namespace": "game"
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 292,
+            "line": 296,
             "description": "Add to container.",
             "itemtype": "method",
             "name": "addTo",
@@ -4155,7 +4172,7 @@
                 }
             ],
             "class": "game.TilingSprite",
-            "module": "pool",
+            "module": "renderer",
             "namespace": "game"
         },
         {
