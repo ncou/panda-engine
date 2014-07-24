@@ -18,13 +18,12 @@ title: Documentation
 &#x27;use strict&#x27;;
 
 /**
-    @module core
+    @module game
     @namespace game
     @requires loader
     @requires timer
     @requires system
     @requires audio
-    @requires sprite
     @requires debug
     @requires storage
     @requires tween
@@ -35,12 +34,12 @@ title: Documentation
 /**
     @class Core
 **/
-var core = {
+var game = {
     /**
         Current engine version.
         @property {String} version
     **/
-    version: &#x27;1.6.0&#x27;,
+    version: &#x27;1.7.0&#x27;,
     /**
         Engine settings.
         @property {Object} config
@@ -59,10 +58,10 @@ var core = {
         &#x27;engine.loader&#x27;,
         &#x27;engine.particle&#x27;,
         &#x27;engine.physics&#x27;,
+        &#x27;engine.pixi&#x27;,
         &#x27;engine.pool&#x27;,
         &#x27;engine.renderer&#x27;,
         &#x27;engine.scene&#x27;,
-        &#x27;engine.sprite&#x27;,
         &#x27;engine.storage&#x27;,
         &#x27;engine.system&#x27;,
         &#x27;engine.timer&#x27;,
@@ -246,7 +245,7 @@ var core = {
         @return {String} id
     **/
     addAsset: function(path, id) {
-        this.addFileToQueue(path, id, &#x27;assetQueue&#x27;);
+        return this.addFileToQueue(path, id, &#x27;assetQueue&#x27;);
     },
 
     /**
@@ -257,13 +256,13 @@ var core = {
         @return {String} id
     **/
     addAudio: function(path, id) {
-        this.addFileToQueue(path, id, &#x27;audioQueue&#x27;);
+        return this.addFileToQueue(path, id, &#x27;audioQueue&#x27;);
     },
 
     addFileToQueue: function(path, id, queue) {
         id = id || path;
         path = this.config.mediaFolder + path + this.nocache;
-        if (this.paths[id]) throw(&#x27;Id &#x27; + id + &#x27; already found&#x27;);
+        if (this.paths[id]) return id;
         this.paths[id] = path;
         if (this[queue].indexOf(path) === -1) this[queue].push(path);
         return id;
@@ -462,7 +461,7 @@ var core = {
         var elem = document.createElement(&#x27;canvas&#x27;);
         var canvasSupported = !!(elem.getContext &amp;&amp; elem.getContext(&#x27;2d&#x27;));
         if (!canvasSupported) {
-            if (core.config.noCanvasURL) window.location = core.config.noCanvasURL;
+            if (game.config.noCanvasURL) window.location = game.config.noCanvasURL;
             else throw(&#x27;Canvas not supported&#x27;);
         }
 
@@ -656,8 +655,8 @@ var core = {
 };
 
 // http://ejohn.org/blog/simple-javascript-inheritance/
-var initializing = false;
-var fnTest = /xyz/.test(function() {
+game.initializing = false;
+game.fnTest = /xyz/.test(function() {
     var xyz; return xyz;
 }) ? /\b_super\b/ : /[\D|\d]*/;
 
@@ -665,7 +664,7 @@ var fnTest = /xyz/.test(function() {
     Base class.
     @class Class
 **/
-core.Class = function() {};
+game.Class = function() {};
 
 /**
     Extend class.
@@ -673,11 +672,11 @@ core.Class = function() {};
     @param {Object} prop
     @return {game.Class} Returns extended class
 **/
-core.Class.extend = function(prop) {
+game.Class.extend = function(prop) {
     var parent = this.prototype;
-    initializing = true;
+    game.initializing = true;
     var prototype = new this();
-    initializing = false;
+    game.initializing = false;
 
     var makeFn = function(name, fn) {
         return function() {
@@ -698,7 +697,7 @@ core.Class.extend = function(prop) {
         if (
             typeof prop[name] === &#x27;function&#x27; &amp;&amp;
             typeof parent[name] === &#x27;function&#x27; &amp;&amp;
-            fnTest.test(prop[name])
+            game.fnTest.test(prop[name])
         ) {
             prototype[name] = makeFn(name, prop[name]);
         }
@@ -708,7 +707,7 @@ core.Class.extend = function(prop) {
     }
 
     function Class() {
-        if (!initializing) {
+        if (!game.initializing) {
             if (this.staticInit) {
                 /**
                     This method is called before init.
@@ -722,7 +721,7 @@ core.Class.extend = function(prop) {
             }
             for (var p in this) {
                 if (typeof this[p] === &#x27;object&#x27;) {
-                    this[p] = core.copy(this[p]);
+                    this[p] = game.copy(this[p]);
                 }
             }
             if (this.init) {
@@ -739,7 +738,7 @@ core.Class.extend = function(prop) {
 
     Class.prototype = prototype;
     Class.prototype.constructor = Class;
-    Class.extend = core.Class.extend;
+    Class.extend = game.Class.extend;
     /**
         Inject class.
         @method inject
@@ -763,7 +762,7 @@ core.Class.extend = function(prop) {
             if (
                 typeof prop[name] === &#x27;function&#x27; &amp;&amp;
                 typeof proto[name] === &#x27;function&#x27; &amp;&amp;
-                fnTest.test(prop[name])
+                game.fnTest.test(prop[name])
             ) {
                 parent[name] = proto[name];
                 proto[name] = makeFn(name, prop[name]);
@@ -777,16 +776,8 @@ core.Class.extend = function(prop) {
     return Class;
 };
 
-if (typeof exports !== &#x27;undefined&#x27;) {
-    if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
-        exports = module.exports = core;
-    }
-    exports.core = core;
-}
-else {
-    window.game = window.panda = core;
-    core.boot();
-}
+if (typeof exports !== &#x27;undefined&#x27;) exports = module.exports = game;
+else game.boot();
 
     </pre>
 </div>

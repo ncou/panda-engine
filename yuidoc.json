@@ -8,6 +8,6 @@
     "options": {
         "paths": "src/engine/",
         "outdir": "docs",
-        "exclude": "renderer.js"
+        "exclude": "pixi.js"
     }
 }

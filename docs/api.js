@@ -37,15 +37,14 @@ YUI.add("yuidoc-meta", function(Y) {
         "analytics",
         "audio",
         "camera",
-        "core",
         "debug",
+        "game",
         "keyboard",
         "loader",
         "particle",
         "physics",
         "pool",
         "scene",
-        "sprite",
         "storage",
         "system",
         "timer",
@@ -65,12 +64,12 @@ YUI.add("yuidoc-meta", function(Y) {
             "name": "camera"
         },
         {
-            "displayName": "core",
-            "name": "core"
-        },
-        {
             "displayName": "debug",
             "name": "debug"
+        },
+        {
+            "displayName": "game",
+            "name": "game"
         },
         {
             "displayName": "keyboard",
@@ -95,10 +94,6 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "scene",
             "name": "scene"
-        },
-        {
-            "displayName": "sprite",
-            "name": "sprite"
         },
         {
             "displayName": "storage",

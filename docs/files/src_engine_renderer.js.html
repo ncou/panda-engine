@@ -5,22 +5,99 @@ title: Documentation
 
 <div class="sidebar"></div>
 
-<h1 class="file-heading">File: src/engine/sprite.js</h1>
+<h1 class="file-heading">File: src/engine/renderer.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-/**
-    @module sprite
-    @namespace game
-**/
 game.module(
-    &#x27;engine.sprite&#x27;
+    &#x27;engine.renderer&#x27;
 )
 .require(
-    &#x27;engine.renderer&#x27;
+    &#x27;engine.pixi&#x27;
 )
 .body(function() {
 &#x27;use strict&#x27;;
+
+game.PIXI.dontSayHello = true;
+
+// Used to extend PIXI classes
+game.PIXI.extend = function(prop) {
+    var name;
+    var proto = this.prototype;
+    var base = this.prototype.base || this;
+
+    function Class() {
+        var name;
+        if (this.init) this.init.apply(this, arguments);
+        else this.base.apply(this, arguments);
+
+        for (name in proto) {
+            if (typeof proto[name] !== &#x27;function&#x27; &amp;&amp; !this[name]) this[name] = game.copy(proto[name]);
+        }
+        for (name in prop) {
+            if (typeof prop[name] !== &#x27;function&#x27; &amp;&amp; !this[name]) this[name] = game.copy(prop[name]);
+        }
+    }
+
+    Class.prototype = Object.create(base.prototype);
+
+    var makeFn = function(name, fn) {
+        var from = proto[name];
+        if (name === &#x27;init&#x27; &amp;&amp; !from) from = base;
+        return function() {
+            var tmp = this._super;
+            this._super = from;
+            var ret = fn.apply(this, arguments);
+            this._super = tmp;
+            return ret;
+        };
+    };
+
+    for (name in proto) {
+        if (typeof proto[name] === &#x27;function&#x27;) {
+            Class.prototype[name] = makeFn(name, proto[name]);
+        }
+        else {
+            Class.prototype[name] = proto[name];
+        }
+    }
+
+    for (name in prop) {
+        if (typeof prop[name] === &#x27;function&#x27;) {
+            Class.prototype[name] = makeFn(name, prop[name]);
+        }
+        else {
+            Class.prototype[name] = prop[name];
+        }
+    }
+
+    Class.prototype.constructor = Class;
+    Class.prototype.base = base;
+    
+    Class.extend = game.PIXI.extend;
+
+    return Class;
+};
+
+for (var i in game.PIXI) {
+    if (game.PIXI[i].prototype instanceof Object) {
+        game.PIXI[i].extend = game.PIXI.extend;
+    }
+}
+
+game.AssetLoader = game.PIXI.AssetLoader;
+game.Text = game.PIXI.Text;
+game.HitRectangle = game.PIXI.Rectangle;
+game.HitCircle = game.PIXI.Circle;
+game.HitEllipse = game.PIXI.Ellipse;
+game.HitPolygon = game.PIXI.Polygon;
+game.TextureCache = game.PIXI.TextureCache;
+game.RenderTexture = game.PIXI.RenderTexture;
+game.Point = game.PIXI.Point;
+game.CanvasRenderer = game.PIXI.CanvasRenderer;
+game.autoDetectRenderer = game.PIXI.autoDetectRenderer;
+game.Stage = game.PIXI.Stage;
+game.blendModes = game.PIXI.blendModes;
 
 /**
     http://www.goodboydigital.com/pixijs/docs/classes/Sprite.html
@@ -31,7 +108,7 @@ game.module(
     @param {Number} [y]
     @param {Object} [settings]
 **/
-game.Sprite = PIXI.Sprite.extend({
+game.Sprite = game.PIXI.Sprite.extend({
     debugDraw: true,
 
     init: function(id, x, y, settings) {
@@ -46,7 +123,7 @@ game.Sprite = PIXI.Sprite.extend({
         if (typeof x === &#x27;number&#x27;) this.position.x = x;
         if (typeof y === &#x27;number&#x27;) this.position.y = y;
 
-        // auto bind touch events for mobile
+        // Auto bind touch events for mobile
         if (game.device.mobile &amp;&amp; !this.tap &amp;&amp; this.click) this.tap = this.click;
         if (game.device.mobile &amp;&amp; !this.touchmove &amp;&amp; this.mousemove) this.touchmove = this.mousemove;
         if (game.device.mobile &amp;&amp; !this.touchstart &amp;&amp; this.mousedown) this.touchstart = this.mousedown;
@@ -63,6 +140,16 @@ game.Sprite = PIXI.Sprite.extend({
     },
 
     /**
+        Position sprite to system center.
+        @method center
+    **/
+    center: function() {
+        this.position.x = game.system.width / 2 - this.width / 2 + this.width * this.anchor.x;
+        this.position.y = game.system.height / 2 - this.height / 2 + this.height * this.anchor.y;
+        return this;
+    },
+
+    /**
         Remove sprite from it&#x27;s parent.
         @method remove
     **/
@@ -72,11 +159,11 @@ game.Sprite = PIXI.Sprite.extend({
 
     addChild: function(obj) {
         this._super(obj);
-        if (game.debugDraw &amp;&amp; obj.interactive) game.debugDraw.addSprite(obj);
+        if (game.debugDraw &amp;&amp; obj.interactive &amp;&amp; obj.debugDraw) game.debugDraw.addSprite(obj);
     },
 
     /**
-        Add sprite to container.
+        Add to container.
         @method addTo
         @param {game.Container} container
     **/
@@ -86,6 +173,20 @@ game.Sprite = PIXI.Sprite.extend({
     }
 });
 
+game.Graphics = game.PIXI.Graphics.extend({
+    addTo: function(container) {
+        container.addChild(this);
+        return this;
+    }
+});
+
+game.BitmapText = game.PIXI.BitmapText.extend({
+    addTo: function(container) {
+        container.addChild(this);
+        return this;
+    } 
+});
+
 /**
     Spine animation.
     @class Spine
@@ -93,7 +194,7 @@ game.Sprite = PIXI.Sprite.extend({
     @param {String} id
     @param {Object} [settings]
 **/
-game.Spine = PIXI.Spine.extend({
+game.Spine = game.PIXI.Spine.extend({
     init: function(id, settings) {
         this._super(game.paths[id] || id);
         game.merge(this, settings);
@@ -124,11 +225,10 @@ game.Spine = PIXI.Spine.extend({
 });
 
 /**
-    Sprite container.
     http://www.goodboydigital.com/pixijs/docs/classes/DisplayObjectContainer.html
     @class Container
 **/
-game.Container = PIXI.DisplayObjectContainer.extend({
+game.Container = game.PIXI.DisplayObjectContainer.extend({
     debugDraw: true,
     
     /**
@@ -148,19 +248,24 @@ game.Container = PIXI.DisplayObjectContainer.extend({
         if (game.debugDraw &amp;&amp; obj.interactive &amp;&amp; obj.debugDraw) game.debugDraw.addSprite(obj);
     },
 
+    /**
+        Add to container.
+        @method addTo
+        @param {game.Container} container
+    **/
     addTo: function(container) {
         container.addChild(this);
         return this;
     }
 });
 
-game.Texture = PIXI.Texture.extend();
+game.Texture = game.PIXI.Texture.extend();
 game.Texture.fromImage = function(id, crossorigin) {
     id = game.paths[id] || id;
-    return PIXI.Texture.fromImage(id, crossorigin);
+    return game.PIXI.Texture.fromImage(id, crossorigin);
 };
-game.Texture.fromCanvas = PIXI.Texture.fromCanvas;
-game.Texture.fromFrame = PIXI.Texture.fromFrame;
+game.Texture.fromCanvas = game.PIXI.Texture.fromCanvas;
+game.Texture.fromFrame = game.PIXI.Texture.fromFrame;
 
 /**
     Tiling sprite.
@@ -172,21 +277,34 @@ game.Texture.fromFrame = PIXI.Texture.fromFrame;
     @param {Number} height
     @param {Object} [settings]
 **/
-game.TilingSprite = PIXI.TilingSprite.extend({
-    speed: { x: 0, y: 0 },
+game.TilingSprite = game.PIXI.TilingSprite.extend({
+    /**
+        @property {game.Point} speed
+    **/
+    speed: null,
 
     init: function(path, width, height, settings) {
+        this.speed = new game.Point();
         path = game.paths[path] || path;
-        var texture = path instanceof PIXI.Texture ? path : PIXI.Texture.fromFrame(this.path || path);
+        var texture = path instanceof game.Texture ? path : game.Texture.fromFrame(this.path || path);
         this._super(texture, width || texture.width, height || texture.height);
         game.merge(this, settings);
     },
 
+    /**
+        Update tile position with speed.
+        @method update
+    **/
     update: function() {
         this.tilePosition.x += this.speed.x * game.system.delta;
         this.tilePosition.y += this.speed.y * game.system.delta;
     },
 
+    /**
+        Add to container.
+        @method addTo
+        @param {game.Container} container
+    **/
     addTo: function(container) {
         container.addChild(this);
         return this;
@@ -200,13 +318,15 @@ game.TilingSprite = PIXI.TilingSprite.extend({
     @constructor
     @param {Array} textures
 **/
-game.Animation = PIXI.MovieClip.extend({
-    init: function() {
-        var frames = Array.prototype.slice.call(arguments);
+game.Animation = game.PIXI.MovieClip.extend({
+    init: function(textures) {
+        if (typeof textures === &#x27;string&#x27;) {
+            var frames = Array.prototype.slice.call(arguments);
 
-        var textures = [];
-        for (var i = 0; i &lt; frames.length; i++) {
-            textures.push(game.Texture.fromImage(frames[i]));
+            var textures = [];
+            for (var i = 0; i &lt; frames.length; i++) {
+                textures.push(game.Texture.fromImage(frames[i]));
+            }
         }
 
         this._super(textures);

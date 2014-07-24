@@ -335,7 +335,8 @@ game.System = game.Class.extend({
                     div.appendChild(img);
                     me.resizeRotateImage();
                 };
-                img.src = game.config.mediaFolder + game.System.rotateImg;
+                if (game.System.rotateImg.indexOf(&#x27;data:&#x27;) === 0) img.src = game.System.rotateImg;
+                else img.src = game.config.mediaFolder + game.System.rotateImg;
                 img.style.position = &#x27;relative&#x27;;
                 img.style.maxWidth = &#x27;100%&#x27;;
             }
