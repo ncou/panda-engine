@@ -3,6 +3,14 @@ layout: default
 title: Search
 ---
 
+<div class="box search">
+<div id="search">
+    <form method="GET" action="../search.html">
+        <input type="text" name="key" id="key">
+    </form>
+</div>
+</div>
+
 <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 
 <div id="status">Searching...</div>
@@ -38,6 +46,8 @@ title: Search
     $(function() {
         var search = getUrlVars();
         if (!search) return;
+
+        $('#search form #key').attr('value', search);
 
         $.getJSON('docs/data.json', function(data) {
             var resultModules = [];

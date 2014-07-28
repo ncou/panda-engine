@@ -861,6 +861,10 @@ code.param-name {
     line-height: 18px;
 }
 
+.box.search {
+	margin-bottom: 20px;
+}
+
 /* Better styles for embedding GitHub Gists */
 .gist{font-size:13px;line-height:18px;margin-bottom:20px;width:100%}
 .gist pre{font-family:Menlo,Monaco,'Bitstream Vera Sans Mono','Courier New',monospace !important}
