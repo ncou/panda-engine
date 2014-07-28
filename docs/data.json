@@ -288,7 +288,7 @@
             },
             "tag": "module",
             "file": "src/engine/core.js",
-            "line": 652,
+            "line": 658,
             "requires": [
                 "loader",
                 "timer",
@@ -552,7 +552,7 @@
             "module": "game",
             "namespace": "game",
             "file": "src/engine/core.js",
-            "line": 652,
+            "line": 658,
             "description": "Base class."
         },
         "game.DebugDraw": {
@@ -1897,7 +1897,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 658,
+            "line": 664,
             "description": "Extend class.",
             "itemtype": "method",
             "name": "extend",
@@ -1918,7 +1918,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 672,
+            "line": 678,
             "description": "Call functions parent function.",
             "itemtype": "method",
             "name": "_super",
@@ -1935,7 +1935,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 701,
+            "line": 707,
             "description": "This method is called before init.",
             "itemtype": "method",
             "name": "staticInit",
@@ -1952,7 +1952,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 717,
+            "line": 723,
             "description": "This method is called, when you create new instance of the class.",
             "itemtype": "method",
             "name": "init",
@@ -1969,7 +1969,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 731,
+            "line": 737,
             "description": "Inject class.",
             "itemtype": "method",
             "name": "inject",
@@ -4768,7 +4768,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 199,
+            "line": 201,
             "description": "Vibrate device.",
             "itemtype": "method",
             "name": "vibrate",
@@ -4785,7 +4785,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 209,
+            "line": 211,
             "description": "Pause game engine.",
             "itemtype": "method",
             "name": "pause",
@@ -4795,7 +4795,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 222,
+            "line": 224,
             "description": "Resume paused game engine.",
             "itemtype": "method",
             "name": "resume",
@@ -4805,7 +4805,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 237,
+            "line": 239,
             "description": "Change current scene.",
             "itemtype": "method",
             "name": "setScene",
@@ -4822,7 +4822,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 469,
+            "line": 471,
             "description": "Enable/disable canvas centering.",
             "itemtype": "attribute",
             "name": "center",
@@ -4834,7 +4834,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 475,
+            "line": 477,
             "description": "Canvas position from left, when centering is disabled.",
             "itemtype": "attribute",
             "name": "left",
@@ -4846,7 +4846,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 481,
+            "line": 483,
             "description": "Canvas position from top, when centering is disabled.",
             "itemtype": "attribute",
             "name": "top",
@@ -4858,7 +4858,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 487,
+            "line": 489,
             "description": "Enable/disable canvas scaling.",
             "itemtype": "attribute",
             "name": "resize",
@@ -4870,7 +4870,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 493,
+            "line": 495,
             "description": "Minimum width for canvas, when using scaling on desktop.",
             "itemtype": "attribute",
             "name": "minWidth",
@@ -4882,7 +4882,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 499,
+            "line": 501,
             "description": "Minimum height for canvas, when using scaling on desktop.",
             "itemtype": "attribute",
             "name": "minHeight",
@@ -4894,7 +4894,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 505,
+            "line": 507,
             "description": "Maximum width for canvas, when using scaling on desktop.",
             "itemtype": "attribute",
             "name": "maxWidth",
@@ -4906,7 +4906,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 511,
+            "line": 513,
             "description": "Maximum height for canvas, when using scaling on desktop.",
             "itemtype": "attribute",
             "name": "maxHeight",
@@ -4918,7 +4918,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 517,
+            "line": 519,
             "description": "Scaling method for CocoonJS.",
             "itemtype": "attribute",
             "name": "idtkScale",
@@ -4930,7 +4930,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 523,
+            "line": 525,
             "description": "Use ScreenCanvas on CocoonJS.\nhttp://support.ludei.com/hc/en-us/articles/201810268-ScreenCanvas",
             "itemtype": "attribute",
             "name": "screenCanvas",
@@ -4942,7 +4942,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 530,
+            "line": 532,
             "description": "Use HiRes mode.",
             "itemtype": "attribute",
             "name": "hires",
@@ -4954,7 +4954,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 536,
+            "line": 538,
             "description": "Canvas width/height factor, when HiRes mode is enabled.",
             "itemtype": "attribute",
             "name": "hiresFactor",
@@ -4966,7 +4966,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 544,
+            "line": 546,
             "description": "Use Retina mode.",
             "itemtype": "attribute",
             "name": "retina",
@@ -4978,7 +4978,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 550,
+            "line": 552,
             "description": "Pause game engine, when page is hidden.",
             "itemtype": "attribute",
             "name": "pauseOnHide",
@@ -4990,7 +4990,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 558,
+            "line": 560,
             "description": "Mobile orientation for the game.",
             "itemtype": "attribute",
             "name": "orientation",
@@ -5002,7 +5002,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 564,
+            "line": 566,
             "description": "Body background color.",
             "itemtype": "attribute",
             "name": "bgColor",
@@ -5014,7 +5014,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 570,
+            "line": 572,
             "description": "Body background color for mobile.",
             "itemtype": "attribute",
             "name": "bgColorMobile",
@@ -5026,7 +5026,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 576,
+            "line": 578,
             "description": "Body background color for mobile rotate screen.",
             "itemtype": "attribute",
             "name": "bgColorRotate",
@@ -5038,7 +5038,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 582,
+            "line": 584,
             "description": "Body background image.",
             "itemtype": "attribute",
             "name": "bgImage",
@@ -5050,7 +5050,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 588,
+            "line": 590,
             "description": "Body background image for mobile.",
             "itemtype": "attribute",
             "name": "bgImageMobile",
@@ -5062,7 +5062,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 594,
+            "line": 596,
             "description": "Body background image for mobile rotate screen.",
             "itemtype": "attribute",
             "name": "bgImageRotate",
@@ -5074,7 +5074,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 600,
+            "line": 602,
             "description": "Body background image position.",
             "itemtype": "attribute",
             "name": "bgPosition",
@@ -5086,7 +5086,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 606,
+            "line": 608,
             "description": "Rotate message for mobile.",
             "itemtype": "attribute",
             "name": "rotateMsg",
@@ -5098,7 +5098,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 612,
+            "line": 614,
             "description": "Rotate image for mobile.",
             "itemtype": "attribute",
             "name": "rotateImg",
@@ -5110,7 +5110,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 618,
+            "line": 620,
             "description": "Enable WebGL renderer.",
             "itemtype": "attribute",
             "name": "webGL",
@@ -5122,7 +5122,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 624,
+            "line": 626,
             "description": "Use transparent renderer.",
             "itemtype": "attribute",
             "name": "transparent",
@@ -5134,7 +5134,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 630,
+            "line": 632,
             "description": "Use antialias (only on WebGL).",
             "itemtype": "attribute",
             "name": "antialias",
@@ -5146,7 +5146,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 637,
+            "line": 639,
             "description": "Resize canvas to fill screen on mobile.",
             "itemtype": "attribute",
             "name": "resizeToFill",
@@ -5158,7 +5158,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 644,
+            "line": 646,
             "description": "Default start scene.",
             "itemtype": "attribute",
             "name": "startScene",
@@ -5170,7 +5170,7 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 650,
+            "line": 652,
             "description": "Scale canvas to fit window size on desktop.",
             "itemtype": "attribute",
             "name": "scaleToFit",
@@ -5182,12 +5182,24 @@
         },
         {
             "file": "src/engine/system.js",
-            "line": 656,
+            "line": 658,
             "description": "Canvas id for game.",
             "itemtype": "attribute",
             "name": "canvasId",
             "type": "String",
             "default": "null",
+            "class": "game.System",
+            "module": "system",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/system.js",
+            "line": 664,
+            "description": "Canvas scale mode.",
+            "itemtype": "attribute",
+            "name": "scaleMode",
+            "type": "String",
+            "default": "linear",
             "class": "game.System",
             "module": "system",
             "namespace": "game"

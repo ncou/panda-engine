@@ -1,0 +1,88 @@
+---
+layout: default
+title: Search
+---
+
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+
+<div id="status">Searching...</div>
+
+<div id="results" style="display:none;">
+    <div class="modules">
+        <h3>Modules</h3>
+        <div class="content"></div>
+    </div>
+    <div class="classes">
+        <h3>Classes</h3>
+        <div class="content"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var getUrlVars = function() {
+        if (window.location.href.indexOf('?') === -1) return false;
+
+        var vars = [];
+        var hash;
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+
+        for (var i = 0; i < hashes.length; i++)
+        {
+            hash = hashes[i].split('=');
+            vars[hash[0]] = hash[1].toLowerCase();
+        }
+
+        return vars.key || false;
+    };
+
+    $(function() {
+        var search = getUrlVars();
+        if (!search) return;
+
+        $.getJSON('docs/data.json', function(data) {
+            var resultModules = [];
+            var resultClasses = [];
+
+            // Modules
+            for (var name in data.modules) {
+                if (name.indexOf(search) !== -1) {
+                    resultModules.push(name);
+                }
+            }
+
+            for (var i = 0; i < resultModules.length; i++) {
+                $('#results .modules .content').append('<a href="docs/modules/' + resultModules[i] + '.html">' + resultModules[i] + '</a><br>');
+            }
+
+            if (resultModules.length === 0) $('#results .modules').hide();
+
+            // Classes
+            for (var name in data.classes) {
+                if (name.toLowerCase().indexOf(search) !== -1) {
+                    resultClasses.push(name);
+                }
+            }
+
+            // Class items
+            for (var i = 0; i < data.classitems.length; i++) {
+                if (data.classitems[i].name.toLowerCase().indexOf(search) !== -1 && resultClasses.indexOf(data.classitems[i].class) === -1) {
+                    resultClasses.push(data.classitems[i].class);
+                }
+            }
+
+            for (var i = 0; i < resultClasses.length; i++) {
+                $('#results .classes .content').append('<a href="docs/classes/' + resultClasses[i] + '.html">' + resultClasses[i] + '</a><br>');
+            }
+
+            if (resultClasses.length === 0) $('#results .classes').hide();
+
+            if (resultModules.length === 0 && resultClasses.length === 0) {
+                $('#status').html('Nothing found');
+            }
+            else {
+                $('#status').html('Results for keyword "' + search + '"');
+                $('#results').show();
+            }
+        });
+    });
+</script>

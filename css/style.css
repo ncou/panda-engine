@@ -849,6 +849,18 @@ code.param-name {
 	}
 }
 
+#search input {
+	padding: 0;
+	display: block;
+	width: 100%;
+	border-style: none;
+	margin: 0px;
+
+    font: 14px/1.5 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #515e73;
+    line-height: 18px;
+}
+
 /* Better styles for embedding GitHub Gists */
 .gist{font-size:13px;line-height:18px;margin-bottom:20px;width:100%}
 .gist pre{font-family:Menlo,Monaco,'Bitstream Vera Sans Mono','Courier New',monospace !important}

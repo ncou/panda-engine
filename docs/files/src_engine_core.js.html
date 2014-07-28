@@ -39,7 +39,7 @@ var game = {
         Current engine version.
         @property {String} version
     **/
-    version: &#x27;1.7.0&#x27;,
+    version: &#x27;1.7.1&#x27;,
     /**
         Engine settings.
         @property {Object} config
@@ -332,6 +332,12 @@ var game = {
         if (this.moduleQueue.length &gt; 0) throw(&#x27;Core not ready&#x27;);
 
         this.system = new this.System(width, height, canvasId);
+
+        if (game.Debug.enabled) {
+            console.log(&#x27;Panda.js &#x27; + game.version);
+            console.log(&#x27;Pixi.js &#x27; + game.PIXI.VERSION.replace(&#x27;v&#x27;, &#x27;&#x27;));
+            console.log((this.system.renderer.gl ? &#x27;WebGL&#x27; : &#x27;Canvas&#x27;) + &#x27; renderer&#x27;);
+        }
 
         if (this.Audio) this.audio = new this.Audio();
         if (this.Pool) this.pool = new this.Pool();

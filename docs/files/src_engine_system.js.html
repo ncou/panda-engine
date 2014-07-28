@@ -135,6 +135,8 @@ game.System = game.Class.extend({
             document.body.appendChild(canvas);
         }
 
+        game.PIXI.scaleModes.DEFAULT = game.PIXI.scaleModes[game.System.scaleMode.toUpperCase()] || 0;
+
         if (game.System.webGL) this.renderer = new game.autoDetectRenderer(width, height, document.getElementById(this.canvasId), game.System.transparent, game.System.antialias);
         else this.renderer = new game.CanvasRenderer(width, height, document.getElementById(this.canvasId), game.System.transparent);
 
@@ -432,11 +434,11 @@ game.System = game.Class.extend({
                 if (width / height !== this.width / this.height) {
                     // Wrong ratio, need to resize
                     if (this.orientation === &#x27;landscape&#x27;) {
-                        this.width = this.height * (width / height);
+                        this.width = Math.round(this.height * (width / height));
                         this.ratio = this.width / this.height;
                     }
                     else {
-                        this.height = this.width * (height / width);
+                        this.height = Math.round(this.width * (height / width));
                         this.ratio = this.height / this.width;
                     }
                     this.renderer.resize(this.width, this.height);
@@ -670,6 +672,12 @@ game.System.scaleToFit = false;
     @default null
 **/
 game.System.canvasId = null;
+/**
+    Canvas scale mode.
+    @attribute {String} scaleMode
+    @default linear
+**/
+game.System.scaleMode = &#x27;linear&#x27;;
 
 });
 
