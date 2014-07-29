@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation (1.7.0)
+title: Documentation <span>1.7.0</span>
 ---
 
 <div class="sidebar"></div>
@@ -334,6 +334,16 @@ game.Animation = game.PIXI.MovieClip.extend({
         }
 
         this._super(textures);
+    },
+
+    /**
+        Add to container.
+        @method addTo
+        @param {game.Container} container
+    **/
+    addTo: function(container) {
+        container.addChild(this);
+        return this;
     }
 });
 

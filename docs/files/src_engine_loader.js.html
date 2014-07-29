@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation (1.7.0)
+title: Documentation <span>1.7.0</span>
 ---
 
 <div class="sidebar"></div>
@@ -84,8 +84,10 @@ game.Loader = game.Class.extend({
             this.assetQueue.push(this.getPath(game.assetQueue[i]));
         }
 
-        for (var i = 0; i &lt; game.audioQueue.length; i++) {
-            this.soundQueue.push(game.audioQueue[i]);
+        if (game.Audio.enabled) {
+            for (var i = 0; i &lt; game.audioQueue.length; i++) {
+                this.soundQueue.push(game.audioQueue[i]);
+            }
         }
 
         if (this.assetQueue.length &gt; 0) {

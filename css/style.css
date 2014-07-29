@@ -297,6 +297,11 @@ a.showcase p {
 	color: #d90057;
 }
 
+#wrapper h1 span {
+	font-size: 18px;
+	color: #848e9d;
+}
+
 #header h2 {
 	color: #999;
 	font-size: 14px;
@@ -574,6 +579,10 @@ h3.name {
 	text-transform: none;
 }
 
+h3.name, h3.name code {
+	font-size: 16px;
+}
+
 code {
 	font: 14px/1.5 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -616,10 +625,11 @@ h3 .args, h3 .args span, h3 .args ul, h3 .args li {
 }
 
 .box h4 {
-	font-size: 16px;
+	font-size: 14px;
 	margin: 0;
 	padding: 0;
 	color: #000;
+	font-weight: normal;
 }
 
 div.box li.param a {
@@ -863,6 +873,46 @@ code.param-name {
 
 .box.search {
 	margin-bottom: 20px;
+}
+
+div.line {
+	margin-top: 40px;
+	border-bottom: 2px dashed #b9bec7;
+}
+
+div.headerBox {
+	background: #eee;
+	border-radius: 5px;
+	padding: 10px 10px;
+	color: #000;
+}
+
+div.headerBox h4 {
+	color: #515e73;
+}
+
+div.headerBox h4 span {
+	color: #000;
+}
+
+div.headerBox h3 {
+	margin-top: 5px;
+	color: #515e73;
+	text-transform: none;
+	font-size: 14px;
+	font-weight: normal;
+}
+
+div.headerBox .box {
+	background-color: #ddd;
+}
+
+div.headerBox .box a {
+	color: #515e73;
+}
+
+h3.search {
+	margin-bottom: 0px;
 }
 
 /* Better styles for embedding GitHub Gists */

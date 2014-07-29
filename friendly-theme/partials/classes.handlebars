@@ -1,4 +1,4 @@
-<h3>Search</h3>
+<h3 class="search">Search</h3>
 <div class="box search">
 <div id="search">
     <form method="GET" action="{{ projectRoot }}../search.html">
@@ -7,7 +7,8 @@
 </div>
 </div>
 
-<h4>Class: {{name}}</h4>
+<div class="headerBox">
+<h4><span>Class:</span> {{name}}</h4>
 <div class="classes-meta">
     {{#if uses}}
         <div class="uses">
@@ -58,11 +59,7 @@
     </div>
 {{/if}}
 
-<!-- <div class="box intro">
-    {{{classDescription}}}
-</div> -->
 
-<!-- Class member index -->
 
 <div class="classes-index">
 
@@ -143,10 +140,21 @@
 {{/if}}
 
 </div>
+
+</div>
+
 <div class="clear"></div>
 
+<div class="line"></div>
 
 <div class="class-detail">
+
+{{#is_constructor}}
+    <div class="constructor">
+        <h6>Constructor</h6>
+        {{>method}}
+    </div>
+{{/is_constructor}}
 
 {{#if properties}}
     <div class="properties-detail">
@@ -158,13 +166,6 @@
 
     </div>
 {{/if}}
-
-{{#is_constructor}}
-    <div class="constructor">
-        <h6>Constructor</h6>
-        {{>method}}
-    </div>
-{{/is_constructor}}
 
 {{#if methods}}
     <div class="methods-detail">

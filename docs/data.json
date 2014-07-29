@@ -498,7 +498,16 @@
             "namespace": "game",
             "file": "src/engine/analytics.js",
             "line": 11,
-            "extends": "game.Class"
+            "description": "Google Analytics tracking.",
+            "extends": "game.Class",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ]
         },
         "game.Audio": {
             "name": "game.Audio",
@@ -1125,7 +1134,39 @@
     "classitems": [
         {
             "file": "src/engine/analytics.js",
-            "line": 58,
+            "line": 19,
+            "description": "Analytics tracking id.",
+            "itemtype": "property",
+            "name": "trackId",
+            "type": "String",
+            "class": "game.Analytics",
+            "module": "analytics",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/analytics.js",
+            "line": 24,
+            "description": "User id used on CocoonJS analytics.",
+            "itemtype": "property",
+            "name": "userId",
+            "type": "Number",
+            "class": "game.Analytics",
+            "module": "analytics",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/analytics.js",
+            "line": 62,
+            "description": "Generate user id.",
+            "itemtype": "method",
+            "name": "guid",
+            "class": "game.Analytics",
+            "module": "analytics",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/analytics.js",
+            "line": 73,
             "description": "Send event to analytics.",
             "itemtype": "method",
             "name": "event",
@@ -1159,8 +1200,8 @@
         },
         {
             "file": "src/engine/analytics.js",
-            "line": 83,
-            "description": "Tracking id for Analytics.",
+            "line": 98,
+            "description": "Tracking id for analytics.",
             "itemtype": "attribute",
             "name": "id",
             "type": "String",
@@ -1170,8 +1211,8 @@
         },
         {
             "file": "src/engine/analytics.js",
-            "line": 89,
-            "description": "Enable Analytics on CocoonJS.",
+            "line": 104,
+            "description": "Enable analytics on CocoonJS.",
             "itemtype": "attribute",
             "name": "cocoonJS",
             "type": "Boolean",
@@ -1252,7 +1293,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 276,
+            "line": 278,
             "itemtype": "method",
             "name": "playSound",
             "params": [
@@ -1292,7 +1333,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 292,
+            "line": 294,
             "description": "Stop specific or all sounds.",
             "itemtype": "method",
             "name": "stopSound",
@@ -1309,7 +1350,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 312,
+            "line": 314,
             "description": "Pause specific or all sounds.",
             "itemtype": "method",
             "name": "pauseSound",
@@ -1327,7 +1368,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 331,
+            "line": 333,
             "itemtype": "method",
             "name": "resumeSound",
             "params": [
@@ -1344,7 +1385,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 349,
+            "line": 351,
             "itemtype": "method",
             "name": "playMusic",
             "params": [
@@ -1365,7 +1406,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 366,
+            "line": 368,
             "description": "Stop current music.",
             "itemtype": "method",
             "name": "stopMusic",
@@ -1375,7 +1416,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 377,
+            "line": 379,
             "description": "Pause current music.",
             "itemtype": "method",
             "name": "pauseMusic",
@@ -1385,7 +1426,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 387,
+            "line": 389,
             "description": "Resume current music.",
             "itemtype": "method",
             "name": "resumeMusic",
@@ -1395,7 +1436,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 406,
+            "line": 408,
             "description": "Pause all sounds and music",
             "itemtype": "method",
             "name": "pauseAll",
@@ -1405,7 +1446,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 417,
+            "line": 419,
             "description": "Resume all sounds and music",
             "itemtype": "method",
             "name": "resumeAll",
@@ -1415,7 +1456,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 428,
+            "line": 430,
             "description": "Stop all sounds and music",
             "itemtype": "method",
             "name": "stopAll",
@@ -1425,7 +1466,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 440,
+            "line": 442,
             "description": "Is audio enabled.",
             "itemtype": "attribute",
             "name": "enabled",
@@ -1437,7 +1478,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 447,
+            "line": 449,
             "description": "Is Web Audio enabled.",
             "itemtype": "attribute",
             "name": "webAudio",
@@ -2292,7 +2333,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 130,
+            "line": 132,
             "description": "Start loader.",
             "itemtype": "method",
             "name": "start",
@@ -2302,7 +2343,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 173,
+            "line": 175,
             "description": "Error loading file.",
             "itemtype": "method",
             "name": "error",
@@ -2319,7 +2360,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 182,
+            "line": 184,
             "description": "File loaded.",
             "itemtype": "method",
             "name": "progress",
@@ -2329,7 +2370,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 195,
+            "line": 197,
             "description": "Called when percent is changed.",
             "itemtype": "method",
             "name": "onPercentChange",
@@ -2339,7 +2380,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 203,
+            "line": 205,
             "description": "Start loading audio.",
             "itemtype": "method",
             "name": "loadAudio",
@@ -2349,7 +2390,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 213,
+            "line": 215,
             "description": "All files loaded.",
             "itemtype": "method",
             "name": "ready",
@@ -2359,7 +2400,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 234,
+            "line": 236,
             "description": "Set scene.",
             "itemtype": "method",
             "name": "setScene",
@@ -2369,7 +2410,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 284,
+            "line": 286,
             "description": "Loader background color.",
             "itemtype": "attribute",
             "name": "bgColor",
@@ -2381,7 +2422,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 291,
+            "line": 293,
             "description": "Minimum time to show loader, in milliseconds.",
             "itemtype": "attribute",
             "name": "timeout",
@@ -2393,7 +2434,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 298,
+            "line": 300,
             "description": "Loading bar background color.",
             "itemtype": "attribute",
             "name": "barBg",
@@ -2405,7 +2446,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 305,
+            "line": 307,
             "description": "Loading bar color.",
             "itemtype": "attribute",
             "name": "barColor",
@@ -2417,7 +2458,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 312,
+            "line": 314,
             "description": "Width of the loading bar.",
             "itemtype": "attribute",
             "name": "barWidth",
@@ -2429,7 +2470,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 319,
+            "line": 321,
             "description": "Height of the loading bar.",
             "itemtype": "attribute",
             "name": "barHeight",
@@ -2441,7 +2482,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 326,
+            "line": 328,
             "description": "Loading bar margin from logo.",
             "itemtype": "attribute",
             "name": "barMargin",
@@ -2453,7 +2494,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 333,
+            "line": 335,
             "description": "Use tween on loader logo.",
             "itemtype": "attribute",
             "name": "tween",
@@ -2465,7 +2506,7 @@
         },
         {
             "file": "src/engine/loader.js",
-            "line": 340,
+            "line": 342,
             "description": "Loader logo dataURI.",
             "itemtype": "attribute",
             "name": "logo",
@@ -4172,6 +4213,23 @@
                 }
             ],
             "class": "game.TilingSprite",
+            "module": "renderer",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/renderer.js",
+            "line": 328,
+            "description": "Add to container.",
+            "itemtype": "method",
+            "name": "addTo",
+            "params": [
+                {
+                    "name": "container",
+                    "description": "",
+                    "type": "game.Container"
+                }
+            ],
+            "class": "game.Animation",
             "module": "renderer",
             "namespace": "game"
         },
