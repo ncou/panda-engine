@@ -1,15 +1,16 @@
-<h3 class="search">Search</h3>
 <div class="box search">
 <div id="search">
     <form method="GET" action="{{ projectRoot }}../search.html">
-        <input type="text" name="key">
+        <input type="text" name="key" placeholder="Search documentation...">
     </form>
 </div>
 </div>
 
+<h4 class="boxHeader"><span>Class:</span> {{name}}</h4>
 <div class="headerBox">
-<h4><span>Class:</span> {{name}}</h4>
 <div class="classes-meta">
+    {{#if description}}<div class="desc">{{description}}</div>{{/if}}
+
     {{#if uses}}
         <div class="uses">
             Uses

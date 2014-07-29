@@ -649,7 +649,7 @@ a span.constructor {
 }
 
 .class-detail {
-	margin-top: 50px;
+	margin-top: 30px;
 }
 
 .classes-index h3 {
@@ -657,7 +657,7 @@ a span.constructor {
 }
 
 .classes-meta {
-	margin-top: 10px;
+	margin-top: 0px;
 	margin-left: 10px;
 	line-height: 22px;
 }
@@ -859,6 +859,12 @@ code.param-name {
 	}
 }
 
+#search {
+	padding: 5px;
+	background-color: white;
+	border-radius: 5px;
+}
+
 #search input {
 	padding: 0;
 	display: block;
@@ -873,6 +879,7 @@ code.param-name {
 
 .box.search {
 	margin-bottom: 20px;
+	background: #848e9d;
 }
 
 div.line {
@@ -891,20 +898,33 @@ div.headerBox h4 {
 	color: #515e73;
 }
 
-div.headerBox h4 span {
+h4.boxHeader {
 	color: #000;
 }
 
+h4 span {
+	color: #b9bec7;
+	font-size: 18px;
+}
+
 div.headerBox h3 {
-	margin-top: 5px;
-	color: #515e73;
+	color: #fff;
 	text-transform: none;
 	font-size: 14px;
 	font-weight: normal;
+	background-color: #848e9d;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	padding: 0px 10px;
+	margin-left: 0px;
+	margin-top: 10px;
 }
 
 div.headerBox .box {
 	background-color: #ddd;
+	border-radius: 0px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
 }
 
 div.headerBox .box a {
@@ -913,6 +933,18 @@ div.headerBox .box a {
 
 h3.search {
 	margin-bottom: 0px;
+}
+
+h4.boxHeader {
+	margin-bottom: 10px;
+}
+
+.classes-meta .desc {
+	margin-bottom: 10px;
+}
+
+.index-section .box.float li {
+	width: 293px;
 }
 
 /* Better styles for embedding GitHub Gists */
