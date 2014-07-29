@@ -60,7 +60,7 @@
     </div>
 {{/if}}
 
-
+</div>
 
 <div class="classes-index">
 
@@ -93,7 +93,7 @@
         <ul class="index-list methods{{#if extends}} extends{{/if}}">
 
             {{#is_constructor}}
-                <li class="index-item method{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}} constructor">
+<!--                 <li class="index-item method{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}} constructor">
                     <a href="#method_{{name}}">{{name}} <span class="flag constructor">constructor</span></a>
 
                     {{#if static}}
@@ -102,7 +102,7 @@
                     {{#if deprecated}}
                         <span class="flag deprecated">deprecated</span>
                     {{/if}}
-                </li>
+                </li> -->
             {{/is_constructor}}
 
             {{#methods}}
@@ -139,8 +139,6 @@
         </div>
     </div>
 {{/if}}
-
-</div>
 
 </div>
 

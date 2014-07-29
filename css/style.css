@@ -890,7 +890,7 @@ div.line {
 div.headerBox {
 	background: #eee;
 	border-radius: 5px;
-	padding: 10px 10px;
+	padding: 10px 0px;
 	color: #000;
 }
 
@@ -907,7 +907,7 @@ h4 span {
 	font-size: 18px;
 }
 
-div.headerBox h3 {
+.classes-index h3 {
 	color: #fff;
 	text-transform: none;
 	font-size: 14px;
@@ -920,11 +920,12 @@ div.headerBox h3 {
 	margin-top: 10px;
 }
 
-div.headerBox .box {
-	background-color: #ddd;
+.classes-index .box {
+	background-color: #eee;
 	border-radius: 0px;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
+	padding: 10px 10px;
 }
 
 div.headerBox .box a {
@@ -944,7 +945,6 @@ h4.boxHeader {
 }
 
 .index-section .box.float li {
-	width: 293px;
 }
 
 /* Better styles for embedding GitHub Gists */

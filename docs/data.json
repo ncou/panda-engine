@@ -521,6 +521,7 @@
             "namespace": "game",
             "file": "src/engine/audio.js",
             "line": 11,
+            "description": "Audio manager.",
             "extends": "game.Class"
         },
         "game.Camera": {
@@ -992,7 +993,8 @@
             "namespace": "game",
             "file": "src/engine/renderer.js",
             "line": 307,
-            "description": "Sprite animation.\nhttp://www.goodboydigital.com/pixijs/docs/classes/MovieClip.html",
+            "description": "Frame by frame animation.",
+            "extends": "game.Container",
             "is_constructor": 1,
             "params": [
                 {
@@ -1134,42 +1136,10 @@
     "classitems": [
         {
             "file": "src/engine/analytics.js",
-            "line": 19,
-            "description": "Analytics tracking id.",
-            "itemtype": "property",
-            "name": "trackId",
-            "type": "String",
-            "class": "game.Analytics",
-            "module": "analytics",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/analytics.js",
-            "line": 24,
-            "description": "User id used on CocoonJS analytics.",
-            "itemtype": "property",
-            "name": "userId",
-            "type": "Number",
-            "class": "game.Analytics",
-            "module": "analytics",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/analytics.js",
-            "line": 62,
-            "description": "Generate user id.",
-            "itemtype": "method",
-            "name": "guid",
-            "class": "game.Analytics",
-            "module": "analytics",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/analytics.js",
-            "line": 73,
+            "line": 61,
             "description": "Send event to analytics.",
             "itemtype": "method",
-            "name": "event",
+            "name": "send",
             "params": [
                 {
                     "name": "category",
@@ -1200,7 +1170,7 @@
         },
         {
             "file": "src/engine/analytics.js",
-            "line": 98,
+            "line": 91,
             "description": "Tracking id for analytics.",
             "itemtype": "attribute",
             "name": "id",
@@ -1211,7 +1181,7 @@
         },
         {
             "file": "src/engine/analytics.js",
-            "line": 104,
+            "line": 97,
             "description": "Enable analytics on CocoonJS.",
             "itemtype": "attribute",
             "name": "cocoonJS",
@@ -1223,7 +1193,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 16,
+            "line": 17,
             "description": "Current audio format.",
             "itemtype": "property",
             "name": "format",
@@ -1234,7 +1204,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 21,
+            "line": 22,
             "description": "Is sound muted.",
             "itemtype": "property",
             "name": "soundMuted",
@@ -1246,7 +1216,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 27,
+            "line": 28,
             "description": "Main sound volume.",
             "itemtype": "property",
             "name": "soundVolume",
@@ -1258,7 +1228,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 33,
+            "line": 34,
             "description": "Id of current music.",
             "itemtype": "property",
             "name": "currentMusic",
@@ -1269,7 +1239,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 38,
+            "line": 39,
             "description": "Is music muted.",
             "itemtype": "property",
             "name": "musicMuted",
@@ -1281,7 +1251,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 44,
+            "line": 45,
             "description": "Main music volume.",
             "itemtype": "property",
             "name": "musicVolume",
@@ -1293,7 +1263,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 278,
+            "line": 279,
             "itemtype": "method",
             "name": "playSound",
             "params": [
@@ -1333,7 +1303,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 294,
+            "line": 295,
             "description": "Stop specific or all sounds.",
             "itemtype": "method",
             "name": "stopSound",
@@ -1350,7 +1320,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 314,
+            "line": 315,
             "description": "Pause specific or all sounds.",
             "itemtype": "method",
             "name": "pauseSound",
@@ -1368,7 +1338,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 333,
+            "line": 334,
             "itemtype": "method",
             "name": "resumeSound",
             "params": [
@@ -1385,7 +1355,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 351,
+            "line": 352,
             "itemtype": "method",
             "name": "playMusic",
             "params": [
@@ -1406,7 +1376,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 368,
+            "line": 369,
             "description": "Stop current music.",
             "itemtype": "method",
             "name": "stopMusic",
@@ -1416,7 +1386,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 379,
+            "line": 380,
             "description": "Pause current music.",
             "itemtype": "method",
             "name": "pauseMusic",
@@ -1426,7 +1396,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 389,
+            "line": 390,
             "description": "Resume current music.",
             "itemtype": "method",
             "name": "resumeMusic",
@@ -1436,7 +1406,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 408,
+            "line": 409,
             "description": "Pause all sounds and music",
             "itemtype": "method",
             "name": "pauseAll",
@@ -1446,7 +1416,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 419,
+            "line": 420,
             "description": "Resume all sounds and music",
             "itemtype": "method",
             "name": "resumeAll",
@@ -1456,7 +1426,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 430,
+            "line": 431,
             "description": "Stop all sounds and music",
             "itemtype": "method",
             "name": "stopAll",
@@ -1466,7 +1436,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 442,
+            "line": 443,
             "description": "Is audio enabled.",
             "itemtype": "attribute",
             "name": "enabled",
@@ -1478,7 +1448,7 @@
         },
         {
             "file": "src/engine/audio.js",
-            "line": 449,
+            "line": 450,
             "description": "Is Web Audio enabled.",
             "itemtype": "attribute",
             "name": "webAudio",
@@ -4218,17 +4188,107 @@
         },
         {
             "file": "src/engine/renderer.js",
+            "line": 315,
+            "itemtype": "property",
+            "name": "animationSpeed",
+            "type": "Number",
+            "default": "1",
+            "class": "game.Animation",
+            "module": "renderer",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/renderer.js",
+            "line": 319,
+            "itemtype": "property",
+            "name": "textures",
+            "type": "Array",
+            "class": "game.Animation",
+            "module": "renderer",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/renderer.js",
+            "line": 322,
+            "itemtype": "property",
+            "name": "loop",
+            "type": "Boolean",
+            "class": "game.Animation",
+            "module": "renderer",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/renderer.js",
+            "line": 325,
+            "itemtype": "property",
+            "name": "currentFrame",
+            "type": "Number",
+            "class": "game.Animation",
+            "module": "renderer",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/renderer.js",
             "line": 328,
-            "description": "Add to container.",
+            "itemtype": "property",
+            "name": "playing",
+            "type": "Boolean",
+            "class": "game.Animation",
+            "module": "renderer",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/renderer.js",
+            "line": 331,
+            "itemtype": "property",
+            "name": "totalFrames",
+            "type": "Number",
+            "class": "game.Animation",
+            "module": "renderer",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/renderer.js",
+            "line": 334,
+            "itemtype": "property",
+            "name": "onComplete",
+            "type": "Function",
+            "class": "game.Animation",
+            "module": "renderer",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/renderer.js",
+            "line": 355,
             "itemtype": "method",
-            "name": "addTo",
-            "params": [
-                {
-                    "name": "container",
-                    "description": "",
-                    "type": "game.Container"
-                }
-            ],
+            "name": "play",
+            "class": "game.Animation",
+            "module": "renderer",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/renderer.js",
+            "line": 358,
+            "itemtype": "method",
+            "name": "stop",
+            "class": "game.Animation",
+            "module": "renderer",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/renderer.js",
+            "line": 361,
+            "itemtype": "method",
+            "name": "gotoAndPlay",
+            "class": "game.Animation",
+            "module": "renderer",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/renderer.js",
+            "line": 364,
+            "itemtype": "method",
+            "name": "gotoAndStop",
             "class": "game.Animation",
             "module": "renderer",
             "namespace": "game"

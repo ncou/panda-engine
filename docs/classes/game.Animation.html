@@ -16,11 +16,14 @@ title: Documentation <span>1.7.0</span>
 <h4 class="boxHeader"><span>Class:</span> game.Animation</h4>
 <div class="headerBox">
 <div class="classes-meta">
-    <div class="desc">Sprite animation.
-http://www.goodboydigital.com/pixijs/docs/classes/MovieClip.html</div>
+    <div class="desc">Frame by frame animation.</div>
 
     
 
+    
+        <div class="extends">
+            Extends: <a href="../classes/game.Container.html" class="crosslink">game.Container</a>
+        </div>
     
 
     
@@ -40,10 +43,63 @@ http://www.goodboydigital.com/pixijs/docs/classes/MovieClip.html</div>
 
 
 
-
+</div>
 
 <div class="classes-index">
 
+
+    <h3>Properties</h3>
+    <div class="index-section properties">
+
+        <div class="box float">
+        <ul class="index-list properties extends">
+            
+                <li class="index-item property">
+                    <a href="#property_animationSpeed">animationSpeed</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_currentFrame">currentFrame</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_loop">loop</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_onComplete">onComplete</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_playing">playing</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_textures">textures</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_totalFrames">totalFrames</a>
+
+                    
+                </li>
+            
+        </ul>
+        <div class="clear"></div>
+        </div>
+    </div>
 
 
 
@@ -51,20 +107,62 @@ http://www.goodboydigital.com/pixijs/docs/classes/MovieClip.html</div>
     <div class="index-section methods">
 
         <div class="box float">
-        <ul class="index-list methods">
+        <ul class="index-list methods extends">
 
             
-                <li class="index-item method constructor">
+<!--                 <li class="index-item method constructor">
                     <a href="#method_game.Animation">game.Animation <span class="flag constructor">constructor</span></a>
+
+                    
+                    
+                </li> -->
+            
+
+            
+                <li class="index-item method inherited">
+                    <a href="#method_addChild">addChild</a>
 
                     
                     
                 </li>
             
+                <li class="index-item method inherited">
+                    <a href="#method_addTo">addTo</a>
 
+                    
+                    
+                </li>
             
                 <li class="index-item method">
-                    <a href="#method_addTo">addTo</a>
+                    <a href="#method_gotoAndPlay">gotoAndPlay</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_gotoAndStop">gotoAndStop</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_play">play</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method inherited">
+                    <a href="#method_remove">remove</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_stop">stop</a>
 
                     
                     
@@ -77,8 +175,6 @@ http://www.goodboydigital.com/pixijs/docs/classes/MovieClip.html</div>
 
 
 
-
-</div>
 
 </div>
 
@@ -186,14 +282,423 @@ http://www.goodboydigital.com/pixijs/docs/classes/MovieClip.html</div>
 
 
 
+    <div class="properties-detail">
+        <h6>Properties</h6>
+
+        
+            <a name="property_animationSpeed" class="anchor-link"></a>
+<div class="box property item">
+    <h3 class="name"><code>animationSpeed</code>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+<!--                 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_renderer.js.html#l315"><code>src&#x2F;engine&#x2F;renderer.js:315</code></a> -->
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">1</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_currentFrame" class="anchor-link"></a>
+<div class="box property item">
+    <h3 class="name"><code>currentFrame</code>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+<!--                 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_renderer.js.html#l325"><code>src&#x2F;engine&#x2F;renderer.js:325</code></a> -->
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_loop" class="anchor-link"></a>
+<div class="box property item">
+    <h3 class="name"><code>loop</code>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+<!--                 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_renderer.js.html#l322"><code>src&#x2F;engine&#x2F;renderer.js:322</code></a> -->
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_onComplete" class="anchor-link"></a>
+<div class="box property item">
+    <h3 class="name"><code>onComplete</code>
+    <span class="type">Function</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+<!--                 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_renderer.js.html#l334"><code>src&#x2F;engine&#x2F;renderer.js:334</code></a> -->
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_playing" class="anchor-link"></a>
+<div class="box property item">
+    <h3 class="name"><code>playing</code>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+<!--                 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_renderer.js.html#l328"><code>src&#x2F;engine&#x2F;renderer.js:328</code></a> -->
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_textures" class="anchor-link"></a>
+<div class="box property item">
+    <h3 class="name"><code>textures</code>
+    <span class="type">Array</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+<!--                 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_renderer.js.html#l319"><code>src&#x2F;engine&#x2F;renderer.js:319</code></a> -->
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_totalFrames" class="anchor-link"></a>
+<div class="box property item">
+    <h3 class="name"><code>totalFrames</code>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+<!--                 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_renderer.js.html#l331"><code>src&#x2F;engine&#x2F;renderer.js:331</code></a> -->
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+
+    </div>
+
 
 
     <div class="methods-detail">
         <h6>Methods</h6>
 
         
+            <a name="method_addChild" class="anchor-link"></a>
+<div class="box method item inherited">
+    <h3 class="name">addChild
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/game.Container.html#method_addChild" class="type">game.Container</a>:
+            
+        
+        
+        <!-- <a href="../files/src_engine_renderer.js.html#l235"><code>src&#x2F;engine&#x2F;renderer.js:235</code></a> -->
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Add object to container.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
             <a name="method_addTo" class="anchor-link"></a>
-<div class="box method item">
+<div class="box method item inherited">
     <h3 class="name">addTo
     
         <span class="args">
@@ -228,15 +733,12 @@ http://www.goodboydigital.com/pixijs/docs/classes/MovieClip.html</div>
     <div class="meta">
         
             
-                
-                <p>
-                <!-- 
-                Defined in
-                 -->
+                <p>Inherited from
+                <a href="../classes/game.Container.html#method_addTo" class="type">game.Container</a>:
             
         
         
-        <!-- <a href="../files/src_engine_renderer.js.html#l328"><code>src&#x2F;engine&#x2F;renderer.js:328</code></a> -->
+        <!-- <a href="../files/src_engine_renderer.js.html#l244"><code>src&#x2F;engine&#x2F;renderer.js:244</code></a> -->
         
         </p>
 
@@ -268,7 +770,7 @@ http://www.goodboydigital.com/pixijs/docs/classes/MovieClip.html</div>
                         
 
                         <span class="param-description">
-                             
+                            
                         </span>
 
                         
@@ -276,6 +778,299 @@ http://www.goodboydigital.com/pixijs/docs/classes/MovieClip.html</div>
                 
                 </ul>
             </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_gotoAndPlay" class="anchor-link"></a>
+<div class="box method item">
+    <h3 class="name">gotoAndPlay
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                <!-- 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_renderer.js.html#l361"><code>src&#x2F;engine&#x2F;renderer.js:361</code></a> -->
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_gotoAndStop" class="anchor-link"></a>
+<div class="box method item">
+    <h3 class="name">gotoAndStop
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                <!-- 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_renderer.js.html#l364"><code>src&#x2F;engine&#x2F;renderer.js:364</code></a> -->
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_play" class="anchor-link"></a>
+<div class="box method item">
+    <h3 class="name">play
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                <!-- 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_renderer.js.html#l355"><code>src&#x2F;engine&#x2F;renderer.js:355</code></a> -->
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_remove" class="anchor-link"></a>
+<div class="box method item inherited">
+    <h3 class="name">remove
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/game.Container.html#method_remove" class="type">game.Container</a>:
+            
+        
+        
+        <!-- <a href="../files/src_engine_renderer.js.html#l227"><code>src&#x2F;engine&#x2F;renderer.js:227</code></a> -->
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Remove container from it&#39;s parent.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_stop" class="anchor-link"></a>
+<div class="box method item">
+    <h3 class="name">stop
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                <!-- 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_renderer.js.html#l358"><code>src&#x2F;engine&#x2F;renderer.js:358</code></a> -->
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
         
 
         
