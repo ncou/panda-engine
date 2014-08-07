@@ -3,16 +3,12 @@
     @namespace game
 **/
 game.module(
-    'engine.system',
-    '1.0.0'
+    'engine.system'
 )
-.require(
-    'engine.timer'
-)
-.body(function(){ 'use strict';
+.body(function() {
+'use strict';
 
 /**
-    Instance automatically created at {{#crossLink "game.Core"}}{{/crossLink}}
     @class System
     @extends game.Class
 **/
@@ -63,18 +59,55 @@ game.System = game.Class.extend({
         @property {Boolean} retina
     **/
     retina: false,
+    /**
+        Is mobile rotate screen visible.
+        @property {Boolean} rotateScreenVisible
+    **/
+    rotateScreenVisible: false,
+    /**
+        Current id of the game loop.
+        @property {Number} gameLoopId
+    **/
     gameLoopId: 0,
     newSceneClass: null,
     running: false,
 
     init: function(width, height, canvasId) {
-        if(game.System.hires && window.innerWidth >= width * game.System.hiresFactor && window.innerHeight >= height * game.System.hiresFactor) {
-            this.hires = true;
+        width = width || game.System.width;
+        height = height || game.System.height;
+        if (width === 'window') width = window.innerWidth;
+        if (height === 'window') height = window.innerHeight;
+        // Deprecated
+        if (game.System.orientation === game.System.LANDSCAPE) game.System.orientation = 'landscape';
+        if (game.System.orientation === game.System.PORTRAIT) game.System.orientation = 'portrait';
+        if (!width) width = (game.System.orientation === 'portrait' ? 768 : 1024);
+        if (!height) height = (game.System.orientation === 'portrait' ? 928 : 672);
+
+        if (game.System.resizeToFill && navigator.isCocoonJS) {
+            if (window.innerWidth / window.innerHeight !== width / height) {
+                if (game.System.orientation === 'landscape') {
+                    width = height * (window.innerWidth / window.innerHeight);
+                }
+                else {
+                    height = width * (window.innerHeight / window.innerWidth);
+                }
+            }
         }
-        if(game.System.retina && game.ua.pixelRatio === 2) {
+
+        if (game.System.hires) {
+            if (typeof game.System.hiresWidth === 'number' && typeof game.System.hiresHeight === 'number') {
+                if (window.innerWidth >= game.System.hiresWidth && window.innerHeight >= game.System.hiresHeight) {
+                    this.hires = true;
+                }
+            }
+            else if (window.innerWidth >= width * game.System.hiresFactor && window.innerHeight >= height * game.System.hiresFactor) {
+                this.hires = true;
+            }
+        }
+        if (game.System.retina && game.device.pixelRatio === 2) {
             this.retina = true;
         }
-        if(this.hires || this.retina) {
+        if (this.hires || this.retina) {
             width *= 2;
             height *= 2;
             game.scale = 2;
@@ -82,97 +115,147 @@ game.System = game.Class.extend({
 
         this.width = width;
         this.height = height;
-        this.canvasId = canvasId || this.canvasId;
+        this.canvasId = canvasId || game.System.canvasId || this.canvasId;
         this.timer = new game.Timer();
 
-        if(!document.getElementById(this.canvasId)) {
+        if (!document.getElementById(this.canvasId)) {
             var canvas = document.createElement((navigator.isCocoonJS && game.System.screenCanvas) ? 'screencanvas' : 'canvas');
             canvas.id = this.canvasId;
             document.body.appendChild(canvas);
         }
 
-        if(game.Renderer.canvas) this.renderer = new PIXI.CanvasRenderer(width, height, document.getElementById(this.canvasId), game.Renderer.transparent);
-        else this.renderer = new PIXI.autoDetectRenderer(width, height, document.getElementById(this.canvasId), game.Renderer.transparent, game.Renderer.antialias);
-        
+        game.PIXI.scaleModes.DEFAULT = game.PIXI.scaleModes[game.System.scaleMode.toUpperCase()] || 0;
+
+        if (game.System.webGL) this.renderer = new game.autoDetectRenderer(width, height, document.getElementById(this.canvasId), game.System.transparent, game.System.antialias);
+        else this.renderer = new game.CanvasRenderer(width, height, document.getElementById(this.canvasId), game.System.transparent);
+
         this.canvas = this.renderer.view;
-        this.stage = new PIXI.Stage(width,height);
+        this.stage = new game.Stage();
 
         game.normalizeVendorAttribute(this.canvas, 'requestFullscreen');
         game.normalizeVendorAttribute(this.canvas, 'requestFullScreen');
+        game.normalizeVendorAttribute(navigator, 'vibrate');
 
         document.body.style.margin = 0;
 
-        if(this.retina) {
+        if (this.retina) {
             this.canvas.style.width = width / 2 + 'px';
             this.canvas.style.height = height / 2 + 'px';
-        } else {
+        }
+        else {
             this.canvas.style.width = width + 'px';
             this.canvas.style.height = height + 'px';
         }
 
-        if(!navigator.isCocoonJS) {
+        if (!navigator.isCocoonJS) {
             var visibilityChange;
             if (typeof document.hidden !== 'undefined') {
                 visibilityChange = 'visibilitychange';
-            } else if (typeof document.mozHidden !== 'undefined') {
+            }
+            else if (typeof document.mozHidden !== 'undefined') {
                 visibilityChange = 'mozvisibilitychange';
-            } else if (typeof document.msHidden !== 'undefined') {
+            }
+            else if (typeof document.msHidden !== 'undefined') {
                 visibilityChange = 'msvisibilitychange';
-            } else if (typeof document.webkitHidden !== 'undefined') {
+            }
+            else if (typeof document.webkitHidden !== 'undefined') {
                 visibilityChange = 'webkitvisibilitychange';
             }
 
             document.addEventListener(visibilityChange, function() {
-                var hidden = !!game.getVendorAttribute(document, 'hidden');
-                if(hidden && game.System.pauseOnHide) game.system.pause();
-                if(!hidden && game.System.pauseOnHide) game.system.resume();
+                if (game.System.pauseOnHide) {
+                    var hidden = !!game.getVendorAttribute(document, 'hidden');
+                    if (hidden) game.system.pause(true);
+                    else game.system.resume(true);
+                }
             }, false);
         }
-        
-        if(navigator.isCocoonJS) this.canvas.style.cssText='idtkscale:'+game.System.idtkScale+';';
-        
+
+        window.addEventListener('devicemotion', function(event) {
+            game.accelerometer = game.accel = event.accelerationIncludingGravity;
+        }, false);
+
+        if (!navigator.isCocoonJS) {
+            if (game.System.bgColor && !game.System.bgColorMobile) game.System.bgColorMobile = game.System.bgColor;
+            if (game.System.bgColorMobile && !game.System.bgColorRotate) game.System.bgColorRotate = game.System.bgColorMobile;
+
+            if (game.System.bgImage && !game.System.bgImageMobile) game.System.bgImageMobile = game.System.bgImage;
+            if (game.System.bgImageMobile && !game.System.bgImageRotate) game.System.bgImageRotate = game.System.bgImageMobile;
+
+            if (!game.device.mobile) {
+                if (game.System.bgColor) document.body.style.backgroundColor = game.System.bgColor;
+                if (game.System.bgImage) document.body.style.backgroundImage = 'url(' + game.config.mediaFolder + game.System.bgImage + ')';
+            }
+            if (game.System.bgPosition) document.body.style.backgroundPosition = game.System.bgPosition;
+        }
+
+        if (navigator.isCocoonJS) {
+            this.canvas.style.cssText = 'idtkscale:' + game.System.idtkScale + ';';
+        }
+
         game.renderer = this.renderer;
 
-        if(!navigator.isCocoonJS) this.initResize();
+        if (!navigator.isCocoonJS) this.initResize();
+    },
+
+    /**
+        Vibrate device.
+        @method vibrate
+        @param {Number} time Time to vibrate.
+    **/
+    vibrate: function(time) {
+        if (navigator.vibrate) return navigator.vibrate(time);
+        return false;
     },
 
     /**
         Pause game engine.
         @method pause
     **/
-    pause: function() {
-        if(this.paused) return;
-        this.paused = true;
-        if(game.scene) game.scene.pause();
+    pause: function(onHide) {
+        if (this.paused) return;
+
+        if (onHide) this.pausedOnHide = true;
+        else this.paused = true;
+
+        if (game.scene) game.scene.pause();
     },
 
     /**
         Resume paused game engine.
         @method resume
     **/
-    resume: function() {
-        if(!this.paused) return;
-        this.paused = false;
-        if(game.scene) game.scene.resume();
+    resume: function(onHide) {
+        if (onHide && this.paused) return;
+        if (!onHide && !this.paused) return;
+        
+        if (onHide) this.pausedOnHide = false;
+        else this.paused = false;
+
+        game.Timer.last = Date.now();
+        if (game.scene) game.scene.resume();
     },
 
     /**
         Change current scene.
         @method setScene
-        @param  {game.Scene} sceneClass
+        @param {game.Scene} sceneClass
     **/
     setScene: function(sceneClass) {
-        if(this.running) this.newSceneClass = sceneClass;
+        if (this.running) this.newSceneClass = sceneClass;
         else this.setSceneNow(sceneClass);
     },
-    
-    setSceneNow: function(SceneClass) {
-        game.scene = new (SceneClass)();
+
+    setSceneNow: function(sceneClass) {
+        if (game.tweenEngine) game.tweenEngine.tweens.length = 0;
+        game.scene = new (sceneClass)();
+        if (game.Debug && game.Debug.enabled && !navigator.isCocoonJS && !this.debug) this.debug = new game.Debug();
+        this.newSceneClass = null;
         this.startRunLoop();
     },
-    
+
     startRunLoop: function() {
-        if(this.gameLoopId) this.stopRunLoop();
+        if (this.gameLoopId) this.stopRunLoop();
         this.gameLoopId = game.setGameLoop(this.run.bind(this), this.canvas);
         this.running = true;
     },
@@ -181,36 +264,46 @@ game.System = game.Class.extend({
         game.clearGameLoop(this.gameLoopId);
         this.running = false;
     },
-    
-    run: function() {
-        if(this.paused) return;
 
-        if(game.debug) game.debug.stats.begin();
+    run: function() {
+        if (this.paused || this.pausedOnHide) return;
 
         game.Timer.update();
-        this.delta = this.timer.delta();
-        
-        game.scene.run();
-        
-        if(game.debug) game.debug.stats.end();
+        this.delta = this.timer.delta() / 1000;
 
-        if(this.newSceneClass) {
-            this.setSceneNow(this.newSceneClass);
-            this.newSceneClass = null;
-        }
+        game.scene.run();
+
+        if (this.debug) this.debug.update();
+        if (this.newSceneClass) this.setSceneNow(this.newSceneClass);
+    },
+
+    resize: function(width, height) {
+        this.width = this.canvas.width = width;
+        this.height = this.canvas.height = height;
+        this.canvas.style.width = width + 'px';
+        this.canvas.style.height = height + 'px';
+        this.renderer.resize(this.width, this.height);
     },
 
     initResize: function() {
-        this.ratio = game.System.orientation === game.System.LANDSCAPE ? this.width / this.height : this.height / this.width;
+        this.ratio = game.System.orientation === 'landscape' ? this.width / this.height : this.height / this.width;
 
-        if(game.System.center) this.canvas.style.margin = 'auto';
+        if (game.System.center) this.canvas.style.margin = 'auto';
 
-        if(game.ua.mobile) {
-            document.addEventListener('touchstart', function(e) { e.preventDefault(); }, false);
+        if (game.device.mobile) {
+            // Mobile position
+            if (!game.System.center) {
+                this.canvas.style.position = 'absolute';
+                this.canvas.style.left = game.System.left + 'px';
+                this.canvas.style.top = game.System.top + 'px';
+            }
+
+            document.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+            }, false);
 
             var div = document.createElement('div');
             div.innerHTML = game.System.rotateImg ? '' : game.System.rotateMsg;
-            div.id = 'ig_rotateMsg';
             div.style.position = 'absolute';
             div.style.height = '12px';
             div.style.textAlign = 'center';
@@ -220,75 +313,88 @@ game.System = game.Class.extend({
             div.style.bottom = 0;
             div.style.margin = 'auto';
             div.style.display = 'none';
+            div.id = 'panda-rotate';
             game.System.rotateDiv = div;
             document.body.appendChild(game.System.rotateDiv);
 
-            if(game.System.rotateImg) {
+            if (game.System.rotateImg) {
                 var img = new Image();
                 var me = this;
-                img.onload = function(e) {
-                    div.image = e.target;
-                    div.appendChild(e.target);
-                    div.style.height = e.target.height+'px';
+                img.onload = function() {
+                    div.image = img;
+                    div.style.height = img.height + 'px';
+                    div.appendChild(img);
                     me.resizeRotateImage();
                 };
-                img.src = game.System.rotateImg;
+                if (game.System.rotateImg.indexOf('data:') === 0) img.src = game.System.rotateImg;
+                else img.src = game.config.mediaFolder + game.System.rotateImg;
                 img.style.position = 'relative';
+                img.style.maxWidth = '100%';
             }
-        } else {
+        }
+        else {
             // Desktop center
-            this.canvas.style.position = 'absolute';
-            if(game.System.center) {
+            if (game.System.center || game.System.left || game.System.top) this.canvas.style.position = 'absolute';
+            if (game.System.center) {
                 this.canvas.style.top = 0;
                 this.canvas.style.left = 0;
                 this.canvas.style.bottom = 0;
                 this.canvas.style.right = 0;
-            } else {
+            }
+            else if (game.System.left || game.System.top) {
                 this.canvas.style.left = game.System.left + 'px';
                 this.canvas.style.top = game.System.top + 'px';
             }
 
-            // Desktop resize
-            if(game.System.resize) {
+            // Desktop scaling
+            if (game.System.scale) {
                 var minWidth = game.System.minWidth === 'auto' ? this.retina ? this.width / 4 : this.width / 2 : game.System.minWidth;
                 var minHeight = game.System.minHeight === 'auto' ? this.retina ? this.height / 4 : this.height / 2 : game.System.minHeight;
                 var maxWidth = game.System.maxWidth === 'auto' ? this.retina ? this.width / 2 : this.width : game.System.maxWidth;
                 var maxHeight = game.System.maxHeight === 'auto' ? this.retina ? this.height / 2 : this.height : game.System.maxHeight;
-                if(game.System.minWidth) this.canvas.style.minWidth = minWidth + 'px';
-                if(game.System.minHeight) this.canvas.style.minHeight = minHeight + 'px';
-                if(game.System.maxWidth) this.canvas.style.maxWidth = maxWidth + 'px';
-                if(game.System.maxHeight) this.canvas.style.maxHeight = maxHeight + 'px';
+                if (game.System.minWidth) this.canvas.style.minWidth = minWidth + 'px';
+                if (game.System.minHeight) this.canvas.style.minHeight = minHeight + 'px';
+                if (game.System.maxWidth && !game.System.scaleToFit) this.canvas.style.maxWidth = maxWidth + 'px';
+                if (game.System.maxHeight && !game.System.scaleToFit) this.canvas.style.maxHeight = maxHeight + 'px';
             }
         }
 
-        if(game.System.resize) {
-            window.onresize = this.onResize.bind(this);
-            this.onResize();
+        if (typeof window.onorientationchange !== 'undefined' && !game.device.android) {
+            window.onorientationchange = this.onResize.bind(this);
         }
+        else {
+            window.onresize = this.onResize.bind(this);
+        }
+
+        this.onResize();
     },
 
     checkOrientation: function() {
-        this.orientation = window.innerWidth < window.innerHeight ? game.System.PORTRAIT : game.System.LANDSCAPE;
-        game.System.rotateScreen = game.System.orientation !== this.orientation ? true : false;
+        this.orientation = window.innerWidth < window.innerHeight ? 'portrait' : 'landscape';
+        if (game.device.android2 && window.innerWidth === 320 && window.innerHeight === 251) {
+            // Android 2.3 portrait fix
+            this.orientation = 'portrait';
+        }
+        this.rotateScreenVisible = game.System.orientation !== this.orientation ? true : false;
 
-        this.canvas.style.display = game.System.rotateScreen ? 'none' : 'block';
-        game.System.rotateDiv.style.display = game.System.rotateScreen ? 'block' : 'none';
+        this.canvas.style.display = this.rotateScreenVisible ? 'none' : 'block';
+        game.System.rotateDiv.style.display = this.rotateScreenVisible ? 'block' : 'none';
 
-        if(game.System.rotateScreen && game.System.backgroundColor.rotate) document.body.style.backgroundColor = game.System.backgroundColor.rotate;
-        if(!game.System.rotateScreen && game.System.backgroundColor.game) document.body.style.backgroundColor = game.System.backgroundColor.game;
+        if (this.rotateScreenVisible && game.System.bgColorRotate) document.body.style.backgroundColor = game.System.bgColorRotate;
+        if (!this.rotateScreenVisible && game.System.bgColorMobile) document.body.style.backgroundColor = game.System.bgColorMobile;
 
-        if(game.System.rotateScreen) document.body.style.backgroundImage = game.System.backgroundImage.rotate ? 'url(' + game.System.backgroundImage.rotate + ')' : 'none';
-        if(!game.System.rotateScreen) document.body.style.backgroundImage = game.System.backgroundImage.game ? 'url(' + game.System.backgroundImage.game + ')' : 'none';
+        if (this.rotateScreenVisible && game.System.bgImageRotate) document.body.style.backgroundImage = 'url(' + game.config.mediaFolder + game.System.bgImageRotate + ')';
+        if (!this.rotateScreenVisible && game.System.bgImageMobile) document.body.style.backgroundImage = 'url(' + game.config.mediaFolder + game.System.bgImageMobile + ')';
 
-        if(game.System.rotateScreen && game.system && typeof(game.system.pause) === 'function') game.system.pause();
-        if(!game.System.rotateScreen && game.system && typeof(game.system.resume) === 'function') game.system.resume();
+        if (this.rotateScreenVisible && game.system && typeof game.system.pause === 'function') game.system.pause();
+        if (!this.rotateScreenVisible && game.system && typeof game.system.resume === 'function') game.system.resume();
 
-        if(game.System.rotateScreen) this.resizeRotateImage();
+        if (this.rotateScreenVisible) this.resizeRotateImage();
     },
 
     resizeRotateImage: function() {
-        if(game.System.rotateScreen && game.System.rotateDiv.image) {
-            if(window.innerHeight < game.System.rotateDiv.image.height) {
+        if (this.rotateScreenVisible && game.System.rotateDiv.image) {
+            if (window.innerHeight < game.System.rotateDiv.image.height) {
                 game.System.rotateDiv.image.style.height = window.innerHeight + 'px';
                 game.System.rotateDiv.image.style.width = 'auto';
                 game.System.rotateDiv.style.height = window.innerHeight + 'px';
@@ -298,29 +404,54 @@ game.System = game.Class.extend({
     },
 
     onResize: function() {
-        if(game.ua.mobile) {
-            // Mobile resize
-            this.checkOrientation();
+        // Mobile orientation
+        if (game.device.mobile) this.checkOrientation();
 
+        if (!game.System.scale) return;
+
+        if (game.device.mobile) {
+            // Mobile resize
             var width = window.innerWidth;
             var height = window.innerHeight;
-            
-            // iPad iOS 7 landscape innerHeight bugfix
-            if(game.ua.iPad && height === 671 && this.orientation === game.System.LANDSCAPE) height = 672;
 
-            if(game.System.orientation === game.System.LANDSCAPE) {
+            // iOS innerHeight bug fixes
+            if (game.device.iOS7 && window.innerHeight === 256) height = 319;
+            if (game.device.iOS7 && game.device.pixelRatio === 2 && this.orientation === 'landscape') height += 2;
+            if (game.device.iPad && height === 671) height = 672;
+            
+            if (game.System.resizeToFill && !this.rotateScreenVisible) {
+                if (width / height !== this.width / this.height) {
+                    // Wrong ratio, need to resize
+                    if (this.orientation === 'landscape') {
+                        this.width = Math.round(this.height * (width / height));
+                        this.ratio = this.width / this.height;
+                    }
+                    else {
+                        this.height = Math.round(this.width * (height / width));
+                        this.ratio = this.height / this.width;
+                    }
+                    this.renderer.resize(this.width, this.height);
+                }
+            }
+
+            if (game.System.orientation === 'landscape') {
                 this.canvas.style.height = height + 'px';
                 this.canvas.style.width = height * this.ratio + 'px';
-            } else {
+            }
+            else {
                 this.canvas.style.width = width + 'px';
                 this.canvas.style.height = width * this.ratio + 'px';
             }
 
-            window.scroll(0,1);
-        } else {
+            if (!game.device.ejecta) window.scroll(0, 1);
+
+            if (!this.rotateScreenVisible && game.loader && !game.loader.started) game.loader.start();
+        }
+        else {
             // Desktop resize
-            if(window.innerWidth < this.width || window.innerHeight < this.height) {
-                if(window.innerWidth / this.width < window.innerHeight / this.height) {
+            if (window.innerWidth === 0) return; // Chrome bug
+            if (window.innerWidth < this.width || window.innerHeight < this.height || game.System.scaleToFit) {
+                if (window.innerWidth / this.width < window.innerHeight / this.height) {
                     this.canvas.style.width = window.innerWidth + 'px';
                     this.canvas.style.height = window.innerWidth * (this.height / this.width) + 'px';
                 }
@@ -329,49 +460,58 @@ game.System = game.Class.extend({
                     this.canvas.style.width = window.innerHeight * (this.width / this.height) + 'px';
                 }
             }
+            else {
+                this.canvas.style.width = this.width + 'px';
+                this.canvas.style.height = this.height + 'px';
+            }
         }
     }
 });
 
-game.System.rotateScreen = false;
-game.System.PORTRAIT = 0;
-game.System.LANDSCAPE = 1;
-
 /**
-    Turn canvas centering on/off.
+    Enable/disable canvas centering.
     @attribute {Boolean} center
     @default true
 **/
 game.System.center = true;
+/**
+    Canvas position from left, when centering is disabled.
+    @attribute {Number} left
+    @default 0
+**/
 game.System.left = 0;
+/**
+    Canvas position from top, when centering is disabled.
+    @attribute {Number} top
+    @default 0
+**/
 game.System.top = 0;
 /**
-    Turn canvas resizing on/off.
+    Enable/disable canvas scaling.
     @attribute {Boolean} resize
     @default true
 **/
-game.System.resize = true;
-
+game.System.scale = true;
 /**
-    Minimum width for canvas.
+    Minimum width for canvas, when using scaling on desktop.
     @attribute {Number} minWidth
     @default auto
 **/
 game.System.minWidth = 'auto';
 /**
-    Minimum height for canvas.
+    Minimum height for canvas, when using scaling on desktop.
     @attribute {Number} minHeight
     @default auto
 **/
 game.System.minHeight = 'auto';
 /**
-    Maximum width for canvas.
+    Maximum width for canvas, when using scaling on desktop.
     @attribute {Number} maxWidth
     @default auto
 **/
 game.System.maxWidth = 'auto';
 /**
-    Maximum height for canvas.
+    Maximum height for canvas, when using scaling on desktop.
     @attribute {Number} maxHeight
     @default auto
 **/
@@ -396,11 +536,13 @@ game.System.screenCanvas = true;
 **/
 game.System.hires = false;
 /**
-    Canvas width/height factor, when to enable HiRes mode.
+    Canvas width/height factor, when HiRes mode is enabled.
     @attribute {Number} hiresFactor
     @default 1.5
 **/
 game.System.hiresFactor = 1.5;
+game.System.hiresWidth = null;
+game.System.hiresHeight = null;
 /**
     Use Retina mode.
     @attribute {Boolean} retina
@@ -413,51 +555,117 @@ game.System.retina = false;
     @default true
 **/
 game.System.pauseOnHide = true;
+game.System.PORTRAIT = 0; // Deprecated
+game.System.LANDSCAPE = 1; // Deprecated
 /**
     Mobile orientation for the game.
-    @attribute {LANDSCAPE|PORTRAIT} orientation
-    @default game.System.PORTRAIT
+    @attribute {String} orientation
+    @default landscape
 **/
-game.System.orientation = game.System.PORTRAIT;
-game.System.backgroundColor = {
-    /**
-        Background color for game screen on mobile.
-        @attribute backgroundColor.game
-        @type {String}
-    **/
-    game: null,
-    /**
-        Background color for rotate screen on mobile.
-        @attribute backgroundColor.rotate
-        @type {String}
-    **/
-    rotate: null
-};
-game.System.backgroundImage = {
-    /**
-        Background image for game screen on mobile.
-        @attribute backgroundImage.game
-        @type {URL}
-    **/
-    game: null,
-    /**
-        Background image for rotate screen on mobile.
-        @attribute backgroundImage.rotate
-        @type {URL}
-    **/
-    rotate: null
-};
+game.System.orientation = 'landscape';
+/**
+    Body background color.
+    @attribute {String} bgColor
+    @default null
+**/
+game.System.bgColor = null;
+/**
+    Body background color for mobile.
+    @attribute {String} bgColorMobile
+    @default null
+**/
+game.System.bgColorMobile = null;
+/**
+    Body background color for mobile rotate screen.
+    @attribute {String} bgColorRotate
+    @default null
+**/
+game.System.bgColorRotate = null;
+/**
+    Body background image.
+    @attribute {String} bgImage
+    @default null
+**/
+game.System.bgImage = null;
+/**
+    Body background image for mobile.
+    @attribute {String} bgImageMobile
+    @default null
+**/
+game.System.bgImageMobile = null;
+/**
+    Body background image for mobile rotate screen.
+    @attribute {String} bgImageRotate
+    @default null
+**/
+game.System.bgImageRotate = null;
+/**
+    Body background image position.
+    @attribute {String} bgPosition
+    @default null
+**/
+game.System.bgPosition = null;
 /**
     Rotate message for mobile.
     @attribute {String} rotateMsg
-    @default Please rotate your device
+    @default null
 **/
-game.System.rotateMsg = 'Please rotate your device';
+game.System.rotateMsg = null;
 /**
     Rotate image for mobile.
     @attribute {URL} rotateImg
     @default null
 **/
 game.System.rotateImg = null;
+/**
+    Enable WebGL renderer.
+    @attribute {Boolean} webGL
+    @default false
+**/
+game.System.webGL = false;
+/**
+    Use transparent renderer.
+    @attribute {Boolean} transparent
+    @default false
+**/
+game.System.transparent = false;
+/**
+    Use antialias (only on WebGL).
+    @attribute {Boolean} antialias
+    @default false
+**/
+game.System.antialias = false;
+
+/**
+    Resize canvas to fill screen on mobile.
+    @attribute {Boolean} resizeToFill
+    @default false
+**/
+game.System.resizeToFill = false;
+
+/**
+    Default start scene.
+    @attribute {String} startScene
+    @default SceneGame
+**/
+game.System.startScene = 'SceneGame';
+/**
+    Scale canvas to fit window size on desktop.
+    @attribute {Boolean} scaleToFit
+    @default false
+**/
+game.System.scaleToFit = false;
+/**
+    Canvas id for game.
+    @attribute {String} canvasId
+    @default null
+**/
+game.System.canvasId = null;
+/**
+    Canvas scale mode.
+    @attribute {String} scaleMode
+    @default linear
+**/
+game.System.scaleMode = 'linear';
 
 });

@@ -1,40 +1,61 @@
-// ##################################################################################
-// #######    #############################################################   #######
-// ####            #####     #####      ###       ##         ############      ######
-// ####              ##        ##                   #            #######        #####
-// ###                #         #                    #             ####          ####
-// ###                 #         #       ####        ##   ##        #            ####
-// ##         ##       #          #      #####       ##   ####     #              ###
-// ##         ###      #    #     ##     #####       ##   #####   #        #      ###
-// ##         ###      #   ##      #     #####       ##   ####   #        ##       ##
-// ##         ###     ##  ###      ##    #####       #    ###    #       ###       ##
-// ###        ##     ##             #    ####        #          ##                 ##
-// ###             ##               #    ####       #           #                  ##
-// ###          ###     #####       #    ####       #           #       ####       ##
-// ####         ##      #####       ##   ####      ##           #      #####       ##
-// ####        ###     ######       ##################      ###############        ##
-// #####     #################      #########################################      ##
-// ##################################################################################
-
 // Panda.js HTML5 game engine
-// author Eemeli Kelokorpi
 
+// created by Eemeli Kelokorpi
 // inspired by Impact Game Engine
 // sponsored by Yle
 
-if(typeof(window) === 'undefined') window = {};
-(function(window){ 'use strict';
+'use strict';
 
-if(typeof(global) !== 'undefined') return;
 /**
-    @module core
+    @module game
     @namespace game
+    @requires loader
+    @requires timer
+    @requires system
+    @requires audio
+    @requires debug
+    @requires storage
+    @requires tween
+    @requires scene
+    @requires pool
+    @requires analytics
 **/
 /**
-    Instance automatically created at `game`
     @class Core
 **/
-var core = {
+var game = {
+    /**
+        Current engine version.
+        @property {String} version
+    **/
+    version: '1.7.1',
+    /**
+        Engine settings.
+        @property {Object} config
+    **/
+    config: typeof pandaConfig !== 'undefined' ? pandaConfig : {},
+    /**
+        Configurable list of modules, that are loaded from core.
+        @property {Array} coreModules
+    **/
+    coreModules: [
+        'engine.analytics',
+        'engine.audio',
+        'engine.camera',
+        'engine.debug',
+        'engine.keyboard',
+        'engine.loader',
+        'engine.particle',
+        'engine.physics',
+        'engine.pixi',
+        'engine.pool',
+        'engine.renderer',
+        'engine.scene',
+        'engine.storage',
+        'engine.system',
+        'engine.timer',
+        'engine.tween'
+    ],
     /**
         Scale factor for Retina and HiRes mode.
         @property {Number} scale
@@ -70,92 +91,120 @@ var core = {
         @property {game.Storage} storage
     **/
     storage: null,
-    renderer: null,
+    /**
+        Instance of {{#crossLink "game.Keyboard"}}{{/crossLink}}.
+        @property {game.Keyboard} keyboard
+    **/
+    keyboard: null,
+    /**
+        Device / browser detection.
+        @property {Object} device
+    **/
+    device: {},
+    paths: {},
+    plugins: {},
+    json: {},
     modules: {},
-    resources: [],
-    audioResources: [],
-    ready: false,
+    renderer: null,
     nocache: '',
-    ua: {},
-    _current: null,
-    _loadQueue: [],
-    _waitForLoad: 0,
-    _DOMLoaded: false,
-        
+    current: null,
+    waitForLoad: 0,
+    DOMLoaded: false,
+    next: 1,
+    anims: {},
+    moduleQueue: [],
+    assetQueue: [],
+    audioQueue: [],
+
+    /**
+        Get JSON data.
+        @method getJSON
+        @param {String} id
+    **/
+    getJSON: function(id) {
+        return this.json[this.paths[id]];
+    },
+
+    /**
+        Copy object.
+        @method copy
+        @param {Object} object
+    **/
     copy: function(object) {
-        var l,c,i;
-        if(
-            !object || typeof(object) !== 'object' ||
+        var l, c, i;
+        if (
+            !object || typeof object !== 'object' ||
             object instanceof HTMLElement ||
-            object instanceof game.Class ||
-            object instanceof game.Container
+            object instanceof this.Class ||
+            (this.Container && object instanceof this.Container)
         ) {
             return object;
         }
-        else if(object instanceof Array) {
+        else if (object instanceof Array) {
             c = [];
-            for(i = 0, l = object.length; i < l; i++) {
-                c[i] = game.copy(object[i]);
+            for (i = 0, l = object.length; i < l; i++) {
+                c[i] = this.copy(object[i]);
             }
             return c;
         }
         else {
             c = {};
-            for(i in object) {
-                c[i] = game.copy(object[i]);
+            for (i in object) {
+                c[i] = this.copy(object[i]);
             }
             return c;
         }
     },
-    
-    merge: function(original, extended) {
-        for(var key in extended) {
-            var ext = extended[key];
-            if(
-                typeof(ext) !== 'object' ||
+
+    merge: function(to, from) {
+        for (var key in from) {
+            var ext = from[key];
+            if (
+                typeof ext !== 'object' ||
                 ext instanceof HTMLElement ||
-                ext instanceof game.Class ||
-                ext instanceof game.Container
+                ext instanceof this.Class ||
+                ext instanceof this.Container
             ) {
-                original[key] = ext;
+                to[key] = ext;
             }
             else {
-                if(!original[key] || typeof(original[key]) !== 'object') {
-                    original[key] = (ext instanceof Array) ? [] : {};
+                if (!to[key] || typeof to[key] !== 'object') {
+                    to[key] = (ext instanceof Array) ? [] : {};
                 }
-                game.merge(original[key], ext);
+                this.merge(to[key], ext);
             }
         }
-        return original;
+        return to;
     },
-    
+
     ksort: function(obj) {
-        if(!obj || typeof(obj) !== 'object') return false;
-        
+        if (!obj || typeof obj !== 'object') return false;
+
         var keys = [], result = {}, i;
-        for(i in obj ) {
+        for (i in obj) {
             keys.push(i);
         }
         keys.sort();
-        for(i = 0; i < keys.length; i++ ) {
+        for (i = 0; i < keys.length; i++) {
             result[keys[i]] = obj[keys[i]];
         }
-        
+
         return result;
     },
 
     setVendorAttribute: function(el, attr, val) {
         var uc = attr.ucfirst();
-        el[attr] = el['ms'+uc] = el['moz'+uc] = el['webkit'+uc] = el['o'+uc] = val;
+        el[attr] = el['ms' + uc] = el['moz' + uc] = el['webkit' + uc] = el['o' + uc] = val;
     },
 
     getVendorAttribute: function(el, attr) {
         var uc = attr.ucfirst();
-        return el[attr] || el['ms'+uc] || el['moz'+uc] || el['webkit'+uc] || el['o'+uc];
+        return el[attr] || el['ms' + uc] || el['moz' + uc] || el['webkit' + uc] || el['o' + uc];
     },
 
     normalizeVendorAttribute: function(el, attr) {
         var prefixedVal = this.getVendorAttribute(el, attr);
+        if (el[attr]) return;
         el[attr] = el[attr] || prefixedVal;
     },
 
@@ -164,55 +213,48 @@ var core = {
         @method fullscreen
     **/
     fullscreen: function() {
-        if(game.system.canvas.requestFullscreen) game.system.canvas.requestFullscreen();
-        if(game.system.canvas.requestFullScreen) game.system.canvas.requestFullScreen();
+        if (this.system.canvas.requestFullscreen) this.system.canvas.requestFullscreen();
+        if (this.system.canvas.requestFullScreen) this.system.canvas.requestFullScreen();
     },
 
     /**
+        Test fullscreen support.
         @method fullscreenSupport
         @return {Boolean} Return true, if browser supports fullscreen mode.
     **/
     fullscreenSupport: function() {
-        return !!(game.system.canvas.requestFullscreen || game.system.canvas.requestFullScreen);
+        return !!(this.system.canvas.requestFullscreen || this.system.canvas.requestFullScreen);
     },
 
     /**
-        Add asset to preloader.
+        Add asset to loader.
         @method addAsset
         @param {String} path
-        @example
-            game.addAsset('media/logo.png');
+        @param {String} [id]
+        @return {String} id
     **/
-    addAsset: function(path) {
-        this.resources.push(path);
+    addAsset: function(path, id) {
+        return this.addFileToQueue(path, id, 'assetQueue');
     },
 
     /**
-        Add sound to preloader.
-        @method addSound
+        Add audio to loader.
+        @method addAudio
         @param {String} path
-        @param {String} [name]
-        @example
-            game.addSound('media/sound/jump.m4a', 'jump');
+        @param {String} [id]
+        @return {String} id
     **/
-    addSound: function(path, name) {
-        name = name || path;
-        this.SoundCache[name] = new game.Sound(path);
+    addAudio: function(path, id) {
+        return this.addFileToQueue(path, id, 'audioQueue');
     },
 
-    /**
-        Add music to preloader.
-        @method addMusic
-        @param {String} path
-        @param {String} [name]
-    **/
-    addMusic: function(path, name) {
-        name = name || path;
-        this.MusicCache[name] = new game.Music(path);
-    },
-    
-    setNocache: function() {
-        this.nocache = '?' + Date.now();
+    addFileToQueue: function(path, id, queue) {
+        id = id || path;
+        path = this.config.mediaFolder + path + this.nocache;
+        if (this.paths[id]) return id;
+        this.paths[id] = path;
+        if (this[queue].indexOf(path) === -1) this[queue].push(path);
+        return id;
     },
 
     /**
@@ -220,33 +262,37 @@ var core = {
         @method module
         @param {String} name
         @param {String} [version]
-        @example
-            game.module('game.mymodule').body(function() {
-                // body of new module
-            });
     **/
     module: function(name, version) {
-        if(name === 'engine.debug' && window.pandaMinified) return this;
+        if (this.current) throw('Module ' + this.current.name + ' has no body');
+        if (this.modules[name] && this.modules[name].body) throw('Module ' + name + ' is already defined');
 
-        if(this._current) throw('Module ' + this._current.name + ' has no body');
-        if(this.modules[name] && this.modules[name].body) throw('Module ' + name + ' is already defined');
-        
-        this._current = {name: name, requires: [], loaded: false, body: null, version: version};
-        this.modules[name] = this._current;
-        this._loadQueue.push(this._current);
+        this.current = { name: name, requires: [], loaded: false, body: null, version: version };
+        if (name === 'game.main') this.current.requires.push('engine.core');
+        this.modules[name] = this.current;
+        this.moduleQueue.push(this.current);
+
+        if (this.current.name === 'engine.core') {
+            if (this.config.ignoreModules) {
+                for (var i = this.coreModules.length - 1; i >= 0; i--) {
+                    if (this.config.ignoreModules.indexOf(this.coreModules[i]) !== -1) this.coreModules.splice(i, 1);
+                }
+            }
+            this.current.requires = this.coreModules;
+            this.body(function() {});
+        }
         return this;
     },
 
     /**
-        Require modules for module.
+        Require module.
         @method require
         @param {Array} modules
     **/
-    require: function() {
+    require: function(modules) {
         var i, modules = Array.prototype.slice.call(arguments);
         for (i = 0; i < modules.length; i++) {
-            if(modules[i] === 'engine.debug' && window.pandaMinified) continue;
-            if(modules[i]) this._current.requires.push(modules[i]);
+            if (modules[i] && this.current.requires.indexOf(modules[i]) === -1) this.current.requires.push(modules[i]);
         }
         return this;
     },
@@ -254,327 +300,399 @@ var core = {
     /**
         Define body for module.
         @method body
+        @param {Function} body
     **/
     body: function(body) {
-        this._current.body = body;
-        this._current = null;
-        if(this._initDOMReady) this._initDOMReady();
+        this.current.body = body;
+        this.current = null;
+        if (this.loadFinished) this.loadModules();
     },
 
     /**
         Start the game engine.
         @method start
-        @param {game.Scene} scene
-        @param {Number} width
-        @param {Number} height
-        @param {String} canvasId
+        @param {game.Scene} [scene] Starting scene.
+        @param {Number} [width] Width of canvas.
+        @param {Number} [height] Height of canvas.
+        @param {game.Loader} [loaderClass] Custom loader class.
+        @param {String} [canvasId] Id of canvas element.
     **/
-    start: function(scene, width, height, canvasId) {
-        if(this._loadQueue.length > 0) throw 'Engine modules not ready.';
-        
-        width = width || (game.System.orientation === game.System.PORTRAIT ? 768 : 1024);
-        height = height || (game.System.orientation === game.System.PORTRAIT ? 927 : 672);
+    start: function(scene, width, height, loaderClass, canvasId) {
+        if (this.moduleQueue.length > 0) throw('Core not ready');
 
-        this.system = new game.System(width, height, canvasId);
-        this.sound = new game.SoundManager();
-        this.pool = new game.Pool();
-        if(game.Debug && game.Debug.enabled && !navigator.isCocoonJS) this.debug = new game.Debug();
-        if(game.DebugDraw && game.DebugDraw.enabled) this.debugDraw = new game.DebugDraw();
-        if(game.Storage.id) this.storage = new game.Storage(game.Storage.id);
+        this.system = new this.System(width, height, canvasId);
 
-        this.ready = true;
-        
-        var loader = new game.Loader(scene || SceneTitle, this.resources, this.audioResources);
-        loader.start();
-    },
-
-    Math: {
-        /**
-            Distance between two points.
-            @method Math.distance
-            @param {Number} x
-            @param {Number} y
-            @param {Number} x2
-            @param {Number} y2
-            @return {Number}
-        **/
-        distance: function(x, y, x2, y2) {
-            x = x2 - x;
-            y = y2 - y;
-            return Math.sqrt(x * x + y * y);
-        },
-
-        /**
-            Generate random number between `min` and `max`.
-            @method Math.random
-            @param {Number} min
-            @param {Number} max
-        **/
-        random: function(min, max) {
-            return Math.random() * (max - min) + min;
+        if (game.Debug.enabled) {
+            console.log('Panda.js ' + game.version);
+            console.log('Pixi.js ' + game.PIXI.VERSION.replace('v', ''));
+            console.log((this.system.renderer.gl ? 'WebGL' : 'Canvas') + ' renderer');
         }
+
+        if (this.Audio) this.audio = new this.Audio();
+        if (this.Pool) this.pool = new this.Pool();
+        if (this.DebugDraw && this.DebugDraw.enabled) this.debugDraw = new this.DebugDraw();
+        if (this.Storage && this.Storage.id) this.storage = new this.Storage(this.Storage.id);
+        if (this.Analytics && this.Analytics.id) this.analytics = new this.Analytics(this.Analytics.id);
+        if (this.TweenEngine) this.tweenEngine = new this.TweenEngine();
+
+        // Load plugins
+        for (var name in this.plugins) {
+            this.plugins[name] = new (this.plugins[name])();
+        }
+
+        this.loader = new (loaderClass || this.Loader)(scene);
+        if (!this.system.rotateScreenVisible) this.loader.start();
     },
-    
-    _loadScript: function(name, requiredFrom) {
+
+    loadScript: function(name, requiredFrom) {
         this.modules[name] = true;
-        this._waitForLoad++;
-        
-        var path = 'src/' + name.replace(/\./g, '/') + '.js' + this.nocache;
+        this.waitForLoad++;
+
+        var path = this.config.sourceFolder + '/' + name.replace(/\./g, '/') + '.js' + this.nocache;
         var script = document.createElement('script');
         script.type = 'text/javascript';
         script.src = path;
+        var me = this;
         script.onload = function() {
-            game._waitForLoad--;
-            game._loadModules();
+            me.waitForLoad--;
+            me.loadModules();
         };
         script.onerror = function() {
             throw('Failed to load module ' + name + ' at ' + path + ' required from ' + requiredFrom);
         };
         document.getElementsByTagName('head')[0].appendChild(script);
     },
-    
-    _loadModules: function() {
+
+    loadModules: function() {
         var moduleLoaded, i, j, module, name, dependenciesLoaded;
-        for(i = 0; i < game._loadQueue.length; i++) {
-            module = game._loadQueue[i];
+        for (i = 0; i < this.moduleQueue.length; i++) {
+            module = this.moduleQueue[i];
             dependenciesLoaded = true;
-            
-            for(j = 0; j < module.requires.length; j++) {
+
+            for (j = 0; j < module.requires.length; j++) {
                 name = module.requires[j];
-                if(!game.modules[name]) {
+                if (!this.modules[name]) {
                     dependenciesLoaded = false;
-                    game._loadScript(name, module.name);
+                    this.loadScript(name, module.name);
                 }
-                else if(!game.modules[name].loaded) {
+                else if (!this.modules[name].loaded) {
                     dependenciesLoaded = false;
                 }
             }
-            
-            if(dependenciesLoaded && module.body) {
-                game._loadQueue.splice(i, 1);
+
+            if (dependenciesLoaded && module.body) {
+                this.moduleQueue.splice(i, 1);
+                if (this.moduleQueue.length === 0) {
+                    // Last module loaded, parse config
+                    for (var c in this.config) {
+                        var m = c.ucfirst();
+                        if (this[m]) {
+                            for (var o in this.config[c]) {
+                                this[m][o] = this.config[c][o];
+                            }
+                        }
+                    }
+                }
                 module.loaded = true;
-                module.body();
+                module.body(this);
                 moduleLoaded = true;
                 i--;
             }
         }
-        
-        if(moduleLoaded && this._loadQueue.length > 0) {
-            game._loadModules();
+
+        if (moduleLoaded && this.moduleQueue.length > 0) {
+            this.loadModules();
         }
-        else if(game._waitForLoad === 0 && game._loadQueue.length !== 0) {
+        else if (this.waitForLoad === 0 && this.moduleQueue.length !== 0) {
             var unresolved = [];
-            for(i = 0; i < game._loadQueue.length; i++ ) {
+            for (i = 0; i < this.moduleQueue.length; i++) {
                 var unloaded = [];
-                var requires = game._loadQueue[i].requires;
-                for(j = 0; j < requires.length; j++ ) {
-                    module = game.modules[requires[j]];
-                    if(!module || !module.loaded) {
+                var requires = this.moduleQueue[i].requires;
+                for (j = 0; j < requires.length; j++) {
+                    module = this.modules[requires[j]];
+                    if (!module || !module.loaded) {
                         unloaded.push(requires[j]);
                     }
                 }
-                unresolved.push(game._loadQueue[i].name + ' (requires: ' + unloaded.join(', ') + ')');
+                unresolved.push(this.moduleQueue[i].name + ' (requires: ' + unloaded.join(', ') + ')');
             }
-            throw(
-                'Unresolved (circular?) dependencies. ' +
-                'Most likely there is a name/path mismatch for one of the listed modules:\n' +
-                unresolved.join('\n')
-            );
+            throw('Unresolved modules:\n' + unresolved.join('\n'));
         }
-    },
-    
-    _boot: function() {
-        if(document.location.href.match(/\?nocache/)) this.setNocache();
-
-        this.ua.pixelRatio = window.devicePixelRatio || 1;
-        this.ua.screen = {
-            width: window.screen.availWidth * this.ua.pixelRatio,
-            height: window.screen.availHeight * this.ua.pixelRatio
-        };
-        
-        this.ua.iPhone = /iPhone/i.test(navigator.userAgent);
-        this.ua.iPhone4 = (this.ua.iPhone && this.ua.pixelRatio === 2);
-        this.ua.iPhone5 = (this.ua.iPhone && this.ua.pixelRatio === 2 && this.ua.screen.height === 1096);
-
-        this.ua.iPad = /iPad/i.test(navigator.userAgent);
-        this.ua.iPadRetina = (this.ua.iPad && this.ua.pixelRatio === 2);
-        
-        this.ua.iOS = this.ua.iPhone || this.ua.iPad;
-        this.ua.iOS5 = (this.ua.iOS && /OS 5/i.test(navigator.userAgent));
-        this.ua.iOS6 = (this.ua.iOS && /OS 6/i.test(navigator.userAgent));
-        this.ua.iOS7 = (this.ua.iOS && /OS 7/i.test(navigator.userAgent));
-
-        this.ua.android = /android/i.test(navigator.userAgent);
-        this.ua.android2 = /android 2/i.test(navigator.userAgent);
-
-        this.ua.wp7 = (this.ua.wp && /Windows Phone OS 7/i.test(navigator.userAgent));
-        this.ua.wp8 = (this.ua.wp && /Windows Phone 8/i.test(navigator.userAgent));
-        this.ua.wpApp = (this.ua.wp && typeof(window.external) !== 'undefined' && typeof(window.external.notify) !== 'undefined');
-        this.ua.wp = this.ua.wp7 || this.ua.wp8 || this.ua.wpApp;
-
-        this.ua.ie9 = /MSIE 9/i.test(navigator.userAgent);
-        this.ua.ie10 = /MSIE 10/i.test(navigator.userAgent);
-        this.ua.ie11 = /rv:11.0/i.test(navigator.userAgent);
-        this.ua.ie = this.ua.ie10 || this.ua.ie11 || this.ua.ie9;
-        
-        this.ua.opera = /Opera/i.test(navigator.userAgent);
-        this.ua.crosswalk = /Crosswalk/i.test(navigator.userAgent);
-
-        this.ua.mobile = this.ua.iOS || this.ua.android || this.ua.wp;
-
-        if(this.ua.wp) {
-            if (typeof(window.external.notify) !== 'undefined') {
-                window.console.log = function (message) {
-                    window.external.notify(message);
-                };
-            }
-        }
-    },
-
-    _DOMReady: function() {
-        if(!game._DOMLoaded) {
-            if(!document.body) return setTimeout(game._DOMReady, 13);
-            game._DOMLoaded = true;
-            game._loadModules();
-        }
-    },
-    
-    _initDOMReady: function() {
-        this._initDOMReady = null;
-        this._boot();
-        if (document.readyState === 'complete') this._DOMReady();
         else {
-            document.addEventListener('DOMContentLoaded', this._DOMReady, false);
-            window.addEventListener('load', this._DOMReady, false);
+            this.loadFinished = true;
+        }
+    },
+
+    setGameLoop: function(callback, element) {
+        if (window.requestAnimationFrame) {
+            var current = this.next++;
+            this.anims[current] = true;
+
+            var me = this;
+            var animate = function() {
+                if (!me.anims[current]) return;
+                window.requestAnimationFrame(animate, element);
+                callback();
+            };
+            window.requestAnimationFrame(animate, element);
+            return current;
+        }
+        else {
+            return window.setInterval(callback, 1000 / 60);
+        }
+    },
+
+    clearGameLoop: function(id) {
+        if (window.requestAnimationFrame) {
+            delete this.anims[id];
+        }
+        else {
+            window.clearInterval(id);
+        }
+    },
+
+    boot: function() {
+        // Test canvas support
+        var elem = document.createElement('canvas');
+        var canvasSupported = !!(elem.getContext && elem.getContext('2d'));
+        if (!canvasSupported) {
+            if (game.config.noCanvasURL) window.location = game.config.noCanvasURL;
+            else throw('Canvas not supported');
+        }
+
+        // Native Math extensions
+        Math.distance = function(x, y, x2, y2) {
+            x = x2 - x;
+            y = y2 - y;
+            return Math.sqrt(x * x + y * y);
+        };
+
+        Math.randomBetween = function(min, max) {
+            return Math.random() * (max - min) + min;
+        };
+
+        Math.randomInt = function(min, max) {
+            return Math.round(Math.randomBetween(min, max));
+        };
+
+        // Native object extensions
+        Number.prototype.limit = function(min, max) {
+            var i = this;
+            if (i < min) i = min;
+            if (i > max) i = max;
+            return i;
+        };
+
+        Number.prototype.round = function(precision) {
+            if (precision) precision = Math.pow(10, precision);
+            else precision = 1;
+            return Math.round(this * precision) / precision;
+        };
+
+        Array.prototype.erase = function(item) {
+            for (var i = this.length; i >= 0; i--) {
+                if (this[i] === item) this.splice(i, 1);
+            }
+            return this;
+        };
+
+        Array.prototype.random = function() {
+            return this[Math.floor(Math.random() * this.length)];
+        };
+
+        // http://jsperf.com/array-shuffle-comparator/2
+        Array.prototype.shuffle = function() {
+            var len = this.length;
+            var i = len;
+            while (i--) {
+                var p = parseInt(Math.random() * len);
+                var t = this[i];
+                this[i] = this[p];
+                this[p] = t;
+            }
+
+            return this;
+        };
+
+        // http://jsperf.com/function-bind-performance
+        Function.prototype.bind = function(context) {
+            var fn = this, linked = [];
+            Array.prototype.push.apply(linked, arguments);
+            linked.shift();
+
+            return function() {
+                var args = [];
+                Array.prototype.push.apply(args, linked);
+                Array.prototype.push.apply(args, arguments);
+                return fn.apply(context, args);
+            };
+        };
+
+        String.prototype.ucfirst = function() {
+            return this.charAt(0).toUpperCase() + this.slice(1);
+        };
+
+        this.coreModules = this.config.coreModules || this.coreModules;
+        this.module('engine.core');
+
+        game.normalizeVendorAttribute(window, 'requestAnimationFrame');
+
+        if (document.location.href.match(/\?nocache/)) this.nocache = '?' + Date.now();
+
+        this.device.pixelRatio = window.devicePixelRatio || 1;
+        this.device.screen = {
+            width: window.screen.availWidth * this.device.pixelRatio,
+            height: window.screen.availHeight * this.device.pixelRatio
+        };
+
+        // iPod
+        this.device.iPod = /iPod/i.test(navigator.userAgent);
+
+        // iPhone
+        this.device.iPhone = /iPhone/i.test(navigator.userAgent);
+        this.device.iPhone4 = (this.device.iPhone && this.device.pixelRatio === 2);
+        this.device.iPhone5 = (this.device.iPhone && this.device.pixelRatio === 2 && this.device.screen.height === 1096);
+
+        // iPad
+        this.device.iPad = /iPad/i.test(navigator.userAgent);
+        this.device.iPadRetina = (this.device.iPad && this.device.pixelRatio === 2);
+
+        // iOS
+        this.device.iOS = this.device.iPod || this.device.iPhone || this.device.iPad;
+        this.device.iOS5 = (this.device.iOS && /OS 5/i.test(navigator.userAgent));
+        this.device.iOS6 = (this.device.iOS && /OS 6/i.test(navigator.userAgent));
+        this.device.iOS7 = (this.device.iOS && /OS 7/i.test(navigator.userAgent));
+        this.device.iOS71 = (this.device.iOS && /OS 7_1/i.test(navigator.userAgent));
+        this.device.iOS8 = (this.device.iOS && /OS 8/i.test(navigator.userAgent));
+
+        // Android
+        this.device.android = /android/i.test(navigator.userAgent);
+        this.device.android2 = /android 2/i.test(navigator.userAgent);
+
+        // Internet Explorer
+        this.device.ie9 = /MSIE 9/i.test(navigator.userAgent);
+        this.device.ie10 = /MSIE 10/i.test(navigator.userAgent);
+        this.device.ie11 = /rv:11.0/i.test(navigator.userAgent);
+        this.device.ie = this.device.ie10 || this.device.ie11 || this.device.ie9;
+
+        // Windows Phone
+        this.device.wp7 = /Windows Phone OS 7/i.test(navigator.userAgent);
+        this.device.wp8 = /Windows Phone 8/i.test(navigator.userAgent);
+        this.device.wp = this.device.wp7 || this.device.wp8;
+
+        // Windows Tablet
+        this.device.wt = (this.device.ie && /Tablet/i.test(navigator.userAgent));
+
+        // Others
+        this.device.opera = /Opera/i.test(navigator.userAgent);
+        this.device.crosswalk = /Crosswalk/i.test(navigator.userAgent);
+        this.device.cocoonJS = !!navigator.isCocoonJS;
+        this.device.ejecta = /Ejecta/i.test(navigator.userAgent);
+        this.device.facebook = /FB/i.test(navigator.userAgent);
+
+        this.device.mobile = this.device.iOS || this.device.android || this.device.wp || this.device.wt;
+
+        if (typeof navigator.plugins === 'undefined' || navigator.plugins.length === 0) {
+            try {
+                new ActiveXObject('ShockwaveFlash.ShockwaveFlash');
+                this.device.flash = true;
+            }
+            catch (err) {
+                this.device.flash = false;
+            }
+        }
+        else {
+            this.device.flash = !!navigator.plugins['Shockwave Flash'];
+        }
+    
+        for (var i in this.device) {
+            if (this.device[i] && this.config[i]) {
+                for (var o in this.config[i]) this.merge(this.config[o], this.config[i][o]);
+            }
+        }
+
+        this.config.sourceFolder = this.config.sourceFolder || 'src';
+        this.config.mediaFolder = this.config.mediaFolder ? this.config.mediaFolder + '/' : 'media/';
+
+        var metaTags = document.getElementsByTagName('meta');
+        var viewportFound = false;
+
+        for (i = 0; i < metaTags.length; i++) {
+            if (metaTags[i].name === 'viewport') viewportFound = true;
+        }
+
+        // Add viewport meta, if none found
+        if (!viewportFound) {
+            var viewport = document.createElement('meta');
+            viewport.name = 'viewport';
+            var content = 'width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no';
+            if (this.device.iOS71) content += ',minimal-ui';
+            viewport.content = content;
+            document.getElementsByTagName('head')[0].appendChild(viewport);
+        }
+
+        if (document.readyState === 'complete') {
+            this.DOMReady();
+        }
+        else {
+            document.addEventListener('DOMContentLoaded', this.DOMReady.bind(this), false);
+            window.addEventListener('load', this.DOMReady.bind(this), false);
+        }
+    },
+
+    DOMReady: function() {
+        if (!this.DOMLoaded) {
+            if (!document.body) return setTimeout(this.DOMReady.bind(this), 13);
+            this.DOMLoaded = true;
+            this.loadModules();
         }
     }
 };
-
-window.game = core;
-
-Number.prototype.limit = function(min, max) {
-    var i = this;
-    if(i < min) i = min;
-    if(i > max) i = max;
-    return i;
-};
-
-Number.prototype.round = function(precision) {
-    if(precision) precision = Math.pow(10, precision);
-    else precision = 1;
-    return Math.round(this * precision) / precision;
-};
-
-Array.prototype.erase = function(item) {
-    for(var i = this.length; i--;) {
-        if(this[i] === item) this.splice(i, 1);
-    }
-    return this;
-};
-
-Array.prototype.random = function() {
-    return this[Math.floor(Math.random() * this.length)];
-};
-
-// http://jsperf.com/array-shuffle-comparator/2
-Array.prototype.shuffle = function () {
-    var l = this.length + 1;
-    while (l--) {
-            var r = ~~(Math.random() * l),
-                    o = this[r];
-
-            this[r] = this[0];
-            this[0] = o;
-    }
-
-    return this;
-};
-
-// http://jsperf.com/function-bind-performance
-Function.prototype.bind = function(context){
-    var fn = this, linked = [];
-    Array.prototype.push.apply(linked, arguments);
-    linked.shift();
-
-    return function(){
-       var args = [];
-       Array.prototype.push.apply(args, linked);
-       Array.prototype.push.apply(args, arguments);
-       return fn.apply(context, args);
-    };
-};
-
-String.prototype.ucfirst = function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-};
-
-game.normalizeVendorAttribute(window, 'requestAnimationFrame');
-if(window.requestAnimationFrame) {
-    var next = 1, anims = {};
-
-    window.game.setGameLoop = function(callback, element) {
-        var current = next++;
-        anims[current] = true;
-
-        var animate = function() {
-            if(!anims[current]) return;
-            window.requestAnimationFrame(animate, element);
-            callback();
-        };
-        window.requestAnimationFrame(animate, element);
-        return current;
-    };
-
-    window.game.clearGameLoop = function(id) {
-        delete anims[id];
-    };
-}
-else {
-    window.game.setGameLoop = function(callback) {
-        return window.setInterval(callback, 1000/60);
-    };
-    window.game.clearGameLoop = function(id) {
-        window.clearInterval(id);
-    };
-}
 
 // http://ejohn.org/blog/simple-javascript-inheritance/
-var initializing = false;
-var fnTest = /xyz/.test(function(){ var xyz; return xyz; }) ? /\bsuper\b/ : /[\D|\d]*/;
+game.initializing = false;
+game.fnTest = /xyz/.test(function() {
+    var xyz; return xyz;
+}) ? /\b_super\b/ : /[\D|\d]*/;
 
 /**
+    Base class.
     @class Class
 **/
-core.Class = function() {};
+game.Class = function() {};
+
 /**
+    Extend class.
     @method extend
-    @return {Class}
+    @param {Object} prop
+    @return {game.Class} Returns extended class
 **/
-core.Class.extend = function(prop) {
+game.Class.extend = function(prop) {
     var parent = this.prototype;
-    initializing = true;
+    game.initializing = true;
     var prototype = new this();
-    initializing = false;
- 
-    var makeFn = function(name, fn){
+    game.initializing = false;
+
+    var makeFn = function(name, fn) {
         return function() {
             /**
                 Call functions parent function.
-                @method super
+                @method _super
+                @param {Array} arguments
             **/
-            var tmp = this.super;
-            this.super = parent[name];
+            var tmp = this._super;
+            this._super = parent[name];
             var ret = fn.apply(this, arguments);
-            this.super = tmp;
+            this._super = tmp;
             return ret;
         };
     };
 
-    for(var name in prop) {
-        if(
-            typeof(prop[name]) === 'function' &&
-            typeof(parent[name]) === 'function' &&
-            fnTest.test(prop[name])
+    for (var name in prop) {
+        if (
+            typeof prop[name] === 'function' &&
+            typeof parent[name] === 'function' &&
+            game.fnTest.test(prop[name])
         ) {
             prototype[name] = makeFn(name, prop[name]);
         }
@@ -582,60 +700,64 @@ core.Class.extend = function(prop) {
             prototype[name] = prop[name];
         }
     }
- 
+
     function Class() {
-        if(!initializing) {
-            if(this.staticInit) {
+        if (!game.initializing) {
+            if (this.staticInit) {
                 /**
-                    If Class has `staticInit` function, it is called before `init` function.
-                    @property {Function} staticInit
+                    This method is called before init.
+                    @method staticInit
+                    @param {Array} arguments
                 **/
                 var obj = this.staticInit.apply(this, arguments);
-                if(obj) {
+                if (obj) {
                     return obj;
                 }
             }
-            for(var p in this) {
-                if(typeof(this[p]) === 'object') {
+            for (var p in this) {
+                if (typeof this[p] === 'object') {
                     this[p] = game.copy(this[p]);
                 }
             }
-            if(this.init) {
+            if (this.init) {
                 /**
-                    Automatically called, when creating new class.
-                    @property {Function} init
+                    This method is called, when you create new instance of the class.
+                    @method init
+                    @param {Array} arguments
                 **/
                 this.init.apply(this, arguments);
             }
         }
         return this;
     }
-    
+
     Class.prototype = prototype;
     Class.prototype.constructor = Class;
-    Class.extend = window.game.Class.extend;
+    Class.extend = game.Class.extend;
     /**
+        Inject class.
         @method inject
+        @param {Object} prop
     **/
     Class.inject = function(prop) {
         var proto = this.prototype;
         var parent = {};
 
-        var makeFn = function(name, fn){
+        var makeFn = function(name, fn) {
             return function() {
-                var tmp = this.super;
-                this.super = parent[name];
+                var tmp = this._super;
+                this._super = parent[name];
                 var ret = fn.apply(this, arguments);
-                this.super = tmp;
+                this._super = tmp;
                 return ret;
             };
         };
 
-        for(var name in prop) {
-            if(
-                typeof(prop[name]) === 'function' &&
-                typeof(proto[name]) === 'function' &&
-                fnTest.test(prop[name])
+        for (var name in prop) {
+            if (
+                typeof prop[name] === 'function' &&
+                typeof proto[name] === 'function' &&
+                game.fnTest.test(prop[name])
             ) {
                 parent[name] = proto[name];
                 proto[name] = makeFn(name, prop[name]);
@@ -645,28 +767,9 @@ core.Class.extend = function(prop) {
             }
         }
     };
-    
+
     return Class;
 };
 
-})(window);
-
-game.module(
-    'engine.core',
-    '1.0.0'
-)
-.require(
-    'engine.loader',
-    'engine.system',
-    'engine.sound',
-    'engine.renderer',
-    'engine.sprite',
-    'engine.debug',
-    'engine.storage',
-    'engine.tween',
-    'engine.scene',
-    'engine.pool'
-)
-.body(function(){
-    // ready to start engine
-});
+if (typeof exports !== 'undefined') exports = module.exports = game;
+else game.boot();

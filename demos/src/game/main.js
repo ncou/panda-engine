@@ -15,10 +15,10 @@ game.Scene.inject({
         sprite.drawRect(0,0,game.system.width,120);
         this.stage.addChild(sprite);
 
-        sprite = new game.Sprite(10, 0, 'media/panda.png');
+        sprite = new game.Sprite('panda.png', 10, 0);
         this.stage.addChild(sprite);
 
-        sprite = new game.Sprite(0, 0, game.icon);
+        sprite = new game.Sprite(game.icon);
         sprite.position.x = game.system.width - sprite.width - 10;
         this.stage.addChild(sprite);
     }

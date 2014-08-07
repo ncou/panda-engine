@@ -9,14 +9,16 @@ game.module(
 )
 .body(function(){
 
-game.icon = 'media/icons/genius.png';
+game.icon = 'icons/genius.png';
 game.addAsset(game.icon);
 
 game.Scene.inject({
     init: function() {
-        var word = game.ua.mobile ? 'Touch' : 'Click';
+        this._super();
+        
+        var word = game.device.mobile ? 'Touch' : 'Click';
         text = new game.BitmapText(word + ' to change', {font:'HelveticaNeue'});
-        text.position.x = game.system.width / 2 - text.width / 2;
+        text.position.x = game.system.width / 2 - text.textWidth / 2;
         text.position.y = game.system.height - 50;
         this.stage.addChild(text);
 
@@ -27,10 +29,8 @@ game.Scene.inject({
         this.emitter.position.x = game.system.width / 2;
         this.emitter.position.y = game.system.height / 2;
         this.emitter.container = this.container;
-        this.emitter.textures.push('media/particle.png');
+        this.emitter.textures.push('particle.png');
         this.addEmitter(this.emitter);
-
-        this.super();
     },
 
     click: function() {
@@ -41,14 +41,14 @@ game.Scene.inject({
 game.Scenes = [
     game.Scene.extend({
         init: function() {
-            this.super();
+            this._super();
             this.emitter.speedVar = 50;
         }
     }),
 
     game.Scene.extend({
         init: function() {
-            this.super();
+            this._super();
             this.emitter.speed = 200;
             this.emitter.rate = 0;
             this.emitter.angleVar = 0;
@@ -56,7 +56,7 @@ game.Scenes = [
             this.emitter.endScale = 0.5;
             this.emit();
 
-            this.addTimer(1, this.emit.bind(this), true);
+            this.addTimer(1000, this.emit.bind(this), true);
         },
 
         emit: function() {
@@ -66,13 +66,13 @@ game.Scenes = [
                 this.emitter.angle = Math.PI * 2 / count * i;
                 this.emitter.accelAngle = this.emitter.angle - Math.PI;
                 this.emitter.emit();
-            };
+            }
         }
     }),
 
     game.Scene.extend({
         init: function() {
-            this.super();
+            this._super();
             this.emitter.rate = 0;
             this.emitter.life = 0;
             this.emitter.endAlpha = 1;
@@ -92,7 +92,7 @@ game.Scenes = [
 
     game.Scene.extend({
         init: function() {
-            this.super();
+            this._super();
             this.emitter.speed = 200;
             this.emitter.velRotate = 2;
         }
@@ -100,7 +100,7 @@ game.Scenes = [
 
     game.Scene.extend({
         init: function() {
-            this.super();
+            this._super();
             this.emitter.speed = 400;
             this.emitter.life = 3;
             this.emitter.startScale = 0;
@@ -111,7 +111,7 @@ game.Scenes = [
 
     game.Scene.extend({
         init: function() {
-            this.super();
+            this._super();
             this.emitter.life = 3;
             this.emitter.speed = 300;
             this.emitter.angle = -Math.PI/2;
@@ -122,7 +122,7 @@ game.Scenes = [
 
     game.Scene.extend({
         init: function() {
-            this.super();
+            this._super();
             this.emitter.angleVar = 0;
             this.emitter.positionVar.set(game.system.width / 2, game.system.height / 2);
         }
@@ -135,7 +135,7 @@ game.nextScene = function() {
     game.currentScene++;
     if(!game.Scenes[game.currentScene]) game.currentScene = 0;
     game.system.setScene(game.Scenes[game.currentScene]);
-}
+};
 
 game.start(game.Scenes[game.currentScene]);
 

@@ -438,7 +438,7 @@ a.center {
 	margin-left: 0px;
 }
 body.index {
-	background: #b9bec7 url('{{ site.baseurl }}/img/logo4.png') no-repeat center 0px;
+	background: #b9bec7 url('{{ site.baseurl }}img/logo4.png') no-repeat center 0px;
 }
 .index #wrapper {
 	text-align: center;

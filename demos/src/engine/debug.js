@@ -3,37 +3,47 @@
     @namespace game
 **/
 game.module(
-    'engine.debug',
-    '1.0.0'
+    'engine.debug'
 )
-.body(function() { 'use strict';
+.require(
+    'engine.pixi'
+)
+.body(function() {
+'use strict';
 
 /**
     DebugDraw will draw all interactive sprite hit areas and physic shapes.
     Automatically enabled, if URL contains `?debugdraw`.
     @class DebugDraw
+    @extends game.Class
 **/
 game.DebugDraw = game.Class.extend({
-    /**
-        @property {game.Container} container
-    **/
-    container: null,
+    spriteContainer: null,
+    bodyContainer: null,
 
     init: function() {
-        this.container = new game.Container();
+        this.spriteContainer = new game.Container();
+        this.bodyContainer = new game.Container();
     },
 
     /**
+        Remove all sprites from DebugDraw.
         @method reset
     **/
     reset: function() {
-        for (var i = this.container.children.length - 1; i >= 0; i--) {
-            this.container.removeChild(this.container.children[i]);
+        for (var i = this.spriteContainer.children.length - 1; i >= 0; i--) {
+            this.spriteContainer.removeChild(this.spriteContainer.children[i]);
         }
-        game.system.stage.addChild(this.container);
+        game.system.stage.addChild(this.spriteContainer);
+
+        for (var i = this.bodyContainer.children.length - 1; i >= 0; i--) {
+            this.bodyContainer.removeChild(this.bodyContainer.children[i]);
+        }
+        game.system.stage.addChild(this.bodyContainer);
     },
 
     /**
+        Add sprite to DebugDraw.
         @method addSprite
         @param {game.Sprite} sprite
     **/
@@ -41,298 +51,203 @@ game.DebugDraw = game.Class.extend({
         var grap = new game.Graphics();
         grap.beginFill(game.DebugDraw.spriteColor);
 
-        grap.drawRect(-sprite.width * sprite.anchor.x, -sprite.height * sprite.anchor.y, sprite.width, sprite.height);
+        if (sprite.hitArea) {
+            if (sprite.hitArea instanceof game.HitRectangle) {
+                grap.drawRect(sprite.hitArea.x, sprite.hitArea.y, sprite.hitArea.width, sprite.hitArea.height);
+            }
+            else if (sprite.hitArea instanceof game.HitCircle) {
+                grap.drawCircle(sprite.hitArea.x, sprite.hitArea.y, sprite.hitArea.radius);
+            }
+        }
+        else {
+            grap.drawRect(-sprite.width * sprite.anchor.x, -sprite.height * sprite.anchor.y, sprite.width, sprite.height);
+        }
 
+        grap.position.x = sprite.position.x;
+        grap.position.y = sprite.position.y;
         grap.target = sprite;
         grap.alpha = game.DebugDraw.spriteAlpha;
-        this.container.addChild(grap);
+        this.spriteContainer.addChild(grap);
     },
 
     /**
+        Add body to DebugDraw.
         @method addBody
         @param {game.Body} body
     **/
     addBody: function(body) {
         var sprite = new game.Graphics();
-        sprite.beginFill(game.DebugDraw.shapeColor);
+        this.drawDebugSprite(sprite, body);
 
-        // TODO add support for game.Circle and game.Line
-        if(body.shape instanceof game.Rectangle) {
-            sprite.drawRect(-body.shape.width/2, -body.shape.height/2, body.shape.width, body.shape.height);
-        }
-
+        sprite.position.x = body.position.x;
+        sprite.position.y = body.position.y;
         sprite.target = body;
-        sprite.alpha = game.DebugDraw.shapeAlpha;
-        this.container.addChild(sprite);
+        sprite.alpha = game.DebugDraw.bodyAlpha;
+        this.bodyContainer.addChild(sprite);
+    },
+
+    drawDebugSprite: function(sprite, body) {
+        sprite.clear();
+        sprite.beginFill(game.DebugDraw.bodyColor);
+
+        if (body.shape instanceof game.Rectangle) {
+            sprite.drawRect(-body.shape.width / 2, -body.shape.height / 2, body.shape.width, body.shape.height);
+            sprite.width = body.shape.width;
+            sprite.height = body.shape.height;
+        }
+        if (body.shape instanceof game.Circle) {
+            sprite.drawCircle(0, 0, body.shape.radius);
+            sprite.radius = body.shape.radius;
+        } // TODO add support for game.Line
     },
 
     /**
+        Update DebugDraw sprites.
         @method update
     **/
     update: function() {
-        for (var i = this.container.children.length - 1; i >= 0; i--) {
-            this.container.children[i].rotation = this.container.children[i].target.rotation;
+        for (var i = this.bodyContainer.children.length - 1; i >= 0; i--) {
+            if (game.modules['plugins.p2']) {
+                this.updateP2(this.bodyContainer.children[i]);
+                continue;
+            }
 
-            if(game.modules['engine.physics'] && this.container.children[i].target instanceof game.Body) {
-                this.container.children[i].position.x = this.container.children[i].target.position.x + game.scene.stage.position.x;
-                this.container.children[i].position.y = this.container.children[i].target.position.y + game.scene.stage.position.y;
-                if(!this.container.children[i].target.world) {
-                    this.container.removeChild(this.container.children[i]);
-                }
-            } else {
-                if(this.container.children[i].target.parent) this.container.children[i].target.updateTransform();
-                this.container.children[i].position.x = this.container.children[i].target.worldTransform[2];
-                this.container.children[i].position.y = this.container.children[i].target.worldTransform[5];
-                this.container.children[i].scale.x = this.container.children[i].target.scale.x;
-                this.container.children[i].scale.y = this.container.children[i].target.scale.y;
-                if(!this.container.children[i].target.parent) {
-                    this.container.removeChild(this.container.children[i]);
-                }
+            this.bodyContainer.children[i].rotation = this.bodyContainer.children[i].target.rotation;
+
+            if (this.bodyContainer.children[i].width !== this.bodyContainer.children[i].target.shape.width ||
+                this.bodyContainer.children[i].height !== this.bodyContainer.children[i].target.shape.height) {
+                this.drawDebugSprite(this.bodyContainer.children[i], this.bodyContainer.children[i].target);
+            }
+
+            if (this.bodyContainer.children[i].radius !== this.bodyContainer.children[i].target.shape.radius) {
+                this.drawDebugSprite(this.bodyContainer.children[i], this.bodyContainer.children[i].target);
+            }
+
+            this.bodyContainer.children[i].position.x = this.bodyContainer.children[i].target.position.x;
+            this.bodyContainer.children[i].position.y = this.bodyContainer.children[i].target.position.y;
+
+            if (!this.bodyContainer.children[i].target.world) {
+                this.bodyContainer.removeChild(this.bodyContainer.children[i]);
+            }
+        }
+
+        for (var i = this.spriteContainer.children.length - 1; i >= 0; i--) {
+            this.spriteContainer.children[i].rotation = this.spriteContainer.children[i].target.rotation;
+
+            if (this.spriteContainer.children[i].target.parent) this.spriteContainer.children[i].target.updateTransform();
+
+            this.spriteContainer.children[i].visible = this.spriteContainer.children[i].target.worldVisible;
+            this.spriteContainer.children[i].position.x = this.spriteContainer.children[i].target.worldTransform.tx;
+            this.spriteContainer.children[i].position.y = this.spriteContainer.children[i].target.worldTransform.ty;
+            this.spriteContainer.children[i].scale.x = this.spriteContainer.children[i].target.scale.x;
+            this.spriteContainer.children[i].scale.y = this.spriteContainer.children[i].target.scale.y;
+
+            if (!this.spriteContainer.children[i].target.parent) {
+                this.spriteContainer.removeChild(this.spriteContainer.children[i]);
             }
         }
     }
 });
 
 /**
+    Color of DebugDraw sprites.
     @attribute {Number} spriteColor
     @default 0xff0000
 **/
 game.DebugDraw.spriteColor = 0xff0000;
 /**
+    Alpha of DebugDraw sprites.
     @attribute {Number} spriteAlpha
     @default 0.3
 **/
 game.DebugDraw.spriteAlpha = 0.3;
 /**
-    @attribute {Number} shapeColor
+    Color of DebugDraw bodies.
+    @attribute {Number} bodyColor
     @default 0x0000ff
 **/
-game.DebugDraw.shapeColor = 0x0000ff;
+game.DebugDraw.bodyColor = 0x0000ff;
 /**
-    @attribute {Number} shapeAlpha
+    Alpha of DebugDraw bodies.
+    @attribute {Number} bodyAlpha
     @default 0.3
 **/
-game.DebugDraw.shapeAlpha = 0.3;
+game.DebugDraw.bodyAlpha = 0.3;
 /**
+    Enable DebugDraw.
     @attribute {Boolean} enabled
 **/
 game.DebugDraw.enabled = document.location.href.match(/\?debugdraw/) ? true : false;
 
 /**
-    Instance automatically created at {{#crossLink "game.Core"}}{{/crossLink}}, if URL contains `?debug`.
+    Show FPS.
+    Automatically enabled, if URL contains `?debug`.
     @class Debug
     @extends game.Class
 **/
 game.Debug = game.Class.extend({
+    frames: 0,
+    last: 0,
+    fps: 0,
+    fpsText: null,
+    lastFps: 0,
+
     init: function() {
-        var Stats = function () {
+        this.debugDiv = document.createElement('div');
+        this.debugDiv.id = 'pandaDebug';
+        this.debugDiv.style.position = 'absolute';
+        this.debugDiv.style.left = game.Debug.position.x + 'px';
+        this.debugDiv.style.top = game.Debug.position.y + 'px';
+        this.debugDiv.style.zIndex = 9999;
+        this.debugDiv.style.color = game.Debug.color;
+        this.debugDiv.style.fontFamily = 'Arial';
+        this.debugDiv.style.fontSize = '20px';
+        document.body.appendChild(this.debugDiv);
+    },
 
-            var startTime = Date.now(), prevTime = startTime;
-            var ms = 0, msMin = Infinity, msMax = 0;
-            var fps = 0, fpsMin = Infinity, fpsMax = 0;
-            var frames = 0, mode = 0, bar;
+    update: function() {
+        this.frames++;
 
-            var container = document.createElement( 'div' );
-            container.id = 'stats';
-            container.addEventListener( 'mousedown', function ( event ) { event.preventDefault(); setMode( ++ mode % 2 ); }, false );
-            container.style.cssText = 'width:80px;opacity:0.9;cursor:pointer';
-
-            var fpsDiv = document.createElement( 'div' );
-            fpsDiv.id = 'fps';
-            fpsDiv.style.cssText = 'padding:0 0 3px 3px;text-align:left;background-color:#002';
-            container.appendChild( fpsDiv );
-
-            var fpsText = document.createElement( 'div' );
-            fpsText.id = 'fpsText';
-            fpsText.style.cssText = 'color:#0ff;font-family:Helvetica,Arial,sans-serif;font-size:9px;font-weight:bold;line-height:15px';
-            fpsText.innerHTML = 'FPS';
-            fpsDiv.appendChild( fpsText );
-
-            var fpsGraph = document.createElement( 'div' );
-            fpsGraph.id = 'fpsGraph';
-            fpsGraph.style.cssText = 'position:relative;width:74px;height:30px;background-color:#0ff';
-            fpsDiv.appendChild( fpsGraph );
-
-            while ( fpsGraph.children.length < 74 ) {
-
-                bar = document.createElement( 'span' );
-                bar.style.cssText = 'width:1px;height:30px;float:left;background-color:#113';
-                fpsGraph.appendChild( bar );
-
+        if (game.Timer.last >= this.last + game.Debug.frequency) {
+            this.fps = (Math.round((this.frames * 1000) / (game.Timer.last - this.last))).toString();
+            if (this.fps !== this.lastFps) {
+                this.lastFps = this.fps;
+                this.debugDiv.innerHTML = this.fps;
             }
-
-            var msDiv = document.createElement( 'div' );
-            msDiv.id = 'ms';
-            msDiv.style.cssText = 'padding:0 0 3px 3px;text-align:left;background-color:#020;display:none';
-            container.appendChild( msDiv );
-
-            var msText = document.createElement( 'div' );
-            msText.id = 'msText';
-            msText.style.cssText = 'color:#0f0;font-family:Helvetica,Arial,sans-serif;font-size:9px;font-weight:bold;line-height:15px';
-            msText.innerHTML = 'MS';
-            msDiv.appendChild( msText );
-
-            var msGraph = document.createElement( 'div' );
-            msGraph.id = 'msGraph';
-            msGraph.style.cssText = 'position:relative;width:74px;height:30px;background-color:#0f0';
-            msDiv.appendChild( msGraph );
-
-            while ( msGraph.children.length < 74 ) {
-
-                bar = document.createElement( 'span' );
-                bar.style.cssText = 'width:1px;height:30px;float:left;background-color:#131';
-                msGraph.appendChild( bar );
-
-            }
-
-            var setMode = function ( value ) {
-
-                mode = value;
-
-                switch ( mode ) {
-
-                    case 0:
-                        fpsDiv.style.display = 'block';
-                        msDiv.style.display = 'none';
-                        break;
-                    case 1:
-                        fpsDiv.style.display = 'none';
-                        msDiv.style.display = 'block';
-                        break;
-                }
-
-            };
-
-            var updateGraph = function ( dom, value ) {
-
-                var child = dom.appendChild( dom.firstChild );
-                child.style.height = value + 'px';
-
-            };
-
-            return {
-
-                REVISION: 11,
-
-                domElement: container,
-
-                setMode: setMode,
-
-                begin: function () {
-
-                    startTime = Date.now();
-
-                },
-
-                end: function () {
-
-                    var time = Date.now();
-
-                    ms = time - startTime;
-                    msMin = Math.min( msMin, ms );
-                    msMax = Math.max( msMax, ms );
-
-                    msText.textContent = ms + ' MS (' + msMin + '-' + msMax + ')';
-                    updateGraph( msGraph, Math.min( 30, 30 - ( ms / 200 ) * 30 ) );
-
-                    frames ++;
-
-                    if ( time > prevTime + 1000 ) {
-
-                        fps = Math.round( ( frames * 1000 ) / ( time - prevTime ) );
-                        fpsMin = Math.min( fpsMin, fps );
-                        fpsMax = Math.max( fpsMax, fps );
-
-                        fpsText.textContent = fps + ' FPS (' + fpsMin + '-' + fpsMax + ')';
-                        updateGraph( fpsGraph, Math.min( 30, 30 - ( fps / 100 ) * 30 ) );
-
-                        prevTime = time;
-                        frames = 0;
-
-                    }
-
-                    return time;
-
-                },
-
-                update: function () {
-
-                    startTime = this.end();
-
-                }
-
-            };
-
-        };
-
-        this.stats = new Stats();
-        document.body.appendChild(this.stats.domElement);
-        this.stats.domElement.style.position = 'absolute';
-
-        if(game.ua.mobile) {
-            this.setPosition = game.Debug.position.mobile;
-            this.setPosition();
-            document.getElementById('fpsGraph').style.display = 'none';
-            document.getElementById('msGraph').style.display = 'none';
+            this.last = game.Timer.last;
+            this.frames = 0;
         }
-        else {
-            this.setPosition = game.Debug.position.desktop;
-            this.setPosition();
-        }
-
-        if(game.renderer.gl) document.getElementById('fps').style.backgroundColor = game.Debug.backgroundColor.webGL;
-        else document.getElementById('fps').style.backgroundColor = game.Debug.backgroundColor.canvas;
     }
 });
 
-game.Debug.backgroundColor = {
-    /**
-        @attribute {String} backgroundColor.canvas
-        @default '#ff0000'
-    **/
-    canvas: '#ff0000',
-    /**
-        @attribute {String} backgroundColor.webGL
-        @default '#0000ff'
-    **/
-    webGL: '#0000ff'
-};
-
-game.Debug.POSITION = {
-    TOPLEFT: function() {
-        this.stats.domElement.style.left = '0px';
-        this.stats.domElement.style.top = '0px';
-    },
-    BOTTOMLEFT: function() {
-        this.stats.domElement.style.left = '0px';
-        this.stats.domElement.style.bottom = '0px';
-    },
-    TOPRIGHT: function() {
-        this.stats.domElement.style.right = '0px';
-        this.stats.domElement.style.top = '0px';
-    },
-    BOTTOMRIGHT: function() {
-        this.stats.domElement.style.right = '0px';
-        this.stats.domElement.style.bottom = '0px';
-    }
-};
-
-game.Debug.position = {
-    /**
-        @attribute {TOPLEFT|BOTTOMLEFT|TOPRIGHT|BOTTOMRIGHT} position.desktop
-        @default game.Debug.POSITION.TOPLEFT
-    **/
-    desktop: game.Debug.POSITION.TOPLEFT,
-    /**
-        @attribute {TOPLEFT|BOTTOMLEFT|TOPRIGHT|BOTTOMRIGHT} position.mobile
-        @default game.Debug.POSITION.TOPLEFT
-    **/
-    mobile: game.Debug.POSITION.TOPLEFT
-};
-
 /**
+    Enable fps display.
     @attribute {Boolean} enabled
 **/
-game.Debug.enabled = document.location.href.match(/\?debug/) ? true : false;
+game.Debug.enabled = !!document.location.href.toLowerCase().match(/\?debug/);
+
+/**
+    How often update fps.
+    @attribute {Number} frequence
+    @default 1000
+**/
+game.Debug.frequency = 1000;
+
+/**
+    Color of fps text.
+    @attribute {String} color
+    @default red
+**/
+game.Debug.color = 'red';
+
+/**
+    Position of fps text.
+    @attribute {Object} position
+    @default 10,10
+**/
+game.Debug.position = {
+    x: 10,
+    y: 10
+};
 
 });

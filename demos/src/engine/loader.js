@@ -3,21 +3,25 @@
     @namespace game
 **/
 game.module(
-    'engine.loader',
-    '1.0.0'
+    'engine.loader'
 )
-.body(function(){ 'use strict';
+.body(function() {
+'use strict';
 
 /**
+    Dynamic loader for assets and audio.
     @class Loader
     @extends game.Class
+    @constructor
+    @param {game.Scene|Function} param
 **/
 game.Loader = game.Class.extend({
     /**
-        Game scene to start, when loader is finished.
-        @property {game.Scene} gameScene
+        Scene to start, when loader is finished.
+        @property {game.Scene} scene
+        @default null
     **/
-    gameScene: null,
+    scene: null,
     /**
         Number of files loaded.
         @property {Number} loaded
@@ -28,182 +32,318 @@ game.Loader = game.Class.extend({
         @property {Number} percent
     **/
     percent: 0,
-    done: false,
-    timerId: 0,
-    assets: [],
-    audioAssets: [],
-    audioUnloaded: 0,
-    startTime: null,
-    endTime: null,
-    tweens: [],
-
-    init: function(gameScene, resources, audioResources) {
-        if(this.backgroundColor) {
-            var bg = new game.Graphics();
-            bg.beginFill(this.backgroundColor);
-            bg.drawRect(0, 0, game.system.width, game.system.height);
-            game.system.stage.addChild(bg);
+    /**
+        List of assets to load.
+        @property {Array} assetQueue
+    **/
+    assetQueue: [],
+    /**
+        List of sounds to load.
+        @property {Array} soundQueue
+    **/
+    soundQueue: [],
+    /**
+        Is loader started.
+        @property {Boolean} started
+        @default false
+    **/
+    started: false,
+    /**
+        Enable dynamic mode.
+        @property {Boolean} dynamic
+        @default true
+    **/
+    dynamic: true,
+    callback: null,
+    
+    init: function(callback) {
+        if (callback && callback.prototype.init || game.System.startScene) {
+            this.scene = callback || game[game.System.startScene] || window[game.System.startScene];
+            this.dynamic = false;
+            game.System.startScene = null;
+        }
+        else {
+            this.callback = callback;
         }
 
-        this.gameScene = gameScene;
-        this.timer = new game.Timer();
+        this.stage = game.system.stage;
 
-        var i, path;
-        for (i = 0; i < resources.length; i++) {
-            path = this.getPath(resources[i]);
-            this.assets.push(path);
+        for (var i = 0; i < game.assetQueue.length; i++) {
+            if (game.TextureCache[game.assetQueue[i]]) continue;
+            this.assetQueue.push(this.getPath(game.assetQueue[i]));
         }
 
-        for (i = 0; i < audioResources.length; i++) {
-            this.audioAssets.push(audioResources[i]);
+        if (game.Audio.enabled) {
+            for (var i = 0; i < game.audioQueue.length; i++) {
+                this.soundQueue.push(game.audioQueue[i]);
+            }
         }
-        this.audioUnloaded = this.audioAssets.length;
 
-        this.loader = new game.AssetLoader(this.assets, true);
-        this.loader.onProgress = this.progress.bind(this);
-        this.loader.onComplete = this.complete.bind(this);
-        this.loader.onError = this.error.bind(this);
+        if (this.assetQueue.length > 0) {
+            this.loader = new game.AssetLoader(this.assetQueue, true);
+            this.loader.onProgress = this.progress.bind(this);
+            this.loader.onComplete = this.loadAudio.bind(this);
+            this.loader.onError = this.error.bind(this);
+        }
 
-        if(this.assets.length === 0 && this.audioAssets.length === 0) this.percent = 100;
-
-        this.initStage();
-
-        if(this.assets.length === 0 && this.audioAssets.length === 0) this.ready();
-        else this.startTime = Date.now();
+        if (this.assetQueue.length === 0 && this.soundQueue.length === 0) this.percent = 100;
     },
 
     initStage: function() {
-        this.text = new game.Text(this.percent+'%',{font:'30px Arial',fill:'#ffffff'});
-        this.text.position.x = game.system.width / 2 - this.text.width / 2;
-        this.text.position.y = game.system.height/2 - 30/2;
-        game.system.stage.addChild(this.text);
+        if (game.Loader.logo) {
+            this.logo = new game.Sprite(game.Texture.fromImage(game.Loader.logo));
+            this.logo.anchor.set(0.5, 1.0);
+            this.logo.position.set(game.system.width / 2, game.system.height / 2 + this.logo.height / 2);
+            this.stage.addChild(this.logo);
+        }
 
-        // TODO add panda logo
-        // TODO tinypng
-        var imageData = 'data:image/png;base64,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';
-        if(game.ua.ie) imageData += '?' + Date.now();
-        this.symbol = new game.Sprite(game.system.width/2, game.system.height/2, PIXI.Texture.fromImage(imageData), {
-            anchor: {x: 0.5, y: 0.5}
-        });
-        game.system.stage.addChild(this.symbol);
+        this.barBg = new game.Graphics();
+        this.barBg.beginFill(game.Loader.barBg);
+        this.barBg.drawRect(0, 0, game.Loader.barWidth, game.Loader.barHeight);
+        this.barBg.position.set(game.system.width / 2 - (game.Loader.barWidth / 2), game.system.height / 2 - (game.Loader.barHeight / 2));
+        if (this.logo) this.barBg.position.y += this.logo.height / 2 + game.Loader.barHeight + game.Loader.barMargin;
+        this.stage.addChild(this.barBg);
+
+        this.barFg = new game.Graphics();
+        this.barFg.beginFill(game.Loader.barColor);
+        this.barFg.drawRect(0, 0, game.Loader.barWidth + 2, game.Loader.barHeight + 2);
+        this.barFg.position.set(game.system.width / 2 - (game.Loader.barWidth / 2) - 1, game.system.height / 2 - (game.Loader.barHeight / 2) - 1);
+        if (this.logo) this.barFg.position.y += this.logo.height / 2 + game.Loader.barHeight + game.Loader.barMargin;
+        this.barFg.scale.x = this.percent / 100;
+        this.stage.addChild(this.barFg);
+
+        if (game.Tween && game.Loader.logoTween && this.logo) {
+            this.logo.rotation = -0.1;
+
+            var tween = new game.Tween(this.logo)
+                .to({ rotation: 0.1 }, 500)
+                .easing(game.Tween.Easing.Cubic.InOut)
+                .repeat()
+                .yoyo()
+                .start();
+        }
     },
 
-    getPath: function(path) {
-        return game.system.retina || game.system.hires ? path.replace(/\.(?=[^.]*$)/, '@2x.') : path;
+    onComplete: function(callback) {
+        this.callback = callback;
+        return this;
     },
 
+    /**
+        Start loader.
+        @method start
+    **/
     start: function() {
-        this.loader.load();
-        // this.timerId = setInterval(this.run.bind(this), 16);
-        this.loopId = game.setGameLoop(this.run.bind(this), game.system.canvas);
+        this.started = true;
+
+        if (!this.dynamic) {
+            if (game.scene) {
+                for (var i = this.stage.children.length - 1; i >= 0; i--) {
+                    this.stage.removeChild(this.stage.children[i]);
+                }
+                this.stage.setBackgroundColor(game.Loader.bgColor);
+
+                this.stage.interactive = false; // this is not working, bug?
+
+                this.stage.mousemove = this.stage.touchmove = null;
+                this.stage.click = this.stage.tap = null;
+                this.stage.mousedown = this.stage.touchstart = null;
+                this.stage.mouseup = this.stage.mouseupoutside = this.stage.touchend = this.stage.touchendoutside = null;
+                this.stage.mouseout = null;
+            }
+            if (game.audio) game.audio.stopAll();
+
+            if (typeof game.Loader.bgColor === 'number') {
+                var bg = new game.Graphics();
+                bg.beginFill(game.Loader.bgColor);
+                bg.drawRect(0, 0, game.system.width, game.system.height);
+                this.stage.addChild(bg);
+            }
+            
+            this.initStage();
+
+            if (!game.scene) this.loopId = game.setGameLoop(this.run.bind(this), game.system.canvas);
+            else game.scene = this;
+        }
+
+        if (this.assetQueue.length > 0) this.loader.load();
+        else this.loadAudio();
+
+        return this;
     },
 
-    error: function() {
-        if(!this.text) return;
-        this.text.setText('ERR');
-        this.text.updateTransform();
-        this.text.position.x = game.system.width / 2 - this.text.width / 2;
-        this.onPercentChange = function() {};
+    /**
+        Error loading file.
+        @method error
+        @param {String} msg
+    **/
+    error: function(msg) {
+        if (msg) throw msg;
     },
 
-    progress: function() {
+    /**
+        File loaded.
+        @method progress
+    **/
+    progress: function(loader) {
+        if (loader && loader.json && !loader.json.frames && !loader.json.bones) game.json[loader.url] = loader.json;
         this.loaded++;
-        this.percent = Math.round(this.loaded / (this.assets.length + this.audioAssets.length) * 100);
+        this.percent = Math.round(this.loaded / (this.assetQueue.length + this.soundQueue.length) * 100);
         this.onPercentChange();
+
+        if (this.dynamic && this.loaded === (this.assetQueue.length + this.soundQueue.length)) this.ready();
     },
 
+    /**
+        Called when percent is changed.
+        @method onPercentChange
+    **/
     onPercentChange: function() {
-        if(!this.text) return;
-        this.text.setText(this.percent+'%');
-        this.text.updateTransform();
-        this.text.position.x = game.system.width / 2 - this.text.width / 2;
+        if (this.barFg) this.barFg.scale.x = this.percent / 100;
     },
 
-    complete: function() {
-        if(this.audioAssets.length > 0) this.loadAudio();
-        else this.ready();
-    },
-
+    /**
+        Start loading audio.
+        @method loadAudio
+    **/
     loadAudio: function() {
-        for (var i = this.audioAssets.length - 1; i >= 0; i--) {
-            this.audioAssets[i].load(this.audioLoaded.bind(this));
+        for (var i = this.soundQueue.length - 1; i >= 0; i--) {
+            game.audio.load(this.soundQueue[i], this.progress.bind(this));
         }
     },
 
-    audioLoaded: function(path, status) {
-        this.progress();
-
-        if(status) {
-            this.audioUnloaded--;
+    /**
+        All files loaded.
+        @method ready
+    **/
+    ready: function() {
+        if (game.system.retina || game.system.hires) {
+            for (var i in game.TextureCache) {
+                if (i.indexOf('@2x') !== -1) {
+                    game.TextureCache[i.replace('@2x', '')] = game.TextureCache[i];
+                    delete game.TextureCache[i];
+                }
+            }
         }
-        else {
-            if(this.text) this.text.setText('ERR');
-            throw('Failed to load audio: ' + path);
-        }
 
-        if(this.audioUnloaded === 0) this.ready();
+        game.assetQueue.length = 0;
+        game.audioQueue.length = 0;
+
+        if (!this.dynamic) return this.setScene();
+        if (typeof this.callback === 'function') this.callback();
+    },
+
+    /**
+        Set scene.
+        @method setScene
+    **/
+    setScene: function() {
+        game.system.timer.last = 0;
+        game.Timer.time = Number.MIN_VALUE;
+        if (this.loopId) game.clearGameLoop(this.loopId);
+        game.system.setScene(this.scene);
     },
 
     run: function() {
-        game.Timer.update();
-        this.delta = this.timer.delta();
+        if (this.loopId) {
+            this.last = game.Timer.time;
+            game.Timer.update();
+            game.system.delta = (game.Timer.time - this.last) / 1000;
+        }
+
         this.update();
         this.render();
     },
 
     update: function() {
-        for (var i = this.tweens.length - 1; i >= 0; i--) {
-            this.tweens[i].update();
-            if(this.tweens[i].complete) this.tweens.erase(this.tweens[i]);
+        if (!this.startTime) this.startTime = Date.now();
+        if (game.tweenEngine) game.tweenEngine.update();
+
+        if (this._ready) return;
+        if (this.timer) {
+            if (this.timer.time() >= 0) {
+                this._ready = true;
+                this.ready();
+            }
         }
-        if(this.symbol) this.symbol.rotation += 10 * this.delta;
+        else if (this.loaded === this.assetQueue.length + this.soundQueue.length) {
+            // Everything loaded
+            var loadTime = Date.now() - this.startTime;
+            var waitTime = Math.max(100, game.Loader.timeout - loadTime);
+            this.timer = new game.Timer(waitTime);
+        }
     },
 
     render: function() {
-        game.system.renderer.render(game.system.stage);
+        game.system.renderer.render(this.stage);
     },
 
-    ready: function() {
-        if(this.done) return;
-        this.done = true;
-
-        var timeout = game.Loader.timeout * 1000;
-        if(this.startTime) {
-            this.endTime = Date.now();
-            timeout -= this.endTime - this.startTime;
-        }
-        if(timeout < 100) timeout = 100;
-
-        // remove @2x from TextureCache
-        for(var i in game.TextureCache) {
-            if(i.indexOf('@2x') !== -1) {
-                game.TextureCache[i.replace('@2x', '')] = game.TextureCache[i];
-                delete game.TextureCache[i];
-            }
-        }
-
-        setTimeout(this.preEnd.bind(this), timeout);
-    },
-
-    preEnd: function() {
-        this.end();
-    },
-
-    end: function() {
-        game.Timer.time = Number.MIN_VALUE;
-        // clearInterval(this.timerId);
-        game.clearGameLoop(this.loopId);
-        game.system.setScene(this.gameScene);
+    getPath: function(path) {
+        return game.system.retina || game.system.hires ? path.replace(/\.(?=[^.]*$)/, '@2x.') : path;
     }
 });
 
 /**
-    Minimum time to show preloader, in seconds.
-    @attribute {Number} timeout
-    @default 0.5
-    @example
-        game.Loader.timeout = 1;
+    Loader background color.
+    @attribute {Number} bgColor
+    @default 0x000000
 **/
-game.Loader.timeout = 0.5;
+game.Loader.bgColor = 0x000000;
+
+/**
+    Minimum time to show loader, in milliseconds.
+    @attribute {Number} timeout
+    @default 500
+**/
+game.Loader.timeout = 500;
+
+/**
+    Loading bar background color.
+    @attribute {Number} barBg
+    @default 0x231f20
+**/
+game.Loader.barBg = 0x231f20;
+
+/**
+    Loading bar color.
+    @attribute {Number} barColor
+    @default 0xe6e7e8
+**/
+game.Loader.barColor = 0xe6e7e8;
+
+/**
+    Width of the loading bar.
+    @attribute {Number} barWidth
+    @default 200
+**/
+game.Loader.barWidth = 200;
+
+/**
+    Height of the loading bar.
+    @attribute {Number} barHeight
+    @default 20
+**/
+game.Loader.barHeight = 20;
+
+/**
+    Loading bar margin from logo.
+    @attribute {Number} barMargin
+    @default 10
+**/
+game.Loader.barMargin = 10;
+
+/**
+    Use tween on loader logo.
+    @attribute {Boolean} tween
+    @default false
+**/
+game.Loader.logoTween = false;
+
+/**
+    Loader logo dataURI.
+    @attribute {String} logo
+    @default null
+**/
+game.Loader.logo = null;
 
 });

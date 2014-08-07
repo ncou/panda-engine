@@ -1,24 +1,15 @@
 /**
-    Local storage.
-    
     @module storage
     @namespace game
 **/
 game.module(
-    'engine.storage',
-    '1.0.0'
+    'engine.storage'
 )
-.body(function() { 'use strict';
+.body(function() {
+'use strict';
 
 /**
-    Instance automatically created at {{#crossLink "game.Core"}}{{/crossLink}}, if {{#crossLink "game.Storage/id:attribute"}}{{/crossLink}} is set.
-
-    __Example__
-
-        game.Storage.id = 'com.company.mygame'; // id must be set before engine is started.
-
-        game.storage.set('highScore', 1000);
-        var highScore = game.storage.get('highScore');
+    Local storage.
     @class Storage
     @extends game.Class
 **/
@@ -33,20 +24,38 @@ game.Storage = game.Class.extend({
         Set value to local storage.
         @method set
         @param {String} key
-        @param {String} value
+        @param {*} value
     **/
     set: function(key, value) {
-        localStorage[this.id + '.' + key] = value;
+        localStorage.setItem(this.id + '.' + key, this.encode(value));
     },
 
     /**
         Get key from local storage.
         @method get
         @param {String} key
-        @return {String} value
+        @param {*} [defaultValue]
+        @return {*} value
     **/
-    get: function(key) {
-        return localStorage[this.id + '.' + key];
+    get: function(key, defaultValue) {
+        var raw = localStorage.getItem(this.id + '.' + key);
+        if (raw === null) return defaultValue;
+        try {
+            return this.decode(raw);
+        }
+        catch (err) {
+            return raw;
+        }
+    },
+
+    /**
+        Check if a key is in local storage.
+        @method has
+        @param {String} key
+        @return {Boolean}
+    **/
+    has: function(key) {
+        return localStorage.getItem(this.id + '.' + key) !== null;
     },
 
     /**
@@ -63,16 +72,24 @@ game.Storage = game.Class.extend({
         @method reset
     **/
     reset: function() {
-        for(var i in localStorage) {
-            if(i.indexOf(this.id+'.') !== -1) localStorage.removeItem(i);
+        for (var i = localStorage.length - 1; i >= 0; i--) {
+            var key = localStorage.key(i);
+            if (key.indexOf(this.id + '.') !== -1) localStorage.removeItem(key);
         }
+    },
+
+    encode: function(val) {
+        return JSON.stringify(val);
+    },
+
+    decode: function(str) {
+        return JSON.parse(str);
     }
 });
 
 /**
-    Identifier for local storage.
     @attribute {String} id
 **/
-game.Storage.id = null;
+game.Storage.id = '';
 
 });

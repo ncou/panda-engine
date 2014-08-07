@@ -11,10 +11,9 @@ game.module(
 game.icon = 'media/icons/speaker.png';
 game.addAsset(game.icon);
 
-SceneTitle = game.Scene.extend({
+SceneGame = game.Scene.extend({
     init: function() {
-
-        this.super();
+        this._super();
     }
 })
 
