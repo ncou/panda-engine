@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation <span>1.7.1</span>
+title: Documentation <span>1.8.0</span>
 ---
 
 <div class="sidebar"></div>
@@ -215,23 +215,26 @@ game.Keyboard = game.Class.extend({
         @method keydown
     **/
     keydown: function(event) {
-        if (game.Keyboard.preventDefault) event.preventDefault();
-
         if (!this.keys[event.keyCode]) return; // unkown key
         if (this.keysDown[this.keys[event.keyCode]]) return; // key already down
 
         this.keysDown[this.keys[event.keyCode]] = true;
-        if (game.scene) game.scene.keydown(this.keys[event.keyCode], !!this.keysDown[&#x27;SHIFT&#x27;], !!this.keysDown[&#x27;CTRL&#x27;], !!this.keysDown[&#x27;ALT&#x27;]);
+        if (game.scene) {
+            var prevent = game.scene.keydown(this.keys[event.keyCode], !!this.keysDown[&#x27;SHIFT&#x27;], !!this.keysDown[&#x27;CTRL&#x27;], !!this.keysDown[&#x27;ALT&#x27;]);
+            if (prevent) event.preventDefault();
+        }
     },
 
     /**
         @method keyup
     **/
     keyup: function(event) {
-        if (game.Keyboard.preventDefault) event.preventDefault();
         
         this.keysDown[this.keys[event.keyCode]] = false;
-        if (game.scene) game.scene.keyup(this.keys[event.keyCode]);
+        if (game.scene) {
+            var prevent = game.scene.keyup(this.keys[event.keyCode]);
+            if (prevent) event.preventDefault();
+        }
     },
 
     /**
@@ -243,13 +246,6 @@ game.Keyboard = game.Class.extend({
         return (this.keysDown[key]);
     }
 });
-
-/**
-    Prevent default keyboard action.
-    @attribute {Boolean} preventDefault
-    @default false
-**/
-game.Keyboard.preventDefault = false;
 
 game.keyboard = new game.Keyboard();
 

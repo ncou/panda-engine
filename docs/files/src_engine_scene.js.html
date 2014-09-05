@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation <span>1.7.1</span>
+title: Documentation <span>1.8.0</span>
 ---
 
 <div class="sidebar"></div>
@@ -78,6 +78,13 @@ game.Scene = game.Class.extend({
         this.stage = new game.Container();
         game.system.stage.addChild(this.stage);
 
+        if (game.audio &amp;&amp; game.System.stopAudioOnSceneChange) {
+            game.audio.stopMusic();
+            game.audio.stopSound();
+            game.audio.pausedSounds.length = 0;
+            game.audio.playingSounds.length = 0;
+        }
+
         if (game.debugDraw) game.debugDraw.reset();
     },
     
@@ -140,7 +147,7 @@ game.Scene = game.Class.extend({
         @param {game.Emitter} emitter
     **/
     removeEmitter: function(emitter) {
-        emitter._remove = true;
+        emitter.remove();
     },
 
     /**
@@ -160,6 +167,18 @@ game.Scene = game.Class.extend({
     },
 
     /**
+        Remove timer from scene.
+        @method removeTimer
+        @param {game.Timer} timer
+        @param {Boolean} doCallback
+    **/
+    removeTimer: function(timer, doCallback) {
+        if (!doCallback) timer.callback = null;
+        timer.repeat = false;
+        timer.set(0);
+    },
+
+    /**
         Shorthand for adding tween.
         @method addTween
         @param {Object} obj
@@ -174,18 +193,6 @@ game.Scene = game.Class.extend({
             tween[i](settings[i]);
         }
         return tween;
-    },
-
-    /**
-        Remove timer from scene.
-        @method removeTimer
-        @param {game.Timer} timer
-        @param {Boolean} doCallback
-    **/
-    removeTimer: function(timer, doCallback) {
-        if (!doCallback) timer.callback = null;
-        timer.repeat = false;
-        timer.set(0);
     },
     
     /**
@@ -278,11 +285,11 @@ game.Scene = game.Class.extend({
     },
 
     pause: function() {
-        if (game.audio) game.audio.pauseAll();
+        if (game.audio) game.audio.systemPause();
     },
 
     resume: function() {
-        if (game.audio) game.audio.resumeAll();
+        if (game.audio) game.audio.systemResume();
     }
 });
 

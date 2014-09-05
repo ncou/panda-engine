@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation <span>1.7.1</span>
+title: Documentation <span>1.8.0</span>
 ---
 
 <div class="sidebar"></div>
@@ -79,7 +79,7 @@ title: Documentation <span>1.7.1</span>
                 </li>
             
                 <li class="index-item property">
-                    <a href="#property_soundMuted">soundMuted</a>
+                    <a href="#property_playingSounds">playingSounds</a>
 
                     
                 </li>
@@ -135,7 +135,28 @@ title: Documentation <span>1.7.1</span>
                 </li>
             
                 <li class="index-item method">
-                    <a href="#method_pauseAll">pauseAll</a>
+                    <a href="#method_isMusicPlaying">isMusicPlaying</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_isSoundPlaying">isSoundPlaying</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_muteMusic">muteMusic</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_muteSound">muteSound</a>
 
                     
                     
@@ -170,13 +191,6 @@ title: Documentation <span>1.7.1</span>
                 </li>
             
                 <li class="index-item method">
-                    <a href="#method_resumeAll">resumeAll</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method">
                     <a href="#method_resumeMusic">resumeMusic</a>
 
                     
@@ -190,15 +204,29 @@ title: Documentation <span>1.7.1</span>
                     
                 </li>
             
-                <li class="index-item method inherited">
-                    <a href="#method_staticInit">staticInit</a>
+                <li class="index-item method">
+                    <a href="#method_setMusicVolume">setMusicVolume</a>
 
                     
                     
                 </li>
             
                 <li class="index-item method">
-                    <a href="#method_stopAll">stopAll</a>
+                    <a href="#method_setPlaybackRate">setPlaybackRate</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_setSoundVolume">setSoundVolume</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method inherited">
+                    <a href="#method_staticInit">staticInit</a>
 
                     
                     
@@ -213,6 +241,20 @@ title: Documentation <span>1.7.1</span>
             
                 <li class="index-item method">
                     <a href="#method_stopSound">stopSound</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_unmuteMusic">unmuteMusic</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_unmuteSound">unmuteSound</a>
 
                     
                     
@@ -263,7 +305,7 @@ title: Documentation <span>1.7.1</span>
             <a name="property_currentMusic" class="anchor-link"></a>
 <div class="box property item">
     <h3 class="name"><code>currentMusic</code>
-    <span class="type">String</span>
+    <span class="type">Object</span>
 
     
 
@@ -286,7 +328,7 @@ title: Documentation <span>1.7.1</span>
             
         
         
-        <!-- <a href="../files/src_engine_audio.js.html#l34"><code>src&#x2F;engine&#x2F;audio.js:34</code></a> -->
+        <!-- <a href="../files/src_engine_audio.js.html#l37"><code>src&#x2F;engine&#x2F;audio.js:37</code></a> -->
         
         </p>
 
@@ -297,7 +339,7 @@ title: Documentation <span>1.7.1</span>
 
     <div class="extended-detail">
         <div class="description">
-            <p>Id of current music.</p>
+            <p>Current music.</p>
 
         </div>
 
@@ -336,7 +378,7 @@ title: Documentation <span>1.7.1</span>
             
         
         
-        <!-- <a href="../files/src_engine_audio.js.html#l17"><code>src&#x2F;engine&#x2F;audio.js:17</code></a> -->
+        <!-- <a href="../files/src_engine_audio.js.html#l20"><code>src&#x2F;engine&#x2F;audio.js:20</code></a> -->
         
         </p>
 
@@ -386,7 +428,7 @@ title: Documentation <span>1.7.1</span>
             
         
         
-        <!-- <a href="../files/src_engine_audio.js.html#l39"><code>src&#x2F;engine&#x2F;audio.js:39</code></a> -->
+        <!-- <a href="../files/src_engine_audio.js.html#l42"><code>src&#x2F;engine&#x2F;audio.js:42</code></a> -->
         
         </p>
 
@@ -438,7 +480,7 @@ title: Documentation <span>1.7.1</span>
             
         
         
-        <!-- <a href="../files/src_engine_audio.js.html#l45"><code>src&#x2F;engine&#x2F;audio.js:45</code></a> -->
+        <!-- <a href="../files/src_engine_audio.js.html#l48"><code>src&#x2F;engine&#x2F;audio.js:48</code></a> -->
         
         </p>
 
@@ -464,10 +506,10 @@ title: Documentation <span>1.7.1</span>
 </div>
 
         
-            <a name="property_soundMuted" class="anchor-link"></a>
+            <a name="property_playingSounds" class="anchor-link"></a>
 <div class="box property item">
-    <h3 class="name"><code>soundMuted</code>
-    <span class="type">Boolean</span>
+    <h3 class="name"><code>playingSounds</code>
+    <span class="type">Array</span>
 
     
 
@@ -490,7 +532,7 @@ title: Documentation <span>1.7.1</span>
             
         
         
-        <!-- <a href="../files/src_engine_audio.js.html#l22"><code>src&#x2F;engine&#x2F;audio.js:22</code></a> -->
+        <!-- <a href="../files/src_engine_audio.js.html#l25"><code>src&#x2F;engine&#x2F;audio.js:25</code></a> -->
         
         </p>
 
@@ -501,12 +543,10 @@ title: Documentation <span>1.7.1</span>
 
     <div class="extended-detail">
         <div class="description">
-            <p>Is sound muted.</p>
+            <p>List of playing sounds.</p>
 
         </div>
 
-        
-            <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
         
 
         
@@ -542,7 +582,7 @@ title: Documentation <span>1.7.1</span>
             
         
         
-        <!-- <a href="../files/src_engine_audio.js.html#l28"><code>src&#x2F;engine&#x2F;audio.js:28</code></a> -->
+        <!-- <a href="../files/src_engine_audio.js.html#l31"><code>src&#x2F;engine&#x2F;audio.js:31</code></a> -->
         
         </p>
 
@@ -618,7 +658,7 @@ title: Documentation <span>1.7.1</span>
             
         
         
-        <!-- <a href="../files/src_engine_core.js.html#l678"><code>src&#x2F;engine&#x2F;core.js:678</code></a> -->
+        <!-- <a href="../files/src_engine_core.js.html#l710"><code>src&#x2F;engine&#x2F;core.js:710</code></a> -->
         
         </p>
 
@@ -712,7 +752,7 @@ title: Documentation <span>1.7.1</span>
             
         
         
-        <!-- <a href="../files/src_engine_core.js.html#l664"><code>src&#x2F;engine&#x2F;core.js:664</code></a> -->
+        <!-- <a href="../files/src_engine_core.js.html#l696"><code>src&#x2F;engine&#x2F;core.js:696</code></a> -->
         
         </p>
 
@@ -816,7 +856,7 @@ title: Documentation <span>1.7.1</span>
             
         
         
-        <!-- <a href="../files/src_engine_core.js.html#l723"><code>src&#x2F;engine&#x2F;core.js:723</code></a> -->
+        <!-- <a href="../files/src_engine_core.js.html#l755"><code>src&#x2F;engine&#x2F;core.js:755</code></a> -->
         
         </p>
 
@@ -906,7 +946,7 @@ title: Documentation <span>1.7.1</span>
             
         
         
-        <!-- <a href="../files/src_engine_core.js.html#l737"><code>src&#x2F;engine&#x2F;core.js:737</code></a> -->
+        <!-- <a href="../files/src_engine_core.js.html#l769"><code>src&#x2F;engine&#x2F;core.js:769</code></a> -->
         
         </p>
 
@@ -955,9 +995,194 @@ title: Documentation <span>1.7.1</span>
 </div>
 
         
-            <a name="method_pauseAll" class="anchor-link"></a>
+            <a name="method_isMusicPlaying" class="anchor-link"></a>
 <div class="box method item">
-    <h3 class="name">pauseAll
+    <h3 class="name">isMusicPlaying
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                <!-- 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_audio.js.html#l641"><code>src&#x2F;engine&#x2F;audio.js:641</code></a> -->
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Check if music is playing.</p>
+
+        </div>
+
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Boolean</span>
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_isSoundPlaying" class="anchor-link"></a>
+<div class="box method item">
+    <h3 class="name">isSoundPlaying
+    
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
+            
+
+                    
+                        <span>id</span>
+                    
+
+            
+            </span><span class="paren">)</span>
+        </span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                <!-- 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_audio.js.html#l631"><code>src&#x2F;engine&#x2F;audio.js:631</code></a> -->
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Check if sound is playing.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">id</code>
+                            <span class="type">Number</span>
+                        
+
+                        
+
+                        <span class="param-description">
+                             
+                        </span>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Boolean</span>
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_muteMusic" class="anchor-link"></a>
+<div class="box method item">
+    <h3 class="name">muteMusic
     
         <span class="paren">()</span>
     
@@ -989,7 +1214,7 @@ title: Documentation <span>1.7.1</span>
             
         
         
-        <!-- <a href="../files/src_engine_audio.js.html#l409"><code>src&#x2F;engine&#x2F;audio.js:409</code></a> -->
+        <!-- <a href="../files/src_engine_audio.js.html#l543"><code>src&#x2F;engine&#x2F;audio.js:543</code></a> -->
         
         </p>
 
@@ -1002,12 +1227,123 @@ title: Documentation <span>1.7.1</span>
     <div class="extended-detail">
 
         <div class="description">
-            <p>Pause all sounds and music</p>
+            <p>Mute current music.</p>
 
         </div>
 
         
 
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_muteSound" class="anchor-link"></a>
+<div class="box method item">
+    <h3 class="name">muteSound
+    
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
+            
+
+                    
+                        <span class="optional">[id]</span>
+                    
+
+            
+            </span><span class="paren">)</span>
+        </span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                <!-- 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_audio.js.html#l444"><code>src&#x2F;engine&#x2F;audio.js:444</code></a> -->
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Mute specific sound or all sounds.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">id</code>
+                            <span class="type">Number</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <span class="param-description">
+                            <p>Id of sound</p>
+
+                        </span>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Boolean</span>
+                        
+                    
+                </div>
+            </div>
         
 
         
@@ -1023,6 +1359,10 @@ title: Documentation <span>1.7.1</span>
     
 
     
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
 
     
 
@@ -1049,7 +1389,7 @@ title: Documentation <span>1.7.1</span>
             
         
         
-        <!-- <a href="../files/src_engine_audio.js.html#l380"><code>src&#x2F;engine&#x2F;audio.js:380</code></a> -->
+        <!-- <a href="../files/src_engine_audio.js.html#l522"><code>src&#x2F;engine&#x2F;audio.js:522</code></a> -->
         
         </p>
 
@@ -1068,6 +1408,18 @@ title: Documentation <span>1.7.1</span>
 
         
 
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Boolean</span>
+                        
+                    
+                </div>
+            </div>
         
 
         
@@ -1093,6 +1445,10 @@ title: Documentation <span>1.7.1</span>
     
 
     
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
 
     
 
@@ -1119,7 +1475,7 @@ title: Documentation <span>1.7.1</span>
             
         
         
-        <!-- <a href="../files/src_engine_audio.js.html#l315"><code>src&#x2F;engine&#x2F;audio.js:315</code></a> -->
+        <!-- <a href="../files/src_engine_audio.js.html#l397"><code>src&#x2F;engine&#x2F;audio.js:397</code></a> -->
         
         </p>
 
@@ -1145,14 +1501,14 @@ title: Documentation <span>1.7.1</span>
                     <li class="param">
                         
                             <code class="param-name optional">id</code>
-                            <span class="type">String</span>
+                            <span class="type">Number</span>
                             <span class="flag optional" title="This parameter is optional.">optional</span>
                         
 
                         
 
                         <span class="param-description">
-                            <p>Id of the sound</p>
+                            <p>Id of sound</p>
 
                         </span>
 
@@ -1163,6 +1519,20 @@ title: Documentation <span>1.7.1</span>
             </div>
         
 
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Boolean</span>
+                        
+                        <p>Return false, if sound is not playing</p>
+
+                    
+                </div>
+            </div>
         
 
         
@@ -1179,13 +1549,13 @@ title: Documentation <span>1.7.1</span>
             
 
                     
-                        <span>id</span>
+                        <span>name</span>
                     
 
             
 
                     
-                        <span>volume</span>
+                        <span class="optional">[loop]</span>
                     
 
             
@@ -1193,6 +1563,10 @@ title: Documentation <span>1.7.1</span>
         </span>
     
 
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
     
 
     
@@ -1220,7 +1594,7 @@ title: Documentation <span>1.7.1</span>
             
         
         
-        <!-- <a href="../files/src_engine_audio.js.html#l352"><code>src&#x2F;engine&#x2F;audio.js:352</code></a> -->
+        <!-- <a href="../files/src_engine_audio.js.html#l484"><code>src&#x2F;engine&#x2F;audio.js:484</code></a> -->
         
         </p>
 
@@ -1233,7 +1607,8 @@ title: Documentation <span>1.7.1</span>
     <div class="extended-detail">
 
         <div class="description">
-            
+            <p>Play music.</p>
+
         </div>
 
         
@@ -1244,14 +1619,15 @@ title: Documentation <span>1.7.1</span>
                 
                     <li class="param">
                         
-                            <code class="param-name">id</code>
-                            <span class="type">String</span>
+                            <code class="param-name">name</code>
+                            <span class="type">Number</span>
                         
 
                         
 
                         <span class="param-description">
-                             
+                            <p>Name of music</p>
+
                         </span>
 
                         
@@ -1259,14 +1635,16 @@ title: Documentation <span>1.7.1</span>
                 
                     <li class="param">
                         
-                            <code class="param-name">volume</code>
-                            <span class="type">Number</span>
+                            <code class="param-name optional">loop</code>
+                            <span class="type">Boolean</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
                         
 
                         
 
                         <span class="param-description">
-                             
+                            <p>Music looping</p>
+
                         </span>
 
                         
@@ -1276,6 +1654,18 @@ title: Documentation <span>1.7.1</span>
             </div>
         
 
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Boolean</span>
+                        
+                    
+                </div>
+            </div>
         
 
         
@@ -1292,19 +1682,13 @@ title: Documentation <span>1.7.1</span>
             
 
                     
-                        <span>id</span>
+                        <span>name</span>
                     
 
             
 
                     
                         <span class="optional">[loop]</span>
-                    
-
-            
-
-                    
-                        <span class="optional">[volume]</span>
                     
 
             
@@ -1325,6 +1709,10 @@ title: Documentation <span>1.7.1</span>
     
 
     
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+    
 
     
 
@@ -1351,7 +1739,7 @@ title: Documentation <span>1.7.1</span>
             
         
         
-        <!-- <a href="../files/src_engine_audio.js.html#l279"><code>src&#x2F;engine&#x2F;audio.js:279</code></a> -->
+        <!-- <a href="../files/src_engine_audio.js.html#l358"><code>src&#x2F;engine&#x2F;audio.js:358</code></a> -->
         
         </p>
 
@@ -1364,7 +1752,8 @@ title: Documentation <span>1.7.1</span>
     <div class="extended-detail">
 
         <div class="description">
-            
+            <p>Play sound.</p>
+
         </div>
 
         
@@ -1375,14 +1764,14 @@ title: Documentation <span>1.7.1</span>
                 
                     <li class="param">
                         
-                            <code class="param-name">id</code>
+                            <code class="param-name">name</code>
                             <span class="type">String</span>
                         
 
                         
 
                         <span class="param-description">
-                            <p>Id of the sound</p>
+                            <p>Name of sound</p>
 
                         </span>
 
@@ -1399,24 +1788,7 @@ title: Documentation <span>1.7.1</span>
                         
 
                         <span class="param-description">
-                            <p>Should the sound loop</p>
-
-                        </span>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name optional">volume</code>
-                            <span class="type">Number</span>
-                            <span class="flag optional" title="This parameter is optional.">optional</span>
-                        
-
-                        
-
-                        <span class="param-description">
-                            <p>Sound volume</p>
+                            <p>Sound looping</p>
 
                         </span>
 
@@ -1433,7 +1805,7 @@ title: Documentation <span>1.7.1</span>
                         
 
                         <span class="param-description">
-                            <p>Callback when sound if finished</p>
+                            <p>Callback when sound is finished</p>
 
                         </span>
 
@@ -1450,7 +1822,7 @@ title: Documentation <span>1.7.1</span>
                         
 
                         <span class="param-description">
-                            <p>Only on Web Audio</p>
+                            <p>Playback rate (Web Audio)</p>
 
                         </span>
 
@@ -1462,65 +1834,19 @@ title: Documentation <span>1.7.1</span>
         
 
         
+            <div class="returns">
+                <h4>Returns:</h4>
 
-        
-    </div>
-</div>
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Number</span>
+                        
+                        <p>id</p>
 
-        
-            <a name="method_resumeAll" class="anchor-link"></a>
-<div class="box method item">
-    <h3 class="name">resumeAll
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                <!-- 
-                Defined in
-                 -->
-            
-        
-        
-        <!-- <a href="../files/src_engine_audio.js.html#l420"><code>src&#x2F;engine&#x2F;audio.js:420</code></a> -->
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Resume all sounds and music</p>
-
-        </div>
-
-        
-
+                    
+                </div>
+            </div>
         
 
         
@@ -1536,6 +1862,10 @@ title: Documentation <span>1.7.1</span>
     
 
     
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
 
     
 
@@ -1562,7 +1892,7 @@ title: Documentation <span>1.7.1</span>
             
         
         
-        <!-- <a href="../files/src_engine_audio.js.html#l390"><code>src&#x2F;engine&#x2F;audio.js:390</code></a> -->
+        <!-- <a href="../files/src_engine_audio.js.html#l534"><code>src&#x2F;engine&#x2F;audio.js:534</code></a> -->
         
         </p>
 
@@ -1582,6 +1912,18 @@ title: Documentation <span>1.7.1</span>
         
 
         
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Boolean</span>
+                        
+                    
+                </div>
+            </div>
+        
 
         
     </div>
@@ -1597,7 +1939,234 @@ title: Documentation <span>1.7.1</span>
             
 
                     
-                        <span class="optional">[id]</span>
+                        <span>id</span>
+                    
+
+            
+            </span><span class="paren">)</span>
+        </span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                <!-- 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_audio.js.html#l425"><code>src&#x2F;engine&#x2F;audio.js:425</code></a> -->
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Resume sound.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">id</code>
+                            <span class="type">Number</span>
+                        
+
+                        
+
+                        <span class="param-description">
+                            <p>Id of sound</p>
+
+                        </span>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Boolean</span>
+                        
+                        <p>Return false, if sound is not paused</p>
+
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_setMusicVolume" class="anchor-link"></a>
+<div class="box method item">
+    <h3 class="name">setMusicVolume
+    
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
+            
+
+                    
+                        <span>value</span>
+                    
+
+            
+            </span><span class="paren">)</span>
+        </span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                <!-- 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_audio.js.html#l594"><code>src&#x2F;engine&#x2F;audio.js:594</code></a> -->
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Change music volume.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">value</code>
+                            <span class="type">Number</span>
+                        
+
+                        
+
+                        <span class="param-description">
+                             
+                        </span>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Boolean</span>
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_setPlaybackRate" class="anchor-link"></a>
+<div class="box method item">
+    <h3 class="name">setPlaybackRate
+    
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
+            
+
+                    
+                        <span>audio</span>
+                    
+
+            
+
+                    
+                        <span>rate</span>
                     
 
             
@@ -1632,7 +2201,7 @@ title: Documentation <span>1.7.1</span>
             
         
         
-        <!-- <a href="../files/src_engine_audio.js.html#l334"><code>src&#x2F;engine&#x2F;audio.js:334</code></a> -->
+        <!-- <a href="../files/src_engine_audio.js.html#l617"><code>src&#x2F;engine&#x2F;audio.js:617</code></a> -->
         
         </p>
 
@@ -1645,7 +2214,8 @@ title: Documentation <span>1.7.1</span>
     <div class="extended-detail">
 
         <div class="description">
-            
+            <p>Change audio playback rate (Web Audio).</p>
+
         </div>
 
         
@@ -1656,9 +2226,116 @@ title: Documentation <span>1.7.1</span>
                 
                     <li class="param">
                         
-                            <code class="param-name optional">id</code>
-                            <span class="type">String</span>
-                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                            <code class="param-name">audio</code>
+                            <span class="type">Object</span>
+                        
+
+                        
+
+                        <span class="param-description">
+                             
+                        </span>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">rate</code>
+                            <span class="type">Number</span>
+                        
+
+                        
+
+                        <span class="param-description">
+                             
+                        </span>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_setSoundVolume" class="anchor-link"></a>
+<div class="box method item">
+    <h3 class="name">setSoundVolume
+    
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
+            
+
+                    
+                        <span>value</span>
+                    
+
+            
+            </span><span class="paren">)</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                <!-- 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_audio.js.html#l565"><code>src&#x2F;engine&#x2F;audio.js:565</code></a> -->
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Change main sound volume.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">value</code>
+                            <span class="type">Number</span>
                         
 
                         
@@ -1722,7 +2399,7 @@ title: Documentation <span>1.7.1</span>
             
         
         
-        <!-- <a href="../files/src_engine_core.js.html#l707"><code>src&#x2F;engine&#x2F;core.js:707</code></a> -->
+        <!-- <a href="../files/src_engine_core.js.html#l739"><code>src&#x2F;engine&#x2F;core.js:739</code></a> -->
         
         </p>
 
@@ -1771,66 +2448,6 @@ title: Documentation <span>1.7.1</span>
 </div>
 
         
-            <a name="method_stopAll" class="anchor-link"></a>
-<div class="box method item">
-    <h3 class="name">stopAll
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                <!-- 
-                Defined in
-                 -->
-            
-        
-        
-        <!-- <a href="../files/src_engine_audio.js.html#l431"><code>src&#x2F;engine&#x2F;audio.js:431</code></a> -->
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Stop all sounds and music</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
             <a name="method_stopMusic" class="anchor-link"></a>
 <div class="box method item">
     <h3 class="name">stopMusic
@@ -1839,6 +2456,10 @@ title: Documentation <span>1.7.1</span>
     
 
     
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
 
     
 
@@ -1865,7 +2486,7 @@ title: Documentation <span>1.7.1</span>
             
         
         
-        <!-- <a href="../files/src_engine_audio.js.html#l369"><code>src&#x2F;engine&#x2F;audio.js:369</code></a> -->
+        <!-- <a href="../files/src_engine_audio.js.html#l505"><code>src&#x2F;engine&#x2F;audio.js:505</code></a> -->
         
         </p>
 
@@ -1885,6 +2506,18 @@ title: Documentation <span>1.7.1</span>
         
 
         
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Boolean</span>
+                        
+                    
+                </div>
+            </div>
+        
 
         
     </div>
@@ -1900,7 +2533,13 @@ title: Documentation <span>1.7.1</span>
             
 
                     
-                        <span>id</span>
+                        <span class="optional">[id]</span>
+                    
+
+            
+
+                    
+                        <span class="optional">[skipCallback]</span>
                     
 
             
@@ -1908,6 +2547,10 @@ title: Documentation <span>1.7.1</span>
         </span>
     
 
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
     
 
     
@@ -1935,7 +2578,7 @@ title: Documentation <span>1.7.1</span>
             
         
         
-        <!-- <a href="../files/src_engine_audio.js.html#l295"><code>src&#x2F;engine&#x2F;audio.js:295</code></a> -->
+        <!-- <a href="../files/src_engine_audio.js.html#l376"><code>src&#x2F;engine&#x2F;audio.js:376</code></a> -->
         
         </p>
 
@@ -1960,14 +2603,32 @@ title: Documentation <span>1.7.1</span>
                 
                     <li class="param">
                         
-                            <code class="param-name">id</code>
-                            <span class="type">String</span>
+                            <code class="param-name optional">id</code>
+                            <span class="type">Number</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
                         
 
                         
 
                         <span class="param-description">
-                            <p>Id of the sound</p>
+                            <p>Id of sound</p>
+
+                        </span>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">skipCallback</code>
+                            <span class="type">Boolean</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <span class="param-description">
+                            <p>Skip callback function</p>
 
                         </span>
 
@@ -1978,6 +2639,189 @@ title: Documentation <span>1.7.1</span>
             </div>
         
 
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Boolean</span>
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_unmuteMusic" class="anchor-link"></a>
+<div class="box method item">
+    <h3 class="name">unmuteMusic
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                <!-- 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_audio.js.html#l554"><code>src&#x2F;engine&#x2F;audio.js:554</code></a> -->
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Unmute current music.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_unmuteSound" class="anchor-link"></a>
+<div class="box method item">
+    <h3 class="name">unmuteSound
+    
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
+            
+
+                    
+                        <span class="optional">[id]</span>
+                    
+
+            
+            </span><span class="paren">)</span>
+        </span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                <!-- 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_audio.js.html#l464"><code>src&#x2F;engine&#x2F;audio.js:464</code></a> -->
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Unmute specific sound or all sounds.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">id</code>
+                            <span class="type">Number</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <span class="param-description">
+                            <p>Id of sound</p>
+
+                        </span>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Boolean</span>
+                        
+                    
+                </div>
+            </div>
         
 
         
@@ -2023,7 +2867,7 @@ title: Documentation <span>1.7.1</span>
             
         
         
-        <!-- <a href="../files/src_engine_audio.js.html#l443"><code>src&#x2F;engine&#x2F;audio.js:443</code></a> -->
+        <!-- <a href="../files/src_engine_audio.js.html#l670"><code>src&#x2F;engine&#x2F;audio.js:670</code></a> -->
         
         </p>
 
@@ -2033,7 +2877,7 @@ title: Documentation <span>1.7.1</span>
     </div>
 
     <div class="description">
-        <p>Is audio enabled.</p>
+        <p>Enable audio.</p>
 
     </div>
 
@@ -2076,7 +2920,7 @@ title: Documentation <span>1.7.1</span>
             
         
         
-        <!-- <a href="../files/src_engine_audio.js.html#l450"><code>src&#x2F;engine&#x2F;audio.js:450</code></a> -->
+        <!-- <a href="../files/src_engine_audio.js.html#l677"><code>src&#x2F;engine&#x2F;audio.js:677</code></a> -->
         
         </p>
 
@@ -2086,7 +2930,7 @@ title: Documentation <span>1.7.1</span>
     </div>
 
     <div class="description">
-        <p>Is Web Audio enabled.</p>
+        <p>Enable Web Audio.</p>
 
     </div>
 

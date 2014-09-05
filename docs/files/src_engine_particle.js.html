@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation <span>1.7.1</span>
+title: Documentation <span>1.8.0</span>
 ---
 
 <div class="sidebar"></div>
@@ -440,6 +440,13 @@ game.Emitter = game.Class.extend({
         @method update
     **/
     update: function() {
+        if (this._remove) {
+            for (var i = this.particles.length - 1; i &gt;= 0; i--) {
+                this.removeParticle(this.particles[i]);
+            }
+            return;
+        }
+
         this.durationTimer += game.system.delta;
         if (this.duration &gt; 0) this.active = this.durationTimer &lt; this.duration;
 
@@ -462,6 +469,15 @@ game.Emitter = game.Class.extend({
     **/
     remove: function() {
         this._remove = true;
+    },
+
+    /**
+        Add emitter to container.
+        @method addTo
+        @param {game.Container} container
+    **/
+    addTo: function(container) {
+        this.container = container;
     }
 });
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation <span>1.7.1</span>
+title: Documentation <span>1.8.0</span>
 ---
 
 <div class="sidebar"></div>
@@ -277,35 +277,34 @@ game.CollisionSolver = game.Class.extend({
     **/
     hitResponse: function(a, b) {
         if (a.shape instanceof game.Rectangle &amp;&amp; b.shape instanceof game.Rectangle) {
-            // TODO can this be optimized?
             if (a.last.y + a.shape.height / 2 &lt;= b.last.y - b.shape.height / 2) {
-                if (a.collide(b)) {
+                if (a.collide(b, &#x27;UP&#x27;)) {
                     a.position.y = b.position.y - b.shape.height / 2 - a.shape.height / 2;
                     return true;
                 }
             }
             else if (a.last.y - a.shape.height / 2 &gt;= b.last.y + b.shape.height / 2) {
-                if (a.collide(b)) {
+                if (a.collide(b, &#x27;DOWN&#x27;)) {
                     a.position.y = b.position.y + b.shape.height / 2 + a.shape.height / 2;
                     return true;
                 }
             }
             else if (a.last.x + a.shape.width / 2 &lt;= b.last.x - b.shape.width / 2) {
-                if (a.collide(b)) {
+                if (a.collide(b, &#x27;LEFT&#x27;)) {
                     a.position.x = b.position.x - b.shape.width / 2 - a.shape.width / 2;
                     return true;
                 }
             }
             else if (a.last.x - a.shape.width / 2 &gt;= b.last.x + b.shape.width / 2) {
-                if (a.collide(b)) {
+                if (a.collide(b, &#x27;RIGHT&#x27;)) {
                     a.position.x = b.position.x + b.shape.width / 2 + a.shape.width / 2;
                     return true;
                 }
             }
         }
         else if (a.shape instanceof game.Circle &amp;&amp; b.shape instanceof game.Circle) {
-            if (a.collide(b)) {
-                var angle = b.position.angle(a.position);
+            var angle = b.position.angle(a.position);
+            if (a.collide(b, angle)) {
                 var dist = a.shape.radius + b.shape.radius;
 
                 a.position.x = b.position.x + Math.cos(angle) * dist;
