@@ -1,0 +1,102 @@
+<?php
+
+class Validate{
+
+    protected static $types = array(
+            "image"   =>  array('png'  => 'image/png',
+                                  'jpe'  => 'image/jpeg',
+                                'jpeg' => 'image/jpeg',
+                                'jpg'  => 'image/jpeg',
+                                'gif'  => 'image/gif',
+                                'bmp'  => 'image/bmp',
+                                'ico'  => 'image/vnd.microsoft.icon',
+                                'tiff' => 'image/tiff',
+                                'tif'  => 'image/tiff',
+                                'svg'  => 'image/svg+xml',
+                                'svgz' => 'image/svg+xml'
+                          ),
+            "archives" => array('zip' => 'application/zip',
+                                'rar' => 'application/x-rar-compressed',
+                                'exe' => 'application/x-msdownload',
+                                'msi' => 'application/x-msdownload',
+                                'cab' => 'application/vnd.ms-cab-compressed'
+                          ),
+            "av"       => array(
+                                'mp3' => 'audio/mpeg',
+                                'qt'  => 'video/quicktime',
+                                'mov' => 'video/quicktime'
+                          ),
+            "adobe"       => array('pdf' => 'application/pdf',
+                                'psd' => 'image/vnd.adobe.photoshop',
+                                'ai'  => 'application/postscript',
+                                'eps' => 'application/postscript',
+                                'ps'  => 'application/postscript'
+                          ),
+            "web"         => array('txt'  => 'text/plain',
+                                'htm'  => 'text/html',
+                                'html' => 'text/html',
+                                'php'  => 'text/html',
+                                'css'  => 'text/css',
+                                'js'   => 'application/javascript',
+                                'json' => 'application/json',
+                                'xml'  => 'application/xml',
+                                'swf'  => 'application/x-shockwave-flash',
+                                'flv'  => 'video/x-flv'
+                          ),
+            "office"   => array('doc' => 'application/msword',
+                                'rtf' => 'application/rtf',
+                                'xls' => 'application/vnd.ms-excel',
+                                'ppt' => 'application/vnd.ms-powerpoint'
+                          ),
+            "ooffice"  => array('odt' => 'application/vnd.oasis.opendocument.text',
+                                'ods' => 'application/vnd.oasis.opendocument.spreadsheet'
+                          )
+                    
+    );
+  
+    public static function file_ext($f){
+    
+        $ext = strtolower(array_pop(explode('.', $f)));
+        
+        foreach(self::$types AS $key => $val){
+            if(array_key_exists($ext, $val)) return $ext;
+        }
+        
+        return false;
+
+    }
+    
+    public static function is_type($ext, $type){
+    
+        return array_key_exists($ext, self::$types[$type]);
+        
+    }
+    
+    public static function string($str, $allow_empty, $len_min, $len_max, $str_match='')
+    {
+        // empty test
+        if((!$allow_empty) && (empty($str))) return "this field can't be empty!";
+
+        // min length test
+        if(($len_min) && (strlen($str) < $len_min)) return "this field must be longer!";
+        
+        // max length test
+        if(($len_max) && (str_len($str > $len_max))) return "this field can't be this long!";
+        
+        // match test
+        if((!empty($str_match)) && ($str != $str_match)) return "this field doesn't match!";
+        
+        return true;
+    }
+    
+    public static function email($email){
+        
+        $pattern = "^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$";
+
+        return (eregi($pattern, $email)) ? true : false;
+    
+    }
+
+}
+
+?>

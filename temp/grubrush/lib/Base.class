@@ -1,0 +1,524 @@
+<?PHP
+
+/*
+*   --------------------------------
+*   Base.php  
+*   --------------------------------
+*/
+
+class Base{                           
+                                      
+    protected static $regEX = array('passableData' => '|[^0-9a-zA-Z~@#$%=:;_{}, \\n\\\!\^&\*\(\)\-\+\.\?\/\'\"]|');
+    
+    /**
+    * 
+    * Get an array of the requested URI
+    * @param {String} uri
+    * @returns Array
+    * 
+    */
+
+    static public function processUri($uri) {
+
+        $uri = substr($uri, 1);
+        $nav = split("/", $uri);
+
+        $count = count($nav);
+
+        if($count > 0) {
+
+            $count -= 1;
+
+            /*if(strstr($nav[$count], ".")) {
+                list($page, $dump) = explode("?", $nav[$count]);
+                $ret['page'] = $page;
+            } */
+
+            if(strstr($nav[$count], "?")) {
+                list($nav_item,$dump) = explode("?", $nav[$count]);
+                empty($nav_item) ? $nav=array_slice($nav, 0, -1) : $nav[$count]=$nav_item;
+            }
+
+            if( (isset($nav[$count]) && empty($nav[$count])) || (isset($nav[$count]) && $nav[$count]=="index.php") || (isset($nav[$count]) && $nav[$count]=="index.html") || (isset($nav[$count]) && strstr($nav[$count], "."))) {
+                $nav = array_slice($nav, 0, -1);
+            }
+        }
+
+        $ret['nav'] = $nav;
+
+        return $ret;
+    }
+
+    /**
+    * 
+    * Get the contents of a given file
+    * @param {String} start_loc
+    * @param {String} file
+    * @returns String
+    * 
+    */
+     
+    static public function getFile($start_loc, $file){
+
+        switch($start_loc){
+            
+            case 'root':
+                
+                $baseDir = PHP_ROOT;
+            
+            break;
+            
+            case 'server_root':
+            
+            	$baseDir = "/";
+            	
+            break;
+        }
+                
+        $f = fopen($baseDir.$file, "r");
+        
+        $contents = fread($f, filesize($baseDir.$file));
+        fclose($f);
+    
+        return $contents;
+
+    }
+   
+    /**
+    * 
+    * Perform a MySQL query
+    * @param {String} $query
+    * @returns MySQL Result Set
+    * 
+    */
+        
+   static public function db_query($query) {
+           
+        $args  = func_get_args();
+        $query = array_shift($args);
+        $query = str_replace("?", "%s", $query);
+        
+        foreach($args AS $key => $val){
+            
+            $args[$key] = preg_replace(Base::$regEX['passableData'], "", $val);
+            $args[$key] = mysql_real_escape_string(Base::cleanTags(stripslashes($args[$key])));
+            
+        }
+        
+        array_unshift($args, $query);
+               
+        $query = call_user_func_array('sprintf', $args);
+        
+        $start = microtime(true);
+          
+        if(IS_PRODUCTION===TRUE){
+        
+            $result = mysql_query($query) or die(Base::logSQL('error', 0, $query, mysql_error()));
+            
+        }else{
+
+            $result = mysql_query($query) or die(Base::myMysqlError(mysql_error(), __FILE__, __LINE__, $query));
+            
+        }
+        
+        $end = microtime(true);
+        
+        $exTime = number_format($end-$start, 4);
+        
+        if($exTime >= SLOW_QUERY_TIME) Base::logSQL('slow', $exTime, $query);
+         
+        return $result;
+
+    }
+    
+    static public function db_aquery($query) {
+           
+        $args  = func_get_args();
+        $query = array_shift($args);
+        $query = str_replace("?", "%s", $query);
+        
+        array_unshift($args, $query);
+               
+        $query = call_user_func_array('sprintf', $args);
+        
+        $start = microtime(true);
+          
+        if(ISPRODUCTION===TRUE){
+        
+            $result = mysql_query($query) or die(Base::logSQL('error', 0, $query, mysql_error()));
+            
+        }else{
+            
+            $result = mysql_query($query) or die(Base::myMysqlError(mysql_error(), __FILE__, __LINE__, $query));
+            
+        }
+        
+        $end = microtime(true);
+        
+        $exTime = number_format($end-$start, 4);
+        
+        if($exTime >= SLOW_QUERY_TIME) Base::logSQL('slow', $exTime, $query);
+         
+        return $result;
+
+    }
+    
+    /**
+    * 
+    * Log an SQL problem. Handles both slow and errornous queries
+    * @param {String} $type
+    * @param {Float}  $type
+    * @param {String} $query
+    * @param {String} $error
+    * @returns Boolean
+    * 
+    */
+    
+    static public function logSQL($type, $time, $query, $error=""){
+        
+        $day = date("d_m_Y", time());
+        $filename = LOGS_PATH.$day."_".$type.".txt";
+        
+        if(!file_exists($filename)){
+            
+            $handle = fopen($filename, 'w') or die("can't open file");
+            fclose($handle);
+                       
+        } 
+
+        $fh = fopen($filename, 'a') or die("can't write to file");
+        
+        switch($type){
+            
+            case 'slow':
+            
+                $stringData = "\n".date("l - d/m/Y - H:i:s", time())."\n\nQuery : {$query}\nExecution time : {$time}\n\n---------------------------\n";
+            
+            break;
+            
+            case 'error':
+            
+                $stringData = "\n".date("l - d/m/Y - H:i:s", time())."\n\nQuery : {$query}\nError : {$error}\n\n---------------------------\n";
+            
+            break;
+            
+        }
+        
+        fwrite($fh, $stringData);
+        fclose($fh);
+        
+        return true;
+        
+    } 
+    
+    static public function logPageRender($start, $end, $info){
+        
+        $day = date("d_m_Y", time());
+        $filename = LOGS_PATH.$day."_render_time.txt";
+        
+        if(!file_exists($filename)){
+            
+            $handle = fopen($filename, 'w') or die("can't open file");
+            fclose($handle);
+                       
+        } 
+
+        $fh = fopen($filename, 'a') or die("can't write to file");
+    
+        $stringData = "\n".date("l - d/m/Y - H:i:s", time())."\n\nURI : /".implode("/", $info['nav'])."\nInclude time : ".number_format($end['include']-$start['include'], 4)."\nContent Generation : ".number_format($end['genContent']-$start['genContent'], 4)."\n\n---------------------------\n";
+ 
+        fwrite($fh, $stringData);
+        fclose($fh);
+        
+        return true;        
+        
+    } 
+    
+    /**
+    * 
+    * Perform a MySQL query
+    * @param {String} $query
+    * @returns MySQL Result Set
+    * 
+    */
+    
+    static public function myMysqlError($mysql_error, $line, $file, $query) {
+
+        print('<div style="padding: 10px; background: #e4e4e4; font-weight: bold;font-size: 12px;font-family: Arial; margin-top: 8px;border-bottom: 1px #999999 dotted;color: red;">MySQL Error!</div><div style="font-family: Arial; font-size: 12px; padding: 10px; background: #f2f2f2;"><span style="display: block; margin: 0 0 2px 0; font-weight: bold; text-decoration: underline;">Error : </span>'.$mysql_error.'<br /><br /><span style="display: block; margin: 0 0 2px 0; font-weight: bold; text-decoration: underline;">Query : </span>'.$query);
+        print('<span style="display: block; margin: 10px 0 2px 0; font-weight: bold; text-decoration: underline;">File : </span>'.$file.' (line: '.$line.')</div><div class="clear: both;"></div>');
+    
+    }
+    
+    /**
+    * 
+    * Calculate date from timestamp
+    * @param {String} $format
+    * @param {Integer} $tstamp
+    * @param {Integer} $offset (Optional)
+    * @returns String
+    * 
+    */
+    
+    static public function returnDate($format, $tstamp, $offset=0) {
+   
+        return date($format, ($tstamp + (3600 * $offset)));
+    
+    }
+    
+    /**
+    * 
+    * List all sub-folders in a given directory
+    * @param {String} $path
+    * @returns Array
+    * 
+    */
+    
+    static public function dir2array($path){
+        
+        $i = 0;
+        
+        if (false !== ($dir = opendir(PHP_ROOT.$path))){
+            
+            while (false !== ($file = readdir($dir))){
+                if ($file != '.' && $file != '..'){
+                    $dir_array[$i] = $file;
+                    $i++;
+                }
+             }
+
+             return $dir_array;
+
+         }else{
+
+             return false;
+
+         }
+     }
+     
+    /**
+    * 
+    * Find if a provided string contains any foul language
+    * @param {String} $string
+    * @returns Boolean
+    * 
+    */
+     
+    static public function detectBadLanguage($string){
+
+        $file_string = self::getFile('root', "txt/bad_language.txt");
+        $obscenities = explode(",", $file_string);
+
+        foreach ($obscenities as $curse_word) {
+
+            if(stristr($string, $curse_word)){
+                return false;
+            }
+
+        }
+
+     return true;
+
+    }
+       
+    /**
+    * 
+    * Set a cookie
+    * @param {String} $string
+    * @param {String} $value
+    * @param {Int}    $sticky
+    * @param {String} $cookie_path
+    * @param {String} $cookie_domain
+    * @returns Boolean
+    * 
+    */
+    
+    static public function bakeCookie($name, $value = "", $sticky = 1, $cookie_path='/', $cookie_domain='') {
+
+        if(empty($cookie_domain)) { $cookie_domain = COOKIE_DOMAIN; }
+
+        if ($sticky == 1) {
+            $expires = time() + 7776000;
+        } elseif (is_numeric($sticky)) {
+            $expires = $sticky;
+        }
+
+        setcookie($name, $value, $expires, $cookie_path, $cookie_domain, false);
+
+    }
+    
+    /**
+    * 
+    * Destroy a cookie
+    * @param {String} $name
+    * @param {String} $cookie_path
+    * @param {String} $cookie_domain
+    * @returns Boolean
+    * 
+    */
+
+    static public function eatCookie($name, $cookie_path='/', $cookie_domain='') {
+        
+        if(empty($cookie_domain)) { $cookie_domain = COOKIE_DOMAIN; }
+        setcookie($name, "", -3600, $cookie_path, $cookie_domain, false);
+        
+    }
+    
+    /**
+    * 
+    * Clean a HTML destination string for Database entry
+    * @param {String} $val
+    * @returns String
+    * 
+    */
+    
+    static public function cleanUp($val){
+    	
+    	return str_replace("\n", "<br />", htmlspecialchars($val));	
+    	
+    }
+
+    /**
+    * 
+    * Send an email using SMTP services
+    * @param {String} $subject
+    * @param {String} $from
+    * @param {String} $namefrom
+    * @param {String} $to
+    * @param {String} $nameto
+    * @param {String} $message
+    * 
+    */
+   
+    public function sendEmail($subject, $from, $nameFrom, $to, $nameTo, $message){
+
+        $helo = "localhost";
+        $auth = 1;
+        
+        include_once(PHP_ROOT."lib/SMTP.class");         
+        
+        $smtp = new SMTP(MAIL_SERVER_ADDRESS, MAIL_SERVER_PORT, $helo, $auth, MAIL_SERVER_USER, MAIL_SERVER_PASSWORD);
+        
+        $smtp -> dbug = false;
+        $smtp -> Connect();
+        $smtp -> Send(
+            array($to),
+            $from,
+            array(
+                'Subject' => $subject,
+                'To'      => $nameTo,
+                'From' => $nameFrom,
+                'MIME-Version' => "1.0",
+                'Content-type' => "text/html",
+                'X-Mailer' => "PHP/".phpversion()
+            ),
+            $message
+        );
+    }
+    
+    /**
+    * 
+    * Strip a string of all HTML/XSS exploitation attempts
+    * @param {String} $string
+    * @returns $string
+    * 
+    */
+	
+	static public function cleanTags($text){
+        
+        $text = preg_replace(
+            array(
+              // Remove invisible content
+                '@<head[^>]*?>.*?</head>@siu',
+                '@<style[^>]*?>.*?</style>@siu',
+                '@<script[^>]*?.*?</script>@siu',
+                '@<object[^>]*?.*?</object>@siu',
+                '@<embed[^>]*?.*?</embed>@siu',
+                '@<applet[^>]*?.*?</applet>@siu',
+                '@<noframes[^>]*?.*?</noframes>@siu',
+                '@<noscript[^>]*?.*?</noscript>@siu',
+                '@<noembed[^>]*?.*?</noembed>@siu',
+              // Add line breaks before and after blocks
+                '@</?((address)|(blockquote)|(center)|(del))@iu',
+                '@</?((div)|(h[1-9])|(ins)|(isindex)|(p)|(pre))@iu',
+                '@</?((dir)|(dl)|(dt)|(dd)|(li)|(menu)|(ol)|(ul))@iu',
+                '@</?((table)|(th)|(td)|(caption))@iu',
+                '@</?((form)|(button)|(fieldset)|(legend)|(input))@iu',
+                '@</?((label)|(select)|(optgroup)|(option)|(textarea))@iu',
+                '@</?((frameset)|(frame)|(iframe))@iu',
+            ),
+            array(
+                '', '', '', '', '', '', '', '', '',
+                "\n\$0", "\n\$0", "\n\$0", "\n\$0", "\n\$0", "\n\$0",
+                "\n\$0", "\n\$0",
+            ),
+            $text);
+
+        return trim(strip_tags( $text ));
+
+    }
+    
+    function createROT13($addr, $link_content) 
+    {
+        //build the mailto link
+        $unencrypted_link = '<a href="mailto:'.$addr.'">'.$link_content.'</a>';
+        //build this for people with js turned off
+        $noscript_link = '<noscript><span style="unicode-bidi:bidi-override;direction:rtl;">'.strrev($link_content.' > '.$addr.' <').'</span></noscript>';
+        //put them together and encrypt
+        $encrypted_link = '<script type="text/javascript">Rot13.write(\''.str_rot13($unencrypted_link).'\');</script>'.$noscript_link;
+
+        return $encrypted_link;
+    }
+        
+    public static function db2HTML($v)
+    {                        
+        return str_replace("\n", "<br />", stripslashes(htmlentities($v)));      
+    }
+   
+    /**
+    * 
+    * Format a file-size into something more readable
+    *
+    * @param Integer     size
+    *
+    * @returns String
+    * 
+    */
+    
+    static public function format_bytes($size) 
+    {
+        $units = array(' B', ' KB', ' MB', ' GB', ' TB');
+        for ($i = 0; $size >= 1024 && $i < 4; $i++) $size /= 1024;
+        return round($size, 2).$units[$i];
+    }
+    
+    //NOTE: use a trailing slash for folders!!!
+    function is__writable($path) 
+    {
+        if ($path{strlen($path)-1}=='/'){ 
+            return Base::is__writable($path.uniqid(mt_rand()).'.tmp');
+        }else if (is_dir($path)){
+            return Base::is__writable($path.'/'.uniqid(mt_rand()).'.tmp');
+        }
+
+        $rm = file_exists($path);
+        $f = @fopen($path, 'a');
+        
+        if ($f===false) return false;
+        
+        fclose($f);
+        
+        if (!$rm) unlink($path);
+        
+        return true;   
+    }
+    
+    function print_array($arr)
+    {    
+        echo "<pre>";
+        print_r($arr);
+        echo "</pre>";   
+    }
+
+}
+
+?>

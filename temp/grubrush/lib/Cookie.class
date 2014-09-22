@@ -1,0 +1,28 @@
+<?php
+
+class Cookie{
+    
+    private function generateCredentialsCookie($user_id, $password) {
+        $encrypted = encrypt($user_id.':'.$password, $secretkey);
+        $salt = uniq_id(mt_rand(), true);
+        $encrypted .= ':'.hash_hmac('sha256', $encrypted, $salt);
+        storeSaltForUser($user_id, $salt);
+        set_cookie('credentials', $encrypted);
+    }
+
+    private function readCredentialsCookie() {
+        $parts = explode(':', $_COOKIE['credentials']);
+        $salt = array_pop($parts);
+        $encrypted = implode(':', $parts); //needed incase mcrypt added `:`
+        $raw = decrypt($encrypted, $secretkey);
+        list ($user_id, $password) = explode(':', $raw, 2);
+        if ($salt == getSaltForUser($user_id)){
+            return array($user_id, $password);
+        } else {
+            return die('Invalid Cookie Found');
+        }
+    }
+    
+}
+
+?>
