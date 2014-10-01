@@ -1,0 +1,202 @@
+<div class="box search">
+<div id="search">
+    <form method="GET" action="{{ projectRoot }}../search.html">
+        <input type="text" name="key" placeholder="Search documentation...">
+    </form>
+</div>
+</div>
+
+<h4 class="boxHeader"><span>Class:</span> {{name}}</h4>
+<div class="headerBox">
+<div class="classes-meta">
+    {{#if description}}<div class="desc">{{description}}</div>{{/if}}
+
+    {{#if uses}}
+        <div class="uses">
+            Uses
+            <ul class="inline commas">
+                {{#uses}}
+                    <li><a href="{{.}}.html">{{.}}</a></li>
+                {{/uses}}
+            </ul>
+        </div>
+    {{/if}}
+
+    {{#if extends}}
+        <div class="extends">
+            Extends: {{#crossLink extends}}{{/crossLink}}
+        </div>
+    {{/if}}
+
+    {{#if foundAt}}
+        <!-- <div class="foundat">
+            Defined in: <a href="{{foundAt}}">`{{{file}}}:{{{line}}}`</a>
+        </div> -->
+    {{/if}}
+
+    {{#if module}}
+        {{#if submodule}}
+            Module: {{#crossLinkModule submodule}}{{/crossLinkModule}}<br>
+            Parent Module: {{#crossLinkModule module}}{{/crossLinkModule}}
+        {{else}}
+            Module: {{#crossLinkModule module}}{{/crossLinkModule}}
+        {{/if}}
+    {{/if}}
+
+    {{#if since}}
+        <p>Available since {{since}}</p>
+    {{/if}}
+</div>
+
+{{#if deprecated}}
+    <div class="box deprecated">
+        <p>
+        {{#if deprecationMessage}}
+            <strong>Deprecated:</strong> {{deprecationMessage}}
+        {{else}}
+            This class is deprecated.
+        {{/if}}
+        </p>
+    </div>
+{{/if}}
+
+</div>
+
+<div class="classes-index">
+
+{{#if properties}}
+    <h3>Properties</h3>
+    <div class="index-section properties">
+
+        <div class="box float">
+        <ul class="index-list properties{{#if extends}} extends{{/if}}">
+            {{#properties}}
+                <li class="index-item property{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if overwritten_from}} inherited{{/if}}{{#if extended_from}} inherited{{/if}}">
+                    <a href="#property_{{name}}">{{name}}</a>
+
+                    {{#if static}}
+                        <span class="flag static">static</span>
+                    {{/if}}
+                </li>
+            {{/properties}}
+        </ul>
+        <div class="clear"></div>
+        </div>
+    </div>
+{{/if}}
+
+{{#if methods}}
+    <h3>Methods</h3>
+    <div class="index-section methods">
+
+        <div class="box float">
+        <ul class="index-list methods{{#if extends}} extends{{/if}}">
+
+            {{#is_constructor}}
+<!--                 <li class="index-item method{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}} constructor">
+                    <a href="#method_{{name}}">{{name}} <span class="flag constructor">constructor</span></a>
+
+                    {{#if static}}
+                        <span class="flag static">static</span>
+                    {{/if}}
+                    {{#if deprecated}}
+                        <span class="flag deprecated">deprecated</span>
+                    {{/if}}
+                </li> -->
+            {{/is_constructor}}
+
+            {{#methods}}
+                <li class="index-item method{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if overwritten_from}} inherited{{/if}}{{#if extended_from}} inherited{{/if}}">
+                    <a href="#method_{{name}}">{{name}}</a>
+
+                    {{#if static}}
+                        <span class="flag static">static</span>
+                    {{/if}}
+                    {{#if deprecated}}
+                        <span class="flag deprecated">deprecated</span>
+                    {{/if}}
+                </li>
+            {{/methods}}
+        </ul>
+        <div class="clear"></div>
+        </div>
+    </div>
+{{/if}}
+
+{{#if attrs}}
+    <h3>Attributes</h3>
+    <div class="index-section attrs">
+
+        <div class="box float">
+        <ul class="index-list attrs{{#if extends}} extends{{/if}}">
+            {{#attrs}}
+                <li class="index-item attr{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if overwritten_from}} inherited{{/if}}{{#if extended_from}} inherited{{/if}}">
+                    <a href="#attr_{{name}}">{{name}}</a>
+                </li>
+            {{/attrs}}
+        </ul>
+        <div class="clear"></div>
+        </div>
+    </div>
+{{/if}}
+
+</div>
+
+<div class="clear"></div>
+
+<div class="hline"></div>
+
+<div class="class-detail">
+
+{{#is_constructor}}
+    <div class="constructor">
+        <h6>Constructor</h6>
+        {{>method}}
+    </div>
+{{/is_constructor}}
+
+{{#if properties}}
+    <div class="properties-detail">
+        <h6>Properties</h6>
+
+        {{#properties}}
+            {{>props}}
+        {{/properties}}
+
+    </div>
+{{/if}}
+
+{{#if methods}}
+    <div class="methods-detail">
+        <h6>Methods</h6>
+
+        {{#methods}}
+            {{>method}}
+        {{/methods}}
+
+    </div>
+{{/if}}
+
+{{#if attrs}}
+    <div class="attrs-detail">
+        <h6>Attributes</h6>
+
+        {{#attrs}}
+            {{>attrs}}
+        {{/attrs}}
+    </div>
+{{/if}}
+
+{{#if events}}
+    <div class="events-detail">
+        <h6>Events</h6>
+
+        {{#events}}
+            {{>events}}
+        {{/events}}
+
+    </div>
+{{/if}}
+
+</div>
+

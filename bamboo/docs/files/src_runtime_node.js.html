@@ -1,0 +1,235 @@
+---
+layout: bamboo
+title: Documentation <span>0.3.0</span>
+---
+
+<div class="sidebar"></div>
+
+<h1 class="file-heading">File: src/runtime/node.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+/**
+    @module node
+    @namespace bamboo
+**/
+game.module(
+    &#x27;bamboo.runtime.node&#x27;
+)
+.require(
+    &#x27;bamboo.runtime.property&#x27;
+)
+.body(function() {
+&#x27;use strict&#x27;;
+
+/**
+    @class Node
+**/
+bamboo.Node = game.Class.extend({
+    /**
+        List of nodes childrens.
+        @property {Array} children
+    **/
+    children: [],
+
+    staticInit: function(world, properties) {
+        this.world = world;
+        this.properties = properties;
+        this.name = properties.name;
+    },
+
+    /**
+        @method init
+    **/
+    init: function() {
+        this.displayObject = new game.Container();
+    },
+
+    /**
+        @method initProperties
+    **/
+    initProperties: function() {
+        var propDescs = this.getPropertyDescriptors();
+
+        for (var key in propDescs) {
+            this.setProperty(key, bamboo.Property.parse(this.world, this.properties, key, propDescs[key]));
+        }
+    },
+
+    /**
+        Called, when node is ready and properties inited.
+        @method ready
+    **/
+    ready: function() {
+    },
+
+    /**
+        Called, when node is removed from it&#x27;s world.
+        @method onRemove
+    **/
+    onRemove: function() {
+    },
+
+    /**
+        Remove node from it&#x27;s world.
+        @method remove
+    **/
+    remove: function() {
+        return this.world.removeNode(this);
+    },
+
+    /**
+        @method setProperty
+        @param {String} name
+        @param value
+    **/
+    setProperty: function(name, value) {
+        this[name] = value;
+        
+        if (name === &#x27;position&#x27;) this.displayObject.position.set(value.x, value.y);
+        else if (name === &#x27;scale&#x27;) this.displayObject.scale.set(value.x, value.y);
+        else if (name === &#x27;anchor&#x27;) {
+            if (this.displayObject.anchor) this.displayObject.anchor.set(value.x, value.y);
+        }
+        else if (name === &#x27;parent&#x27;) this.parent.addChild(this);
+    },
+
+    /**
+        Add child to node.
+        @method addChild
+        @param {Node} node
+    **/
+    addChild: function(node) {
+        this.children.push(node);
+        this.displayObject.addChild(node.displayObject);
+    },
+
+    /**
+        Remove child from node.
+        @method removeChild
+        @param {Node} node
+    **/
+    removeChild: function(node) {
+        var index = this.children.indexOf(node);
+        if (index !== -1) {
+            this.children.splice(index, 1);
+            this.displayObject.removeChild(node.displayObject);
+            return true;
+        }
+        return false;
+    },
+
+    getPropertyDescriptors: function() {
+        var properties = [];
+        var proto = Object.getPrototypeOf(this);
+        while (true) {
+            var p = {};
+            properties.splice(0, 0, p);
+            for (var key in proto.constructor.props) {
+                p[key] = proto.constructor.props[key];
+            }
+            proto = Object.getPrototypeOf(proto);
+            if (proto === game.Class.prototype) break;
+        }
+        var props = {};
+        for (var i = 0; i &lt; properties.length; i++) {
+            for (var k in properties[i]) {
+                props[k] = properties[i][k];
+            }
+        }
+        return props;
+    },
+
+    /**
+        Convert world position to node&#x27;s local position.
+        @method toLocalSpace
+        @param {Vector} point
+        @param {Vector} [output]
+    **/
+    toLocalSpace: function(point, output) {
+        var pos = this.getWorldPosition();
+
+        var x = point.x - pos.x;
+        var y = point.y - pos.y;
+        
+        if (output) {
+            bamboo.pool.put(pos);
+            return output.set(x, y);
+        }
+
+        pos.set(x, y);
+        return pos;
+    },
+
+    /**
+        Convert node&#x27;s local position to world position.
+        @method toWorldSpace
+        @param {Vector} point
+        @param {Vector} [output]
+    **/
+    toWorldSpace: function(point, output) {
+        var pos = this.getWorldPosition();
+
+        var x = point.x + pos.x;
+        var y = point.y + pos.y;
+
+        if (output) {
+            bamboo.pool.put(pos);
+            return output.set(x, y);
+        }
+
+        pos.set(x, y);
+        return pos;
+    },
+
+    /**
+        Get node&#x27;s world position.
+        @method getWorldPosition
+        @param {Vector} [output]
+    **/
+    getWorldPosition: function(output) {
+        var x = this.position.x;
+        var y = this.position.y;
+
+        var parent = this.parent;
+        while (parent) {
+            if (!parent.position) break;
+            x += parent.position.x;
+            y += parent.position.y;
+            parent = parent.parent;
+        }
+
+        if (output) return output.set(x, y);
+
+        var point = bamboo.pool.get();
+        point.set(x, y);
+        return point;
+    }
+});
+
+/**
+    @property {Node} parent
+**/
+bamboo.addNodeProperty(&#x27;Node&#x27;, &#x27;parent&#x27;, &#x27;node&#x27;);
+/**
+    @property {String} name
+**/
+bamboo.addNodeProperty(&#x27;Node&#x27;, &#x27;name&#x27;, &#x27;string&#x27;);
+/**
+    @property {Vector} position
+**/
+bamboo.addNodeProperty(&#x27;Node&#x27;, &#x27;position&#x27;, &#x27;vector&#x27;);
+/**
+    @property {Vector} size
+**/
+bamboo.addNodeProperty(&#x27;Node&#x27;, &#x27;size&#x27;, &#x27;vector&#x27;);
+/**
+    @property {Vector} anchor
+**/
+bamboo.addNodeProperty(&#x27;Node&#x27;, &#x27;anchor&#x27;, &#x27;vector&#x27;);
+
+});
+
+    </pre>
+</div>
+

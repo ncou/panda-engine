@@ -1,0 +1,104 @@
+---
+layout: bamboo
+title: Documentation <span>0.3.0</span>
+---
+
+<div class="sidebar"></div>
+
+<h1 class="file-heading">File: src/core.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+/**
+    @module bamboo
+    @namespace bamboo
+**/
+/**
+    @class Core
+**/
+var bamboo = {
+    version: &#x27;0.3.0&#x27;,
+    scenes: [],
+    nodes: {}
+};
+
+pandaConfig.bamboo = pandaConfig.bamboo || {};
+
+/**
+    @method createNode
+    @param {String} name
+    @param {String} [className]
+    @param {Object} content
+**/
+bamboo.createNode = function(name, className, content) {
+    if (!content) {
+        content = className;
+        className = null;
+    }
+    var extendClass = className ? bamboo.nodes[className] : bamboo.Node;
+    bamboo.nodes[name] = extendClass.extend(content);
+};
+
+/**
+    @method addNodeProperty
+    @param {String} node
+    @param {String} name
+    @param {String} type
+    @param defaultValue
+    @param {Boolean} hidden
+**/
+bamboo.addNodeProperty = function(node, name, type, defaultValue, hidden) {
+    node = bamboo.nodes[node] || bamboo.Node;
+    if (!node.props) node.props = {};
+    node.props[name] = new bamboo.Property(hidden ? false : true, name, &#x27;&#x27;, bamboo.Property.TYPE[type.toUpperCase()], defaultValue);
+};
+
+/**
+    @method createScene
+    @param {String} name
+    @param {Object} content
+**/
+bamboo.createScene = function(name, content) {
+    content = content || {};
+    content.name = name;
+    game[&#x27;Scene&#x27; + name] = bamboo.Scene.extend(content);
+};
+
+game.module(
+    &#x27;bamboo.core&#x27;
+)
+.require(
+    &#x27;bamboo.runtime.node&#x27;,
+    &#x27;bamboo.runtime.point&#x27;,
+    &#x27;bamboo.runtime.pool&#x27;,
+    &#x27;bamboo.runtime.property&#x27;,
+    &#x27;bamboo.runtime.world&#x27;,
+    &#x27;engine.scene&#x27;
+)
+.body(function() {
+&#x27;use strict&#x27;;
+
+bamboo.Scene = game.Scene.extend({
+    staticInit: function() {
+        var data;
+        for (var i = 0; i &lt; bamboo.scenes.length; i++) {
+            if (bamboo.scenes[i].name === this.name) {
+                data = bamboo.scenes[i];
+                break;
+            }
+        }
+        if (!data) throw &#x27;Bamboo scene \&#x27;&#x27; + this.name + &#x27;\&#x27; not found&#x27;;
+
+        this.backgroundColor = parseInt(data.bgcolor);
+        this._super();
+
+        this.world = new bamboo.World(data);
+        this.stage.addChild(this.world.displayObject);
+    }
+});
+
+});
+
+    </pre>
+</div>
+

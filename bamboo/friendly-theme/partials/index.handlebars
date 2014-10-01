@@ -1,0 +1,31 @@
+<div class="box search">
+<div id="search">
+    <form method="GET" action="{{ projectRoot }}../search.html">
+        <input type="text" name="key" placeholder="Search documentation...">
+    </form>
+</div>
+</div>
+
+<div class="index-section classes">
+    <h3>Classes</h3>
+    <div class="box">
+    <ul id="api-classes" class="apis classes">
+    {{#classes}}
+        <li><a class="type" href="{{../projectRoot}}classes/{{name}}.html">{{displayName}}</a></li>
+    {{/classes}}
+    </ul>
+    </div>
+</div>
+
+<div class="index-section modules">
+    <h3>Modules</h3>
+    <div class="box">
+    <ul id="api-modules" class="apis modules">
+    {{#allModules}}
+        <li><a class="module" href="{{../projectRoot}}modules/{{name}}.html">{{displayName}}</a></li>
+    {{/allModules}}
+    </ul>
+    </div>
+</div>
+
+<div class="clear"></div>

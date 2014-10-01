@@ -1,0 +1,594 @@
+{
+    "project": {
+        "name": "Bamboo",
+        "description": "Scene editor for Panda.js",
+        "version": "0.3.0",
+        "url": "https://www.pandajs.net/bamboo",
+        "logo": "../../img/logo.png",
+        "themedir": "friendly-theme"
+    },
+    "files": {
+        "src/runtime/node.js": {
+            "name": "src/runtime/node.js",
+            "modules": {
+                "node": 1
+            },
+            "classes": {
+                "bamboo.Node": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "bamboo": 1
+            }
+        },
+        "src/runtime/world.js": {
+            "name": "src/runtime/world.js",
+            "modules": {
+                "world": 1
+            },
+            "classes": {
+                "bamboo.World": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "bamboo": 1
+            }
+        },
+        "src/core.js": {
+            "name": "src/core.js",
+            "modules": {
+                "bamboo": 1
+            },
+            "classes": {
+                "bamboo.Core": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "bamboo": 1
+            }
+        }
+    },
+    "modules": {
+        "node": {
+            "name": "node",
+            "submodules": {},
+            "classes": {
+                "bamboo.Node": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "bamboo": 1
+            },
+            "tag": "module",
+            "file": "src/runtime/node.js",
+            "line": 14
+        },
+        "world": {
+            "name": "world",
+            "submodules": {},
+            "classes": {
+                "bamboo.World": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "bamboo": 1
+            },
+            "tag": "module",
+            "file": "src/runtime/world.js",
+            "line": 14
+        },
+        "bamboo": {
+            "name": "bamboo",
+            "submodules": {},
+            "classes": {
+                "bamboo.Core": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "bamboo": 1
+            },
+            "tag": "module",
+            "file": "src/core.js",
+            "line": 5
+        }
+    },
+    "classes": {
+        "bamboo.Node": {
+            "name": "bamboo.Node",
+            "shortname": "Node",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "node",
+            "namespace": "bamboo",
+            "file": "src/runtime/node.js",
+            "line": 14
+        },
+        "bamboo.World": {
+            "name": "bamboo.World",
+            "shortname": "World",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "world",
+            "namespace": "bamboo",
+            "file": "src/runtime/world.js",
+            "line": 14
+        },
+        "bamboo.Core": {
+            "name": "bamboo.Core",
+            "shortname": "Core",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "bamboo",
+            "namespace": "bamboo",
+            "file": "src/core.js",
+            "line": 5
+        }
+    },
+    "classitems": [
+        {
+            "file": "src/runtime/node.js",
+            "line": 18,
+            "description": "List of nodes childrens.",
+            "itemtype": "property",
+            "name": "children",
+            "type": "Array",
+            "class": "bamboo.Node",
+            "module": "node",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/runtime/node.js",
+            "line": 30,
+            "itemtype": "method",
+            "name": "init",
+            "class": "bamboo.Node",
+            "module": "node",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/runtime/node.js",
+            "line": 37,
+            "itemtype": "method",
+            "name": "initProperties",
+            "class": "bamboo.Node",
+            "module": "node",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/runtime/node.js",
+            "line": 48,
+            "description": "Called, when node is ready and properties inited.",
+            "itemtype": "method",
+            "name": "ready",
+            "class": "bamboo.Node",
+            "module": "node",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/runtime/node.js",
+            "line": 55,
+            "description": "Called, when node is removed from it's world.",
+            "itemtype": "method",
+            "name": "onRemove",
+            "class": "bamboo.Node",
+            "module": "node",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/runtime/node.js",
+            "line": 62,
+            "description": "Remove node from it's world.",
+            "itemtype": "method",
+            "name": "remove",
+            "class": "bamboo.Node",
+            "module": "node",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/runtime/node.js",
+            "line": 70,
+            "itemtype": "method",
+            "name": "setProperty",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": ""
+                }
+            ],
+            "class": "bamboo.Node",
+            "module": "node",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/runtime/node.js",
+            "line": 86,
+            "description": "Add child to node.",
+            "itemtype": "method",
+            "name": "addChild",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "",
+                    "type": "Node"
+                }
+            ],
+            "class": "bamboo.Node",
+            "module": "node",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/runtime/node.js",
+            "line": 96,
+            "description": "Remove child from node.",
+            "itemtype": "method",
+            "name": "removeChild",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "",
+                    "type": "Node"
+                }
+            ],
+            "class": "bamboo.Node",
+            "module": "node",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/runtime/node.js",
+            "line": 132,
+            "description": "Convert world position to node's local position.",
+            "itemtype": "method",
+            "name": "toLocalSpace",
+            "params": [
+                {
+                    "name": "point",
+                    "description": "",
+                    "type": "Vector"
+                },
+                {
+                    "name": "output",
+                    "description": "",
+                    "type": "Vector",
+                    "optional": true
+                }
+            ],
+            "class": "bamboo.Node",
+            "module": "node",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/runtime/node.js",
+            "line": 153,
+            "description": "Convert node's local position to world position.",
+            "itemtype": "method",
+            "name": "toWorldSpace",
+            "params": [
+                {
+                    "name": "point",
+                    "description": "",
+                    "type": "Vector"
+                },
+                {
+                    "name": "output",
+                    "description": "",
+                    "type": "Vector",
+                    "optional": true
+                }
+            ],
+            "class": "bamboo.Node",
+            "module": "node",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/runtime/node.js",
+            "line": 174,
+            "description": "Get node's world position.",
+            "itemtype": "method",
+            "name": "getWorldPosition",
+            "params": [
+                {
+                    "name": "output",
+                    "description": "",
+                    "type": "Vector",
+                    "optional": true
+                }
+            ],
+            "class": "bamboo.Node",
+            "module": "node",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/runtime/node.js",
+            "line": 199,
+            "itemtype": "property",
+            "name": "parent",
+            "type": "Node",
+            "class": "bamboo.Node",
+            "module": "node",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/runtime/node.js",
+            "line": 203,
+            "itemtype": "property",
+            "name": "name",
+            "type": "String",
+            "class": "bamboo.Node",
+            "module": "node",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/runtime/node.js",
+            "line": 207,
+            "itemtype": "property",
+            "name": "position",
+            "type": "Vector",
+            "class": "bamboo.Node",
+            "module": "node",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/runtime/node.js",
+            "line": 211,
+            "itemtype": "property",
+            "name": "size",
+            "type": "Vector",
+            "class": "bamboo.Node",
+            "module": "node",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/runtime/node.js",
+            "line": 215,
+            "itemtype": "property",
+            "name": "anchor",
+            "type": "Vector",
+            "class": "bamboo.Node",
+            "module": "node",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/runtime/world.js",
+            "line": 18,
+            "description": "List of audio files.",
+            "itemtype": "property",
+            "name": "audio",
+            "class": "bamboo.World",
+            "module": "world",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/runtime/world.js",
+            "line": 23,
+            "description": "List of assets.",
+            "itemtype": "property",
+            "name": "assets",
+            "class": "bamboo.World",
+            "module": "world",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/runtime/world.js",
+            "line": 28,
+            "description": "List of nodes.",
+            "itemtype": "property",
+            "name": "nodes",
+            "class": "bamboo.World",
+            "module": "world",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/runtime/world.js",
+            "line": 33,
+            "description": "List of layers.",
+            "itemtype": "property",
+            "name": "layers",
+            "class": "bamboo.World",
+            "module": "world",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/runtime/world.js",
+            "line": 38,
+            "description": "List of updateable nodes.",
+            "itemtype": "property",
+            "name": "updateable nodes",
+            "class": "bamboo.World",
+            "module": "world",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/runtime/world.js",
+            "line": 43,
+            "description": "Current world time.",
+            "itemtype": "property",
+            "name": "time",
+            "class": "bamboo.World",
+            "module": "world",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/runtime/world.js",
+            "line": 82,
+            "description": "Find node by name.",
+            "itemtype": "method",
+            "name": "findNode",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "bamboo.World",
+            "module": "world",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/runtime/world.js",
+            "line": 94,
+            "description": "Add node to world.",
+            "itemtype": "method",
+            "name": "addNode",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "",
+                    "type": "Node"
+                }
+            ],
+            "class": "bamboo.World",
+            "module": "world",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/runtime/world.js",
+            "line": 106,
+            "description": "Remove node from world.",
+            "itemtype": "method",
+            "name": "removeNode",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "",
+                    "type": "Node"
+                }
+            ],
+            "class": "bamboo.World",
+            "module": "world",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/runtime/world.js",
+            "line": 126,
+            "description": "Called, when node is added to world.",
+            "itemtype": "method",
+            "name": "nodeAdded",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "",
+                    "type": "Node"
+                }
+            ],
+            "class": "bamboo.World",
+            "module": "world",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/runtime/world.js",
+            "line": 134,
+            "description": "Called, when node is removed from world.",
+            "itemtype": "method",
+            "name": "nodeRemoved",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "",
+                    "type": "Node"
+                }
+            ],
+            "class": "bamboo.World",
+            "module": "world",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/core.js",
+            "line": 16,
+            "itemtype": "method",
+            "name": "createNode",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "className",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "content",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "bamboo.Core",
+            "module": "bamboo",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/core.js",
+            "line": 31,
+            "itemtype": "method",
+            "name": "addNodeProperty",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "name",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "type",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "defaultValue",
+                    "description": ""
+                },
+                {
+                    "name": "hidden",
+                    "description": "",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "bamboo.Core",
+            "module": "bamboo",
+            "namespace": "bamboo"
+        },
+        {
+            "file": "src/core.js",
+            "line": 45,
+            "itemtype": "method",
+            "name": "createScene",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "content",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "bamboo.Core",
+            "module": "bamboo",
+            "namespace": "bamboo"
+        }
+    ],
+    "warnings": []
+}

@@ -1,0 +1,13 @@
+{
+    "name": "Bamboo",
+    "description": "Scene editor for Panda.js",
+    "version": "0.3.0",
+    "url": "https://www.pandajs.net/bamboo",
+    "logo": "../../img/logo.png",
+    "themedir": "friendly-theme",
+    "options": {
+        "paths": "src/",
+        "outdir": "docs",
+        "exclude": ""
+    }
+}

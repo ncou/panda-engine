@@ -1,0 +1,21 @@
+---
+description: Bamboo scene editor for Panda.js
+author: Eemeli Kelokorpi
+---
+<!DOCTYPE html>
+<html>
+{% include head.html %}
+<body>
+    {% include header_bamboo.html %}
+
+    <div id="bg">
+    <div id="wrapper">
+        {% if page.title %}<h1>{% if page.pretitle %}{{ page.pretitle }} {% endif %}{{ page.title }}</h1>{% endif %}
+        {% if page.header %}<h3>{{ page.header }}</h3>{% endif %}
+        {{ content }}
+    </div>
+    </div>
+
+    {% include analytics.html %}
+</body>
+</html>
