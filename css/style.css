@@ -603,7 +603,7 @@ h3 span {
 a.anchor-link {
 	display: block;
 	position: relative;
-	top: -74px;
+	top: -64px;
 }
 
 h3.name, h3.name li, h3.name ul {
@@ -949,11 +949,57 @@ h4.boxHeader {
 
 /* Better styles for embedding GitHub Gists */
 .gist{font-size:13px;line-height:18px;margin-bottom:20px;width:100%}
-.gist pre{font-family:Menlo,Monaco,'Bitstream Vera Sans Mono','Courier New',monospace !important}
+.gist div.line{font-family:Menlo,Monaco,'Bitstream Vera Sans Mono','Courier New',monospace !important}
 .gist-meta{font-family:Helvetica,Arial,sans-serif;font-size:13px !important}
 .gist-meta a{color:#26a !important;text-decoration:none}
 .gist-meta a:hover{color:#0e4071 !important}
 
+
+
+.gist{
+  margin: 15px 0 !important;
+}
+ 
+.gist-file{
+  border: none !important;
+}
+ 
+.gist-meta{
+  border: 1px solid #D2d2d2 !important;
+  padding: 12px !important;
+  -moz-border-radius-bottomleft: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  -moz-border-radius-bottomright: 10px;
+  -webkit-border-bottom-right-radius: 10px;
+ 
+}
+ 
+.gist-data{
+  padding: 15px !important;
+  font-size: 12px !important;
+  border: 1px solid #D2d2d2 !important;
+  border-bottom: none !important;
+  background-color: #FFFFFF !important;
+  -moz-border-radius-topleft: 10px;
+  -webkit-border-top-left-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  -webkit-border-top-right-radius: 10px;
+}
+ 
+.line-numbers {
+  background-color: #FFFFFF !important;
+}
+
+.gist-meta {
+
+}
+
 img.full {
-	width: 100%;
+	width: auto;
+	max-width: 100%;
+	display: block;
+}
+
+ul.bold li {
+	font-weight: bold;
 }

@@ -3,7 +3,159 @@ layout: bamboo
 title: Bamboo
 ---
 <div class="box">
-    Scene editor for Panda.js HTML5 game engine.
+    Bamboo is open source scene editor for Panda.js HTML5 game engine.
 </div>
-<h4>Overview</h4>
-<img src="img/screenshot.png" class="full">
+
+<h3>Table of contents</h3>
+
+<div class="box">
+    <ol>
+        <li>Workspace</li>
+            <ol>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#toolbar">Toolbar</a></li>
+                <li><a href="#property_scene">Property window (node not selected)</a></li>
+                <li><a href="#property_node">Property window (node selected)</a></li>
+                <li><a href="#layers">Layers window</a></li>
+                <li><a href="#statusbar">Statusbar</a></li>
+            </ol>
+        <li>Getting started</li>
+            <ol>
+                <li><a href="#install">Installing Bamboo</a></li>
+                <li><a href="#newscene">Creating new scene</a></li>
+                <li><a href="#scenesettings">Changing scene settings</a></li>
+                <li><a href="#addingnode">Adding new node</a></li>
+                <li><a href="#nodesettings">Changing node properties</a></li>
+            </ol>
+        <li>Nodes</li>
+            <ol>
+                <li><a href="#newnode">Creating new node</a></li>
+                <li><a href="#nodeproperty">Adding node properties</a></li>
+            </ol>
+        <li><a href="#issues">Issues</a></li>
+        <li><a href="#license">License</a></li>
+    </ol>
+</div>
+
+<h3>Workspace</h3>
+
+<h6><a name="overview" class="anchor-link"></a>Overview</h6>
+<div class="box">
+    <img src="img/screenshot.png" class="full">
+
+    This is the main view of Bamboo editor. It contains toolbar, statusbar, property window, layer window and scene view.
+</div>
+
+<h6><a name="toolbar" class="anchor-link"></a>Toolbar</h6>
+<div class="box">
+    <img src="img/toolbar.png" class="full">
+    Toolbar contains buttons with some main functions:
+
+    <ul class="bold">
+        <li>Add node</li>
+        Add new node to scene.
+        <li>Assets</li>
+        View list of current assets in scene.
+        <li>Save JSON</li>
+        Save scene as JSON in <span class="code">media/</span> folder.
+        <li>Save module</li>
+        Save scene as module in <span class="code">game/scenes/</span> folder.
+        <li>Download JSON</li>
+        Download scene as JSON file.
+        <li>Download module</li>
+        Download scene as module JavaScript file.
+    </ul>
+</div>
+
+<h6><a name="property_scene" class="anchor-link"></a>Property window (node not selected)</h6>
+<div class="box">
+    <img src="img/property_scene.png" class="full">
+    When no node is selected, property window contains settings for scene:
+
+    <ul class="bold">
+        <li>Name</li>
+        Name of scene.
+        <li>Width</li>
+        Width of scene in pixels.
+        <li>Height</li>
+        Height of scene in pixels.
+        <li>Background color</li>
+        Background color of scene.
+    </ul>
+</div>
+
+<h6><a name="property_node" class="anchor-link"></a>Property window (node selected)</h6>
+<div class="box">
+    <img src="img/property_node.png" class="full">
+    When node is selected, property window can be used to change node properties.
+    You can view all node properties from <a href="docs/">API documentation</a>.
+</div>
+
+<h6><a name="layers" class="anchor-link"></a>Layers window</h6>
+<div class="box">
+    <img src="img/layers.png" class="full">
+    Layers window contains all your layers, as well as settings for selected layer:
+
+    <ul class="bold">
+        <li>Active node</li>
+        Dropdown list of all nodes from selected layer.
+        <li>Visible</li>
+        Is layer visible on editor.
+        <li>Fixed position</li>
+        Does layer use fixed position (not moving with camera).
+        <li>Name</li>
+        Name of layer.
+        <li>Speed</li>
+        Speed of layer, can be used to create parallax effect.
+    </ul>
+
+    There is also four buttons that you can use to add new layer, move layer up, move layer down and delete layer.
+</div>
+
+<h6><a name="statusbar" class="anchor-link"></a>Statusbar</h6>
+<div class="box">
+    <img src="img/statusbar.png" class="full">
+    Statusbar shows your current editor mode and state, with all keyboard shortcuts.
+</div>
+
+<h3>Getting started</h3>
+
+<h6><a name="install" class="anchor-link"></a>Installing Bamboo</h6>
+<div class="box">
+    <ol>
+        <li><a href="https://github.com/ekelokorpi/panda.js-bamboo/archive/master.zip" target="_blank">Download Bamboo ZIP</a> from GitHub.</li>
+        <li>Open <span class="code">editor.html</span> in your browser.</li>
+    </ol>    
+</div>
+
+<h6><a name="addingnode" class="anchor-link"></a>Adding new node</h6>
+<div class="box">
+    <img src="img/addnode.png" class="full">
+    You can add new node to scene with Add node button or by pressing A from your keyboard. You will then see new Add Node window, where you can select your Node Type, give it a name and parent. Default parent is your current selected layer. After pressing Add, you can place your new node with your mouse.
+</div>
+
+<h3>Nodes</h3>
+
+<h6><a name="newnode" class="anchor-link"></a>Creating new node</h6>
+<div class="box">
+    You can create your own nodes with <a href="docs/classes/bamboo.html#method_createNode">createNode</a> function:
+    <script src="https://gist.github.com/ekelokorpi/f9555b872bab9cf4d36d.js"></script>
+    After creating new node code, your node should appear in available nodes list:
+    <img src="img/mynode.png" class="full">
+</div>
+
+<h6><a name="nodeproperty" class="anchor-link"></a>Adding node properties</h6>
+<div class="box">
+    Add properties to your nodes with <a href="docs/classes/bamboo.html#method_addNodeProperty">addNodeProperty</a> function:
+    <script src="https://gist.github.com/ekelokorpi/596eab915950234496df.js"></script>
+</div>
+
+<h3><a name="issues" class="anchor-link"></a>Issues</h3>
+<div class="box">
+    If your have any issues or found bugs in Bamboo, please use official <a href="https://github.com/ekelokorpi/panda.js-bamboo/issues/" target="_blank">Issue tracker</a>.
+</div>
+
+<h3><a name="license" class="anchor-link"></a>License</h3>
+<div class="box">
+    Bamboo is released under the <a href="http://opensource.org/licenses/MIT">MIT License</a>.
+</div>
