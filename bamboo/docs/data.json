@@ -8,11 +8,163 @@
         "themedir": "friendly-theme"
     },
     "files": {
+        "src/runtime/nodes/audio.js": {
+            "name": "src/runtime/nodes/audio.js",
+            "modules": {},
+            "classes": {
+                "bamboo.Nodes.Audio": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "bamboo.Nodes": 1
+            }
+        },
+        "src/runtime/nodes/camera.js": {
+            "name": "src/runtime/nodes/camera.js",
+            "modules": {},
+            "classes": {
+                "bamboo.Nodes.Camera": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "bamboo.Nodes": 1
+            }
+        },
+        "src/runtime/nodes/collisiontile.js": {
+            "name": "src/runtime/nodes/collisiontile.js",
+            "modules": {},
+            "classes": {
+                "bamboo.Nodes.CollisionTile": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "bamboo.Nodes": 1
+            }
+        },
+        "src/runtime/nodes/emitter.js": {
+            "name": "src/runtime/nodes/emitter.js",
+            "modules": {},
+            "classes": {
+                "bamboo.Nodes.Emitter": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "bamboo.Nodes": 1
+            }
+        },
+        "src/runtime/nodes/image.js": {
+            "name": "src/runtime/nodes/image.js",
+            "modules": {},
+            "classes": {
+                "bamboo.Nodes.Image": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "bamboo.Nodes": 1
+            }
+        },
+        "src/runtime/nodes/layer.js": {
+            "name": "src/runtime/nodes/layer.js",
+            "modules": {},
+            "classes": {
+                "bamboo.Nodes.Layer": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "bamboo.Nodes": 1
+            }
+        },
+        "src/runtime/nodes/path.js": {
+            "name": "src/runtime/nodes/path.js",
+            "modules": {},
+            "classes": {
+                "bamboo.Nodes.Path": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "bamboo.Nodes": 1
+            }
+        },
+        "src/runtime/nodes/pathfollower.js": {
+            "name": "src/runtime/nodes/pathfollower.js",
+            "modules": {},
+            "classes": {
+                "bamboo.Nodes.PathFollower": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "bamboo.Nodes": 1
+            }
+        },
+        "src/runtime/nodes/physics.js": {
+            "name": "src/runtime/nodes/physics.js",
+            "modules": {},
+            "classes": {
+                "bamboo.Nodes.Physics": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "bamboo.Nodes": 1
+            }
+        },
+        "src/runtime/nodes/rotator.js": {
+            "name": "src/runtime/nodes/rotator.js",
+            "modules": {},
+            "classes": {
+                "bamboo.Nodes.Rotator": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "bamboo.Nodes": 1
+            }
+        },
+        "src/runtime/nodes/spine.js": {
+            "name": "src/runtime/nodes/spine.js",
+            "modules": {},
+            "classes": {
+                "bamboo.Nodes.Spine": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "bamboo.Nodes": 1
+            }
+        },
+        "src/runtime/nodes/tile.js": {
+            "name": "src/runtime/nodes/tile.js",
+            "modules": {},
+            "classes": {
+                "bamboo.Nodes.Tile": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "bamboo.Nodes": 1
+            }
+        },
+        "src/runtime/nodes/trigger.js": {
+            "name": "src/runtime/nodes/trigger.js",
+            "modules": {},
+            "classes": {
+                "bamboo.Nodes.Trigger": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "bamboo.Nodes": 1
+            }
+        },
+        "src/runtime/nodes/triggerimage.js": {
+            "name": "src/runtime/nodes/triggerimage.js",
+            "modules": {},
+            "classes": {
+                "bamboo.Nodes.TriggerImage": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "bamboo.Nodes": 1
+            }
+        },
         "src/runtime/node.js": {
             "name": "src/runtime/node.js",
-            "modules": {
-                "node": 1
-            },
+            "modules": {},
             "classes": {
                 "bamboo.Node": 1
             },
@@ -23,9 +175,7 @@
         },
         "src/runtime/world.js": {
             "name": "src/runtime/world.js",
-            "modules": {
-                "world": 1
-            },
+            "modules": {},
             "classes": {
                 "bamboo.World": 1
             },
@@ -36,166 +186,775 @@
         },
         "src/core.js": {
             "name": "src/core.js",
-            "modules": {
-                "bamboo": 1
-            },
+            "modules": {},
             "classes": {
-                "bamboo.Core": 1
+                "bamboo": 1
             },
             "fors": {},
-            "namespaces": {
-                "bamboo": 1
-            }
+            "namespaces": {}
         }
     },
-    "modules": {
-        "node": {
-            "name": "node",
-            "submodules": {},
-            "classes": {
-                "bamboo.Node": 1
-            },
-            "fors": {},
-            "namespaces": {
-                "bamboo": 1
-            },
-            "tag": "module",
-            "file": "src/runtime/node.js",
-            "line": 14
-        },
-        "world": {
-            "name": "world",
-            "submodules": {},
-            "classes": {
-                "bamboo.World": 1
-            },
-            "fors": {},
-            "namespaces": {
-                "bamboo": 1
-            },
-            "tag": "module",
-            "file": "src/runtime/world.js",
-            "line": 14
-        },
-        "bamboo": {
-            "name": "bamboo",
-            "submodules": {},
-            "classes": {
-                "bamboo.Core": 1
-            },
-            "fors": {},
-            "namespaces": {
-                "bamboo": 1
-            },
-            "tag": "module",
-            "file": "src/core.js",
-            "line": 5
-        }
-    },
+    "modules": {},
     "classes": {
-        "bamboo.Node": {
-            "name": "bamboo.Node",
-            "shortname": "Node",
+        "bamboo.Nodes.Audio": {
+            "name": "bamboo.Nodes.Audio",
+            "shortname": "bamboo.Nodes.Audio",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "node",
+            "namespace": "bamboo.Nodes",
+            "file": "src/runtime/nodes/audio.js",
+            "line": 9,
+            "description": "Audio file, that is played from trigger."
+        },
+        "bamboo.Nodes.Camera": {
+            "name": "bamboo.Nodes.Camera",
+            "shortname": "bamboo.Nodes.Camera",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "namespace": "bamboo.Nodes",
+            "file": "src/runtime/nodes/camera.js",
+            "line": 11,
+            "description": "Camera that follows it's target."
+        },
+        "bamboo.Nodes.CollisionTile": {
+            "name": "bamboo.Nodes.CollisionTile",
+            "shortname": "bamboo.Nodes.CollisionTile",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "namespace": "bamboo.Nodes",
+            "file": "src/runtime/nodes/collisiontile.js",
+            "line": 10,
+            "description": "Tile with physics body."
+        },
+        "bamboo.Nodes.Emitter": {
+            "name": "bamboo.Nodes.Emitter",
+            "shortname": "bamboo.Nodes.Emitter",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "namespace": "bamboo.Nodes",
+            "file": "src/runtime/nodes/emitter.js",
+            "line": 11,
+            "description": "Emitter calls targets emit function."
+        },
+        "bamboo.Nodes.Image": {
+            "name": "bamboo.Nodes.Image",
+            "shortname": "bamboo.Nodes.Image",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "namespace": "bamboo.Nodes",
+            "file": "src/runtime/nodes/image.js",
+            "line": 10,
+            "description": "Basic image node."
+        },
+        "bamboo.Nodes.Layer": {
+            "name": "bamboo.Nodes.Layer",
+            "shortname": "bamboo.Nodes.Layer",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "namespace": "bamboo.Nodes",
+            "file": "src/runtime/nodes/layer.js",
+            "line": 11
+        },
+        "bamboo.Nodes.Path": {
+            "name": "bamboo.Nodes.Path",
+            "shortname": "bamboo.Nodes.Path",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "namespace": "bamboo.Nodes",
+            "file": "src/runtime/nodes/path.js",
+            "line": 10
+        },
+        "bamboo.Nodes.PathFollower": {
+            "name": "bamboo.Nodes.PathFollower",
+            "shortname": "bamboo.Nodes.PathFollower",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "namespace": "bamboo.Nodes",
+            "file": "src/runtime/nodes/pathfollower.js",
+            "line": 10,
+            "description": "Path follower follows path."
+        },
+        "bamboo.Nodes.Physics": {
+            "name": "bamboo.Nodes.Physics",
+            "shortname": "bamboo.Nodes.Physics",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "namespace": "bamboo.Nodes",
+            "file": "src/runtime/nodes/physics.js",
+            "line": 9,
+            "description": "Physics world."
+        },
+        "bamboo.Nodes.Rotator": {
+            "name": "bamboo.Nodes.Rotator",
+            "shortname": "bamboo.Nodes.Rotator",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "namespace": "bamboo.Nodes",
+            "file": "src/runtime/nodes/rotator.js",
+            "line": 10,
+            "description": "Rotator rotates it's children nodes."
+        },
+        "bamboo.Nodes.Spine": {
+            "name": "bamboo.Nodes.Spine",
+            "shortname": "bamboo.Nodes.Spine",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "namespace": "bamboo.Nodes",
+            "file": "src/runtime/nodes/spine.js",
+            "line": 9,
+            "description": "Spine animation."
+        },
+        "bamboo.Nodes.Tile": {
+            "name": "bamboo.Nodes.Tile",
+            "shortname": "bamboo.Nodes.Tile",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "namespace": "bamboo.Nodes",
+            "file": "src/runtime/nodes/tile.js",
+            "line": 10
+        },
+        "bamboo.Nodes.Trigger": {
+            "name": "bamboo.Nodes.Trigger",
+            "shortname": "bamboo.Nodes.Trigger",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "namespace": "bamboo.Nodes",
+            "file": "src/runtime/nodes/trigger.js",
+            "line": 10,
+            "description": "Calls targets trigger function, when activator touches trigger."
+        },
+        "bamboo.Nodes.TriggerImage": {
+            "name": "bamboo.Nodes.TriggerImage",
+            "shortname": "bamboo.Nodes.TriggerImage",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "namespace": "bamboo.Nodes",
+            "file": "src/runtime/nodes/triggerimage.js",
+            "line": 9,
+            "description": "Trigger that uses image."
+        },
+        "bamboo.Node": {
+            "name": "bamboo.Node",
+            "shortname": "bamboo.Node",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
             "namespace": "bamboo",
             "file": "src/runtime/node.js",
-            "line": 14
+            "line": 10
         },
         "bamboo.World": {
             "name": "bamboo.World",
-            "shortname": "World",
+            "shortname": "bamboo.World",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "world",
             "namespace": "bamboo",
             "file": "src/runtime/world.js",
-            "line": 14
+            "line": 10
         },
-        "bamboo.Core": {
-            "name": "bamboo.Core",
-            "shortname": "Core",
+        "bamboo": {
+            "name": "bamboo",
+            "shortname": "bamboo",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "bamboo",
-            "namespace": "bamboo",
+            "namespace": "",
             "file": "src/core.js",
-            "line": 5
+            "line": 4
         }
     },
     "classitems": [
         {
-            "file": "src/runtime/node.js",
+            "file": "src/runtime/nodes/audio.js",
+            "line": 28,
+            "description": "Audio file.",
+            "itemtype": "property",
+            "name": "audio",
+            "type": "Audio",
+            "class": "bamboo.Nodes.Audio",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/audio.js",
+            "line": 33,
+            "description": "Is audio looping.",
+            "itemtype": "property",
+            "name": "loop",
+            "type": "Boolean",
+            "class": "bamboo.Nodes.Audio",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/camera.js",
+            "line": 43,
+            "itemtype": "property",
+            "name": "target",
+            "type": "Node",
+            "class": "bamboo.Nodes.Camera",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/camera.js",
+            "line": 47,
+            "description": "Camera offset from center of screen.",
+            "itemtype": "property",
+            "name": "offset",
+            "type": "Vector",
+            "class": "bamboo.Nodes.Camera",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/camera.js",
+            "line": 52,
+            "description": "Should camera start from it's target's position.",
+            "itemtype": "property",
+            "name": "startFromTarget",
+            "type": "Boolean",
+            "class": "bamboo.Nodes.Camera",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/collisiontile.js",
+            "line": 42,
+            "description": "Collision group for tile's physics body.",
+            "itemtype": "property",
+            "name": "collisionGroup",
+            "type": "Number",
+            "class": "bamboo.Nodes.CollisionTile",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/emitter.js",
+            "line": 19,
+            "description": "Number of times emitted.",
+            "itemtype": "property",
+            "name": "count",
+            "type": "Number",
+            "class": "bamboo.Nodes.Emitter",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/emitter.js",
+            "line": 46,
+            "itemtype": "property",
+            "name": "target",
+            "type": "Node",
+            "class": "bamboo.Nodes.Emitter",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/emitter.js",
+            "line": 50,
+            "description": "How often to emit.",
+            "itemtype": "property",
+            "name": "interval",
+            "type": "Number",
+            "default": "1",
+            "class": "bamboo.Nodes.Emitter",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/emitter.js",
+            "line": 56,
+            "description": "Is emitter activated from trigger.",
+            "itemtype": "property",
+            "name": "triggered",
+            "type": "Boolean",
+            "class": "bamboo.Nodes.Emitter",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/image.js",
+            "line": 30,
+            "itemtype": "property",
+            "name": "image",
+            "type": "Image",
+            "class": "bamboo.Nodes.Image",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/image.js",
+            "line": 34,
+            "itemtype": "property",
+            "name": "alpha",
+            "type": "Number",
+            "default": "1",
+            "class": "bamboo.Nodes.Image",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/image.js",
+            "line": 39,
+            "itemtype": "property",
+            "name": "flipX",
+            "type": "Boolean",
+            "class": "bamboo.Nodes.Image",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/image.js",
+            "line": 43,
+            "itemtype": "property",
+            "name": "flipY",
+            "type": "Boolean",
+            "class": "bamboo.Nodes.Image",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/layer.js",
+            "line": 49,
+            "description": "How fast layer should move.",
+            "itemtype": "property",
+            "name": "speedFactor",
+            "type": "Vector",
+            "default": "1,1",
+            "class": "bamboo.Nodes.Layer",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/layer.js",
+            "line": 56,
+            "description": "Does layer use fixed position.",
+            "itemtype": "property",
+            "name": "fixed",
+            "type": "Boolean",
+            "class": "bamboo.Nodes.Layer",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/path.js",
+            "line": 76,
+            "description": "Get closest position on path from point.",
+            "itemtype": "method",
+            "name": "getClosestPosition",
+            "params": [
+                {
+                    "name": "point",
+                    "description": "",
+                    "type": "Vector"
+                }
+            ],
+            "class": "bamboo.Nodes.Path",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/path.js",
+            "line": 197,
+            "description": "Get position on path, based on distance.",
+            "itemtype": "method",
+            "name": "getPositionAtDistance",
+            "params": [
+                {
+                    "name": "dist",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "bamboo.Nodes.Path",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/path.js",
+            "line": 274,
+            "description": "Is path looping.",
+            "itemtype": "property",
+            "name": "loop",
+            "type": "Boolean",
+            "class": "bamboo.Nodes.Path",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/path.js",
+            "line": 279,
+            "description": "Is path spline.",
+            "itemtype": "property",
+            "name": "spline",
+            "type": "Boolean",
+            "class": "bamboo.Nodes.Path",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/path.js",
+            "line": 284,
+            "description": "List of points in path.",
+            "itemtype": "property",
+            "name": "points",
+            "type": "Array",
+            "class": "bamboo.Nodes.Path",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/pathfollower.js",
+            "line": 64,
+            "description": "How fast to go from path's start to finish.",
+            "itemtype": "property",
+            "name": "duration",
+            "type": "Number",
+            "class": "bamboo.Nodes.PathFollower",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/pathfollower.js",
+            "line": 69,
+            "description": "Offset time for follower.",
+            "itemtype": "property",
+            "name": "offset",
+            "type": "Number",
+            "default": "0",
+            "class": "bamboo.Nodes.PathFollower",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/pathfollower.js",
+            "line": 75,
+            "description": "Should follower loop.",
+            "itemtype": "property",
+            "name": "loop",
+            "type": "Boolean",
+            "class": "bamboo.Nodes.PathFollower",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/pathfollower.js",
+            "line": 80,
+            "description": "Should follower go back and forth.",
+            "itemtype": "property",
+            "name": "yoyo",
+            "type": "Boolean",
+            "class": "bamboo.Nodes.PathFollower",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/pathfollower.js",
+            "line": 85,
+            "description": "Should follower flip when going back.",
+            "itemtype": "property",
+            "name": "flipOnYoyo",
+            "type": "Boolean",
+            "class": "bamboo.Nodes.PathFollower",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/pathfollower.js",
+            "line": 90,
+            "description": "Is follower activated from trigger.",
+            "itemtype": "property",
+            "name": "triggered",
+            "type": "Boolean",
+            "class": "bamboo.Nodes.PathFollower",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/pathfollower.js",
+            "line": 95,
+            "description": "Is follower going reverse direction.",
+            "itemtype": "property",
+            "name": "reverse",
+            "type": "Boolean",
+            "class": "bamboo.Nodes.PathFollower",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/pathfollower.js",
+            "line": 100,
+            "description": "Easing function for follower movement.",
+            "itemtype": "property",
+            "name": "easing",
+            "type": "Easing",
+            "class": "bamboo.Nodes.PathFollower",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/physics.js",
+            "line": 29,
+            "description": "Gravity for physics world.",
+            "itemtype": "property",
+            "name": "gravity",
+            "type": "Vector",
+            "default": "0, 980",
+            "class": "bamboo.Nodes.Physics",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/rotator.js",
+            "line": 52,
+            "description": "Start angle of rotator.",
+            "itemtype": "property",
+            "name": "rotation",
+            "type": "Number",
+            "default": "0",
+            "class": "bamboo.Nodes.Rotator",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/rotator.js",
+            "line": 58,
+            "description": "Duration of rotation in seconds.",
+            "itemtype": "property",
+            "name": "duration",
+            "type": "Number",
+            "default": "3",
+            "class": "bamboo.Nodes.Rotator",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/rotator.js",
+            "line": 64,
+            "description": "How much to rotate in degrees.",
+            "itemtype": "property",
+            "name": "degrees",
+            "type": "Number",
+            "default": "360",
+            "class": "bamboo.Nodes.Rotator",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/rotator.js",
+            "line": 70,
+            "description": "Easing function for rotation.",
+            "itemtype": "property",
+            "name": "easing",
+            "type": "Easing",
+            "class": "bamboo.Nodes.Rotator",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/rotator.js",
+            "line": 75,
+            "description": "Should rotator loop.",
+            "itemtype": "property",
+            "name": "loop",
+            "type": "Boolean",
+            "class": "bamboo.Nodes.Rotator",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/rotator.js",
+            "line": 80,
+            "description": "Should rotator go back and forth.",
+            "itemtype": "property",
+            "name": "yoyo",
+            "type": "Boolean",
+            "class": "bamboo.Nodes.Rotator",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/rotator.js",
+            "line": 85,
+            "description": "Is rotator started from trigger.",
+            "itemtype": "property",
+            "name": "triggered",
+            "type": "Boolean",
+            "class": "bamboo.Nodes.Rotator",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/spine.js",
+            "line": 37,
+            "description": "Spine animation data.",
+            "itemtype": "property",
+            "name": "spineData",
+            "type": "JSON",
+            "class": "bamboo.Nodes.Spine",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/spine.js",
+            "line": 42,
+            "description": "Spritesheet for animation.",
+            "itemtype": "property",
+            "name": "spritesheet",
+            "type": "JSON",
+            "class": "bamboo.Nodes.Spine",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/spine.js",
+            "line": 47,
+            "description": "Name of animation.",
+            "itemtype": "property",
+            "name": "animation",
+            "type": "String",
+            "class": "bamboo.Nodes.Spine",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/spine.js",
+            "line": 52,
+            "description": "Speed of animation.",
+            "itemtype": "property",
+            "name": "speed",
+            "type": "Number",
+            "default": "1",
+            "class": "bamboo.Nodes.Spine",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/spine.js",
+            "line": 58,
+            "description": "Is animation looping.",
+            "itemtype": "property",
+            "name": "loop",
+            "type": "Boolean",
+            "default": "true",
+            "class": "bamboo.Nodes.Spine",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/spine.js",
+            "line": 64,
+            "description": "Is animation started from trigger.",
+            "itemtype": "property",
+            "name": "triggered",
+            "type": "Boolean",
+            "class": "bamboo.Nodes.Spine",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/trigger.js",
             "line": 18,
+            "itemtype": "method",
+            "name": "hitTest",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "bamboo.Nodes.Trigger",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/trigger.js",
+            "line": 62,
+            "itemtype": "property",
+            "name": "activator",
+            "type": "Node",
+            "class": "bamboo.Nodes.Trigger",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/trigger.js",
+            "line": 66,
+            "itemtype": "property",
+            "name": "target",
+            "type": "Node",
+            "class": "bamboo.Nodes.Trigger",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/nodes/trigger.js",
+            "line": 70,
+            "description": "Disable trigger, after activated.",
+            "itemtype": "property",
+            "name": "onetime",
+            "type": "Boolean",
+            "class": "bamboo.Nodes.Trigger",
+            "namespace": "bamboo.Nodes"
+        },
+        {
+            "file": "src/runtime/node.js",
+            "line": 15,
             "description": "List of nodes childrens.",
             "itemtype": "property",
             "name": "children",
             "type": "Array",
             "class": "bamboo.Node",
-            "module": "node",
             "namespace": "bamboo"
         },
         {
             "file": "src/runtime/node.js",
-            "line": 30,
+            "line": 27,
             "itemtype": "method",
             "name": "init",
             "class": "bamboo.Node",
-            "module": "node",
             "namespace": "bamboo"
         },
         {
             "file": "src/runtime/node.js",
-            "line": 37,
+            "line": 34,
             "itemtype": "method",
             "name": "initProperties",
             "class": "bamboo.Node",
-            "module": "node",
             "namespace": "bamboo"
         },
         {
             "file": "src/runtime/node.js",
-            "line": 48,
+            "line": 45,
             "description": "Called, when node is ready and properties inited.",
             "itemtype": "method",
             "name": "ready",
             "class": "bamboo.Node",
-            "module": "node",
             "namespace": "bamboo"
         },
         {
             "file": "src/runtime/node.js",
-            "line": 55,
+            "line": 52,
             "description": "Called, when node is removed from it's world.",
             "itemtype": "method",
             "name": "onRemove",
             "class": "bamboo.Node",
-            "module": "node",
             "namespace": "bamboo"
         },
         {
             "file": "src/runtime/node.js",
-            "line": 62,
+            "line": 59,
             "description": "Remove node from it's world.",
             "itemtype": "method",
             "name": "remove",
             "class": "bamboo.Node",
-            "module": "node",
             "namespace": "bamboo"
         },
         {
             "file": "src/runtime/node.js",
-            "line": 70,
+            "line": 67,
             "itemtype": "method",
             "name": "setProperty",
             "params": [
@@ -210,12 +969,11 @@
                 }
             ],
             "class": "bamboo.Node",
-            "module": "node",
             "namespace": "bamboo"
         },
         {
             "file": "src/runtime/node.js",
-            "line": 86,
+            "line": 83,
             "description": "Add child to node.",
             "itemtype": "method",
             "name": "addChild",
@@ -227,12 +985,11 @@
                 }
             ],
             "class": "bamboo.Node",
-            "module": "node",
             "namespace": "bamboo"
         },
         {
             "file": "src/runtime/node.js",
-            "line": 96,
+            "line": 93,
             "description": "Remove child from node.",
             "itemtype": "method",
             "name": "removeChild",
@@ -244,12 +1001,11 @@
                 }
             ],
             "class": "bamboo.Node",
-            "module": "node",
             "namespace": "bamboo"
         },
         {
             "file": "src/runtime/node.js",
-            "line": 132,
+            "line": 129,
             "description": "Convert world position to node's local position.",
             "itemtype": "method",
             "name": "toLocalSpace",
@@ -267,12 +1023,11 @@
                 }
             ],
             "class": "bamboo.Node",
-            "module": "node",
             "namespace": "bamboo"
         },
         {
             "file": "src/runtime/node.js",
-            "line": 153,
+            "line": 150,
             "description": "Convert node's local position to world position.",
             "itemtype": "method",
             "name": "toWorldSpace",
@@ -290,12 +1045,11 @@
                 }
             ],
             "class": "bamboo.Node",
-            "module": "node",
             "namespace": "bamboo"
         },
         {
             "file": "src/runtime/node.js",
-            "line": 174,
+            "line": 171,
             "description": "Get node's world position.",
             "itemtype": "method",
             "name": "getWorldPosition",
@@ -308,122 +1062,110 @@
                 }
             ],
             "class": "bamboo.Node",
-            "module": "node",
             "namespace": "bamboo"
         },
         {
             "file": "src/runtime/node.js",
-            "line": 199,
+            "line": 196,
             "itemtype": "property",
             "name": "parent",
             "type": "Node",
             "class": "bamboo.Node",
-            "module": "node",
             "namespace": "bamboo"
         },
         {
             "file": "src/runtime/node.js",
-            "line": 203,
+            "line": 200,
             "itemtype": "property",
             "name": "name",
             "type": "String",
             "class": "bamboo.Node",
-            "module": "node",
             "namespace": "bamboo"
         },
         {
             "file": "src/runtime/node.js",
-            "line": 207,
+            "line": 204,
             "itemtype": "property",
             "name": "position",
             "type": "Vector",
             "class": "bamboo.Node",
-            "module": "node",
             "namespace": "bamboo"
         },
         {
             "file": "src/runtime/node.js",
-            "line": 211,
+            "line": 208,
             "itemtype": "property",
             "name": "size",
             "type": "Vector",
             "class": "bamboo.Node",
-            "module": "node",
             "namespace": "bamboo"
         },
         {
             "file": "src/runtime/node.js",
-            "line": 215,
+            "line": 212,
             "itemtype": "property",
             "name": "anchor",
             "type": "Vector",
             "class": "bamboo.Node",
-            "module": "node",
             "namespace": "bamboo"
         },
         {
             "file": "src/runtime/world.js",
-            "line": 18,
+            "line": 15,
             "description": "List of audio files.",
             "itemtype": "property",
             "name": "audio",
             "class": "bamboo.World",
-            "module": "world",
             "namespace": "bamboo"
         },
         {
             "file": "src/runtime/world.js",
-            "line": 23,
+            "line": 20,
             "description": "List of assets.",
             "itemtype": "property",
             "name": "assets",
             "class": "bamboo.World",
-            "module": "world",
             "namespace": "bamboo"
         },
         {
             "file": "src/runtime/world.js",
-            "line": 28,
+            "line": 25,
             "description": "List of nodes.",
             "itemtype": "property",
             "name": "nodes",
             "class": "bamboo.World",
-            "module": "world",
             "namespace": "bamboo"
         },
         {
             "file": "src/runtime/world.js",
-            "line": 33,
+            "line": 30,
             "description": "List of layers.",
             "itemtype": "property",
             "name": "layers",
             "class": "bamboo.World",
-            "module": "world",
             "namespace": "bamboo"
         },
         {
             "file": "src/runtime/world.js",
-            "line": 38,
+            "line": 35,
             "description": "List of updateable nodes.",
             "itemtype": "property",
             "name": "updateable nodes",
             "class": "bamboo.World",
-            "module": "world",
             "namespace": "bamboo"
         },
         {
             "file": "src/runtime/world.js",
-            "line": 43,
+            "line": 40,
             "description": "Current world time.",
             "itemtype": "property",
             "name": "time",
             "class": "bamboo.World",
-            "module": "world",
             "namespace": "bamboo"
         },
         {
             "file": "src/runtime/world.js",
-            "line": 82,
+            "line": 79,
             "description": "Find node by name.",
             "itemtype": "method",
             "name": "findNode",
@@ -435,12 +1177,11 @@
                 }
             ],
             "class": "bamboo.World",
-            "module": "world",
             "namespace": "bamboo"
         },
         {
             "file": "src/runtime/world.js",
-            "line": 94,
+            "line": 91,
             "description": "Add node to world.",
             "itemtype": "method",
             "name": "addNode",
@@ -452,12 +1193,11 @@
                 }
             ],
             "class": "bamboo.World",
-            "module": "world",
             "namespace": "bamboo"
         },
         {
             "file": "src/runtime/world.js",
-            "line": 106,
+            "line": 103,
             "description": "Remove node from world.",
             "itemtype": "method",
             "name": "removeNode",
@@ -469,12 +1209,11 @@
                 }
             ],
             "class": "bamboo.World",
-            "module": "world",
             "namespace": "bamboo"
         },
         {
             "file": "src/runtime/world.js",
-            "line": 126,
+            "line": 123,
             "description": "Called, when node is added to world.",
             "itemtype": "method",
             "name": "nodeAdded",
@@ -486,12 +1225,11 @@
                 }
             ],
             "class": "bamboo.World",
-            "module": "world",
             "namespace": "bamboo"
         },
         {
             "file": "src/runtime/world.js",
-            "line": 134,
+            "line": 131,
             "description": "Called, when node is removed from world.",
             "itemtype": "method",
             "name": "nodeRemoved",
@@ -503,12 +1241,16 @@
                 }
             ],
             "class": "bamboo.World",
-            "module": "world",
             "namespace": "bamboo"
         },
         {
             "file": "src/core.js",
-            "line": 16,
+            "line": 1,
+            "class": "bamboo"
+        },
+        {
+            "file": "src/core.js",
+            "line": 15,
             "itemtype": "method",
             "name": "createNode",
             "params": [
@@ -529,13 +1271,11 @@
                     "type": "Object"
                 }
             ],
-            "class": "bamboo.Core",
-            "module": "bamboo",
-            "namespace": "bamboo"
+            "class": "bamboo"
         },
         {
             "file": "src/core.js",
-            "line": 31,
+            "line": 30,
             "itemtype": "method",
             "name": "addNodeProperty",
             "params": [
@@ -564,13 +1304,11 @@
                     "type": "Boolean"
                 }
             ],
-            "class": "bamboo.Core",
-            "module": "bamboo",
-            "namespace": "bamboo"
+            "class": "bamboo"
         },
         {
             "file": "src/core.js",
-            "line": 45,
+            "line": 44,
             "itemtype": "method",
             "name": "createScene",
             "params": [
@@ -585,10 +1323,13 @@
                     "type": "Object"
                 }
             ],
-            "class": "bamboo.Core",
-            "module": "bamboo",
-            "namespace": "bamboo"
+            "class": "bamboo"
         }
     ],
-    "warnings": []
+    "warnings": [
+        {
+            "message": "Missing item type",
+            "line": " src/core.js:1"
+        }
+    ]
 }

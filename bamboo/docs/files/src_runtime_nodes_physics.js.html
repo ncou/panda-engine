@@ -1,0 +1,57 @@
+---
+layout: bamboo
+title: Documentation <span>0.3.0</span>
+---
+
+<div class="sidebar"></div>
+
+<h1 class="file-heading">File: src/runtime/nodes/physics.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+game.module(
+    &#x27;bamboo.runtime.nodes.physics&#x27;
+)
+.require(
+    &#x27;bamboo.core&#x27;
+)
+.body(function() {
+
+/**
+    Physics world.
+    @class Physics
+    @namespace bamboo.Nodes
+**/
+bamboo.createNode(&#x27;Physics&#x27;, {
+    init: function() {
+        this.displayObject = new game.Container();
+        this.world.physics = new game.World();
+    },
+
+    ready: function() {
+        this.world.physics.gravity.set(this.gravity.x, this.gravity.y);
+    },
+
+    update: function() {
+        this.world.physics.update();
+    }
+});
+
+/**
+    Gravity for physics world.
+    @property {Vector} gravity
+    @default 0, 980
+**/
+bamboo.addNodeProperty(&#x27;Physics&#x27;, &#x27;gravity&#x27;, &#x27;vector&#x27;, [0, 980]);
+
+});
+
+    </pre>
+</div>
+
+
+<style type="text/css">
+    .index-section.classes, .index-section.modules {
+        width: 100%;
+    }
+</style>

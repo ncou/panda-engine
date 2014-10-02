@@ -1,0 +1,60 @@
+---
+layout: bamboo
+title: Documentation <span>0.3.0</span>
+---
+
+<div class="sidebar"></div>
+
+<h1 class="file-heading">File: src/runtime/nodes/audio.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+game.module(
+    &#x27;bamboo.runtime.nodes.audio&#x27;
+)
+.require(
+    &#x27;bamboo.core&#x27;
+)
+.body(function() {
+
+/**
+    Audio file, that is played from trigger.
+    @class Audio
+    @namespace bamboo.Nodes
+**/
+bamboo.createNode(&#x27;Audio&#x27;, {
+    trigger: function() {
+        this.play();
+    },
+
+    play: function() {
+        this.audioId = game.audio.playSound(this.audio, !!this.loop);
+    },
+
+    stop: function() {
+        if (this.audioId) game.audio.stopSound(this.audioId);
+    }
+});
+
+/**
+    Audio file.
+    @property {Audio} audio
+**/
+bamboo.addNodeProperty(&#x27;Audio&#x27;, &#x27;audio&#x27;, &#x27;audio&#x27;);
+/**
+    Is audio looping.
+    @property {Boolean} loop
+**/
+bamboo.addNodeProperty(&#x27;Audio&#x27;, &#x27;loop&#x27;, &#x27;boolean&#x27;);
+
+});
+
+    </pre>
+</div>
+
+
+<style type="text/css">
+    .index-section.classes, .index-section.modules {
+        width: 100%;
+    }
+</style>

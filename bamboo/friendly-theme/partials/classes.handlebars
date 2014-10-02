@@ -1,66 +1,10 @@
-<div class="box search">
-<div id="search">
-    <form method="GET" action="{{ projectRoot }}../search.html">
-        <input type="text" name="key" placeholder="Search documentation...">
-    </form>
-</div>
-</div>
-
 <h4 class="boxHeader"><span>Class:</span> {{name}}</h4>
-<div class="headerBox">
+
+{{#if description}}
 <div class="classes-meta">
-    {{#if description}}<div class="desc">{{description}}</div>{{/if}}
-
-    {{#if uses}}
-        <div class="uses">
-            Uses
-            <ul class="inline commas">
-                {{#uses}}
-                    <li><a href="{{.}}.html">{{.}}</a></li>
-                {{/uses}}
-            </ul>
-        </div>
-    {{/if}}
-
-    {{#if extends}}
-        <div class="extends">
-            Extends: {{#crossLink extends}}{{/crossLink}}
-        </div>
-    {{/if}}
-
-    {{#if foundAt}}
-        <!-- <div class="foundat">
-            Defined in: <a href="{{foundAt}}">`{{{file}}}:{{{line}}}`</a>
-        </div> -->
-    {{/if}}
-
-    {{#if module}}
-        {{#if submodule}}
-            Module: {{#crossLinkModule submodule}}{{/crossLinkModule}}<br>
-            Parent Module: {{#crossLinkModule module}}{{/crossLinkModule}}
-        {{else}}
-            Module: {{#crossLinkModule module}}{{/crossLinkModule}}
-        {{/if}}
-    {{/if}}
-
-    {{#if since}}
-        <p>Available since {{since}}</p>
-    {{/if}}
+    <div class="desc">{{description}}</div>
 </div>
-
-{{#if deprecated}}
-    <div class="box deprecated">
-        <p>
-        {{#if deprecationMessage}}
-            <strong>Deprecated:</strong> {{deprecationMessage}}
-        {{else}}
-            This class is deprecated.
-        {{/if}}
-        </p>
-    </div>
 {{/if}}
-
-</div>
 
 <div class="classes-index">
 

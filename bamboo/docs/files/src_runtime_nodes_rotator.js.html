@@ -1,0 +1,112 @@
+---
+layout: bamboo
+title: Documentation <span>0.3.0</span>
+---
+
+<div class="sidebar"></div>
+
+<h1 class="file-heading">File: src/runtime/nodes/rotator.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+game.module(
+    &#x27;bamboo.runtime.nodes.rotator&#x27;
+)
+.require(
+    &#x27;bamboo.core&#x27;,
+    &#x27;bamboo.runtime.node&#x27;
+)
+.body(function() {
+
+/**
+    Rotator rotates it&#x27;s children nodes.
+    @class Rotator
+    @namespace bamboo.Nodes
+**/
+bamboo.createNode(&#x27;Rotator&#x27;, {
+    active: true,
+    offset: 0,
+
+    trigger: function() {
+        this.offset = this.world.time;
+        this.active = true;
+    },
+
+    ready: function() {
+        if (this.triggered) this.active = false;
+    },
+
+    setProperty: function(name, value) {
+        this._super(name, value);
+        if (name === &#x27;rotation&#x27;) this.displayObject.rotation = value * (Math.PI / 180);
+    },
+
+    update: function() {
+        if (!this.active) return;
+
+        var elapsed = ((this.world.time - this.offset) % this.duration) / this.duration;
+
+        if (!this.loop &amp;&amp; this.world.time - this.offset &gt;= this.duration) {
+            elapsed = 1;
+        }
+
+        if (this.yoyo) {
+            var rounds = Math.floor((this.world.time - this.offset) / this.duration);
+            if (rounds % 2 === 1) elapsed = 1.0 - elapsed;
+        }
+
+        var radians = this.degrees * (Math.PI / 180);
+        this.displayObject.rotation = (this.rotation * (Math.PI / 180)) + radians * this.easing(elapsed);
+    }
+});
+
+/**
+    Start angle of rotator.
+    @property {Number} rotation
+    @default 0
+**/
+bamboo.addNodeProperty(&#x27;Rotator&#x27;, &#x27;rotation&#x27;, &#x27;number&#x27;, 0);
+/**
+    Duration of rotation in seconds.
+    @property {Number} duration
+    @default 3
+**/
+bamboo.addNodeProperty(&#x27;Rotator&#x27;, &#x27;duration&#x27;, &#x27;number&#x27;, 3);
+/**
+    How much to rotate in degrees.
+    @property {Number} degrees
+    @default 360
+**/
+bamboo.addNodeProperty(&#x27;Rotator&#x27;, &#x27;degrees&#x27;, &#x27;number&#x27;, 360);
+/**
+    Easing function for rotation.
+    @property {Easing} easing
+**/
+bamboo.addNodeProperty(&#x27;Rotator&#x27;, &#x27;easing&#x27;, &#x27;easing&#x27;);
+/**
+    Should rotator loop.
+    @property {Boolean} loop
+**/
+bamboo.addNodeProperty(&#x27;Rotator&#x27;, &#x27;loop&#x27;, &#x27;boolean&#x27;);
+/**
+    Should rotator go back and forth.
+    @property {Boolean} yoyo
+**/
+bamboo.addNodeProperty(&#x27;Rotator&#x27;, &#x27;yoyo&#x27;, &#x27;boolean&#x27;);
+/**
+    Is rotator started from trigger.
+    @property {Boolean} triggered
+**/
+bamboo.addNodeProperty(&#x27;Rotator&#x27;, &#x27;triggered&#x27;, &#x27;boolean&#x27;);
+
+});
+
+    </pre>
+</div>
+
+
+<style type="text/css">
+    .index-section.classes, .index-section.modules {
+        width: 100%;
+    }
+</style>

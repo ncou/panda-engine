@@ -1,0 +1,48 @@
+---
+layout: bamboo
+title: Documentation <span>0.3.0</span>
+---
+
+<div class="sidebar"></div>
+
+<h1 class="file-heading">File: src/runtime/nodes/triggerimage.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+game.module(
+    &#x27;bamboo.runtime.nodes.triggerimage&#x27;
+)
+.require(
+    &#x27;bamboo.runtime.nodes.trigger&#x27;
+)
+.body(function() {
+
+/**
+    Trigger that uses image.
+    @class TriggerImage
+    @namespace bamboo.Nodes
+**/
+bamboo.createNode(&#x27;TriggerImage&#x27;, &#x27;Trigger&#x27;, {
+    init: function() {
+        this.displayObject = new game.Sprite(new game.Texture(new game.BaseTexture()));
+    },
+
+    setProperty: function(name, value) {
+        this._super(name, value);
+        if (name === &#x27;image&#x27; &amp;&amp; this.image) this.displayObject.setTexture(game.config.mediaFolder + this.image);
+    }
+});
+
+bamboo.addNodeProperty(&#x27;TriggerImage&#x27;, &#x27;image&#x27;, &#x27;image&#x27;);
+
+});
+
+    </pre>
+</div>
+
+
+<style type="text/css">
+    .index-section.classes, .index-section.modules {
+        width: 100%;
+    }
+</style>

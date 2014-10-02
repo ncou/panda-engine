@@ -1,0 +1,79 @@
+---
+layout: bamboo
+title: Documentation <span>0.3.0</span>
+---
+
+<div class="sidebar"></div>
+
+<h1 class="file-heading">File: src/runtime/nodes/camera.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+game.module(
+    &#x27;bamboo.runtime.nodes.camera&#x27;
+)
+.require(
+    &#x27;bamboo.core&#x27;,
+    &#x27;bamboo.runtime.node&#x27;
+)
+.body(function() {
+&#x27;use strict&#x27;;
+
+/**
+    Camera that follows it&#x27;s target.
+    @class Camera
+    @namespace bamboo.Nodes
+**/
+bamboo.createNode(&#x27;Camera&#x27;, {
+    ready: function() {
+        this.camera = new game.Camera();
+        this.camera.minX = this.camera.minY = 0;
+        this.camera.maxX = this.world.width - game.system.width;
+        this.camera.maxY = this.world.height - game.system.height;
+        this.camera.offset.x += this.offset.x;
+        this.camera.offset.y += this.offset.y;
+        if (this.target) this.camera.follow(this.target.displayObject);
+        if (this.target &amp;&amp; this.startFromTarget) this.camera.setPosition(this.target.displayObject.position.x, this.target.displayObject.position.y);
+        else this.camera.setPosition(this.position.x + game.system.width / 2, this.position.y + game.system.height / 2);
+        this.update();
+    },
+
+    update: function() {
+        var layer;
+        for (var i = 0; i &lt; this.world.layers.length; i++) {
+            layer = this.world.layers[i];
+            if (layer.fixed) continue;
+            layer.displayObject.position.set(
+                ~~(layer.position.x + this.camera.position.x * -layer.speedFactor.x),
+                ~~(layer.position.y + this.camera.position.y * -layer.speedFactor.y)
+            );
+        }
+    }
+});
+
+/**
+    @property {Node} target
+**/
+bamboo.addNodeProperty(&#x27;Camera&#x27;, &#x27;target&#x27;, &#x27;node&#x27;);
+/**
+    Camera offset from center of screen.
+    @property {Vector} offset
+**/
+bamboo.addNodeProperty(&#x27;Camera&#x27;, &#x27;offset&#x27;, &#x27;vector&#x27;);
+/**
+    Should camera start from it&#x27;s target&#x27;s position.
+    @property {Boolean} startFromTarget
+**/
+bamboo.addNodeProperty(&#x27;Camera&#x27;, &#x27;startFromTarget&#x27;, &#x27;boolean&#x27;);
+
+});
+
+    </pre>
+</div>
+
+
+<style type="text/css">
+    .index-section.classes, .index-section.modules {
+        width: 100%;
+    }
+</style>

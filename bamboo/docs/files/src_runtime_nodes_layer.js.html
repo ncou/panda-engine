@@ -1,0 +1,83 @@
+---
+layout: bamboo
+title: Documentation <span>0.3.0</span>
+---
+
+<div class="sidebar"></div>
+
+<h1 class="file-heading">File: src/runtime/nodes/layer.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+game.module(
+    &#x27;bamboo.runtime.nodes.layer&#x27;
+)
+.require(
+    &#x27;bamboo.core&#x27;,
+    &#x27;bamboo.runtime.node&#x27;
+)
+.body(function() {
+&#x27;use strict&#x27;;
+
+/**
+    @class Layer
+    @namespace bamboo.Nodes
+**/
+bamboo.createNode(&#x27;Layer&#x27;, {
+    ready: function() {
+        if (this.cacheAsBitmap) {
+            var size = game.config.bamboo.maxTextureSize || 2048;
+            if (this.displayObject.width &lt; size &amp;&amp; this.displayObject.height &lt; size) {
+                size = Math.max(this.displayObject.width, this.displayObject.height);
+            }
+            
+            var tx = Math.ceil(this.displayObject.width / size);
+            var ty = Math.ceil(this.displayObject.height / size);
+            var pos = new game.Point();
+            var renderTexture;
+            var sprites = [];
+            var sprite;
+            for (var y = 0; y &lt; ty; y++) {
+                for (var x = 0; x &lt; tx; x++) {
+                    pos.set(-x * size, -y * size);
+                    renderTexture = new game.RenderTexture(size, size);
+                    renderTexture.render(this.displayObject, pos);
+                    sprite = new game.Sprite(renderTexture);
+                    sprite.position.set(x * size, y * size);
+                    sprites.push(sprite);
+                }
+            }
+            for (var i = this.displayObject.children.length - 1; i &gt;= 0; i--) {
+                this.displayObject.removeChild(this.displayObject.children[i]);
+            }
+            for (var i = 0; i &lt; sprites.length; i++) {
+                this.displayObject.addChild(sprites[i]);
+            }
+        }
+    }
+});
+
+/**
+    How fast layer should move.
+    @property {Vector} speedFactor
+    @default 1,1
+**/
+bamboo.addNodeProperty(&#x27;Layer&#x27;, &#x27;speedFactor&#x27;, &#x27;vector&#x27;, [1, 1]);
+bamboo.addNodeProperty(&#x27;Layer&#x27;, &#x27;cacheAsBitmap&#x27;, &#x27;boolean&#x27;);
+/**
+    Does layer use fixed position.
+    @property {Boolean} fixed
+**/
+bamboo.addNodeProperty(&#x27;Layer&#x27;, &#x27;fixed&#x27;, &#x27;boolean&#x27;);
+
+});
+
+    </pre>
+</div>
+
+
+<style type="text/css">
+    .index-section.classes, .index-section.modules {
+        width: 100%;
+    }
+</style>

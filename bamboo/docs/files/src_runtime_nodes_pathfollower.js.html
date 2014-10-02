@@ -1,0 +1,127 @@
+---
+layout: bamboo
+title: Documentation <span>0.3.0</span>
+---
+
+<div class="sidebar"></div>
+
+<h1 class="file-heading">File: src/runtime/nodes/pathfollower.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+game.module(
+    &#x27;bamboo.runtime.nodes.pathfollower&#x27;
+)
+.require(
+    &#x27;bamboo.core&#x27;,
+    &#x27;bamboo.runtime.node&#x27;
+)
+.body(function() {
+
+/**
+    Path follower follows path.
+    @class PathFollower
+    @namespace bamboo.Nodes
+**/
+bamboo.createNode(&#x27;PathFollower&#x27;, {
+    active: true,
+    startTime: 0,
+
+    trigger: function() {
+        this.startTime = this.world.time;
+        this.active = true;
+    },
+
+    ready: function() {
+        this.origPosition = game.Point.from(this.position);
+        if (this.triggered) this.active = false;
+        else this.update();
+    },
+
+    update: function() {
+        if (!this.active) return;
+        if (!this.parent.length) return;
+
+        var elapsed = ((this.world.time - this.startTime + this.offset) % this.duration) / this.duration;
+
+        if (!this.loop &amp;&amp; this.world.time - this.startTime &gt;= this.duration) elapsed = 1;
+
+        if (this.yoyo &amp;&amp; this.loop) {
+            var rounds = Math.floor((this.world.time - this.startTime) / this.duration);
+            if (rounds % 2 === 1) {
+                elapsed = 1.0 - elapsed;
+                if (this.flipOnYoyo &amp;&amp; this.displayObject.scale.x === 1) {
+                    this.displayObject.scale.x = -1;
+                }
+            }
+            else if (this.flipOnYoyo &amp;&amp; this.displayObject.scale.x === -1) {
+                this.displayObject.scale.x = 1;
+            }
+        }
+
+        if (this.reverse) elapsed = 1 - elapsed;
+
+        var curDistance = this.parent.length * this.easing(elapsed);
+        var newPos = this.parent.getPositionAtDistance(curDistance);
+        newPos.x -= this.parent.points[0].x;
+        newPos.y -= this.parent.points[0].y;
+        this.position.x = this.origPosition.x + newPos.x;
+        this.position.y = this.origPosition.y + newPos.y;
+        this.setProperty(&#x27;position&#x27;, this.position);
+        bamboo.pool.put(newPos);
+    }
+});
+
+/**
+    How fast to go from path&#x27;s start to finish.
+    @property {Number} duration
+**/
+bamboo.addNodeProperty(&#x27;PathFollower&#x27;, &#x27;duration&#x27;, &#x27;number&#x27;, 2);
+/**
+    Offset time for follower.
+    @property {Number} offset
+    @default 0
+**/
+bamboo.addNodeProperty(&#x27;PathFollower&#x27;, &#x27;offset&#x27;, &#x27;number&#x27;, 0);
+/**
+    Should follower loop.
+    @property {Boolean} loop
+**/
+bamboo.addNodeProperty(&#x27;PathFollower&#x27;, &#x27;loop&#x27;, &#x27;boolean&#x27;);
+/**
+    Should follower go back and forth.
+    @property {Boolean} yoyo
+**/
+bamboo.addNodeProperty(&#x27;PathFollower&#x27;, &#x27;yoyo&#x27;, &#x27;boolean&#x27;);
+/**
+    Should follower flip when going back.
+    @property {Boolean} flipOnYoyo
+**/
+bamboo.addNodeProperty(&#x27;PathFollower&#x27;, &#x27;flipOnYoyo&#x27;, &#x27;boolean&#x27;);
+/**
+    Is follower activated from trigger.
+    @property {Boolean} triggered
+**/
+bamboo.addNodeProperty(&#x27;PathFollower&#x27;, &#x27;triggered&#x27;, &#x27;boolean&#x27;);
+/**
+    Is follower going reverse direction.
+    @property {Boolean} reverse
+**/
+bamboo.addNodeProperty(&#x27;PathFollower&#x27;, &#x27;reverse&#x27;, &#x27;boolean&#x27;);
+/**
+    Easing function for follower movement.
+    @property {Easing} easing
+**/
+bamboo.addNodeProperty(&#x27;PathFollower&#x27;, &#x27;easing&#x27;, &#x27;easing&#x27;);
+
+});
+
+    </pre>
+</div>
+
+
+<style type="text/css">
+    .index-section.classes, .index-section.modules {
+        width: 100%;
+    }
+</style>

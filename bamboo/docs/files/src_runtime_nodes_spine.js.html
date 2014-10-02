@@ -1,0 +1,91 @@
+---
+layout: bamboo
+title: Documentation <span>0.3.0</span>
+---
+
+<div class="sidebar"></div>
+
+<h1 class="file-heading">File: src/runtime/nodes/spine.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+game.module(
+    &#x27;bamboo.runtime.nodes.spine&#x27;
+)
+.require(
+    &#x27;bamboo.core&#x27;
+)
+.body(function() {
+
+/**
+    Spine animation.
+    @class Spine
+    @namespace bamboo.Nodes
+**/
+bamboo.createNode(&#x27;Spine&#x27;, {
+    ready: function() {
+        if (!this.triggered) this.play();
+    },
+
+    play: function() {
+        this.spineObject.state.animationSpeed = this.speed;
+        this.spineObject.state.setAnimationByName(this.animation, !!this.loop);
+    },
+
+    trigger: function() {
+        this.play();
+    },
+
+    setProperty: function(name, value) {
+        this._super(name, value);
+        if (name === &#x27;animation&#x27; &amp;&amp; this.spineData &amp;&amp; this.spritesheet) {
+            this.spineObject = new game.Spine(this.spineData);
+            this.displayObject.addChild(this.spineObject);
+        }
+    }
+});
+
+/**
+    Spine animation data.
+    @property {JSON} spineData
+**/
+bamboo.addNodeProperty(&#x27;Spine&#x27;, &#x27;spineData&#x27;, &#x27;json&#x27;);
+/**
+    Spritesheet for animation.
+    @property {JSON} spritesheet
+**/
+bamboo.addNodeProperty(&#x27;Spine&#x27;, &#x27;spritesheet&#x27;, &#x27;json&#x27;);
+/**
+    Name of animation.
+    @property {String} animation
+**/
+bamboo.addNodeProperty(&#x27;Spine&#x27;, &#x27;animation&#x27;, &#x27;string&#x27;);
+/**
+    Speed of animation.
+    @property {Number} speed
+    @default 1
+**/
+bamboo.addNodeProperty(&#x27;Spine&#x27;, &#x27;speed&#x27;, &#x27;number&#x27;, 1);
+/**
+    Is animation looping.
+    @property {Boolean} loop
+    @default true
+**/
+bamboo.addNodeProperty(&#x27;Spine&#x27;, &#x27;loop&#x27;, &#x27;boolean&#x27;, true);
+/**
+    Is animation started from trigger.
+    @property {Boolean} triggered
+**/
+bamboo.addNodeProperty(&#x27;Spine&#x27;, &#x27;triggered&#x27;, &#x27;boolean&#x27;);
+
+});
+
+    </pre>
+</div>
+
+
+<style type="text/css">
+    .index-section.classes, .index-section.modules {
+        width: 100%;
+    }
+</style>

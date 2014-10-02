@@ -1,0 +1,69 @@
+---
+layout: bamboo
+title: Documentation <span>0.3.0</span>
+---
+
+<div class="sidebar"></div>
+
+<h1 class="file-heading">File: src/runtime/nodes/image.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+game.module(
+    &#x27;bamboo.runtime.nodes.image&#x27;
+)
+.require(
+    &#x27;bamboo.core&#x27;,
+    &#x27;bamboo.runtime.node&#x27;
+)
+.body(function() {
+
+/**
+    Basic image node.
+    @class Image
+    @namespace bamboo.Nodes
+**/
+bamboo.createNode(&#x27;Image&#x27;, {
+    init: function() {
+        this.displayObject = new game.Sprite(new game.Texture(new game.BaseTexture()));
+    },
+
+    setProperty: function(name, value) {
+        this._super(name, value);
+        if (name === &#x27;image&#x27; &amp;&amp; this.image) this.displayObject.setTexture(game.config.mediaFolder + this.image);
+        else if (name === &#x27;alpha&#x27;) this.displayObject.alpha = this.alpha;
+        else if (name === &#x27;flipX&#x27;) this.displayObject.scale.x = value ? -1 : 1;
+        else if (name === &#x27;flipY&#x27;) this.displayObject.scale.y = value ? -1 : 1;
+        else if (name === &#x27;anchor&#x27;) this.displayObject.anchor.set(value.x, value.y);
+    }
+});
+
+/**
+    @property {Image} image
+**/
+bamboo.addNodeProperty(&#x27;Image&#x27;, &#x27;image&#x27;, &#x27;image&#x27;);
+/**
+    @property {Number} alpha
+    @default 1
+**/
+bamboo.addNodeProperty(&#x27;Image&#x27;, &#x27;alpha&#x27;, &#x27;number&#x27;, 1);
+/**
+    @property {Boolean} flipX
+**/
+bamboo.addNodeProperty(&#x27;Image&#x27;, &#x27;flipX&#x27;, &#x27;boolean&#x27;);
+/**
+    @property {Boolean} flipY
+**/
+bamboo.addNodeProperty(&#x27;Image&#x27;, &#x27;flipY&#x27;, &#x27;boolean&#x27;);
+
+});
+
+    </pre>
+</div>
+
+
+<style type="text/css">
+    .index-section.classes, .index-section.modules {
+        width: 100%;
+    }
+</style>

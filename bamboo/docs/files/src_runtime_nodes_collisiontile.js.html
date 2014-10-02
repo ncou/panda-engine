@@ -1,0 +1,69 @@
+---
+layout: bamboo
+title: Documentation <span>0.3.0</span>
+---
+
+<div class="sidebar"></div>
+
+<h1 class="file-heading">File: src/runtime/nodes/collisiontile.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+game.module(
+    &#x27;bamboo.runtime.nodes.collisiontile&#x27;
+)
+.require(
+    &#x27;bamboo.core&#x27;,
+    &#x27;bamboo.runtime.node&#x27;
+)
+.body(function() {
+
+/**
+    Tile with physics body.
+    @class CollisionTile
+    @namespace bamboo.Nodes
+**/
+bamboo.createNode(&#x27;CollisionTile&#x27;, {
+    init: function() {
+        this.displayObject = new game.Sprite(new game.Texture(new game.BaseTexture()));
+    },
+
+    ready: function() {
+        this.body = new game.Body({
+            position: {
+                x: this.position.x + this.size.x / 2,
+                y: this.position.y + this.size.y / 2
+            }
+        });
+        this.body.collisionGroup = this.collisionGroup;
+
+        var shape = new game.Rectangle(this.size.x, this.size.y);
+        this.body.addShape(shape);
+
+        this.world.physics.addBody(this.body);
+    },
+
+    setProperty: function(name, value) {
+        this._super(name, value);
+        if (name === &#x27;frame&#x27; &amp;&amp; value) this.displayObject.setTexture(game.TextureCache[value]);
+    }
+});
+
+bamboo.addNodeProperty(&#x27;CollisionTile&#x27;, &#x27;frame&#x27;, &#x27;string&#x27;, &#x27;&#x27;, true);
+/**
+    Collision group for tile&#x27;s physics body.
+    @property {Number} collisionGroup
+**/
+bamboo.addNodeProperty(&#x27;CollisionTile&#x27;, &#x27;collisionGroup&#x27;, &#x27;number&#x27;, 0);
+
+});
+
+    </pre>
+</div>
+
+
+<style type="text/css">
+    .index-section.classes, .index-section.modules {
+        width: 100%;
+    }
+</style>

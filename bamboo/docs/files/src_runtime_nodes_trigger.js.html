@@ -1,0 +1,97 @@
+---
+layout: bamboo
+title: Documentation <span>0.3.0</span>
+---
+
+<div class="sidebar"></div>
+
+<h1 class="file-heading">File: src/runtime/nodes/trigger.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+game.module(
+    &#x27;bamboo.runtime.nodes.trigger&#x27;
+)
+.require(
+    &#x27;bamboo.core&#x27;,
+    &#x27;bamboo.runtime.node&#x27;
+)
+.body(function() {
+
+/**
+    Calls targets trigger function, when activator touches trigger.
+    @class Trigger
+    @namespace bamboo.Nodes
+**/
+bamboo.createNode(&#x27;Trigger&#x27;, {
+    activated: false,
+
+    /**
+        @method hitTest
+        @return {Boolean}
+    **/
+    hitTest: function() {
+        var result = false;
+        if (this.activator) {
+            var targetPos = this.activator.getWorldPosition();
+            targetPos.x -= this.activator.size.x * this.activator.anchor.x;
+            targetPos.y -= this.activator.size.y * this.activator.anchor.y;
+
+            var thisPos = this.getWorldPosition();
+            thisPos.x -= this.size.x * this.anchor.x;
+            thisPos.y -= this.size.y * this.anchor.y;
+
+            if (targetPos.x + this.activator.size.x &gt;= thisPos.x &amp;&amp;
+                targetPos.x &lt;= thisPos.x + this.size.x &amp;&amp;
+                targetPos.y + this.activator.size.y &gt;= thisPos.y &amp;&amp;
+                targetPos.y &lt;= thisPos.y + this.size.y) {
+                result = true;
+            }
+
+            bamboo.pool.put(targetPos);
+            bamboo.pool.put(thisPos);
+        }
+        return result;
+    },
+
+    update: function() {
+        if (this.activator &amp;&amp; this.target) {
+            if (this.hitTest()) {
+                if (!this.activated) {
+                    if (typeof this.target.trigger === &#x27;function&#x27;) {
+                        this.target.trigger(this);
+                        if (this.onetime) this.target = null;
+                    }
+                }
+                this.activated = true;
+            }
+            else this.activated = false;
+        }
+    }
+});
+
+/**
+    @property {Node} activator
+**/
+bamboo.addNodeProperty(&#x27;Trigger&#x27;, &#x27;activator&#x27;, &#x27;node&#x27;);
+/**
+    @property {Node} target
+**/
+bamboo.addNodeProperty(&#x27;Trigger&#x27;, &#x27;target&#x27;, &#x27;node&#x27;);
+/**
+    Disable trigger, after activated.
+    @property {Boolean} onetime
+**/
+bamboo.addNodeProperty(&#x27;Trigger&#x27;, &#x27;onetime&#x27;, &#x27;boolean&#x27;);
+
+});
+
+    </pre>
+</div>
+
+
+<style type="text/css">
+    .index-section.classes, .index-section.modules {
+        width: 100%;
+    }
+</style>
