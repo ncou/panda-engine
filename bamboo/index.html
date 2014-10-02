@@ -6,11 +6,17 @@ title: Bamboo
     Bamboo is open source scene editor for <a href="http://www.pandajs.net" target="_blank">Panda.js HTML5 game engine</a>.
 </div>
 
+<h3>Video</h3>
+
+<div class="box">
+    <iframe width="640" height="480" src="//www.youtube.com/embed/KE7x9bVXygQ?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+
 <h3>Table of contents</h3>
 
 <div class="box">
     <ol>
-        <li>Workspace</li>
+        <li>User interface</li>
             <ol>
                 <li><a href="#overview">Overview</a></li>
                 <li><a href="#toolbar">Toolbar</a></li>
@@ -26,27 +32,29 @@ title: Bamboo
                 <li><a href="#scenesettings">Changing scene settings</a></li>
                 <li><a href="#addingnode">Adding new node</a></li>
                 <li><a href="#nodesettings">Changing node properties</a></li>
+                <li><a href="#usingscene">Using Bamboo scene in Panda project</a></li>
             </ol>
         <li>Nodes</li>
             <ol>
                 <li><a href="#newnode">Creating new node</a></li>
                 <li><a href="#nodeproperty">Adding node properties</a></li>
             </ol>
+        <li><a href="#contribute">Contribute</a></li>
         <li><a href="#issues">Issues</a></li>
         <li><a href="#license">License</a></li>
     </ol>
 </div>
 
-<h3>Workspace</h3>
+<h3>User interface</h3>
 
-<h6><a name="overview" class="anchor-link"></a>Overview</h6>
+<h5><a name="overview" class="anchor-link"></a>Overview</h5>
 <div class="box">
     <img src="img/screenshot.png" class="full">
 
     This is the main view of Bamboo editor. It contains toolbar, statusbar, property window, layer window and scene view.
 </div>
 
-<h6><a name="toolbar" class="anchor-link"></a>Toolbar</h6>
+<h5><a name="toolbar" class="anchor-link"></a>Toolbar</h5>
 <div class="box">
     <img src="img/toolbar.png" class="full">
     Toolbar contains buttons with some main functions:
@@ -67,7 +75,7 @@ title: Bamboo
     </ul>
 </div>
 
-<h6><a name="property_scene" class="anchor-link"></a>Property window (node not selected)</h6>
+<h5><a name="property_scene" class="anchor-link"></a>Property window (node not selected)</h5>
 <div class="box">
     <img src="img/property_scene.png" class="full">
     When no node is selected, property window contains settings for scene:
@@ -84,14 +92,14 @@ title: Bamboo
     </ul>
 </div>
 
-<h6><a name="property_node" class="anchor-link"></a>Property window (node selected)</h6>
+<h5><a name="property_node" class="anchor-link"></a>Property window (node selected)</h5>
 <div class="box">
     <img src="img/property_node.png" class="full">
     When node is selected, property window can be used to change node properties.
     You can view all node properties from <a href="docs/">API documentation</a>.
 </div>
 
-<h6><a name="layers" class="anchor-link"></a>Layers window</h6>
+<h5><a name="layers" class="anchor-link"></a>Layers window</h5>
 <div class="box">
     <img src="img/layers.png" class="full">
     Layers window contains all your layers, as well as settings for selected layer:
@@ -112,7 +120,7 @@ title: Bamboo
     There is also four buttons that you can use to add new layer, move layer up, move layer down and delete layer.
 </div>
 
-<h6><a name="statusbar" class="anchor-link"></a>Statusbar</h6>
+<h5><a name="statusbar" class="anchor-link"></a>Statusbar</h5>
 <div class="box">
     <img src="img/statusbar.png" class="full">
     Statusbar shows your current editor mode and state, with all keyboard shortcuts.
@@ -120,7 +128,7 @@ title: Bamboo
 
 <h3>Getting started</h3>
 
-<h6><a name="install" class="anchor-link"></a>Installing Bamboo</h6>
+<h5><a name="install" class="anchor-link"></a>Installing Bamboo</h5>
 <div class="box">
     <ol>
         <li><a href="https://github.com/ekelokorpi/panda.js-bamboo/archive/master.zip" target="_blank">Download Bamboo ZIP</a> from GitHub.</li>
@@ -128,31 +136,36 @@ title: Bamboo
     </ol>    
 </div>
 
-<h6><a name="addingnode" class="anchor-link"></a>Adding new node</h6>
+<h5><a name="addingnode" class="anchor-link"></a>Adding new node</h5>
 <div class="box">
     <img src="img/addnode.png" class="full">
-    You can add new node to scene with Add node button or by pressing A from your keyboard. You will then see new Add Node window, where you can select your Node Type, give it a name and parent. Default parent is your current selected layer. After pressing Add, you can place your new node with your mouse.
+    You can add new node to scene with <b>Add node</b> button or by pressing <b>A</b> from your keyboard. You will then see new <b>Add Node</b> window, where you can select your node type, parent and give it a name. Default parent is current selected layer. After pressing <b>Add</b>, position your new node by moving mouse, and confirm with click.
 </div>
 
 <h3>Nodes</h3>
 
-<h6><a name="newnode" class="anchor-link"></a>Creating new node</h6>
+<h5><a name="newnode" class="anchor-link"></a>Creating new node</h5>
 <div class="box">
-    You can create your own nodes with <a href="docs/classes/bamboo.html#method_createNode">createNode</a> function:
+    You can create your own nodes with <a href="docs/classes/bamboo.html#method_createNode" target="_blank">createNode</a> function:
     <script src="https://gist.github.com/ekelokorpi/f9555b872bab9cf4d36d.js"></script>
-    After creating new node code, your node should appear in available nodes list:
-    <img src="img/mynode.png" class="full">
+    After that, your should be able to add your new node in editor with <a href="#addingnode">Add Node</a> command:
+    <img src="img/mynode.png" class="full top">
 </div>
 
-<h6><a name="nodeproperty" class="anchor-link"></a>Adding node properties</h6>
+<h5><a name="nodeproperty" class="anchor-link"></a>Adding node properties</h5>
 <div class="box">
-    Add properties to your nodes with <a href="docs/classes/bamboo.html#method_addNodeProperty">addNodeProperty</a> function:
+    Add properties to your nodes with <a href="docs/classes/bamboo.html#method_addNodeProperty" target="_blank">addNodeProperty</a> function:
     <script src="https://gist.github.com/ekelokorpi/596eab915950234496df.js"></script>
+</div>
+
+<h3><a name="contribute" class="anchor-link"></a>Contribute</h3>
+<div class="box">
+    Feel free to contribute to the project at <a href="https://github.com/ekelokorpi/panda.js-bamboo" target="_blank">GitHub</a>.
 </div>
 
 <h3><a name="issues" class="anchor-link"></a>Issues</h3>
 <div class="box">
-    If your have any issues or found bugs in Bamboo, please use official <a href="https://github.com/ekelokorpi/panda.js-bamboo/issues/" target="_blank">Issue tracker</a>.
+    If you have any issues or find bugs in Bamboo, please use official <a href="https://github.com/ekelokorpi/panda.js-bamboo/issues/" target="_blank">issue tracker</a>.
 </div>
 
 <h3><a name="license" class="anchor-link"></a>License</h3>
