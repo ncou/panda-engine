@@ -1010,3 +1010,10 @@ img.full.top {
 ul.bold li {
 	font-weight: bold;
 }
+
+.bamboo h3 {
+	margin-top: 40px;
+}
+.bamboo h5 {
+	margin-top: 30px;
+}
