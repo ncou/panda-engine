@@ -43,8 +43,9 @@ var getGists = function() {
                 temp.shift();
                 description = temp.join(' ');
             } else {
-                category = 'Other';
-                description = gists[i].description;
+                continue;
+                // category = 'Other';
+                // description = gists[i].description;
             }
 
             categoryData[category].push([gists[i].id, description]);

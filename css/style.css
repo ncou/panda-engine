@@ -956,10 +956,9 @@ h4.boxHeader {
 .gist-meta a{color:#26a !important;text-decoration:none}
 .gist-meta a:hover{color:#0e4071 !important}
 
-
-
 .gist{
   margin: 15px 0 !important;
+  line-height:18px;
 }
  
 .gist-file{
@@ -1000,15 +999,24 @@ img.full {
 	width: auto;
 	max-width: 100%;
 	display: block;
-	margin-bottom: 10px;
+	/*margin-bottom: 10px;*/
 	border-radius: 5px;
 }
 img.full.top {
 	margin-top: 10px;
 }
+img.full.margin.top {
+	margin-top: 10px;
+}
+img.full.margin.bottom {
+	margin-bottom: 10px;
+}
 
 ul.bold li {
 	font-weight: bold;
+}
+.bamboo div.box {
+	margin-bottom: 10px;
 }
 
 .bamboo h3 {
