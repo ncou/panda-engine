@@ -38,8 +38,8 @@ var getGists = function() {
             last = category.substr(category.length - 1); // get last character
             category = category.substr(0, category.length - 1); // remove last character
 
-            if(last === ':') {
-                if(categories.indexOf(category) === -1) category = 'Other';
+            if (last === ':') {
+                if (categories.indexOf(category) === -1) category = 'Other';
                 temp.shift();
                 description = temp.join(' ');
             } else {
