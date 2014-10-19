@@ -93,7 +93,7 @@ var getGists = function() {
 
 console.log('Getting gists...');
 github.json('GET', '/users/:user', { user: 'ekelokorpi' }, function(err, res) {
-    if (err) return console.log(err);
+    if (err) return console.log('Error: ' + err);
 
     var gistCount = res.body.public_gists;
     console.log(gistCount + ' gists found.');
