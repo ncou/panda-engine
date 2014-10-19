@@ -1,16 +1,12 @@
 var github = require('github-basic');
 var fs = require('fs');
-var categories = ['Config', 'Core', 'Debug', 'Loader', 'Particle', 'Sprite', 'System', 'Tween', 'Other'];
-
-var categoryData = {};
-for (var i = 0; i < categories.length; i++) {
-    categoryData[categories[i]] = [];
-}
+var categories = [];
 
 var perpage = 30;
 var pages = 0;
 var currentPage = 1;
 var totalGistData = '';
+var categoryData = {};
 
 var writeFile = function(filename, data) {
     fs.writeFile(filename, data, function (err) {
@@ -39,13 +35,16 @@ var getGists = function() {
             category = category.substr(0, category.length - 1); // remove last character
 
             if (last === ':') {
-                if (categories.indexOf(category) === -1) category = 'Other';
+                // New category found
+                if (categories.indexOf(category) === -1) {
+                    categories.push(category);
+                    categoryData[category] = [];
+                }
                 temp.shift();
                 description = temp.join(' ');
             } else {
+                // No valid gist
                 continue;
-                // category = 'Other';
-                // description = gists[i].description;
             }
 
             categoryData[category].push([gists[i].id, description]);
@@ -56,9 +55,13 @@ var getGists = function() {
         }
 
         currentPage++;
-        if(currentPage > pages) {
-            for(var name in categoryData) {
-                if(categoryData[name].length === 0) continue;
+        if (currentPage > pages) {
+            // Last page
+            categories.sort();
+            console.log(categories.length + ' categories found.');
+            for (var c = 0; c < categories.length; c++) {
+                var name = categories[c];
+                if (categoryData[name].length === 0) continue;
 
                 totalGistData += '<h6>' + name + '</h6>\n<div class="box float"><ul>';
                 for (i = 0; i < categoryData[name].length; i++) {
