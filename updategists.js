@@ -62,6 +62,22 @@ var getGists = function() {
             for (var c = 0; c < categories.length; c++) {
                 var name = categories[c];
                 if (categoryData[name].length === 0) continue;
+                categoryData[name].sort();
+
+                var basicUsageIndex;
+                for (i = 0; i < categoryData[name].length; i++) {
+                    var desc = categoryData[name][i][1];
+                    if (desc === 'Basic usage') {
+                        basicUsageIndex = i;
+                        break;
+                    }
+                }
+
+                if (typeof basicUsageIndex === 'number') {
+                    var basicUsage = categoryData[name][basicUsageIndex];
+                    categoryData[name].splice(basicUsageIndex, 1);
+                    categoryData[name].unshift(basicUsage);
+                }
 
                 totalGistData += '<h6>' + name + '</h6>\n<div class="box float"><ul>';
                 for (i = 0; i < categoryData[name].length; i++) {
