@@ -14,6 +14,31 @@ var writeFile = function(filename, data) {
     });
 };
 
+var ksort = function(obj) {
+    if (!obj || typeof obj !== 'object') return false;
+
+    var keys = [], result = {}, i;
+    for (i in obj) {
+        keys.push(i);
+    }
+    
+    keys.sort();
+
+    // Put 'Basic usage' to first
+    var basicUsageIndex = keys.indexOf('Basic usage');
+    if (basicUsageIndex !== -1) {
+        var basicUsage = keys[basicUsageIndex];
+        keys.splice(basicUsageIndex, 1);
+        keys.unshift(basicUsage);
+    }
+
+    for (i = 0; i < keys.length; i++) {
+        result[keys[i]] = obj[keys[i]];
+    }
+
+    return result;
+};
+
 var getGists = function() {
     github.json('GET', '/users/:user/gists?page='+currentPage+'&per_page='+perpage, {user: 'ekelokorpi'}, function (err, res) {
         if(err) return console.log('Error');
@@ -38,7 +63,7 @@ var getGists = function() {
                 // New category found
                 if (categories.indexOf(category) === -1) {
                     categories.push(category);
-                    categoryData[category] = [];
+                    categoryData[category] = {};
                 }
                 temp.shift();
                 description = temp.join(' ');
@@ -47,7 +72,7 @@ var getGists = function() {
                 continue;
             }
 
-            categoryData[category].push([gists[i].id, description]);
+            categoryData[category][description] = gists[i].id;
 
             gistFile = '---\nlayout: default\ntitle: Code snippet\nheader: ' + (category + ' - ' + description) + '\n---\n<script src="' + gists[i].html_url + '.js"></script>';
 
@@ -61,27 +86,12 @@ var getGists = function() {
             console.log(categories.length + ' categories found.');
             for (var c = 0; c < categories.length; c++) {
                 var name = categories[c];
-                if (categoryData[name].length === 0) continue;
-                categoryData[name].sort();
-
-                var basicUsageIndex;
-                for (i = 0; i < categoryData[name].length; i++) {
-                    var desc = categoryData[name][i][1];
-                    if (desc === 'Basic usage') {
-                        basicUsageIndex = i;
-                        break;
-                    }
-                }
-
-                if (typeof basicUsageIndex === 'number') {
-                    var basicUsage = categoryData[name][basicUsageIndex];
-                    categoryData[name].splice(basicUsageIndex, 1);
-                    categoryData[name].unshift(basicUsage);
-                }
+                
+                categoryData[name] = ksort(categoryData[name]);
 
                 totalGistData += '<h6>' + name + '</h6>\n<div class="box float"><ul>';
-                for (i = 0; i < categoryData[name].length; i++) {
-                    totalGistData += '<li><a href="/snippets/' + categoryData[name][i][0] + '.html">' + categoryData[name][i][1] + '</a></li>\n';
+                for (var key in categoryData[name]) {
+                    totalGistData += '<li><a href="/snippets/' + categoryData[name][key] + '.html">' + key + '</a></li>\n';
                 }
                 totalGistData += '</ul><div class="clear"></div></div>\n';
             }
