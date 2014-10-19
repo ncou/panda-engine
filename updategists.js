@@ -74,7 +74,7 @@ var getGists = function() {
 
             categoryData[category][description] = gists[i].id;
 
-            gistFile = '---\nlayout: default\ntitle: Code snippet\nheader: ' + (category + ' - ' + description) + '\n---\n<script src="' + gists[i].html_url + '.js"></script>';
+            gistFile = '---\nlayout: default\ntitle: CHEATSHEET\nheader: ' + (category + ' - ' + description) + '\n---\n<script src="' + gists[i].html_url + '.js"></script>';
 
             writeFile('snippets/' + gists[i].id + '.html', gistFile);
         }
