@@ -76,7 +76,7 @@ var getGists = function() {
 
             gistFile = '---\nlayout: default\ntitle: Cheatsheet\nheader: ' + (category + ' - ' + description) + '\n---\n<script src="' + gists[i].html_url + '.js"></script>';
 
-            writeFile('snippets/' + gists[i].id + '.html', gistFile);
+            writeFile('cheatsheet/' + gists[i].id + '.html', gistFile);
         }
 
         currentPage++;
@@ -91,12 +91,12 @@ var getGists = function() {
 
                 totalGistData += '<h6>' + name + '</h6>\n<div class="box float"><ul>';
                 for (var key in categoryData[name]) {
-                    totalGistData += '<li><a href="/snippets/' + categoryData[name][key] + '.html">' + key + '</a></li>\n';
+                    totalGistData += '<li><a href="/cheatsheet/' + categoryData[name][key] + '.html">' + key + '</a></li>\n';
                 }
                 totalGistData += '</ul><div class="clear"></div></div>\n';
             }
             
-            writeFile('_includes/snippets.html', totalGistData);
+            writeFile('_includes/cheatsheet.html', totalGistData);
         } else getGists();
     });
 };
