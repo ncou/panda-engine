@@ -23,6 +23,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "game.Scene",
         "game.Spine",
         "game.Sprite",
+        "game.SpriteSheet",
         "game.Storage",
         "game.System",
         "game.TilingSprite",

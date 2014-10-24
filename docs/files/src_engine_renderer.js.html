@@ -201,6 +201,13 @@ game.Sprite = game.PIXI.Sprite.extend({
     }
 });
 
+/**
+    @class SpriteSheet
+    @constructor
+    @param {String} id
+    @param {Number} width
+    @param {Number} height
+**/
 game.SpriteSheet = game.Class.extend({
     init: function(id, width, height) {
         this.width = width;
@@ -211,6 +218,10 @@ game.SpriteSheet = game.Class.extend({
         this.frames = this.sx * this.sy;
     },
 
+    /**
+        @method frame
+        @param {Number} index
+    **/
     frame: function(index) {
         index = index.limit(0, this.frames - 1);
 
@@ -227,6 +238,11 @@ game.SpriteSheet = game.Class.extend({
         }
     },
 
+    /**
+        @method anim
+        @param {Number} count
+        @param {Number} index
+    **/
     anim: function(count, index) {
         index = index || 0;
         count = count || this.frames;
