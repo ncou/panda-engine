@@ -412,7 +412,7 @@
             },
             "tag": "module",
             "file": "src/engine/renderer.js",
-            "line": 388
+            "line": 390
         },
         "scene": {
             "name": "scene",
@@ -945,7 +945,7 @@
             "module": "renderer",
             "namespace": "game",
             "file": "src/engine/renderer.js",
-            "line": 264,
+            "line": 266,
             "description": "Spine animation.",
             "is_constructor": 1,
             "params": [
@@ -973,7 +973,7 @@
             "module": "renderer",
             "namespace": "game",
             "file": "src/engine/renderer.js",
-            "line": 301,
+            "line": 303,
             "description": "http://www.goodboydigital.com/pixijs/docs/classes/DisplayObjectContainer.html"
         },
         "game.TilingSprite": {
@@ -987,7 +987,7 @@
             "module": "renderer",
             "namespace": "game",
             "file": "src/engine/renderer.js",
-            "line": 344,
+            "line": 346,
             "description": "Tiling sprite.\nhttp://www.goodboydigital.com/pixijs/docs/classes/TilingSprite.html",
             "is_constructor": 1,
             "params": [
@@ -1025,7 +1025,7 @@
             "module": "renderer",
             "namespace": "game",
             "file": "src/engine/renderer.js",
-            "line": 388,
+            "line": 390,
             "description": "Frame by frame animation.",
             "extends": "game.Container",
             "is_constructor": 1,
@@ -4326,12 +4326,13 @@
         {
             "file": "src/engine/renderer.js",
             "line": 210,
+            "description": "Create sprite from specific frame.",
             "itemtype": "method",
             "name": "frame",
             "params": [
                 {
                     "name": "index",
-                    "description": "",
+                    "description": "Frame index",
                     "type": "Number"
                 }
             ],
@@ -4341,18 +4342,19 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 230,
+            "line": 231,
+            "description": "Create animation from spritesheet.",
             "itemtype": "method",
             "name": "anim",
             "params": [
                 {
                     "name": "count",
-                    "description": "",
+                    "description": "Frame count",
                     "type": "Number"
                 },
                 {
                     "name": "index",
-                    "description": "",
+                    "description": "Start index",
                     "type": "Number"
                 }
             ],
@@ -4362,7 +4364,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 277,
+            "line": 279,
             "description": "Play animation.",
             "itemtype": "method",
             "name": "play",
@@ -4389,7 +4391,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 289,
+            "line": 291,
             "description": "Mix two animations for smooth transition.",
             "itemtype": "method",
             "name": "mix",
@@ -4416,7 +4418,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 308,
+            "line": 310,
             "description": "Remove container from it's parent.",
             "itemtype": "method",
             "name": "remove",
@@ -4426,7 +4428,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 316,
+            "line": 318,
             "description": "Add object to container.",
             "itemtype": "method",
             "name": "addChild",
@@ -4436,7 +4438,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 325,
+            "line": 327,
             "description": "Add to container.",
             "itemtype": "method",
             "name": "addTo",
@@ -4453,7 +4455,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 355,
+            "line": 357,
             "itemtype": "property",
             "name": "speed",
             "type": "game.Point",
@@ -4463,7 +4465,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 368,
+            "line": 370,
             "description": "Update tile position with speed.",
             "itemtype": "method",
             "name": "update",
@@ -4473,7 +4475,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 377,
+            "line": 379,
             "description": "Add to container.",
             "itemtype": "method",
             "name": "addTo",
@@ -4490,7 +4492,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 409,
+            "line": 411,
             "description": "Add to container.",
             "itemtype": "method",
             "name": "addTo",
@@ -4507,7 +4509,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 419,
+            "line": 421,
             "description": "Remove from it's container.",
             "itemtype": "method",
             "name": "remove",
