@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation <span>1.8.0</span>
+title: Documentation <span>1.9.0</span>
 ---
 
 <div class="sidebar"></div>
@@ -39,7 +39,7 @@ var game = {
         Current engine version.
         @property {String} version
     **/
-    version: &#x27;1.8.0&#x27;,
+    version: &#x27;1.9.0&#x27;,
     /**
         Engine settings.
         @property {Object} config
@@ -500,7 +500,7 @@ var game = {
             var i = this;
             if (i &lt; min) i = min;
             if (i &gt; max) i = max;
-            return i;
+            return parseFloat(i);
         };
 
         Number.prototype.round = function(precision) {
@@ -570,7 +570,7 @@ var game = {
 
         // iPhone
         this.device.iPhone = /iPhone/i.test(navigator.userAgent);
-        this.device.iPhone4 = (this.device.iPhone &amp;&amp; this.device.pixelRatio === 2);
+        this.device.iPhone4 = (this.device.iPhone &amp;&amp; this.device.pixelRatio === 2 &amp;&amp; this.device.screen.height === 920);
         this.device.iPhone5 = (this.device.iPhone &amp;&amp; this.device.pixelRatio === 2 &amp;&amp; this.device.screen.height === 1096);
 
         // iPad
@@ -588,7 +588,9 @@ var game = {
         // Android
         this.device.android = /android/i.test(navigator.userAgent);
         this.device.android2 = /android 2/i.test(navigator.userAgent);
-
+        var androidVer = navigator.userAgent.match(/Android.*AppleWebKit\/([\d.]+)/);
+        this.device.androidStock = (androidVer &amp;&amp; androidVer[1] &lt; 537);
+        
         // Internet Explorer
         this.device.ie9 = /MSIE 9/i.test(navigator.userAgent);
         this.device.ie10 = /MSIE 10/i.test(navigator.userAgent);
@@ -627,7 +629,14 @@ var game = {
     
         for (var i in this.device) {
             if (this.device[i] &amp;&amp; this.config[i]) {
-                for (var o in this.config[i]) this.merge(this.config[o], this.config[i][o]);
+                for (var o in this.config[i]) {
+                    if (typeof this.config[i][o] === &#x27;object&#x27;) {
+                        this.merge(this.config[o], this.config[i][o]);
+                    }
+                    else {
+                        this.config[o] = this.config[i][o];
+                    }
+                }
             }
         }
 

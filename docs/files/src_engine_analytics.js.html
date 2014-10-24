@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation <span>1.8.0</span>
+title: Documentation <span>1.9.0</span>
 ---
 
 <div class="sidebar"></div>
@@ -27,17 +27,28 @@ game.module(
     @param {String} id
 **/
 game.Analytics = game.Class.extend({
+    /**
+        Is analytics enabled.
+        @property {Boolean} enabled
+    **/
+    enabled: true,
+    /**
+        Current tracking id.
+        @property {String} trackId
+    **/
     trackId: null,
     userId: null,
 
     init: function(id) {
-        if (!navigator.onLine || game.device.cocoonJS &amp;&amp; !game.Analytics.cocoonJS) return;
-        if (!id) throw(&#x27;Analytics id not set.&#x27;);
+        if (!navigator.onLine || game.device.cocoonJS &amp;&amp; !game.Analytics.cocoonJS) {
+            this.enabled = false;
+            return;
+        }
 
         this.trackId = id;
 
         if (game.device.cocoonJS &amp;&amp; game.Analytics.cocoonJS) {
-            this.userId = this.guid();
+            this.userId = Date.now();
             var request = new XMLHttpRequest();
             var params = &#x27;v=1&amp;tid=&#x27; + this.trackId + &#x27;&amp;cid=&#x27; + this.userId + &#x27;&amp;t=pageview&amp;dp=%2F&#x27;;
             request.open(&#x27;POST&#x27;, &#x27;http://www.google-analytics.com/collect&#x27;, true);
@@ -62,13 +73,6 @@ game.Analytics = game.Class.extend({
         }
     },
 
-    guid: function() {
-        function s4() {
-            return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-        }
-        return s4() + s4() + &#x27;-&#x27; + s4() + &#x27;-&#x27; + s4() + &#x27;-&#x27; + s4() + &#x27;-&#x27; + s4() + s4() + s4();
-    },
-
     /**
         Send event to analytics.
         @method send
@@ -78,7 +82,7 @@ game.Analytics = game.Class.extend({
         @param {String} [value]
     **/
     send: function(category, action, label, value) {
-        if (!navigator.onLine || game.device.cocoonJS &amp;&amp; !game.Analytics.cocoonJS) return;
+        if (!this.enabled) return;
 
         if (game.device.cocoonJS &amp;&amp; game.Analytics.cocoonJS) {
             var request = new XMLHttpRequest();
@@ -91,11 +95,6 @@ game.Analytics = game.Class.extend({
         else {
             ga(&#x27;send&#x27;, &#x27;event&#x27;, category, action, label, value);
         }
-    },
-
-    // Deprecated
-    event: function(category, action, label, value) {
-        this.send(category, action, label, value);
     }
 });
 

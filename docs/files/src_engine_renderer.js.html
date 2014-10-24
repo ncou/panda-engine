@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation <span>1.8.0</span>
+title: Documentation <span>1.9.0</span>
 ---
 
 <div class="sidebar"></div>
@@ -136,12 +136,31 @@ game.Sprite = game.PIXI.Sprite.extend({
         if (game.device.mobile &amp;&amp; !this.touchendoutside &amp;&amp; this.mouseupoutside) this.touchendoutside = this.mouseupoutside;
     },
 
+    /**
+        Change sprite texture.
+        @method setTexture
+        @param {String} id
+    **/
     setTexture: function(id) {
         if (typeof id === &#x27;string&#x27;) {
             id = game.paths[id] || id;
             id = game.Texture.fromFrame(id);
         }
         this._super(id);
+    },
+
+    /**
+        Crop sprite.
+        @method crop
+        @param {Number} x
+        @param {Number} y
+        @param {Number} width
+        @param {Number} height
+    **/
+    crop: function(x, y, width, height) {
+        var texture = new game.PIXI.Texture(this.texture, new game.HitRectangle(x, y, width, height));
+        this.setTexture(texture);
+        return this;
     },
 
     /**
@@ -182,6 +201,43 @@ game.Sprite = game.PIXI.Sprite.extend({
     }
 });
 
+game.SpriteSheet = game.Class.extend({
+    init: function(id, width, height) {
+        this.width = width;
+        this.height = height;
+        this.texture = game.TextureCache[game.paths[id]];
+        this.sx = Math.floor(this.texture.width / this.width);
+        this.sy = Math.floor(this.texture.height / this.height);
+        this.frames = this.sx * this.sy;
+    },
+
+    frame: function(index) {
+        index = index.limit(0, this.frames - 1);
+
+        var i = 0;
+        for (var y = 0; y &lt; this.sy; y++) {
+            for (var x = 0; x &lt; this.sx; x++) {
+                if (i === index) {
+                    var sprite = new game.Sprite(this.texture);
+                    sprite.crop(x * this.width, y * this.height, this.width, this.height);
+                    return sprite;
+                }
+                i++;
+            }
+        }
+    },
+
+    anim: function(count, index) {
+        index = index || 0;
+        count = count || this.frames;
+        var textures = [];
+        for (var i = 0; i &lt; count; i++) {
+            textures.push(this.frame(index + i).texture);
+        }
+        return new game.Animation(textures);
+    }
+});
+
 game.Graphics = game.PIXI.Graphics.extend({
     addTo: function(container) {
         container.addChild(this);
@@ -193,6 +249,10 @@ game.BitmapText = game.PIXI.BitmapText.extend({
     addTo: function(container) {
         container.addChild(this);
         return this;
+    },
+
+    remove: function() {
+        if (this.parent) this.parent.removeChild(this);
     }
 });
 
@@ -328,28 +388,6 @@ game.TilingSprite = game.PIXI.TilingSprite.extend({
     @param {Array} textures
 **/
 game.Animation = game.PIXI.MovieClip.extend({
-    /**
-        @property {Number} animationSpeed
-        @default 1
-    **/
-    /**
-        @property {Array} textures
-    **/
-    /**
-        @property {Boolean} loop
-    **/
-    /**
-        @property {Number} currentFrame
-    **/
-    /**
-        @property {Boolean} playing
-    **/
-    /**
-        @property {Number} totalFrames
-    **/
-    /**
-        @property {Function} onComplete
-    **/
     init: function(textures) {
         if (typeof textures === &#x27;string&#x27;) {
             var frames = Array.prototype.slice.call(arguments);
@@ -363,28 +401,45 @@ game.Animation = game.PIXI.MovieClip.extend({
         this._super(textures);
     },
 
+    /**
+        Add to container.
+        @method addTo
+        @param {game.Container} container
+    **/
     addTo: function(container) {
         container.addChild(this);
         return this;
     },
 
+    /**
+        Remove from it&#x27;s container.
+        @method remove
+    **/
     remove: function() {
         if (this.parent) this.parent.removeChild(this);
     },
 
-    /**
-        @method play
-    **/
-    /**
-        @method stop
-    **/
-    /**
-        @method gotoAndPlay
-    **/
-    /**
-        @method gotoAndStop
-    **/
+    updateTransform: function() {
+        if (this.playing) {
+            this.currentFrame -= this.animationSpeed;
+            this.currentFrame += this.animationSpeed * 60 * game.system.delta;
+        }
+        this._super();
+    }
 });
+
+game.Animation.fromFrames = function(name, reverse) {
+    var textures = [];
+
+    for (var key in game.TextureCache) {
+        if (key.indexOf(name) !== -1) {
+            if (reverse) textures.unshift(game.TextureCache[key]);
+            else textures.push(game.TextureCache[key]);
+        }
+    }
+
+    return new game.Animation(textures);
+};
 
 });
 
