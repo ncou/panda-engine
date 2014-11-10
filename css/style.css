@@ -640,7 +640,7 @@ div.box li.param a {
 }
 
 .inherited {
-	display: none !important;
+	/*display: none !important;*/
 }
 
 a span.constructor {
@@ -947,6 +947,10 @@ h4.boxHeader {
 }
 
 .index-section .box.float li {
+}
+
+div.meta {
+	display: none;
 }
 
 /* Better styles for embedding GitHub Gists */
