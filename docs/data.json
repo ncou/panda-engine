@@ -414,7 +414,7 @@
             },
             "tag": "module",
             "file": "src/engine/renderer.js",
-            "line": 454
+            "line": 483
         },
         "scene": {
             "name": "scene",
@@ -916,7 +916,7 @@
             "module": "renderer",
             "namespace": "game",
             "file": "src/engine/renderer.js",
-            "line": 196,
+            "line": 225,
             "is_constructor": 1,
             "params": [
                 {
@@ -947,7 +947,7 @@
             "module": "renderer",
             "namespace": "game",
             "file": "src/engine/renderer.js",
-            "line": 269,
+            "line": 298,
             "description": "Spine animation.",
             "is_constructor": 1,
             "params": [
@@ -975,7 +975,7 @@
             "module": "renderer",
             "namespace": "game",
             "file": "src/engine/renderer.js",
-            "line": 306,
+            "line": 335,
             "description": "http://www.goodboydigital.com/pixijs/docs/classes/DisplayObjectContainer.html"
         },
         "game.TilingSprite": {
@@ -989,7 +989,7 @@
             "module": "renderer",
             "namespace": "game",
             "file": "src/engine/renderer.js",
-            "line": 349,
+            "line": 378,
             "description": "Tiling sprite.\nhttp://www.goodboydigital.com/pixijs/docs/classes/TilingSprite.html",
             "is_constructor": 1,
             "params": [
@@ -1027,7 +1027,7 @@
             "module": "renderer",
             "namespace": "game",
             "file": "src/engine/renderer.js",
-            "line": 393,
+            "line": 422,
             "description": "Frame by frame animation.",
             "extends": "game.Container",
             "is_constructor": 1,
@@ -1050,7 +1050,7 @@
             "module": "renderer",
             "namespace": "game",
             "file": "src/engine/renderer.js",
-            "line": 454,
+            "line": 483,
             "is_constructor": 1,
             "params": [
                 {
@@ -4386,7 +4386,19 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 129,
+            "line": 108,
+            "description": "Should sprite render only, when onscreen.",
+            "itemtype": "property",
+            "name": "culling",
+            "type": "Boolean",
+            "default": "false",
+            "class": "game.Sprite",
+            "module": "renderer",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/renderer.js",
+            "line": 135,
             "description": "Change sprite texture.",
             "itemtype": "method",
             "name": "setTexture",
@@ -4403,7 +4415,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 142,
+            "line": 148,
             "description": "Crop sprite.",
             "itemtype": "method",
             "name": "crop",
@@ -4435,7 +4447,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 156,
+            "line": 162,
             "description": "Position sprite to system center.",
             "itemtype": "method",
             "name": "center",
@@ -4457,7 +4469,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 170,
+            "line": 176,
             "description": "Remove sprite from it's parent.",
             "itemtype": "method",
             "name": "remove",
@@ -4467,7 +4479,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 183,
+            "line": 189,
             "description": "Add to container.",
             "itemtype": "method",
             "name": "addTo",
@@ -4484,7 +4496,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 213,
+            "line": 242,
             "description": "Create sprite from specific frame.",
             "itemtype": "method",
             "name": "frame",
@@ -4501,7 +4513,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 234,
+            "line": 263,
             "description": "Create animation from spritesheet.",
             "itemtype": "method",
             "name": "anim",
@@ -4523,7 +4535,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 282,
+            "line": 311,
             "description": "Play animation.",
             "itemtype": "method",
             "name": "play",
@@ -4550,7 +4562,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 294,
+            "line": 323,
             "description": "Mix two animations for smooth transition.",
             "itemtype": "method",
             "name": "mix",
@@ -4577,7 +4589,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 313,
+            "line": 342,
             "description": "Remove container from it's parent.",
             "itemtype": "method",
             "name": "remove",
@@ -4587,7 +4599,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 321,
+            "line": 350,
             "description": "Add object to container.",
             "itemtype": "method",
             "name": "addChild",
@@ -4597,7 +4609,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 330,
+            "line": 359,
             "description": "Add to container.",
             "itemtype": "method",
             "name": "addTo",
@@ -4614,7 +4626,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 360,
+            "line": 389,
             "itemtype": "property",
             "name": "speed",
             "type": "game.Point",
@@ -4624,7 +4636,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 373,
+            "line": 402,
             "description": "Update tile position with speed.",
             "itemtype": "method",
             "name": "update",
@@ -4634,7 +4646,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 382,
+            "line": 411,
             "description": "Add to container.",
             "itemtype": "method",
             "name": "addTo",
@@ -4651,7 +4663,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 414,
+            "line": 443,
             "description": "Add to container.",
             "itemtype": "method",
             "name": "addTo",
@@ -4668,7 +4680,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 424,
+            "line": 453,
             "description": "Remove from it's container.",
             "itemtype": "method",
             "name": "remove",
@@ -4678,7 +4690,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 460,
+            "line": 489,
             "itemtype": "property",
             "name": "loop",
             "type": "Boolean",
@@ -4689,27 +4701,29 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 465,
+            "line": 494,
+            "description": "Video element.",
             "itemtype": "property",
-            "name": "width",
-            "type": "Number",
+            "name": "videoElem",
+            "type": "Video",
             "class": "game.Video",
             "module": "renderer",
             "namespace": "game"
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 469,
+            "line": 499,
+            "description": "Video sprite.",
             "itemtype": "property",
-            "name": "height",
-            "type": "Number",
+            "name": "sprite",
+            "type": "game.Sprite",
             "class": "game.Video",
             "module": "renderer",
             "namespace": "game"
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 502,
+            "line": 531,
             "itemtype": "method",
             "name": "onLoaded",
             "params": [
@@ -4725,7 +4739,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 510,
+            "line": 539,
             "itemtype": "method",
             "name": "onComplete",
             "params": [
@@ -4741,7 +4755,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 518,
+            "line": 547,
             "itemtype": "method",
             "name": "play",
             "class": "game.Video",
@@ -4750,7 +4764,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 526,
+            "line": 555,
             "itemtype": "method",
             "name": "stop",
             "params": [

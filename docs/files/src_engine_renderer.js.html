@@ -116,6 +116,12 @@ game.BaseTexture = game.PIXI.BaseTexture;
 **/
 game.Sprite = game.PIXI.Sprite.extend({
     debugDraw: true,
+    /**
+        Should sprite render only, when onscreen.
+        @property {Boolean} culling
+        @default false
+    **/
+    culling: false,
 
     init: function(id, x, y, settings) {
         if (typeof id === &#x27;string&#x27;) {
@@ -199,6 +205,29 @@ game.Sprite = game.PIXI.Sprite.extend({
     addTo: function(container) {
         container.addChild(this);
         return this;
+    },
+
+    _preRender: function() {
+        if (this.culling) {
+            var bounds = this.getBounds();
+            if (bounds.x &gt; game.system.width ||
+                bounds.x + bounds.width &lt; 0 ||
+                bounds.y &gt; game.system.height ||
+                bounds.y + bounds.height &lt; 0) {
+                if (game.system.debug) game.system.debug.objects--;
+                return true;
+            }
+        }
+    },
+
+    _renderWebGL: function(renderSession) {
+        if (this._preRender()) return;
+        this._super(renderSession);
+    },
+
+    _renderCanvas: function(renderSession) {
+        if (this._preRender()) return;
+        this._super(renderSession);
     }
 });
 
@@ -474,13 +503,15 @@ game.Video = game.Class.extend({
     **/
     loop: false,
     /**
-        @property {Number} width
+        Video element.
+        @property {Video} videoElem
     **/
-    width: 0,
+    videoElem: null,
     /**
-        @property {Number} height
+        Video sprite.
+        @property {game.Sprite} sprite
     **/
-    height: 0,
+    sprite: null,
 
     init: function() {
         this.videoElem = document.createElement(&#x27;video&#x27;);
@@ -501,13 +532,11 @@ game.Video = game.Class.extend({
     },
 
     _loaded: function() {
-        this.width = this.videoElem.videoWidth;
-        this.height = this.videoElem.videoHeight;
-        if (typeof this.loadCallback === &#x27;function&#x27;) this.loadCallback();
+        if (typeof this._loadCallback === &#x27;function&#x27;) this._loadCallback();
     },
 
     _complete: function() {
-        if (typeof this.completeCallback === &#x27;function&#x27;) this.completeCallback();
+        if (typeof this._completeCallback === &#x27;function&#x27;) this._completeCallback();
     },
 
     /**
@@ -515,7 +544,7 @@ game.Video = game.Class.extend({
         @param {Function} callback
     **/
     onLoaded: function(callback) {
-        this.loadCallback = callback;
+        this._loadCallback = callback;
     },
 
     /**
@@ -523,7 +552,7 @@ game.Video = game.Class.extend({
         @param {Function} callback
     **/
     onComplete: function(callback) {
-        this.completeCallback = callback;
+        this._completeCallback = callback;
     },
 
     /**
