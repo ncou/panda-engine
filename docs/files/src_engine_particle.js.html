@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation <span>1.9.0</span>
+title: Documentation <span>1.10.0</span>
 ---
 
 <div class="sidebar"></div>
@@ -268,6 +268,7 @@ game.Emitter = game.Class.extend({
         @default 0
     **/
     velocityLimit: null,
+    callback: null,
 
     init: function(settings) {
         game.pool.create(this.poolName);
@@ -277,6 +278,10 @@ game.Emitter = game.Class.extend({
         this.target = new game.Point();
 
         game.merge(this, settings);
+    },
+
+    onComplete: function(callback) {
+        this.callback = callback;
     },
 
     /**
@@ -447,7 +452,13 @@ game.Emitter = game.Class.extend({
         }
 
         this.durationTimer += game.system.delta * 1000;
-        if (this.duration &gt; 0) this.active = this.durationTimer &lt; this.duration;
+        if (this.duration &gt; 0) {
+            this.active = this.durationTimer &lt; this.duration;
+            if (!this.active &amp;&amp; typeof this.callback === &#x27;function&#x27;) {
+                this.callback();
+                this.callback = null;
+            }
+        }
 
         if (this.rate &amp;&amp; this.active) {
             this.rateTimer += game.system.delta * 1000;

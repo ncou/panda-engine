@@ -32,6 +32,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "game.TweenEngine",
         "game.TweenGroup",
         "game.Vector",
+        "game.Video",
         "game.World"
     ],
     "modules": [
