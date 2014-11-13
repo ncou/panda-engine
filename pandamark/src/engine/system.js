@@ -79,14 +79,26 @@ game.System = game.Class.extend({
         @property {Boolean} webGL
     **/
     webGL: false,
+    /**
+        Original width.
+        @property {Number} originalWidth
+    **/
+    originalWidth: null,
+    /**
+        Original height.
+        @property {Number} originalHeight
+    **/
+    originalHeight: null,
     newSceneClass: null,
     running: false,
 
-    init: function(width, height, canvasId) {
+    init: function(width, height) {
         width = width || game.System.width;
         height = height || game.System.height;
         if (width === 'window') width = window.innerWidth;
         if (height === 'window') height = window.innerHeight;
+        this.originalWidth = width;
+        this.originalHeight = height;
 
         for (var i = 2; i <= game.System.hires; i *= 2) {
             if (window.innerWidth >= width * i && window.innerHeight >= height * i) {
@@ -110,7 +122,7 @@ game.System = game.Class.extend({
 
         this.width = width;
         this.height = height;
-        this.canvasId = canvasId || game.System.canvasId || this.canvasId;
+        this.canvasId = game.System.canvasId || this.canvasId;
         this.timer = new game.Timer();
 
         if (!document.getElementById(this.canvasId)) {
@@ -206,22 +218,21 @@ game.System = game.Class.extend({
         if (this._resizeToFill) return;
         this._resizeToFill = true;
 
-        var orientation = this.width > this.height ? 'landscape' : 'portrait';
-        var curOrientation = window.innerWidth > window.innerHeight ? 'landscape' : 'portrait';
-        var width = this.width;
-        var height = this.height;
+        var gameOrientation = this.width > this.height ? 'landscape' : 'portrait';
+        var gameRatio = this.width / this.height;
+        var screenOrientation = window.innerWidth > window.innerHeight ? 'landscape' : 'portrait';
+        var screenRatio = window.innerWidth / window.innerHeight;
 
-        if (window.innerWidth / window.innerHeight !== this.width / this.height && orientation === curOrientation) {
-            if (width > height) {
-                width = Math.round(height * (window.innerWidth / window.innerHeight));
+        if (screenRatio !== gameRatio && gameOrientation === screenOrientation) {
+            if (gameRatio < screenRatio) {
+                // Letterbox left/right
+                this.width = Math.round(this.height * (window.innerWidth / window.innerHeight));
             }
             else {
-                height = Math.round(width * (window.innerHeight / window.innerWidth));
+                // Letterbox top/bottom
+                this.height = Math.round(this.width * (window.innerHeight / window.innerWidth));
             }
-        }
-
-        if (this.width !== width || this.height !== height) {
-            this.resize(width, height);
+            this.resize(this.width, this.height);
         }
     },
 
@@ -267,16 +278,21 @@ game.System = game.Class.extend({
         Change current scene.
         @method setScene
         @param {String} sceneClass
+        @param {Boolean} removeAssets
     **/
-    setScene: function(sceneClass) {
+    setScene: function(sceneClass, removeAssets) {
         this.currentSceneName = sceneClass;
         sceneClass = game['Scene' + sceneClass];
-        if (this.running) this.newSceneClass = sceneClass;
-        else this.setSceneNow(sceneClass);
+        if (this.running) {
+            this.newSceneClass = sceneClass;
+            this.removeAssets = removeAssets;
+        }
+        else this.setSceneNow(sceneClass, removeAssets);
     },
 
-    setSceneNow: function(sceneClass) {
+    setSceneNow: function(sceneClass, removeAssets) {
         if (game.tweenEngine) game.tweenEngine.tweens.length = 0;
+        if (removeAssets) game.removeAssets();
         game.scene = new (sceneClass)();
         if (game.Debug && game.Debug.enabled && !navigator.isCocoonJS && !this.debug) this.debug = new game.Debug();
         this.newSceneClass = null;
@@ -300,10 +316,12 @@ game.System = game.Class.extend({
         game.Timer.update();
         this.delta = this.timer.delta() / 1000;
 
+        if (this.debug) this.debug.reset();
+
         game.scene.run();
 
         if (this.debug) this.debug.update();
-        if (this.newSceneClass) this.setSceneNow(this.newSceneClass);
+        if (this.newSceneClass) this.setSceneNow(this.newSceneClass, this.removeAssets);
     },
 
     resize: function(width, height) {

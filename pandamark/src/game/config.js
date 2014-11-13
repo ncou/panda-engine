@@ -1,5 +1,6 @@
 pandaConfig = {
     name: 'Pandamark',
+    version: '1.0.0',
     
     system: {
         width: 800,

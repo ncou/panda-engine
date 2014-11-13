@@ -28,16 +28,12 @@ var game = {
         Current engine version.
         @property {String} version
     **/
-    version: '1.9.0-dev',
+    version: '1.10.0',
     /**
         Engine settings.
         @property {Object} config
     **/
     config: typeof pandaConfig !== 'undefined' ? pandaConfig : {},
-    /**
-        Configurable list of modules, that are loaded from core.
-        @property {Array} coreModules
-    **/
     coreModules: [
         'engine.analytics',
         'engine.audio',
@@ -262,11 +258,46 @@ var game = {
 
     addFileToQueue: function(path, id, queue) {
         id = id || path;
-        path = this.config.mediaFolder + path + this.nocache;
+        path = path + this.nocache;
+        if (this.config.mediaFolder) path = this.config.mediaFolder + '/' + path;
         if (this.paths[id]) return id;
         this.paths[id] = path;
         if (this[queue].indexOf(path) === -1) this[queue].push(path);
         return id;
+    },
+
+    /**
+        Remove asset from memory.
+        @method removeAsset
+        @param {String} id
+    **/
+    removeAsset: function(id) {
+        var path = this.paths[id];
+        if (this.json[path] && this.json[path].frames) {
+            // Sprite sheet
+            for (var key in this.json[path].frames) {
+                this.TextureCache[key].destroy(true);
+                delete this.TextureCache[key];
+            }
+        }
+        else if (this.TextureCache[path]) {
+            // Sprite
+            this.TextureCache[path].destroy(true);
+            delete this.TextureCache[path];
+        }
+        delete this.paths[id];
+    },
+
+    /**
+        Remove all assets from memory.
+        @method removeAssets
+    **/
+    removeAssets: function() {
+        for (var key in this.TextureCache) {
+            this.TextureCache[key].destroy(true);
+            delete this.TextureCache[key];
+        }
+        this.paths = {};
     },
 
     /**
@@ -330,7 +361,7 @@ var game = {
 
         if (this.Audio) this.audio = new this.Audio();
 
-        if (game.Debug.enabled) {
+        if (game.Debug && game.Debug.enabled) {
             console.log('Panda.js ' + game.version);
             console.log('Pixi.js ' + game.PIXI.VERSION.replace('v', ''));
             console.log((this.system.renderer.gl ? 'WebGL' : 'Canvas') + ' renderer ' + this.system.width + 'x' + this.system.height);
@@ -358,7 +389,9 @@ var game = {
         this.modules[name] = true;
         this.waitForLoad++;
 
-        var path = this.config.sourceFolder + '/' + name.replace(/\./g, '/') + '.js' + this.nocache;
+        var path = name.replace(/\./g, '/') + '.js' + this.nocache;
+        if (this.config.sourceFolder) path = this.config.sourceFolder + '/' + path;
+
         var script = document.createElement('script');
         script.type = 'text/javascript';
         script.src = path;
@@ -476,10 +509,6 @@ var game = {
         };
 
         Math._random = Math.random;
-        // Deprecated
-        Math.randomBetween = function(min, max) {
-            return Math._random() * (max - min) + min;
-        };
         Math.random = function(min, max) {
             if (typeof max === 'number') return Math._random() * (max - min) + min;
             else return Math._random(min);
@@ -541,12 +570,9 @@ var game = {
             return this.charAt(0).toUpperCase() + this.slice(1);
         };
 
-        this.coreModules = this.config.coreModules || this.coreModules;
         this.module('engine.core');
 
         game.normalizeVendorAttribute(window, 'requestAnimationFrame');
-
-        if (document.location.href.match(/\?nocache/) || this.config.disableCache) this.nocache = '?' + Date.now();
 
         this.device.pixelRatio = window.devicePixelRatio || 1;
         this.device.screen = {
@@ -629,8 +655,10 @@ var game = {
             }
         }
 
-        this.config.sourceFolder = this.config.sourceFolder || 'src';
-        this.config.mediaFolder = this.config.mediaFolder ? this.config.mediaFolder + '/' : 'media/';
+        if (document.location.href.match(/\?nocache/) || this.config.disableCache) this.nocache = '?' + Date.now();
+
+        if (typeof this.config.sourceFolder === 'undefined') this.config.sourceFolder = 'src';
+        if (typeof this.config.mediaFolder === 'undefined') this.config.mediaFolder = 'media';
 
         var metaTags = document.getElementsByTagName('meta');
         var viewportFound = false;

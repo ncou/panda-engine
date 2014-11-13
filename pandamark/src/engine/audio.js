@@ -17,8 +17,11 @@ game.Audio = game.Class.extend({
     audioId: 0,
     audioObjects: {},
     systemPaused: [],
+    sources: {},
+    context: null,
+    gainNode: null,
     /**
-        Supported audio formats.
+        List of supported audio formats.
         @property {Array} formats
     **/
     formats: [],
@@ -27,6 +30,10 @@ game.Audio = game.Class.extend({
         @property {Array} playingSounds
     **/
     playingSounds: [],
+    /**
+        List of paused sounds.
+        @property {Array} pausedSounds
+    **/
     pausedSounds: [],
     /**
         Main sound volume.
@@ -35,10 +42,15 @@ game.Audio = game.Class.extend({
     **/
     soundVolume: 1.0,
     /**
-        Current music.
+        Current music id.
         @property {Object} currentMusic
     **/
     currentMusic: null,
+    /**
+        Name of current music.
+        @property {String} currentMusicName
+    **/
+    currentMusicName: null,
     /**
         Is music muted.
         @property {Boolean} musicMuted
@@ -51,10 +63,12 @@ game.Audio = game.Class.extend({
         @default 1.0
     **/
     musicVolume: 1.0,
-    sources: {},
-    // Web Audio
-    context: null,
-    gainNode: null,
+    /**
+        Is sounds muted.
+        @property {Boolean} soundMuted
+        @default false
+    **/
+    soundMuted: false,
 
     init: function() {
         game.normalizeVendorAttribute(window, 'AudioContext');
@@ -180,7 +194,10 @@ game.Audio = game.Class.extend({
         var index = this.playingSounds.indexOf(id);
         if (index !== -1) this.playingSounds.splice(index, 1);
 
-        if (id === this.currentMusic) this.currentMusic = null;
+        if (id === this.currentMusic) {
+            this.currentMusic = null;
+            this.currentMusicName = null;
+        }
 
         var audio = this.audioObjects[id];
         if (!audio) return false;
@@ -231,8 +248,7 @@ game.Audio = game.Class.extend({
             this.sources[name].audio.playing = true;
             this.sources[name].audio.callback = callback;
             this.sources[name].audio.onended = this.onended.bind(this, this.audioId);
-            // This gives error on IE
-            // this.sources[name].audio.currentTime = 0;
+            this.sources[name].audio.currentTime = 0;
             this.sources[name].audio.play();
             var audio = this.sources[name].audio;
         }
@@ -260,8 +276,6 @@ game.Audio = game.Class.extend({
             if (navigator.isCocoonJS) audio.volume = 0;
             else audio.pause();
             audio.playing = false;
-            // This gives error on IE
-            // audio.currentTime = 0;
         }
 
         return true;
@@ -378,7 +392,8 @@ game.Audio = game.Class.extend({
     playSound: function(name, loop, callback, rate) {
         if (!game.Audio.enabled) return false;
 
-        var id = this.play(name, loop, this.soundVolume, callback, rate);
+        var volume = this.soundMuted ? 0 : this.soundVolume;
+        var id = this.play(name, loop, volume, callback, rate);
         this.playingSounds.push(id);
 
         return id;
@@ -465,8 +480,13 @@ game.Audio = game.Class.extend({
             return this.mute(id);
         }
         else {
-            for (var i = this.playingSounds.length - 1; i >= 0; i--) {
+            this.soundMuted = true;
+            var i;
+            for (i = this.playingSounds.length - 1; i >= 0; i--) {
                 this.mute(this.playingSounds[i]);
+            }
+            for (i = this.pausedSounds.length - 1; i >= 0; i--) {
+                this.mute(this.pausedSounds[i]);
             }
             return true;
         }
@@ -485,8 +505,13 @@ game.Audio = game.Class.extend({
             return this.unmute(id, this.soundVolume);
         }
         else {
-            for (var i = this.playingSounds.length - 1; i >= 0; i--) {
+            this.soundMuted = false;
+            var i;
+            for (i = this.playingSounds.length - 1; i >= 0; i--) {
                 this.unmute(this.playingSounds[i], this.soundVolume);
+            }
+            for (i = this.pausedSounds.length - 1; i >= 0; i--) {
+                this.unmute(this.pausedSounds[i], this.soundVolume);
             }
             return true;
         }
@@ -509,6 +534,7 @@ game.Audio = game.Class.extend({
         if (this.currentMusic) this.stop(this.currentMusic);
         
         this.currentMusic = this.play(name, !!loop, volume);
+        this.currentMusicName = name;
         
         return !!this.currentMusic;
     },
@@ -524,6 +550,7 @@ game.Audio = game.Class.extend({
         if (this.currentMusic) {
             var stop = this.stop(this.currentMusic);
             this.currentMusic = null;
+            this.currentMusicName = null;
             return !!stop;
         }
 
@@ -583,7 +610,8 @@ game.Audio = game.Class.extend({
 
         this.soundVolume = value;
 
-        for (var i = this.playingSounds.length - 1; i >= 0; i--) {
+        var i;
+        for (i = this.playingSounds.length - 1; i >= 0; i--) {
             if (this.context) {
                 this.audioObjects[this.playingSounds[i]].gainNode.gain.value = this.soundVolume;
             }
@@ -592,7 +620,7 @@ game.Audio = game.Class.extend({
             }
         }
 
-        for (var i = this.pausedSounds.length - 1; i >= 0; i--) {
+        for (i = this.pausedSounds.length - 1; i >= 0; i--) {
             if (this.context) {
                 this.audioObjects[this.pausedSounds[i]].gainNode.gain.value = this.soundVolume;
             }
@@ -656,6 +684,36 @@ game.Audio = game.Class.extend({
     **/
     isMusicPlaying: function() {
         return !!this.currentMusic;
+    },
+
+    /**
+        Toggle sounds on/off.
+        @method toggleSound
+        @return {Boolean}
+    **/
+    toggleSound: function() {
+        if (!game.Audio.enabled) return false;
+
+        this.soundMuted = !this.soundMuted;
+        if (this.soundMuted) this.muteSound();
+        else this.unmuteSound();
+
+        return this.soundMuted;
+    },
+
+    /**
+        Toggle music on/off.
+        @method toggleMusic
+        @return {Boolean}
+    **/
+    toggleMusic: function() {
+        if (!game.Audio.enabled) return false;
+
+        this.musicMuted = !this.musicMuted;
+        if (this.musicMuted) this.muteMusic();
+        else this.unmuteMusic();
+
+        return this.musicMuted;
     },
 
     systemPause: function() {

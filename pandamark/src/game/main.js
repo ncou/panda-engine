@@ -24,15 +24,6 @@ game.createScene('Main', {
             game.system.renderer.context.webkitImageSmoothingEnabled = false;
         }
 
-        this.pandaCount = document.createElement('div');
-        this.pandaCount.style.position = 'absolute';
-        this.pandaCount.style.left = '10px';
-        this.pandaCount.style.top = '30px';
-        this.pandaCount.style.fontFamily = 'Arial';
-        this.pandaCount.style.fontSize = '20px';
-        this.pandaCount.style.color = 'green';
-        document.body.appendChild(this.pandaCount);
-
         for (var i = 0; i < this.startPandaCount; i++) this.addPanda();
     },
 
@@ -45,8 +36,6 @@ game.createScene('Main', {
         panda.position.set(panda.width / 2, panda.height);
         this.pandas.push(panda);
         this.stage.addChild(panda);
-
-        this.pandaCount.innerHTML = this.pandas.length + ' PANDAS';
     },
 
     mousedown: function() {
