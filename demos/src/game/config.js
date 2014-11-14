@@ -1,0 +1,5 @@
+pandaConfig = {
+    system: {
+        scaleToFit: true
+    }
+};
