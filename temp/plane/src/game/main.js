@@ -83,12 +83,23 @@ game.createClass('Player', {
 });
 
 game.createScene('Main', {
+    backgroundColor: 0xffffff,
+
     init: function() {
         this.video = new game.Video('clouds.m4v');
         this.video.onLoaded(this.ready.bind(this));
+
+        this.loadText = new game.Text('Loading video...');
+        this.loadText.position.set(
+            game.system.width / 2 - this.loadText.width / 2,
+            game.system.height / 2 - this.loadText.height / 2
+        );
+        this.stage.addChild(this.loadText);
     },
 
     ready: function() {
+        this.stage.removeChild(this.loadText);
+
         this.video.loop = true;
         this.video.play();
         this.video.sprite.addTo(this.stage);
