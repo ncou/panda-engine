@@ -64,27 +64,6 @@
 
 <div class="classes-index">
 
-{{#if properties}}
-    <h3>Properties</h3>
-    <div class="index-section properties">
-
-        <div class="box float">
-        <ul class="index-list properties{{#if extends}} extends{{/if}}">
-            {{#properties}}
-                <li class="index-item property{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if overwritten_from}} inherited{{/if}}{{#if extended_from}} inherited{{/if}}">
-                    <a href="#property_{{name}}">{{name}}</a>
-
-                    {{#if static}}
-                        <span class="flag static">static</span>
-                    {{/if}}
-                </li>
-            {{/properties}}
-        </ul>
-        <div class="clear"></div>
-        </div>
-    </div>
-{{/if}}
-
 {{#if methods}}
     <h3>Methods</h3>
     <div class="index-section methods">
@@ -117,6 +96,27 @@
                     {{/if}}
                 </li>
             {{/methods}}
+        </ul>
+        <div class="clear"></div>
+        </div>
+    </div>
+{{/if}}
+
+{{#if properties}}
+    <h3>Properties</h3>
+    <div class="index-section properties">
+
+        <div class="box float">
+        <ul class="index-list properties{{#if extends}} extends{{/if}}">
+            {{#properties}}
+                <li class="index-item property{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if overwritten_from}} inherited{{/if}}{{#if extended_from}} inherited{{/if}}">
+                    <a href="#property_{{name}}">{{name}}</a>
+
+                    {{#if static}}
+                        <span class="flag static">static</span>
+                    {{/if}}
+                </li>
+            {{/properties}}
         </ul>
         <div class="clear"></div>
         </div>

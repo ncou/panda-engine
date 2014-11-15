@@ -4,26 +4,19 @@
     {{#if params}}
         <span class="args">
             <span class="paren">(</span><span class="args-list inline commas">
-            {{#params}}
-
-                    {{#if optional}}
-                        <span class="optional">[{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]</span>
-                    {{else}}
-                        <span>{{name}}</span>
-                    {{/if}}
-
-            {{/params}}
+            {{#each params}}
+                {{#if optional}}
+                    <span class="optional">[{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]</span>
+                {{else}}
+                    <span>{{name}}</span>
+                {{/if}}
+            {{/each}}
             </span><span class="paren">)</span>
         </span>
     {{else}}
         <span class="paren">()</span>
     {{/if}}
 
-    {{#if return}}
-        <span class="returns-inline">
-            <span class="type">{{#crossLink returnType}}{{/crossLink}}</span>
-        </span>
-    {{/if}}
 
     {{#if deprecated}}
         <span class="flag deprecated"{{#if deprecationMessage}} title="{{deprecationMessage}}"{{/if}}>deprecated</span>
@@ -168,14 +161,13 @@
 
         {{#return}}
             <div class="returns">
-                <h4>Returns:</h4>
-
                 <div class="returns-description">
+                    Returns:
                     {{#if description}}
+                        {{{description}}}
                         {{#if type}}
                             <span class="type">{{#crossLink type}}{{/crossLink}}</span>
                         {{/if}}
-                        {{{description}}}
                     {{else}}
                         {{#if type}}
                             <span class="type">{{#crossLink type}}{{/crossLink}}</span>

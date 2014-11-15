@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation <span>1.10.0</span>
+title: Documentation <span>1.10.1</span>
 ---
 
 <div class="sidebar"></div>
@@ -210,7 +210,7 @@ game.System = game.Class.extend({
 
             if (!game.device.mobile) {
                 if (game.System.bgColor) document.body.style.backgroundColor = game.System.bgColor;
-                if (game.System.bgImage) document.body.style.backgroundImage = &#x27;url(&#x27; + game.config.mediaFolder + game.System.bgImage + &#x27;)&#x27;;
+                if (game.System.bgImage) document.body.style.backgroundImage = &#x27;url(&#x27; + game.getMediaPath(game.System.bgImage) + &#x27;)&#x27;;
             }
             if (game.System.bgPosition) document.body.style.backgroundPosition = game.System.bgPosition;
 
@@ -385,8 +385,12 @@ game.System = game.Class.extend({
                         div.appendChild(img);
                         me.resizeRotateImage();
                     };
-                    if (game.System.rotateImg.indexOf(&#x27;data:&#x27;) === 0) img.src = game.System.rotateImg;
-                    else img.src = game.config.mediaFolder + game.System.rotateImg;
+                    if (game.System.rotateImg.indexOf(&#x27;data:&#x27;) === 0) {
+                        img.src = game.System.rotateImg;
+                    }
+                    else {
+                        img.src = game.getMediaPath(game.System.rotateImg);
+                    }
                     img.style.position = &#x27;relative&#x27;;
                     img.style.maxWidth = &#x27;100%&#x27;;
                 }
@@ -448,8 +452,8 @@ game.System = game.Class.extend({
         if (this.rotateScreenVisible &amp;&amp; game.System.bgColorRotate) document.body.style.backgroundColor = game.System.bgColorRotate;
         if (!this.rotateScreenVisible &amp;&amp; game.System.bgColorMobile) document.body.style.backgroundColor = game.System.bgColorMobile;
 
-        if (this.rotateScreenVisible &amp;&amp; game.System.bgImageRotate) document.body.style.backgroundImage = &#x27;url(&#x27; + game.config.mediaFolder + game.System.bgImageRotate + &#x27;)&#x27;;
-        if (!this.rotateScreenVisible &amp;&amp; game.System.bgImageMobile) document.body.style.backgroundImage = &#x27;url(&#x27; + game.config.mediaFolder + game.System.bgImageMobile + &#x27;)&#x27;;
+        if (this.rotateScreenVisible &amp;&amp; game.System.bgImageRotate) document.body.style.backgroundImage = &#x27;url(&#x27; + game.getMediaPath(game.System.bgImageRotate) + &#x27;)&#x27;;
+        if (!this.rotateScreenVisible &amp;&amp; game.System.bgImageMobile) document.body.style.backgroundImage = &#x27;url(&#x27; + game.getMediaPath(game.System.bgImageMobile) + &#x27;)&#x27;;
 
         if (this.rotateScreenVisible &amp;&amp; game.system &amp;&amp; typeof game.system.pause === &#x27;function&#x27;) game.system.pause();
         if (!this.rotateScreenVisible &amp;&amp; game.system &amp;&amp; typeof game.system.resume === &#x27;function&#x27;) game.system.resume();

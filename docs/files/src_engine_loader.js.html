@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation <span>1.10.0</span>
+title: Documentation <span>1.10.1</span>
 ---
 
 <div class="sidebar"></div>
@@ -164,13 +164,8 @@ game.Loader = game.Class.extend({
         else if (this.dynamic) this.ready();
     },
 
-    /**
-        Error loading file.
-        @method error
-        @param {String} error
-    **/
-    error: function(error) {
-        if (error) throw error;
+    error: function(path) {
+        throw &#x27;loading file &#x27; + path;
     },
 
     /**
@@ -200,7 +195,7 @@ game.Loader = game.Class.extend({
     **/
     loadAudio: function() {
         for (var i = this.audioQueue.length - 1; i &gt;= 0; i--) {
-            game.audio.load(this.audioQueue[i], this.progress.bind(this));
+            game.audio.load(this.audioQueue[i], this.progress.bind(this), this.error.bind(this, this.audioQueue[i]));
         }
     },
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation <span>1.10.0</span>
+title: Documentation <span>1.10.1</span>
 ---
 
 <div class="sidebar"></div>
@@ -39,16 +39,12 @@ var game = {
         Current engine version.
         @property {String} version
     **/
-    version: &#x27;1.10.0-dev&#x27;,
+    version: &#x27;1.10.1-dev&#x27;,
     /**
         Engine settings.
         @property {Object} config
     **/
     config: typeof pandaConfig !== &#x27;undefined&#x27; ? pandaConfig : {},
-    /**
-        Configurable list of modules, that are loaded from core.
-        @property {Array} coreModules
-    **/
     coreModules: [
         &#x27;engine.analytics&#x27;,
         &#x27;engine.audio&#x27;,
@@ -273,12 +269,16 @@ var game = {
 
     addFileToQueue: function(path, id, queue) {
         id = id || path;
-        path = path + this.nocache;
-        if (this.config.mediaFolder) path = this.config.mediaFolder + &#x27;/&#x27; + path;
+        path = this.getMediaPath(path) + this.nocache;
         if (this.paths[id]) return id;
         this.paths[id] = path;
         if (this[queue].indexOf(path) === -1) this[queue].push(path);
         return id;
+    },
+
+    getMediaPath: function(file) {
+        if (this.config.mediaFolder) file = this.config.mediaFolder + &#x27;/&#x27; + file;
+        return file;
     },
 
     /**
@@ -321,8 +321,8 @@ var game = {
         @param {String} name
     **/
     module: function(name) {
-        if (this.current) throw(&#x27;Module &#x27; + this.current.name + &#x27; has no body&#x27;);
-        if (this.modules[name] &amp;&amp; this.modules[name].body) throw(&#x27;Module &#x27; + name + &#x27; is already defined&#x27;);
+        if (this.current) throw &#x27;module &#x27; + this.current.name + &#x27; has no body&#x27;;
+        if (this.modules[name] &amp;&amp; this.modules[name].body) throw &#x27;module &#x27; + name + &#x27; is already defined&#x27;;
 
         this.current = { name: name, requires: [], loaded: false, body: null };
         if (name === &#x27;game.main&#x27;) this.current.requires.push(&#x27;engine.core&#x27;);
@@ -376,7 +376,7 @@ var game = {
 
         if (this.Audio) this.audio = new this.Audio();
 
-        if (game.Debug.enabled) {
+        if (game.Debug &amp;&amp; game.Debug.enabled) {
             console.log(&#x27;Panda.js &#x27; + game.version);
             console.log(&#x27;Pixi.js &#x27; + game.PIXI.VERSION.replace(&#x27;v&#x27;, &#x27;&#x27;));
             console.log((this.system.renderer.gl ? &#x27;WebGL&#x27; : &#x27;Canvas&#x27;) + &#x27; renderer &#x27; + this.system.width + &#x27;x&#x27; + this.system.height);
@@ -416,7 +416,7 @@ var game = {
             me.loadModules();
         };
         script.onerror = function() {
-            throw(&#x27;Failed to load module &#x27; + name + &#x27; at &#x27; + path + &#x27; required from &#x27; + requiredFrom);
+            throw &#x27;to load module &#x27; + name + &#x27; at &#x27; + path + &#x27; required from &#x27; + requiredFrom;
         };
         document.getElementsByTagName(&#x27;head&#x27;)[0].appendChild(script);
     },
@@ -475,7 +475,7 @@ var game = {
                 }
                 unresolved.push(this.moduleQueue[i].name + &#x27; (requires: &#x27; + unloaded.join(&#x27;, &#x27;) + &#x27;)&#x27;);
             }
-            throw(&#x27;Unresolved modules:\n&#x27; + unresolved.join(&#x27;\n&#x27;));
+            throw &#x27;unresolved modules:\n&#x27; + unresolved.join(&#x27;\n&#x27;);
         }
         else {
             this.loadFinished = true;
@@ -585,7 +585,6 @@ var game = {
             return this.charAt(0).toUpperCase() + this.slice(1);
         };
 
-        this.coreModules = this.config.coreModules || this.coreModules;
         this.module(&#x27;engine.core&#x27;);
 
         game.normalizeVendorAttribute(window, &#x27;requestAnimationFrame&#x27;);
@@ -711,7 +710,7 @@ var game = {
     },
 
     createClass: function(name, extend, content) {
-        if (game[name]) throw &#x27;Class &#x27; + name + &#x27; already exist&#x27;;
+        if (game[name]) throw &#x27;class &#x27; + name + &#x27; already created&#x27;;
 
         if (typeof extend === &#x27;object&#x27;) {
             content = extend;
@@ -726,7 +725,7 @@ var game = {
     },
 
     addAttributes: function(className, attributes) {
-        if (!this[className]) throw &#x27;Class &#x27; + className + &#x27; not found&#x27;;
+        if (!this[className]) throw &#x27;class &#x27; + className + &#x27; not found&#x27;;
 
         for (var name in attributes) {
             this[className][name] = attributes[name];

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation <span>1.10.0</span>
+title: Documentation <span>1.10.1</span>
 ---
 
 <div class="sidebar"></div>
@@ -116,12 +116,6 @@ game.BaseTexture = game.PIXI.BaseTexture;
 **/
 game.Sprite = game.PIXI.Sprite.extend({
     debugDraw: true,
-    /**
-        Should sprite render only, when onscreen.
-        @property {Boolean} culling
-        @default false
-    **/
-    culling: false,
 
     init: function(id, x, y, settings) {
         if (typeof id === &#x27;string&#x27;) {
@@ -205,29 +199,6 @@ game.Sprite = game.PIXI.Sprite.extend({
     addTo: function(container) {
         container.addChild(this);
         return this;
-    },
-
-    _preRender: function() {
-        if (this.culling) {
-            var bounds = this.getBounds();
-            if (bounds.x &gt; game.system.width ||
-                bounds.x + bounds.width &lt; 0 ||
-                bounds.y &gt; game.system.height ||
-                bounds.y + bounds.height &lt; 0) {
-                if (game.system.debug) game.system.debug.objects--;
-                return true;
-            }
-        }
-    },
-
-    _renderWebGL: function(renderSession) {
-        if (this._preRender()) return;
-        this._super(renderSession);
-    },
-
-    _renderCanvas: function(renderSession) {
-        if (this._preRender()) return;
-        this._super(renderSession);
     }
 });
 
@@ -521,7 +492,7 @@ game.Video = game.Class.extend({
         var source;
         for (var i = 0; i &lt; urls.length; i++) {
             source = document.createElement(&#x27;source&#x27;);
-            source.src = game.config.mediaFolder + &#x27;/&#x27; + urls[i];
+            source.src = game.getMediaPath(urls[i]);
             this.videoElem.appendChild(source);
         }
 

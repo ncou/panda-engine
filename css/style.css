@@ -106,8 +106,9 @@ h3 {
 }
 
 h3 span {
-	color: #848e9d;
-	margin-left: 8px;
+	display: inline-block;
+	/*color: #848e9d;*/
+	/*margin-left: 8px;*/
 }
 #bg {
 	width: 100%;
@@ -576,10 +577,11 @@ div.property, div.attr, div.method {
 h3.name {
 	margin: 0;
 	color: #515e73;
-	border-radius: 5px;
+	/*border-radius: 5px;*/
 	padding: 0px 10px;
 	padding: 0;
 	text-transform: none;
+	margin-bottom: 10px;
 }
 
 h3.name, h3.name code {
@@ -597,9 +599,9 @@ h3 code {
 }
 
 h3 span {
-	margin: 0;
-	text-transform: none;
-	font-size: 14px;
+	/*margin: 0;*/
+	/*text-transform: none;*/
+	/*font-size: 14px;*/
 }
 
 a.anchor-link {
@@ -622,7 +624,6 @@ h3.name li code, h3.name .paren {
 }
 
 h3 .args, h3 .args span, h3 .args ul, h3 .args li {
-
 	line-height: normal;
 }
 
@@ -682,7 +683,7 @@ span.type {
 }
 
 div.method .args, div.method span.paren {
-	display: none;
+	/*display: none;*/
 }
 
 span.param-description p {
@@ -1028,4 +1029,28 @@ ul.bold li {
 }
 .bamboo h5 {
 	margin-top: 30px;
+}
+
+span.args-list span:after {
+	content: ',';
+}
+
+span.args-list span:last-child:after {
+	content: '';
+}
+
+div.params h4 {
+	display: none;
+}
+
+div.returns-description p {
+	display: inline-block;
+}
+
+div.description {
+	margin-bottom: 5px;
+}
+
+div.params {
+	margin-bottom: 5px;
 }
