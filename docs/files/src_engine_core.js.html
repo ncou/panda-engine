@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation <span>1.10.1</span>
+title: Documentation <span>1.11.0</span>
 ---
 
 <div class="sidebar"></div>
@@ -12,36 +12,22 @@ title: Documentation <span>1.10.1</span>
 // Panda.js HTML5 game engine
 
 // created by Eemeli Kelokorpi
-// inspired by Impact Game Engine
-// sponsored by Yle
 
 &#x27;use strict&#x27;;
 
 /**
     @module game
     @namespace game
-    @requires loader
-    @requires timer
-    @requires system
-    @requires audio
-    @requires debug
-    @requires storage
-    @requires tween
-    @requires scene
-    @requires pool
-    @requires analytics
 **/
 /**
     @class Core
 **/
 var game = {
     /**
-        Current engine version.
         @property {String} version
     **/
-    version: &#x27;1.10.1-dev&#x27;,
+    version: &#x27;1.11.0-dev&#x27;,
     /**
-        Engine settings.
         @property {Object} config
     **/
     config: typeof pandaConfig !== &#x27;undefined&#x27; ? pandaConfig : {},
@@ -84,10 +70,10 @@ var game = {
     **/
     system: null,
     /**
-        Instance of {{#crossLink &quot;game.SoundManager&quot;}}{{/crossLink}}.
-        @property {game.SoundManager} sound
+        Instance of {{#crossLink &quot;game.Audio&quot;}}{{/crossLink}}.
+        @property {game.Audio} sound
     **/
-    sound: null,
+    audio: null,
     /**
         Instance of {{#crossLink &quot;game.Pool&quot;}}{{/crossLink}}.
         @property {game.Pool} pool
@@ -184,7 +170,7 @@ var game = {
         return to;
     },
 
-    ksort: function(obj) {
+    ksort: function(obj, compare) {
         if (!obj || typeof obj !== &#x27;object&#x27;) return false;
 
         var keys = [], result = {}, i;
@@ -192,7 +178,7 @@ var game = {
             keys.push(i);
         }
         
-        keys.sort();
+        keys.sort(compare);
         for (i = 0; i &lt; keys.length; i++) {
             result[keys[i]] = obj[keys[i]];
         }
@@ -375,16 +361,6 @@ var game = {
         this.system = new this.System(width, height);
 
         if (this.Audio) this.audio = new this.Audio();
-
-        if (game.Debug &amp;&amp; game.Debug.enabled) {
-            console.log(&#x27;Panda.js &#x27; + game.version);
-            console.log(&#x27;Pixi.js &#x27; + game.PIXI.VERSION.replace(&#x27;v&#x27;, &#x27;&#x27;));
-            console.log((this.system.renderer.gl ? &#x27;WebGL&#x27; : &#x27;Canvas&#x27;) + &#x27; renderer &#x27; + this.system.width + &#x27;x&#x27; + this.system.height);
-            if (this.Audio &amp;&amp; this.Audio.enabled) console.log((this.audio.context ? &#x27;Web Audio&#x27; : &#x27;HTML5 Audio&#x27;) + &#x27; engine&#x27;);
-            else console.log(&#x27;Audio disabled&#x27;);
-            if (this.config.version) console.log((this.config.name ? this.config.name : &#x27;Game&#x27;) + &#x27; &#x27; + this.config.version);
-        }
-
         if (this.Pool) this.pool = new this.Pool();
         if (this.DebugDraw &amp;&amp; this.DebugDraw.enabled) this.debugDraw = new this.DebugDraw();
         if (this.Storage &amp;&amp; this.Storage.id) this.storage = new this.Storage(this.Storage.id);
@@ -398,6 +374,11 @@ var game = {
 
         this.loader = new (this.Loader)(scene);
         if (!this.system.rotateScreenVisible) this.loader.start();
+
+        this.onStart();
+    },
+
+    onStart: function() {
     },
 
     loadScript: function(name, requiredFrom) {
@@ -619,7 +600,7 @@ var game = {
         this.device.android = /android/i.test(navigator.userAgent);
         this.device.android2 = /android 2/i.test(navigator.userAgent);
         var androidVer = navigator.userAgent.match(/Android.*AppleWebKit\/([\d.]+)/);
-        this.device.androidStock = (androidVer &amp;&amp; androidVer[1] &lt; 537);
+        this.device.androidStock = !!(androidVer &amp;&amp; androidVer[1] &lt; 537);
         
         // Internet Explorer
         this.device.ie9 = /MSIE 9/i.test(navigator.userAgent);

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation <span>1.10.1</span>
+title: Documentation <span>1.11.0</span>
 ---
 
 <div class="sidebar"></div>
@@ -142,21 +142,7 @@ game.System = game.Class.extend({
             document.body.appendChild(canvas);
         }
 
-        game.PIXI.scaleModes.DEFAULT = game.PIXI.scaleModes[game.System.scaleMode.toUpperCase()] || 0;
-
-        if (game.System.webGL) this.renderer = new game.autoDetectRenderer(width, height, {
-            view: document.getElementById(this.canvasId),
-            transparent: game.System.transparent,
-            antialias: game.System.antialias
-        });
-        else this.renderer = new game.CanvasRenderer(width, height, {
-            view: document.getElementById(this.canvasId),
-            transparent: game.System.transparent
-        });
-
-        this.webGL = !!this.renderer.gl;
-        this.canvas = this.renderer.view;
-        this.stage = new game.Stage();
+        this.initRenderer(width, height);
 
         game.normalizeVendorAttribute(this.canvas, &#x27;requestFullscreen&#x27;);
         game.normalizeVendorAttribute(this.canvas, &#x27;requestFullScreen&#x27;);
@@ -220,6 +206,24 @@ game.System = game.Class.extend({
             this.resizeToFill();
             this.canvas.style.cssText = &#x27;idtkscale:&#x27; + game.System.idtkScale + &#x27;;&#x27;;
         }
+    },
+
+    initRenderer: function(width, height) {
+        game.PIXI.scaleModes.DEFAULT = game.PIXI.scaleModes[game.System.scaleMode.toUpperCase()] || 0;
+
+        if (game.System.webGL) this.renderer = new game.autoDetectRenderer(width, height, {
+            view: document.getElementById(this.canvasId),
+            transparent: game.System.transparent,
+            antialias: game.System.antialias
+        });
+        else this.renderer = new game.CanvasRenderer(width, height, {
+            view: document.getElementById(this.canvasId),
+            transparent: game.System.transparent
+        });
+
+        this.webGL = !!this.renderer.gl;
+        this.canvas = this.renderer.view;
+        this.stage = new game.Stage();
     },
 
     resizeToFill: function() {
@@ -302,6 +306,7 @@ game.System = game.Class.extend({
     },
 
     setSceneNow: function(sceneClass, removeAssets) {
+        if (game.scene) game.scene.exit();
         if (game.tweenEngine) game.tweenEngine.tweens.length = 0;
         if (removeAssets) game.removeAssets();
         game.scene = new (sceneClass)();

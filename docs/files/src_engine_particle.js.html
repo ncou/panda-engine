@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation <span>1.10.1</span>
+title: Documentation <span>1.11.0</span>
 ---
 
 <div class="sidebar"></div>
@@ -454,7 +454,7 @@ game.Emitter = game.Class.extend({
         this.durationTimer += game.system.delta * 1000;
         if (this.duration &gt; 0) {
             this.active = this.durationTimer &lt; this.duration;
-            if (!this.active &amp;&amp; typeof this.callback === &#x27;function&#x27;) {
+            if (!this.active &amp;&amp; this.particles.length === 0 &amp;&amp; typeof this.callback === &#x27;function&#x27;) {
                 this.callback();
                 this.callback = null;
             }
