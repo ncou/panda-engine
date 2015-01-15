@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation <span>1.11.0</span>
+title: Documentation <span>1.12.0</span>
 ---
 
 <div class="sidebar"></div>
@@ -23,7 +23,7 @@ game.module(
     @class System
     @extends game.Class
 **/
-game.System = game.Class.extend({
+game.createClass(&#x27;System&#x27;, {
     /**
         Name of current scene.
         @property {String} currentSceneName
@@ -103,9 +103,9 @@ game.System = game.Class.extend({
     newSceneClass: null,
     running: false,
 
-    init: function(width, height) {
-        width = width || game.System.width;
-        height = height || game.System.height;
+    init: function() {
+        var width = game.System.width;
+        var height = game.System.height;
         if (width === &#x27;window&#x27;) width = window.innerWidth;
         if (height === &#x27;window&#x27;) height = window.innerHeight;
         this.originalWidth = width;
@@ -136,12 +136,6 @@ game.System = game.Class.extend({
         this.canvasId = game.System.canvasId || this.canvasId;
         this.timer = new game.Timer();
 
-        if (!document.getElementById(this.canvasId)) {
-            var canvas = document.createElement((navigator.isCocoonJS &amp;&amp; game.System.screenCanvas) ? &#x27;screencanvas&#x27; : &#x27;canvas&#x27;);
-            canvas.id = this.canvasId;
-            document.body.appendChild(canvas);
-        }
-
         this.initRenderer(width, height);
 
         game.normalizeVendorAttribute(this.canvas, &#x27;requestFullscreen&#x27;);
@@ -165,7 +159,7 @@ game.System = game.Class.extend({
 
         game.renderer = this.renderer;
 
-        if (!navigator.isCocoonJS) {
+        if (!game.device.cocoonJS) {
             var visibilityChange;
             if (typeof document.hidden !== &#x27;undefined&#x27;) {
                 visibilityChange = &#x27;visibilitychange&#x27;;
@@ -209,7 +203,19 @@ game.System = game.Class.extend({
     },
 
     initRenderer: function(width, height) {
+        if (!document.getElementById(this.canvasId)) {
+            var canvas = document.createElement(&#x27;canvas&#x27;);
+            if (game.device.cocoonJS) canvas.screencanvas = !!game.System.screenCanvas;
+            canvas.id = this.canvasId;
+            document.body.appendChild(canvas);
+        }
+        
         game.PIXI.scaleModes.DEFAULT = game.PIXI.scaleModes[game.System.scaleMode.toUpperCase()] || 0;
+
+        if (game.System.webGL &amp;&amp; game.device.cocoonJS) {
+            width = window.innerWidth * game.device.pixelRatio;
+            height = window.innerHeight * game.device.pixelRatio;
+        }
 
         if (game.System.webGL) this.renderer = new game.autoDetectRenderer(width, height, {
             view: document.getElementById(this.canvasId),
@@ -310,7 +316,7 @@ game.System = game.Class.extend({
         if (game.tweenEngine) game.tweenEngine.tweens.length = 0;
         if (removeAssets) game.removeAssets();
         game.scene = new (sceneClass)();
-        if (game.Debug &amp;&amp; game.Debug.enabled &amp;&amp; !navigator.isCocoonJS &amp;&amp; !this.debug) this.debug = new game.Debug();
+        if (game.Debug &amp;&amp; game.Debug.enabled &amp;&amp; !game.device.cocoonJS &amp;&amp; !this.debug) this.debug = new game.Debug();
         this.newSceneClass = null;
         this.startRunLoop();
     },
@@ -546,205 +552,207 @@ game.System = game.Class.extend({
     }
 });
 
-/**
-    Enable/disable canvas centering.
-    @attribute {Boolean} center
-    @default true
-**/
-game.System.center = true;
-/**
-    Canvas position from left, when centering is disabled.
-    @attribute {Number} left
-    @default 0
-**/
-game.System.left = 0;
-/**
-    Canvas position from top, when centering is disabled.
-    @attribute {Number} top
-    @default 0
-**/
-game.System.top = 0;
-/**
-    Enable/disable canvas scaling.
-    @attribute {Boolean} resize
-    @default true
-**/
-game.System.scale = true;
-/**
-    Minimum width for canvas, when using scaling on desktop.
-    @attribute {Number} minWidth
-    @default auto
-**/
-game.System.minWidth = &#x27;auto&#x27;;
-/**
-    Minimum height for canvas, when using scaling on desktop.
-    @attribute {Number} minHeight
-    @default auto
-**/
-game.System.minHeight = &#x27;auto&#x27;;
-/**
-    Maximum width for canvas, when using scaling on desktop.
-    @attribute {Number} maxWidth
-    @default auto
-**/
-game.System.maxWidth = &#x27;auto&#x27;;
-/**
-    Maximum height for canvas, when using scaling on desktop.
-    @attribute {Number} maxHeight
-    @default auto
-**/
-game.System.maxHeight = &#x27;auto&#x27;;
-/**
-    Scaling method for CocoonJS.
-    @attribute {ScaleToFill|ScaleAspectFit|ScaleAspectFill} idtkScale
-    @default ScaleAspectFit
-**/
-game.System.idtkScale = &#x27;ScaleAspectFit&#x27;;
-/**
-    Use ScreenCanvas on CocoonJS.
-    http://support.ludei.com/hc/en-us/articles/201810268-ScreenCanvas
-    @attribute {Boolean} screenCanvas
-    @default true
-**/
-game.System.screenCanvas = true;
-/**
-    HiRes mode.
-    @attribute {Number} hires
-    @default 0
-**/
-game.System.hires = 0;
-/**
-    Use Retina mode.
-    @attribute {Boolean} retina
-    @default false
-**/
-game.System.retina = false;
-/**
-    Pause game engine, when page is hidden.
-    @attribute {Boolean} pauseOnHide
-    @default true
-**/
-game.System.pauseOnHide = true;
-/**
-    Use rotate screen on mobile.
-    @attribute {Boolean} rotateScreen
-    @default true
-**/
-game.System.rotateScreen = true;
-/**
-    System width.
-    @attribute {Number} width
-    @default 1024
-**/
-game.System.width = 1024;
-/**
-    System height.
-    @attribute {Number} height
-    @default 768
-**/
-game.System.height = 768;
-/**
-    Body background color.
-    @attribute {String} bgColor
-    @default null
-**/
-game.System.bgColor = null;
-/**
-    Body background color for mobile.
-    @attribute {String} bgColorMobile
-    @default null
-**/
-game.System.bgColorMobile = null;
-/**
-    Body background color for mobile rotate screen.
-    @attribute {String} bgColorRotate
-    @default null
-**/
-game.System.bgColorRotate = null;
-/**
-    Body background image.
-    @attribute {String} bgImage
-    @default null
-**/
-game.System.bgImage = null;
-/**
-    Body background image for mobile.
-    @attribute {String} bgImageMobile
-    @default null
-**/
-game.System.bgImageMobile = null;
-/**
-    Body background image for mobile rotate screen.
-    @attribute {String} bgImageRotate
-    @default null
-**/
-game.System.bgImageRotate = null;
-/**
-    Body background image position.
-    @attribute {String} bgPosition
-    @default null
-**/
-game.System.bgPosition = null;
-/**
-    Rotate message for mobile.
-    @attribute {String} rotateMsg
-    @default Please rotate your device
-**/
-game.System.rotateMsg = &#x27;Please rotate your device&#x27;;
-/**
-    Rotate image for mobile.
-    @attribute {URL} rotateImg
-    @default null
-**/
-game.System.rotateImg = null;
-/**
-    Enable WebGL renderer.
-    @attribute {Boolean} webGL
-    @default false
-**/
-game.System.webGL = false;
-/**
-    Use transparent renderer.
-    @attribute {Boolean} transparent
-    @default false
-**/
-game.System.transparent = false;
-/**
-    Use antialias (only on WebGL).
-    @attribute {Boolean} antialias
-    @default false
-**/
-game.System.antialias = false;
-/**
-    Resize canvas to fill screen on mobile.
-    @attribute {Boolean} resizeToFill
-    @default false
-**/
-game.System.resizeToFill = false;
-/**
-    Default start scene.
-    @attribute {String} startScene
-    @default Main
-**/
-game.System.startScene = &#x27;Main&#x27;;
-/**
-    Scale canvas to fit window size on desktop.
-    @attribute {Boolean} scaleToFit
-    @default false
-**/
-game.System.scaleToFit = false;
-/**
-    Canvas id for game.
-    @attribute {String} canvasId
-    @default null
-**/
-game.System.canvasId = null;
-/**
-    Canvas scale mode.
-    @attribute {String} scaleMode
-    @default linear
-**/
-game.System.scaleMode = &#x27;linear&#x27;;
+game.addAttributes(&#x27;System&#x27;, {
+    /**
+        Enable/disable canvas centering.
+        @attribute {Boolean} center
+        @default true
+    **/
+    center: true,
+    /**
+        Canvas position from left, when centering is disabled.
+        @attribute {Number} left
+        @default 0
+    **/
+    left: 0,
+    /**
+        Canvas position from top, when centering is disabled.
+        @attribute {Number} top
+        @default 0
+    **/
+    top: 0,
+    /**
+        Enable/disable canvas scaling.
+        @attribute {Boolean} resize
+        @default true
+    **/
+    scale: true,
+    /**
+        Minimum width for canvas, when using scaling on desktop.
+        @attribute {Number} minWidth
+        @default auto
+    **/
+    minWidth: &#x27;auto&#x27;,
+    /**
+        Minimum height for canvas, when using scaling on desktop.
+        @attribute {Number} minHeight
+        @default auto
+    **/
+    minHeight: &#x27;auto&#x27;,
+    /**
+        Maximum width for canvas, when using scaling on desktop.
+        @attribute {Number} maxWidth
+        @default auto
+    **/
+    maxWidth: &#x27;auto&#x27;,
+    /**
+        Maximum height for canvas, when using scaling on desktop.
+        @attribute {Number} maxHeight
+        @default auto
+    **/
+    maxHeight: &#x27;auto&#x27;,
+    /**
+        Scaling method for CocoonJS.
+        @attribute {ScaleToFill|ScaleAspectFit|ScaleAspectFill} idtkScale
+        @default ScaleAspectFit
+    **/
+    idtkScale: &#x27;ScaleAspectFit&#x27;,
+    /**
+        Use ScreenCanvas on CocoonJS.
+        http://support.ludei.com/hc/en-us/articles/201810268-ScreenCanvas
+        @attribute {Boolean} screenCanvas
+        @default true
+    **/
+    screenCanvas: true,
+    /**
+        HiRes mode.
+        @attribute {Number} hires
+        @default 0
+    **/
+    hires: 0,
+    /**
+        Use Retina mode.
+        @attribute {Boolean} retina
+        @default false
+    **/
+    retina: false,
+    /**
+        Pause game engine, when page is hidden.
+        @attribute {Boolean} pauseOnHide
+        @default true
+    **/
+    pauseOnHide: true,
+    /**
+        Use rotate screen on mobile.
+        @attribute {Boolean} rotateScreen
+        @default true
+    **/
+    rotateScreen: true,
+    /**
+        System width.
+        @attribute {Number} width
+        @default 1024
+    **/
+    width: 1024,
+    /**
+        System height.
+        @attribute {Number} height
+        @default 768
+    **/
+    height: 768,
+    /**
+        Body background color.
+        @attribute {String} bgColor
+        @default null
+    **/
+    bgColor: null,
+    /**
+        Body background color for mobile.
+        @attribute {String} bgColorMobile
+        @default null
+    **/
+    bgColorMobile: null,
+    /**
+        Body background color for mobile rotate screen.
+        @attribute {String} bgColorRotate
+        @default null
+    **/
+    bgColorRotate: null,
+    /**
+        Body background image.
+        @attribute {String} bgImage
+        @default null
+    **/
+    bgImage: null,
+    /**
+        Body background image for mobile.
+        @attribute {String} bgImageMobile
+        @default null
+    **/
+    bgImageMobile: null,
+    /**
+        Body background image for mobile rotate screen.
+        @attribute {String} bgImageRotate
+        @default null
+    **/
+    bgImageRotate: null,
+    /**
+        Body background image position.
+        @attribute {String} bgPosition
+        @default null
+    **/
+    bgPosition: null,
+    /**
+        Rotate message for mobile.
+        @attribute {String} rotateMsg
+        @default Please rotate your device
+    **/
+    rotateMsg: &#x27;Please rotate your device&#x27;,
+    /**
+        Rotate image for mobile.
+        @attribute {URL} rotateImg
+        @default null
+    **/
+    rotateImg: null,
+    /**
+        Enable WebGL renderer.
+        @attribute {Boolean} webGL
+        @default false
+    **/
+    webGL: false,
+    /**
+        Use transparent renderer.
+        @attribute {Boolean} transparent
+        @default false
+    **/
+    transparent: false,
+    /**
+        Use antialias (only on WebGL).
+        @attribute {Boolean} antialias
+        @default false
+    **/
+    antialias: false,
+    /**
+        Resize canvas to fill screen on mobile.
+        @attribute {Boolean} resizeToFill
+        @default false
+    **/
+    resizeToFill: false,
+    /**
+        Default start scene.
+        @attribute {String} startScene
+        @default Main
+    **/
+    startScene: &#x27;Main&#x27;,
+    /**
+        Scale canvas to fit window size on desktop.
+        @attribute {Boolean} scaleToFit
+        @default false
+    **/
+    scaleToFit: false,
+    /**
+        Canvas id for game.
+        @attribute {String} canvasId
+        @default null
+    **/
+    canvasId: null,
+    /**
+        Canvas scale mode.
+        @attribute {String} scaleMode
+        @default linear
+    **/
+    scaleMode: &#x27;linear&#x27;
+});
 
 });
 

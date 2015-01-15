@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation <span>1.11.0</span>
+title: Documentation <span>1.12.0</span>
 ---
 
 <div class="sidebar"></div>
@@ -23,7 +23,7 @@ game.module(
     @class Camera
     @extends game.Class
 **/
-game.Camera = game.Class.extend({
+game.createClass(&#x27;Camera&#x27;, {
     /**
         Camera maximum move speed.
         @property {Number} maxSpeed
@@ -198,9 +198,11 @@ game.Camera = game.Class.extend({
     }
 });
 
-game.Camera.debug = false;
-game.Camera.debugColor = 0xff00ff;
-game.Camera.debugAlpha = 0.2;
+game.addAttributes(&#x27;Camera&#x27;, {
+    debug: false,
+    debugColor: 0xff00ff,
+    debugAlpha: 0.2
+});
 
 });
 

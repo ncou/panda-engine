@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation <span>1.11.0</span>
+title: Documentation <span>1.12.0</span>
 ---
 
 <div class="sidebar"></div>
@@ -23,7 +23,7 @@ game.module(
     @class Keyboard
     @extends game.Class
 **/
-game.Keyboard = game.Class.extend({
+game.createClass(&#x27;Keyboard&#x27;, {
     keysDown: [],
 
     init: function() {
@@ -67,97 +67,100 @@ game.Keyboard = game.Class.extend({
     }
 });
 
-/**
-    List of available keys.
-    @attribute {Array} keys
-**/
-game.Keyboard.keys = [];
-game.Keyboard.keys[8] = &#x27;BACKSPACE&#x27;;
-game.Keyboard.keys[9] = &#x27;TAB&#x27;;
-game.Keyboard.keys[13] = &#x27;ENTER&#x27;;
-game.Keyboard.keys[16] = &#x27;SHIFT&#x27;;
-game.Keyboard.keys[17] = &#x27;CTRL&#x27;;
-game.Keyboard.keys[18] = &#x27;ALT&#x27;;
-game.Keyboard.keys[19] = &#x27;PAUSE&#x27;;
-game.Keyboard.keys[20] = &#x27;CAPS_LOCK&#x27;;
-game.Keyboard.keys[27] = &#x27;ESC&#x27;;
-game.Keyboard.keys[32] = &#x27;SPACE&#x27;;
-game.Keyboard.keys[33] = &#x27;PAGE_UP&#x27;;
-game.Keyboard.keys[34] = &#x27;PAGE_DOWN&#x27;;
-game.Keyboard.keys[35] = &#x27;END&#x27;;
-game.Keyboard.keys[36] = &#x27;HOME&#x27;;
-game.Keyboard.keys[37] = &#x27;LEFT&#x27;;
-game.Keyboard.keys[38] = &#x27;UP&#x27;;
-game.Keyboard.keys[39] = &#x27;RIGHT&#x27;;
-game.Keyboard.keys[40] = &#x27;DOWN&#x27;;
-game.Keyboard.keys[44] = &#x27;PRINT_SCREEN&#x27;;
-game.Keyboard.keys[45] = &#x27;INSERT&#x27;;
-game.Keyboard.keys[46] = &#x27;DELETE&#x27;;
-game.Keyboard.keys[48] = &#x27;0&#x27;;
-game.Keyboard.keys[49] = &#x27;1&#x27;;
-game.Keyboard.keys[50] = &#x27;2&#x27;;
-game.Keyboard.keys[51] = &#x27;3&#x27;;
-game.Keyboard.keys[52] = &#x27;4&#x27;;
-game.Keyboard.keys[53] = &#x27;5&#x27;;
-game.Keyboard.keys[54] = &#x27;6&#x27;;
-game.Keyboard.keys[55] = &#x27;7&#x27;;
-game.Keyboard.keys[56] = &#x27;8&#x27;;
-game.Keyboard.keys[57] = &#x27;9&#x27;;
-game.Keyboard.keys[65] = &#x27;A&#x27;;
-game.Keyboard.keys[66] = &#x27;B&#x27;;
-game.Keyboard.keys[67] = &#x27;C&#x27;;
-game.Keyboard.keys[68] = &#x27;D&#x27;;
-game.Keyboard.keys[69] = &#x27;E&#x27;;
-game.Keyboard.keys[70] = &#x27;F&#x27;;
-game.Keyboard.keys[71] = &#x27;G&#x27;;
-game.Keyboard.keys[72] = &#x27;H&#x27;;
-game.Keyboard.keys[73] = &#x27;I&#x27;;
-game.Keyboard.keys[74] = &#x27;J&#x27;;
-game.Keyboard.keys[75] = &#x27;K&#x27;;
-game.Keyboard.keys[76] = &#x27;L&#x27;;
-game.Keyboard.keys[77] = &#x27;M&#x27;;
-game.Keyboard.keys[78] = &#x27;N&#x27;;
-game.Keyboard.keys[79] = &#x27;O&#x27;;
-game.Keyboard.keys[80] = &#x27;P&#x27;;
-game.Keyboard.keys[81] = &#x27;Q&#x27;;
-game.Keyboard.keys[82] = &#x27;R&#x27;;
-game.Keyboard.keys[83] = &#x27;S&#x27;;
-game.Keyboard.keys[84] = &#x27;T&#x27;;
-game.Keyboard.keys[85] = &#x27;U&#x27;;
-game.Keyboard.keys[86] = &#x27;V&#x27;;
-game.Keyboard.keys[87] = &#x27;W&#x27;;
-game.Keyboard.keys[88] = &#x27;X&#x27;;
-game.Keyboard.keys[89] = &#x27;Y&#x27;;
-game.Keyboard.keys[90] = &#x27;Z&#x27;;
-game.Keyboard.keys[96] = &#x27;NUM_ZERO&#x27;;
-game.Keyboard.keys[97] = &#x27;NUM_ONE&#x27;;
-game.Keyboard.keys[98] = &#x27;NUM_TWO&#x27;;
-game.Keyboard.keys[99] = &#x27;NUM_THREE&#x27;;
-game.Keyboard.keys[100] = &#x27;NUM_FOUR&#x27;;
-game.Keyboard.keys[101] = &#x27;NUM_FIVE&#x27;;
-game.Keyboard.keys[102] = &#x27;NUM_SIX&#x27;;
-game.Keyboard.keys[103] = &#x27;NUM_SEVEN&#x27;;
-game.Keyboard.keys[104] = &#x27;NUM_EIGHT&#x27;;
-game.Keyboard.keys[105] = &#x27;NUM_NINE&#x27;;
-game.Keyboard.keys[106] = &#x27;NUM_MULTIPLY&#x27;;
-game.Keyboard.keys[107] = &#x27;NUM_PLUS&#x27;;
-game.Keyboard.keys[109] = &#x27;NUM_MINUS&#x27;;
-game.Keyboard.keys[110] = &#x27;NUM_PERIOD&#x27;;
-game.Keyboard.keys[111] = &#x27;NUM_DIVISION&#x27;;
-game.Keyboard.keys[112] = &#x27;F1&#x27;;
-game.Keyboard.keys[113] = &#x27;F2&#x27;;
-game.Keyboard.keys[114] = &#x27;F3&#x27;;
-game.Keyboard.keys[115] = &#x27;F4&#x27;;
-game.Keyboard.keys[116] = &#x27;F5&#x27;;
-game.Keyboard.keys[117] = &#x27;F6&#x27;;
-game.Keyboard.keys[118] = &#x27;F7&#x27;;
-game.Keyboard.keys[119] = &#x27;F8&#x27;;
-game.Keyboard.keys[120] = &#x27;F9&#x27;;
-game.Keyboard.keys[121] = &#x27;F10&#x27;;
-game.Keyboard.keys[122] = &#x27;F11&#x27;;
-game.Keyboard.keys[123] = &#x27;F12&#x27;;
-game.Keyboard.keys[187] = &#x27;PLUS&#x27;;
-game.Keyboard.keys[189] = &#x27;MINUS&#x27;;
+game.addAttributes(&#x27;Keyboard&#x27;, {
+    /**
+        List of available keys.
+        @attribute {Object} keys
+    **/
+    keys: {
+        8: &#x27;BACKSPACE&#x27;,
+        9: &#x27;TAB&#x27;,
+        13: &#x27;ENTER&#x27;,
+        16: &#x27;SHIFT&#x27;,
+        17: &#x27;CTRL&#x27;,
+        18: &#x27;ALT&#x27;,
+        19: &#x27;PAUSE&#x27;,
+        20: &#x27;CAPS_LOCK&#x27;,
+        27: &#x27;ESC&#x27;,
+        32: &#x27;SPACE&#x27;,
+        33: &#x27;PAGE_UP&#x27;,
+        34: &#x27;PAGE_DOWN&#x27;,
+        35: &#x27;END&#x27;,
+        36: &#x27;HOME&#x27;,
+        37: &#x27;LEFT&#x27;,
+        38: &#x27;UP&#x27;,
+        39: &#x27;RIGHT&#x27;,
+        40: &#x27;DOWN&#x27;,
+        44: &#x27;PRINT_SCREEN&#x27;,
+        45: &#x27;INSERT&#x27;,
+        46: &#x27;DELETE&#x27;,
+        48: &#x27;0&#x27;,
+        49: &#x27;1&#x27;,
+        50: &#x27;2&#x27;,
+        51: &#x27;3&#x27;,
+        52: &#x27;4&#x27;,
+        53: &#x27;5&#x27;,
+        54: &#x27;6&#x27;,
+        55: &#x27;7&#x27;,
+        56: &#x27;8&#x27;,
+        57: &#x27;9&#x27;,
+        65: &#x27;A&#x27;,
+        66: &#x27;B&#x27;,
+        67: &#x27;C&#x27;,
+        68: &#x27;D&#x27;,
+        69: &#x27;E&#x27;,
+        70: &#x27;F&#x27;,
+        71: &#x27;G&#x27;,
+        72: &#x27;H&#x27;,
+        73: &#x27;I&#x27;,
+        74: &#x27;J&#x27;,
+        75: &#x27;K&#x27;,
+        76: &#x27;L&#x27;,
+        77: &#x27;M&#x27;,
+        78: &#x27;N&#x27;,
+        79: &#x27;O&#x27;,
+        80: &#x27;P&#x27;,
+        81: &#x27;Q&#x27;,
+        82: &#x27;R&#x27;,
+        83: &#x27;S&#x27;,
+        84: &#x27;T&#x27;,
+        85: &#x27;U&#x27;,
+        86: &#x27;V&#x27;,
+        87: &#x27;W&#x27;,
+        88: &#x27;X&#x27;,
+        89: &#x27;Y&#x27;,
+        90: &#x27;Z&#x27;,
+        96: &#x27;NUM_ZERO&#x27;,
+        97: &#x27;NUM_ONE&#x27;,
+        98: &#x27;NUM_TWO&#x27;,
+        99: &#x27;NUM_THREE&#x27;,
+        100: &#x27;NUM_FOUR&#x27;,
+        101: &#x27;NUM_FIVE&#x27;,
+        102: &#x27;NUM_SIX&#x27;,
+        103: &#x27;NUM_SEVEN&#x27;,
+        104: &#x27;NUM_EIGHT&#x27;,
+        105: &#x27;NUM_NINE&#x27;,
+        106: &#x27;NUM_MULTIPLY&#x27;,
+        107: &#x27;NUM_PLUS&#x27;,
+        109: &#x27;NUM_MINUS&#x27;,
+        110: &#x27;NUM_PERIOD&#x27;,
+        111: &#x27;NUM_DIVISION&#x27;,
+        112: &#x27;F1&#x27;,
+        113: &#x27;F2&#x27;,
+        114: &#x27;F3&#x27;,
+        115: &#x27;F4&#x27;,
+        116: &#x27;F5&#x27;,
+        117: &#x27;F6&#x27;,
+        118: &#x27;F7&#x27;,
+        119: &#x27;F8&#x27;,
+        120: &#x27;F9&#x27;,
+        121: &#x27;F10&#x27;,
+        122: &#x27;F11&#x27;,
+        123: &#x27;F12&#x27;,
+        187: &#x27;PLUS&#x27;,
+        189: &#x27;MINUS&#x27;
+    }
+});
 
 game.keyboard = new game.Keyboard();
 

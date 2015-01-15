@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation <span>1.11.0</span>
+title: Documentation <span>1.12.0</span>
 ---
 
 <div class="sidebar"></div>
@@ -24,11 +24,11 @@ game.module(
     @class Storage
     @extends game.Class
 **/
-game.Storage = game.Class.extend({
+game.createClass(&#x27;Storage&#x27;, {
     id: null,
 
     init: function(id) {
-        this.id = id;
+        this.id = id || game.Storage.id;
     },
 
     /**
@@ -98,10 +98,12 @@ game.Storage = game.Class.extend({
     }
 });
 
-/**
-    @attribute {String} id
-**/
-game.Storage.id = &#x27;&#x27;;
+game.addAttributes(&#x27;Storage&#x27;, {
+    /**
+        @attribute {String} id
+    **/
+    id: &#x27;&#x27;
+});
 
 });
 

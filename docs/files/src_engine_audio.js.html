@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation <span>1.11.0</span>
+title: Documentation <span>1.12.0</span>
 ---
 
 <div class="sidebar"></div>
@@ -23,7 +23,7 @@ game.module(
     @class Audio
     @extends game.Class
 **/
-game.Audio = game.Class.extend({
+game.createClass(&#x27;Audio&#x27;, {
     audioId: 1,
     audioObjects: {},
     systemPaused: [],
@@ -687,45 +687,47 @@ game.Audio = game.Class.extend({
     }
 });
 
-/**
-    Enable audio.
-    @attribute {Boolean} enabled
-    @default true
-**/
-game.Audio.enabled = true;
-/**
-    Enable Web Audio.
-    @attribute {Boolean} webAudio
-    @default true
-**/
-game.Audio.webAudio = true;
-/**
-    List of available audio formats.
-    @attribute {Array} formats
-**/
-game.Audio.formats = [
-    { ext: &#x27;m4a&#x27;, type: &#x27;audio/mp4; codecs=&quot;mp4a.40.5&quot;&#x27; },
-    { ext: &#x27;ogg&#x27;, type: &#x27;audio/ogg; codecs=&quot;vorbis&quot;&#x27; },
-    { ext: &#x27;wav&#x27;, type: &#x27;audio/wav&#x27; }
-];
-/**
-    Stop audio, when changing scene.
-    @attribute {Boolean} stopOnSceneChange
-    @default true
-**/
-game.Audio.stopOnSceneChange = true;
-/**
-    Sound volume.
-    @attribute {Number} soundVolume
-    @default 1
-**/
-game.Audio.soundVolume = 1;
-/**
-    Music volume.
-    @attribute {Number} musicVolume
-    @default 1
-**/
-game.Audio.musicVolume = 1;
+game.addAttributes(&#x27;Audio&#x27;, {
+    /**
+        Enable audio.
+        @attribute {Boolean} enabled
+        @default true
+    **/
+    enabled: true,
+    /**
+        Enable Web Audio.
+        @attribute {Boolean} webAudio
+        @default true
+    **/
+    webAudio: true,
+    /**
+        List of available audio formats.
+        @attribute {Array} formats
+    **/
+    formats: [
+        { ext: &#x27;m4a&#x27;, type: &#x27;audio/mp4; codecs=&quot;mp4a.40.5&quot;&#x27; },
+        { ext: &#x27;ogg&#x27;, type: &#x27;audio/ogg; codecs=&quot;vorbis&quot;&#x27; },
+        { ext: &#x27;wav&#x27;, type: &#x27;audio/wav&#x27; }
+    ],
+    /**
+        Stop audio, when changing scene.
+        @attribute {Boolean} stopOnSceneChange
+        @default true
+    **/
+    stopOnSceneChange: true,
+    /**
+        Sound volume.
+        @attribute {Number} soundVolume
+        @default 1
+    **/
+    soundVolume: 1,
+    /**
+        Music volume.
+        @attribute {Number} musicVolume
+        @default 1
+    **/
+    musicVolume: 1
+});
 
 });
 

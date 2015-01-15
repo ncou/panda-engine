@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation <span>1.11.0</span>
+title: Documentation <span>1.12.0</span>
 ---
 
 <div class="sidebar"></div>
@@ -23,34 +23,24 @@ game.module(
     Google Analytics tracking.
     @class Analytics
     @extends game.Class
-    @constructor
-    @param {String} id
 **/
-game.Analytics = game.Class.extend({
-    /**
-        Is analytics enabled.
-        @property {Boolean} enabled
-    **/
-    enabled: true,
+game.createClass(&#x27;Analytics&#x27;, {
     /**
         Current tracking id.
         @property {String} trackId
     **/
     trackId: null,
-    userId: null,
+    clientId: null,
 
     init: function(id) {
-        if (!navigator.onLine || game.device.cocoonJS &amp;&amp; !game.Analytics.cocoonJS) {
-            this.enabled = false;
-            return;
-        }
+        this.trackId = id || game.Analytics.id;
 
-        this.trackId = id;
+        if (!navigator.onLine) return;
 
-        if (game.device.cocoonJS &amp;&amp; game.Analytics.cocoonJS) {
-            this.userId = Date.now();
+        if (game.device.cocoonJS) {
+            this.clientId = Date.now();
             var request = new XMLHttpRequest();
-            var params = &#x27;v=1&amp;tid=&#x27; + this.trackId + &#x27;&amp;cid=&#x27; + this.userId + &#x27;&amp;t=pageview&amp;dp=%2F&#x27;;
+            var params = &#x27;v=1&amp;tid=&#x27; + this.trackId + &#x27;&amp;cid=&#x27; + this.clientId + &#x27;&amp;t=pageview&amp;dp=%2F&#x27;;
             request.open(&#x27;POST&#x27;, &#x27;http://www.google-analytics.com/collect&#x27;, true);
             request.send(params);
         }
@@ -82,11 +72,11 @@ game.Analytics = game.Class.extend({
         @param {String} [value]
     **/
     send: function(category, action, label, value) {
-        if (!this.enabled) return;
+        if (!navigator.onLine) return;
 
-        if (game.device.cocoonJS &amp;&amp; game.Analytics.cocoonJS) {
+        if (game.device.cocoonJS) {
             var request = new XMLHttpRequest();
-            var params = &#x27;v=1&amp;tid=&#x27; + this.trackId + &#x27;&amp;cid=&#x27; + this.userId + &#x27;&amp;t=event&amp;ec=&#x27; + category + &#x27;&amp;ea=&#x27; + action;
+            var params = &#x27;v=1&amp;tid=&#x27; + this.trackId + &#x27;&amp;cid=&#x27; + this.clientId + &#x27;&amp;t=event&amp;ec=&#x27; + category + &#x27;&amp;ea=&#x27; + action;
             if (typeof label !== &#x27;undefined&#x27;) params += &#x27;&amp;el=&#x27; + label;
             if (typeof value !== &#x27;undefined&#x27;) params += &#x27;&amp;ev=&#x27; + value;
             request.open(&#x27;POST&#x27;, &#x27;http://www.google-analytics.com/collect&#x27;, true);
@@ -98,18 +88,13 @@ game.Analytics = game.Class.extend({
     }
 });
 
-/**
-    Tracking id for analytics.
-    @attribute {String} id
-**/
-game.Analytics.id = &#x27;&#x27;;
-
-/**
-    Enable analytics on CocoonJS.
-    @attribute {Boolean} cocoonJS
-    @default false
-**/
-game.Analytics.cocoonJS = false;
+game.addAttributes(&#x27;Analytics&#x27;, {
+    /**
+        Tracking id for analytics.
+        @attribute {String} id
+    **/
+    id: &#x27;&#x27;
+});
 
 });
 

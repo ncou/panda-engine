@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation <span>1.11.0</span>
+title: Documentation <span>1.12.0</span>
 ---
 
 <div class="sidebar"></div>
@@ -28,7 +28,7 @@ game.module(
     @class Debug
     @extends game.Class
 **/
-game.Debug = game.Class.extend({
+game.createClass(&#x27;Debug&#x27;, {
     frames: 0,
     last: 0,
     objects: 0,
@@ -41,10 +41,10 @@ game.Debug = game.Class.extend({
         this.debugDiv.style.top = game.Debug.positionY + &#x27;px&#x27;;
         this.debugDiv.style.zIndex = 9999;
         this.debugDiv.style.backgroundColor = game.Debug.backgroundColor;
-        this.debugDiv.style.padding = &#x27;5px&#x27;;
+        this.debugDiv.style.padding = &#x27;2px&#x27;;
         this.debugDiv.style.color = game.Debug.color;
         this.debugDiv.style.fontFamily = &#x27;Arial&#x27;;
-        this.debugDiv.style.fontSize = &#x27;16px&#x27;;
+        this.debugDiv.style.fontSize = &#x27;14px&#x27;;
         document.body.appendChild(this.debugDiv);
     },
 
@@ -56,51 +56,59 @@ game.Debug = game.Class.extend({
         this.frames++;
 
         if (game.Timer.last &gt;= this.last + game.Debug.frequency) {
-            var fps = (Math.round((this.frames * 1000) / (game.Timer.last - this.last)));
-            var text = &#x27;FPS: &#x27; + fps + &#x27; OBJECTS: &#x27; + this.objects;
-            if (game.tweenEngine) text += &#x27; TWEENS: &#x27; + game.tweenEngine.tweens.length;
-            this.debugDiv.innerHTML = text;
+            this.fps = (Math.round((this.frames * 1000) / (game.Timer.last - this.last)));
             this.last = game.Timer.last;
             this.frames = 0;
         }
+
+        var text = &#x27;FPS: &#x27; + this.fps + &#x27; OBJECTS: &#x27; + this.objects;
+        if (game.tweenEngine) text += &#x27; TWEENS: &#x27; + game.tweenEngine.tweens.length;
+        text += &#x27; TIMERS: &#x27; + game.scene.timers.length;
+        text += &#x27; EMITTERS: &#x27; + game.scene.emitters.length;
+        if (game.scene.world) {
+            text += &#x27; BODIES:&#x27; + game.scene.world.bodies.length;
+        }
+        this.debugDiv.innerHTML = text;
     }
 });
 
-/**
-    Enable debug box.
-    @attribute {Boolean} enabled
-**/
-game.Debug.enabled = !!document.location.href.toLowerCase().match(/\?debug/);
-/**
-    How often to update debug box (ms).
-    @attribute {Number} frequency
-    @default 500
-**/
-game.Debug.frequency = 500;
-/**
-    Text color of debug box.
-    @attribute {String} color
-    @default red
-**/
-game.Debug.color = &#x27;red&#x27;;
-/**
-    Background color of debug box.
-    @attribute {String} backgroundColor
-    @default black
-**/
-game.Debug.backgroundColor = &#x27;black&#x27;;
-/**
-    X position of debug box.
-    @attribute {Number} positionX
-    @default 0
-**/
-game.Debug.positionX = 0;
-/**
-    Y position of debug box.
-    @attribute {Number} positionY
-    @default 0,0
-**/
-game.Debug.positionY = 0;
+game.addAttributes(&#x27;Debug&#x27;, {
+    /**
+        Enable debug box.
+        @attribute {Boolean} enabled
+    **/
+    enabled: !!document.location.href.toLowerCase().match(/\?debug/),
+    /**
+        How fast to update fps (ms).
+        @attribute {Number} frequency
+        @default 500
+    **/
+    frequency: 500,
+    /**
+        Text color of debug box.
+        @attribute {String} color
+        @default red
+    **/
+    color: &#x27;red&#x27;,
+    /**
+        Background color of debug box.
+        @attribute {String} backgroundColor
+        @default black
+    **/
+    backgroundColor: &#x27;black&#x27;,
+    /**
+        X position of debug box.
+        @attribute {Number} positionX
+        @default 0
+    **/
+    positionX: 0,
+    /**
+        Y position of debug box.
+        @attribute {Number} positionY
+        @default 0,0
+    **/
+    positionY: 0
+});
 
 game.PIXI.DisplayObject.prototype._updateTransform = game.PIXI.DisplayObject.prototype.updateTransform;
 game.PIXI.DisplayObject.prototype.updateTransform = function() {
@@ -115,7 +123,7 @@ game.PIXI.DisplayObject.prototype.displayObjectUpdateTransform = game.PIXI.Displ
     @class DebugDraw
     @extends game.Class
 **/
-game.DebugDraw = game.Class.extend({
+game.createClass(&#x27;DebugDraw&#x27;, {
     spriteContainer: null,
     bodyContainer: null,
 
@@ -231,7 +239,7 @@ game.DebugDraw = game.Class.extend({
             }
             body.position.x = body.target.position.x;
             body.position.y = body.target.position.y;
-            if (!body.target.world) this.bodyContainer.removeChild(body);
+            if (!body.target.world) body.remove();
         }
     },
 
@@ -245,35 +253,37 @@ game.DebugDraw = game.Class.extend({
     }
 });
 
-/**
-    Color of DebugDraw sprites.
-    @attribute {Number} spriteColor
-    @default 0xff0000
-**/
-game.DebugDraw.spriteColor = 0xff0000;
-/**
-    Alpha of DebugDraw sprites.
-    @attribute {Number} spriteAlpha
-    @default 0.3
-**/
-game.DebugDraw.spriteAlpha = 0.3;
-/**
-    Color of DebugDraw bodies.
-    @attribute {Number} bodyColor
-    @default 0x0000ff
-**/
-game.DebugDraw.bodyColor = 0x0000ff;
-/**
-    Alpha of DebugDraw bodies.
-    @attribute {Number} bodyAlpha
-    @default 0.3
-**/
-game.DebugDraw.bodyAlpha = 0.3;
-/**
-    Enable DebugDraw.
-    @attribute {Boolean} enabled
-**/
-game.DebugDraw.enabled = document.location.href.match(/\?debugdraw/) ? true : false;
+game.addAttributes(&#x27;DebugDraw&#x27;, {
+    /**
+        Enable DebugDraw.
+        @attribute {Boolean} enabled
+    **/
+    enabled: !!document.location.href.toLowerCase().match(/\?debugdraw/),
+    /**
+        Color of DebugDraw sprites.
+        @attribute {Number} spriteColor
+        @default 0xff0000
+    **/
+    spriteColor: 0xff0000,
+    /**
+        Alpha of DebugDraw sprites.
+        @attribute {Number} spriteAlpha
+        @default 0.3
+    **/
+    spriteAlpha: 0.3,
+    /**
+        Color of DebugDraw bodies.
+        @attribute {Number} bodyColor
+        @default 0x0000ff
+    **/
+    bodyColor: 0x0000ff,
+    /**
+        Alpha of DebugDraw bodies.
+        @attribute {Number} bodyAlpha
+        @default 0.3
+    **/
+    bodyAlpha: 0.3
+});
 
 game.onStart = function() {
     if (game.Debug &amp;&amp; game.Debug.enabled) {

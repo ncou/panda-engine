@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation <span>1.11.0</span>
+title: Documentation <span>1.12.0</span>
 ---
 
 <div class="sidebar"></div>
@@ -25,7 +25,7 @@ game.module(
     @class TweenEngine
     @extends game.Class
 **/
-game.TweenEngine = game.Class.extend({
+game.createClass(&#x27;TweenEngine&#x27;, {
     /**
         List of tweens.
         @property {Array} tweens
@@ -89,7 +89,7 @@ game.TweenEngine = game.Class.extend({
     @constructor
     @param {Object} object
 **/
-game.Tween = game.Class.extend({
+game.createClass(&#x27;Tween&#x27;, {
     /**
         Is tween playing.
         @property {Boolean} playing
@@ -672,7 +672,7 @@ game.Tween.Interpolation = {
     @constructor
     @param {Function} [onComplete]
 **/
-game.TweenGroup = game.Class.extend({
+game.createClass(&#x27;TweenGroup&#x27;, {
     tweens: [],
     onComplete: null,
     complete: false,

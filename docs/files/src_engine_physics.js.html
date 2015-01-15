@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation <span>1.11.0</span>
+title: Documentation <span>1.12.0</span>
 ---
 
 <div class="sidebar"></div>
@@ -27,7 +27,7 @@ game.module(
     @param {Number} x Gravity x
     @param {Number} y Gravity y
 **/
-game.World = game.Class.extend({
+game.createClass(&#x27;World&#x27;, {
     /**
         Gravity of physics world.
         @property {game.Vector} gravity
@@ -45,14 +45,12 @@ game.World = game.Class.extend({
     bodies: [],
     /**
         List of collision groups.
-        @property {Array} collisionGroups
+        @property {Object} collisionGroups
     **/
-    collisionGroups: [],
+    collisionGroups: {},
 
     init: function(x, y) {
-        this.gravity = new game.Vector();
-        this.gravity.x = typeof x === &#x27;number&#x27; ? x : 0;
-        this.gravity.y = typeof y === &#x27;number&#x27; ? y : 980;
+        this.gravity = new game.Vector(x || 0, y || 980);
         this.solver = new game.CollisionSolver();
     },
 
@@ -63,8 +61,9 @@ game.World = game.Class.extend({
     **/
     addBody: function(body) {
         body.world = this;
+        body._remove = false;
         this.bodies.push(body);
-        if (typeof body.collisionGroup === &#x27;number&#x27;) this.addBodyCollision(body, body.collisionGroup);
+        this.addBodyCollision(body, body.collisionGroup);
         if (game.debugDraw &amp;&amp; body.shape) game.debugDraw.addBody(body);
     },
 
@@ -85,6 +84,7 @@ game.World = game.Class.extend({
         @param {game.Body} body
     **/
     removeBodyCollision: function(body) {
+        if (typeof body.collisionGroup !== &#x27;number&#x27;) return;
         this.collisionGroups[body.collisionGroup].erase(body);
     },
 
@@ -95,18 +95,10 @@ game.World = game.Class.extend({
         @param {Number} group
     **/
     addBodyCollision: function(body, group) {
+        if (typeof group !== &#x27;number&#x27;) return;
         body.collisionGroup = group;
         this.collisionGroups[body.collisionGroup] = this.collisionGroups[body.collisionGroup] || [];
         this.collisionGroups[body.collisionGroup].push(body);
-    },
-
-    /**
-        Remove collision group from world.
-        @method removeCollisionGroup
-        @param {Number} i
-    **/
-    removeCollisionGroup: function(i) {
-        this.collisionGroups.erase(this.collisionGroups[i]);
     },
 
     /**
@@ -118,6 +110,7 @@ game.World = game.Class.extend({
         var g, i, b, group;
 
         for (g = 0; g &lt; body.collideAgainst.length; g++) {
+            body._collides.length = 0;
             group = this.collisionGroups[body.collideAgainst[g]];
             
             if (!group) continue;
@@ -125,32 +118,43 @@ game.World = game.Class.extend({
             for (i = group.length - 1; i &gt;= 0; i--) {
                 if (!group) break;
                 b = group[i];
-                if (body !== b) this.solver.solve(body, b);
+                if (body !== b) {
+                    if (this.solver.hitTest(body, b)) {
+                        body._collides.push(b);
+                    }
+                }
+            }
+            for (i = body._collides.length - 1; i &gt;= 0; i--) {
+                if (this.solver.hitResponse(body, body._collides[i])) {
+                    body.afterCollide(body._collides[i]);
+                }
             }
         }
     },
 
     /**
-        Update bodies.
+        Update physics world.
         @method update
     **/
     update: function() {
         var i, j;
         for (i = this.bodies.length - 1; i &gt;= 0; i--) {
             if (this.bodies[i]._remove) {
-                if (typeof this.bodies[i].collisionGroup === &#x27;number&#x27;) this.removeBodyCollision(this.bodies[i]);
+                this.removeBodyCollision(this.bodies[i]);
                 this.bodies.splice(i, 1);
             }
             else {
                 this.bodies[i].update();
             }
         }
-        for (i = this.collisionGroups.length - 1; i &gt;= 0; i--) {
-            if (this.collisionGroups[i]) {
-                for (j = this.collisionGroups[i].length - 1; j &gt;= 0; j--) {
-                    if (this.collisionGroups[i][j] &amp;&amp; this.collisionGroups[i][j].collideAgainst.length &gt; 0) {
-                        this.collide(this.collisionGroups[i][j]);
-                    }
+        for (i in this.collisionGroups) {
+            if (this.collisionGroups[i].length === 0) {
+                delete this.collisionGroups[i];
+                continue;
+            }
+            for (j = this.collisionGroups[i].length - 1; j &gt;= 0; j--) {
+                if (this.collisionGroups[i][j] &amp;&amp; this.collisionGroups[i][j].collideAgainst.length &gt; 0) {
+                    this.collide(this.collisionGroups[i][j]);
                 }
             }
         }
@@ -162,21 +166,7 @@ game.World = game.Class.extend({
     @class CollisionSolver
     @extends game.Class
 **/
-game.CollisionSolver = game.Class.extend({
-    /**
-        Solve collision a versus b.
-        @method solve
-        @param {game.Body} a
-        @param {game.Body} b
-    **/
-    solve: function(a, b) {
-        if (this.hitTest(a, b)) {
-            if (this.hitResponse(a, b)) {
-                a.afterCollide(b);
-            }
-        }
-    },
-
+game.createClass(&#x27;CollisionSolver&#x27;, {
     /**
         Hit test a versus b.
         @method hitTest
@@ -185,7 +175,7 @@ game.CollisionSolver = game.Class.extend({
         @return {Boolean} return true, if bodies hit.
     **/
     hitTest: function(a, b) {
-        if (a.shape instanceof game.Rectangle &amp;&amp; b.shape instanceof game.Rectangle) {
+        if (a.shape.width &amp;&amp; b.shape.width) {
             return !(
                 a.position.y + a.shape.height / 2 &lt;= b.position.y - b.shape.height / 2 ||
                 a.position.y - a.shape.height / 2 &gt;= b.position.y + b.shape.height / 2 ||
@@ -193,84 +183,18 @@ game.CollisionSolver = game.Class.extend({
                 a.position.x + a.shape.width / 2 &lt;= b.position.x - b.shape.width / 2
             );
         }
-        if (a.shape instanceof game.Circle &amp;&amp; b.shape instanceof game.Circle) {
+        if (a.shape.radius &amp;&amp; b.shape.radius) {
             return (a.shape.radius + b.shape.radius &gt; a.position.distance(b.position));
         }
-        if (
-            a.shape instanceof game.Rectangle &amp;&amp; b.shape instanceof game.Circle ||
-            a.shape instanceof game.Circle &amp;&amp; b.shape instanceof game.Rectangle
-        ) {
-            var rect = a.shape instanceof game.Rectangle ? a : b;
-            var circle = a.shape instanceof game.Circle ? a : b;
+        if (a.shape.width &amp;&amp; b.shape.radius || a.shape.radius &amp;&amp; b.shape.width) {
+            var rect = a.shape.width ? a : b;
+            var circle = a.shape.radius ? a : b;
 
             var x = Math.max(rect.position.x - rect.shape.width / 2, Math.min(rect.position.x + rect.shape.width / 2, circle.position.x));
             var y = Math.max(rect.position.y - rect.shape.height / 2, Math.min(rect.position.y + rect.shape.height / 2, circle.position.y));
 
             var dist = Math.pow(circle.position.x - x, 2) + Math.pow(circle.position.y - y, 2);
             return dist &lt; (circle.shape.radius * circle.shape.radius);
-        }
-        if (a.shape instanceof game.Line &amp;&amp; b.shape instanceof game.Line) {
-            var sinA = Math.sin(a.shape.rotation);
-            var cosA = Math.cos(a.shape.rotation);
-            var sinB = Math.sin(b.shape.rotation);
-            var cosB = Math.cos(b.shape.rotation);
-            var a1x = a.position.x - sinA * (a.shape.length / 2);
-            var a1y = a.position.y - cosA * (a.shape.length / 2);
-            var a2x = a.position.x + sinA * (a.shape.length / 2);
-            var a2y = a.position.y + cosA * (a.shape.length / 2);
-            var b1x = b.position.x - sinB * (b.shape.length / 2);
-            var b1y = b.position.y - cosB * (b.shape.length / 2);
-            var b2x = b.position.x + sinB * (b.shape.length / 2);
-            var b2y = b.position.y + cosB * (b.shape.length / 2);
-
-            var ub = (b2y - b1y) * (a2x - a1x) - (b2x - b1x) * (a2y - a1y);
-
-            if (ub !== 0) {
-                var uat = (b2x - b1x) * (a1y - b1y) - (b2y - b1y) * (a1x - b1x);
-                var ubt = (a2x - a1x) * (a1y - b1y) - (a2y - a1y) * (a1x - b1x);
-                var ua = uat / ub;
-                ub = ubt / ub;
-
-                if (ua &gt;= 0 &amp;&amp; ua &lt;= 1 &amp;&amp; ub &gt;= 0 &amp;&amp; ub &lt;= 1) return true;
-            }
-            return false;
-        }
-        if (
-            a.shape instanceof game.Line &amp;&amp; b.shape instanceof game.Circle ||
-            a.shape instanceof game.Circle &amp;&amp; b.shape instanceof game.Line
-        ) {
-            var line = a.shape instanceof game.Line ? a : b;
-            var circle = a.shape instanceof game.Circle ? a : b;
-
-            var a1x = line.position.x - Math.sin(line.shape.rotation - line.rotation) * (line.shape.length / 2);
-            var a1y = line.position.y - Math.cos(line.shape.rotation - line.rotation) * (line.shape.length / 2);
-            var a2x = line.position.x + Math.sin(line.shape.rotation - line.rotation) * (line.shape.length / 2);
-            var a2y = line.position.y + Math.cos(line.shape.rotation - line.rotation) * (line.shape.length / 2);
-
-            var dx = a2x - a1x;
-            var dy = a2y - a1y;
-
-            var cx = circle.position.x;
-            var cy = circle.position.y;
-
-            var px = cx - a1x;
-            var py = cy - a1y;
-
-            var t = (dx * px + dy * py) / (line.shape.length * line.shape.length);
-
-            if (t &lt; 0) {
-                var d = Math.sqrt(px * px + py * py);
-                if (d &lt; circle.shape.radius) return true;
-            }
-            else if (t &gt; 1) {
-                var d = this.distance(cx, cy, a2x, a2y);
-                if (d &lt; circle.shape.radius) return true;
-            }
-            else {
-                var d = this.distance(px, py, dx * t, dy * t);
-                if (d &lt; circle.shape.radius) return true;
-            }
-            return false;
         }
         return false;
     },
@@ -283,7 +207,7 @@ game.CollisionSolver = game.Class.extend({
         @return {Boolean}
     **/
     hitResponse: function(a, b) {
-        if (a.shape instanceof game.Rectangle &amp;&amp; b.shape instanceof game.Rectangle) {
+        if (a.shape.width &amp;&amp; b.shape.width) {
             if (a.last.y + a.shape.height / 2 &lt;= b.last.y - b.shape.height / 2) {
                 if (a.collide(b, &#x27;DOWN&#x27;)) {
                     a.position.y = b.position.y - b.shape.height / 2 - a.shape.height / 2;
@@ -308,48 +232,21 @@ game.CollisionSolver = game.Class.extend({
                     return true;
                 }
             }
+            else {
+                // Inside
+                if (a.collide(b)) return true;
+            }
         }
-        else if (a.shape instanceof game.Circle &amp;&amp; b.shape instanceof game.Circle) {
+        else if (a.shape.radius &amp;&amp; b.shape.radius) {
             var angle = b.position.angle(a.position);
             if (a.collide(b, angle)) {
                 var dist = a.shape.radius + b.shape.radius;
-
                 a.position.x = b.position.x + Math.cos(angle) * dist;
                 a.position.y = b.position.y + Math.sin(angle) * dist;
                 return true;
             }
         }
-        else if (a.shape instanceof game.Rectangle &amp;&amp; b.shape instanceof game.Circle) {
-            if (a.collide(b)) {
-                // TODO
-                return;
-            }
-        }
-        else if (a.shape instanceof game.Circle &amp;&amp; b.shape instanceof game.Rectangle) {
-            if (a.collide(b)) {
-                // TODO
-                return;
-            }
-        }
-        else if (a.shape instanceof game.Line &amp;&amp; b.shape instanceof game.Line) {
-            if (a.collide(b)) {
-                // TODO
-                return;
-            }
-        }
-        else if (a.shape instanceof game.Circle &amp;&amp; b.shape instanceof game.Line) {
-            if (a.collide(b)) {
-                // TODO
-                return;
-            }
-        }
-        else if (a.shape instanceof game.Line &amp;&amp; b.shape instanceof game.Circle) {
-            if (a.collide(b)) {
-                // TODO
-                return;
-            }
-        }
-        return false;
+        return a.collide(b);
     }
 });
 
@@ -360,7 +257,7 @@ game.CollisionSolver = game.Class.extend({
     @constructor
     @param {Object} [settings]
 **/
-game.Body = game.Class.extend({
+game.createClass(&#x27;Body&#x27;, {
     /**
         Body&#x27;s physic world.
         @property {game.World} world
@@ -389,7 +286,7 @@ game.Body = game.Class.extend({
     /**
         Body&#x27;s maximum velocity.
         @property {game.Vector} velocityLimit
-        @default 500,500
+        @default 0,0
     **/
     velocityLimit: null,
     /**
@@ -411,17 +308,25 @@ game.Body = game.Class.extend({
     **/
     collideAgainst: [],
     /**
-        Rotation of body.
-        @property {Number} rotation
+        Body&#x27;s force.
+        @property {game.Vector} force
+        @default 0,0
+    **/
+    force: null,
+    /**
+        Body&#x27;s damping. Should be number between 0 and 1.
+        @property {Number} damping
         @default 0
     **/
-    rotation: 0,
+    damping: 0,
+    _collides: [],
 
     init: function(settings) {
         this.position = new game.Vector();
         this.velocity = new game.Vector();
-        this.velocityLimit = new game.Vector(500, 500);
+        this.velocityLimit = new game.Vector();
         this.last = new game.Vector();
+        this.force = new game.Vector();
 
         game.merge(this, settings);
     },
@@ -433,12 +338,13 @@ game.Body = game.Class.extend({
     **/
     addShape: function(shape) {
         this.shape = shape;
+        return this;
     },
 
     /**
         This is called, when body collides with another body.
         @method collide
-        @param {game.Body} bodyB body that it collided with.
+        @param {game.Body} body body that it collided with.
         @return {Boolean} Return true, to apply hit response.
     **/
     collide: function() {
@@ -465,16 +371,42 @@ game.Body = game.Class.extend({
     },
 
     /**
+        Add body to world.
+        @method addTo
+        @param {game.World} world
+    **/
+    addTo: function(world) {
+        world.addBody(this);
+    },
+
+    /**
+        Remove body from it&#x27;s world.
+        @method remove
+    **/
+    remove: function() {
+        if (this.world) this.world.removeBody(this);
+    },
+
+    /**
+        Remove collision from body.
+        @method removeCollision
+    **/
+    removeCollision: function() {
+        if (this.world) this.world.removeBodyCollision(this);
+    },
+
+    /**
         @method update
     **/
     update: function() {
         this.last.copy(this.position);
 
-        if (this.mass &gt; 0) {
-            this.velocity.x += this.world.gravity.x * this.mass * game.system.delta;
-            this.velocity.y += this.world.gravity.y * this.mass * game.system.delta;
-            this.velocity.limit(this.velocityLimit);
-        }
+        this.velocity.multiplyAdd(this.world.gravity, this.mass * game.system.delta);
+        this.velocity.multiplyAdd(this.force, game.system.delta);
+        this.velocity.multiply(Math.pow(1 - this.damping, game.system.delta));
+
+        if (this.velocityLimit.x &gt; 0) this.velocity.x = this.velocity.x.limit(-this.velocityLimit.x, this.velocityLimit.x);
+        if (this.velocityLimit.y &gt; 0) this.velocity.y = this.velocity.y.limit(-this.velocityLimit.y, this.velocityLimit.y);
 
         this.position.multiplyAdd(this.velocity, game.scale * game.system.delta);
     }
@@ -488,7 +420,7 @@ game.Body = game.Class.extend({
     @param {Number} width
     @param {Number} height
 **/
-game.Rectangle = game.Class.extend({
+game.createClass(&#x27;Rectangle&#x27;, {
     /**
         Width of rectangle.
         @property {Number} width
@@ -515,7 +447,7 @@ game.Rectangle = game.Class.extend({
     @constructor
     @param {Number} radius
 **/
-game.Circle = game.Class.extend({
+game.createClass(&#x27;Circle&#x27;, {
     /**
         Radius of circle.
         @property {Number} radius
@@ -529,34 +461,6 @@ game.Circle = game.Class.extend({
 });
 
 /**
-    Line shape for physic body.
-    @class Line
-    @extends game.Class
-    @constructor
-    @param {Number} length
-    @param {Number} rotation
-**/
-game.Line = game.Class.extend({
-    /**
-        Length of line.
-        @property {Number} length
-        @default 50
-    **/
-    length: 50,
-    /**
-        Rotation of line.
-        @property {Number} rotation
-        @default 0
-    **/
-    rotation: 0,
-
-    init: function(length, rotation) {
-        this.length = length || this.length * game.scale;
-        this.rotation = rotation || this.rotation;
-    }
-});
-
-/**
     Vector class.
     @class Vector
     @extends game.Class
@@ -564,7 +468,7 @@ game.Line = game.Class.extend({
     @param {Number} [x]
     @param {Number} [y]
 **/
-game.Vector = game.Class.extend({
+game.createClass(&#x27;Vector&#x27;, {
     x: 0,
     y: 0,
 

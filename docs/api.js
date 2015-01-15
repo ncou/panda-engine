@@ -15,7 +15,6 @@ YUI.add("yuidoc-meta", function(Y) {
         "game.DebugDraw",
         "game.Emitter",
         "game.Keyboard",
-        "game.Line",
         "game.Loader",
         "game.Particle",
         "game.Pool",

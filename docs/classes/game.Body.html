@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation <span>1.11.0</span>
+title: Documentation <span>1.12.0</span>
 ---
 
 <div class="sidebar"></div>
@@ -28,7 +28,7 @@ title: Documentation <span>1.11.0</span>
 
     
         <!-- <div class="foundat">
-            Defined in: <a href="../files/src_engine_physics.js.html#l345"><code>src&#x2F;engine&#x2F;physics.js:345</code></a>
+            Defined in: <a href="../files/src_engine_physics.js.html#l242"><code>src&#x2F;engine&#x2F;physics.js:242</code></a>
         </div> -->
     
 
@@ -79,6 +79,13 @@ title: Documentation <span>1.11.0</span>
                 </li>
             
                 <li class="index-item method">
+                    <a href="#method_addTo">addTo</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
                     <a href="#method_afterCollide">afterCollide</a>
 
                     
@@ -108,6 +115,20 @@ title: Documentation <span>1.11.0</span>
             
                 <li class="index-item method inherited">
                     <a href="#method_inject">inject</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_remove">remove</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_removeCollision">removeCollision</a>
 
                     
                     
@@ -160,6 +181,18 @@ title: Documentation <span>1.11.0</span>
                 </li>
             
                 <li class="index-item property">
+                    <a href="#property_damping">damping</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_force">force</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
                     <a href="#property_last">last</a>
 
                     
@@ -173,12 +206,6 @@ title: Documentation <span>1.11.0</span>
             
                 <li class="index-item property">
                     <a href="#property_position">position</a>
-
-                    
-                </li>
-            
-                <li class="index-item property">
-                    <a href="#property_rotation">rotation</a>
 
                     
                 </li>
@@ -267,7 +294,7 @@ title: Documentation <span>1.11.0</span>
             
         
         
-        <!-- <a href="../files/src_engine_physics.js.html#l345"><code>src&#x2F;engine&#x2F;physics.js:345</code></a> -->
+        <!-- <a href="../files/src_engine_physics.js.html#l242"><code>src&#x2F;engine&#x2F;physics.js:242</code></a> -->
         
         </p>
 
@@ -349,7 +376,7 @@ title: Documentation <span>1.11.0</span>
             
         
         
-        <!-- <a href="../files/src_engine_physics.js.html#l396"><code>src&#x2F;engine&#x2F;physics.js:396</code></a> -->
+        <!-- <a href="../files/src_engine_physics.js.html#l293"><code>src&#x2F;engine&#x2F;physics.js:293</code></a> -->
         
         </p>
 
@@ -401,7 +428,7 @@ title: Documentation <span>1.11.0</span>
             
         
         
-        <!-- <a href="../files/src_engine_physics.js.html#l390"><code>src&#x2F;engine&#x2F;physics.js:390</code></a> -->
+        <!-- <a href="../files/src_engine_physics.js.html#l287"><code>src&#x2F;engine&#x2F;physics.js:287</code></a> -->
         
         </p>
 
@@ -418,6 +445,110 @@ title: Documentation <span>1.11.0</span>
 
         
             <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_damping" class="anchor-link"></a>
+<div class="box property item">
+    <h3 class="name"><code>damping</code>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+<!--                 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_physics.js.html#l305"><code>src&#x2F;engine&#x2F;physics.js:305</code></a> -->
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Body&#39;s damping. Should be number between 0 and 1.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">0</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_force" class="anchor-link"></a>
+<div class="box property item">
+    <h3 class="name"><code>force</code>
+    <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+<!--                 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_physics.js.html#l299"><code>src&#x2F;engine&#x2F;physics.js:299</code></a> -->
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Body&#39;s force.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">0,0</span></p>
         
 
         
@@ -453,7 +584,7 @@ title: Documentation <span>1.11.0</span>
             
         
         
-        <!-- <a href="../files/src_engine_physics.js.html#l368"><code>src&#x2F;engine&#x2F;physics.js:368</code></a> -->
+        <!-- <a href="../files/src_engine_physics.js.html#l265"><code>src&#x2F;engine&#x2F;physics.js:265</code></a> -->
         
         </p>
 
@@ -503,7 +634,7 @@ title: Documentation <span>1.11.0</span>
             
         
         
-        <!-- <a href="../files/src_engine_physics.js.html#l384"><code>src&#x2F;engine&#x2F;physics.js:384</code></a> -->
+        <!-- <a href="../files/src_engine_physics.js.html#l281"><code>src&#x2F;engine&#x2F;physics.js:281</code></a> -->
         
         </p>
 
@@ -555,7 +686,7 @@ title: Documentation <span>1.11.0</span>
             
         
         
-        <!-- <a href="../files/src_engine_physics.js.html#l363"><code>src&#x2F;engine&#x2F;physics.js:363</code></a> -->
+        <!-- <a href="../files/src_engine_physics.js.html#l260"><code>src&#x2F;engine&#x2F;physics.js:260</code></a> -->
         
         </p>
 
@@ -570,58 +701,6 @@ title: Documentation <span>1.11.0</span>
 
         </div>
 
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_rotation" class="anchor-link"></a>
-<div class="box property item">
-    <h3 class="name"><code>rotation</code>
-    <span class="type">Number</span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-<!--                 
-                Defined in
-                 -->
-            
-        
-        
-        <!-- <a href="../files/src_engine_physics.js.html#l402"><code>src&#x2F;engine&#x2F;physics.js:402</code></a> -->
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>Rotation of body.</p>
-
-        </div>
-
-        
-            <p class="default"><strong>Default:</strong> <span class="default-value">0</span></p>
         
 
         
@@ -657,7 +736,7 @@ title: Documentation <span>1.11.0</span>
             
         
         
-        <!-- <a href="../files/src_engine_physics.js.html#l358"><code>src&#x2F;engine&#x2F;physics.js:358</code></a> -->
+        <!-- <a href="../files/src_engine_physics.js.html#l255"><code>src&#x2F;engine&#x2F;physics.js:255</code></a> -->
         
         </p>
 
@@ -707,7 +786,7 @@ title: Documentation <span>1.11.0</span>
             
         
         
-        <!-- <a href="../files/src_engine_physics.js.html#l373"><code>src&#x2F;engine&#x2F;physics.js:373</code></a> -->
+        <!-- <a href="../files/src_engine_physics.js.html#l270"><code>src&#x2F;engine&#x2F;physics.js:270</code></a> -->
         
         </p>
 
@@ -757,7 +836,7 @@ title: Documentation <span>1.11.0</span>
             
         
         
-        <!-- <a href="../files/src_engine_physics.js.html#l378"><code>src&#x2F;engine&#x2F;physics.js:378</code></a> -->
+        <!-- <a href="../files/src_engine_physics.js.html#l275"><code>src&#x2F;engine&#x2F;physics.js:275</code></a> -->
         
         </p>
 
@@ -773,7 +852,7 @@ title: Documentation <span>1.11.0</span>
         </div>
 
         
-            <p class="default"><strong>Default:</strong> <span class="default-value">500,500</span></p>
+            <p class="default"><strong>Default:</strong> <span class="default-value">0,0</span></p>
         
 
         
@@ -809,7 +888,7 @@ title: Documentation <span>1.11.0</span>
             
         
         
-        <!-- <a href="../files/src_engine_physics.js.html#l353"><code>src&#x2F;engine&#x2F;physics.js:353</code></a> -->
+        <!-- <a href="../files/src_engine_physics.js.html#l250"><code>src&#x2F;engine&#x2F;physics.js:250</code></a> -->
         
         </p>
 
@@ -880,7 +959,7 @@ title: Documentation <span>1.11.0</span>
             
         
         
-        <!-- <a href="../files/src_engine_core.js.html#l732"><code>src&#x2F;engine&#x2F;core.js:732</code></a> -->
+        <!-- <a href="../files/src_engine_core.js.html#l768"><code>src&#x2F;engine&#x2F;core.js:768</code></a> -->
         
         </p>
 
@@ -970,7 +1049,7 @@ title: Documentation <span>1.11.0</span>
             
         
         
-        <!-- <a href="../files/src_engine_physics.js.html#l418"><code>src&#x2F;engine&#x2F;physics.js:418</code></a> -->
+        <!-- <a href="../files/src_engine_physics.js.html#l323"><code>src&#x2F;engine&#x2F;physics.js:323</code></a> -->
         
         </p>
 
@@ -997,6 +1076,96 @@ title: Documentation <span>1.11.0</span>
                         
                             <code class="param-name">shape</code>
                             <span class="type">game.Shape</span>
+                        
+
+                        
+
+                        <span class="param-description">
+                             
+                        </span>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_addTo" class="anchor-link"></a>
+<div class="box method item">
+    <h3 class="name">addTo
+    
+        <span class="args">
+            <span class="paren">(</span><span class="args-list inline commas">
+            
+                
+                    <span>world</span>
+                
+            
+            </span><span class="paren">)</span>
+        </span>
+    
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                <!-- 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_physics.js.html#l362"><code>src&#x2F;engine&#x2F;physics.js:362</code></a> -->
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Add body to world.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">world</code>
+                            <span class="type"><a href="../classes/game.World.html" class="crosslink">game.World</a></span>
                         
 
                         
@@ -1060,7 +1229,7 @@ title: Documentation <span>1.11.0</span>
             
         
         
-        <!-- <a href="../files/src_engine_physics.js.html#l437"><code>src&#x2F;engine&#x2F;physics.js:437</code></a> -->
+        <!-- <a href="../files/src_engine_physics.js.html#l343"><code>src&#x2F;engine&#x2F;physics.js:343</code></a> -->
         
         </p>
 
@@ -1118,7 +1287,7 @@ title: Documentation <span>1.11.0</span>
             <span class="paren">(</span><span class="args-list inline commas">
             
                 
-                    <span>bodyB</span>
+                    <span>body</span>
                 
             
             </span><span class="paren">)</span>
@@ -1151,7 +1320,7 @@ title: Documentation <span>1.11.0</span>
             
         
         
-        <!-- <a href="../files/src_engine_physics.js.html#l427"><code>src&#x2F;engine&#x2F;physics.js:427</code></a> -->
+        <!-- <a href="../files/src_engine_physics.js.html#l333"><code>src&#x2F;engine&#x2F;physics.js:333</code></a> -->
         
         </p>
 
@@ -1176,7 +1345,7 @@ title: Documentation <span>1.11.0</span>
                 
                     <li class="param">
                         
-                            <code class="param-name">bodyB</code>
+                            <code class="param-name">body</code>
                             <span class="type"><a href="../classes/game.Body.html" class="crosslink">game.Body</a></span>
                         
 
@@ -1252,7 +1421,7 @@ title: Documentation <span>1.11.0</span>
             
         
         
-        <!-- <a href="../files/src_engine_core.js.html#l718"><code>src&#x2F;engine&#x2F;core.js:718</code></a> -->
+        <!-- <a href="../files/src_engine_core.js.html#l754"><code>src&#x2F;engine&#x2F;core.js:754</code></a> -->
         
         </p>
 
@@ -1352,7 +1521,7 @@ title: Documentation <span>1.11.0</span>
             
         
         
-        <!-- <a href="../files/src_engine_core.js.html#l777"><code>src&#x2F;engine&#x2F;core.js:777</code></a> -->
+        <!-- <a href="../files/src_engine_core.js.html#l813"><code>src&#x2F;engine&#x2F;core.js:813</code></a> -->
         
         </p>
 
@@ -1439,7 +1608,7 @@ title: Documentation <span>1.11.0</span>
             
         
         
-        <!-- <a href="../files/src_engine_core.js.html#l791"><code>src&#x2F;engine&#x2F;core.js:791</code></a> -->
+        <!-- <a href="../files/src_engine_core.js.html#l827"><code>src&#x2F;engine&#x2F;core.js:827</code></a> -->
         
         </p>
 
@@ -1479,6 +1648,124 @@ title: Documentation <span>1.11.0</span>
                 
                 </ul>
             </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_remove" class="anchor-link"></a>
+<div class="box method item">
+    <h3 class="name">remove
+    
+        <span class="paren">()</span>
+    
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                <!-- 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_physics.js.html#l371"><code>src&#x2F;engine&#x2F;physics.js:371</code></a> -->
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Remove body from it&#39;s world.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_removeCollision" class="anchor-link"></a>
+<div class="box method item">
+    <h3 class="name">removeCollision
+    
+        <span class="paren">()</span>
+    
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                <!-- 
+                Defined in
+                 -->
+            
+        
+        
+        <!-- <a href="../files/src_engine_physics.js.html#l379"><code>src&#x2F;engine&#x2F;physics.js:379</code></a> -->
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Remove collision from body.</p>
+
+        </div>
+
         
 
         
@@ -1529,7 +1816,7 @@ title: Documentation <span>1.11.0</span>
             
         
         
-        <!-- <a href="../files/src_engine_physics.js.html#l445"><code>src&#x2F;engine&#x2F;physics.js:445</code></a> -->
+        <!-- <a href="../files/src_engine_physics.js.html#l351"><code>src&#x2F;engine&#x2F;physics.js:351</code></a> -->
         
         </p>
 
@@ -1616,7 +1903,7 @@ title: Documentation <span>1.11.0</span>
             
         
         
-        <!-- <a href="../files/src_engine_core.js.html#l761"><code>src&#x2F;engine&#x2F;core.js:761</code></a> -->
+        <!-- <a href="../files/src_engine_core.js.html#l797"><code>src&#x2F;engine&#x2F;core.js:797</code></a> -->
         
         </p>
 
@@ -1698,7 +1985,7 @@ title: Documentation <span>1.11.0</span>
             
         
         
-        <!-- <a href="../files/src_engine_physics.js.html#l456"><code>src&#x2F;engine&#x2F;physics.js:456</code></a> -->
+        <!-- <a href="../files/src_engine_physics.js.html#l387"><code>src&#x2F;engine&#x2F;physics.js:387</code></a> -->
         
         </p>
 

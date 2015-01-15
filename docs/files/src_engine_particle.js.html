@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation <span>1.11.0</span>
+title: Documentation <span>1.12.0</span>
 ---
 
 <div class="sidebar"></div>
@@ -23,7 +23,7 @@ game.module(
     @class Particle
     @extends game.Class
 **/
-game.Particle = game.Class.extend({
+game.createClass(&#x27;Particle&#x27;, {
     /**
         @property {game.Point} position
     **/
@@ -75,7 +75,7 @@ game.Particle = game.Class.extend({
     @constructor
     @param {Object} [settings]
 **/
-game.Emitter = game.Class.extend({
+game.createClass(&#x27;Emitter&#x27;, {
     /**
         Pool name for particles.
         @property {String} poolName
@@ -113,9 +113,9 @@ game.Emitter = game.Class.extend({
     /**
         Variance of emit angle in radians.
         @property {Number} angleVar
-        @default Math.PI
+        @default 0
     **/
-    angleVar: Math.PI,
+    angleVar: 0,
     /**
         Particle&#x27;s initial speed.
         @property {Number} speed
@@ -201,7 +201,7 @@ game.Emitter = game.Class.extend({
         @property {Number} endAlpha
         @default 0
     **/
-    endAlpha: 0,
+    endAlpha: 1,
     /**
         Starting scale for particle.
         @property {Number} startScale

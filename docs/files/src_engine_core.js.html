@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation <span>1.11.0</span>
+title: Documentation <span>1.12.0</span>
 ---
 
 <div class="sidebar"></div>
@@ -10,7 +10,6 @@ title: Documentation <span>1.11.0</span>
 <div class="file">
     <pre class="code prettyprint linenums">
 // Panda.js HTML5 game engine
-
 // created by Eemeli Kelokorpi
 
 &#x27;use strict&#x27;;
@@ -26,7 +25,7 @@ var game = {
     /**
         @property {String} version
     **/
-    version: &#x27;1.11.0-dev&#x27;,
+    version: &#x27;1.12.0&#x27;,
     /**
         @property {Object} config
     **/
@@ -90,7 +89,7 @@ var game = {
     **/
     keyboard: null,
     /**
-        Device / browser detection.
+        Device / browser information.
         @property {Object} device
     **/
     device: {},
@@ -98,16 +97,15 @@ var game = {
     plugins: {},
     json: {},
     modules: {},
-    renderer: null,
     nocache: &#x27;&#x27;,
-    current: null,
     waitForLoad: 0,
     DOMLoaded: false,
-    next: 1,
-    anims: {},
+    gameLoopId: 1,
+    gameLoops: {},
     moduleQueue: [],
     assetQueue: [],
     audioQueue: [],
+    gameMainModule: &#x27;game.main&#x27;,
 
     /**
         Get JSON data.
@@ -149,6 +147,12 @@ var game = {
         }
     },
 
+    /**
+        Merge objects.
+        @method merge
+        @param {Object} to
+        @param {Object} from
+    **/
     merge: function(to, from) {
         for (var key in from) {
             var ext = from[key];
@@ -170,6 +174,12 @@ var game = {
         return to;
     },
 
+    /**
+        Sort object by key names.
+        @method ksort
+        @param {Object} obj
+        @param {Function} [compare]
+    **/
     ksort: function(obj, compare) {
         if (!obj || typeof obj !== &#x27;object&#x27;) return false;
 
@@ -197,8 +207,8 @@ var game = {
     },
 
     normalizeVendorAttribute: function(el, attr) {
-        var prefixedVal = this.getVendorAttribute(el, attr);
         if (el[attr]) return;
+        var prefixedVal = this.getVendorAttribute(el, attr);
         el[attr] = el[attr] || prefixedVal;
     },
 
@@ -208,7 +218,7 @@ var game = {
     **/
     fullscreen: function() {
         if (this.system.canvas.requestFullscreen) this.system.canvas.requestFullscreen();
-        if (this.system.canvas.requestFullScreen) this.system.canvas.requestFullScreen();
+        else if (this.system.canvas.requestFullScreen) this.system.canvas.requestFullScreen();
     },
 
     /**
@@ -311,11 +321,14 @@ var game = {
         if (this.modules[name] &amp;&amp; this.modules[name].body) throw &#x27;module &#x27; + name + &#x27; is already defined&#x27;;
 
         this.current = { name: name, requires: [], loaded: false, body: null };
-        if (name === &#x27;game.main&#x27;) this.current.requires.push(&#x27;engine.core&#x27;);
+        if (name === this.gameMainModule) {
+            this.current.requires.push(&#x27;engine.core&#x27;);
+            if (this.DOMLoaded) this.loadModules();
+        }
         this.modules[name] = this.current;
         this.moduleQueue.push(this.current);
 
-        if (this.current.name === &#x27;engine.core&#x27;) {
+        if (name === &#x27;engine.core&#x27;) {
             if (this.config.ignoreModules) {
                 for (var i = this.coreModules.length - 1; i &gt;= 0; i--) {
                     if (this.config.ignoreModules.indexOf(this.coreModules[i]) !== -1) this.coreModules.splice(i, 1);
@@ -351,20 +364,16 @@ var game = {
         if (this.loadFinished) this.loadModules();
     },
 
-    /**
-        Start the game engine.
-        @method start
-    **/
-    start: function(scene, width, height) {
+    start: function() {
         if (this.moduleQueue.length &gt; 0) return;
 
-        this.system = new this.System(width, height);
+        this.system = new this.System();
 
         if (this.Audio) this.audio = new this.Audio();
         if (this.Pool) this.pool = new this.Pool();
         if (this.DebugDraw &amp;&amp; this.DebugDraw.enabled) this.debugDraw = new this.DebugDraw();
-        if (this.Storage &amp;&amp; this.Storage.id) this.storage = new this.Storage(this.Storage.id);
-        if (this.Analytics &amp;&amp; this.Analytics.id) this.analytics = new this.Analytics(this.Analytics.id);
+        if (this.Storage &amp;&amp; this.Storage.id) this.storage = new this.Storage();
+        if (this.Analytics &amp;&amp; this.Analytics.id) this.analytics = new this.Analytics();
         if (this.TweenEngine) this.tweenEngine = new this.TweenEngine();
 
         // Load plugins
@@ -372,7 +381,7 @@ var game = {
             this.plugins[name] = new (this.plugins[name])();
         }
 
-        this.loader = new (this.Loader)(scene);
+        this.loader = new this.Loader();
         if (!this.system.rotateScreenVisible) this.loader.start();
 
         this.onStart();
@@ -391,15 +400,16 @@ var game = {
         var script = document.createElement(&#x27;script&#x27;);
         script.type = &#x27;text/javascript&#x27;;
         script.src = path;
-        var me = this;
-        script.onload = function() {
-            me.waitForLoad--;
-            me.loadModules();
-        };
+        script.onload = this.scriptLoaded.bind(this);
         script.onerror = function() {
             throw &#x27;to load module &#x27; + name + &#x27; at &#x27; + path + &#x27; required from &#x27; + requiredFrom;
         };
         document.getElementsByTagName(&#x27;head&#x27;)[0].appendChild(script);
+    },
+
+    scriptLoaded: function() {
+        this.waitForLoad--;
+        this.loadModules();
     },
 
     loadModules: function() {
@@ -421,22 +431,11 @@ var game = {
 
             if (dependenciesLoaded &amp;&amp; module.body) {
                 this.moduleQueue.splice(i, 1);
-                if (this.moduleQueue.length === 0) {
-                    // Last module loaded, parse config
-                    for (var c in this.config) {
-                        var m = c.ucfirst();
-                        if (this[m]) {
-                            for (var o in this.config[c]) {
-                                this[m][o] = this.config[c][o];
-                            }
-                        }
-                    }
-                }
                 module.loaded = true;
-                module.body(this);
+                module.body();
                 moduleLoaded = true;
                 i--;
-                if (this.moduleQueue.length === 0 &amp;&amp; this.config.autoStart !== false &amp;&amp; !this.system) this.start();
+                if (this.moduleQueue.length === 0) this.modulesLoaded();
             }
         }
 
@@ -463,19 +462,37 @@ var game = {
         }
     },
 
-    setGameLoop: function(callback, element) {
-        if (window.requestAnimationFrame) {
-            var current = this.next++;
-            this.anims[current] = true;
+    modulesLoaded: function() {
+        // Parse config
+        for (var c in this.config) {
+            var m = c.ucfirst();
+            if (this[m]) {
+                for (var o in this.config[c]) {
+                    this[m][o] = this.config[c][o];
+                }
+            }
+        }
 
-            var me = this;
+        if (this.config.autoStart !== false &amp;&amp; !this.system) this.start();
+        else this.ready();
+    },
+
+    ready: function() {
+    },
+
+    setGameLoop: function(callback, element) {
+        if (game.System.frameRate) return window.setInterval(callback, 1000 / game.System.frameRate);
+        if (window.requestAnimationFrame) {
+            var id = this.gameLoopId++;
+            this.gameLoops[id] = true;
+
             var animate = function() {
-                if (!me.anims[current]) return;
+                if (!game.gameLoops[id]) return;
                 window.requestAnimationFrame(animate, element);
                 callback();
             };
             window.requestAnimationFrame(animate, element);
-            return current;
+            return id;
         }
         else {
             return window.setInterval(callback, 1000 / 60);
@@ -483,19 +500,17 @@ var game = {
     },
 
     clearGameLoop: function(id) {
-        if (window.requestAnimationFrame) {
-            delete this.anims[id];
-        }
-        else {
-            window.clearInterval(id);
-        }
+        if (this.gameLoops[id]) delete this.gameLoops[id];
+        else window.clearInterval(id);
     },
 
     boot: function() {
-        if (game.config.noCanvasURL) {
+        delete window.pandaConfig;
+
+        if (this.config.noCanvasURL) {
             var canvas = document.createElement(&#x27;canvas&#x27;);
             var canvasSupported = !!(canvas.getContext &amp;&amp; canvas.getContext(&#x27;2d&#x27;));
-            if (!canvasSupported) window.location = game.config.noCanvasURL;
+            if (!canvasSupported) window.location = this.config.noCanvasURL;
         }
 
         Math.distance = function(x, y, x2, y2) {
@@ -514,7 +529,7 @@ var game = {
             var i = this;
             if (i &lt; min) i = min;
             if (i &gt; max) i = max;
-            return parseFloat(i);
+            return i;
         };
 
         Number.prototype.round = function(precision) {
@@ -525,7 +540,10 @@ var game = {
 
         Array.prototype.erase = function(item) {
             for (var i = this.length; i &gt;= 0; i--) {
-                if (this[i] === item) this.splice(i, 1);
+                if (this[i] === item) {
+                    this.splice(i, 1);
+                    return this;
+                }
             }
             return this;
         };
@@ -544,7 +562,6 @@ var game = {
                 this[i] = this[p];
                 this[p] = t;
             }
-
             return this;
         };
 
@@ -568,7 +585,7 @@ var game = {
 
         this.module(&#x27;engine.core&#x27;);
 
-        game.normalizeVendorAttribute(window, &#x27;requestAnimationFrame&#x27;);
+        this.normalizeVendorAttribute(window, &#x27;requestAnimationFrame&#x27;);
 
         this.device.pixelRatio = window.devicePixelRatio || 1;
         this.device.screen = {
@@ -686,10 +703,17 @@ var game = {
         if (!this.DOMLoaded) {
             if (!document.body) return setTimeout(this.DOMReady.bind(this), 13);
             this.DOMLoaded = true;
-            this.loadModules();
+            if (this.modules[this.gameMainModule]) this.loadModules();
         }
     },
 
+    /**
+        Create new class.
+        @method createClass
+        @param {String} name
+        @param {String} [extend]
+        @param {Object} content
+    **/
     createClass: function(name, extend, content) {
         if (game[name]) throw &#x27;class &#x27; + name + &#x27; already created&#x27;;
 
@@ -701,10 +725,22 @@ var game = {
         return game[name] = game[extend].extend(content);
     },
 
+    /**
+        Create new scene.
+        @method createScene
+        @param {String} name
+        @param {Object} content
+    **/
     createScene: function(name, content) {
         return this.createClass(&#x27;Scene&#x27; + name, &#x27;Scene&#x27;, content);
     },
 
+    /**
+        Add attributes to class.
+        @method addAttributes
+        @param {String} className
+        @param {Object} attributes
+    **/
     addAttributes: function(className, attributes) {
         if (!this[className]) throw &#x27;class &#x27; + className + &#x27; not found&#x27;;
 
