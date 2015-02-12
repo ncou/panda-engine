@@ -12,7 +12,7 @@ game.module(
     @class Particle
     @extends game.Class
 **/
-game.Particle = game.Class.extend({
+game.createClass('Particle', {
     /**
         @property {game.Point} position
     **/
@@ -64,7 +64,7 @@ game.Particle = game.Class.extend({
     @constructor
     @param {Object} [settings]
 **/
-game.Emitter = game.Class.extend({
+game.createClass('Emitter', {
     /**
         Pool name for particles.
         @property {String} poolName
@@ -102,9 +102,9 @@ game.Emitter = game.Class.extend({
     /**
         Variance of emit angle in radians.
         @property {Number} angleVar
-        @default Math.PI
+        @default 0
     **/
-    angleVar: Math.PI,
+    angleVar: 0,
     /**
         Particle's initial speed.
         @property {Number} speed
@@ -190,7 +190,7 @@ game.Emitter = game.Class.extend({
         @property {Number} endAlpha
         @default 0
     **/
-    endAlpha: 0,
+    endAlpha: 1,
     /**
         Starting scale for particle.
         @property {Number} startScale
@@ -443,7 +443,7 @@ game.Emitter = game.Class.extend({
         this.durationTimer += game.system.delta * 1000;
         if (this.duration > 0) {
             this.active = this.durationTimer < this.duration;
-            if (!this.active && typeof this.callback === 'function') {
+            if (!this.active && this.particles.length === 0 && typeof this.callback === 'function') {
                 this.callback();
                 this.callback = null;
             }

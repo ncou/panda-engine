@@ -13,7 +13,7 @@ game.module(
     @class Scene
     @extends game.Class
 **/
-game.Scene = game.Class.extend({
+game.createClass('Scene', {
     /**
         Background color of scene.
         @property {Number} backgroundColor
@@ -53,6 +53,13 @@ game.Scene = game.Class.extend({
     swipeTime: 500,
     
     staticInit: function() {
+        if (game.audio && game.Audio.stopOnSceneChange && game.scene) {
+            game.audio.stopMusic();
+            game.audio.stopSound(false, true);
+            game.audio.pausedSounds.length = 0;
+            game.audio.playingSounds.length = 0;
+        }
+        
         game.scene = this;
         
         for (var i = game.system.stage.children.length - 1; i >= 0; i--) {
@@ -68,16 +75,33 @@ game.Scene = game.Class.extend({
         game.system.stage.mouseout = this.mouseout.bind(this);
 
         this.stage = new game.Container();
+        if (game.system.webGL && game.device.cocoonJS) {
+            var rendererRatio = game.renderer.width / game.renderer.height;
+            var systemRatio = game.system.width / game.system.height;
+            if (rendererRatio < systemRatio) {
+                var scale = game.renderer.width / game.system.width;
+                this.stage.scale.set(scale, scale);
+                this.stage.position.y = game.renderer.height / 2 - game.system.height * scale / 2;
+            }
+            else {
+                var scale = game.renderer.height / game.system.height;
+                this.stage.scale.set(scale, scale);
+                this.stage.position.x = game.renderer.width / 2 - game.system.width * scale / 2;
+            }
+        }
         game.system.stage.addChild(this.stage);
 
-        if (game.audio && game.Audio.stopOnSceneChange) {
-            game.audio.stopMusic();
-            game.audio.stopSound(false, true);
-            game.audio.pausedSounds.length = 0;
-            game.audio.playingSounds.length = 0;
-        }
-
         if (game.debugDraw) game.debugDraw.reset();
+    },
+
+    /**
+        Clear stage.
+        @method clear
+    **/
+    clear: function() {
+        for (var i = this.stage.children.length - 1; i >= 0; i--) {
+            this.stage.removeChild(this.stage.children[i]);
+        }
     },
     
     /**
@@ -145,7 +169,7 @@ game.Scene = game.Class.extend({
     /**
         Add timer to game scene.
         @method addTimer
-        @param {Number} time Time in seconds
+        @param {Number} time Time in milliseconds
         @param {Function} callback Callback function to run, when timer ends.
         @param {Boolean} repeat
         @return {game.Timer}
@@ -165,6 +189,7 @@ game.Scene = game.Class.extend({
         @param {Boolean} doCallback
     **/
     removeTimer: function(timer, doCallback) {
+        if (!timer) return;
         if (!doCallback) timer.callback = null;
         timer.repeat = false;
         timer.set(0);
@@ -255,7 +280,7 @@ game.Scene = game.Class.extend({
     _swipe: function(event, dir) {
         var time = Date.now() - event.startTime;
         event.startTime = null;
-        if (time <= this.swipeTime) this.swipe(dir);
+        if (time <= this.swipeTime || this.swipeTime === 0) this.swipe(dir);
     },
 
     /**
@@ -282,6 +307,13 @@ game.Scene = game.Class.extend({
 
     resume: function() {
         if (game.audio) game.audio.systemResume();
+    },
+
+    /**
+        Called, when scene is changed.
+        @method exit
+    **/
+    exit: function() {
     }
 });
 

@@ -9,13 +9,13 @@ game.module(
 'use strict';
 
 /**
-    Dynamic loader for assets and audio.
+    Dynamic loader for assets and audio files.
     @class Loader
     @extends game.Class
     @constructor
     @param {Function|String} callback
 **/
-game.Loader = game.Class.extend({
+game.createClass('Loader', {
     /**
         Number of files loaded.
         @property {Number} loaded
@@ -42,16 +42,7 @@ game.Loader = game.Class.extend({
         @default false
     **/
     started: false,
-    /**
-        Enable dynamic mode.
-        @property {Boolean} dynamic
-        @default true
-    **/
     dynamic: true,
-    /**
-        Callback function or scene name for loader.
-        @property {Function|String} callback
-    **/
     callback: null,
     
     init: function(callback) {
@@ -88,27 +79,17 @@ game.Loader = game.Class.extend({
     initStage: function() {
         var barWidth = game.Loader.barWidth * game.scale;
         var barHeight = game.Loader.barHeight * game.scale;
-        var barMargin = game.Loader.barMargin * game.scale;
-
-        if (game.Loader.logo) {
-            this.logo = new game.Sprite(game.Texture.fromImage(game.Loader.logo));
-            this.logo.anchor.set(0.5, 1.0);
-            this.logo.position.x = game.system.width / 2;
-            this.logo.position.y = game.system.height / 2;
-            this.logo.position.y -= barHeight / 2 + barMargin;
-            this.stage.addChild(this.logo);
-        }
 
         this.barBg = new game.Graphics();
         this.barBg.beginFill(game.Loader.barBgColor);
         this.barBg.drawRect(0, 0, barWidth, barHeight);
-        this.barBg.position.set(game.system.width / 2 - (barWidth / 2), game.system.height / 2 - (barHeight / 2));
+        this.barBg.position.set(Math.round(game.renderer.width / 2 - (barWidth / 2)), Math.round(game.renderer.height / 2 - (barHeight / 2)));
         this.stage.addChild(this.barBg);
 
         this.barFg = new game.Graphics();
         this.barFg.beginFill(game.Loader.barColor);
-        this.barFg.drawRect(0, 0, barWidth + 2, barHeight + 2);
-        this.barFg.position.set(game.system.width / 2 - (barWidth / 2) - 1, game.system.height / 2 - (barHeight / 2) - 1);
+        this.barFg.drawRect(0, 0, barWidth, barHeight);
+        this.barFg.position.set(Math.round(game.renderer.width / 2 - (barWidth / 2)), Math.round(game.renderer.height / 2 - (barHeight / 2)));
         this.barFg.scale.x = this.percent / 100;
         this.stage.addChild(this.barFg);
     },
@@ -153,19 +134,10 @@ game.Loader = game.Class.extend({
         else if (this.dynamic) this.ready();
     },
 
-    /**
-        Error loading file.
-        @method error
-        @param {String} error
-    **/
-    error: function(error) {
-        if (error) throw error;
+    error: function(path) {
+        throw 'loading file ' + path;
     },
 
-    /**
-        File loaded.
-        @method progress
-    **/
     progress: function(loader) {
         if (loader && loader.json) game.json[loader.url] = loader.json;
         this.loaded++;
@@ -183,20 +155,12 @@ game.Loader = game.Class.extend({
         if (this.barFg) this.barFg.scale.x = this.percent / 100;
     },
 
-    /**
-        Start loading audio.
-        @method loadAudio
-    **/
     loadAudio: function() {
         for (var i = this.audioQueue.length - 1; i >= 0; i--) {
-            game.audio.load(this.audioQueue[i], this.progress.bind(this));
+            game.audio._load(this.audioQueue[i], this.progress.bind(this), this.error.bind(this, this.audioQueue[i]));
         }
     },
 
-    /**
-        All files loaded.
-        @method ready
-    **/
     ready: function() {
         if (game.system.hires || game.system.retina) {
             for (var i in game.TextureCache) {
@@ -211,10 +175,6 @@ game.Loader = game.Class.extend({
         else this.setScene();
     },
 
-    /**
-        Set scene.
-        @method setScene
-    **/
     setScene: function() {
         game.system.timer.last = 0;
         game.Timer.time = Number.MIN_VALUE;
@@ -226,6 +186,8 @@ game.Loader = game.Class.extend({
         }
         else game.system.setScene(this.callback);
     },
+
+    exit: function() {},
 
     run: function() {
         if (this.loopId) {
@@ -261,62 +223,55 @@ game.Loader = game.Class.extend({
 
     getPath: function(path) {
         return game.system.retina || game.system.hires ? path.replace(/\.(?=[^.]*$)/, '@' + game.scale + 'x.') : path;
-    }
+    },
+
+    keydown: function() {},
+    keyup: function() {}
 });
 
-/**
-    Loader background color.
-    @attribute {Number} bgColor
-    @default 0x000000
-**/
-game.Loader.bgColor = 0x000000;
-/**
-    Minimum time to show loader, in milliseconds.
-    @attribute {Number} time
-    @default 200
-**/
-game.Loader.time = 200;
-/**
-    Loading bar background color.
-    @attribute {Number} barBg
-    @default 0x231f20
-**/
-game.Loader.barBgColor = 0x515e73;
-/**
-    Loading bar color.
-    @attribute {Number} barColor
-    @default 0xe6e7e8
-**/
-game.Loader.barColor = 0xb9bec7;
-/**
-    Width of the loading bar.
-    @attribute {Number} barWidth
-    @default 200
-**/
-game.Loader.barWidth = 200;
-/**
-    Height of the loading bar.
-    @attribute {Number} barHeight
-    @default 20
-**/
-game.Loader.barHeight = 20;
-/**
-    Loading bar margin from logo.
-    @attribute {Number} barMargin
-    @default 10
-**/
-game.Loader.barMargin = 10;
-/**
-    Loader logo url.
-    @attribute {String} logo
-    @default null
-**/
-game.Loader.logo = null;
-/**
-    Threat requests as crossorigin.
-    @attribute {Boolean} crossorigin
-    @default true
-**/
-game.Loader.crossorigin = true;
+game.addAttributes('Loader', {
+    /**
+        Loader background color.
+        @attribute {Number} bgColor
+        @default 0x000000
+    **/
+    bgColor: 0x000000,
+    /**
+        Minimum time to show loader (ms).
+        @attribute {Number} time
+        @default 200
+    **/
+    time: 200,
+    /**
+        Loading bar background color.
+        @attribute {Number} barBg
+        @default 0x231f20
+    **/
+    barBgColor: 0x515e73,
+    /**
+        Loading bar color.
+        @attribute {Number} barColor
+        @default 0xe6e7e8
+    **/
+    barColor: 0xb9bec7,
+    /**
+        Width of the loading bar.
+        @attribute {Number} barWidth
+        @default 200
+    **/
+    barWidth: 200,
+    /**
+        Height of the loading bar.
+        @attribute {Number} barHeight
+        @default 20
+    **/
+    barHeight: 20,
+    /**
+        Threat requests as crossorigin.
+        @attribute {Boolean} crossorigin
+        @default true
+    **/
+    crossorigin: true
+});
 
 });

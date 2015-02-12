@@ -17,7 +17,7 @@ game.module(
     @class Debug
     @extends game.Class
 **/
-game.Debug = game.Class.extend({
+game.createClass('Debug', {
     frames: 0,
     last: 0,
     objects: 0,
@@ -30,10 +30,10 @@ game.Debug = game.Class.extend({
         this.debugDiv.style.top = game.Debug.positionY + 'px';
         this.debugDiv.style.zIndex = 9999;
         this.debugDiv.style.backgroundColor = game.Debug.backgroundColor;
-        this.debugDiv.style.padding = '5px';
+        this.debugDiv.style.padding = '2px';
         this.debugDiv.style.color = game.Debug.color;
         this.debugDiv.style.fontFamily = 'Arial';
-        this.debugDiv.style.fontSize = '16px';
+        this.debugDiv.style.fontSize = '14px';
         document.body.appendChild(this.debugDiv);
     },
 
@@ -45,49 +45,59 @@ game.Debug = game.Class.extend({
         this.frames++;
 
         if (game.Timer.last >= this.last + game.Debug.frequency) {
-            var fps = (Math.round((this.frames * 1000) / (game.Timer.last - this.last)));
-            this.debugDiv.innerHTML = 'FPS: ' + fps + ' OBJECTS: ' + this.objects;
+            this.fps = (Math.round((this.frames * 1000) / (game.Timer.last - this.last)));
             this.last = game.Timer.last;
             this.frames = 0;
         }
+
+        var text = 'FPS: ' + this.fps + ' SPRITES: ' + (this.objects - 1);
+        if (game.tweenEngine) text += ' TWEENS: ' + game.tweenEngine.tweens.length;
+        if (game.scene.timers) text += ' TIMERS: ' + game.scene.timers.length;
+        if (game.scene.emitters) text += ' EMITTERS: ' + game.scene.emitters.length;
+        if (game.scene.world) {
+            text += ' BODIES:' + game.scene.world.bodies.length;
+        }
+        this.debugDiv.innerHTML = text;
     }
 });
 
-/**
-    Enable debug box.
-    @attribute {Boolean} enabled
-**/
-game.Debug.enabled = !!document.location.href.toLowerCase().match(/\?debug/);
-/**
-    How often to update debug box (ms).
-    @attribute {Number} frequency
-    @default 500
-**/
-game.Debug.frequency = 500;
-/**
-    Text color of debug box.
-    @attribute {String} color
-    @default red
-**/
-game.Debug.color = 'red';
-/**
-    Background color of debug box.
-    @attribute {String} backgroundColor
-    @default black
-**/
-game.Debug.backgroundColor = 'black';
-/**
-    X position of debug box.
-    @attribute {Number} positionX
-    @default 0
-**/
-game.Debug.positionX = 0;
-/**
-    Y position of debug box.
-    @attribute {Number} positionY
-    @default 0,0
-**/
-game.Debug.positionY = 0;
+game.addAttributes('Debug', {
+    /**
+        Enable debug box.
+        @attribute {Boolean} enabled
+    **/
+    enabled: !!document.location.href.toLowerCase().match(/\?debug/),
+    /**
+        How fast to update fps (ms).
+        @attribute {Number} frequency
+        @default 500
+    **/
+    frequency: 500,
+    /**
+        Text color of debug box.
+        @attribute {String} color
+        @default red
+    **/
+    color: 'red',
+    /**
+        Background color of debug box.
+        @attribute {String} backgroundColor
+        @default black
+    **/
+    backgroundColor: 'black',
+    /**
+        X position of debug box.
+        @attribute {Number} positionX
+        @default 0
+    **/
+    positionX: 0,
+    /**
+        Y position of debug box.
+        @attribute {Number} positionY
+        @default 0,0
+    **/
+    positionY: 0
+});
 
 game.PIXI.DisplayObject.prototype._updateTransform = game.PIXI.DisplayObject.prototype.updateTransform;
 game.PIXI.DisplayObject.prototype.updateTransform = function() {
@@ -102,7 +112,7 @@ game.PIXI.DisplayObject.prototype.displayObjectUpdateTransform = game.PIXI.Displ
     @class DebugDraw
     @extends game.Class
 **/
-game.DebugDraw = game.Class.extend({
+game.createClass('DebugDraw', {
     spriteContainer: null,
     bodyContainer: null,
 
@@ -180,6 +190,7 @@ game.DebugDraw = game.Class.extend({
     drawBodySprite: function(sprite, body) {
         sprite.clear();
         sprite.beginFill(game.DebugDraw.bodyColor);
+        sprite.lineStyle(1, 0xff0000);
 
         if (body.shape instanceof game.Rectangle) {
             sprite.drawRect(-body.shape.width / 2, -body.shape.height / 2, body.shape.width, body.shape.height);
@@ -218,7 +229,7 @@ game.DebugDraw = game.Class.extend({
             }
             body.position.x = body.target.position.x;
             body.position.y = body.target.position.y;
-            if (!body.target.world) this.bodyContainer.removeChild(body);
+            if (!body.target.world) body.remove();
         }
     },
 
@@ -232,34 +243,47 @@ game.DebugDraw = game.Class.extend({
     }
 });
 
-/**
-    Color of DebugDraw sprites.
-    @attribute {Number} spriteColor
-    @default 0xff0000
-**/
-game.DebugDraw.spriteColor = 0xff0000;
-/**
-    Alpha of DebugDraw sprites.
-    @attribute {Number} spriteAlpha
-    @default 0.3
-**/
-game.DebugDraw.spriteAlpha = 0.3;
-/**
-    Color of DebugDraw bodies.
-    @attribute {Number} bodyColor
-    @default 0x0000ff
-**/
-game.DebugDraw.bodyColor = 0x0000ff;
-/**
-    Alpha of DebugDraw bodies.
-    @attribute {Number} bodyAlpha
-    @default 0.3
-**/
-game.DebugDraw.bodyAlpha = 0.3;
-/**
-    Enable DebugDraw.
-    @attribute {Boolean} enabled
-**/
-game.DebugDraw.enabled = document.location.href.match(/\?debugdraw/) ? true : false;
+game.addAttributes('DebugDraw', {
+    /**
+        Enable DebugDraw.
+        @attribute {Boolean} enabled
+    **/
+    enabled: !!document.location.href.toLowerCase().match(/\?debugdraw/),
+    /**
+        Color of DebugDraw sprites.
+        @attribute {Number} spriteColor
+        @default 0xff0000
+    **/
+    spriteColor: 0xff0000,
+    /**
+        Alpha of DebugDraw sprites.
+        @attribute {Number} spriteAlpha
+        @default 0.5
+    **/
+    spriteAlpha: 0.5,
+    /**
+        Color of DebugDraw bodies.
+        @attribute {Number} bodyColor
+        @default 0x0000ff
+    **/
+    bodyColor: 0x0000ff,
+    /**
+        Alpha of DebugDraw bodies.
+        @attribute {Number} bodyAlpha
+        @default 0.5
+    **/
+    bodyAlpha: 0.5
+});
+
+game.onStart = function() {
+    if (game.Debug && game.Debug.enabled) {
+        console.log('Panda.js ' + game.version);
+        console.log('Pixi.js ' + game.PIXI.VERSION.replace('v', ''));
+        console.log((this.system.renderer.gl ? 'WebGL' : 'Canvas') + ' renderer ' + this.system.width + 'x' + this.system.height);
+        if (this.Audio && this.Audio.enabled) console.log((this.audio.context ? 'Web Audio' : 'HTML5 Audio') + ' engine');
+        else console.log('Audio disabled');
+        if (this.config.version) console.log((this.config.name ? this.config.name : 'Game') + ' ' + this.config.version);
+    }
+};
 
 });

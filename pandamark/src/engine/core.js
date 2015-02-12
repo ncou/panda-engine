@@ -1,24 +1,11 @@
 // Panda.js HTML5 game engine
-
 // created by Eemeli Kelokorpi
-// inspired by Impact Game Engine
-// sponsored by Yle
 
 'use strict';
 
 /**
     @module game
     @namespace game
-    @requires loader
-    @requires timer
-    @requires system
-    @requires audio
-    @requires debug
-    @requires storage
-    @requires tween
-    @requires scene
-    @requires pool
-    @requires analytics
 **/
 /**
     @class Core
@@ -28,11 +15,7 @@ var game = {
         Current engine version.
         @property {String} version
     **/
-    version: '1.10.1',
-    /**
-        Engine settings.
-        @property {Object} config
-    **/
+    version: '1.13.0',
     config: typeof pandaConfig !== 'undefined' ? pandaConfig : {},
     coreModules: [
         'engine.analytics',
@@ -73,10 +56,10 @@ var game = {
     **/
     system: null,
     /**
-        Instance of {{#crossLink "game.SoundManager"}}{{/crossLink}}.
-        @property {game.SoundManager} sound
+        Instance of {{#crossLink "game.Audio"}}{{/crossLink}}.
+        @property {game.Audio} sound
     **/
-    sound: null,
+    audio: null,
     /**
         Instance of {{#crossLink "game.Pool"}}{{/crossLink}}.
         @property {game.Pool} pool
@@ -93,7 +76,7 @@ var game = {
     **/
     keyboard: null,
     /**
-        Device / browser detection.
+        Device / browser information.
         @property {Object} device
     **/
     device: {},
@@ -101,13 +84,11 @@ var game = {
     plugins: {},
     json: {},
     modules: {},
-    renderer: null,
     nocache: '',
-    current: null,
     waitForLoad: 0,
     DOMLoaded: false,
-    next: 1,
-    anims: {},
+    gameLoopId: 1,
+    gameLoops: {},
     moduleQueue: [],
     assetQueue: [],
     audioQueue: [],
@@ -152,6 +133,12 @@ var game = {
         }
     },
 
+    /**
+        Merge objects.
+        @method merge
+        @param {Object} to
+        @param {Object} from
+    **/
     merge: function(to, from) {
         for (var key in from) {
             var ext = from[key];
@@ -173,7 +160,13 @@ var game = {
         return to;
     },
 
-    ksort: function(obj) {
+    /**
+        Sort object by key names.
+        @method ksort
+        @param {Object} obj
+        @param {Function} [compare]
+    **/
+    ksort: function(obj, compare) {
         if (!obj || typeof obj !== 'object') return false;
 
         var keys = [], result = {}, i;
@@ -181,7 +174,7 @@ var game = {
             keys.push(i);
         }
         
-        keys.sort();
+        keys.sort(compare);
         for (i = 0; i < keys.length; i++) {
             result[keys[i]] = obj[keys[i]];
         }
@@ -200,8 +193,8 @@ var game = {
     },
 
     normalizeVendorAttribute: function(el, attr) {
-        var prefixedVal = this.getVendorAttribute(el, attr);
         if (el[attr]) return;
+        var prefixedVal = this.getVendorAttribute(el, attr);
         el[attr] = el[attr] || prefixedVal;
     },
 
@@ -211,7 +204,7 @@ var game = {
     **/
     fullscreen: function() {
         if (this.system.canvas.requestFullscreen) this.system.canvas.requestFullscreen();
-        if (this.system.canvas.requestFullScreen) this.system.canvas.requestFullScreen();
+        else if (this.system.canvas.requestFullScreen) this.system.canvas.requestFullScreen();
     },
 
     /**
@@ -235,17 +228,6 @@ var game = {
     },
 
     /**
-        Add multiple assets to loader.
-        @method addAssets
-        @param {Array} assets
-    **/
-    addAssets: function(assets) {
-        for (var i = 0; i < assets.length; i++) {
-            this.addAsset(assets[i]);
-        }
-    },
-
-    /**
         Add audio to loader.
         @method addAudio
         @param {String} path
@@ -258,12 +240,16 @@ var game = {
 
     addFileToQueue: function(path, id, queue) {
         id = id || path;
-        path = path + this.nocache;
-        if (this.config.mediaFolder) path = this.config.mediaFolder + '/' + path;
+        path = this.getMediaPath(path) + this.nocache;
         if (this.paths[id]) return id;
         this.paths[id] = path;
         if (this[queue].indexOf(path) === -1) this[queue].push(path);
         return id;
+    },
+
+    getMediaPath: function(file) {
+        if (this.config.mediaFolder) file = this.config.mediaFolder + '/' + file;
+        return file;
     },
 
     /**
@@ -306,15 +292,18 @@ var game = {
         @param {String} name
     **/
     module: function(name) {
-        if (this.current) throw('Module ' + this.current.name + ' has no body');
-        if (this.modules[name] && this.modules[name].body) throw('Module ' + name + ' is already defined');
+        if (this.current) throw 'module ' + this.current.name + ' has no body';
+        if (this.modules[name] && this.modules[name].body) throw 'module ' + name + ' is already defined';
 
-        this.current = { name: name, requires: [], loaded: false, body: null };
-        if (name === 'game.main') this.current.requires.push('engine.core');
+        this.current = { name: name, requires: [], loaded: false };
+        
+        if (name.indexOf('game.') === 0) this.current.requires.push('engine.core');
+        if (this.moduleQueue.length === 1 && this.DOMLoaded) this.loadModules();
+
         this.modules[name] = this.current;
         this.moduleQueue.push(this.current);
 
-        if (this.current.name === 'engine.core') {
+        if (name === 'engine.core') {
             if (this.config.ignoreModules) {
                 for (var i = this.coreModules.length - 1; i >= 0; i--) {
                     if (this.config.ignoreModules.indexOf(this.coreModules[i]) !== -1) this.coreModules.splice(i, 1);
@@ -350,30 +339,16 @@ var game = {
         if (this.loadFinished) this.loadModules();
     },
 
-    /**
-        Start the game engine.
-        @method start
-    **/
-    start: function(scene, width, height) {
+    start: function() {
         if (this.moduleQueue.length > 0) return;
 
-        this.system = new this.System(width, height);
+        this.system = new this.System();
 
         if (this.Audio) this.audio = new this.Audio();
-
-        if (game.Debug && game.Debug.enabled) {
-            console.log('Panda.js ' + game.version);
-            console.log('Pixi.js ' + game.PIXI.VERSION.replace('v', ''));
-            console.log((this.system.renderer.gl ? 'WebGL' : 'Canvas') + ' renderer ' + this.system.width + 'x' + this.system.height);
-            if (this.Audio && this.Audio.enabled) console.log((this.audio.context ? 'Web Audio' : 'HTML5 Audio') + ' engine');
-            else console.log('Audio disabled');
-            if (this.config.version) console.log((this.config.name ? this.config.name : 'Game') + ' ' + this.config.version);
-        }
-
         if (this.Pool) this.pool = new this.Pool();
         if (this.DebugDraw && this.DebugDraw.enabled) this.debugDraw = new this.DebugDraw();
-        if (this.Storage && this.Storage.id) this.storage = new this.Storage(this.Storage.id);
-        if (this.Analytics && this.Analytics.id) this.analytics = new this.Analytics(this.Analytics.id);
+        if (this.Storage && this.Storage.id) this.storage = new this.Storage();
+        if (this.Analytics && this.Analytics.id) this.analytics = new this.Analytics();
         if (this.TweenEngine) this.tweenEngine = new this.TweenEngine();
 
         // Load plugins
@@ -381,8 +356,13 @@ var game = {
             this.plugins[name] = new (this.plugins[name])();
         }
 
-        this.loader = new (this.Loader)(scene);
+        this.loader = new this.Loader();
         if (!this.system.rotateScreenVisible) this.loader.start();
+
+        this.onStart();
+    },
+
+    onStart: function() {
     },
 
     loadScript: function(name, requiredFrom) {
@@ -395,15 +375,16 @@ var game = {
         var script = document.createElement('script');
         script.type = 'text/javascript';
         script.src = path;
-        var me = this;
-        script.onload = function() {
-            me.waitForLoad--;
-            me.loadModules();
-        };
+        script.onload = this.scriptLoaded.bind(this);
         script.onerror = function() {
-            throw('Failed to load module ' + name + ' at ' + path + ' required from ' + requiredFrom);
+            throw 'to load module ' + name + ' at ' + path + ' required from ' + requiredFrom;
         };
         document.getElementsByTagName('head')[0].appendChild(script);
+    },
+
+    scriptLoaded: function() {
+        this.waitForLoad--;
+        this.loadModules();
     },
 
     loadModules: function() {
@@ -425,22 +406,11 @@ var game = {
 
             if (dependenciesLoaded && module.body) {
                 this.moduleQueue.splice(i, 1);
-                if (this.moduleQueue.length === 0) {
-                    // Last module loaded, parse config
-                    for (var c in this.config) {
-                        var m = c.ucfirst();
-                        if (this[m]) {
-                            for (var o in this.config[c]) {
-                                this[m][o] = this.config[c][o];
-                            }
-                        }
-                    }
-                }
                 module.loaded = true;
-                module.body(this);
+                module.body();
                 moduleLoaded = true;
                 i--;
-                if (this.moduleQueue.length === 0 && this.config.autoStart !== false && !this.system) this.start();
+                if (this.moduleQueue.length === 0) this.modulesLoaded();
             }
         }
 
@@ -460,26 +430,44 @@ var game = {
                 }
                 unresolved.push(this.moduleQueue[i].name + ' (requires: ' + unloaded.join(', ') + ')');
             }
-            throw('Unresolved modules:\n' + unresolved.join('\n'));
+            throw 'unresolved modules:\n' + unresolved.join('\n');
         }
         else {
             this.loadFinished = true;
         }
     },
 
-    setGameLoop: function(callback, element) {
-        if (window.requestAnimationFrame) {
-            var current = this.next++;
-            this.anims[current] = true;
+    modulesLoaded: function() {
+        // Parse config
+        for (var c in this.config) {
+            var m = c.ucfirst();
+            if (this[m]) {
+                for (var o in this.config[c]) {
+                    this[m][o] = this.config[c][o];
+                }
+            }
+        }
 
-            var me = this;
+        if (this.config.autoStart !== false && !this.system) this.start();
+        else this.ready();
+    },
+
+    ready: function() {
+    },
+
+    setGameLoop: function(callback, element) {
+        if (game.System.frameRate) return window.setInterval(callback, 1000 / game.System.frameRate);
+        if (window.requestAnimationFrame) {
+            var id = this.gameLoopId++;
+            this.gameLoops[id] = true;
+
             var animate = function() {
-                if (!me.anims[current]) return;
+                if (!game.gameLoops[id]) return;
                 window.requestAnimationFrame(animate, element);
                 callback();
             };
             window.requestAnimationFrame(animate, element);
-            return current;
+            return id;
         }
         else {
             return window.setInterval(callback, 1000 / 60);
@@ -487,19 +475,17 @@ var game = {
     },
 
     clearGameLoop: function(id) {
-        if (window.requestAnimationFrame) {
-            delete this.anims[id];
-        }
-        else {
-            window.clearInterval(id);
-        }
+        if (this.gameLoops[id]) delete this.gameLoops[id];
+        else window.clearInterval(id);
     },
 
     boot: function() {
-        if (game.config.noCanvasURL) {
+        delete window.pandaConfig;
+
+        if (this.config.noCanvasURL) {
             var canvas = document.createElement('canvas');
             var canvasSupported = !!(canvas.getContext && canvas.getContext('2d'));
-            if (!canvasSupported) window.location = game.config.noCanvasURL;
+            if (!canvasSupported) window.location = this.config.noCanvasURL;
         }
 
         Math.distance = function(x, y, x2, y2) {
@@ -518,7 +504,7 @@ var game = {
             var i = this;
             if (i < min) i = min;
             if (i > max) i = max;
-            return parseFloat(i);
+            return i;
         };
 
         Number.prototype.round = function(precision) {
@@ -529,7 +515,10 @@ var game = {
 
         Array.prototype.erase = function(item) {
             for (var i = this.length; i >= 0; i--) {
-                if (this[i] === item) this.splice(i, 1);
+                if (this[i] === item) {
+                    this.splice(i, 1);
+                    return this;
+                }
             }
             return this;
         };
@@ -548,7 +537,6 @@ var game = {
                 this[i] = this[p];
                 this[p] = t;
             }
-
             return this;
         };
 
@@ -570,9 +558,7 @@ var game = {
             return this.charAt(0).toUpperCase() + this.slice(1);
         };
 
-        this.module('engine.core');
-
-        game.normalizeVendorAttribute(window, 'requestAnimationFrame');
+        this.normalizeVendorAttribute(window, 'requestAnimationFrame');
 
         this.device.pixelRatio = window.devicePixelRatio || 1;
         this.device.screen = {
@@ -604,7 +590,7 @@ var game = {
         this.device.android = /android/i.test(navigator.userAgent);
         this.device.android2 = /android 2/i.test(navigator.userAgent);
         var androidVer = navigator.userAgent.match(/Android.*AppleWebKit\/([\d.]+)/);
-        this.device.androidStock = (androidVer && androidVer[1] < 537);
+        this.device.androidStock = !!(androidVer && androidVer[1] < 537);
         
         // Internet Explorer
         this.device.ie9 = /MSIE 9/i.test(navigator.userAgent);
@@ -621,15 +607,16 @@ var game = {
         this.device.wt = (this.device.ie && /Tablet/i.test(navigator.userAgent));
 
         // Others
-        this.device.opera = /Opera/i.test(navigator.userAgent) || /OPR/i.test(navigator.userAgent);
+        this.device.opera = /Opera/i.test(navigator.userAgent) || /OPR/i.test(navigator.userAgent);
         this.device.crosswalk = /Crosswalk/i.test(navigator.userAgent);
         this.device.cocoonJS = !!navigator.isCocoonJS;
         this.device.ejecta = /Ejecta/i.test(navigator.userAgent);
         this.device.facebook = /FB/i.test(navigator.userAgent);
+        this.device.wiiu = /Nintendo WiiU/i.test(navigator.userAgent);
 
         this.device.mobile = this.device.iOS || this.device.android || this.device.wp || this.device.wt;
 
-        if (typeof navigator.plugins === 'undefined' || navigator.plugins.length === 0) {
+        if (typeof navigator.plugins === 'undefined' || navigator.plugins.length === 0) {
             try {
                 new ActiveXObject('ShockwaveFlash.ShockwaveFlash');
                 this.device.flash = true;
@@ -642,6 +629,7 @@ var game = {
             this.device.flash = !!navigator.plugins['Shockwave Flash'];
         }
     
+        // Load device specific config
         for (var i in this.device) {
             if (this.device[i] && this.config[i]) {
                 for (var o in this.config[i]) {
@@ -657,25 +645,32 @@ var game = {
 
         if (document.location.href.match(/\?nocache/) || this.config.disableCache) this.nocache = '?' + Date.now();
 
+        // Default config
         if (typeof this.config.sourceFolder === 'undefined') this.config.sourceFolder = 'src';
         if (typeof this.config.mediaFolder === 'undefined') this.config.mediaFolder = 'media';
 
-        var metaTags = document.getElementsByTagName('meta');
-        var viewportFound = false;
+        if (this.device.mobile) {
+            // Search for viewport meta
+            var metaTags = document.getElementsByTagName('meta');
+            for (i = 0; i < metaTags.length; i++) {
+                if (metaTags[i].name === 'viewport') {
+                    var viewportFound = true;
+                    break;
+                }
+            }
 
-        for (i = 0; i < metaTags.length; i++) {
-            if (metaTags[i].name === 'viewport') viewportFound = true;
+            // Add viewport meta, if none found
+            if (!viewportFound) {
+                var viewport = document.createElement('meta');
+                viewport.name = 'viewport';
+                var content = 'width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no';
+                if (this.device.iOS71) content += ',minimal-ui';
+                viewport.content = content;
+                document.getElementsByTagName('head')[0].appendChild(viewport);
+            }
         }
 
-        // Add viewport meta, if none found
-        if (!viewportFound) {
-            var viewport = document.createElement('meta');
-            viewport.name = 'viewport';
-            var content = 'width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no';
-            if (this.device.iOS71) content += ',minimal-ui';
-            viewport.content = content;
-            document.getElementsByTagName('head')[0].appendChild(viewport);
-        }
+        this.module('engine.core');
 
         if (document.readyState === 'complete') {
             this.DOMReady();
@@ -690,12 +685,19 @@ var game = {
         if (!this.DOMLoaded) {
             if (!document.body) return setTimeout(this.DOMReady.bind(this), 13);
             this.DOMLoaded = true;
-            this.loadModules();
+            if (this.moduleQueue.length > 1) this.loadModules();
         }
     },
 
+    /**
+        Create new class.
+        @method createClass
+        @param {String} name
+        @param {String} [extend]
+        @param {Object} content
+    **/
     createClass: function(name, extend, content) {
-        if (game[name]) throw 'Class ' + name + ' already exist';
+        if (game[name]) throw 'class ' + name + ' already created';
 
         if (typeof extend === 'object') {
             content = extend;
@@ -705,16 +707,37 @@ var game = {
         return game[name] = game[extend].extend(content);
     },
 
+    /**
+        Create new scene.
+        @method createScene
+        @param {String} name
+        @param {Object} content
+    **/
     createScene: function(name, content) {
         return this.createClass('Scene' + name, 'Scene', content);
     },
 
+    /**
+        Add attributes to class.
+        @method addAttributes
+        @param {String} className
+        @param {Object} attributes
+    **/
     addAttributes: function(className, attributes) {
-        if (!this[className]) throw 'Class ' + className + ' not found';
+        if (!this[className]) throw 'class ' + className + ' not found';
 
         for (var name in attributes) {
             this[className][name] = attributes[name];
         }
+    },
+
+    /**
+        Get texture from texture cache.
+        @method getTexture
+        @param {String} id
+    **/
+    getTexture: function(id) {
+        return this.TextureCache[this.paths[id]];
     }
 };
 
@@ -725,7 +748,6 @@ game.fnTest = /xyz/.test(function() {
 }) ? /\b_super\b/ : /[\D|\d]*/;
 
 /**
-    Base class.
     @class Class
 **/
 game.Class = function() {};
@@ -734,7 +756,7 @@ game.Class = function() {};
     Extend class.
     @method extend
     @param {Object} prop
-    @return {game.Class} Returns extended class
+    @return {game.Class}
 **/
 game.Class.extend = function(prop) {
     var parent = this.prototype;
@@ -744,11 +766,6 @@ game.Class.extend = function(prop) {
 
     var makeFn = function(name, fn) {
         return function() {
-            /**
-                Call functions parent function.
-                @method _super
-                @param {Array} arguments
-            **/
             var tmp = this._super;
             this._super = parent[name];
             var ret = fn.apply(this, arguments);

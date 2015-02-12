@@ -9,17 +9,14 @@ game.module(
 'use strict';
 
 /**
-    Audio manager.
     @class Audio
     @extends game.Class
 **/
-game.Audio = game.Class.extend({
-    audioId: 0,
+game.createClass('Audio', {
+    audioId: 1,
     audioObjects: {},
     systemPaused: [],
     sources: {},
-    context: null,
-    gainNode: null,
     /**
         List of supported audio formats.
         @property {Array} formats
@@ -36,14 +33,8 @@ game.Audio = game.Class.extend({
     **/
     pausedSounds: [],
     /**
-        Main sound volume.
-        @property {Number} soundVolume
-        @default 1.0
-    **/
-    soundVolume: 1.0,
-    /**
         Current music id.
-        @property {Object} currentMusic
+        @property {Number} currentMusic
     **/
     currentMusic: null,
     /**
@@ -57,12 +48,6 @@ game.Audio = game.Class.extend({
         @default false
     **/
     musicMuted: false,
-    /**
-        Main music volume.
-        @property {Number} musicVolume
-        @default 1.0
-    **/
-    musicVolume: 1.0,
     /**
         Is sounds muted.
         @property {Boolean} soundMuted
@@ -110,26 +95,23 @@ game.Audio = game.Class.extend({
         // Init Web Audio
         if (game.Audio.enabled && game.Audio.webAudio) {
             this.context = new AudioContext();
-
-            if (this.context.createGain) this.gainNode = this.context.createGain();
-            else if (this.context.createGainNode) this.gainNode = this.context.createGainNode();
+            this.gainNode = this.context.createGain ? this.context.createGain() : this.context.createGainNode();
             this.gainNode.connect(this.context.destination);
         }
+
+        this.musicVolume = game.Audio.musicVolume;
+        this.soundVolume = game.Audio.soundVolume;
     },
 
-    decode: function(request, path, callback) {
-        if (!this.context) return;
-
-        if (!request.response) throw('Error loading audio: ' + path);
-
+    _decode: function(request, path, callback, errorCallback) {
         this.context.decodeAudioData(
             request.response,
-            this.loaded.bind(this, path, callback),
-            this.error.bind(this, path)
+            this._loaded.bind(this, path, callback),
+            errorCallback
         );
     },
     
-    load: function(path, callback) {
+    _load: function(path, callback, errorCallback) {
         if (!game.Audio.enabled) {
             if (typeof callback === 'function') callback();
             return;
@@ -145,7 +127,7 @@ game.Audio = game.Class.extend({
             var request = new XMLHttpRequest();
             request.open('GET', realPath, true);
             request.responseType = 'arraybuffer';
-            request.onload = this.decode.bind(this, request, path, callback);
+            request.onload = this._decode.bind(this, request, path, callback, errorCallback);
             request.send();
         }
         // HTML5 Audio
@@ -153,44 +135,42 @@ game.Audio = game.Class.extend({
             var audio = new Audio(realPath);
             if (game.device.ie) {
                 // Sometimes IE fails to trigger events, when loading audio
-                this.loaded(path, callback, audio);
+                this._loaded(path, callback, audio);
             }
             else {
-                audio.loadCallback = this.loaded.bind(this, path, callback, audio);
-                audio.addEventListener('canplaythrough', audio.loadCallback, false);
-                audio.addEventListener('error', this.error.bind(this, path), false);
+                audio.loadCallback = this._loaded.bind(this, path, callback, audio);
+                audio.addEventListener('canplaythrough', audio.loadCallback);
+                audio.addEventListener('error', errorCallback);
             }
             audio.preload = 'auto';
             audio.load();
         }
     },
 
-    loaded: function(path, callback, audio) {
+    _loaded: function(path, callback, audio) {
         for (var name in game.paths) {
-            if (game.paths[name] === path) var id = name;
+            if (game.paths[name] === path) {
+                var id = name;
+                break;
+            }
         }
-        if (!id) throw('No id found for audio source');
 
         this.sources[id] = {
             audio: audio,
             path: path
         };
 
-        if (audio instanceof Audio) {
-            audio.removeEventListener('canplaythrough', audio.loadCallback, false);
+        if (!this.context) {
+            audio.removeEventListener('canplaythrough', audio.loadCallback);
             audio.addEventListener('ended', function() {
                 this.playing = false;
-            }, false);
+            });
         }
 
         if (typeof callback === 'function') callback(path);
     },
 
-    error: function(path) {
-        throw('Error loading: ' + path);
-    },
-
-    onended: function(id) {
+    _onended: function(id) {
         var index = this.playingSounds.indexOf(id);
         if (index !== -1) this.playingSounds.splice(index, 1);
 
@@ -207,48 +187,38 @@ game.Audio = game.Class.extend({
         delete this.audioObjects[id];
     },
 
-    play: function(name, loop, volume, callback, rate, time, audioId) {
+    _play: function(name, loop, volume, callback, rate, time, audioId) {
         if (!game.Audio.enabled) return false;
-
-        if (typeof volume !== 'number') volume = 1;
-        if (typeof rate !== 'number') rate = 1;
-
-        if (!audioId) {
-            this.audioId++;
-            audioId = this.audioId;
-        }
+        if (typeof audioId !== 'number') audioId = this.audioId++;
 
         // Web Audio
         if (this.context) {
             var audio = this.context.createBufferSource();
             audio.buffer = this.sources[name].audio;
             audio.loop = !!loop;
-            audio.playbackRate.value = rate;
+            audio.playbackRate.value = rate || 1;
             audio.callback = callback;
-            audio.onended = this.onended.bind(this, audioId);
+            audio.onended = this._onended.bind(this, audioId);
 
-            var gainNode;
-            if (this.context.createGain) gainNode = this.context.createGain();
-            else if (this.context.createGainNode) gainNode = this.context.createGainNode();
-            gainNode.gain.value = volume;
-
+            var gainNode = this.context.createGain ? this.context.createGain() : this.context.createGainNode();
+            gainNode.gain.value = typeof volume === 'number' ? volume : 1;
             gainNode.connect(this.gainNode);
             audio.connect(gainNode);
             audio.gainNode = gainNode;
 
             var startTime = time || 0;
-            if (typeof audio.start === 'function') audio.start(0, startTime);
+            if (audio.start) audio.start(0, startTime);
             else audio.noteOn(0, startTime);
             audio.startTime = this.context.currentTime - startTime;
         }
         // HTML5 Audio
         else {
-            this.sources[name].audio.volume = volume;
+            this.sources[name].audio.volume = typeof volume === 'number' ? volume : 1;
             this.sources[name].audio.loop = loop;
             this.sources[name].audio.playing = true;
             this.sources[name].audio.callback = callback;
-            this.sources[name].audio.onended = this.onended.bind(this, this.audioId);
-            this.sources[name].audio.currentTime = 0;
+            this.sources[name].audio.onended = this._onended.bind(this, audioId);
+            if (!game.device.ie) this.sources[name].audio.currentTime = 0;
             this.sources[name].audio.play();
             var audio = this.sources[name].audio;
         }
@@ -257,9 +227,7 @@ game.Audio = game.Class.extend({
         return audioId;
     },
 
-    stop: function(id, skipCallback) {
-        if (!game.Audio.enabled) return false;
-
+    _stop: function(id, skipCallback) {
         var audio = this.audioObjects[id];
         if (!audio) return false;
 
@@ -272,18 +240,14 @@ game.Audio = game.Class.extend({
         }
         // HTML5 Audio
         else {
-            // Is this fixed on CocoonJS ?
-            if (navigator.isCocoonJS) audio.volume = 0;
-            else audio.pause();
+            audio.pause();
             audio.playing = false;
         }
 
         return true;
     },
 
-    pause: function(id) {
-        if (!game.Audio.enabled) return false;
-
+    _pause: function(id) {
         var audio = this.audioObjects[id];
         if (!audio) return false;
 
@@ -304,17 +268,15 @@ game.Audio = game.Class.extend({
         return true;
     },
 
-    resume: function(id) {
-        if (!game.Audio.enabled) return false;
-
+    _resume: function(id) {
         var audio = this.audioObjects[id];
         if (!audio) return false;
 
         // Web Audio
         if (this.context) {
             if (audio.pauseTime) {
-                var audioName = this.getNameForAudio(audio);
-                this.play(audioName, audio.loop, audio.gainNode.gain.value, audio.callback, audio.playbackRate, audio.pauseTime, id);
+                var audioName = this._getNameForAudio(audio);
+                this._play(audioName, audio.loop, audio.gainNode.gain.value, audio.callback, audio.playbackRate, audio.pauseTime, id);
             }
             else return false;
         }
@@ -327,9 +289,7 @@ game.Audio = game.Class.extend({
         return true;
     },
 
-    mute: function(id) {
-        if (!game.Audio.enabled) return false;
-
+    _mute: function(id) {
         var audio = this.audioObjects[id];
         if (!audio) return false;
 
@@ -345,15 +305,13 @@ game.Audio = game.Class.extend({
         return true;
     },
 
-    unmute: function(id, volume) {
-        if (!game.Audio.enabled) return false;
-
+    _unmute: function(id, volume) {
         var audio = this.audioObjects[id];
         if (!audio) return false;
 
         // Web Audio
         if (this.context) {
-            audio.gainNode.gain.value = volume || 1;
+            audio.gainNode.gain.value = volume || 1;
         }
         // HTML5 Audio
         else {
@@ -363,7 +321,7 @@ game.Audio = game.Class.extend({
         return true;
     },
 
-    getNameForAudio: function(audio) {
+    _getNameForAudio: function(audio) {
         // Web Audio
         if (this.context) {
             for (var name in this.sources) {
@@ -390,11 +348,9 @@ game.Audio = game.Class.extend({
         @return {Number} id
     **/
     playSound: function(name, loop, callback, rate) {
-        if (!game.Audio.enabled) return false;
-
         var volume = this.soundMuted ? 0 : this.soundVolume;
-        var id = this.play(name, loop, volume, callback, rate);
-        this.playingSounds.push(id);
+        var id = this._play(name, loop, volume, callback, rate);
+        if (id) this.playingSounds.push(id);
 
         return id;
     },
@@ -407,14 +363,12 @@ game.Audio = game.Class.extend({
         @return {Boolean}
     **/
     stopSound: function(id, skipCallback) {
-        if (!game.Audio.enabled) return false;
-
         if (id) {
-            return this.stop(id, !!skipCallback);
+            return this._stop(id, !!skipCallback);
         }
         else {
             for (var i = this.playingSounds.length - 1; i >= 0; i--) {
-                this.stop(this.playingSounds[i], !!skipCallback);
+                this._stop(this.playingSounds[i], !!skipCallback);
             }
             return true;
         }
@@ -427,19 +381,17 @@ game.Audio = game.Class.extend({
         @return {Boolean} Return false, if sound is not playing
     **/
     pauseSound: function(id) {
-        if (!game.Audio.enabled) return false;
-
         if (id) {
             var index = this.playingSounds.indexOf(id);
             if (index === -1) return false;
 
-            this.pause(id);
+            this._pause(id);
             this.playingSounds.splice(index, 1);
             this.pausedSounds.push(id);
         }
         else {
             for (var i = this.playingSounds.length - 1; i >= 0; i--) {
-                this.pause(this.playingSounds[i]);
+                this._pause(this.playingSounds[i]);
                 this.pausedSounds.push(this.playingSounds[i]);
             }
             this.playingSounds.length = 0;
@@ -455,12 +407,10 @@ game.Audio = game.Class.extend({
         @return {Boolean} Return false, if sound is not paused
     **/
     resumeSound: function(id) {
-        if (!game.Audio.enabled) return false;
-
         var index = this.pausedSounds.indexOf(id);
         if (index === -1) return false;
 
-        this.resume(id);
+        this._resume(id);
         this.playingSounds.push(id);
         this.pausedSounds.splice(index, 1);
         
@@ -474,19 +424,17 @@ game.Audio = game.Class.extend({
         @return {Boolean}
     **/
     muteSound: function(id) {
-        if (!game.Audio.enabled) return false;
-
         if (id) {
-            return this.mute(id);
+            return this._mute(id);
         }
         else {
             this.soundMuted = true;
             var i;
             for (i = this.playingSounds.length - 1; i >= 0; i--) {
-                this.mute(this.playingSounds[i]);
+                this._mute(this.playingSounds[i]);
             }
             for (i = this.pausedSounds.length - 1; i >= 0; i--) {
-                this.mute(this.pausedSounds[i]);
+                this._mute(this.pausedSounds[i]);
             }
             return true;
         }
@@ -499,19 +447,17 @@ game.Audio = game.Class.extend({
         @return {Boolean}
     **/
     unmuteSound: function(id) {
-        if (!game.Audio.enabled) return false;
-
         if (id) {
-            return this.unmute(id, this.soundVolume);
+            return this._unmute(id, this.soundVolume);
         }
         else {
             this.soundMuted = false;
             var i;
             for (i = this.playingSounds.length - 1; i >= 0; i--) {
-                this.unmute(this.playingSounds[i], this.soundVolume);
+                this._unmute(this.playingSounds[i], this.soundVolume);
             }
             for (i = this.pausedSounds.length - 1; i >= 0; i--) {
-                this.unmute(this.pausedSounds[i], this.soundVolume);
+                this._unmute(this.pausedSounds[i], this.soundVolume);
             }
             return true;
         }
@@ -525,15 +471,13 @@ game.Audio = game.Class.extend({
         @return {Boolean}
     **/
     playMusic: function(name, loop) {
-        if (!game.Audio.enabled) return false;
-
         var volume = this.musicMuted ? 0 : this.musicVolume;
         
         if (typeof loop === 'undefined') loop = true;
 
-        if (this.currentMusic) this.stop(this.currentMusic);
+        if (this.currentMusic) this._stop(this.currentMusic);
         
-        this.currentMusic = this.play(name, !!loop, volume);
+        this.currentMusic = this._play(name, !!loop, volume);
         this.currentMusicName = name;
         
         return !!this.currentMusic;
@@ -545,10 +489,8 @@ game.Audio = game.Class.extend({
         @return {Boolean}
     **/
     stopMusic: function() {
-        if (!game.Audio.enabled) return false;
-
         if (this.currentMusic) {
-            var stop = this.stop(this.currentMusic);
+            var stop = this._stop(this.currentMusic);
             this.currentMusic = null;
             this.currentMusicName = null;
             return !!stop;
@@ -563,9 +505,7 @@ game.Audio = game.Class.extend({
         @return {Boolean}
     **/
     pauseMusic: function() {
-        if (!game.Audio.enabled) return false;
-
-        if (this.currentMusic) return this.pause(this.currentMusic);
+        if (this.currentMusic) return this._pause(this.currentMusic);
         return false;
     },
 
@@ -575,7 +515,7 @@ game.Audio = game.Class.extend({
         @return {Boolean}
     **/
     resumeMusic: function() {
-        return this.resume(this.currentMusic);
+        return this._resume(this.currentMusic);
     },
 
     /**
@@ -583,10 +523,8 @@ game.Audio = game.Class.extend({
         @method muteMusic
     **/
     muteMusic: function() {
-        if (!game.Audio.enabled) return false;
-
         this.musicMuted = true;
-        if (this.currentMusic) this.mute(this.currentMusic);
+        if (this.currentMusic) this._mute(this.currentMusic);
     },
 
     /**
@@ -594,10 +532,24 @@ game.Audio = game.Class.extend({
         @method unmuteMusic
     **/
     unmuteMusic: function() {
-        if (!game.Audio.enabled) return false;
-
         this.musicMuted = false;
-        if (this.currentMusic) this.unmute(this.currentMusic, this.musicVolume);
+        if (this.currentMusic) this._unmute(this.currentMusic, this.musicVolume);
+    },
+
+    /**
+        Set volume for specific audio.
+        @method setVolume
+        @param {Number} id
+        @param {Number} value
+    **/
+    setVolume: function(id, value) {
+        var audio = this.audioObjects[id];
+        if (!audio) return false;
+
+        // Web Audio
+        if (this.context) audio.gainNode.gain.value = value;
+        // HTML5 Audio
+        else audio.volume = value;
     },
 
     /**
@@ -606,8 +558,6 @@ game.Audio = game.Class.extend({
         @param {Number} value
     **/
     setSoundVolume: function(value) {
-        if (!game.Audio.enabled) return false;
-
         this.soundVolume = value;
 
         var i;
@@ -631,17 +581,14 @@ game.Audio = game.Class.extend({
     },
 
     /**
-        Change music volume.
+        Change main music volume.
         @method setMusicVolume
         @param {Number} value
-        @return {Boolean}
     **/
     setMusicVolume: function(value) {
-        if (!game.Audio.enabled) return false;
-
         this.musicVolume = value;
 
-        if (!this.currentMusic) return false;
+        if (!this.currentMusic) return;
 
         if (this.context) {
             this.audioObjects[this.currentMusic].gainNode.gain.value = this.musicVolume;
@@ -649,21 +596,18 @@ game.Audio = game.Class.extend({
         else {
             this.currentMusic.volume = this.musicVolume;
         }
-
-        return true;
     },
 
     /**
         Change audio playback rate (Web Audio).
         @method setPlaybackRate
-        @param {Object} audio
+        @param {Number} id
         @param {Number} rate
     **/
-    setPlaybackRate: function(audio, rate) {
-        if (!game.Audio.enabled) return false;
-
-        if (audio && this.context) {
-            audio.playbackRate.value = rate || 1;
+    setPlaybackRate: function(id, rate) {
+        if (this.context) {
+            var audio = this.audioObjects[id];
+            if (audio) audio.playbackRate.value = rate || 1;
         }
     },
 
@@ -692,8 +636,6 @@ game.Audio = game.Class.extend({
         @return {Boolean}
     **/
     toggleSound: function() {
-        if (!game.Audio.enabled) return false;
-
         this.soundMuted = !this.soundMuted;
         if (this.soundMuted) this.muteSound();
         else this.unmuteSound();
@@ -707,8 +649,6 @@ game.Audio = game.Class.extend({
         @return {Boolean}
     **/
     toggleMusic: function() {
-        if (!game.Audio.enabled) return false;
-
         this.musicMuted = !this.musicMuted;
         if (this.musicMuted) this.muteMusic();
         else this.unmuteMusic();
@@ -720,7 +660,7 @@ game.Audio = game.Class.extend({
         this.pauseMusic();
 
         for (var i = this.playingSounds.length - 1; i >= 0; i--) {
-            this.pause(this.playingSounds[i]);
+            this._pause(this.playingSounds[i]);
             this.systemPaused.push(this.playingSounds[i]);
         }
     },
@@ -729,39 +669,53 @@ game.Audio = game.Class.extend({
         this.resumeMusic();
 
         for (var i = this.systemPaused.length - 1; i >= 0; i--) {
-            this.resume(this.systemPaused[i]);
+            this._resume(this.systemPaused[i]);
         }
 
         this.systemPaused.length = 0;
     }
 });
 
-/**
-    Enable audio.
-    @attribute {Boolean} enabled
-    @default true
-**/
-game.Audio.enabled = true;
-/**
-    Enable Web Audio.
-    @attribute {Boolean} webAudio
-    @default true
-**/
-game.Audio.webAudio = true;
-/**
-    List of available audio formats.
-    @attribute {Array} formats
-**/
-game.Audio.formats = [
-    { ext: 'm4a', type: 'audio/mp4; codecs="mp4a.40.5"' },
-    { ext: 'ogg', type: 'audio/ogg; codecs="vorbis"' },
-    { ext: 'wav', type: 'audio/wav' }
-];
-/**
-    Stop audio, when changing scene.
-    @attribute {Boolean} stopOnSceneChange
-    @default true
-**/
-game.Audio.stopOnSceneChange = true;
+game.addAttributes('Audio', {
+    /**
+        Enable audio.
+        @attribute {Boolean} enabled
+        @default true
+    **/
+    enabled: true,
+    /**
+        Enable Web Audio.
+        @attribute {Boolean} webAudio
+        @default true
+    **/
+    webAudio: true,
+    /**
+        List of available audio formats.
+        @attribute {Array} formats
+    **/
+    formats: [
+        { ext: 'm4a', type: 'audio/mp4; codecs="mp4a.40.5"' },
+        { ext: 'ogg', type: 'audio/ogg; codecs="vorbis"' },
+        { ext: 'wav', type: 'audio/wav' }
+    ],
+    /**
+        Stop audio, when changing scene.
+        @attribute {Boolean} stopOnSceneChange
+        @default true
+    **/
+    stopOnSceneChange: true,
+    /**
+        Sound volume.
+        @attribute {Number} soundVolume
+        @default 1
+    **/
+    soundVolume: 1,
+    /**
+        Music volume.
+        @attribute {Number} musicVolume
+        @default 1
+    **/
+    musicVolume: 1
+});
 
 });

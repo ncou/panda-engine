@@ -13,11 +13,22 @@ game.module(
     @class Storage
     @extends game.Class
 **/
-game.Storage = game.Class.extend({
-    id: null,
-
+game.createClass('Storage', {
     init: function(id) {
-        this.id = id;
+        this.id = id || game.Storage.id;
+        this.supported = this.isSupported();
+    },
+
+    isSupported: function() {
+        if (typeof localStorage !== 'object') return false;
+        try {
+            localStorage.setItem('localStorage', 1);
+            localStorage.removeItem('localStorage');
+        }
+        catch (e) {
+            return false;
+        }
+        return true;
     },
 
     /**
@@ -27,6 +38,7 @@ game.Storage = game.Class.extend({
         @param {*} value
     **/
     set: function(key, value) {
+        if (!this.supported) return false;
         localStorage.setItem(this.id + '.' + key, this.encode(value));
     },
 
@@ -43,7 +55,7 @@ game.Storage = game.Class.extend({
         try {
             return this.decode(raw);
         }
-        catch (err) {
+        catch (e) {
             return raw;
         }
     },
@@ -87,9 +99,11 @@ game.Storage = game.Class.extend({
     }
 });
 
-/**
-    @attribute {String} id
-**/
-game.Storage.id = '';
+game.addAttributes('Storage', {
+    /**
+        @attribute {String} id
+    **/
+    id: ''
+});
 
 });
