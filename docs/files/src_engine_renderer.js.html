@@ -1,10 +1,9 @@
 ---
 layout: default
-title: Documentation <span>1.12.0</span>
+title: Documentation <span>1.13.0</span>
 ---
 
 <div class="sidebar"></div>
-
 <h1 class="file-heading">File: src/engine/renderer.js</h1>
 
 <div class="file">
@@ -204,7 +203,7 @@ game.Sprite.fromImage = game.PIXI.Sprite.fromImage;
     @param {Object} [settings] Settings to merge to this animation
 **/
 game.Spine = game.PIXI.Spine.extend({
-    init: function(id, settings) {
+    init: function(id, settings) {
         this._super(game.paths[id] || id);
         game.merge(this, settings);
     },
@@ -298,6 +297,13 @@ game.TilingSprite = game.PIXI.TilingSprite.extend({
     @param {Array} textures Textures this animation made up of
 **/
 game.Animation = game.PIXI.MovieClip.extend({
+    /**
+        Play animation in reverse.
+        @property {Boolean} reverse
+        @default false
+    **/
+    reverse: false,
+
     init: function(textures) {
         if (typeof textures === &#x27;string&#x27;) {
             var frames = Array.prototype.slice.call(arguments);
@@ -329,10 +335,29 @@ game.Animation = game.PIXI.MovieClip.extend({
         if (this.parent) this.parent.removeChild(this);
     },
 
+    /**
+        Play animation.
+        @method play
+        @param {Boolean} loop
+    **/
+    play: function(loop) {
+        if (typeof loop === &#x27;boolean&#x27;) this.loop = loop;
+        this.playing = true;
+    },
+
     updateTransform: function() {
         if (this.playing) {
             this.currentFrame -= this.animationSpeed;
-            this.currentFrame += this.animationSpeed * 60 * game.system.delta;
+            this.currentFrame += this.animationSpeed * (this.reverse ? -1 : 1) * 60 * game.system.delta;
+            
+            if (this.currentFrame &lt; 0 &amp;&amp; this.reverse) {
+                if (!this.loop) {
+                    if (this.onComplete) this.onComplete();
+                    this.currentFrame = 0;
+                    this.playing = false;
+                }
+                else this.currentFrame = this.totalFrames - 1 + this.currentFrame;
+            }
         }
         this._super();
     }
@@ -397,8 +422,8 @@ game.createClass(&#x27;SpriteSheet&#x27;, {
         @return {game.Animation}
     **/
     anim: function(frames, startIndex, onlyTextures) {
-        startIndex = startIndex || 0;
-        frames = frames || this.frames;
+        startIndex = startIndex || 0;
+        frames = frames || this.frames;
         var textures = [];
         if (frames.length &gt; 0) {
             for (var i = 0; i &lt; frames.length; i++) {
@@ -501,4 +526,3 @@ game.createClass(&#x27;Video&#x27;, {
 
     </pre>
 </div>
-

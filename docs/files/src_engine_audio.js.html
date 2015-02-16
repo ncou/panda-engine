@@ -1,10 +1,9 @@
 ---
 layout: default
-title: Documentation <span>1.12.0</span>
+title: Documentation <span>1.13.0</span>
 ---
 
 <div class="sidebar"></div>
-
 <h1 class="file-heading">File: src/engine/audio.js</h1>
 
 <div class="file">
@@ -212,7 +211,7 @@ game.createClass(&#x27;Audio&#x27;, {
             audio.onended = this._onended.bind(this, audioId);
 
             var gainNode = this.context.createGain ? this.context.createGain() : this.context.createGainNode();
-            gainNode.gain.value = typeof volume === &#x27;number&#x27; ? volume : 1;
+            gainNode.gain.value = typeof volume === &#x27;number&#x27; ? volume : 1;
             gainNode.connect(this.gainNode);
             audio.connect(gainNode);
             audio.gainNode = gainNode;
@@ -224,7 +223,7 @@ game.createClass(&#x27;Audio&#x27;, {
         }
         // HTML5 Audio
         else {
-            this.sources[name].audio.volume = typeof volume === &#x27;number&#x27; ? volume : 1;
+            this.sources[name].audio.volume = typeof volume === &#x27;number&#x27; ? volume : 1;
             this.sources[name].audio.loop = loop;
             this.sources[name].audio.playing = true;
             this.sources[name].audio.callback = callback;
@@ -246,6 +245,7 @@ game.createClass(&#x27;Audio&#x27;, {
 
         // Web Audio
         if (this.context) {
+            if (audio.pauseTime &gt;= 0) return false;
             if (typeof audio.stop === &#x27;function&#x27;) audio.stop(0);
             else audio.noteOff(0);
         }
@@ -285,7 +285,7 @@ game.createClass(&#x27;Audio&#x27;, {
 
         // Web Audio
         if (this.context) {
-            if (audio.pauseTime) {
+            if (audio.pauseTime &gt;= 0) {
                 var audioName = this._getNameForAudio(audio);
                 this._play(audioName, audio.loop, audio.gainNode.gain.value, audio.callback, audio.playbackRate, audio.pauseTime, id);
             }
@@ -322,7 +322,7 @@ game.createClass(&#x27;Audio&#x27;, {
 
         // Web Audio
         if (this.context) {
-            audio.gainNode.gain.value = volume || 1;
+            audio.gainNode.gain.value = volume || 1;
         }
         // HTML5 Audio
         else {
@@ -618,7 +618,7 @@ game.createClass(&#x27;Audio&#x27;, {
     setPlaybackRate: function(id, rate) {
         if (this.context) {
             var audio = this.audioObjects[id];
-            if (audio) audio.playbackRate.value = rate || 1;
+            if (audio) audio.playbackRate.value = rate || 1;
         }
     },
 
@@ -705,8 +705,8 @@ game.addAttributes(&#x27;Audio&#x27;, {
         @attribute {Array} formats
     **/
     formats: [
-        { ext: &#x27;m4a&#x27;, type: &#x27;audio/mp4; codecs=&quot;mp4a.40.5&quot;&#x27; },
         { ext: &#x27;ogg&#x27;, type: &#x27;audio/ogg; codecs=&quot;vorbis&quot;&#x27; },
+        { ext: &#x27;m4a&#x27;, type: &#x27;audio/mp4; codecs=&quot;mp4a.40.5&quot;&#x27; },
         { ext: &#x27;wav&#x27;, type: &#x27;audio/wav&#x27; }
     ],
     /**
@@ -733,4 +733,3 @@ game.addAttributes(&#x27;Audio&#x27;, {
 
     </pre>
 </div>
-

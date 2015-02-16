@@ -1,10 +1,9 @@
 ---
 layout: default
-title: Documentation <span>1.12.0</span>
+title: Documentation <span>1.13.0</span>
 ---
 
 <div class="sidebar"></div>
-
 <h1 class="file-heading">File: src/engine/scene.js</h1>
 
 <div class="file">
@@ -116,31 +115,6 @@ game.createClass(&#x27;Scene&#x27;, {
     },
     
     /**
-        This is called every frame.
-        @method update
-    **/
-    update: function() {
-        var i;
-        if (this.world) this.world.update();
-        for (i = this.timers.length - 1; i &gt;= 0; i--) {
-            if (this.timers[i].time() &gt;= 0) {
-                if (typeof this.timers[i].callback === &#x27;function&#x27;) this.timers[i].callback();
-                if (this.timers[i].repeat) this.timers[i].reset();
-                else this.timers.splice(i, 1);
-            }
-        }
-        for (i = this.emitters.length - 1; i &gt;= 0; i--) {
-            this.emitters[i].update();
-            if (this.emitters[i]._remove) this.emitters.splice(i, 1);
-        }
-        if (game.tweenEngine) game.tweenEngine.update();
-        for (i = this.objects.length - 1; i &gt;= 0; i--) {
-            if (typeof this.objects[i].update === &#x27;function&#x27;) this.objects[i].update();
-            if (this.objects[i]._remove) this.objects.splice(i, 1);
-        }
-    },
-
-    /**
         Add object to scene, so it&#x27;s &#x60;update()&#x60; function get&#x27;s called every frame.
         @method addObject
         @param {Object} object
@@ -200,6 +174,7 @@ game.createClass(&#x27;Scene&#x27;, {
         @param {Boolean} doCallback
     **/
     removeTimer: function(timer, doCallback) {
+        if (!timer) return;
         if (!doCallback) timer.callback = null;
         timer.repeat = false;
         timer.set(0);
@@ -324,6 +299,31 @@ game.createClass(&#x27;Scene&#x27;, {
         @method exit
     **/
     exit: function() {
+    },
+
+    /**
+        This is called every frame.
+        @method update
+    **/
+    update: function() {
+        var i;
+        if (game.tweenEngine) game.tweenEngine.update();
+        if (this.world) this.world.update();
+        for (i = this.timers.length - 1; i &gt;= 0; i--) {
+            if (this.timers[i].time() &gt;= 0) {
+                if (typeof this.timers[i].callback === &#x27;function&#x27;) this.timers[i].callback();
+                if (this.timers[i].repeat) this.timers[i].reset();
+                else this.timers.splice(i, 1);
+            }
+        }
+        for (i = this.emitters.length - 1; i &gt;= 0; i--) {
+            this.emitters[i].update();
+            if (this.emitters[i]._remove) this.emitters.splice(i, 1);
+        }
+        for (i = this.objects.length - 1; i &gt;= 0; i--) {
+            if (typeof this.objects[i].update === &#x27;function&#x27;) this.objects[i].update();
+            if (this.objects[i]._remove) this.objects.splice(i, 1);
+        }
     }
 });
 
@@ -331,4 +331,3 @@ game.createClass(&#x27;Scene&#x27;, {
 
     </pre>
 </div>
-

@@ -1,10 +1,9 @@
 ---
 layout: default
-title: Documentation <span>1.12.0</span>
+title: Documentation <span>1.13.0</span>
 ---
 
 <div class="sidebar"></div>
-
 <h1 class="file-heading">File: src/engine/physics.js</h1>
 
 <div class="file">
@@ -50,7 +49,9 @@ game.createClass(&#x27;World&#x27;, {
     collisionGroups: {},
 
     init: function(x, y) {
-        this.gravity = new game.Vector(x || 0, y || 980);
+        x = typeof x === &#x27;number&#x27; ? x : 0;
+        y = typeof y === &#x27;number&#x27; ? y : 980;
+        this.gravity = new game.Vector(x, y);
         this.solver = new game.CollisionSolver();
     },
 
@@ -63,8 +64,7 @@ game.createClass(&#x27;World&#x27;, {
         body.world = this;
         body._remove = false;
         this.bodies.push(body);
-        this.addBodyCollision(body, body.collisionGroup);
-        if (game.debugDraw &amp;&amp; body.shape) game.debugDraw.addBody(body);
+        this.addBodyCollision(body);
     },
 
     /**
@@ -79,26 +79,27 @@ game.createClass(&#x27;World&#x27;, {
     },
 
     /**
-        Remove body from it&#x27;s collision group.
+        Add body to collision group.
+        @method addBodyCollision
+        @param {game.Body} body
+    **/
+    addBodyCollision: function(body) {
+        if (typeof body.collisionGroup !== &#x27;number&#x27;) return;
+        this.collisionGroups[body.collisionGroup] = this.collisionGroups[body.collisionGroup] || [];
+        if (this.collisionGroups[body.collisionGroup].indexOf(body) !== -1) return;
+        this.collisionGroups[body.collisionGroup].push(body);
+    },
+
+    /**
+        Remove body from collision group.
         @method removeBodyCollision
         @param {game.Body} body
     **/
     removeBodyCollision: function(body) {
         if (typeof body.collisionGroup !== &#x27;number&#x27;) return;
+        if (!this.collisionGroups[body.collisionGroup]) return;
+        if (this.collisionGroups[body.collisionGroup].indexOf(body) === -1) return;
         this.collisionGroups[body.collisionGroup].erase(body);
-    },
-
-    /**
-        Add body to collision group.
-        @method addBodyCollision
-        @param {game.Body} body
-        @param {Number} group
-    **/
-    addBodyCollision: function(body, group) {
-        if (typeof group !== &#x27;number&#x27;) return;
-        body.collisionGroup = group;
-        this.collisionGroups[body.collisionGroup] = this.collisionGroups[body.collisionGroup] || [];
-        this.collisionGroups[body.collisionGroup].push(body);
     },
 
     /**
@@ -148,6 +149,7 @@ game.createClass(&#x27;World&#x27;, {
             }
         }
         for (i in this.collisionGroups) {
+            // Remove empty collision group
             if (this.collisionGroups[i].length === 0) {
                 delete this.collisionGroups[i];
                 continue;
@@ -246,7 +248,6 @@ game.createClass(&#x27;CollisionSolver&#x27;, {
                 return true;
             }
         }
-        return a.collide(b);
     }
 });
 
@@ -255,7 +256,7 @@ game.createClass(&#x27;CollisionSolver&#x27;, {
     @class Body
     @extends game.Class
     @constructor
-    @param {Object} [settings]
+    @param {Object} [properties]
 **/
 game.createClass(&#x27;Body&#x27;, {
     /**
@@ -304,7 +305,7 @@ game.createClass(&#x27;Body&#x27;, {
     /**
         Group numbers that body collides against.
         @property {Array} collideAgainst
-        @default null
+        @default []
     **/
     collideAgainst: [],
     /**
@@ -321,14 +322,14 @@ game.createClass(&#x27;Body&#x27;, {
     damping: 0,
     _collides: [],
 
-    init: function(settings) {
+    init: function(properties) {
         this.position = new game.Vector();
         this.velocity = new game.Vector();
         this.velocityLimit = new game.Vector();
         this.last = new game.Vector();
         this.force = new game.Vector();
 
-        game.merge(this, settings);
+        game.merge(this, properties);
     },
 
     /**
@@ -365,9 +366,21 @@ game.createClass(&#x27;Body&#x27;, {
         @param {Number} group
     **/
     setCollisionGroup: function(group) {
-        if (!this.world) return;
-        if (typeof this.collisionGroup === &#x27;number&#x27;) this.world.removeBodyCollision(this, this.collisionGroup);
-        this.world.addBodyCollision(this, group);
+        if (this.world &amp;&amp; typeof this.collisionGroup === &#x27;number&#x27;) this.world.removeBodyCollision(this);
+        this.collisionGroup = group;        
+        if (this.world) this.world.addBodyCollision(this);
+    },
+
+    /**
+        Set body&#x27;s collideAgainst groups.
+        @method setCollideAgainst
+        @param {Number} groups
+    **/
+    setCollideAgainst: function() {
+        this.collideAgainst.length = 0;
+        for (var i = 0; i &lt; arguments.length; i++) {
+            this.collideAgainst.push(arguments[i]);
+        }
     },
 
     /**
@@ -376,7 +389,9 @@ game.createClass(&#x27;Body&#x27;, {
         @param {game.World} world
     **/
     addTo: function(world) {
+        if (this.world) return;
         world.addBody(this);
+        return this;
     },
 
     /**
@@ -401,9 +416,9 @@ game.createClass(&#x27;Body&#x27;, {
     update: function() {
         this.last.copy(this.position);
 
-        this.velocity.multiplyAdd(this.world.gravity, this.mass * game.system.delta);
+        if (this.mass !== 0) this.velocity.multiplyAdd(this.world.gravity, this.mass * game.system.delta);
         this.velocity.multiplyAdd(this.force, game.system.delta);
-        this.velocity.multiply(Math.pow(1 - this.damping, game.system.delta));
+        if (this.damping &gt; 0 &amp;&amp; this.damping &lt; 1) this.velocity.multiply(Math.pow(1 - this.damping, game.system.delta));
 
         if (this.velocityLimit.x &gt; 0) this.velocity.x = this.velocity.x.limit(-this.velocityLimit.x, this.velocityLimit.x);
         if (this.velocityLimit.y &gt; 0) this.velocity.y = this.velocity.y.limit(-this.velocityLimit.y, this.velocityLimit.y);
@@ -704,4 +719,3 @@ game.createClass(&#x27;Vector&#x27;, {
 
     </pre>
 </div>
-

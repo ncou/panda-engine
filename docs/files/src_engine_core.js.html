@@ -1,10 +1,9 @@
 ---
 layout: default
-title: Documentation <span>1.12.0</span>
+title: Documentation <span>1.13.0</span>
 ---
 
 <div class="sidebar"></div>
-
 <h1 class="file-heading">File: src/engine/core.js</h1>
 
 <div class="file">
@@ -23,12 +22,10 @@ title: Documentation <span>1.12.0</span>
 **/
 var game = {
     /**
+        Current engine version.
         @property {String} version
     **/
-    version: &#x27;1.12.0&#x27;,
-    /**
-        @property {Object} config
-    **/
+    version: &#x27;1.13.1&#x27;,
     config: typeof pandaConfig !== &#x27;undefined&#x27; ? pandaConfig : {},
     coreModules: [
         &#x27;engine.analytics&#x27;,
@@ -105,7 +102,6 @@ var game = {
     moduleQueue: [],
     assetQueue: [],
     audioQueue: [],
-    gameMainModule: &#x27;game.main&#x27;,
 
     /**
         Get JSON data.
@@ -242,17 +238,6 @@ var game = {
     },
 
     /**
-        Add multiple assets to loader.
-        @method addAssets
-        @param {Array} assets
-    **/
-    addAssets: function(assets) {
-        for (var i = 0; i &lt; assets.length; i++) {
-            this.addAsset(assets[i]);
-        }
-    },
-
-    /**
         Add audio to loader.
         @method addAudio
         @param {String} path
@@ -320,11 +305,11 @@ var game = {
         if (this.current) throw &#x27;module &#x27; + this.current.name + &#x27; has no body&#x27;;
         if (this.modules[name] &amp;&amp; this.modules[name].body) throw &#x27;module &#x27; + name + &#x27; is already defined&#x27;;
 
-        this.current = { name: name, requires: [], loaded: false, body: null };
-        if (name === this.gameMainModule) {
-            this.current.requires.push(&#x27;engine.core&#x27;);
-            if (this.DOMLoaded) this.loadModules();
-        }
+        this.current = { name: name, requires: [], loaded: false };
+        
+        if (name.indexOf(&#x27;game.&#x27;) === 0) this.current.requires.push(&#x27;engine.core&#x27;);
+        if (this.moduleQueue.length === 1 &amp;&amp; this.DOMLoaded) this.loadModules();
+
         this.modules[name] = this.current;
         this.moduleQueue.push(this.current);
 
@@ -371,7 +356,7 @@ var game = {
 
         if (this.Audio) this.audio = new this.Audio();
         if (this.Pool) this.pool = new this.Pool();
-        if (this.DebugDraw &amp;&amp; this.DebugDraw.enabled) this.debugDraw = new this.DebugDraw();
+        if (this.DebugDraw &amp;&amp; this.DebugDraw.enabled &amp;&amp; this.Debug.enabled) this.debugDraw = new this.DebugDraw();
         if (this.Storage &amp;&amp; this.Storage.id) this.storage = new this.Storage();
         if (this.Analytics &amp;&amp; this.Analytics.id) this.analytics = new this.Analytics();
         if (this.TweenEngine) this.tweenEngine = new this.TweenEngine();
@@ -505,13 +490,13 @@ var game = {
     },
 
     boot: function() {
-        delete window.pandaConfig;
-
         if (this.config.noCanvasURL) {
             var canvas = document.createElement(&#x27;canvas&#x27;);
             var canvasSupported = !!(canvas.getContext &amp;&amp; canvas.getContext(&#x27;2d&#x27;));
             if (!canvasSupported) window.location = this.config.noCanvasURL;
         }
+
+        delete window.pandaConfig;
 
         Math.distance = function(x, y, x2, y2) {
             x = x2 - x;
@@ -583,8 +568,6 @@ var game = {
             return this.charAt(0).toUpperCase() + this.slice(1);
         };
 
-        this.module(&#x27;engine.core&#x27;);
-
         this.normalizeVendorAttribute(window, &#x27;requestAnimationFrame&#x27;);
 
         this.device.pixelRatio = window.devicePixelRatio || 1;
@@ -634,15 +617,16 @@ var game = {
         this.device.wt = (this.device.ie &amp;&amp; /Tablet/i.test(navigator.userAgent));
 
         // Others
-        this.device.opera = /Opera/i.test(navigator.userAgent) || /OPR/i.test(navigator.userAgent);
+        this.device.opera = /Opera/i.test(navigator.userAgent) || /OPR/i.test(navigator.userAgent);
         this.device.crosswalk = /Crosswalk/i.test(navigator.userAgent);
         this.device.cocoonJS = !!navigator.isCocoonJS;
         this.device.ejecta = /Ejecta/i.test(navigator.userAgent);
         this.device.facebook = /FB/i.test(navigator.userAgent);
+        this.device.wiiu = /Nintendo WiiU/i.test(navigator.userAgent);
 
         this.device.mobile = this.device.iOS || this.device.android || this.device.wp || this.device.wt;
 
-        if (typeof navigator.plugins === &#x27;undefined&#x27; || navigator.plugins.length === 0) {
+        if (typeof navigator.plugins === &#x27;undefined&#x27; || navigator.plugins.length === 0) {
             try {
                 new ActiveXObject(&#x27;ShockwaveFlash.ShockwaveFlash&#x27;);
                 this.device.flash = true;
@@ -655,6 +639,7 @@ var game = {
             this.device.flash = !!navigator.plugins[&#x27;Shockwave Flash&#x27;];
         }
     
+        // Load device specific config
         for (var i in this.device) {
             if (this.device[i] &amp;&amp; this.config[i]) {
                 for (var o in this.config[i]) {
@@ -670,25 +655,32 @@ var game = {
 
         if (document.location.href.match(/\?nocache/) || this.config.disableCache) this.nocache = &#x27;?&#x27; + Date.now();
 
+        // Default config
         if (typeof this.config.sourceFolder === &#x27;undefined&#x27;) this.config.sourceFolder = &#x27;src&#x27;;
         if (typeof this.config.mediaFolder === &#x27;undefined&#x27;) this.config.mediaFolder = &#x27;media&#x27;;
 
-        var metaTags = document.getElementsByTagName(&#x27;meta&#x27;);
-        var viewportFound = false;
+        if (this.device.mobile) {
+            // Search for viewport meta
+            var metaTags = document.getElementsByTagName(&#x27;meta&#x27;);
+            for (i = 0; i &lt; metaTags.length; i++) {
+                if (metaTags[i].name === &#x27;viewport&#x27;) {
+                    var viewportFound = true;
+                    break;
+                }
+            }
 
-        for (i = 0; i &lt; metaTags.length; i++) {
-            if (metaTags[i].name === &#x27;viewport&#x27;) viewportFound = true;
+            // Add viewport meta, if none found
+            if (!viewportFound) {
+                var viewport = document.createElement(&#x27;meta&#x27;);
+                viewport.name = &#x27;viewport&#x27;;
+                var content = &#x27;width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no&#x27;;
+                if (this.device.iOS71) content += &#x27;,minimal-ui&#x27;;
+                viewport.content = content;
+                document.getElementsByTagName(&#x27;head&#x27;)[0].appendChild(viewport);
+            }
         }
 
-        // Add viewport meta, if none found
-        if (!viewportFound) {
-            var viewport = document.createElement(&#x27;meta&#x27;);
-            viewport.name = &#x27;viewport&#x27;;
-            var content = &#x27;width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no&#x27;;
-            if (this.device.iOS71) content += &#x27;,minimal-ui&#x27;;
-            viewport.content = content;
-            document.getElementsByTagName(&#x27;head&#x27;)[0].appendChild(viewport);
-        }
+        this.module(&#x27;engine.core&#x27;);
 
         if (document.readyState === &#x27;complete&#x27;) {
             this.DOMReady();
@@ -703,7 +695,7 @@ var game = {
         if (!this.DOMLoaded) {
             if (!document.body) return setTimeout(this.DOMReady.bind(this), 13);
             this.DOMLoaded = true;
-            if (this.modules[this.gameMainModule]) this.loadModules();
+            if (this.moduleQueue.length &gt; 1) this.loadModules();
         }
     },
 
@@ -747,6 +739,15 @@ var game = {
         for (var name in attributes) {
             this[className][name] = attributes[name];
         }
+    },
+
+    /**
+        Get texture from texture cache.
+        @method getTexture
+        @param {String} id
+    **/
+    getTexture: function(id) {
+        return this.TextureCache[this.paths[id]];
     }
 };
 
@@ -757,7 +758,6 @@ game.fnTest = /xyz/.test(function() {
 }) ? /\b_super\b/ : /[\D|\d]*/;
 
 /**
-    Base class.
     @class Class
 **/
 game.Class = function() {};
@@ -766,7 +766,7 @@ game.Class = function() {};
     Extend class.
     @method extend
     @param {Object} prop
-    @return {game.Class} Returns extended class
+    @return {game.Class}
 **/
 game.Class.extend = function(prop) {
     var parent = this.prototype;
@@ -776,11 +776,6 @@ game.Class.extend = function(prop) {
 
     var makeFn = function(name, fn) {
         return function() {
-            /**
-                Call functions parent function.
-                @method _super
-                @param {Array} arguments
-            **/
             var tmp = this._super;
             this._super = parent[name];
             var ret = fn.apply(this, arguments);
@@ -877,4 +872,3 @@ else game.boot();
 
     </pre>
 </div>
-

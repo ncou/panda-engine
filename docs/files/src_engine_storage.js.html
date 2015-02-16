@@ -1,10 +1,9 @@
 ---
 layout: default
-title: Documentation <span>1.12.0</span>
+title: Documentation <span>1.13.0</span>
 ---
 
 <div class="sidebar"></div>
-
 <h1 class="file-heading">File: src/engine/storage.js</h1>
 
 <div class="file">
@@ -25,10 +24,21 @@ game.module(
     @extends game.Class
 **/
 game.createClass(&#x27;Storage&#x27;, {
-    id: null,
-
     init: function(id) {
         this.id = id || game.Storage.id;
+        this.supported = this.isSupported();
+    },
+
+    isSupported: function() {
+        if (typeof localStorage !== &#x27;object&#x27;) return false;
+        try {
+            localStorage.setItem(&#x27;localStorage&#x27;, 1);
+            localStorage.removeItem(&#x27;localStorage&#x27;);
+        }
+        catch (e) {
+            return false;
+        }
+        return true;
     },
 
     /**
@@ -38,6 +48,7 @@ game.createClass(&#x27;Storage&#x27;, {
         @param {*} value
     **/
     set: function(key, value) {
+        if (!this.supported) return false;
         localStorage.setItem(this.id + &#x27;.&#x27; + key, this.encode(value));
     },
 
@@ -54,7 +65,7 @@ game.createClass(&#x27;Storage&#x27;, {
         try {
             return this.decode(raw);
         }
-        catch (err) {
+        catch (e) {
             return raw;
         }
     },
@@ -109,4 +120,3 @@ game.addAttributes(&#x27;Storage&#x27;, {
 
     </pre>
 </div>
-

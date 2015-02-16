@@ -1,10 +1,9 @@
 ---
 layout: default
-title: Documentation <span>1.12.0</span>
+title: Documentation <span>1.13.0</span>
 ---
 
 <div class="sidebar"></div>
-
 <h1 class="file-heading">File: src/engine/loader.js</h1>
 
 <div class="file">
@@ -234,7 +233,10 @@ game.createClass(&#x27;Loader&#x27;, {
 
     getPath: function(path) {
         return game.system.retina || game.system.hires ? path.replace(/\.(?=[^.]*$)/, &#x27;@&#x27; + game.scale + &#x27;x.&#x27;) : path;
-    }
+    },
+
+    keydown: function() {},
+    keyup: function() {}
 });
 
 game.addAttributes(&#x27;Loader&#x27;, {
@@ -286,4 +288,3 @@ game.addAttributes(&#x27;Loader&#x27;, {
 
     </pre>
 </div>
-

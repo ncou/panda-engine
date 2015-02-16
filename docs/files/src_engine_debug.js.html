@@ -1,10 +1,9 @@
 ---
 layout: default
-title: Documentation <span>1.12.0</span>
+title: Documentation <span>1.13.0</span>
 ---
 
 <div class="sidebar"></div>
-
 <h1 class="file-heading">File: src/engine/debug.js</h1>
 
 <div class="file">
@@ -17,7 +16,9 @@ game.module(
     &#x27;engine.debug&#x27;
 )
 .require(
-    &#x27;engine.pixi&#x27;
+    &#x27;engine.pixi&#x27;,
+    &#x27;engine.physics&#x27;,
+    &#x27;engine.camera&#x27;
 )
 .body(function() {
 &#x27;use strict&#x27;;
@@ -31,7 +32,7 @@ game.module(
 game.createClass(&#x27;Debug&#x27;, {
     frames: 0,
     last: 0,
-    objects: 0,
+    sprites: 0,
 
     init: function() {
         this.debugDiv = document.createElement(&#x27;div&#x27;);
@@ -49,7 +50,7 @@ game.createClass(&#x27;Debug&#x27;, {
     },
 
     reset: function() {
-        this.objects = 0;
+        this.sprites = -1;
     },
 
     update: function() {
@@ -61,10 +62,12 @@ game.createClass(&#x27;Debug&#x27;, {
             this.frames = 0;
         }
 
-        var text = &#x27;FPS: &#x27; + this.fps + &#x27; OBJECTS: &#x27; + this.objects;
+        var text = &#x27;FPS: &#x27; + this.fps;
+        if (game.scene.objects) text += &#x27; OBJECTS: &#x27; + game.scene.objects.length;
+        text += &#x27; SPRITES: &#x27; + this.sprites;
         if (game.tweenEngine) text += &#x27; TWEENS: &#x27; + game.tweenEngine.tweens.length;
-        text += &#x27; TIMERS: &#x27; + game.scene.timers.length;
-        text += &#x27; EMITTERS: &#x27; + game.scene.emitters.length;
+        if (game.scene.timers) text += &#x27; TIMERS: &#x27; + game.scene.timers.length;
+        if (game.scene.emitters) text += &#x27; EMITTERS: &#x27; + game.scene.emitters.length;
         if (game.scene.world) {
             text += &#x27; BODIES:&#x27; + game.scene.world.bodies.length;
         }
@@ -112,7 +115,7 @@ game.addAttributes(&#x27;Debug&#x27;, {
 
 game.PIXI.DisplayObject.prototype._updateTransform = game.PIXI.DisplayObject.prototype.updateTransform;
 game.PIXI.DisplayObject.prototype.updateTransform = function() {
-    if (game.system.debug) game.system.debug.objects++;
+    if (game.system.debug) game.system.debug.sprites++;
     this._updateTransform();
 };
 game.PIXI.DisplayObject.prototype.displayObjectUpdateTransform = game.PIXI.DisplayObject.prototype.updateTransform;
@@ -156,6 +159,7 @@ game.createClass(&#x27;DebugDraw&#x27;, {
     addSprite: function(sprite) {
         var grap = new game.Graphics();
         grap.beginFill(game.DebugDraw.spriteColor);
+        grap.lineStyle(1, game.DebugDraw.spriteLineColor);
 
         if (sprite.hitArea) {
             if (sprite.hitArea instanceof game.HitRectangle) {
@@ -201,6 +205,7 @@ game.createClass(&#x27;DebugDraw&#x27;, {
     drawBodySprite: function(sprite, body) {
         sprite.clear();
         sprite.beginFill(game.DebugDraw.bodyColor);
+        sprite.lineStyle(1, game.DebugDraw.bodyLineColor);
 
         if (body.shape instanceof game.Rectangle) {
             sprite.drawRect(-body.shape.width / 2, -body.shape.height / 2, body.shape.width, body.shape.height);
@@ -215,7 +220,6 @@ game.createClass(&#x27;DebugDraw&#x27;, {
         for (var i = this.spriteContainer.children.length - 1; i &gt;= 0; i--) {
             sprite = this.spriteContainer.children[i];
             sprite.rotation = sprite.target.rotation;
-            if (sprite.target.parent) sprite.target.updateTransform();
             sprite.visible = sprite.target.worldVisible;
             sprite.position.x = sprite.target.worldTransform.tx;
             sprite.position.y = sprite.target.worldTransform.ty;
@@ -223,6 +227,7 @@ game.createClass(&#x27;DebugDraw&#x27;, {
             sprite.scale.y = sprite.target.scale.y;
             if (!sprite.target.parent) this.spriteContainer.removeChild(sprite);
         }
+        game.system.debug.sprites -= this.spriteContainer.children.length;
     },
 
     updateBodies: function() {
@@ -241,6 +246,7 @@ game.createClass(&#x27;DebugDraw&#x27;, {
             body.position.y = body.target.position.y;
             if (!body.target.world) body.remove();
         }
+        game.system.debug.sprites -= this.bodyContainer.children.length;
     },
 
     /**
@@ -248,6 +254,7 @@ game.createClass(&#x27;DebugDraw&#x27;, {
         @method update
     **/
     update: function() {
+        game.system.debug.sprites -= 2;
         this.updateSprites();
         this.updateBodies();
     }
@@ -266,11 +273,17 @@ game.addAttributes(&#x27;DebugDraw&#x27;, {
     **/
     spriteColor: 0xff0000,
     /**
+        Stroke color of DebugDraw sprites.
+        @attribute {Number} spriteLineColor
+        @default 0x0000ff
+    **/
+    spriteLineColor: 0x0000ff,
+    /**
         Alpha of DebugDraw sprites.
         @attribute {Number} spriteAlpha
-        @default 0.3
+        @default 0.5
     **/
-    spriteAlpha: 0.3,
+    spriteAlpha: 0.5,
     /**
         Color of DebugDraw bodies.
         @attribute {Number} bodyColor
@@ -278,11 +291,64 @@ game.addAttributes(&#x27;DebugDraw&#x27;, {
     **/
     bodyColor: 0x0000ff,
     /**
+        Stroke color of DebugDraw bodies.
+        @attribute {Number} bodyLineColor
+        @default 0xff0000
+    **/
+    bodyLineColor: 0xff0000,
+    /**
         Alpha of DebugDraw bodies.
         @attribute {Number} bodyAlpha
-        @default 0.3
+        @default 0.5
     **/
-    bodyAlpha: 0.3
+    bodyAlpha: 0.5
+});
+
+game.World.inject({
+    addBody: function(body) {
+        this._super(body);
+        if (game.debugDraw &amp;&amp; body.shape) game.debugDraw.addBody(body);
+    }
+});
+
+game.Camera.inject({
+    init: function(x, y) {
+        this._super(x, y);
+
+        if (game.debugDraw &amp;&amp; game.Camera.debug) {
+            this.debugBox = new game.Graphics();
+            this.debugBox.beginFill(game.Camera.debugColor);
+            this.debugBox.alpha = game.Camera.debugAlpha;
+            this.debugBox.drawRect(-this.sensorWidth / 2, -this.sensorHeight / 2, this.sensorWidth, this.sensorHeight);
+            game.system.stage.addChild(this.debugBox);
+        }
+    },
+
+    setSensor: function(width, height) {
+        this._super(width, height);
+
+        if (this.debugBox) {
+            this.debugBox.clear();
+            this.debugBox.beginFill(game.Camera.debugColor);
+            this.debugBox.drawRect(-this.sensorWidth / 2, -this.sensorHeight / 2, this.sensorWidth, this.sensorHeight);
+        }
+    },
+
+    moveCamera: function() {
+        this._super();
+        if (this.debugBox) this.debugBox.alpha = game.Camera.debugAlpha * ((this.speed.x === 0 &amp;&amp; this.speed.y === 0) ? 1 : 2);
+    },
+
+    update: function() {
+        this._super();
+        if (this.debugBox) this.debugBox.position.set(this.sensorPosition.x - this.position.x, this.sensorPosition.y - this.position.y);
+    }
+});
+
+game.addAttributes(&#x27;Camera&#x27;, {
+    debug: false,
+    debugColor: 0xff00ff,
+    debugAlpha: 0.2
 });
 
 game.onStart = function() {
@@ -300,4 +366,3 @@ game.onStart = function() {
 
     </pre>
 </div>
-
