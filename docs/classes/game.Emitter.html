@@ -1,273 +1,168 @@
----
-layout: default
-title: Documentation <span>1.13.0</span>
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>game.Emitter - Panda.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
 
-<div class="sidebar"></div>
-<div class="box search">
-<div id="search">
-    <form method="GET" action="../../search.html">
-        <input type="text" name="key" placeholder="Search documentation...">
-    </form>
-</div>
-</div>
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="../../img/logo_small2.png" title="Panda.js"></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 1.13.1</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
 
-<h4 class="boxHeader"><span>Class:</span> game.Emitter</h4>
-<div class="headerBox">
-<div class="classes-meta">
-    <div class="desc">Particle emitter.</div>
-
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/game.Analytics.html">game.Analytics</a></li>
+                                <li><a href="../classes/game.Animation.html">game.Animation</a></li>
+                                <li><a href="../classes/game.Audio.html">game.Audio</a></li>
+                                <li><a href="../classes/game.BaseTexture.html">game.BaseTexture</a></li>
+                                <li><a href="../classes/game.BitmapText.html">game.BitmapText</a></li>
+                                <li><a href="../classes/game.Body.html">game.Body</a></li>
+                                <li><a href="../classes/game.Camera.html">game.Camera</a></li>
+                                <li><a href="../classes/game.Circle.html">game.Circle</a></li>
+                                <li><a href="../classes/game.Class.html">game.Class</a></li>
+                                <li><a href="../classes/game.CollisionSolver.html">game.CollisionSolver</a></li>
+                                <li><a href="../classes/game.Container.html">game.Container</a></li>
+                                <li><a href="../classes/game.Core.html">game.Core</a></li>
+                                <li><a href="../classes/game.Debug.html">game.Debug</a></li>
+                                <li><a href="../classes/game.DebugDraw.html">game.DebugDraw</a></li>
+                                <li><a href="../classes/game.DisplayObject.html">game.DisplayObject</a></li>
+                                <li><a href="../classes/game.Emitter.html">game.Emitter</a></li>
+                                <li><a href="../classes/game.Graphics.html">game.Graphics</a></li>
+                                <li><a href="../classes/game.Keyboard.html">game.Keyboard</a></li>
+                                <li><a href="../classes/game.Loader.html">game.Loader</a></li>
+                                <li><a href="../classes/game.Particle.html">game.Particle</a></li>
+                                <li><a href="../classes/game.Point.html">game.Point</a></li>
+                                <li><a href="../classes/game.Pool.html">game.Pool</a></li>
+                                <li><a href="../classes/game.Rectangle.html">game.Rectangle</a></li>
+                                <li><a href="../classes/game.RenderTexture.html">game.RenderTexture</a></li>
+                                <li><a href="../classes/game.Scene.html">game.Scene</a></li>
+                                <li><a href="../classes/game.Spine.html">game.Spine</a></li>
+                                <li><a href="../classes/game.Sprite.html">game.Sprite</a></li>
+                                <li><a href="../classes/game.SpriteSheet.html">game.SpriteSheet</a></li>
+                                <li><a href="../classes/game.Storage.html">game.Storage</a></li>
+                                <li><a href="../classes/game.System.html">game.System</a></li>
+                                <li><a href="../classes/game.Text.html">game.Text</a></li>
+                                <li><a href="../classes/game.Texture.html">game.Texture</a></li>
+                                <li><a href="../classes/game.TilingSprite.html">game.TilingSprite</a></li>
+                                <li><a href="../classes/game.Timer.html">game.Timer</a></li>
+                                <li><a href="../classes/game.Tween.html">game.Tween</a></li>
+                                <li><a href="../classes/game.TweenEngine.html">game.TweenEngine</a></li>
+                                <li><a href="../classes/game.TweenGroup.html">game.TweenGroup</a></li>
+                                <li><a href="../classes/game.Vector.html">game.Vector</a></li>
+                                <li><a href="../classes/game.Video.html">game.Video</a></li>
+                                <li><a href="../classes/game.World.html">game.World</a></li>
+                            </ul>
+                
+                            <ul id="api-modules" class="apis modules">
+                                <li><a href="../modules/analytics.html">analytics</a></li>
+                                <li><a href="../modules/audio.html">audio</a></li>
+                                <li><a href="../modules/camera.html">camera</a></li>
+                                <li><a href="../modules/debug.html">debug</a></li>
+                                <li><a href="../modules/game.html">game</a></li>
+                                <li><a href="../modules/keyboard.html">keyboard</a></li>
+                                <li><a href="../modules/loader.html">loader</a></li>
+                                <li><a href="../modules/particle.html">particle</a></li>
+                                <li><a href="../modules/physics.html">physics</a></li>
+                                <li><a href="../modules/pool.html">pool</a></li>
+                                <li><a href="../modules/renderer.html">renderer</a></li>
+                                <li><a href="../modules/scene.html">scene</a></li>
+                                <li><a href="../modules/storage.html">storage</a></li>
+                                <li><a href="../modules/system.html">system</a></li>
+                                <li><a href="../modules/timer.html">timer</a></li>
+                                <li><a href="../modules/tween.html">tween</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited">
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1>game.Emitter Class</h1>
+<div class="box meta">
 
         <div class="extends">
-            Extends: <a href="../classes/game.Class.html" class="crosslink">game.Class</a>
+            Extends <a href="../classes/game.Class.html" class="crosslink">game.Class</a>
         </div>
 
-        <!-- <div class="foundat">
+        <div class="foundat">
             Defined in: <a href="../files/src_engine_particle.js.html#l60"><code>src&#x2F;engine&#x2F;particle.js:60</code></a>
-        </div> -->
+        </div>
 
             Module: <a href="../modules/particle.html">particle</a>
 
 </div>
 
 
-</div>
-
-<div class="classes-index">
-
-    <h3>Methods</h3>
-    <div class="index-section methods">
-
-        <div class="box float">
-        <ul class="index-list methods extends">
-
-<!--                 <li class="index-item method constructor">
-                    <a href="#method_game.Emitter">game.Emitter <span class="flag constructor">constructor</span></a>
-
-                </li> -->
-
-                <li class="index-item method">
-                    <a href="#method_addParticle">addParticle</a>
-
-                </li>
-                <li class="index-item method">
-                    <a href="#method_addTo">addTo</a>
-
-                </li>
-                <li class="index-item method">
-                    <a href="#method_emit">emit</a>
-
-                </li>
-                <li class="index-item method inherited">
-                    <a href="#method_extend">extend</a>
-
-                </li>
-                <li class="index-item method">
-                    <a href="#method_getVariance">getVariance</a>
-
-                </li>
-                <li class="index-item method inherited">
-                    <a href="#method_init">init</a>
-
-                </li>
-                <li class="index-item method inherited">
-                    <a href="#method_inject">inject</a>
-
-                </li>
-                <li class="index-item method">
-                    <a href="#method_remove">remove</a>
-
-                </li>
-                <li class="index-item method">
-                    <a href="#method_removeParticle">removeParticle</a>
-
-                </li>
-                <li class="index-item method">
-                    <a href="#method_reset">reset</a>
-
-                </li>
-                <li class="index-item method inherited">
-                    <a href="#method_staticInit">staticInit</a>
-
-                </li>
-                <li class="index-item method">
-                    <a href="#method_update">update</a>
-
-                </li>
-                <li class="index-item method">
-                    <a href="#method_updateParticle">updateParticle</a>
-
-                </li>
-        </ul>
-        <div class="clear"></div>
-        </div>
-    </div>
-
-    <h3>Properties</h3>
-    <div class="index-section properties">
-
-        <div class="box float">
-        <ul class="index-list properties extends">
-                <li class="index-item property">
-                    <a href="#property_accelAngle">accelAngle</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_accelAngleVar">accelAngleVar</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_accelSpeed">accelSpeed</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_accelSpeedVar">accelSpeedVar</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_active">active</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_angle">angle</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_angleVar">angleVar</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_container">container</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_count">count</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_duration">duration</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_endAlpha">endAlpha</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_endScale">endScale</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_endScaleVar">endScaleVar</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_life">life</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_lifeVar">lifeVar</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_particles">particles</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_poolName">poolName</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_position">position</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_positionVar">positionVar</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_rate">rate</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_rotate">rotate</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_rotateVar">rotateVar</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_speed">speed</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_speedVar">speedVar</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_spriteSettings">spriteSettings</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_startAlpha">startAlpha</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_startScale">startScale</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_startScaleVar">startScaleVar</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_target">target</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_targetForce">targetForce</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_textures">textures</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_velocityLimit">velocityLimit</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_velRotate">velRotate</a>
-
-                </li>
-                <li class="index-item property">
-                    <a href="#property_velRotateVar">velRotateVar</a>
-
-                </li>
-        </ul>
-        <div class="clear"></div>
-        </div>
-    </div>
-
+<div class="box intro">
+    <p>Particle emitter.</p>
 
 </div>
-
-<div class="clear"></div>
-
-<div class="hline"></div>
-
-<div class="class-detail">
 
     <div class="constructor">
-        <h6>Constructor</h6>
-        <a name="method_game.Emitter" class="anchor-link"></a>
-        <div class="box method item">
-            <h3 class="name">game.Emitter
-                <span class="args">
-                    <span class="paren">(</span><span class="args-list inline commas">
-                            <span class="optional">[settings]</span>
-                    </span><span class="paren">)</span>
-                </span>
+        <h2>Constructor</h2>
+        <div id="method_game.Emitter" class="method item">
+            <h3 class="name"><code>game.Emitter</code></h3>
+        
+                <div class="args">
+                    <span class="paren">(</span><ul class="args-list inline commas">
+                        <li class="arg">
+                                <code class="optional">[settings]</code>
+                        </li>
+                    </ul><span class="paren">)</span>
+                </div>
         
         
         
@@ -275,1796 +170,1734 @@ title: Documentation <span>1.13.0</span>
         
         
         
-        
-            </h3>
         
             <div class="meta">
                         <p>
-                        <!-- 
                         Defined in
-                         -->
-                <!-- <a href="../files/src_engine_particle.js.html#l60"><code>src&#x2F;engine&#x2F;particle.js:60</code></a> -->
+                <a href="../files/src_engine_particle.js.html#l60"><code>src&#x2F;engine&#x2F;particle.js:60</code></a>
                 </p>
         
         
         
             </div>
         
-            <div class="extended-detail">
+            <div class="description">
+                
+            </div>
         
-                <div class="description">
-                    
+                <div class="params">
+                    <h4>Parameters:</h4>
+        
+                    <ul class="params-list">
+                        <li class="param">
+                                <code class="param-name optional">[settings]</code>
+                                <span class="type">Object</span>
+                                <span class="flag optional" title="This parameter is optional.">optional</span>
+        
+        
+                            <div class="param-description">
+                                 
+                            </div>
+        
+                        </li>
+                    </ul>
                 </div>
         
-                    <div class="params">
-                        <h4>Parameters:</h4>
-        
-                        <ul class="params-list">
-                            <li class="param">
-                                    <code class="param-name optional">settings</code>
-                                    <span class="type">Object</span>
-                                    <span class="flag optional" title="This parameter is optional.">optional</span>
         
         
-                                <span class="param-description">
-                                     
-                                </span>
-        
-                            </li>
-                        </ul>
-                    </div>
-        
-        
-            </div>
         </div>
     </div>
 
-    <div class="properties-detail">
-        <h6>Properties</h6>
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
 
-            <a name="property_accelAngle" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>accelAngle</code>
-                <span class="type">Number</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l226"><code>src&#x2F;engine&#x2F;particle.js:226</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        <p>Acceleration angle in radians.</p>
-            
-                    </div>
-            
-                        <p class="default"><strong>Default:</strong> <span class="default-value">Math.PI / 2</span></p>
-            
-            
-                </div>
-            </div>
-            <a name="property_accelAngleVar" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>accelAngleVar</code>
-                <span class="type">Number</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l232"><code>src&#x2F;engine&#x2F;particle.js:232</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        
-                    </div>
-            
-                        <p class="default"><strong>Default:</strong> <span class="default-value">0</span></p>
-            
-            
-                </div>
-            </div>
-            <a name="property_accelSpeed" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>accelSpeed</code>
-                <span class="type">Number</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l237"><code>src&#x2F;engine&#x2F;particle.js:237</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        <p>Acceleration speed.</p>
-            
-                    </div>
-            
-                        <p class="default"><strong>Default:</strong> <span class="default-value">0</span></p>
-            
-            
-                </div>
-            </div>
-            <a name="property_accelSpeedVar" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>accelSpeedVar</code>
-                <span class="type">Number</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l243"><code>src&#x2F;engine&#x2F;particle.js:243</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        
-                    </div>
-            
-                        <p class="default"><strong>Default:</strong> <span class="default-value">0</span></p>
-            
-            
-                </div>
-            </div>
-            <a name="property_active" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>active</code>
-                <span class="type">Boolean</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l152"><code>src&#x2F;engine&#x2F;particle.js:152</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        <p>Is emitter active.</p>
-            
-                    </div>
-            
-                        <p class="default"><strong>Default:</strong> <span class="default-value">true</span></p>
-            
-            
-                </div>
-            </div>
-            <a name="property_angle" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>angle</code>
-                <span class="type">Number</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l96"><code>src&#x2F;engine&#x2F;particle.js:96</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        <p>Emit angle in radians.</p>
-            
-                    </div>
-            
-                        <p class="default"><strong>Default:</strong> <span class="default-value">0</span></p>
-            
-            
-                </div>
-            </div>
-            <a name="property_angleVar" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>angleVar</code>
-                <span class="type">Number</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l102"><code>src&#x2F;engine&#x2F;particle.js:102</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        <p>Variance of emit angle in radians.</p>
-            
-                    </div>
-            
-                        <p class="default"><strong>Default:</strong> <span class="default-value">0</span></p>
-            
-            
-                </div>
-            </div>
-            <a name="property_container" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>container</code>
-                <span class="type"><a href="../classes/game.Container.html" class="crosslink">game.Container</a></span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l83"><code>src&#x2F;engine&#x2F;particle.js:83</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        <p>Container for particle sprites.</p>
-            
-                    </div>
-            
-            
-            
-                </div>
-            </div>
-            <a name="property_count" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>count</code>
-                <span class="type">Number</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l146"><code>src&#x2F;engine&#x2F;particle.js:146</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        <p>Emit count of particles.</p>
-            
-                    </div>
-            
-                        <p class="default"><strong>Default:</strong> <span class="default-value">10</span></p>
-            
-            
-                </div>
-            </div>
-            <a name="property_duration" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>duration</code>
-                <span class="type">Number</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l132"><code>src&#x2F;engine&#x2F;particle.js:132</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        <p>Emitter duration in ms (0 is forever).</p>
-            
-                    </div>
-            
-                        <p class="default"><strong>Default:</strong> <span class="default-value">0</span></p>
-            
-            
-                </div>
-            </div>
-            <a name="property_endAlpha" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>endAlpha</code>
-                <span class="type">Number</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l188"><code>src&#x2F;engine&#x2F;particle.js:188</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        <p>End alpha for particle.</p>
-            
-                    </div>
-            
-                        <p class="default"><strong>Default:</strong> <span class="default-value">0</span></p>
-            
-            
-                </div>
-            </div>
-            <a name="property_endScale" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>endScale</code>
-                <span class="type">Number</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l205"><code>src&#x2F;engine&#x2F;particle.js:205</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        
-                    </div>
-            
-                        <p class="default"><strong>Default:</strong> <span class="default-value">1</span></p>
-            
-            
-                </div>
-            </div>
-            <a name="property_endScaleVar" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>endScaleVar</code>
-                <span class="type">Number</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l210"><code>src&#x2F;engine&#x2F;particle.js:210</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        
-                    </div>
-            
-                        <p class="default"><strong>Default:</strong> <span class="default-value">0</span></p>
-            
-            
-                </div>
-            </div>
-            <a name="property_life" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>life</code>
-                <span class="type">Number</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l120"><code>src&#x2F;engine&#x2F;particle.js:120</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        <p>Particle&#39;s life in ms (0 is forever).</p>
-            
-                    </div>
-            
-                        <p class="default"><strong>Default:</strong> <span class="default-value">2000</span></p>
-            
-            
-                </div>
-            </div>
-            <a name="property_lifeVar" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>lifeVar</code>
-                <span class="type">Number</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l126"><code>src&#x2F;engine&#x2F;particle.js:126</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        <p>Particle&#39;s life variance.</p>
-            
-                    </div>
-            
-                        <p class="default"><strong>Default:</strong> <span class="default-value">0</span></p>
-            
-            
-                </div>
-            </div>
-            <a name="property_particles" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>particles</code>
-                <span class="type">Array</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l74"><code>src&#x2F;engine&#x2F;particle.js:74</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        
-                    </div>
-            
-            
-            
-                </div>
-            </div>
-            <a name="property_poolName" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>poolName</code>
-                <span class="type">String</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l68"><code>src&#x2F;engine&#x2F;particle.js:68</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        <p>Pool name for particles.</p>
-            
-                    </div>
-            
-                        <p class="default"><strong>Default:</strong> <span class="default-value">emitter</span></p>
-            
-            
-                </div>
-            </div>
-            <a name="property_position" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>position</code>
-                <span class="type">game.Point</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l88"><code>src&#x2F;engine&#x2F;particle.js:88</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        
-                    </div>
-            
-            
-            
-                </div>
-            </div>
-            <a name="property_positionVar" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>positionVar</code>
-                <span class="type">game.Point</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l92"><code>src&#x2F;engine&#x2F;particle.js:92</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        
-                    </div>
-            
-            
-            
-                </div>
-            </div>
-            <a name="property_rate" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>rate</code>
-                <span class="type">Number</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l139"><code>src&#x2F;engine&#x2F;particle.js:139</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        <p>How often to emit new particles in ms.</p>
-            
-                    </div>
-            
-                        <p class="default"><strong>Default:</strong> <span class="default-value">100</span></p>
-            
-            
-                </div>
-            </div>
-            <a name="property_rotate" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>rotate</code>
-                <span class="type">Number</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l170"><code>src&#x2F;engine&#x2F;particle.js:170</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        <p>Particle&#39;s sprite rotation speed.</p>
-            
-                    </div>
-            
-                        <p class="default"><strong>Default:</strong> <span class="default-value">0</span></p>
-            
-            
-                </div>
-            </div>
-            <a name="property_rotateVar" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>rotateVar</code>
-                <span class="type">Number</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l176"><code>src&#x2F;engine&#x2F;particle.js:176</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        <p>Variance for particle&#39;s sprite rotation speed.</p>
-            
-                    </div>
-            
-                        <p class="default"><strong>Default:</strong> <span class="default-value">0</span></p>
-            
-            
-                </div>
-            </div>
-            <a name="property_speed" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>speed</code>
-                <span class="type">Number</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l108"><code>src&#x2F;engine&#x2F;particle.js:108</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        <p>Particle&#39;s initial speed.</p>
-            
-                    </div>
-            
-                        <p class="default"><strong>Default:</strong> <span class="default-value">100</span></p>
-            
-            
-                </div>
-            </div>
-            <a name="property_speedVar" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>speedVar</code>
-                <span class="type">Number</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l114"><code>src&#x2F;engine&#x2F;particle.js:114</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        <p>Variance for particle&#39;s initial speed.</p>
-            
-                    </div>
-            
-                        <p class="default"><strong>Default:</strong> <span class="default-value">0</span></p>
-            
-            
-                </div>
-            </div>
-            <a name="property_spriteSettings" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>spriteSettings</code>
-                <span class="type">Object</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l248"><code>src&#x2F;engine&#x2F;particle.js:248</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        <p>Settings to apply on particle sprite.</p>
-            
-                    </div>
-            
-            
-            
-                </div>
-            </div>
-            <a name="property_startAlpha" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>startAlpha</code>
-                <span class="type">Number</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l182"><code>src&#x2F;engine&#x2F;particle.js:182</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        <p>Starting alpha for particle.</p>
-            
-                    </div>
-            
-                        <p class="default"><strong>Default:</strong> <span class="default-value">1</span></p>
-            
-            
-                </div>
-            </div>
-            <a name="property_startScale" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>startScale</code>
-                <span class="type">Number</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l194"><code>src&#x2F;engine&#x2F;particle.js:194</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        <p>Starting scale for particle.</p>
-            
-                    </div>
-            
-                        <p class="default"><strong>Default:</strong> <span class="default-value">1</span></p>
-            
-            
-                </div>
-            </div>
-            <a name="property_startScaleVar" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>startScaleVar</code>
-                <span class="type">Number</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l200"><code>src&#x2F;engine&#x2F;particle.js:200</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        
-                    </div>
-            
-                        <p class="default"><strong>Default:</strong> <span class="default-value">0</span></p>
-            
-            
-                </div>
-            </div>
-            <a name="property_target" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>target</code>
-                <span class="type">game.Point</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l215"><code>src&#x2F;engine&#x2F;particle.js:215</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        <p>Target position for particles.</p>
-            
-                    </div>
-            
-            
-            
-                </div>
-            </div>
-            <a name="property_targetForce" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>targetForce</code>
-                <span class="type">Number</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l220"><code>src&#x2F;engine&#x2F;particle.js:220</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        <p>Target positions force.</p>
-            
-                    </div>
-            
-                        <p class="default"><strong>Default:</strong> <span class="default-value">0</span></p>
-            
-            
-                </div>
-            </div>
-            <a name="property_textures" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>textures</code>
-                <span class="type">Array</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l78"><code>src&#x2F;engine&#x2F;particle.js:78</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        <p>List of texture paths.</p>
-            
-                    </div>
-            
-            
-            
-                </div>
-            </div>
-            <a name="property_velocityLimit" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>velocityLimit</code>
-                <span class="type">game.Point</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l255"><code>src&#x2F;engine&#x2F;particle.js:255</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        
-                    </div>
-            
-                        <p class="default"><strong>Default:</strong> <span class="default-value">0</span></p>
-            
-            
-                </div>
-            </div>
-            <a name="property_velRotate" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>velRotate</code>
-                <span class="type">Number</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l158"><code>src&#x2F;engine&#x2F;particle.js:158</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        <p>Particle&#39;s velocity rotation speed.</p>
-            
-                    </div>
-            
-                        <p class="default"><strong>Default:</strong> <span class="default-value">0</span></p>
-            
-            
-                </div>
-            </div>
-            <a name="property_velRotateVar" class="anchor-link"></a>
-            <div class="box property item">
-                <h3 class="name"><code>velRotateVar</code>
-                <span class="type">Number</span>
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-            <!--                 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l164"><code>src&#x2F;engine&#x2F;particle.js:164</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-                    <div class="description">
-                        <p>Variance for particle&#39;s velocity rotation speed.</p>
-            
-                    </div>
-            
-                        <p class="default"><strong>Default:</strong> <span class="default-value">0</span></p>
-            
-            
-                </div>
-            </div>
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods extends">
+                            <li class="index-item method">
+                                <a href="#method_addParticle">addParticle</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_addTo">addTo</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_emit">emit</a>
+
+                            </li>
+                            <li class="index-item method inherited">
+                                <a href="#method_extend">extend</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getVariance">getVariance</a>
+
+                            </li>
+                            <li class="index-item method inherited">
+                                <a href="#method_init">init</a>
+
+                            </li>
+                            <li class="index-item method inherited">
+                                <a href="#method_inject">inject</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_remove">remove</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_removeParticle">removeParticle</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_reset">reset</a>
+
+                            </li>
+                            <li class="index-item method inherited">
+                                <a href="#method_staticInit">staticInit</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_update">update</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_updateParticle">updateParticle</a>
+
+                            </li>
+                    </ul>
+                </div>
+
+                <div class="index-section properties">
+                    <h3>Properties</h3>
+
+                    <ul class="index-list properties extends">
+                            <li class="index-item property">
+                                <a href="#property_accelAngle">accelAngle</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_accelAngleVar">accelAngleVar</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_accelSpeed">accelSpeed</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_accelSpeedVar">accelSpeedVar</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_active">active</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_angle">angle</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_angleVar">angleVar</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_container">container</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_count">count</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_duration">duration</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_endAlpha">endAlpha</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_endScale">endScale</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_endScaleVar">endScaleVar</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_life">life</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_lifeVar">lifeVar</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_particles">particles</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_poolName">poolName</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_position">position</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_positionVar">positionVar</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_rate">rate</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_rotate">rotate</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_rotateVar">rotateVar</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_speed">speed</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_speedVar">speedVar</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_spriteSettings">spriteSettings</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_startAlpha">startAlpha</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_startScale">startScale</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_startScaleVar">startScaleVar</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_target">target</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_targetForce">targetForce</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_textures">textures</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_velocityLimit">velocityLimit</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_velRotate">velRotate</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_velRotateVar">velRotateVar</a>
+
+                            </li>
+                    </ul>
+                </div>
+
+
+        </div>
+
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+<div id="method_addParticle" class="method item">
+    <h3 class="name"><code>addParticle</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_particle.js.html#l302"><code>src&#x2F;engine&#x2F;particle.js:302</code></a>
+        </p>
+
+
 
     </div>
 
-    <div class="methods-detail">
-        <h6>Methods</h6>
-
-            <a name="method_addParticle" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">addParticle
-                    <span class="paren">()</span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l302"><code>src&#x2F;engine&#x2F;particle.js:302</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Add particle to emitter.</p>
-            
-                    </div>
-            
-            
-            
-                </div>
-            </div>
-            <a name="method_addTo" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">addTo
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>container</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l473"><code>src&#x2F;engine&#x2F;particle.js:473</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Add emitter to container.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">container</code>
-                                        <span class="type"><a href="../classes/game.Container.html" class="crosslink">game.Container</a></span>
-            
-            
-                                    <span class="param-description">
-                                         
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-            
-                </div>
-            </div>
-            <a name="method_emit" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">emit
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>count</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l419"><code>src&#x2F;engine&#x2F;particle.js:419</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Emit particles to emitter.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">count</code>
-                                        <span class="type">Number</span>
-            
-            
-                                    <span class="param-description">
-                                         
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-            
-                </div>
-            </div>
-            <a name="method_extend" class="anchor-link"></a>
-            <div class="box method item inherited">
-                <h3 class="name">extend
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>prop</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>Inherited from
-                            <a href="../classes/game.Class.html#method_extend" class="type">game.Class</a>:
-                    <!-- <a href="../files/src_engine_core.js.html#l755"><code>src&#x2F;engine&#x2F;core.js:755</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Extend class.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">prop</code>
-                                        <span class="type">Object</span>
-            
-            
-                                    <span class="param-description">
-                                        
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-                        <div class="returns">
-                            <div class="returns-description">
-                                Returns:
-                                        <span class="type"><a href="../classes/game.Class.html" class="crosslink">game.Class</a></span>
-                            </div>
-                        </div>
-            
-                </div>
-            </div>
-            <a name="method_getVariance" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">getVariance
-                    <span class="paren">()</span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l292"><code>src&#x2F;engine&#x2F;particle.js:292</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Get value with variance.
-            Example: if you have value 100 with variance of 50, you will get value between 50 to 150.</p>
-            
-                    </div>
-            
-            
-                        <div class="returns">
-                            <div class="returns-description">
-                                Returns:
-                                        <span class="type">Number</span>
-                            </div>
-                        </div>
-            
-                </div>
-            </div>
-            <a name="method_init" class="anchor-link"></a>
-            <div class="box method item inherited">
-                <h3 class="name">init
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>arguments</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>Inherited from
-                            <a href="../classes/game.Class.html#method_init" class="type">game.Class</a>:
-                    <!-- <a href="../files/src_engine_core.js.html#l809"><code>src&#x2F;engine&#x2F;core.js:809</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>This method is called, when you create new instance of the class.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">arguments</code>
-                                        <span class="type">Array</span>
-            
-            
-                                    <span class="param-description">
-                                        
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-            
-                </div>
-            </div>
-            <a name="method_inject" class="anchor-link"></a>
-            <div class="box method item inherited">
-                <h3 class="name">inject
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>prop</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>Inherited from
-                            <a href="../classes/game.Class.html#method_inject" class="type">game.Class</a>:
-                    <!-- <a href="../files/src_engine_core.js.html#l823"><code>src&#x2F;engine&#x2F;core.js:823</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Inject class.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">prop</code>
-                                        <span class="type">Object</span>
-            
-            
-                                    <span class="param-description">
-                                        
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-            
-                </div>
-            </div>
-            <a name="method_remove" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">remove
-                    <span class="paren">()</span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l465"><code>src&#x2F;engine&#x2F;particle.js:465</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Remove emitter from scene.</p>
-            
-                    </div>
-            
-            
-            
-                </div>
-            </div>
-            <a name="method_removeParticle" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">removeParticle
-                    <span class="paren">()</span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l409"><code>src&#x2F;engine&#x2F;particle.js:409</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Remove particle from emitter.</p>
-            
-                    </div>
-            
-            
-            
-                </div>
-            </div>
-            <a name="method_reset" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">reset
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>resetVec</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l276"><code>src&#x2F;engine&#x2F;particle.js:276</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Reset emitter values to defaults.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">resetVec</code>
-                                        <span class="type">Boolean</span>
-            
-            
-                                    <span class="param-description">
-                                        <p>Reset vector values.</p>
-            
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-            
-                </div>
-            </div>
-            <a name="method_staticInit" class="anchor-link"></a>
-            <div class="box method item inherited">
-                <h3 class="name">staticInit
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>arguments</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>Inherited from
-                            <a href="../classes/game.Class.html#method_staticInit" class="type">game.Class</a>:
-                    <!-- <a href="../files/src_engine_core.js.html#l793"><code>src&#x2F;engine&#x2F;core.js:793</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>This method is called before init.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">arguments</code>
-                                        <span class="type">Array</span>
-            
-            
-                                    <span class="param-description">
-                                        
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-            
-                </div>
-            </div>
-            <a name="method_update" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">update
-                    <span class="paren">()</span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l431"><code>src&#x2F;engine&#x2F;particle.js:431</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Update particles.</p>
-            
-                    </div>
-            
-            
-            
-                </div>
-            </div>
-            <a name="method_updateParticle" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">updateParticle
-                    <span class="paren">()</span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_particle.js.html#l362"><code>src&#x2F;engine&#x2F;particle.js:362</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Update particle.</p>
-            
-                    </div>
-            
-            
-            
-                </div>
-            </div>
+    <div class="description">
+        <p>Add particle to emitter.</p>
 
     </div>
+
 
 
 
 </div>
+<div id="method_addTo" class="method item">
+    <h3 class="name"><code>addTo</code></h3>
 
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>container</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_particle.js.html#l473"><code>src&#x2F;engine&#x2F;particle.js:473</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Add emitter to container.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">container</code>
+                        <span class="type"><a href="../classes/game.Container.html" class="crosslink">game.Container</a></span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_emit" class="method item">
+    <h3 class="name"><code>emit</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>count</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_particle.js.html#l419"><code>src&#x2F;engine&#x2F;particle.js:419</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Emit particles to emitter.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">count</code>
+                        <span class="type">Number</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_extend" class="method item inherited">
+    <h3 class="name"><code>extend</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>prop</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/game.Class.html" class="crosslink">game.Class</a></span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/game.Class.html#method_extend">game.Class</a>:
+        <a href="../files/src_engine_core.js.html#l757"><code>src&#x2F;engine&#x2F;core.js:757</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Extend class.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">prop</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/game.Class.html" class="crosslink">game.Class</a></span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getVariance" class="method item">
+    <h3 class="name"><code>getVariance</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_particle.js.html#l292"><code>src&#x2F;engine&#x2F;particle.js:292</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Get value with variance.
+Example: if you have value 100 with variance of 50, you will get value between 50 to 150.</p>
+
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Number</span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_init" class="method item inherited">
+    <h3 class="name"><code>init</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>arguments</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/game.Class.html#method_init">game.Class</a>:
+        <a href="../files/src_engine_core.js.html#l811"><code>src&#x2F;engine&#x2F;core.js:811</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>This method is called, when you create new instance of the class.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">arguments</code>
+                        <span class="type">Array</span>
+
+
+                    <div class="param-description">
+                        
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_inject" class="method item inherited">
+    <h3 class="name"><code>inject</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>prop</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/game.Class.html#method_inject">game.Class</a>:
+        <a href="../files/src_engine_core.js.html#l825"><code>src&#x2F;engine&#x2F;core.js:825</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Inject class.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">prop</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_remove" class="method item">
+    <h3 class="name"><code>remove</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_particle.js.html#l465"><code>src&#x2F;engine&#x2F;particle.js:465</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Remove emitter from scene.</p>
+
+    </div>
+
+
+
+
+</div>
+<div id="method_removeParticle" class="method item">
+    <h3 class="name"><code>removeParticle</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_particle.js.html#l409"><code>src&#x2F;engine&#x2F;particle.js:409</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Remove particle from emitter.</p>
+
+    </div>
+
+
+
+
+</div>
+<div id="method_reset" class="method item">
+    <h3 class="name"><code>reset</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>resetVec</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_particle.js.html#l276"><code>src&#x2F;engine&#x2F;particle.js:276</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Reset emitter values to defaults.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">resetVec</code>
+                        <span class="type">Boolean</span>
+
+
+                    <div class="param-description">
+                        <p>Reset vector values.</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_staticInit" class="method item inherited">
+    <h3 class="name"><code>staticInit</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>arguments</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/game.Class.html#method_staticInit">game.Class</a>:
+        <a href="../files/src_engine_core.js.html#l795"><code>src&#x2F;engine&#x2F;core.js:795</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>This method is called before init.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">arguments</code>
+                        <span class="type">Array</span>
+
+
+                    <div class="param-description">
+                        
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_update" class="method item">
+    <h3 class="name"><code>update</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_particle.js.html#l431"><code>src&#x2F;engine&#x2F;particle.js:431</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Update particles.</p>
+
+    </div>
+
+
+
+
+</div>
+<div id="method_updateParticle" class="method item">
+    <h3 class="name"><code>updateParticle</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_particle.js.html#l362"><code>src&#x2F;engine&#x2F;particle.js:362</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Update particle.</p>
+
+    </div>
+
+
+
+
+</div>
+            </div>
+
+            <div id="properties" class="api-class-tabpanel">
+                <h2 class="off-left">Properties</h2>
+
+                    <div id="property_accelAngle" class="property item">
+                        <h3 class="name"><code>accelAngle</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l226"><code>src&#x2F;engine&#x2F;particle.js:226</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Acceleration angle in radians.</p>
+                    
+                        </div>
+                    
+                            <p><strong>Default:</strong> Math.PI / 2</p>
+                    
+                    
+                    </div>
+                    <div id="property_accelAngleVar" class="property item">
+                        <h3 class="name"><code>accelAngleVar</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l232"><code>src&#x2F;engine&#x2F;particle.js:232</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            
+                        </div>
+                    
+                            <p><strong>Default:</strong> 0</p>
+                    
+                    
+                    </div>
+                    <div id="property_accelSpeed" class="property item">
+                        <h3 class="name"><code>accelSpeed</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l237"><code>src&#x2F;engine&#x2F;particle.js:237</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Acceleration speed.</p>
+                    
+                        </div>
+                    
+                            <p><strong>Default:</strong> 0</p>
+                    
+                    
+                    </div>
+                    <div id="property_accelSpeedVar" class="property item">
+                        <h3 class="name"><code>accelSpeedVar</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l243"><code>src&#x2F;engine&#x2F;particle.js:243</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            
+                        </div>
+                    
+                            <p><strong>Default:</strong> 0</p>
+                    
+                    
+                    </div>
+                    <div id="property_active" class="property item">
+                        <h3 class="name"><code>active</code></h3>
+                        <span class="type">Boolean</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l152"><code>src&#x2F;engine&#x2F;particle.js:152</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Is emitter active.</p>
+                    
+                        </div>
+                    
+                            <p><strong>Default:</strong> true</p>
+                    
+                    
+                    </div>
+                    <div id="property_angle" class="property item">
+                        <h3 class="name"><code>angle</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l96"><code>src&#x2F;engine&#x2F;particle.js:96</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Emit angle in radians.</p>
+                    
+                        </div>
+                    
+                            <p><strong>Default:</strong> 0</p>
+                    
+                    
+                    </div>
+                    <div id="property_angleVar" class="property item">
+                        <h3 class="name"><code>angleVar</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l102"><code>src&#x2F;engine&#x2F;particle.js:102</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Variance of emit angle in radians.</p>
+                    
+                        </div>
+                    
+                            <p><strong>Default:</strong> 0</p>
+                    
+                    
+                    </div>
+                    <div id="property_container" class="property item">
+                        <h3 class="name"><code>container</code></h3>
+                        <span class="type"><a href="../classes/game.Container.html" class="crosslink">game.Container</a></span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l83"><code>src&#x2F;engine&#x2F;particle.js:83</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Container for particle sprites.</p>
+                    
+                        </div>
+                    
+                    
+                    
+                    </div>
+                    <div id="property_count" class="property item">
+                        <h3 class="name"><code>count</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l146"><code>src&#x2F;engine&#x2F;particle.js:146</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Emit count of particles.</p>
+                    
+                        </div>
+                    
+                            <p><strong>Default:</strong> 10</p>
+                    
+                    
+                    </div>
+                    <div id="property_duration" class="property item">
+                        <h3 class="name"><code>duration</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l132"><code>src&#x2F;engine&#x2F;particle.js:132</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Emitter duration in ms (0 is forever).</p>
+                    
+                        </div>
+                    
+                            <p><strong>Default:</strong> 0</p>
+                    
+                    
+                    </div>
+                    <div id="property_endAlpha" class="property item">
+                        <h3 class="name"><code>endAlpha</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l188"><code>src&#x2F;engine&#x2F;particle.js:188</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>End alpha for particle.</p>
+                    
+                        </div>
+                    
+                            <p><strong>Default:</strong> 0</p>
+                    
+                    
+                    </div>
+                    <div id="property_endScale" class="property item">
+                        <h3 class="name"><code>endScale</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l205"><code>src&#x2F;engine&#x2F;particle.js:205</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            
+                        </div>
+                    
+                            <p><strong>Default:</strong> 1</p>
+                    
+                    
+                    </div>
+                    <div id="property_endScaleVar" class="property item">
+                        <h3 class="name"><code>endScaleVar</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l210"><code>src&#x2F;engine&#x2F;particle.js:210</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            
+                        </div>
+                    
+                            <p><strong>Default:</strong> 0</p>
+                    
+                    
+                    </div>
+                    <div id="property_life" class="property item">
+                        <h3 class="name"><code>life</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l120"><code>src&#x2F;engine&#x2F;particle.js:120</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Particle&#39;s life in ms (0 is forever).</p>
+                    
+                        </div>
+                    
+                            <p><strong>Default:</strong> 2000</p>
+                    
+                    
+                    </div>
+                    <div id="property_lifeVar" class="property item">
+                        <h3 class="name"><code>lifeVar</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l126"><code>src&#x2F;engine&#x2F;particle.js:126</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Particle&#39;s life variance.</p>
+                    
+                        </div>
+                    
+                            <p><strong>Default:</strong> 0</p>
+                    
+                    
+                    </div>
+                    <div id="property_particles" class="property item">
+                        <h3 class="name"><code>particles</code></h3>
+                        <span class="type">Array</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l74"><code>src&#x2F;engine&#x2F;particle.js:74</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            
+                        </div>
+                    
+                    
+                    
+                    </div>
+                    <div id="property_poolName" class="property item">
+                        <h3 class="name"><code>poolName</code></h3>
+                        <span class="type">String</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l68"><code>src&#x2F;engine&#x2F;particle.js:68</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Pool name for particles.</p>
+                    
+                        </div>
+                    
+                            <p><strong>Default:</strong> emitter</p>
+                    
+                    
+                    </div>
+                    <div id="property_position" class="property item">
+                        <h3 class="name"><code>position</code></h3>
+                        <span class="type"><a href="../classes/game.Point.html" class="crosslink">game.Point</a></span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l88"><code>src&#x2F;engine&#x2F;particle.js:88</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            
+                        </div>
+                    
+                    
+                    
+                    </div>
+                    <div id="property_positionVar" class="property item">
+                        <h3 class="name"><code>positionVar</code></h3>
+                        <span class="type"><a href="../classes/game.Point.html" class="crosslink">game.Point</a></span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l92"><code>src&#x2F;engine&#x2F;particle.js:92</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            
+                        </div>
+                    
+                    
+                    
+                    </div>
+                    <div id="property_rate" class="property item">
+                        <h3 class="name"><code>rate</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l139"><code>src&#x2F;engine&#x2F;particle.js:139</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>How often to emit new particles in ms.</p>
+                    
+                        </div>
+                    
+                            <p><strong>Default:</strong> 100</p>
+                    
+                    
+                    </div>
+                    <div id="property_rotate" class="property item">
+                        <h3 class="name"><code>rotate</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l170"><code>src&#x2F;engine&#x2F;particle.js:170</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Particle&#39;s sprite rotation speed.</p>
+                    
+                        </div>
+                    
+                            <p><strong>Default:</strong> 0</p>
+                    
+                    
+                    </div>
+                    <div id="property_rotateVar" class="property item">
+                        <h3 class="name"><code>rotateVar</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l176"><code>src&#x2F;engine&#x2F;particle.js:176</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Variance for particle&#39;s sprite rotation speed.</p>
+                    
+                        </div>
+                    
+                            <p><strong>Default:</strong> 0</p>
+                    
+                    
+                    </div>
+                    <div id="property_speed" class="property item">
+                        <h3 class="name"><code>speed</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l108"><code>src&#x2F;engine&#x2F;particle.js:108</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Particle&#39;s initial speed.</p>
+                    
+                        </div>
+                    
+                            <p><strong>Default:</strong> 100</p>
+                    
+                    
+                    </div>
+                    <div id="property_speedVar" class="property item">
+                        <h3 class="name"><code>speedVar</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l114"><code>src&#x2F;engine&#x2F;particle.js:114</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Variance for particle&#39;s initial speed.</p>
+                    
+                        </div>
+                    
+                            <p><strong>Default:</strong> 0</p>
+                    
+                    
+                    </div>
+                    <div id="property_spriteSettings" class="property item">
+                        <h3 class="name"><code>spriteSettings</code></h3>
+                        <span class="type">Object</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l248"><code>src&#x2F;engine&#x2F;particle.js:248</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Settings to apply on particle sprite.</p>
+                    
+                        </div>
+                    
+                    
+                    
+                    </div>
+                    <div id="property_startAlpha" class="property item">
+                        <h3 class="name"><code>startAlpha</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l182"><code>src&#x2F;engine&#x2F;particle.js:182</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Starting alpha for particle.</p>
+                    
+                        </div>
+                    
+                            <p><strong>Default:</strong> 1</p>
+                    
+                    
+                    </div>
+                    <div id="property_startScale" class="property item">
+                        <h3 class="name"><code>startScale</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l194"><code>src&#x2F;engine&#x2F;particle.js:194</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Starting scale for particle.</p>
+                    
+                        </div>
+                    
+                            <p><strong>Default:</strong> 1</p>
+                    
+                    
+                    </div>
+                    <div id="property_startScaleVar" class="property item">
+                        <h3 class="name"><code>startScaleVar</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l200"><code>src&#x2F;engine&#x2F;particle.js:200</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            
+                        </div>
+                    
+                            <p><strong>Default:</strong> 0</p>
+                    
+                    
+                    </div>
+                    <div id="property_target" class="property item">
+                        <h3 class="name"><code>target</code></h3>
+                        <span class="type"><a href="../classes/game.Point.html" class="crosslink">game.Point</a></span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l215"><code>src&#x2F;engine&#x2F;particle.js:215</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Target position for particles.</p>
+                    
+                        </div>
+                    
+                    
+                    
+                    </div>
+                    <div id="property_targetForce" class="property item">
+                        <h3 class="name"><code>targetForce</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l220"><code>src&#x2F;engine&#x2F;particle.js:220</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Target positions force.</p>
+                    
+                        </div>
+                    
+                            <p><strong>Default:</strong> 0</p>
+                    
+                    
+                    </div>
+                    <div id="property_textures" class="property item">
+                        <h3 class="name"><code>textures</code></h3>
+                        <span class="type">Array</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l78"><code>src&#x2F;engine&#x2F;particle.js:78</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>List of texture paths.</p>
+                    
+                        </div>
+                    
+                    
+                    
+                    </div>
+                    <div id="property_velocityLimit" class="property item">
+                        <h3 class="name"><code>velocityLimit</code></h3>
+                        <span class="type"><a href="../classes/game.Point.html" class="crosslink">game.Point</a></span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l255"><code>src&#x2F;engine&#x2F;particle.js:255</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            
+                        </div>
+                    
+                            <p><strong>Default:</strong> 0</p>
+                    
+                    
+                    </div>
+                    <div id="property_velRotate" class="property item">
+                        <h3 class="name"><code>velRotate</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l158"><code>src&#x2F;engine&#x2F;particle.js:158</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Particle&#39;s velocity rotation speed.</p>
+                    
+                        </div>
+                    
+                            <p><strong>Default:</strong> 0</p>
+                    
+                    
+                    </div>
+                    <div id="property_velRotateVar" class="property item">
+                        <h3 class="name"><code>velRotateVar</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_particle.js.html#l164"><code>src&#x2F;engine&#x2F;particle.js:164</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Variance for particle&#39;s velocity rotation speed.</p>
+                    
+                        </div>
+                    
+                            <p><strong>Default:</strong> 0</p>
+                    
+                    
+                    </div>
+            </div>
+
+
+    </div>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

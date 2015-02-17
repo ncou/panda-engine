@@ -2,10 +2,10 @@
     "project": {
         "name": "Panda.js",
         "description": "HTML5 game engine",
-        "version": "1.13.0",
+        "version": "1.13.1",
         "url": "https://www.pandajs.net",
-        "logo": "../img/logo.png",
-        "themedir": "friendly-theme"
+        "logo": "../img/logo_small2.png",
+        "themedir": "docs-theme"
     },
     "files": {
         "src/engine/analytics.js": {
@@ -152,15 +152,25 @@
                 "renderer": 1
             },
             "classes": {
-                "game.Sprite": 1,
-                "game.Spine": 1,
-                "game.Container": 1,
-                "game.TilingSprite": 1,
                 "game.Animation": 1,
+                "game.BaseTexture": 1,
+                "game.BitmapText": 1,
+                "game.Container": 1,
+                "game.DisplayObject": 1,
+                "game.Graphics": 1,
+                "game.Point": 1,
+                "game.RenderTexture": 1,
+                "game.Spine": 1,
+                "game.Sprite": 1,
+                "game.Text": 1,
+                "game.Texture": 1,
+                "game.TilingSprite": 1,
                 "game.SpriteSheet": 1,
                 "game.Video": 1
             },
-            "fors": {},
+            "fors": {
+                "game.Core": 1
+            },
             "namespaces": {
                 "game": 1
             }
@@ -289,7 +299,7 @@
             },
             "tag": "module",
             "file": "src/engine/core.js",
-            "line": 750
+            "line": 752
         },
         "debug": {
             "name": "debug",
@@ -304,7 +314,7 @@
             },
             "tag": "module",
             "file": "src/engine/debug.js",
-            "line": 113
+            "line": 114
         },
         "keyboard": {
             "name": "keyboard",
@@ -386,21 +396,31 @@
             "name": "renderer",
             "submodules": {},
             "classes": {
-                "game.Sprite": 1,
-                "game.Spine": 1,
-                "game.Container": 1,
-                "game.TilingSprite": 1,
                 "game.Animation": 1,
+                "game.BaseTexture": 1,
+                "game.BitmapText": 1,
+                "game.Container": 1,
+                "game.DisplayObject": 1,
+                "game.Graphics": 1,
+                "game.Point": 1,
+                "game.RenderTexture": 1,
+                "game.Spine": 1,
+                "game.Sprite": 1,
+                "game.Text": 1,
+                "game.Texture": 1,
+                "game.TilingSprite": 1,
                 "game.SpriteSheet": 1,
                 "game.Video": 1
             },
-            "fors": {},
+            "fors": {
+                "game.Core": 1
+            },
             "namespaces": {
                 "game": 1
             },
             "tag": "module",
             "file": "src/engine/renderer.js",
-            "line": 433
+            "line": 403
         },
         "scene": {
             "name": "scene",
@@ -489,7 +509,15 @@
             "file": "src/engine/analytics.js",
             "line": 11,
             "description": "Google Analytics tracking.",
-            "extends": "game.Class"
+            "extends": "game.Class",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "id",
+                    "description": "",
+                    "type": "String"
+                }
+            ]
         },
         "game.Audio": {
             "name": "game.Audio",
@@ -543,7 +571,7 @@
             "module": "game",
             "namespace": "game",
             "file": "src/engine/core.js",
-            "line": 750
+            "line": 752
         },
         "game.Debug": {
             "name": "game.Debug",
@@ -556,7 +584,7 @@
             "module": "debug",
             "namespace": "game",
             "file": "src/engine/debug.js",
-            "line": 16,
+            "line": 17,
             "description": "Show debug box.\nAutomatically enabled, if URL contains `?debug`.",
             "extends": "game.Class"
         },
@@ -571,7 +599,7 @@
             "module": "debug",
             "namespace": "game",
             "file": "src/engine/debug.js",
-            "line": 113,
+            "line": 114,
             "description": "DebugDraw will draw all interactive sprite hit areas and physic shapes.\nAutomatically enabled, if URL contains `?debugdraw`.",
             "extends": "game.Class"
         },
@@ -813,9 +841,9 @@
             "description": "Object pool.",
             "extends": "game.Class"
         },
-        "game.Sprite": {
-            "name": "game.Sprite",
-            "shortname": "Sprite",
+        "game.Animation": {
+            "name": "game.Animation",
+            "shortname": "Animation",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -824,38 +852,21 @@
             "module": "renderer",
             "namespace": "game",
             "file": "src/engine/renderer.js",
-            "line": 108,
-            "description": "http://www.goodboydigital.com/pixijs/docs/classes/Sprite.html",
+            "line": 19,
+            "description": "http://www.goodboydigital.com/pixijs/docs/classes/MovieClip.html",
+            "extends": "game.DisplayObject",
             "is_constructor": 1,
             "params": [
                 {
-                    "name": "id",
-                    "description": "Asset ID",
-                    "type": "String"
-                },
-                {
-                    "name": "x",
-                    "description": "The x coordinate to position at",
-                    "type": "Number",
-                    "optional": true
-                },
-                {
-                    "name": "y",
-                    "description": "The y coordinate to position at",
-                    "type": "Number",
-                    "optional": true
-                },
-                {
-                    "name": "settings",
-                    "description": "Other settings to merge into this Sprite",
-                    "type": "Object",
-                    "optional": true
+                    "name": "textures",
+                    "description": "Textures this animation made up of",
+                    "type": "Array"
                 }
             ]
         },
-        "game.Spine": {
-            "name": "game.Spine",
-            "shortname": "Spine",
+        "game.BaseTexture": {
+            "name": "game.BaseTexture",
+            "shortname": "BaseTexture",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -864,22 +875,22 @@
             "module": "renderer",
             "namespace": "game",
             "file": "src/engine/renderer.js",
-            "line": 188,
-            "description": "Spine animation.",
-            "is_constructor": 1,
-            "params": [
-                {
-                    "name": "id",
-                    "description": "Asset ID",
-                    "type": "String"
-                },
-                {
-                    "name": "settings",
-                    "description": "Settings to merge to this animation",
-                    "type": "Object",
-                    "optional": true
-                }
-            ]
+            "line": 98,
+            "description": "http://www.goodboydigital.com/pixijs/docs/classes/BaseTexture.html"
+        },
+        "game.BitmapText": {
+            "name": "game.BitmapText",
+            "shortname": "BitmapText",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "renderer",
+            "namespace": "game",
+            "file": "src/engine/renderer.js",
+            "line": 104,
+            "description": "http://www.goodboydigital.com/pixijs/docs/classes/BitmapText.html"
         },
         "game.Container": {
             "name": "game.Container",
@@ -892,8 +903,164 @@
             "module": "renderer",
             "namespace": "game",
             "file": "src/engine/renderer.js",
-            "line": 225,
-            "description": "http://www.goodboydigital.com/pixijs/docs/classes/DisplayObjectContainer.html"
+            "line": 111,
+            "description": "http://www.goodboydigital.com/pixijs/docs/classes/DisplayObjectContainer.html",
+            "extends": "game.DisplayObject"
+        },
+        "game.DisplayObject": {
+            "name": "game.DisplayObject",
+            "shortname": "DisplayObject",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "renderer",
+            "namespace": "game",
+            "file": "src/engine/renderer.js",
+            "line": 118,
+            "description": "http://www.goodboydigital.com/pixijs/docs/classes/DisplayObject.html"
+        },
+        "game.Graphics": {
+            "name": "game.Graphics",
+            "shortname": "Graphics",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "renderer",
+            "namespace": "game",
+            "file": "src/engine/renderer.js",
+            "line": 142,
+            "description": "http://www.goodboydigital.com/pixijs/docs/classes/Graphics.html",
+            "extends": "game.DisplayObject"
+        },
+        "game.Point": {
+            "name": "game.Point",
+            "shortname": "Point",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "renderer",
+            "namespace": "game",
+            "file": "src/engine/renderer.js",
+            "line": 152,
+            "description": "http://www.goodboydigital.com/pixijs/docs/classes/Point.html"
+        },
+        "game.RenderTexture": {
+            "name": "game.RenderTexture",
+            "shortname": "RenderTexture",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "renderer",
+            "namespace": "game",
+            "file": "src/engine/renderer.js",
+            "line": 158,
+            "description": "http://www.goodboydigital.com/pixijs/docs/classes/RenderTexture.html"
+        },
+        "game.Spine": {
+            "name": "game.Spine",
+            "shortname": "Spine",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "renderer",
+            "namespace": "game",
+            "file": "src/engine/renderer.js",
+            "line": 164,
+            "description": "http://www.goodboydigital.com/pixijs/docs/classes/Spine.html",
+            "extends": "game.DisplayObject",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "id",
+                    "description": "Asset ID",
+                    "type": "String"
+                },
+                {
+                    "name": "properties",
+                    "description": "Properties to merge to this animation",
+                    "type": "Object",
+                    "optional": true
+                }
+            ]
+        },
+        "game.Sprite": {
+            "name": "game.Sprite",
+            "shortname": "Sprite",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "renderer",
+            "namespace": "game",
+            "file": "src/engine/renderer.js",
+            "line": 203,
+            "description": "http://www.goodboydigital.com/pixijs/docs/classes/Sprite.html",
+            "extends": "game.DisplayObject",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "texture",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "x",
+                    "description": "",
+                    "type": "Number",
+                    "optional": true
+                },
+                {
+                    "name": "y",
+                    "description": "",
+                    "type": "Number",
+                    "optional": true
+                },
+                {
+                    "name": "properties",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ]
+        },
+        "game.Text": {
+            "name": "game.Text",
+            "shortname": "Text",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "renderer",
+            "namespace": "game",
+            "file": "src/engine/renderer.js",
+            "line": 278,
+            "description": "http://www.goodboydigital.com/pixijs/docs/classes/Text.html"
+        },
+        "game.Texture": {
+            "name": "game.Texture",
+            "shortname": "Texture",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "renderer",
+            "namespace": "game",
+            "file": "src/engine/renderer.js",
+            "line": 284,
+            "description": "http://www.goodboydigital.com/pixijs/docs/classes/Texture.html"
         },
         "game.TilingSprite": {
             "name": "game.TilingSprite",
@@ -906,8 +1073,9 @@
             "module": "renderer",
             "namespace": "game",
             "file": "src/engine/renderer.js",
-            "line": 248,
-            "description": "Tiling sprite.\nhttp://www.goodboydigital.com/pixijs/docs/classes/TilingSprite.html",
+            "line": 296,
+            "description": "http://www.goodboydigital.com/pixijs/docs/classes/TilingSprite.html",
+            "extends": "game.DisplayObject",
             "is_constructor": 1,
             "params": [
                 {
@@ -926,32 +1094,10 @@
                     "type": "Number"
                 },
                 {
-                    "name": "settings",
-                    "description": "Settings to be merged into this sprite",
+                    "name": "properties",
+                    "description": "Properties to be merged into this sprite",
                     "type": "Object",
                     "optional": true
-                }
-            ]
-        },
-        "game.Animation": {
-            "name": "game.Animation",
-            "shortname": "Animation",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "renderer",
-            "namespace": "game",
-            "file": "src/engine/renderer.js",
-            "line": 282,
-            "description": "Frame by frame animation. This can also be generated from a SpriteSheet\nhttp://www.goodboydigital.com/pixijs/docs/classes/MovieClip.html",
-            "is_constructor": 1,
-            "params": [
-                {
-                    "name": "textures",
-                    "description": "Textures this animation made up of",
-                    "type": "Array"
                 }
             ]
         },
@@ -966,7 +1112,8 @@
             "module": "renderer",
             "namespace": "game",
             "file": "src/engine/renderer.js",
-            "line": 369,
+            "line": 330,
+            "extends": "game.Class",
             "is_constructor": 1,
             "params": [
                 {
@@ -997,7 +1144,8 @@
             "module": "renderer",
             "namespace": "game",
             "file": "src/engine/renderer.js",
-            "line": 433,
+            "line": 403,
+            "extends": "game.Class",
             "is_constructor": 1,
             "params": [
                 {
@@ -1138,7 +1286,7 @@
     "classitems": [
         {
             "file": "src/engine/analytics.js",
-            "line": 17,
+            "line": 19,
             "description": "Current tracking id.",
             "itemtype": "property",
             "name": "trackId",
@@ -1149,7 +1297,7 @@
         },
         {
             "file": "src/engine/analytics.js",
-            "line": 55,
+            "line": 57,
             "description": "Send event to analytics.",
             "itemtype": "method",
             "name": "send",
@@ -1183,7 +1331,7 @@
         },
         {
             "file": "src/engine/analytics.js",
-            "line": 81,
+            "line": 83,
             "description": "Tracking id for analytics.",
             "itemtype": "attribute",
             "name": "id",
@@ -2289,7 +2437,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 755,
+            "line": 757,
             "description": "Extend class.",
             "itemtype": "method",
             "name": "extend",
@@ -2310,7 +2458,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 793,
+            "line": 795,
             "description": "This method is called before init.",
             "itemtype": "method",
             "name": "staticInit",
@@ -2327,7 +2475,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 809,
+            "line": 811,
             "description": "This method is called, when you create new instance of the class.",
             "itemtype": "method",
             "name": "init",
@@ -2344,7 +2492,7 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 823,
+            "line": 825,
             "description": "Inject class.",
             "itemtype": "method",
             "name": "inject",
@@ -2361,7 +2509,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 69,
+            "line": 70,
             "description": "Enable debug box.",
             "itemtype": "attribute",
             "name": "enabled",
@@ -2372,7 +2520,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 74,
+            "line": 75,
             "description": "How fast to update fps (ms).",
             "itemtype": "attribute",
             "name": "frequency",
@@ -2384,7 +2532,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 80,
+            "line": 81,
             "description": "Text color of debug box.",
             "itemtype": "attribute",
             "name": "color",
@@ -2396,7 +2544,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 86,
+            "line": 87,
             "description": "Background color of debug box.",
             "itemtype": "attribute",
             "name": "backgroundColor",
@@ -2408,7 +2556,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 92,
+            "line": 93,
             "description": "X position of debug box.",
             "itemtype": "attribute",
             "name": "positionX",
@@ -2420,7 +2568,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 98,
+            "line": 99,
             "description": "Y position of debug box.",
             "itemtype": "attribute",
             "name": "positionY",
@@ -2432,7 +2580,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 128,
+            "line": 129,
             "description": "Remove all sprites from DebugDraw.",
             "itemtype": "method",
             "name": "reset",
@@ -2442,7 +2590,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 144,
+            "line": 145,
             "description": "Add interactive sprite to DebugDraw.",
             "itemtype": "method",
             "name": "addSprite",
@@ -2459,7 +2607,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 173,
+            "line": 174,
             "description": "Add physic body to DebugDraw.",
             "itemtype": "method",
             "name": "addBody",
@@ -2476,7 +2624,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 189,
+            "line": 190,
             "description": "Draw debug sprite for physics body.",
             "itemtype": "method",
             "name": "drawBodySprite",
@@ -2498,7 +2646,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 242,
+            "line": 243,
             "description": "Update DebugDraw sprites.",
             "itemtype": "method",
             "name": "update",
@@ -2508,7 +2656,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 254,
+            "line": 255,
             "description": "Enable DebugDraw.",
             "itemtype": "attribute",
             "name": "enabled",
@@ -2519,7 +2667,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 259,
+            "line": 260,
             "description": "Color of DebugDraw sprites.",
             "itemtype": "attribute",
             "name": "spriteColor",
@@ -2531,7 +2679,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 265,
+            "line": 266,
             "description": "Stroke color of DebugDraw sprites.",
             "itemtype": "attribute",
             "name": "spriteLineColor",
@@ -2543,7 +2691,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 271,
+            "line": 272,
             "description": "Alpha of DebugDraw sprites.",
             "itemtype": "attribute",
             "name": "spriteAlpha",
@@ -2555,7 +2703,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 277,
+            "line": 278,
             "description": "Color of DebugDraw bodies.",
             "itemtype": "attribute",
             "name": "bodyColor",
@@ -2567,7 +2715,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 283,
+            "line": 284,
             "description": "Stroke color of DebugDraw bodies.",
             "itemtype": "attribute",
             "name": "bodyLineColor",
@@ -2579,7 +2727,7 @@
         },
         {
             "file": "src/engine/debug.js",
-            "line": 289,
+            "line": 290,
             "description": "Alpha of DebugDraw bodies.",
             "itemtype": "attribute",
             "name": "bodyAlpha",
@@ -4336,78 +4484,85 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 139,
-            "description": "Change sprite texture.",
+            "line": 27,
+            "description": "Play animation in reverse.",
+            "itemtype": "property",
+            "name": "reverse",
+            "type": "Boolean",
+            "default": "false",
+            "class": "game.Animation",
+            "module": "renderer",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/renderer.js",
+            "line": 49,
+            "description": "Play animation.",
             "itemtype": "method",
-            "name": "setTexture",
+            "name": "play",
             "params": [
                 {
-                    "name": "id",
-                    "description": "Asset ID",
+                    "name": "loop",
+                    "description": "",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "game.Animation",
+            "module": "renderer",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/renderer.js",
+            "line": 76,
+            "itemtype": "method",
+            "name": "fromFrames",
+            "static": 1,
+            "params": [
+                {
+                    "name": "name",
+                    "description": "",
                     "type": "String"
+                },
+                {
+                    "name": "reverse",
+                    "description": "",
+                    "type": "Boolean"
                 }
             ],
-            "class": "game.Sprite",
+            "class": "game.Animation",
             "module": "renderer",
             "namespace": "game"
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 152,
-            "description": "Crop sprite.",
+            "line": 124,
+            "description": "Remove from it's parent.",
             "itemtype": "method",
-            "name": "crop",
+            "name": "remove",
+            "class": "game.DisplayObject",
+            "module": "renderer",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/renderer.js",
+            "line": 132,
+            "description": "Add to container.",
+            "itemtype": "method",
+            "name": "addTo",
             "params": [
                 {
-                    "name": "x",
-                    "description": "The x coordinate of left-top point to crop",
-                    "type": "Number"
-                },
-                {
-                    "name": "y",
-                    "description": "The y coordinate of left-top point to crop",
-                    "type": "Number"
-                },
-                {
-                    "name": "width",
-                    "description": "The width of sprite to crop to",
-                    "type": "Number"
-                },
-                {
-                    "name": "height",
-                    "description": "The height of sprite to crop to",
-                    "type": "Number"
+                    "name": "container",
+                    "description": "",
+                    "type": "game.DisplayObject|game.Container"
                 }
             ],
-            "class": "game.Sprite",
+            "class": "game.DisplayObject",
             "module": "renderer",
             "namespace": "game"
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 166,
-            "description": "Position sprite to system center.",
-            "itemtype": "method",
-            "name": "center",
-            "params": [
-                {
-                    "name": "offsetX",
-                    "description": "Offset x coordinate to system center",
-                    "type": "Number"
-                },
-                {
-                    "name": "offsetY",
-                    "description": "Offset y coordinate to system center",
-                    "type": "Number"
-                }
-            ],
-            "class": "game.Sprite",
-            "module": "renderer",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/renderer.js",
-            "line": 201,
+            "line": 180,
             "description": "Play animation.",
             "itemtype": "method",
             "name": "play",
@@ -4434,7 +4589,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 213,
+            "line": 192,
             "description": "Mix two animations for smooth transition.",
             "itemtype": "method",
             "name": "mix",
@@ -4461,19 +4616,76 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 230,
-            "description": "Add object to container.",
+            "line": 243,
+            "description": "Crop sprite.",
             "itemtype": "method",
-            "name": "addChild",
-            "class": "game.Container",
+            "name": "crop",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "The x coordinate of left-top point to crop",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "The y coordinate of left-top point to crop",
+                    "type": "Number"
+                },
+                {
+                    "name": "width",
+                    "description": "The width of sprite to crop to",
+                    "type": "Number"
+                },
+                {
+                    "name": "height",
+                    "description": "The height of sprite to crop to",
+                    "type": "Number"
+                }
+            ],
+            "chainable": 1,
+            "class": "game.Sprite",
             "module": "renderer",
             "namespace": "game"
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 259,
+            "line": 258,
+            "description": "Position sprite to system center.",
+            "itemtype": "method",
+            "name": "center",
+            "params": [
+                {
+                    "name": "offsetX",
+                    "description": "Offset x coordinate to system center",
+                    "type": "Number"
+                },
+                {
+                    "name": "offsetY",
+                    "description": "Offset y coordinate to system center",
+                    "type": "Number"
+                }
+            ],
+            "chainable": 1,
+            "class": "game.Sprite",
+            "module": "renderer",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/renderer.js",
+            "line": 290,
             "itemtype": "property",
-            "name": "speed Texture scroll speed",
+            "name": "TextureCache",
+            "type": "Object",
+            "class": "game.Core",
+            "module": "renderer",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/renderer.js",
+            "line": 307,
+            "description": "Texture scroll speed",
+            "itemtype": "property",
+            "name": "speed",
             "type": "game.Point",
             "class": "game.TilingSprite",
             "module": "renderer",
@@ -4481,7 +4693,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 272,
+            "line": 321,
             "description": "Update tile position with speed.",
             "itemtype": "method",
             "name": "update",
@@ -4491,63 +4703,26 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 290,
-            "description": "Play animation in reverse.",
+            "line": 339,
+            "propety": "{Array} textures",
+            "class": "game.SpriteSheet",
+            "module": "renderer",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/renderer.js",
+            "line": 343,
+            "description": "Number of frames",
             "itemtype": "property",
-            "name": "reverse",
-            "type": "Boolean",
-            "default": "false",
-            "class": "game.Animation",
+            "name": "frames",
+            "type": "Number",
+            "class": "game.SpriteSheet",
             "module": "renderer",
             "namespace": "game"
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 310,
-            "description": "Add to container.",
-            "itemtype": "method",
-            "name": "addTo",
-            "params": [
-                {
-                    "name": "container",
-                    "description": "",
-                    "type": "game.Container"
-                }
-            ],
-            "class": "game.Animation",
-            "module": "renderer",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/renderer.js",
-            "line": 320,
-            "description": "Remove from it's container.",
-            "itemtype": "method",
-            "name": "remove",
-            "class": "game.Animation",
-            "module": "renderer",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/renderer.js",
-            "line": 328,
-            "description": "Play animation.",
-            "itemtype": "method",
-            "name": "play",
-            "params": [
-                {
-                    "name": "loop",
-                    "description": "",
-                    "type": "Boolean"
-                }
-            ],
-            "class": "game.Animation",
-            "module": "renderer",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/renderer.js",
-            "line": 395,
+            "line": 365,
             "description": "Create sprite from specific frame.",
             "itemtype": "method",
             "name": "frame",
@@ -4568,7 +4743,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 406,
+            "line": 376,
             "description": "Create animation from spritesheet.",
             "itemtype": "method",
             "name": "anim",
@@ -4593,7 +4768,7 @@
             ],
             "return": {
                 "description": "",
-                "type": "game.Animation"
+                "type": "game.Animation|Array"
             },
             "class": "game.SpriteSheet",
             "module": "renderer",
@@ -4601,7 +4776,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 439,
+            "line": 410,
             "itemtype": "property",
             "name": "loop",
             "type": "Boolean",
@@ -4612,7 +4787,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 444,
+            "line": 415,
             "description": "Video element.",
             "itemtype": "property",
             "name": "videoElem",
@@ -4623,7 +4798,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 449,
+            "line": 420,
             "description": "Video sprite.",
             "itemtype": "property",
             "name": "sprite",
@@ -4634,7 +4809,29 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 481,
+            "line": 444,
+            "itemtype": "method",
+            "name": "_loaded",
+            "access": "private",
+            "tagname": "",
+            "class": "game.Video",
+            "module": "renderer",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/renderer.js",
+            "line": 452,
+            "itemtype": "method",
+            "name": "_complete",
+            "access": "private",
+            "tagname": "",
+            "class": "game.Video",
+            "module": "renderer",
+            "namespace": "game"
+        },
+        {
+            "file": "src/engine/renderer.js",
+            "line": 460,
             "itemtype": "method",
             "name": "onLoaded",
             "params": [
@@ -4650,7 +4847,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 489,
+            "line": 468,
             "itemtype": "method",
             "name": "onComplete",
             "params": [
@@ -4666,7 +4863,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 497,
+            "line": 476,
             "itemtype": "method",
             "name": "play",
             "class": "game.Video",
@@ -4675,7 +4872,7 @@
         },
         {
             "file": "src/engine/renderer.js",
-            "line": 505,
+            "line": 484,
             "itemtype": "method",
             "name": "stop",
             "params": [
@@ -6279,5 +6476,14 @@
             "namespace": "game"
         }
     ],
-    "warnings": []
+    "warnings": [
+        {
+            "message": "unknown tag: propety",
+            "line": " src/engine/renderer.js:339"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/engine/renderer.js:339"
+        }
+    ]
 }

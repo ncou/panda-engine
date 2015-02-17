@@ -1,165 +1,171 @@
----
-layout: default
-title: Documentation <span>1.13.0</span>
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>game.Vector - Panda.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
 
-<div class="sidebar"></div>
-<div class="box search">
-<div id="search">
-    <form method="GET" action="../../search.html">
-        <input type="text" name="key" placeholder="Search documentation...">
-    </form>
-</div>
-</div>
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="../../img/logo_small2.png" title="Panda.js"></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 1.13.1</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
 
-<h4 class="boxHeader"><span>Class:</span> game.Vector</h4>
-<div class="headerBox">
-<div class="classes-meta">
-    <div class="desc">Vector class.</div>
-
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/game.Analytics.html">game.Analytics</a></li>
+                                <li><a href="../classes/game.Animation.html">game.Animation</a></li>
+                                <li><a href="../classes/game.Audio.html">game.Audio</a></li>
+                                <li><a href="../classes/game.BaseTexture.html">game.BaseTexture</a></li>
+                                <li><a href="../classes/game.BitmapText.html">game.BitmapText</a></li>
+                                <li><a href="../classes/game.Body.html">game.Body</a></li>
+                                <li><a href="../classes/game.Camera.html">game.Camera</a></li>
+                                <li><a href="../classes/game.Circle.html">game.Circle</a></li>
+                                <li><a href="../classes/game.Class.html">game.Class</a></li>
+                                <li><a href="../classes/game.CollisionSolver.html">game.CollisionSolver</a></li>
+                                <li><a href="../classes/game.Container.html">game.Container</a></li>
+                                <li><a href="../classes/game.Core.html">game.Core</a></li>
+                                <li><a href="../classes/game.Debug.html">game.Debug</a></li>
+                                <li><a href="../classes/game.DebugDraw.html">game.DebugDraw</a></li>
+                                <li><a href="../classes/game.DisplayObject.html">game.DisplayObject</a></li>
+                                <li><a href="../classes/game.Emitter.html">game.Emitter</a></li>
+                                <li><a href="../classes/game.Graphics.html">game.Graphics</a></li>
+                                <li><a href="../classes/game.Keyboard.html">game.Keyboard</a></li>
+                                <li><a href="../classes/game.Loader.html">game.Loader</a></li>
+                                <li><a href="../classes/game.Particle.html">game.Particle</a></li>
+                                <li><a href="../classes/game.Point.html">game.Point</a></li>
+                                <li><a href="../classes/game.Pool.html">game.Pool</a></li>
+                                <li><a href="../classes/game.Rectangle.html">game.Rectangle</a></li>
+                                <li><a href="../classes/game.RenderTexture.html">game.RenderTexture</a></li>
+                                <li><a href="../classes/game.Scene.html">game.Scene</a></li>
+                                <li><a href="../classes/game.Spine.html">game.Spine</a></li>
+                                <li><a href="../classes/game.Sprite.html">game.Sprite</a></li>
+                                <li><a href="../classes/game.SpriteSheet.html">game.SpriteSheet</a></li>
+                                <li><a href="../classes/game.Storage.html">game.Storage</a></li>
+                                <li><a href="../classes/game.System.html">game.System</a></li>
+                                <li><a href="../classes/game.Text.html">game.Text</a></li>
+                                <li><a href="../classes/game.Texture.html">game.Texture</a></li>
+                                <li><a href="../classes/game.TilingSprite.html">game.TilingSprite</a></li>
+                                <li><a href="../classes/game.Timer.html">game.Timer</a></li>
+                                <li><a href="../classes/game.Tween.html">game.Tween</a></li>
+                                <li><a href="../classes/game.TweenEngine.html">game.TweenEngine</a></li>
+                                <li><a href="../classes/game.TweenGroup.html">game.TweenGroup</a></li>
+                                <li><a href="../classes/game.Vector.html">game.Vector</a></li>
+                                <li><a href="../classes/game.Video.html">game.Video</a></li>
+                                <li><a href="../classes/game.World.html">game.World</a></li>
+                            </ul>
+                
+                            <ul id="api-modules" class="apis modules">
+                                <li><a href="../modules/analytics.html">analytics</a></li>
+                                <li><a href="../modules/audio.html">audio</a></li>
+                                <li><a href="../modules/camera.html">camera</a></li>
+                                <li><a href="../modules/debug.html">debug</a></li>
+                                <li><a href="../modules/game.html">game</a></li>
+                                <li><a href="../modules/keyboard.html">keyboard</a></li>
+                                <li><a href="../modules/loader.html">loader</a></li>
+                                <li><a href="../modules/particle.html">particle</a></li>
+                                <li><a href="../modules/physics.html">physics</a></li>
+                                <li><a href="../modules/pool.html">pool</a></li>
+                                <li><a href="../modules/renderer.html">renderer</a></li>
+                                <li><a href="../modules/scene.html">scene</a></li>
+                                <li><a href="../modules/storage.html">storage</a></li>
+                                <li><a href="../modules/system.html">system</a></li>
+                                <li><a href="../modules/timer.html">timer</a></li>
+                                <li><a href="../modules/tween.html">tween</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited">
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1>game.Vector Class</h1>
+<div class="box meta">
 
         <div class="extends">
-            Extends: <a href="../classes/game.Class.html" class="crosslink">game.Class</a>
+            Extends <a href="../classes/game.Class.html" class="crosslink">game.Class</a>
         </div>
 
-        <!-- <div class="foundat">
+        <div class="foundat">
             Defined in: <a href="../files/src_engine_physics.js.html#l468"><code>src&#x2F;engine&#x2F;physics.js:468</code></a>
-        </div> -->
+        </div>
 
             Module: <a href="../modules/physics.html">physics</a>
 
 </div>
 
 
-</div>
-
-<div class="classes-index">
-
-    <h3>Methods</h3>
-    <div class="index-section methods">
-
-        <div class="box float">
-        <ul class="index-list methods extends">
-
-<!--                 <li class="index-item method constructor">
-                    <a href="#method_game.Vector">game.Vector <span class="flag constructor">constructor</span></a>
-
-                </li> -->
-
-                <li class="index-item method">
-                    <a href="#method_add">add</a>
-
-                </li>
-                <li class="index-item method">
-                    <a href="#method_angle">angle</a>
-
-                </li>
-                <li class="index-item method">
-                    <a href="#method_angleFromOrigin">angleFromOrigin</a>
-
-                </li>
-                <li class="index-item method">
-                    <a href="#method_clone">clone</a>
-
-                </li>
-                <li class="index-item method">
-                    <a href="#method_copy">copy</a>
-
-                </li>
-                <li class="index-item method">
-                    <a href="#method_distance">distance</a>
-
-                </li>
-                <li class="index-item method">
-                    <a href="#method_divide">divide</a>
-
-                </li>
-                <li class="index-item method">
-                    <a href="#method_dot">dot</a>
-
-                </li>
-                <li class="index-item method">
-                    <a href="#method_dotNormalized">dotNormalized</a>
-
-                </li>
-                <li class="index-item method inherited">
-                    <a href="#method_extend">extend</a>
-
-                </li>
-                <li class="index-item method inherited">
-                    <a href="#method_init">init</a>
-
-                </li>
-                <li class="index-item method inherited">
-                    <a href="#method_inject">inject</a>
-
-                </li>
-                <li class="index-item method">
-                    <a href="#method_length">length</a>
-
-                </li>
-                <li class="index-item method">
-                    <a href="#method_limit">limit</a>
-
-                </li>
-                <li class="index-item method">
-                    <a href="#method_multiply">multiply</a>
-
-                </li>
-                <li class="index-item method">
-                    <a href="#method_multiplyAdd">multiplyAdd</a>
-
-                </li>
-                <li class="index-item method">
-                    <a href="#method_normalize">normalize</a>
-
-                </li>
-                <li class="index-item method">
-                    <a href="#method_rotate">rotate</a>
-
-                </li>
-                <li class="index-item method">
-                    <a href="#method_round">round</a>
-
-                </li>
-                <li class="index-item method">
-                    <a href="#method_set">set</a>
-
-                </li>
-                <li class="index-item method inherited">
-                    <a href="#method_staticInit">staticInit</a>
-
-                </li>
-                <li class="index-item method">
-                    <a href="#method_subtract">subtract</a>
-
-                </li>
-        </ul>
-        <div class="clear"></div>
-        </div>
-    </div>
-
-
+<div class="box intro">
+    <p>Vector class.</p>
 
 </div>
-
-<div class="clear"></div>
-
-<div class="hline"></div>
-
-<div class="class-detail">
 
     <div class="constructor">
-        <h6>Constructor</h6>
-        <a name="method_game.Vector" class="anchor-link"></a>
-        <div class="box method item">
-            <h3 class="name">game.Vector
-                <span class="args">
-                    <span class="paren">(</span><span class="args-list inline commas">
-                            <span class="optional">[x]</span>
-                            <span class="optional">[y]</span>
-                    </span><span class="paren">)</span>
-                </span>
+        <h2>Constructor</h2>
+        <div id="method_game.Vector" class="method item">
+            <h3 class="name"><code>game.Vector</code></h3>
+        
+                <div class="args">
+                    <span class="paren">(</span><ul class="args-list inline commas">
+                        <li class="arg">
+                                <code class="optional">[x]</code>
+                        </li>
+                        <li class="arg">
+                                <code class="optional">[y]</code>
+                        </li>
+                    </ul><span class="paren">)</span>
+                </div>
         
         
         
@@ -167,1422 +173,1540 @@ title: Documentation <span>1.13.0</span>
         
         
         
-        
-            </h3>
         
             <div class="meta">
                         <p>
-                        <!-- 
                         Defined in
-                         -->
-                <!-- <a href="../files/src_engine_physics.js.html#l468"><code>src&#x2F;engine&#x2F;physics.js:468</code></a> -->
+                <a href="../files/src_engine_physics.js.html#l468"><code>src&#x2F;engine&#x2F;physics.js:468</code></a>
                 </p>
         
         
         
             </div>
         
-            <div class="extended-detail">
+            <div class="description">
+                
+            </div>
         
-                <div class="description">
-                    
+                <div class="params">
+                    <h4>Parameters:</h4>
+        
+                    <ul class="params-list">
+                        <li class="param">
+                                <code class="param-name optional">[x]</code>
+                                <span class="type">Number</span>
+                                <span class="flag optional" title="This parameter is optional.">optional</span>
+        
+        
+                            <div class="param-description">
+                                 
+                            </div>
+        
+                        </li>
+                        <li class="param">
+                                <code class="param-name optional">[y]</code>
+                                <span class="type">Number</span>
+                                <span class="flag optional" title="This parameter is optional.">optional</span>
+        
+        
+                            <div class="param-description">
+                                 
+                            </div>
+        
+                        </li>
+                    </ul>
                 </div>
         
-                    <div class="params">
-                        <h4>Parameters:</h4>
-        
-                        <ul class="params-list">
-                            <li class="param">
-                                    <code class="param-name optional">x</code>
-                                    <span class="type">Number</span>
-                                    <span class="flag optional" title="This parameter is optional.">optional</span>
         
         
-                                <span class="param-description">
-                                     
-                                </span>
-        
-                            </li>
-                            <li class="param">
-                                    <code class="param-name optional">y</code>
-                                    <span class="type">Number</span>
-                                    <span class="flag optional" title="This parameter is optional.">optional</span>
-        
-        
-                                <span class="param-description">
-                                     
-                                </span>
-        
-                            </li>
-                        </ul>
-                    </div>
-        
-        
-            </div>
         </div>
     </div>
 
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
 
-    <div class="methods-detail">
-        <h6>Methods</h6>
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+    </ul>
 
-            <a name="method_add" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">add
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>x</span>
-                                <span class="optional">[y]</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_physics.js.html#l519"><code>src&#x2F;engine&#x2F;physics.js:519</code></a> -->
-                    </p>
-            
-            
-            
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods extends">
+                            <li class="index-item method">
+                                <a href="#method_add">add</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_angle">angle</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_angleFromOrigin">angleFromOrigin</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_clone">clone</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_copy">copy</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_distance">distance</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_divide">divide</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_dot">dot</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_dotNormalized">dotNormalized</a>
+
+                            </li>
+                            <li class="index-item method inherited">
+                                <a href="#method_extend">extend</a>
+
+                            </li>
+                            <li class="index-item method inherited">
+                                <a href="#method_init">init</a>
+
+                            </li>
+                            <li class="index-item method inherited">
+                                <a href="#method_inject">inject</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_length">length</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_limit">limit</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_multiply">multiply</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_multiplyAdd">multiplyAdd</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_normalize">normalize</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_rotate">rotate</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_round">round</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_set">set</a>
+
+                            </li>
+                            <li class="index-item method inherited">
+                                <a href="#method_staticInit">staticInit</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_subtract">subtract</a>
+
+                            </li>
+                    </ul>
                 </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Add to vector values.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">x</code>
-                                        <span class="type">Number | <a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
-            
-            
-                                    <span class="param-description">
-                                         
-                                    </span>
-            
-                                </li>
-                                <li class="param">
-                                        <code class="param-name optional">y</code>
-                                        <span class="type">Number</span>
-                                        <span class="flag optional" title="This parameter is optional.">optional</span>
-            
-            
-                                    <span class="param-description">
-                                         
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-                        <div class="returns">
-                            <div class="returns-description">
-                                Returns:
-                                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
-                            </div>
-                        </div>
-            
-                </div>
-            </div>
-            <a name="method_angle" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">angle
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>vector</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_physics.js.html#l676"><code>src&#x2F;engine&#x2F;physics.js:676</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Get angle between two vectors.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">vector</code>
-                                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
-            
-            
-                                    <span class="param-description">
-                                         
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-                        <div class="returns">
-                            <div class="returns-description">
-                                Returns:
-                                        <span class="type">Number</span>
-                            </div>
-                        </div>
-            
-                </div>
-            </div>
-            <a name="method_angleFromOrigin" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">angleFromOrigin
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>vector</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_physics.js.html#l686"><code>src&#x2F;engine&#x2F;physics.js:686</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Get angle between two vectors from origin.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">vector</code>
-                                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
-            
-            
-                                    <span class="param-description">
-                                         
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-                        <div class="returns">
-                            <div class="returns-description">
-                                Returns:
-                                        <span class="type">Number</span>
-                            </div>
-                        </div>
-            
-                </div>
-            </div>
-            <a name="method_clone" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">clone
-                    <span class="paren">()</span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_physics.js.html#l498"><code>src&#x2F;engine&#x2F;physics.js:498</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Clone vector.</p>
-            
-                    </div>
-            
-            
-                        <div class="returns">
-                            <div class="returns-description">
-                                Returns:
-                                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
-                            </div>
-                        </div>
-            
-                </div>
-            </div>
-            <a name="method_copy" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">copy
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>v</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_physics.js.html#l507"><code>src&#x2F;engine&#x2F;physics.js:507</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Copy values from another vector.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">v</code>
-                                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
-            
-            
-                                    <span class="param-description">
-                                         
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-                        <div class="returns">
-                            <div class="returns-description">
-                                Returns:
-                                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
-                            </div>
-                        </div>
-            
-                </div>
-            </div>
-            <a name="method_distance" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">distance
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>vector</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_physics.js.html#l584"><code>src&#x2F;engine&#x2F;physics.js:584</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Get distance of two vectors.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">vector</code>
-                                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
-            
-            
-                                    <span class="param-description">
-                                         
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-                        <div class="returns">
-                            <div class="returns-description">
-                                Returns:
-                                        <span class="type">Number</span>
-                            </div>
-                        </div>
-            
-                </div>
-            </div>
-            <a name="method_divide" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">divide
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>x</span>
-                                <span class="optional">[y]</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_physics.js.html#l571"><code>src&#x2F;engine&#x2F;physics.js:571</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Divide vector values.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">x</code>
-                                        <span class="type">Number | <a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
-            
-            
-                                    <span class="param-description">
-                                         
-                                    </span>
-            
-                                </li>
-                                <li class="param">
-                                        <code class="param-name optional">y</code>
-                                        <span class="type">Number</span>
-                                        <span class="flag optional" title="This parameter is optional.">optional</span>
-            
-            
-                                    <span class="param-description">
-                                         
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-                        <div class="returns">
-                            <div class="returns-description">
-                                Returns:
-                                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
-                            </div>
-                        </div>
-            
-                </div>
-            </div>
-            <a name="method_dot" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">dot
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span class="optional">[vector]</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_physics.js.html#l605"><code>src&#x2F;engine&#x2F;physics.js:605</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Get dot of vector.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name optional">vector</code>
-                                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
-                                        <span class="flag optional" title="This parameter is optional.">optional</span>
-            
-            
-                                    <span class="param-description">
-                                         
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-                        <div class="returns">
-                            <div class="returns-description">
-                                Returns:
-                                        <span class="type">Number</span>
-                            </div>
-                        </div>
-            
-                </div>
-            </div>
-            <a name="method_dotNormalized" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">dotNormalized
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span class="optional">[vector]</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_physics.js.html#l616"><code>src&#x2F;engine&#x2F;physics.js:616</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Get normalized dot of vector.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name optional">vector</code>
-                                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
-                                        <span class="flag optional" title="This parameter is optional.">optional</span>
-            
-            
-                                    <span class="param-description">
-                                         
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-                        <div class="returns">
-                            <div class="returns-description">
-                                Returns:
-                                        <span class="type">Number</span>
-                            </div>
-                        </div>
-            
-                </div>
-            </div>
-            <a name="method_extend" class="anchor-link"></a>
-            <div class="box method item inherited">
-                <h3 class="name">extend
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>prop</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>Inherited from
-                            <a href="../classes/game.Class.html#method_extend" class="type">game.Class</a>:
-                    <!-- <a href="../files/src_engine_core.js.html#l755"><code>src&#x2F;engine&#x2F;core.js:755</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Extend class.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">prop</code>
-                                        <span class="type">Object</span>
-            
-            
-                                    <span class="param-description">
-                                        
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-                        <div class="returns">
-                            <div class="returns-description">
-                                Returns:
-                                        <span class="type"><a href="../classes/game.Class.html" class="crosslink">game.Class</a></span>
-                            </div>
-                        </div>
-            
-                </div>
-            </div>
-            <a name="method_init" class="anchor-link"></a>
-            <div class="box method item inherited">
-                <h3 class="name">init
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>arguments</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>Inherited from
-                            <a href="../classes/game.Class.html#method_init" class="type">game.Class</a>:
-                    <!-- <a href="../files/src_engine_core.js.html#l809"><code>src&#x2F;engine&#x2F;core.js:809</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>This method is called, when you create new instance of the class.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">arguments</code>
-                                        <span class="type">Array</span>
-            
-            
-                                    <span class="param-description">
-                                        
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-            
-                </div>
-            </div>
-            <a name="method_inject" class="anchor-link"></a>
-            <div class="box method item inherited">
-                <h3 class="name">inject
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>prop</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>Inherited from
-                            <a href="../classes/game.Class.html#method_inject" class="type">game.Class</a>:
-                    <!-- <a href="../files/src_engine_core.js.html#l823"><code>src&#x2F;engine&#x2F;core.js:823</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Inject class.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">prop</code>
-                                        <span class="type">Object</span>
-            
-            
-                                    <span class="param-description">
-                                        
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-            
-                </div>
-            </div>
-            <a name="method_length" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">length
-                    <span class="paren">()</span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_physics.js.html#l596"><code>src&#x2F;engine&#x2F;physics.js:596</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Get length of vector.</p>
-            
-                    </div>
-            
-            
-                        <div class="returns">
-                            <div class="returns-description">
-                                Returns:
-                                        <span class="type">Number</span>
-                            </div>
-                        </div>
-            
-                </div>
-            </div>
-            <a name="method_limit" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">limit
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>vector</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_physics.js.html#l664"><code>src&#x2F;engine&#x2F;physics.js:664</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Limit vector values.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">vector</code>
-                                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
-            
-            
-                                    <span class="param-description">
-                                         
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-                        <div class="returns">
-                            <div class="returns-description">
-                                Returns:
-                                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
-                            </div>
-                        </div>
-            
-                </div>
-            </div>
-            <a name="method_multiply" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">multiply
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>x</span>
-                                <span class="optional">[y]</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_physics.js.html#l545"><code>src&#x2F;engine&#x2F;physics.js:545</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Multiply vector values.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">x</code>
-                                        <span class="type">Number | <a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
-            
-            
-                                    <span class="param-description">
-                                         
-                                    </span>
-            
-                                </li>
-                                <li class="param">
-                                        <code class="param-name optional">y</code>
-                                        <span class="type">Number</span>
-                                        <span class="flag optional" title="This parameter is optional.">optional</span>
-            
-            
-                                    <span class="param-description">
-                                         
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-                        <div class="returns">
-                            <div class="returns-description">
-                                Returns:
-                                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
-                            </div>
-                        </div>
-            
-                </div>
-            </div>
-            <a name="method_multiplyAdd" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">multiplyAdd
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>x</span>
-                                <span class="optional">[y]</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_physics.js.html#l558"><code>src&#x2F;engine&#x2F;physics.js:558</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Multiply and add vector values.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">x</code>
-                                        <span class="type">Number | <a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
-            
-            
-                                    <span class="param-description">
-                                         
-                                    </span>
-            
-                                </li>
-                                <li class="param">
-                                        <code class="param-name optional">y</code>
-                                        <span class="type">Number</span>
-                                        <span class="flag optional" title="This parameter is optional.">optional</span>
-            
-            
-                                    <span class="param-description">
-                                         
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-                        <div class="returns">
-                            <div class="returns-description">
-                                Returns:
-                                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
-                            </div>
-                        </div>
-            
-                </div>
-            </div>
-            <a name="method_normalize" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">normalize
-                    <span class="paren">()</span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_physics.js.html#l652"><code>src&#x2F;engine&#x2F;physics.js:652</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Normalize vector.</p>
-            
-                    </div>
-            
-            
-                        <div class="returns">
-                            <div class="returns-description">
-                                Returns:
-                                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
-                            </div>
-                        </div>
-            
-                </div>
-            </div>
-            <a name="method_rotate" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">rotate
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>angle</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_physics.js.html#l636"><code>src&#x2F;engine&#x2F;physics.js:636</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Rotate vector in radians.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">angle</code>
-                                        <span class="type">Number</span>
-            
-            
-                                    <span class="param-description">
-                                         
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-                        <div class="returns">
-                            <div class="returns-description">
-                                Returns:
-                                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
-                            </div>
-                        </div>
-            
-                </div>
-            </div>
-            <a name="method_round" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">round
-                    <span class="paren">()</span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_physics.js.html#l696"><code>src&#x2F;engine&#x2F;physics.js:696</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Round vector values.</p>
-            
-                    </div>
-            
-            
-                        <div class="returns">
-                            <div class="returns-description">
-                                Returns:
-                                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
-                            </div>
-                        </div>
-            
-                </div>
-            </div>
-            <a name="method_set" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">set
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>x</span>
-                                <span>y</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_physics.js.html#l485"><code>src&#x2F;engine&#x2F;physics.js:485</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Set vector values.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">x</code>
-                                        <span class="type">Number</span>
-            
-            
-                                    <span class="param-description">
-                                         
-                                    </span>
-            
-                                </li>
-                                <li class="param">
-                                        <code class="param-name">y</code>
-                                        <span class="type">Number</span>
-            
-            
-                                    <span class="param-description">
-                                         
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-                        <div class="returns">
-                            <div class="returns-description">
-                                Returns:
-                                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
-                            </div>
-                        </div>
-            
-                </div>
-            </div>
-            <a name="method_staticInit" class="anchor-link"></a>
-            <div class="box method item inherited">
-                <h3 class="name">staticInit
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>arguments</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>Inherited from
-                            <a href="../classes/game.Class.html#method_staticInit" class="type">game.Class</a>:
-                    <!-- <a href="../files/src_engine_core.js.html#l793"><code>src&#x2F;engine&#x2F;core.js:793</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>This method is called before init.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">arguments</code>
-                                        <span class="type">Array</span>
-            
-            
-                                    <span class="param-description">
-                                        
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-            
-                </div>
-            </div>
-            <a name="method_subtract" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">subtract
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>x</span>
-                                <span class="optional">[y]</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_physics.js.html#l532"><code>src&#x2F;engine&#x2F;physics.js:532</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Subtract from vector values.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">x</code>
-                                        <span class="type">Number | <a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
-            
-            
-                                    <span class="param-description">
-                                         
-                                    </span>
-            
-                                </li>
-                                <li class="param">
-                                        <code class="param-name optional">y</code>
-                                        <span class="type">Number</span>
-                                        <span class="flag optional" title="This parameter is optional.">optional</span>
-            
-            
-                                    <span class="param-description">
-                                         
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-                        <div class="returns">
-                            <div class="returns-description">
-                                Returns:
-                                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
-                            </div>
-                        </div>
-            
-                </div>
-            </div>
+
+
+
+        </div>
+
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+<div id="method_add" class="method item">
+    <h3 class="name"><code>add</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>x</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[y]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_physics.js.html#l519"><code>src&#x2F;engine&#x2F;physics.js:519</code></a>
+        </p>
+
+
 
     </div>
+
+    <div class="description">
+        <p>Add to vector values.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">x</code>
+                        <span class="type">Number | <a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[y]</code>
+                        <span class="type">Number</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_angle" class="method item">
+    <h3 class="name"><code>angle</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>vector</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_physics.js.html#l676"><code>src&#x2F;engine&#x2F;physics.js:676</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Get angle between two vectors.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">vector</code>
+                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Number</span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_angleFromOrigin" class="method item">
+    <h3 class="name"><code>angleFromOrigin</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>vector</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_physics.js.html#l686"><code>src&#x2F;engine&#x2F;physics.js:686</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Get angle between two vectors from origin.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">vector</code>
+                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Number</span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_clone" class="method item">
+    <h3 class="name"><code>clone</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_physics.js.html#l498"><code>src&#x2F;engine&#x2F;physics.js:498</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Clone vector.</p>
+
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_copy" class="method item">
+    <h3 class="name"><code>copy</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>v</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_physics.js.html#l507"><code>src&#x2F;engine&#x2F;physics.js:507</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Copy values from another vector.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">v</code>
+                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_distance" class="method item">
+    <h3 class="name"><code>distance</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>vector</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_physics.js.html#l584"><code>src&#x2F;engine&#x2F;physics.js:584</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Get distance of two vectors.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">vector</code>
+                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Number</span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_divide" class="method item">
+    <h3 class="name"><code>divide</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>x</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[y]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_physics.js.html#l571"><code>src&#x2F;engine&#x2F;physics.js:571</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Divide vector values.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">x</code>
+                        <span class="type">Number | <a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[y]</code>
+                        <span class="type">Number</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_dot" class="method item">
+    <h3 class="name"><code>dot</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[vector]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_physics.js.html#l605"><code>src&#x2F;engine&#x2F;physics.js:605</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Get dot of vector.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[vector]</code>
+                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Number</span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_dotNormalized" class="method item">
+    <h3 class="name"><code>dotNormalized</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[vector]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_physics.js.html#l616"><code>src&#x2F;engine&#x2F;physics.js:616</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Get normalized dot of vector.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[vector]</code>
+                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Number</span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_extend" class="method item inherited">
+    <h3 class="name"><code>extend</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>prop</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/game.Class.html" class="crosslink">game.Class</a></span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/game.Class.html#method_extend">game.Class</a>:
+        <a href="../files/src_engine_core.js.html#l757"><code>src&#x2F;engine&#x2F;core.js:757</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Extend class.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">prop</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/game.Class.html" class="crosslink">game.Class</a></span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_init" class="method item inherited">
+    <h3 class="name"><code>init</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>arguments</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/game.Class.html#method_init">game.Class</a>:
+        <a href="../files/src_engine_core.js.html#l811"><code>src&#x2F;engine&#x2F;core.js:811</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>This method is called, when you create new instance of the class.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">arguments</code>
+                        <span class="type">Array</span>
+
+
+                    <div class="param-description">
+                        
+                    </div>
+
+                </li>
+            </ul>
+        </div>
 
 
 
 </div>
+<div id="method_inject" class="method item inherited">
+    <h3 class="name"><code>inject</code></h3>
 
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>prop</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/game.Class.html#method_inject">game.Class</a>:
+        <a href="../files/src_engine_core.js.html#l825"><code>src&#x2F;engine&#x2F;core.js:825</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Inject class.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">prop</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_length" class="method item">
+    <h3 class="name"><code>length</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_physics.js.html#l596"><code>src&#x2F;engine&#x2F;physics.js:596</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Get length of vector.</p>
+
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Number</span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_limit" class="method item">
+    <h3 class="name"><code>limit</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>vector</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_physics.js.html#l664"><code>src&#x2F;engine&#x2F;physics.js:664</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Limit vector values.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">vector</code>
+                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_multiply" class="method item">
+    <h3 class="name"><code>multiply</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>x</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[y]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_physics.js.html#l545"><code>src&#x2F;engine&#x2F;physics.js:545</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Multiply vector values.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">x</code>
+                        <span class="type">Number | <a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[y]</code>
+                        <span class="type">Number</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_multiplyAdd" class="method item">
+    <h3 class="name"><code>multiplyAdd</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>x</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[y]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_physics.js.html#l558"><code>src&#x2F;engine&#x2F;physics.js:558</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Multiply and add vector values.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">x</code>
+                        <span class="type">Number | <a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[y]</code>
+                        <span class="type">Number</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_normalize" class="method item">
+    <h3 class="name"><code>normalize</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_physics.js.html#l652"><code>src&#x2F;engine&#x2F;physics.js:652</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Normalize vector.</p>
+
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_rotate" class="method item">
+    <h3 class="name"><code>rotate</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>angle</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_physics.js.html#l636"><code>src&#x2F;engine&#x2F;physics.js:636</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Rotate vector in radians.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">angle</code>
+                        <span class="type">Number</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_round" class="method item">
+    <h3 class="name"><code>round</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_physics.js.html#l696"><code>src&#x2F;engine&#x2F;physics.js:696</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Round vector values.</p>
+
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_set" class="method item">
+    <h3 class="name"><code>set</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>x</code>
+                </li>
+                <li class="arg">
+                        <code>y</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_physics.js.html#l485"><code>src&#x2F;engine&#x2F;physics.js:485</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Set vector values.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">x</code>
+                        <span class="type">Number</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">y</code>
+                        <span class="type">Number</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_staticInit" class="method item inherited">
+    <h3 class="name"><code>staticInit</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>arguments</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/game.Class.html#method_staticInit">game.Class</a>:
+        <a href="../files/src_engine_core.js.html#l795"><code>src&#x2F;engine&#x2F;core.js:795</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>This method is called before init.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">arguments</code>
+                        <span class="type">Array</span>
+
+
+                    <div class="param-description">
+                        
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_subtract" class="method item">
+    <h3 class="name"><code>subtract</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>x</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[y]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_physics.js.html#l532"><code>src&#x2F;engine&#x2F;physics.js:532</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Subtract from vector values.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">x</code>
+                        <span class="type">Number | <a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[y]</code>
+                        <span class="type">Number</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/game.Vector.html" class="crosslink">game.Vector</a></span>:
+            </div>
+        </div>
+
+
+</div>
+            </div>
+
+
+
+    </div>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

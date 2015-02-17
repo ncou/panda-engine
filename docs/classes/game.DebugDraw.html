@@ -1,840 +1,935 @@
----
-layout: default
-title: Documentation <span>1.13.0</span>
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>game.DebugDraw - Panda.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
 
-<div class="sidebar"></div>
-<div class="box search">
-<div id="search">
-    <form method="GET" action="../../search.html">
-        <input type="text" name="key" placeholder="Search documentation...">
-    </form>
-</div>
-</div>
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="../../img/logo_small2.png" title="Panda.js"></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 1.13.1</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
 
-<h4 class="boxHeader"><span>Class:</span> game.DebugDraw</h4>
-<div class="headerBox">
-<div class="classes-meta">
-    <div class="desc">DebugDraw will draw all interactive sprite hit areas and physic shapes.
-Automatically enabled, if URL contains &#x60;?debugdraw&#x60;.</div>
-
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/game.Analytics.html">game.Analytics</a></li>
+                                <li><a href="../classes/game.Animation.html">game.Animation</a></li>
+                                <li><a href="../classes/game.Audio.html">game.Audio</a></li>
+                                <li><a href="../classes/game.BaseTexture.html">game.BaseTexture</a></li>
+                                <li><a href="../classes/game.BitmapText.html">game.BitmapText</a></li>
+                                <li><a href="../classes/game.Body.html">game.Body</a></li>
+                                <li><a href="../classes/game.Camera.html">game.Camera</a></li>
+                                <li><a href="../classes/game.Circle.html">game.Circle</a></li>
+                                <li><a href="../classes/game.Class.html">game.Class</a></li>
+                                <li><a href="../classes/game.CollisionSolver.html">game.CollisionSolver</a></li>
+                                <li><a href="../classes/game.Container.html">game.Container</a></li>
+                                <li><a href="../classes/game.Core.html">game.Core</a></li>
+                                <li><a href="../classes/game.Debug.html">game.Debug</a></li>
+                                <li><a href="../classes/game.DebugDraw.html">game.DebugDraw</a></li>
+                                <li><a href="../classes/game.DisplayObject.html">game.DisplayObject</a></li>
+                                <li><a href="../classes/game.Emitter.html">game.Emitter</a></li>
+                                <li><a href="../classes/game.Graphics.html">game.Graphics</a></li>
+                                <li><a href="../classes/game.Keyboard.html">game.Keyboard</a></li>
+                                <li><a href="../classes/game.Loader.html">game.Loader</a></li>
+                                <li><a href="../classes/game.Particle.html">game.Particle</a></li>
+                                <li><a href="../classes/game.Point.html">game.Point</a></li>
+                                <li><a href="../classes/game.Pool.html">game.Pool</a></li>
+                                <li><a href="../classes/game.Rectangle.html">game.Rectangle</a></li>
+                                <li><a href="../classes/game.RenderTexture.html">game.RenderTexture</a></li>
+                                <li><a href="../classes/game.Scene.html">game.Scene</a></li>
+                                <li><a href="../classes/game.Spine.html">game.Spine</a></li>
+                                <li><a href="../classes/game.Sprite.html">game.Sprite</a></li>
+                                <li><a href="../classes/game.SpriteSheet.html">game.SpriteSheet</a></li>
+                                <li><a href="../classes/game.Storage.html">game.Storage</a></li>
+                                <li><a href="../classes/game.System.html">game.System</a></li>
+                                <li><a href="../classes/game.Text.html">game.Text</a></li>
+                                <li><a href="../classes/game.Texture.html">game.Texture</a></li>
+                                <li><a href="../classes/game.TilingSprite.html">game.TilingSprite</a></li>
+                                <li><a href="../classes/game.Timer.html">game.Timer</a></li>
+                                <li><a href="../classes/game.Tween.html">game.Tween</a></li>
+                                <li><a href="../classes/game.TweenEngine.html">game.TweenEngine</a></li>
+                                <li><a href="../classes/game.TweenGroup.html">game.TweenGroup</a></li>
+                                <li><a href="../classes/game.Vector.html">game.Vector</a></li>
+                                <li><a href="../classes/game.Video.html">game.Video</a></li>
+                                <li><a href="../classes/game.World.html">game.World</a></li>
+                            </ul>
+                
+                            <ul id="api-modules" class="apis modules">
+                                <li><a href="../modules/analytics.html">analytics</a></li>
+                                <li><a href="../modules/audio.html">audio</a></li>
+                                <li><a href="../modules/camera.html">camera</a></li>
+                                <li><a href="../modules/debug.html">debug</a></li>
+                                <li><a href="../modules/game.html">game</a></li>
+                                <li><a href="../modules/keyboard.html">keyboard</a></li>
+                                <li><a href="../modules/loader.html">loader</a></li>
+                                <li><a href="../modules/particle.html">particle</a></li>
+                                <li><a href="../modules/physics.html">physics</a></li>
+                                <li><a href="../modules/pool.html">pool</a></li>
+                                <li><a href="../modules/renderer.html">renderer</a></li>
+                                <li><a href="../modules/scene.html">scene</a></li>
+                                <li><a href="../modules/storage.html">storage</a></li>
+                                <li><a href="../modules/system.html">system</a></li>
+                                <li><a href="../modules/timer.html">timer</a></li>
+                                <li><a href="../modules/tween.html">tween</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited">
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1>game.DebugDraw Class</h1>
+<div class="box meta">
 
         <div class="extends">
-            Extends: <a href="../classes/game.Class.html" class="crosslink">game.Class</a>
+            Extends <a href="../classes/game.Class.html" class="crosslink">game.Class</a>
         </div>
 
-        <!-- <div class="foundat">
-            Defined in: <a href="../files/src_engine_debug.js.html#l113"><code>src&#x2F;engine&#x2F;debug.js:113</code></a>
-        </div> -->
+        <div class="foundat">
+            Defined in: <a href="../files/src_engine_debug.js.html#l114"><code>src&#x2F;engine&#x2F;debug.js:114</code></a>
+        </div>
 
             Module: <a href="../modules/debug.html">debug</a>
 
 </div>
 
 
+<div class="box intro">
+    <p>DebugDraw will draw all interactive sprite hit areas and physic shapes.
+Automatically enabled, if URL contains <code>?debugdraw</code>.</p>
+
 </div>
 
-<div class="classes-index">
 
-    <h3>Methods</h3>
-    <div class="index-section methods">
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
 
-        <div class="box float">
-        <ul class="index-list methods extends">
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+            <li class="api-class-tab attrs"><a href="#attrs">Attributes</a></li>
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods extends">
+                            <li class="index-item method">
+                                <a href="#method_addBody">addBody</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_addSprite">addSprite</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_drawBodySprite">drawBodySprite</a>
+
+                            </li>
+                            <li class="index-item method inherited">
+                                <a href="#method_extend">extend</a>
+
+                            </li>
+                            <li class="index-item method inherited">
+                                <a href="#method_init">init</a>
+
+                            </li>
+                            <li class="index-item method inherited">
+                                <a href="#method_inject">inject</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_reset">reset</a>
+
+                            </li>
+                            <li class="index-item method inherited">
+                                <a href="#method_staticInit">staticInit</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_update">update</a>
+
+                            </li>
+                    </ul>
+                </div>
 
 
-                <li class="index-item method">
-                    <a href="#method_addBody">addBody</a>
+                <div class="index-section attrs">
+                    <h3>Attributes</h3>
+
+                    <ul class="index-list attrs extends">
+                            <li class="index-item attr">
+                                <a href="#attr_bodyAlpha">bodyAlpha</a>
+                            </li>
+                            <li class="index-item attr">
+                                <a href="#attr_bodyColor">bodyColor</a>
+                            </li>
+                            <li class="index-item attr">
+                                <a href="#attr_bodyLineColor">bodyLineColor</a>
+                            </li>
+                            <li class="index-item attr">
+                                <a href="#attr_enabled">enabled</a>
+                            </li>
+                            <li class="index-item attr">
+                                <a href="#attr_spriteAlpha">spriteAlpha</a>
+                            </li>
+                            <li class="index-item attr">
+                                <a href="#attr_spriteColor">spriteColor</a>
+                            </li>
+                            <li class="index-item attr">
+                                <a href="#attr_spriteLineColor">spriteLineColor</a>
+                            </li>
+                    </ul>
+                </div>
+
+        </div>
+
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+<div id="method_addBody" class="method item">
+    <h3 class="name"><code>addBody</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>body</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_debug.js.html#l174"><code>src&#x2F;engine&#x2F;debug.js:174</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Add physic body to DebugDraw.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">body</code>
+                        <span class="type"><a href="../classes/game.Body.html" class="crosslink">game.Body</a></span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
 
                 </li>
-                <li class="index-item method">
-                    <a href="#method_addSprite">addSprite</a>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_addSprite" class="method item">
+    <h3 class="name"><code>addSprite</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>sprite</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_debug.js.html#l145"><code>src&#x2F;engine&#x2F;debug.js:145</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Add interactive sprite to DebugDraw.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">sprite</code>
+                        <span class="type"><a href="../classes/game.Sprite.html" class="crosslink">game.Sprite</a></span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
 
                 </li>
-                <li class="index-item method">
-                    <a href="#method_drawBodySprite">drawBodySprite</a>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_drawBodySprite" class="method item">
+    <h3 class="name"><code>drawBodySprite</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>sprite</code>
+                </li>
+                <li class="arg">
+                        <code>body</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_debug.js.html#l190"><code>src&#x2F;engine&#x2F;debug.js:190</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Draw debug sprite for physics body.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">sprite</code>
+                        <span class="type"><a href="../classes/game.Graphics.html" class="crosslink">game.Graphics</a></span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
 
                 </li>
-                <li class="index-item method inherited">
-                    <a href="#method_extend">extend</a>
+                <li class="param">
+                        <code class="param-name">body</code>
+                        <span class="type"><a href="../classes/game.Body.html" class="crosslink">game.Body</a></span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
 
                 </li>
-                <li class="index-item method inherited">
-                    <a href="#method_init">init</a>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_extend" class="method item inherited">
+    <h3 class="name"><code>extend</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>prop</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/game.Class.html" class="crosslink">game.Class</a></span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/game.Class.html#method_extend">game.Class</a>:
+        <a href="../files/src_engine_core.js.html#l757"><code>src&#x2F;engine&#x2F;core.js:757</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Extend class.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">prop</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        
+                    </div>
 
                 </li>
-                <li class="index-item method inherited">
-                    <a href="#method_inject">inject</a>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/game.Class.html" class="crosslink">game.Class</a></span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_init" class="method item inherited">
+    <h3 class="name"><code>init</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>arguments</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/game.Class.html#method_init">game.Class</a>:
+        <a href="../files/src_engine_core.js.html#l811"><code>src&#x2F;engine&#x2F;core.js:811</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>This method is called, when you create new instance of the class.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">arguments</code>
+                        <span class="type">Array</span>
+
+
+                    <div class="param-description">
+                        
+                    </div>
 
                 </li>
-                <li class="index-item method">
-                    <a href="#method_reset">reset</a>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_inject" class="method item inherited">
+    <h3 class="name"><code>inject</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>prop</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/game.Class.html#method_inject">game.Class</a>:
+        <a href="../files/src_engine_core.js.html#l825"><code>src&#x2F;engine&#x2F;core.js:825</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Inject class.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">prop</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        
+                    </div>
 
                 </li>
-                <li class="index-item method inherited">
-                    <a href="#method_staticInit">staticInit</a>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_reset" class="method item">
+    <h3 class="name"><code>reset</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_debug.js.html#l129"><code>src&#x2F;engine&#x2F;debug.js:129</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Remove all sprites from DebugDraw.</p>
+
+    </div>
+
+
+
+
+</div>
+<div id="method_staticInit" class="method item inherited">
+    <h3 class="name"><code>staticInit</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>arguments</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/game.Class.html#method_staticInit">game.Class</a>:
+        <a href="../files/src_engine_core.js.html#l795"><code>src&#x2F;engine&#x2F;core.js:795</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>This method is called before init.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">arguments</code>
+                        <span class="type">Array</span>
+
+
+                    <div class="param-description">
+                        
+                    </div>
 
                 </li>
-                <li class="index-item method">
-                    <a href="#method_update">update</a>
+            </ul>
+        </div>
 
-                </li>
-        </ul>
-        <div class="clear"></div>
+
+
+</div>
+<div id="method_update" class="method item">
+    <h3 class="name"><code>update</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_engine_debug.js.html#l243"><code>src&#x2F;engine&#x2F;debug.js:243</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Update DebugDraw sprites.</p>
+
+    </div>
+
+
+
+
+</div>
+            </div>
+
+
+            <div id="attrs" class="api-class-tabpanel">
+                <h2 class="off-left">Attributes</h2>
+
+                    <div id="attr_bodyAlpha" class="attr item">
+                        <a name="config_bodyAlpha"></a> 
+                        <h3 class="name"><code>bodyAlpha</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_debug.js.html#l290"><code>src&#x2F;engine&#x2F;debug.js:290</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Alpha of DebugDraw bodies.</p>
+                    
+                        </div>
+                    
+                            <p><strong>Default:</strong> 0.5</p>
+                    
+                    
+                    </div>
+                    <div id="attr_bodyColor" class="attr item">
+                        <a name="config_bodyColor"></a> 
+                        <h3 class="name"><code>bodyColor</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_debug.js.html#l278"><code>src&#x2F;engine&#x2F;debug.js:278</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Color of DebugDraw bodies.</p>
+                    
+                        </div>
+                    
+                            <p><strong>Default:</strong> 0x0000ff</p>
+                    
+                    
+                    </div>
+                    <div id="attr_bodyLineColor" class="attr item">
+                        <a name="config_bodyLineColor"></a> 
+                        <h3 class="name"><code>bodyLineColor</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_debug.js.html#l284"><code>src&#x2F;engine&#x2F;debug.js:284</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Stroke color of DebugDraw bodies.</p>
+                    
+                        </div>
+                    
+                            <p><strong>Default:</strong> 0xff0000</p>
+                    
+                    
+                    </div>
+                    <div id="attr_enabled" class="attr item">
+                        <a name="config_enabled"></a> 
+                        <h3 class="name"><code>enabled</code></h3>
+                        <span class="type">Boolean</span>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_debug.js.html#l255"><code>src&#x2F;engine&#x2F;debug.js:255</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Enable DebugDraw.</p>
+                    
+                        </div>
+                    
+                    
+                    
+                    </div>
+                    <div id="attr_spriteAlpha" class="attr item">
+                        <a name="config_spriteAlpha"></a> 
+                        <h3 class="name"><code>spriteAlpha</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_debug.js.html#l272"><code>src&#x2F;engine&#x2F;debug.js:272</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Alpha of DebugDraw sprites.</p>
+                    
+                        </div>
+                    
+                            <p><strong>Default:</strong> 0.5</p>
+                    
+                    
+                    </div>
+                    <div id="attr_spriteColor" class="attr item">
+                        <a name="config_spriteColor"></a> 
+                        <h3 class="name"><code>spriteColor</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_debug.js.html#l260"><code>src&#x2F;engine&#x2F;debug.js:260</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Color of DebugDraw sprites.</p>
+                    
+                        </div>
+                    
+                            <p><strong>Default:</strong> 0xff0000</p>
+                    
+                    
+                    </div>
+                    <div id="attr_spriteLineColor" class="attr item">
+                        <a name="config_spriteLineColor"></a> 
+                        <h3 class="name"><code>spriteLineColor</code></h3>
+                        <span class="type">Number</span>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_engine_debug.js.html#l266"><code>src&#x2F;engine&#x2F;debug.js:266</code></a>
+                            </p>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                            <p>Stroke color of DebugDraw sprites.</p>
+                    
+                        </div>
+                    
+                            <p><strong>Default:</strong> 0x0000ff</p>
+                    
+                    
+                    </div>
+            </div>
+
+    </div>
+</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-
-    <h3>Attributes</h3>
-    <div class="index-section attrs">
-
-        <div class="box float">
-        <ul class="index-list attrs extends">
-                <li class="index-item attr">
-                    <a href="#attr_bodyAlpha">bodyAlpha</a>
-                </li>
-                <li class="index-item attr">
-                    <a href="#attr_bodyColor">bodyColor</a>
-                </li>
-                <li class="index-item attr">
-                    <a href="#attr_bodyLineColor">bodyLineColor</a>
-                </li>
-                <li class="index-item attr">
-                    <a href="#attr_enabled">enabled</a>
-                </li>
-                <li class="index-item attr">
-                    <a href="#attr_spriteAlpha">spriteAlpha</a>
-                </li>
-                <li class="index-item attr">
-                    <a href="#attr_spriteColor">spriteColor</a>
-                </li>
-                <li class="index-item attr">
-                    <a href="#attr_spriteLineColor">spriteLineColor</a>
-                </li>
-        </ul>
-        <div class="clear"></div>
-        </div>
-    </div>
-
 </div>
-
-<div class="clear"></div>
-
-<div class="hline"></div>
-
-<div class="class-detail">
-
-
-
-    <div class="methods-detail">
-        <h6>Methods</h6>
-
-            <a name="method_addBody" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">addBody
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>body</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_debug.js.html#l173"><code>src&#x2F;engine&#x2F;debug.js:173</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Add physic body to DebugDraw.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">body</code>
-                                        <span class="type"><a href="../classes/game.Body.html" class="crosslink">game.Body</a></span>
-            
-            
-                                    <span class="param-description">
-                                         
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-            
-                </div>
-            </div>
-            <a name="method_addSprite" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">addSprite
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>sprite</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_debug.js.html#l144"><code>src&#x2F;engine&#x2F;debug.js:144</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Add interactive sprite to DebugDraw.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">sprite</code>
-                                        <span class="type"><a href="../classes/game.Sprite.html" class="crosslink">game.Sprite</a></span>
-            
-            
-                                    <span class="param-description">
-                                         
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-            
-                </div>
-            </div>
-            <a name="method_drawBodySprite" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">drawBodySprite
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>sprite</span>
-                                <span>body</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_debug.js.html#l189"><code>src&#x2F;engine&#x2F;debug.js:189</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Draw debug sprite for physics body.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">sprite</code>
-                                        <span class="type">game.Graphics</span>
-            
-            
-                                    <span class="param-description">
-                                         
-                                    </span>
-            
-                                </li>
-                                <li class="param">
-                                        <code class="param-name">body</code>
-                                        <span class="type"><a href="../classes/game.Body.html" class="crosslink">game.Body</a></span>
-            
-            
-                                    <span class="param-description">
-                                         
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-            
-                </div>
-            </div>
-            <a name="method_extend" class="anchor-link"></a>
-            <div class="box method item inherited">
-                <h3 class="name">extend
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>prop</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>Inherited from
-                            <a href="../classes/game.Class.html#method_extend" class="type">game.Class</a>:
-                    <!-- <a href="../files/src_engine_core.js.html#l755"><code>src&#x2F;engine&#x2F;core.js:755</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Extend class.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">prop</code>
-                                        <span class="type">Object</span>
-            
-            
-                                    <span class="param-description">
-                                        
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-                        <div class="returns">
-                            <div class="returns-description">
-                                Returns:
-                                        <span class="type"><a href="../classes/game.Class.html" class="crosslink">game.Class</a></span>
-                            </div>
-                        </div>
-            
-                </div>
-            </div>
-            <a name="method_init" class="anchor-link"></a>
-            <div class="box method item inherited">
-                <h3 class="name">init
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>arguments</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>Inherited from
-                            <a href="../classes/game.Class.html#method_init" class="type">game.Class</a>:
-                    <!-- <a href="../files/src_engine_core.js.html#l809"><code>src&#x2F;engine&#x2F;core.js:809</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>This method is called, when you create new instance of the class.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">arguments</code>
-                                        <span class="type">Array</span>
-            
-            
-                                    <span class="param-description">
-                                        
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-            
-                </div>
-            </div>
-            <a name="method_inject" class="anchor-link"></a>
-            <div class="box method item inherited">
-                <h3 class="name">inject
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>prop</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>Inherited from
-                            <a href="../classes/game.Class.html#method_inject" class="type">game.Class</a>:
-                    <!-- <a href="../files/src_engine_core.js.html#l823"><code>src&#x2F;engine&#x2F;core.js:823</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Inject class.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">prop</code>
-                                        <span class="type">Object</span>
-            
-            
-                                    <span class="param-description">
-                                        
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-            
-                </div>
-            </div>
-            <a name="method_reset" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">reset
-                    <span class="paren">()</span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_debug.js.html#l128"><code>src&#x2F;engine&#x2F;debug.js:128</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Remove all sprites from DebugDraw.</p>
-            
-                    </div>
-            
-            
-            
-                </div>
-            </div>
-            <a name="method_staticInit" class="anchor-link"></a>
-            <div class="box method item inherited">
-                <h3 class="name">staticInit
-                    <span class="args">
-                        <span class="paren">(</span><span class="args-list inline commas">
-                                <span>arguments</span>
-                        </span><span class="paren">)</span>
-                    </span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>Inherited from
-                            <a href="../classes/game.Class.html#method_staticInit" class="type">game.Class</a>:
-                    <!-- <a href="../files/src_engine_core.js.html#l793"><code>src&#x2F;engine&#x2F;core.js:793</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>This method is called before init.</p>
-            
-                    </div>
-            
-                        <div class="params">
-                            <h4>Parameters:</h4>
-            
-                            <ul class="params-list">
-                                <li class="param">
-                                        <code class="param-name">arguments</code>
-                                        <span class="type">Array</span>
-            
-            
-                                    <span class="param-description">
-                                        
-                                    </span>
-            
-                                </li>
-                            </ul>
-                        </div>
-            
-            
-                </div>
-            </div>
-            <a name="method_update" class="anchor-link"></a>
-            <div class="box method item">
-                <h3 class="name">update
-                    <span class="paren">()</span>
-            
-            
-            
-            
-            
-            
-            
-            
-                </h3>
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_debug.js.html#l242"><code>src&#x2F;engine&#x2F;debug.js:242</code></a> -->
-                    </p>
-            
-            
-            
-                </div>
-            
-                <div class="extended-detail">
-            
-                    <div class="description">
-                        <p>Update DebugDraw sprites.</p>
-            
-                    </div>
-            
-            
-            
-                </div>
-            </div>
-
-    </div>
-
-    <div class="attrs-detail">
-        <h6>Attributes</h6>
-
-            <a id="attr_bodyAlpha" class="anchor-link"></a> 
-            <div class="box attr item">
-                <h3 class="name"><code>bodyAlpha</code> <span class="type">Number</span></h3>
-            
-            
-            
-            
-            
-            
-            
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_debug.js.html#l289"><code>src&#x2F;engine&#x2F;debug.js:289</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="description">
-                    <p>Alpha of DebugDraw bodies.</p>
-            
-                </div>
-            
-                    <p><strong>Default:</strong> 0.5</p>
-            
-            
-            </div>
-            <a id="attr_bodyColor" class="anchor-link"></a> 
-            <div class="box attr item">
-                <h3 class="name"><code>bodyColor</code> <span class="type">Number</span></h3>
-            
-            
-            
-            
-            
-            
-            
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_debug.js.html#l277"><code>src&#x2F;engine&#x2F;debug.js:277</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="description">
-                    <p>Color of DebugDraw bodies.</p>
-            
-                </div>
-            
-                    <p><strong>Default:</strong> 0x0000ff</p>
-            
-            
-            </div>
-            <a id="attr_bodyLineColor" class="anchor-link"></a> 
-            <div class="box attr item">
-                <h3 class="name"><code>bodyLineColor</code> <span class="type">Number</span></h3>
-            
-            
-            
-            
-            
-            
-            
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_debug.js.html#l283"><code>src&#x2F;engine&#x2F;debug.js:283</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="description">
-                    <p>Stroke color of DebugDraw bodies.</p>
-            
-                </div>
-            
-                    <p><strong>Default:</strong> 0xff0000</p>
-            
-            
-            </div>
-            <a id="attr_enabled" class="anchor-link"></a> 
-            <div class="box attr item">
-                <h3 class="name"><code>enabled</code> <span class="type">Boolean</span></h3>
-            
-            
-            
-            
-            
-            
-            
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_debug.js.html#l254"><code>src&#x2F;engine&#x2F;debug.js:254</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="description">
-                    <p>Enable DebugDraw.</p>
-            
-                </div>
-            
-            
-            
-            </div>
-            <a id="attr_spriteAlpha" class="anchor-link"></a> 
-            <div class="box attr item">
-                <h3 class="name"><code>spriteAlpha</code> <span class="type">Number</span></h3>
-            
-            
-            
-            
-            
-            
-            
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_debug.js.html#l271"><code>src&#x2F;engine&#x2F;debug.js:271</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="description">
-                    <p>Alpha of DebugDraw sprites.</p>
-            
-                </div>
-            
-                    <p><strong>Default:</strong> 0.5</p>
-            
-            
-            </div>
-            <a id="attr_spriteColor" class="anchor-link"></a> 
-            <div class="box attr item">
-                <h3 class="name"><code>spriteColor</code> <span class="type">Number</span></h3>
-            
-            
-            
-            
-            
-            
-            
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_debug.js.html#l259"><code>src&#x2F;engine&#x2F;debug.js:259</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="description">
-                    <p>Color of DebugDraw sprites.</p>
-            
-                </div>
-            
-                    <p><strong>Default:</strong> 0xff0000</p>
-            
-            
-            </div>
-            <a id="attr_spriteLineColor" class="anchor-link"></a> 
-            <div class="box attr item">
-                <h3 class="name"><code>spriteLineColor</code> <span class="type">Number</span></h3>
-            
-            
-            
-            
-            
-            
-            
-            
-                <div class="meta">
-                            <p>
-                            <!-- 
-                            Defined in
-                             -->
-                    <!-- <a href="../files/src_engine_debug.js.html#l265"><code>src&#x2F;engine&#x2F;debug.js:265</code></a> -->
-                    </p>
-            
-            
-                </div>
-            
-                <div class="description">
-                    <p>Stroke color of DebugDraw sprites.</p>
-            
-                </div>
-            
-                    <p><strong>Default:</strong> 0x0000ff</p>
-            
-            
-            </div>
-    </div>
-
-
-</div>
-
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
