@@ -66,11 +66,17 @@ game.createScene('Main', {
 
             ready = true;
 
-            var div = document.createElement('div');
-            div.innerHTML = 'FPS: ' + average;
-            div.style.color = '#ff0000';
-            document.body.appendChild(div);
-            document.body.removeChild(game.system.canvas);
+            if (navigator.isCocoonJS) {
+                console.log('FPS: ' + average);
+            }
+            else {
+                var div = document.createElement('div');
+                div.innerHTML = 'FPS: ' + average;
+                div.style.color = '#ff0000';
+                document.body.appendChild(div);
+                document.body.removeChild(game.system.canvas);
+            }
+
             game.system.stopRunLoop();
             return;
         }

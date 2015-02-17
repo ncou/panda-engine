@@ -1,11 +1,12 @@
 pandaConfig = {
     name: 'Pandamark',
-    version: '1.1.0',
+    version: '1.1.1',
     
     system: {
         width: 800,
         height: 600,
         webGL: true,
-        center: false
+        center: false,
+        scale: false
     }
 };
