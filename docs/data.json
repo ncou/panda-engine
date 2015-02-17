@@ -2441,6 +2441,7 @@
             "description": "Extend class.",
             "itemtype": "method",
             "name": "extend",
+            "static": 1,
             "params": [
                 {
                     "name": "prop",
@@ -2458,10 +2459,11 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 795,
-            "description": "This method is called before init.",
+            "line": 796,
+            "description": "This method is called before constructor.",
             "itemtype": "method",
             "name": "staticInit",
+            "static": 1,
             "params": [
                 {
                     "name": "arguments",
@@ -2475,27 +2477,11 @@
         },
         {
             "file": "src/engine/core.js",
-            "line": 811,
-            "description": "This method is called, when you create new instance of the class.",
-            "itemtype": "method",
-            "name": "init",
-            "params": [
-                {
-                    "name": "arguments",
-                    "description": "",
-                    "type": "Array"
-                }
-            ],
-            "class": "game.Class",
-            "module": "game",
-            "namespace": "game"
-        },
-        {
-            "file": "src/engine/core.js",
-            "line": 825,
+            "line": 822,
             "description": "Inject class.",
             "itemtype": "method",
             "name": "inject",
+            "static": 1,
             "params": [
                 {
                     "name": "prop",
