@@ -15,7 +15,7 @@ var game = {
         Current engine version.
         @property {String} version
     **/
-    version: '1.13.0',
+    version: '1.13.1',
     config: typeof pandaConfig !== 'undefined' ? pandaConfig : {},
     coreModules: [
         'engine.analytics',
@@ -346,7 +346,7 @@ var game = {
 
         if (this.Audio) this.audio = new this.Audio();
         if (this.Pool) this.pool = new this.Pool();
-        if (this.DebugDraw && this.DebugDraw.enabled) this.debugDraw = new this.DebugDraw();
+        if (this.DebugDraw && this.DebugDraw.enabled && this.Debug.enabled) this.debugDraw = new this.DebugDraw();
         if (this.Storage && this.Storage.id) this.storage = new this.Storage();
         if (this.Analytics && this.Analytics.id) this.analytics = new this.Analytics();
         if (this.TweenEngine) this.tweenEngine = new this.TweenEngine();
@@ -480,13 +480,13 @@ var game = {
     },
 
     boot: function() {
-        delete window.pandaConfig;
-
         if (this.config.noCanvasURL) {
             var canvas = document.createElement('canvas');
             var canvasSupported = !!(canvas.getContext && canvas.getContext('2d'));
             if (!canvasSupported) window.location = this.config.noCanvasURL;
         }
+
+        delete window.pandaConfig;
 
         Math.distance = function(x, y, x2, y2) {
             x = x2 - x;

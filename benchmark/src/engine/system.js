@@ -200,7 +200,7 @@ game.createClass('System', {
             height = window.innerHeight * game.device.pixelRatio;
         }
 
-        if (game.System.webGL) this.renderer = new game.autoDetectRenderer(width, height, {
+        if (game.System.webGL) this.renderer = game.autoDetectRenderer(width, height, {
             view: document.getElementById(this.canvasId),
             transparent: game.System.transparent,
             antialias: game.System.antialias
@@ -256,7 +256,6 @@ game.createClass('System', {
     **/
     pause: function(onHide) {
         if (this.paused) return;
-
         if (onHide) this.pausedOnHide = true;
         else this.paused = true;
 
@@ -270,7 +269,6 @@ game.createClass('System', {
     resume: function(onHide) {
         if (onHide && this.paused) return;
         if (!onHide && !this.paused) return;
-        
         if (onHide) this.pausedOnHide = false;
         else this.paused = false;
 
@@ -287,7 +285,7 @@ game.createClass('System', {
     setScene: function(sceneClass, removeAssets) {
         this.currentSceneName = sceneClass;
         sceneClass = game['Scene' + sceneClass];
-        if (this.running) {
+        if (this.running && !this.paused) {
             this.newSceneClass = sceneClass;
             this.removeAssets = removeAssets;
         }
@@ -295,6 +293,7 @@ game.createClass('System', {
     },
 
     setSceneNow: function(sceneClass, removeAssets) {
+        if (this.paused) this.paused = false;
         if (game.scene) game.scene.exit();
         if (game.tweenEngine) game.tweenEngine.tweens.length = 0;
         if (removeAssets) game.removeAssets();
@@ -520,11 +519,11 @@ game.createClass('System', {
             if (window.innerWidth < this.width || window.innerHeight < this.height || game.System.scaleToFit) {
                 if (window.innerWidth / this.width < window.innerHeight / this.height) {
                     this.canvas.style.width = window.innerWidth + 'px';
-                    this.canvas.style.height = window.innerWidth * (this.height / this.width) + 'px';
+                    this.canvas.style.height = Math.floor(window.innerWidth * (this.height / this.width)) + 'px';
                 }
                 else {
                     this.canvas.style.height = window.innerHeight + 'px';
-                    this.canvas.style.width = window.innerHeight * (this.width / this.height) + 'px';
+                    this.canvas.style.width = Math.floor(window.innerHeight * (this.width / this.height)) + 'px';
                 }
             }
             else {

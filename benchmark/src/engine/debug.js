@@ -6,7 +6,9 @@ game.module(
     'engine.debug'
 )
 .require(
-    'engine.pixi'
+    'engine.pixi',
+    'engine.physics',
+    'engine.camera'
 )
 .body(function() {
 'use strict';
@@ -20,7 +22,7 @@ game.module(
 game.createClass('Debug', {
     frames: 0,
     last: 0,
-    objects: 0,
+    sprites: 0,
 
     init: function() {
         this.debugDiv = document.createElement('div');
@@ -38,7 +40,7 @@ game.createClass('Debug', {
     },
 
     reset: function() {
-        this.objects = 0;
+        this.sprites = -1;
     },
 
     update: function() {
@@ -50,7 +52,9 @@ game.createClass('Debug', {
             this.frames = 0;
         }
 
-        var text = 'FPS: ' + this.fps + ' SPRITES: ' + (this.objects - 1);
+        var text = 'FPS: ' + this.fps;
+        if (game.scene.objects) text += ' OBJECTS: ' + game.scene.objects.length;
+        text += ' SPRITES: ' + this.sprites;
         if (game.tweenEngine) text += ' TWEENS: ' + game.tweenEngine.tweens.length;
         if (game.scene.timers) text += ' TIMERS: ' + game.scene.timers.length;
         if (game.scene.emitters) text += ' EMITTERS: ' + game.scene.emitters.length;
@@ -101,7 +105,7 @@ game.addAttributes('Debug', {
 
 game.PIXI.DisplayObject.prototype._updateTransform = game.PIXI.DisplayObject.prototype.updateTransform;
 game.PIXI.DisplayObject.prototype.updateTransform = function() {
-    if (game.system.debug) game.system.debug.objects++;
+    if (game.system.debug) game.system.debug.sprites++;
     this._updateTransform();
 };
 game.PIXI.DisplayObject.prototype.displayObjectUpdateTransform = game.PIXI.DisplayObject.prototype.updateTransform;
@@ -145,6 +149,7 @@ game.createClass('DebugDraw', {
     addSprite: function(sprite) {
         var grap = new game.Graphics();
         grap.beginFill(game.DebugDraw.spriteColor);
+        grap.lineStyle(1, game.DebugDraw.spriteLineColor);
 
         if (sprite.hitArea) {
             if (sprite.hitArea instanceof game.HitRectangle) {
@@ -190,7 +195,7 @@ game.createClass('DebugDraw', {
     drawBodySprite: function(sprite, body) {
         sprite.clear();
         sprite.beginFill(game.DebugDraw.bodyColor);
-        sprite.lineStyle(1, 0xff0000);
+        sprite.lineStyle(1, game.DebugDraw.bodyLineColor);
 
         if (body.shape instanceof game.Rectangle) {
             sprite.drawRect(-body.shape.width / 2, -body.shape.height / 2, body.shape.width, body.shape.height);
@@ -205,7 +210,6 @@ game.createClass('DebugDraw', {
         for (var i = this.spriteContainer.children.length - 1; i >= 0; i--) {
             sprite = this.spriteContainer.children[i];
             sprite.rotation = sprite.target.rotation;
-            if (sprite.target.parent) sprite.target.updateTransform();
             sprite.visible = sprite.target.worldVisible;
             sprite.position.x = sprite.target.worldTransform.tx;
             sprite.position.y = sprite.target.worldTransform.ty;
@@ -213,6 +217,7 @@ game.createClass('DebugDraw', {
             sprite.scale.y = sprite.target.scale.y;
             if (!sprite.target.parent) this.spriteContainer.removeChild(sprite);
         }
+        game.system.debug.sprites -= this.spriteContainer.children.length;
     },
 
     updateBodies: function() {
@@ -231,6 +236,7 @@ game.createClass('DebugDraw', {
             body.position.y = body.target.position.y;
             if (!body.target.world) body.remove();
         }
+        game.system.debug.sprites -= this.bodyContainer.children.length;
     },
 
     /**
@@ -238,6 +244,7 @@ game.createClass('DebugDraw', {
         @method update
     **/
     update: function() {
+        game.system.debug.sprites -= 2;
         this.updateSprites();
         this.updateBodies();
     }
@@ -256,6 +263,12 @@ game.addAttributes('DebugDraw', {
     **/
     spriteColor: 0xff0000,
     /**
+        Stroke color of DebugDraw sprites.
+        @attribute {Number} spriteLineColor
+        @default 0x0000ff
+    **/
+    spriteLineColor: 0x0000ff,
+    /**
         Alpha of DebugDraw sprites.
         @attribute {Number} spriteAlpha
         @default 0.5
@@ -268,11 +281,64 @@ game.addAttributes('DebugDraw', {
     **/
     bodyColor: 0x0000ff,
     /**
+        Stroke color of DebugDraw bodies.
+        @attribute {Number} bodyLineColor
+        @default 0xff0000
+    **/
+    bodyLineColor: 0xff0000,
+    /**
         Alpha of DebugDraw bodies.
         @attribute {Number} bodyAlpha
         @default 0.5
     **/
     bodyAlpha: 0.5
+});
+
+game.World.inject({
+    addBody: function(body) {
+        this._super(body);
+        if (game.debugDraw && body.shape) game.debugDraw.addBody(body);
+    }
+});
+
+game.Camera.inject({
+    init: function(x, y) {
+        this._super(x, y);
+
+        if (game.debugDraw && game.Camera.debug) {
+            this.debugBox = new game.Graphics();
+            this.debugBox.beginFill(game.Camera.debugColor);
+            this.debugBox.alpha = game.Camera.debugAlpha;
+            this.debugBox.drawRect(-this.sensorWidth / 2, -this.sensorHeight / 2, this.sensorWidth, this.sensorHeight);
+            game.system.stage.addChild(this.debugBox);
+        }
+    },
+
+    setSensor: function(width, height) {
+        this._super(width, height);
+
+        if (this.debugBox) {
+            this.debugBox.clear();
+            this.debugBox.beginFill(game.Camera.debugColor);
+            this.debugBox.drawRect(-this.sensorWidth / 2, -this.sensorHeight / 2, this.sensorWidth, this.sensorHeight);
+        }
+    },
+
+    moveCamera: function() {
+        this._super();
+        if (this.debugBox) this.debugBox.alpha = game.Camera.debugAlpha * ((this.speed.x === 0 && this.speed.y === 0) ? 1 : 2);
+    },
+
+    update: function() {
+        this._super();
+        if (this.debugBox) this.debugBox.position.set(this.sensorPosition.x - this.position.x, this.sensorPosition.y - this.position.y);
+    }
+});
+
+game.addAttributes('Camera', {
+    debug: false,
+    debugColor: 0xff00ff,
+    debugAlpha: 0.2
 });
 
 game.onStart = function() {

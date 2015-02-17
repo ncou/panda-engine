@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Pixi.js benchmark</title>
+
+    <script type="text/javascript" src="src/pixi.js"></script>
+    <style type="text/css">
+    	body {
+    		margin: 0;
+    	}
+    </style>
+</head>
+<body>
+	<script type="text/javascript">
+		var width = 800;
+		var height = 600;
+		var wabbitTexture;
+		var sprites = [];
+		var maxX = 800;
+		var minX = 0;
+		var maxY = 600;
+		var minY = 0;
+		var startBunnyCount = 100000;
+		var container;
+		var amount = 100;
+		var canvas = document.createElement('canvas');
+		canvas.width = this.width;
+		canvas.height = this.height;
+
+		var fps = [];
+		var startTime;
+		var last;
+		var frames = 0;
+		var gravity = 0.75;
+		var ready = false;
+
+		window.onload = function() {
+			startTime = Date.now();
+			last = startTime + 2000; // Skip first 2 seconds
+
+			renderer = PIXI.autoDetectRenderer(800, 600);
+			stage = new PIXI.Stage(0xFFFFFF);
+			
+			document.body.appendChild(renderer.view);
+			renderer.view.style.position = "absolute";
+
+			requestAnimFrame(update);
+			
+			wabbitTexture = new PIXI.Texture.fromImage("media/panda.png")
+
+			container = new PIXI.SpriteBatch();
+			stage.addChild(container);
+			
+			for (var i = 0; i < startBunnyCount; i++) 
+			{
+				var bunny = new PIXI.Sprite(wabbitTexture);
+				bunny.speedX = Math.random() * 10;
+				bunny.speedY = (Math.random() * 10) - 5;
+				
+				bunny.anchor.x = 0.5;
+				bunny.anchor.y = 1;
+				sprites.push(bunny);
+				
+				container.addChild(bunny);
+			}
+		};
+
+		function update() {
+			if (ready) return;
+
+			var now = Date.now();
+
+			if (now >= last) frames++;
+			if (now >= last + 500) {
+			    fps.push(Math.round((frames * 1000) / (now - last)));
+			    last = now;
+			    frames = 0;
+			}
+			if (now >= startTime + 1000 * 60) {
+			    var total = 0;
+			    for (var i = 0; i < fps.length; i++) {
+			        total += fps[i];
+			    }
+			    var average = total / fps.length;
+			    var precision = Math.pow(10, 1);
+			    average = Math.round(average * precision) / precision;
+
+			    ready = true;
+
+			    var div = document.createElement('div');
+			    div.innerHTML = 'FPS: ' + average;
+			    div.style.color = '#ff0000';
+			    document.body.appendChild(div);
+			    document.body.removeChild(renderer.view);
+			    return;
+			}
+
+			var sprite;
+			for (var i = 0; i < sprites.length; i++) {
+				sprite = sprites[i];
+				
+				sprite.position.x += sprite.speedX;
+				sprite.position.y += sprite.speedY;
+				sprite.speedY += gravity;
+				if (sprite.position.x > maxX) {
+					sprite.speedX *= -1;
+					sprite.position.x = maxX;
+				}
+				else if (sprite.position.x < minX) {
+					sprite.speedX *= -1;
+					sprite.position.x = minX;
+				}
+				if (sprite.position.y > maxY) {
+					sprite.speedY *= -0.85;
+					sprite.position.y = maxY;
+					sprite.spin = (Math.random()-0.5) * 0.2
+					if (Math.random() > 0.5) {
+						sprite.speedY -= Math.random() * 6;
+					}
+				} 
+				else if (sprite.position.y < minY) {
+					sprite.speedY = 0;
+					sprite.position.y = minY;
+				}
+			}
+
+			renderer.render(stage);
+			requestAnimFrame(update);
+		};
+	</script>
+</body>
+</html>

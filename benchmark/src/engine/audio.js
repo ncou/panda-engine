@@ -235,6 +235,7 @@ game.createClass('Audio', {
 
         // Web Audio
         if (this.context) {
+            if (audio.pauseTime >= 0) return false;
             if (typeof audio.stop === 'function') audio.stop(0);
             else audio.noteOff(0);
         }
@@ -274,7 +275,7 @@ game.createClass('Audio', {
 
         // Web Audio
         if (this.context) {
-            if (audio.pauseTime) {
+            if (audio.pauseTime >= 0) {
                 var audioName = this._getNameForAudio(audio);
                 this._play(audioName, audio.loop, audio.gainNode.gain.value, audio.callback, audio.playbackRate, audio.pauseTime, id);
             }
@@ -694,8 +695,8 @@ game.addAttributes('Audio', {
         @attribute {Array} formats
     **/
     formats: [
-        { ext: 'm4a', type: 'audio/mp4; codecs="mp4a.40.5"' },
         { ext: 'ogg', type: 'audio/ogg; codecs="vorbis"' },
+        { ext: 'm4a', type: 'audio/mp4; codecs="mp4a.40.5"' },
         { ext: 'wav', type: 'audio/wav' }
     ],
     /**
