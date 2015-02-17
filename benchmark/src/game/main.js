@@ -26,7 +26,7 @@ game.createScene('Main', {
         this.texture = game.Texture.fromImage('panda.png');
         game.system.stage.addChild(this.container);
 
-        this.addSprite(100000);
+        this.addSprite(20000);
 
         startTime = Date.now();
         last = startTime + 2000; // Skip first 2 seconds
