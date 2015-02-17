@@ -23,7 +23,7 @@ game.createScene('Main', {
     init: function() {
         game.system.stage.removeChild(this.stage);
         this.container = new game.PIXI.SpriteBatch();
-        this.texture = game.Texture.fromImage('panda.png');
+        this.texture = game.getTexture('panda.png');
         game.system.stage.addChild(this.container);
 
         this.addSprite(20000);
@@ -66,18 +66,8 @@ game.createScene('Main', {
 
             ready = true;
 
-            if (navigator.isCocoonJS) {
-                console.log('FPS: ' + average);
-            }
-            else {
-                var div = document.createElement('div');
-                div.innerHTML = 'FPS: ' + average;
-                div.style.color = '#ff0000';
-                document.body.appendChild(div);
-                document.body.removeChild(game.system.canvas);
-            }
-
             game.system.stopRunLoop();
+            alert('FPS: ' + average);
             return;
         }
 

@@ -8,7 +8,8 @@ game.module(
 .require(
     'engine.pixi',
     'engine.physics',
-    'engine.camera'
+    'engine.camera',
+    'engine.renderer'
 )
 .body(function() {
 'use strict';
@@ -340,6 +341,12 @@ game.addAttributes('Camera', {
     debugColor: 0xff00ff,
     debugAlpha: 0.2
 });
+
+game.PIXI.DisplayObjectContainer.prototype._addChild = game.PIXI.DisplayObjectContainer.prototype.addChild;
+game.PIXI.DisplayObjectContainer.prototype.addChild = function(child) {
+    if (game.debugDraw && child.interactive) game.debugDraw.addSprite(child);
+    this._addChild(child);
+};
 
 game.onStart = function() {
     if (game.Debug && game.Debug.enabled) {
